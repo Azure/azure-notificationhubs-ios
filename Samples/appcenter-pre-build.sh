@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-INFO_PLIST=$APPCENTER_SOURCE_DIRECTORY/iOS/Samples/nhubsample/nhubsample/Info.plist
+INFO_PLIST=$APPCENTER_SOURCE_DIRECTORY/Samples/Objective-C/nhubsample/nhubsample/Info.plist
 
 if [ "$NHUB_NAME" != "" ]; then
     plutil -replace NotificationHubName -string "$NHUB_NAME" $INFO_PLIST
@@ -11,4 +11,4 @@ if [ "$NHUB_CONNECTIONSTRING" != "" ]; then
 fi
 
 # Force sandbox notification environment
-plutil -replace "aps-environment" -string "development" $APPCENTER_SOURCE_DIRECTORY/iOS/Samples/nhubsample/nhubsample/nhubsample.entitlements
+plutil -replace "aps-environment" -string "development" $APPCENTER_SOURCE_DIRECTORY/Samples/Objective-C/nhubsample/nhubsample/nhubsample.entitlements
