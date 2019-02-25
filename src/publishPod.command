@@ -1,5 +1,5 @@
 # Push podspec to CocoaPods
-resp="$(pod trunk push ./AzureNotificationHubs-iOS.podspec)"
+resp="$(pod trunk push ./AzureNotificationHubs-iOS.podspec --allow-warnings)"
 echo $resp
 
 # Check error from the response
