@@ -2,7 +2,7 @@ ABSPATH=$(cd "$(dirname "$0")"; pwd)
 cd "$ABSPATH"
 
 buildFolderPath=$ABSPATH/Build
-testLogPath=$buildFolderPath/CITLogs.txt
+testLogPath=$buildFolderPath/CITLog.txt
 
 echo "******* Build and run CIT *******" 2>&1 | tee -a "$testLogPath"
 cd "$ABSPATH/WindowsAzureMessagingTest"

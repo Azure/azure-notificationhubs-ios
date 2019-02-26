@@ -22,7 +22,8 @@ if [ ! -e Build/Release-iphonesimulator/WindowsAzureMessaging.framework ] ; then
 fi
 
 cd "./Build/Release-iphoneos"
-ditto "WindowsAzureMessaging.framework" "$buildFolderPath/WindowsAzureMessaging.framework" 2>&1 | tee -a "$buildLogPath"
+lipo -info "WindowsAzureMessaging.framework/WindowsAzureMessaging" 2>&1 | tee -a "$buildLogPath"
+cp -R -L "WindowsAzureMessaging.framework" "$buildFolderPath/WindowsAzureMessaging.framework" 2>&1 | tee -a "$buildLogPath"
 zip -r "$buildFolderPath/WindowsAzureMessaging.framework.zip" "WindowsAzureMessaging.framework" 2>&1 | tee -a "$buildLogPath"
 
-echo "******* Framework build successful *******" 2>&1 | tee -a $buildLogPath
+echo "******* Framework build successful *******" 2>&1 | tee -a "$buildLogPath"
