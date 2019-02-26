@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "AzureNotificationHubs-iOS"
-  s.version             = "0.0.1"
+  s.version             = "NEW_VERSION_NUMBER"
   s.source              = { :git => "https://github.com/Azure/azure-notificationhubs-ios.git", :tag => "#{s.version}" }
   s.source_files        = "src/WindowsAzureMessaging/WindowsAzureMessaging/**/*.{h,m}"
   s.public_header_files = "src/WindowsAzureMessaging/WindowsAzureMessaging/Helpers/SBLocalStorage.h",
