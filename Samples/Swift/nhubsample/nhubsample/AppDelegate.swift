@@ -1,9 +1,6 @@
 //
-//  AppDelegate.swift
-//  nhubsample
-//
-//  Created by TOYS on 2/25/19.
-//  Copyright © 2019 Microsoft. All rights reserved.
+//  Copyright © 2018 Microsoft All rights reserved.
+//  Licensed under the Apache License (2.0).
 //
 
 import UIKit
@@ -58,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("Received notification while the application is in the foreground");
         
-        showNoification(notification.request.content.userInfo)
+        showNotification(notification.request.content.userInfo)
         
         completionHandler([.sound, .badge])
     }
@@ -68,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         print("Received notification while the application is in the background");
         
-        showNoification(response.notification.request.content.userInfo)
+        showNotification(response.notification.request.content.userInfo)
         
         completionHandler()
     }
@@ -148,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func showNoification(_ userInfo: Any) {
+    func showNotification(_ userInfo: Any) {
         logNotificationDetails(userInfo)
         
         let notificationDetail = NotificationDetailViewController(userInfo)

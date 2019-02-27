@@ -1,9 +1,6 @@
 //
-//  Constants.swift
-//  nhubsample
-//
-//  Created by TOYS on 2/25/19.
-//  Copyright © 2019 Microsoft. All rights reserved.
+//  Copyright © 2018 Microsoft All rights reserved.
+//  Licensed under the Apache License (2.0).
 //
 
 import Foundation
