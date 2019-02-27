@@ -170,7 +170,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35B4DBCC22268CB900EAC781 /* WindowsAzureMessaging */ = {
+		35B4DBCC22268CB900EAC781 /* WindowsAzureMessagingStatic */ = {
 			isa = PBXGroup;
 			children = (
 				35B4DBDA22268D1000EAC781 /* Helpers */,
@@ -185,7 +185,7 @@
 				35B4DBD922268D1000EAC781 /* WindowsAzureMessaging-prefix.pch */,
 				35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */,
 			);
-			path = WindowsAzureMessagingStatic;
+			name = WindowsAzureMessagingStatic;
 			sourceTree = "<group>";
 		};
 		35B4DBDA22268D1000EAC781 /* Helpers */ = {
@@ -328,9 +328,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		35B4DBCA22268CB900EAC781 /* WindowsAzureMessagingStatic */ = {
+		35B4DBCA22268CB900EAC781 /* WindowsAzureMessaging */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 35B4DBD222268CB900EAC781 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingStatic" */;
+			buildConfigurationList = 35B4DBD222268CB900EAC781 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging" */;
 			buildPhases = (
 				35B4DBC622268CB900EAC781 /* Headers */,
 				35B4DBC722268CB900EAC781 /* Sources */,
@@ -373,6 +373,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Microsoft;
+				TargetAttributes = {
+					35B4DBCA22268CB900EAC781 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 906E403216A86A3200817A11 /* Build configuration list for PBXProject "WindowsAzureMessaging" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -388,7 +393,7 @@
 			targets = (
 				906E406D16A8851E00817A11 /* Framework */,
 				906E403716A86A3200817A11 /* WindowsAzureMessaging */,
-				35B4DBCA22268CB900EAC781 /* WindowsAzureMessagingStatic */,
+				35B4DBCA22268CB900EAC781 /* WindowsAzureMessaging */,
 			);
 		};
 /* End PBXProject section */
@@ -699,7 +704,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		35B4DBD222268CB900EAC781 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingStatic" */ = {
+		35B4DBD222268CB900EAC781 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35B4DBD022268CB900EAC781 /* Debug */,
