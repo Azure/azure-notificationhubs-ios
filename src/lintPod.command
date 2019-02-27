@@ -1,5 +1,5 @@
 # Run lint to validate podspec
-resp="$(pod spec lint ./AzureNotificationHubs-iOS.podspec --allow-warnings)"
+resp="$(pod spec lint ./WindowsAzureMessaging.podspec --allow-warnings)"
 echo $resp
 
 # Check error from the response
