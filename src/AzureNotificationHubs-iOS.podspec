@@ -1,15 +1,8 @@
 Pod::Spec.new do |s|
   s.name                = "AzureNotificationHubs-iOS"
   s.version             = "NEW_VERSION_NUMBER"
-  s.source              = { :git => "https://github.com/Azure/azure-notificationhubs-ios.git", :tag => "#{s.version}" }
-  s.source_files        = "src/WindowsAzureMessaging/WindowsAzureMessaging/**/*.{h,m}"
-  s.public_header_files = "src/WindowsAzureMessaging/WindowsAzureMessaging/Helpers/SBLocalStorage.h",
-                          "src/WindowsAzureMessaging/WindowsAzureMessaging/Helpers/SBStoredRegistrationEntry.h",
-                          "src/WindowsAzureMessaging/WindowsAzureMessaging/Helpers/SBTokenProvider.h",
-                          "src/WindowsAzureMessaging/WindowsAzureMessaging/SBConnectionString.h",
-                          "src/WindowsAzureMessaging/WindowsAzureMessaging/SBNotificationHub.h",
-                          "src/WindowsAzureMessaging/WindowsAzureMessaging/SBRegistration.h",
-                          "src/WindowsAzureMessaging/WindowsAzureMessaging/WindowsAzureMessaging.h"
+  s.source              = { :http => "https://github.com/Azure/azure-notificationhubs-ios/releases/download/#{s.version}/WindowsAzureMessaging.framework.zip" }
+  s.vendored_frameworks = "WindowsAzureMessaging.framework"
   s.platform            = :ios, "6.0"
   s.author              = { "Microsoft" => "http://microsoft.com" }
   s.documentation_url   = "https://docs.microsoft.com/en-us/azure/notification-hubs/"
