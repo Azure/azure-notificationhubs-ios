@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             if (error != nil) {
                 print("Error registering for notifications: \(error.debugDescription)");
             } else {
-                self.showAlert("Registered", withTitle:"Registration Status");
+                showAlert("Registered", withTitle:"Registration Status");
             }
         }
     }
@@ -92,57 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func getNotificationHub() -> SBNotificationHub {
-        let NHubName = Bundle.main.object(forInfoDictionaryKey: Constants.NHInfoHubName) as? String
-        let NHubConnectionString = Bundle.main.object(forInfoDictionaryKey: Constants.NHInfoConnectionString) as? String
-        
-        return SBNotificationHub.init(connectionString: NHubConnectionString, notificationHubPath: NHubName)
-    }
-    
-    func handleRegister() {
-        UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound, .badge]) {
-                granted, error in
-                if (error != nil) {
-                    print("Error requesting for authorization:");
-                }
-                print("Permission granted: \(granted)")
-                guard granted else { return }
-                self.getNotificationSettings()
-        }
-    }
-
-    func handleUnregister() {
-        let hub = getNotificationHub()
-        hub.unregisterNative { error in
-            if (error != nil) {
-                print("Error unregistering for push: \(error.debugDescription)");
-            } else {
-                self.showAlert("Unregistered", withTitle: "Registration Status")
-            }
-        }
-    }
-    
-    func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
-    
     func logNotificationDetails(_ userInfo: Any) {
         let state = UIApplication.shared.applicationState;
         let background = state != .active;
         print("Received \(background ? "(background)" : ""): \(userInfo)");
-    }
-    
-    func showAlert(_ message: String, withTitle title: String = "Alert") {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     func showNotification(_ userInfo: Any) {

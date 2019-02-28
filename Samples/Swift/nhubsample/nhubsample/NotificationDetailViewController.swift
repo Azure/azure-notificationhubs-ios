@@ -10,11 +10,11 @@ class NotificationDetailViewController: UIViewController {
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var bodyLabel: UILabel!
     
-    var _userInfo: [String: Any]?
+    var payload: [String: Any]?
     
     init(_ userInfo: Any) {
         super.init(nibName: "NotificationDetail", bundle: nil)
-        _userInfo = userInfo as? [String: Any]
+        payload = userInfo as? [String: Any]
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,8 +22,8 @@ class NotificationDetailViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        self.titleLabel.sizeToFit();
-        self.bodyLabel.sizeToFit();
+        titleLabel.sizeToFit();
+        bodyLabel.sizeToFit();
     }
     
     override func viewDidLoad() {
@@ -31,8 +31,8 @@ class NotificationDetailViewController: UIViewController {
         
         var title: String?
         var body: String?
-    
-        let aps = _userInfo?["aps"] as? [String: Any]
+        
+        let aps = payload?["aps"] as? [String: Any]
         let alertObject = aps?["alert"]
         if (alertObject != nil) {
             if let alertDict = alertObject as? [String: Any] {
@@ -53,11 +53,11 @@ class NotificationDetailViewController: UIViewController {
             body = "<unset>"
         }
         
-        self.titleLabel.text = title
-        self.bodyLabel.text = body
+        titleLabel.text = title
+        bodyLabel.text = body
     }
     
     @IBAction func handleDismiss(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

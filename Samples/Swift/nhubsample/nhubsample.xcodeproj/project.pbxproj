@@ -14,7 +14,7 @@
 		BBF163952224052C003DC9FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF163932224052C003DC9FD /* LaunchScreen.storyboard */; };
 		BBF1639D22240B78003DC9FD /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF1639C22240B78003DC9FD /* Splash.png */; };
 		BBF163A022240BDA003DC9FD /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF1639F22240BDA003DC9FD /* WindowsAzureMessaging.framework */; };
-		BBF163A32224337D003DC9FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF163A22224337D003DC9FD /* Constants.swift */; };
+		BBF163A32224337D003DC9FD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF163A22224337D003DC9FD /* Utils.swift */; };
 		BBF163A822257E8A003DC9FD /* NotificationDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF163A722257E8A003DC9FD /* NotificationDetail.xib */; };
 		BBF163AA22257F13003DC9FD /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF163A922257F13003DC9FD /* NotificationDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +30,7 @@
 		BBF1639C22240B78003DC9FD /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		BBF1639F22240BDA003DC9FD /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = "<group>"; };
 		BBF163A122242EA0003DC9FD /* nhubsample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nhubsample.entitlements; sourceTree = "<group>"; };
-		BBF163A22224337D003DC9FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BBF163A22224337D003DC9FD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BBF163A422255C76003DC9FD /* nhubsample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nhubsample-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBF163A722257E8A003DC9FD /* NotificationDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationDetail.xib; sourceTree = "<group>"; };
 		BBF163A922257F13003DC9FD /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 				BBF163912224052C003DC9FD /* Assets.xcassets */,
 				BBF163932224052C003DC9FD /* LaunchScreen.storyboard */,
 				BBF163962224052C003DC9FD /* Info.plist */,
-				BBF163A22224337D003DC9FD /* Constants.swift */,
+				BBF163A22224337D003DC9FD /* Utils.swift */,
 				BBF163A422255C76003DC9FD /* nhubsample-Bridging-Header.h */,
 				BBF163A722257E8A003DC9FD /* NotificationDetail.xib */,
 				BBF163A922257F13003DC9FD /* NotificationDetailViewController.swift */,
@@ -174,7 +174,7 @@
 				BBF1638D22240529003DC9FD /* ViewController.swift in Sources */,
 				BBF1638B22240529003DC9FD /* AppDelegate.swift in Sources */,
 				BBF163AA22257F13003DC9FD /* NotificationDetailViewController.swift in Sources */,
-				BBF163A32224337D003DC9FD /* Constants.swift in Sources */,
+				BBF163A32224337D003DC9FD /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
