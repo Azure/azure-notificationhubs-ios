@@ -82,11 +82,11 @@ static NSString* decodingTableLock = @"decodingTableLock";
 		inputLength--;
 	}
 	
-	int outputLength = inputLength * 3 / 4;
+	NSUInteger outputLength = inputLength * 3 / 4;
 	NSMutableData* outputData = [NSMutableData dataWithLength:outputLength];
 	uint8_t* output = outputData.mutableBytes;
     
-    int outputPos = 0;
+    NSUInteger outputPos = 0;
     for (int i=0; i<inputLength; i += 4)
     {
         char i0 = input[i];

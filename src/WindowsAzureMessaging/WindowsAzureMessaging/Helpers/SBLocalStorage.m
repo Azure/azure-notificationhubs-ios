@@ -12,7 +12,7 @@
 
 @synthesize isRefreshNeeded, deviceToken;
 
-static const NSString* storageVersion = @"v1.0.0";
+static NSString* const storageVersion = @"v1.0.0";
 
 - (SBLocalStorage*) initWithNotificationHubPath: (NSString*) notificationHubPath
 {
@@ -83,7 +83,7 @@ static const NSString* storageVersion = @"v1.0.0";
     StoredRegistrationEntry* reg = [[StoredRegistrationEntry alloc] init];
     
     reg.RegistrationName = [SBNotificationHubHelper nameOfRegistration:registration];
-    reg.registrationId = registration.registrationId;
+    reg.RegistrationId = registration.registrationId;
     reg.ETag = registration.ETag;
     
     [self->_registrations setValue:reg forKey:reg.RegistrationName];
@@ -98,7 +98,7 @@ static const NSString* storageVersion = @"v1.0.0";
     StoredRegistrationEntry* reg = [[StoredRegistrationEntry alloc] init];
     
     reg.RegistrationName = registrationName;
-    reg.registrationId = registrationId;
+    reg.RegistrationId = registrationId;
     reg.ETag = eTag;
     
     [self->_registrations setValue:reg forKey:reg.RegistrationName];
