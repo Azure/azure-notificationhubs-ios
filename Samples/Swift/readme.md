@@ -6,7 +6,6 @@ This app handles the following scenarios
 - Register and unregister the device with the Notification Hub with the given tags
 - Receive push notifications
 - Receive silent push notifications
-- Handle mutable messages via a Notification Service Extension
 
 ## Getting Started.
 
