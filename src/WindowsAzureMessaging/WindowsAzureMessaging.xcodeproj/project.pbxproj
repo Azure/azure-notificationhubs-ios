@@ -22,6 +22,30 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		35B4DBEC22268D1000EAC781 /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBD322268D0F00EAC781 /* SBRegistration.m */; };
+		35B4DBED22268D1000EAC781 /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBD422268D0F00EAC781 /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		35B4DBEE22268D1000EAC781 /* SBNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBD522268D0F00EAC781 /* SBNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBEF22268D1000EAC781 /* SBConnectionString.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBD622268D0F00EAC781 /* SBConnectionString.m */; };
+		35B4DBF022268D1000EAC781 /* SBRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBD722268D0F00EAC781 /* SBRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBF122268D1000EAC781 /* SBTemplateRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBD822268D0F00EAC781 /* SBTemplateRegistration.m */; };
+		35B4DBF322268D1000EAC781 /* SBTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBDB22268D1000EAC781 /* SBTokenProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBF422268D1000EAC781 /* SBStaticHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBDC22268D1000EAC781 /* SBStaticHandlerResponse.m */; };
+		35B4DBF522268D1000EAC781 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBDD22268D1000EAC781 /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBF622268D1000EAC781 /* SBNotificationHubHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBDE22268D1000EAC781 /* SBNotificationHubHelper.m */; };
+		35B4DBF722268D1000EAC781 /* SBStoredRegistrationEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBDF22268D1000EAC781 /* SBStoredRegistrationEntry.m */; };
+		35B4DBF822268D1000EAC781 /* SBRegistrationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE022268D1000EAC781 /* SBRegistrationParser.m */; };
+		35B4DBF922268D1000EAC781 /* SBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE122268D1000EAC781 /* SBURLConnection.m */; };
+		35B4DBFA22268D1000EAC781 /* SBTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE222268D1000EAC781 /* SBTokenProvider.m */; };
+		35B4DBFB22268D1000EAC781 /* SBStaticHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE322268D1000EAC781 /* SBStaticHandlerResponse.h */; };
+		35B4DBFC22268D1000EAC781 /* SBStoredRegistrationEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE422268D1000EAC781 /* SBStoredRegistrationEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBFD22268D1000EAC781 /* SBNotificationHubHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE522268D1000EAC781 /* SBNotificationHubHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		35B4DBFE22268D1000EAC781 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE622268D1000EAC781 /* SBLocalStorage.m */; };
+		35B4DBFF22268D1000EAC781 /* SBURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE722268D1000EAC781 /* SBURLConnection.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		35B4DC0022268D1000EAC781 /* SBRegistrationParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE822268D1000EAC781 /* SBRegistrationParser.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		35B4DC0122268D1000EAC781 /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE922268D1000EAC781 /* SBNotificationHub.m */; };
+		35B4DC0222268D1000EAC781 /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DC0322268D1000EAC781 /* SBConnectionString.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBEB22268D1000EAC781 /* SBConnectionString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; };
 		8471C92B16EABF5600C73674 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8471C92916EABF5600C73674 /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8471C92C16EABF5600C73674 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8471C92A16EABF5600C73674 /* SBLocalStorage.m */; };
 		848CB70A16FBE52D00183E8D /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -73,6 +97,31 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35B4DBD322268D0F00EAC781 /* SBRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRegistration.m; path = WindowsAzureMessaging/SBRegistration.m; sourceTree = SOURCE_ROOT; };
+		35B4DBD422268D0F00EAC781 /* SBTemplateRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBTemplateRegistration.h; path = WindowsAzureMessaging/SBTemplateRegistration.h; sourceTree = SOURCE_ROOT; };
+		35B4DBD522268D0F00EAC781 /* SBNotificationHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBNotificationHub.h; path = WindowsAzureMessaging/SBNotificationHub.h; sourceTree = SOURCE_ROOT; };
+		35B4DBD622268D0F00EAC781 /* SBConnectionString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBConnectionString.m; path = WindowsAzureMessaging/SBConnectionString.m; sourceTree = SOURCE_ROOT; };
+		35B4DBD722268D0F00EAC781 /* SBRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBRegistration.h; path = WindowsAzureMessaging/SBRegistration.h; sourceTree = SOURCE_ROOT; };
+		35B4DBD822268D0F00EAC781 /* SBTemplateRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBTemplateRegistration.m; path = WindowsAzureMessaging/SBTemplateRegistration.m; sourceTree = SOURCE_ROOT; };
+		35B4DBD922268D1000EAC781 /* WindowsAzureMessaging-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WindowsAzureMessaging-prefix.pch"; path = "WindowsAzureMessaging/WindowsAzureMessaging-prefix.pch"; sourceTree = SOURCE_ROOT; };
+		35B4DBDB22268D1000EAC781 /* SBTokenProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTokenProvider.h; sourceTree = "<group>"; };
+		35B4DBDC22268D1000EAC781 /* SBStaticHandlerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStaticHandlerResponse.m; sourceTree = "<group>"; };
+		35B4DBDD22268D1000EAC781 /* SBLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
+		35B4DBDE22268D1000EAC781 /* SBNotificationHubHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNotificationHubHelper.m; sourceTree = "<group>"; };
+		35B4DBDF22268D1000EAC781 /* SBStoredRegistrationEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStoredRegistrationEntry.m; sourceTree = "<group>"; };
+		35B4DBE022268D1000EAC781 /* SBRegistrationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRegistrationParser.m; sourceTree = "<group>"; };
+		35B4DBE122268D1000EAC781 /* SBURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBURLConnection.m; sourceTree = "<group>"; };
+		35B4DBE222268D1000EAC781 /* SBTokenProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTokenProvider.m; sourceTree = "<group>"; };
+		35B4DBE322268D1000EAC781 /* SBStaticHandlerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStaticHandlerResponse.h; sourceTree = "<group>"; };
+		35B4DBE422268D1000EAC781 /* SBStoredRegistrationEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStoredRegistrationEntry.h; sourceTree = "<group>"; };
+		35B4DBE522268D1000EAC781 /* SBNotificationHubHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNotificationHubHelper.h; sourceTree = "<group>"; };
+		35B4DBE622268D1000EAC781 /* SBLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocalStorage.m; sourceTree = "<group>"; };
+		35B4DBE722268D1000EAC781 /* SBURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBURLConnection.h; sourceTree = "<group>"; };
+		35B4DBE822268D1000EAC781 /* SBRegistrationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRegistrationParser.h; sourceTree = "<group>"; };
+		35B4DBE922268D1000EAC781 /* SBNotificationHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBNotificationHub.m; path = WindowsAzureMessaging/SBNotificationHub.m; sourceTree = SOURCE_ROOT; };
+		35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowsAzureMessaging.h; path = WindowsAzureMessaging/WindowsAzureMessaging.h; sourceTree = SOURCE_ROOT; };
+		35B4DBEB22268D1000EAC781 /* SBConnectionString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBConnectionString.h; path = WindowsAzureMessaging/SBConnectionString.h; sourceTree = SOURCE_ROOT; };
 		8471C92916EABF5600C73674 /* SBLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
 		8471C92A16EABF5600C73674 /* SBLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocalStorage.m; sourceTree = "<group>"; };
 		848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBTemplateRegistration.h; path = ../SBTemplateRegistration.h; sourceTree = "<group>"; };
@@ -102,6 +151,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		35B4DBC822268CB900EAC781 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		906E403516A86A3200817A11 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,10 +170,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35B4DBCC22268CB900EAC781 /* WindowsAzureMessagingStatic */ = {
+			isa = PBXGroup;
+			children = (
+				35B4DBDA22268D1000EAC781 /* Helpers */,
+				35B4DBEB22268D1000EAC781 /* SBConnectionString.h */,
+				35B4DBD622268D0F00EAC781 /* SBConnectionString.m */,
+				35B4DBD522268D0F00EAC781 /* SBNotificationHub.h */,
+				35B4DBE922268D1000EAC781 /* SBNotificationHub.m */,
+				35B4DBD722268D0F00EAC781 /* SBRegistration.h */,
+				35B4DBD322268D0F00EAC781 /* SBRegistration.m */,
+				35B4DBD422268D0F00EAC781 /* SBTemplateRegistration.h */,
+				35B4DBD822268D0F00EAC781 /* SBTemplateRegistration.m */,
+				35B4DBD922268D1000EAC781 /* WindowsAzureMessaging-prefix.pch */,
+				35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */,
+			);
+			name = WindowsAzureMessagingStatic;
+			sourceTree = "<group>";
+		};
+		35B4DBDA22268D1000EAC781 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				35B4DBDB22268D1000EAC781 /* SBTokenProvider.h */,
+				35B4DBDC22268D1000EAC781 /* SBStaticHandlerResponse.m */,
+				35B4DBDD22268D1000EAC781 /* SBLocalStorage.h */,
+				35B4DBDE22268D1000EAC781 /* SBNotificationHubHelper.m */,
+				35B4DBDF22268D1000EAC781 /* SBStoredRegistrationEntry.m */,
+				35B4DBE022268D1000EAC781 /* SBRegistrationParser.m */,
+				35B4DBE122268D1000EAC781 /* SBURLConnection.m */,
+				35B4DBE222268D1000EAC781 /* SBTokenProvider.m */,
+				35B4DBE322268D1000EAC781 /* SBStaticHandlerResponse.h */,
+				35B4DBE422268D1000EAC781 /* SBStoredRegistrationEntry.h */,
+				35B4DBE522268D1000EAC781 /* SBNotificationHubHelper.h */,
+				35B4DBE622268D1000EAC781 /* SBLocalStorage.m */,
+				35B4DBE722268D1000EAC781 /* SBURLConnection.h */,
+				35B4DBE822268D1000EAC781 /* SBRegistrationParser.h */,
+			);
+			name = Helpers;
+			path = WindowsAzureMessaging/Helpers;
+			sourceTree = SOURCE_ROOT;
+		};
 		906E402D16A86A3200817A11 = {
 			isa = PBXGroup;
 			children = (
 				906E403D16A86A3200817A11 /* WindowsAzureMessaging */,
+				35B4DBCC22268CB900EAC781 /* WindowsAzureMessagingStatic */,
 				906E403A16A86A3200817A11 /* Frameworks */,
 				906E403916A86A3200817A11 /* Products */,
 			);
@@ -126,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				906E403816A86A3200817A11 /* libWindowsAzureMessaging.a */,
+				35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +287,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		35B4DBC622268CB900EAC781 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35B4DBEE22268D1000EAC781 /* SBNotificationHub.h in Headers */,
+				35B4DC0322268D1000EAC781 /* SBConnectionString.h in Headers */,
+				35B4DBF522268D1000EAC781 /* SBLocalStorage.h in Headers */,
+				35B4DC0222268D1000EAC781 /* WindowsAzureMessaging.h in Headers */,
+				35B4DBFC22268D1000EAC781 /* SBStoredRegistrationEntry.h in Headers */,
+				35B4DBF022268D1000EAC781 /* SBRegistration.h in Headers */,
+				35B4DBF322268D1000EAC781 /* SBTokenProvider.h in Headers */,
+				35B4DBFD22268D1000EAC781 /* SBNotificationHubHelper.h in Headers */,
+				35B4DBED22268D1000EAC781 /* SBTemplateRegistration.h in Headers */,
+				35B4DC0022268D1000EAC781 /* SBRegistrationParser.h in Headers */,
+				35B4DBFF22268D1000EAC781 /* SBURLConnection.h in Headers */,
+				35B4DBFB22268D1000EAC781 /* SBStaticHandlerResponse.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		906E406416A8710700817A11 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +328,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		35B4DBCA22268CB900EAC781 /* WindowsAzureMessaging */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35B4DBD222268CB900EAC781 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging" */;
+			buildPhases = (
+				35B4DBC622268CB900EAC781 /* Headers */,
+				35B4DBC722268CB900EAC781 /* Sources */,
+				35B4DBC822268CB900EAC781 /* Frameworks */,
+				35B4DBC922268CB900EAC781 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WindowsAzureMessaging;
+			productName = WindowsAzureMessaging;
+			productReference = 35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		906E403716A86A3200817A11 /* WindowsAzureMessaging */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 906E404616A86A3200817A11 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging" */;
@@ -237,6 +373,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Microsoft;
+				TargetAttributes = {
+					35B4DBCA22268CB900EAC781 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 906E403216A86A3200817A11 /* Build configuration list for PBXProject "WindowsAzureMessaging" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -252,9 +393,20 @@
 			targets = (
 				906E406D16A8851E00817A11 /* Framework */,
 				906E403716A86A3200817A11 /* WindowsAzureMessaging */,
+				35B4DBCA22268CB900EAC781 /* WindowsAzureMessaging */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		35B4DBC922268CB900EAC781 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		906E406016A86CAE00817A11 /* Prepare Framework */ = {
@@ -288,6 +440,24 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		35B4DBC722268CB900EAC781 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35B4DBFE22268D1000EAC781 /* SBLocalStorage.m in Sources */,
+				35B4DBEC22268D1000EAC781 /* SBRegistration.m in Sources */,
+				35B4DBF822268D1000EAC781 /* SBRegistrationParser.m in Sources */,
+				35B4DC0122268D1000EAC781 /* SBNotificationHub.m in Sources */,
+				35B4DBF722268D1000EAC781 /* SBStoredRegistrationEntry.m in Sources */,
+				35B4DBEF22268D1000EAC781 /* SBConnectionString.m in Sources */,
+				35B4DBF922268D1000EAC781 /* SBURLConnection.m in Sources */,
+				35B4DBF422268D1000EAC781 /* SBStaticHandlerResponse.m in Sources */,
+				35B4DBF622268D1000EAC781 /* SBNotificationHubHelper.m in Sources */,
+				35B4DBFA22268D1000EAC781 /* SBTokenProvider.m in Sources */,
+				35B4DBF122268D1000EAC781 /* SBTemplateRegistration.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		906E403416A86A3200817A11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +487,111 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		35B4DBD022268CB900EAC781 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "WindowsAzureMessaging/WindowsAzureMessaging-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		35B4DBD122268CB900EAC781 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "WindowsAzureMessaging/WindowsAzureMessaging-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		906E404416A86A3200817A11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -429,6 +704,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		35B4DBD222268CB900EAC781 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35B4DBD022268CB900EAC781 /* Debug */,
+				35B4DBD122268CB900EAC781 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		906E403216A86A3200817A11 /* Build configuration list for PBXProject "WindowsAzureMessaging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
