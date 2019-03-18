@@ -1,3 +1,4 @@
+[![Build status](https://build.appcenter.ms/v0.1/apps/ba091406-51da-46ac-b1b6-bcffc4e393d0/branches/master/badge)](https://appcenter.ms)
 # iOS Notification Hubs Sample
 
 This is a sample project intended to demonstrate the usage of the Azure Notification Hubs iOS Client SDK.  The sample app allows the developer to register the device with a Notification Hub with the given tags as well as unregister the device. 
