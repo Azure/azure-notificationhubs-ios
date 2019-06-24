@@ -79,11 +79,14 @@ NSString* const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=IosSdk; os
 
 - (NSString *)convertDeviceToken:(NSData *)deviceTokenData
 {
-    NSString* newDeviceToken = [[[[[deviceTokenData description]
-                                   stringByReplacingOccurrencesOfString:@"<"withString:@""]
-                                  stringByReplacingOccurrencesOfString:@">" withString:@""]
-                                 stringByReplacingOccurrencesOfString: @" " withString: @""] uppercaseString];
-    return newDeviceToken;
+    const char *data = [deviceTokenData bytes];
+    NSMutableString *newDeviceToken = [NSMutableString string];
+    
+    for (NSUInteger i = 0; i < [deviceTokenData length]; i++) {
+        [newDeviceToken appendFormat:@"%02.2hhx", data[i]];
+    }
+    
+    return [newDeviceToken copy];
 }
 
 - (void) registerNativeWithDeviceToken:(NSData*)deviceTokenData tags:(NSSet*)tags completion:(void (^)(NSError* error))completion;
