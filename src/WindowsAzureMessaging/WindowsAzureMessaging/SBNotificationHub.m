@@ -83,7 +83,7 @@ NSString* const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=IosSdk; os
     NSMutableString *newDeviceToken = [NSMutableString string];
     
     for (NSUInteger i = 0; i < [deviceTokenData length]; i++) {
-        [newDeviceToken appendFormat:@"%02.2hhx", data[i]];
+        [newDeviceToken appendFormat:@"%02.2hhX", data[i]];
     }
     
     return [newDeviceToken copy];
