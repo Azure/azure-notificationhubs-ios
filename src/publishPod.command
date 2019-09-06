@@ -9,4 +9,10 @@ if [ "$error" ]; then
     exit 1
 fi
 
+successFlag="$(echo $resp | grep -i 'successfully published')"
+if [ -z "$successFlag" ]; then
+    echo "Cannot publish to CocoaPods"
+    exit 1
+fi
+
 echo "Podspec published to CocoaPods successfully"
