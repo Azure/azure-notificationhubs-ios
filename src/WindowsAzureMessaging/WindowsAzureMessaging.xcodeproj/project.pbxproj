@@ -46,6 +46,9 @@
 		35B4DC0222268D1000EAC781 /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35B4DC0322268D1000EAC781 /* SBConnectionString.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBEB22268D1000EAC781 /* SBConnectionString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; };
+		4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */; };
+		4C8546EF244F5D48005F6B49 /* libWindowsAzureMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403816A86A3200817A11 /* libWindowsAzureMessaging.a */; };
+		4C854702244F91E1005F6B49 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854701244F91E1005F6B49 /* MSNotificationHubMessage.m */; };
 		8471C92B16EABF5600C73674 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8471C92916EABF5600C73674 /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8471C92C16EABF5600C73674 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8471C92A16EABF5600C73674 /* SBLocalStorage.m */; };
 		848CB70A16FBE52D00183E8D /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -74,6 +77,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4C8546F0244F5D48005F6B49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 906E402F16A86A3200817A11 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 906E403716A86A3200817A11;
+			remoteInfo = WindowsAzureMessaging;
+		};
 		906E407116A8853000817A11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 906E402F16A86A3200817A11 /* Project object */;
@@ -122,6 +132,16 @@
 		35B4DBE922268D1000EAC781 /* SBNotificationHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBNotificationHub.m; path = WindowsAzureMessaging/SBNotificationHub.m; sourceTree = SOURCE_ROOT; };
 		35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowsAzureMessaging.h; path = WindowsAzureMessaging/WindowsAzureMessaging.h; sourceTree = SOURCE_ROOT; };
 		35B4DBEB22268D1000EAC781 /* SBConnectionString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBConnectionString.h; path = WindowsAzureMessaging/SBConnectionString.h; sourceTree = SOURCE_ROOT; };
+		4C8546EA244F5D48005F6B49 /* WindowsAzureMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowsAzureMessagingTests.m; sourceTree = "<group>"; };
+		4C8546EE244F5D48005F6B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C8546FB244F8F34005F6B49 /* MSNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHub.h; sourceTree = "<group>"; };
+		4C8546FC244F8F49005F6B49 /* MSInstallation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallation.h; sourceTree = "<group>"; };
+		4C8546FD244F8FB4005F6B49 /* MSInstallationTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationTemplate.h; sourceTree = "<group>"; };
+		4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubMessage.h; sourceTree = "<group>"; };
+		4C854701244F91E1005F6B49 /* MSNotificationHubMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubMessage.m; sourceTree = "<group>"; };
+		4C854703244F9347005F6B49 /* MSNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHub.h; sourceTree = "<group>"; };
+		4C854704244F95A7005F6B49 /* MSNotificationHubMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubMessageDelegate.h; sourceTree = "<group>"; };
 		8471C92916EABF5600C73674 /* SBLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
 		8471C92A16EABF5600C73674 /* SBLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocalStorage.m; sourceTree = "<group>"; };
 		848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBTemplateRegistration.h; path = ../SBTemplateRegistration.h; sourceTree = "<group>"; };
@@ -156,6 +176,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C8546E7244F5D48005F6B49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C8546EF244F5D48005F6B49 /* libWindowsAzureMessaging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,11 +238,32 @@
 			path = WindowsAzureMessaging/Helpers;
 			sourceTree = SOURCE_ROOT;
 		};
+		4C8546EB244F5D48005F6B49 /* WindowsAzureMessagingTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */,
+				4C8546EE244F5D48005F6B49 /* Info.plist */,
+			);
+			path = WindowsAzureMessagingTests;
+			sourceTree = "<group>";
+		};
+		4C8546F7244F8DE9005F6B49 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C8546FC244F8F49005F6B49 /* MSInstallation.h */,
+				4C8546FD244F8FB4005F6B49 /* MSInstallationTemplate.h */,
+				4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */,
+				4C854701244F91E1005F6B49 /* MSNotificationHubMessage.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		906E402D16A86A3200817A11 = {
 			isa = PBXGroup;
 			children = (
 				906E403D16A86A3200817A11 /* WindowsAzureMessaging */,
 				35B4DBCC22268CB900EAC781 /* WindowsAzureMessagingStatic */,
+				4C8546EB244F5D48005F6B49 /* WindowsAzureMessagingTests */,
 				906E403A16A86A3200817A11 /* Frameworks */,
 				906E403916A86A3200817A11 /* Products */,
 			);
@@ -225,6 +274,7 @@
 			children = (
 				906E403816A86A3200817A11 /* libWindowsAzureMessaging.a */,
 				35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */,
+				4C8546EA244F5D48005F6B49 /* WindowsAzureMessagingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,6 +290,7 @@
 		906E403D16A86A3200817A11 /* WindowsAzureMessaging */ = {
 			isa = PBXGroup;
 			children = (
+				4C8546F7244F8DE9005F6B49 /* Models */,
 				A358370D16AA39850041E372 /* Helpers */,
 				A358371616AA39850041E372 /* SBConnectionString.h */,
 				A358371716AA39850041E372 /* SBConnectionString.m */,
@@ -247,6 +298,8 @@
 				A358371916AA39850041E372 /* SBNotificationHub.m */,
 				906E404016A86A3200817A11 /* WindowsAzureMessaging.h */,
 				906E403E16A86A3200817A11 /* Supporting Files */,
+				4C854703244F9347005F6B49 /* MSNotificationHub.h */,
+				4C854704244F95A7005F6B49 /* MSNotificationHubMessageDelegate.h */,
 			);
 			path = WindowsAzureMessaging;
 			sourceTree = "<group>";
@@ -262,6 +315,7 @@
 		A358370D16AA39850041E372 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4C8546FB244F8F34005F6B49 /* MSNotificationHub.h */,
 				929886EF1857FAB100C1676C /* SBStaticHandlerResponse.h */,
 				92988747185931DE00C1676C /* SBStaticHandlerResponse.m */,
 				A358370E16AA39850041E372 /* SBNotificationHubHelper.h */,
@@ -346,6 +400,24 @@
 			productReference = 35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		4C8546E9244F5D48005F6B49 /* WindowsAzureMessagingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C8546F4244F5D49005F6B49 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingTests" */;
+			buildPhases = (
+				4C8546E6244F5D48005F6B49 /* Sources */,
+				4C8546E7244F5D48005F6B49 /* Frameworks */,
+				4C8546E8244F5D48005F6B49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C8546F1244F5D48005F6B49 /* PBXTargetDependency */,
+			);
+			name = WindowsAzureMessagingTests;
+			productName = WindowsAzureMessagingTests;
+			productReference = 4C8546EA244F5D48005F6B49 /* WindowsAzureMessagingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		906E403716A86A3200817A11 /* WindowsAzureMessaging */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 906E404616A86A3200817A11 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging" */;
@@ -371,20 +443,26 @@
 		906E402F16A86A3200817A11 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					35B4DBCA22268CB900EAC781 = {
+						ProvisioningStyle = Automatic;
+					};
+					4C8546E9244F5D48005F6B49 = {
+						CreatedOnToolsVersion = 11.4.1;
+						DevelopmentTeam = S4V3D7CHJR;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 906E403216A86A3200817A11 /* Build configuration list for PBXProject "WindowsAzureMessaging" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 906E402D16A86A3200817A11;
 			productRefGroup = 906E403916A86A3200817A11 /* Products */;
@@ -394,12 +472,20 @@
 				906E406D16A8851E00817A11 /* Framework */,
 				906E403716A86A3200817A11 /* WindowsAzureMessaging */,
 				35B4DBCA22268CB900EAC781 /* WindowsAzureMessaging */,
+				4C8546E9244F5D48005F6B49 /* WindowsAzureMessagingTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		35B4DBC922268CB900EAC781 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C8546E8244F5D48005F6B49 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -458,6 +544,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4C8546E6244F5D48005F6B49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		906E403416A86A3200817A11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,6 +560,7 @@
 				A358374316AA3B1D0041E372 /* SBRegistrationParser.m in Sources */,
 				A358374516AA3B1F0041E372 /* SBURLConnection.m in Sources */,
 				A358374716AA3B220041E372 /* SBNotificationHub.m in Sources */,
+				4C854702244F91E1005F6B49 /* MSNotificationHubMessage.m in Sources */,
 				A358374916AA3B250041E372 /* SBRegistration.m in Sources */,
 				A358374616AA3B210041E372 /* SBConnectionString.m in Sources */,
 				A358374416AA3B1E0041E372 /* SBTokenProvider.m in Sources */,
@@ -479,6 +574,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4C8546F1244F5D48005F6B49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 906E403716A86A3200817A11 /* WindowsAzureMessaging */;
+			targetProxy = 4C8546F0244F5D48005F6B49 /* PBXContainerItemProxy */;
+		};
 		906E407216A8853000817A11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 906E403716A86A3200817A11 /* WindowsAzureMessaging */;
@@ -511,7 +611,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -563,7 +663,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -592,21 +692,124 @@
 			};
 			name = Release;
 		};
+		4C8546F2244F5D48005F6B49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = WindowsAzureMessagingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessagingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C8546F3244F5D48005F6B49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = WindowsAzureMessagingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessagingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		906E404416A86A3200817A11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -620,7 +823,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fembed-bitcode-marker";
 				SDKROOT = iphoneos;
@@ -633,14 +836,27 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -648,7 +864,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -686,7 +902,7 @@
 		906E406F16A8851E00817A11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-fembed-bitcode-marker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -695,7 +911,7 @@
 		906E407016A8851E00817A11 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -709,6 +925,15 @@
 			buildConfigurations = (
 				35B4DBD022268CB900EAC781 /* Debug */,
 				35B4DBD122268CB900EAC781 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C8546F4244F5D49005F6B49 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C8546F2244F5D48005F6B49 /* Debug */,
+				4C8546F3244F5D48005F6B49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
