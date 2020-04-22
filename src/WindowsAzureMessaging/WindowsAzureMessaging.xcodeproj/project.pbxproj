@@ -137,7 +137,6 @@
 		4C8546EA244F5D48005F6B49 /* WindowsAzureMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowsAzureMessagingTests.m; sourceTree = "<group>"; };
 		4C8546EE244F5D48005F6B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C8546FB244F8F34005F6B49 /* MSNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHub.h; sourceTree = "<group>"; };
 		4C8546FC244F8F49005F6B49 /* MSInstallation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallation.h; sourceTree = "<group>"; };
 		4C8546FD244F8FB4005F6B49 /* MSInstallationTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationTemplate.h; sourceTree = "<group>"; };
 		4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubMessage.h; sourceTree = "<group>"; };
@@ -319,7 +318,6 @@
 		A358370D16AA39850041E372 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				4C8546FB244F8F34005F6B49 /* MSNotificationHub.h */,
 				929886EF1857FAB100C1676C /* SBStaticHandlerResponse.h */,
 				92988747185931DE00C1676C /* SBStaticHandlerResponse.m */,
 				A358370E16AA39850041E372 /* SBNotificationHubHelper.h */,
