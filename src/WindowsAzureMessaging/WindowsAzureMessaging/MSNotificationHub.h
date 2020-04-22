@@ -42,11 +42,11 @@
 
 + (void)addTag:(NSString *)tag;
 + (void)removeTag:(NSString *)tag;
-+ (NSArray *)tags;
++ (NSArray *)getTags;
 
 #pragma mark Template Support
 
-+ (void)setTemplate:(MSInstallationTemplate *) forKey:(NSString *)key;
++ (void)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
 + (void)removeTemplate:(NSString *)key;
 + (MSInstallationTemplate *)getTemplate:(NSString *)key;
 

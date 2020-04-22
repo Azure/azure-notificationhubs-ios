@@ -49,6 +49,8 @@
 		4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */; };
 		4C8546EF244F5D48005F6B49 /* libWindowsAzureMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403816A86A3200817A11 /* libWindowsAzureMessaging.a */; };
 		4C854702244F91E1005F6B49 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854701244F91E1005F6B49 /* MSNotificationHubMessage.m */; };
+		4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
+		4C854707244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
 		8471C92B16EABF5600C73674 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8471C92916EABF5600C73674 /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8471C92C16EABF5600C73674 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8471C92A16EABF5600C73674 /* SBLocalStorage.m */; };
 		848CB70A16FBE52D00183E8D /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -142,6 +144,7 @@
 		4C854701244F91E1005F6B49 /* MSNotificationHubMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubMessage.m; sourceTree = "<group>"; };
 		4C854703244F9347005F6B49 /* MSNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHub.h; sourceTree = "<group>"; };
 		4C854704244F95A7005F6B49 /* MSNotificationHubMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubMessageDelegate.h; sourceTree = "<group>"; };
+		4C854705244FD64C005F6B49 /* MSNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHub.m; sourceTree = "<group>"; };
 		8471C92916EABF5600C73674 /* SBLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
 		8471C92A16EABF5600C73674 /* SBLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocalStorage.m; sourceTree = "<group>"; };
 		848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBTemplateRegistration.h; path = ../SBTemplateRegistration.h; sourceTree = "<group>"; };
@@ -299,6 +302,7 @@
 				906E404016A86A3200817A11 /* WindowsAzureMessaging.h */,
 				906E403E16A86A3200817A11 /* Supporting Files */,
 				4C854703244F9347005F6B49 /* MSNotificationHub.h */,
+				4C854705244FD64C005F6B49 /* MSNotificationHub.m */,
 				4C854704244F95A7005F6B49 /* MSNotificationHubMessageDelegate.h */,
 			);
 			path = WindowsAzureMessaging;
@@ -538,6 +542,7 @@
 				35B4DBEF22268D1000EAC781 /* SBConnectionString.m in Sources */,
 				35B4DBF922268D1000EAC781 /* SBURLConnection.m in Sources */,
 				35B4DBF422268D1000EAC781 /* SBStaticHandlerResponse.m in Sources */,
+				4C854707244FD64C005F6B49 /* MSNotificationHub.m in Sources */,
 				35B4DBF622268D1000EAC781 /* SBNotificationHubHelper.m in Sources */,
 				35B4DBFA22268D1000EAC781 /* SBTokenProvider.m in Sources */,
 				35B4DBF122268D1000EAC781 /* SBTemplateRegistration.m in Sources */,
@@ -560,6 +565,7 @@
 				A358374316AA3B1D0041E372 /* SBRegistrationParser.m in Sources */,
 				A358374516AA3B1F0041E372 /* SBURLConnection.m in Sources */,
 				A358374716AA3B220041E372 /* SBNotificationHub.m in Sources */,
+				4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */,
 				4C854702244F91E1005F6B49 /* MSNotificationHubMessage.m in Sources */,
 				A358374916AA3B250041E372 /* SBRegistration.m in Sources */,
 				A358374616AA3B210041E372 /* SBConnectionString.m in Sources */,
