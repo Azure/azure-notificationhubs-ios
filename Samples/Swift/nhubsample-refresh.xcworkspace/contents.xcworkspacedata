@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:nhubtestapp/nhubtestapp.xcodeproj">
+      location = "group:nhubsample-refresh/nhubsample-refresh.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../src/WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">

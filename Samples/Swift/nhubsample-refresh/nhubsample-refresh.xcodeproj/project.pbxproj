@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		64B3DFA6245064F3006B6327 /* nhubtestapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nhubtestapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B3DFA6245064F3006B6327 /* nhubsample-refresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nhubsample-refresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B3DFA9245064F3006B6327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B3DFAB245064F3006B6327 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64B3DFAD245064F3006B6327 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -34,9 +34,9 @@
 		64B3DFBF24507925006B6327 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		64B3DFC52450AC3E006B6327 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		64B3DFC724517022006B6327 /* NotificationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailsViewController.swift; sourceTree = "<group>"; };
-		64B3DFC924518BA4006B6327 /* nhubtestapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nhubtestapp.entitlements; sourceTree = "<group>"; };
+		64B3DFC924518BA4006B6327 /* nhubsample-refresh.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nhubsample-refresh.entitlements; sourceTree = "<group>"; };
 		64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64B3DFFF2451A2EF006B6327 /* nhubtestapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nhubtestapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		64B3DFFF2451A2EF006B6327 /* nhubsample-refresh-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nhubsample-refresh-Bridging-Header.h"; sourceTree = "<group>"; };
 		64B3E0062451B415006B6327 /* devsettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = devsettings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +55,7 @@
 		64B3DF9D245064F3006B6327 = {
 			isa = PBXGroup;
 			children = (
-				64B3DFA8245064F3006B6327 /* nhubtestapp */,
+				64B3DFA8245064F3006B6327 /* nhubsample-refresh */,
 				64B3DFA7245064F3006B6327 /* Products */,
 				64B3DFFA2451A296006B6327 /* Frameworks */,
 			);
@@ -64,15 +64,15 @@
 		64B3DFA7245064F3006B6327 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64B3DFA6245064F3006B6327 /* nhubtestapp.app */,
+				64B3DFA6245064F3006B6327 /* nhubsample-refresh.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		64B3DFA8245064F3006B6327 /* nhubtestapp */ = {
+		64B3DFA8245064F3006B6327 /* nhubsample-refresh */ = {
 			isa = PBXGroup;
 			children = (
-				64B3DFC924518BA4006B6327 /* nhubtestapp.entitlements */,
+				64B3DFC924518BA4006B6327 /* nhubsample-refresh.entitlements */,
 				64B3DFA9245064F3006B6327 /* AppDelegate.swift */,
 				64B3DFAF245064F3006B6327 /* NotificationsTableViewController.swift */,
 				64B3DFAB245064F3006B6327 /* SceneDelegate.swift */,
@@ -84,10 +84,10 @@
 				64B3DFB4245064F5006B6327 /* Assets.xcassets */,
 				64B3DFB6245064F5006B6327 /* LaunchScreen.storyboard */,
 				64B3DFB9245064F5006B6327 /* Info.plist */,
-				64B3DFFF2451A2EF006B6327 /* nhubtestapp-Bridging-Header.h */,
+				64B3DFFF2451A2EF006B6327 /* nhubsample-refresh-Bridging-Header.h */,
 				64B3E0062451B415006B6327 /* devsettings.plist */,
 			);
-			path = nhubtestapp;
+			path = nhubsample-refresh;
 			sourceTree = "<group>";
 		};
 		64B3DFFA2451A296006B6327 /* Frameworks */ = {
@@ -101,9 +101,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		64B3DFA5245064F3006B6327 /* nhubtestapp */ = {
+		64B3DFA5245064F3006B6327 /* nhubsample-refresh */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64B3DFBC245064F5006B6327 /* Build configuration list for PBXNativeTarget "nhubtestapp" */;
+			buildConfigurationList = 64B3DFBC245064F5006B6327 /* Build configuration list for PBXNativeTarget "nhubsample-refresh" */;
 			buildPhases = (
 				64B3DFA2245064F3006B6327 /* Sources */,
 				64B3DFA3245064F3006B6327 /* Frameworks */,
@@ -113,9 +113,9 @@
 			);
 			dependencies = (
 			);
-			name = nhubtestapp;
-			productName = nhubtestapp;
-			productReference = 64B3DFA6245064F3006B6327 /* nhubtestapp.app */;
+			name = nhubsample-refresh;
+			productName = nhubsample-refresh;
+			productReference = 64B3DFA6245064F3006B6327 /* nhubsample-refresh.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -133,7 +133,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 64B3DFA1245064F3006B6327 /* Build configuration list for PBXProject "nhubtestapp" */;
+			buildConfigurationList = 64B3DFA1245064F3006B6327 /* Build configuration list for PBXProject "nhubsample-refresh" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -146,7 +146,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				64B3DFA5245064F3006B6327 /* nhubtestapp */,
+				64B3DFA5245064F3006B6327 /* nhubsample-refresh */,
 			);
 		};
 /* End PBXProject section */
@@ -320,17 +320,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = nhubtestapp/nhubtestapp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = nhubsample-refresh/nhubsample-refresh.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4V3D7CHJR;
-				INFOPLIST_FILE = nhubtestapp/Info.plist;
+				INFOPLIST_FILE = nhubsample-refresh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.nhubtestapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.nhubsample-refresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "nhubtestapp/nhubtestapp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "nhubsample-refresh/nhubsample-refresh-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -340,17 +340,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = nhubtestapp/nhubtestapp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = nhubsample-refresh/nhubsample-refresh.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4V3D7CHJR;
-				INFOPLIST_FILE = nhubtestapp/Info.plist;
+				INFOPLIST_FILE = nhubsample-refresh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.nhubtestapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.nhubsample-refresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "nhubtestapp/nhubtestapp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "nhubsample-refresh/nhubsample-refresh-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -359,7 +359,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		64B3DFA1245064F3006B6327 /* Build configuration list for PBXProject "nhubtestapp" */ = {
+		64B3DFA1245064F3006B6327 /* Build configuration list for PBXProject "nhubsample-refresh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64B3DFBA245064F5006B6327 /* Debug */,
@@ -368,7 +368,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64B3DFBC245064F5006B6327 /* Build configuration list for PBXNativeTarget "nhubtestapp" */ = {
+		64B3DFBC245064F5006B6327 /* Build configuration list for PBXNativeTarget "nhubsample-refresh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64B3DFBD245064F5006B6327 /* Debug */,

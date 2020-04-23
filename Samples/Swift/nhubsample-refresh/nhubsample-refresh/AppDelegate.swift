@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         MSNotificationHub.initWithConnectionString(connectionString, withHubName: hubName)
-        MSNotificationHub.addTag("userAgent:com.example.nhubtestapp:1.0")
+        MSNotificationHub.addTag("userAgent:com.example.nhubsample-refresh:1.0")
         
         return true
     }

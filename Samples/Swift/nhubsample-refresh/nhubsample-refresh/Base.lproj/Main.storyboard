@@ -10,7 +10,7 @@
         <!--Setup-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="SetupViewController" customModule="nhubtestapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="SetupViewController" customModule="nhubsample_refresh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
                                         <rect key="frame" x="0.0" y="268" width="335" height="310"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TagCell" id="TpY-aS-8i0" customClass="TagTableViewCell" customModule="nhubtestapp">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TagCell" id="TpY-aS-8i0" customClass="TagTableViewCell" customModule="nhubsample_refresh" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="335" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TpY-aS-8i0" id="BIN-ZU-zSf">
@@ -136,13 +136,13 @@
         <!--Notifications-->
         <scene sceneID="lh0-Zc-MpC">
             <objects>
-                <tableViewController id="qsD-td-WiW" userLabel="Notifications" customClass="NotificationsTableViewController" customModule="nhubtestapp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="qsD-td-WiW" userLabel="Notifications" customClass="NotificationsTableViewController" customModule="nhubsample_refresh" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NV3-75-qCG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationCell" id="OWF-1b-c8W" customClass="NotificationTableViewCell" customModule="nhubtestapp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationCell" id="OWF-1b-c8W" customClass="NotificationTableViewCell" customModule="nhubsample_refresh" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OWF-1b-c8W" id="mXl-bc-uQ7">
@@ -178,7 +178,7 @@
         <!--Notification Details View Controller-->
         <scene sceneID="Y8k-fx-OgY">
             <objects>
-                <viewController id="f98-Xv-d5P" customClass="NotificationDetailsViewController" customModule="nhubtestapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f98-Xv-d5P" customClass="NotificationDetailsViewController" customModule="nhubsample_refresh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ayu-g2-Q7A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
