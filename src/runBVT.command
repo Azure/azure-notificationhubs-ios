@@ -16,7 +16,7 @@ rm -rf "WindowsAzureMessaging.framework"
 cp -R -L "$ABSPATH/WindowsAzureMessaging/Build/Release-iphonesimulator/WindowsAzureMessaging.framework" "WindowsAzureMessaging.framework" 2>&1 | tee -a "$testLogPath"
 
 echo "******* Build and run BVT *******" 2>&1 | tee -a "$testLogPath"
-GHUNIT_CLI=1 xcodebuild -scheme IosSdkTests -destination 'platform=iOS Simulator,name=iPhone 6s' -configuration Debug -sdk iphonesimulator11.4 clean build 2>&1 | tee -a "$testLogPath"
+GHUNIT_CLI=1 xcodebuild -scheme IosSdkTests -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.4' -configuration Debug -sdk iphonesimulator13.4 clean build 2>&1 | tee -a "$testLogPath"
 grep "with 0 failures" "$testLogPath" &> /dev/null
 if [ "$?" != "0" ]; then
     echo "******* IOS SDK BVT Failed *******" 2>&1 | tee -a "$testLogPath"
