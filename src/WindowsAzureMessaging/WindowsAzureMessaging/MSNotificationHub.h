@@ -4,7 +4,7 @@
 #ifndef MSNotificationHub_h
 #define MSNotificationHub_h
 
-#import <Foundation.h>
+#import <Foundation/Foundation.h>
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHubMessageDelegate.h"
 
