@@ -32,6 +32,7 @@
 		64B3DFBF24507925006B6327 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		64B3DFC52450AC3E006B6327 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		64B3DFC724517022006B6327 /* NotificationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailsViewController.swift; sourceTree = "<group>"; };
+		64B3DFC924518BA4006B6327 /* nhubtestapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nhubtestapp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 		64B3DFA8245064F3006B6327 /* nhubtestapp */ = {
 			isa = PBXGroup;
 			children = (
+				64B3DFC924518BA4006B6327 /* nhubtestapp.entitlements */,
 				64B3DFA9245064F3006B6327 /* AppDelegate.swift */,
 				64B3DFAF245064F3006B6327 /* NotificationsTableViewController.swift */,
 				64B3DFAB245064F3006B6327 /* SceneDelegate.swift */,
@@ -300,6 +302,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = nhubtestapp/nhubtestapp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4V3D7CHJR;
 				INFOPLIST_FILE = nhubtestapp/Info.plist;
@@ -318,6 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = nhubtestapp/nhubtestapp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4V3D7CHJR;
 				INFOPLIST_FILE = nhubtestapp/Info.plist;
