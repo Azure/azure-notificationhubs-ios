@@ -17,6 +17,7 @@
 		64B3DFC024507925006B6327 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFBF24507925006B6327 /* TagTableViewCell.swift */; };
 		64B3DFC62450AC3E006B6327 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFC52450AC3E006B6327 /* NotificationTableViewCell.swift */; };
 		64B3DFC824517022006B6327 /* NotificationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFC724517022006B6327 /* NotificationDetailsViewController.swift */; };
+		64B3DFFC2451A296006B6327 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		64B3DFC52450AC3E006B6327 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		64B3DFC724517022006B6327 /* NotificationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailsViewController.swift; sourceTree = "<group>"; };
 		64B3DFC924518BA4006B6327 /* nhubtestapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nhubtestapp.entitlements; sourceTree = "<group>"; };
+		64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B3DFFF2451A2EF006B6327 /* nhubtestapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nhubtestapp-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B3DFFC2451A296006B6327 /* WindowsAzureMessaging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +55,7 @@
 			children = (
 				64B3DFA8245064F3006B6327 /* nhubtestapp */,
 				64B3DFA7245064F3006B6327 /* Products */,
+				64B3DFFA2451A296006B6327 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,8 +82,17 @@
 				64B3DFB4245064F5006B6327 /* Assets.xcassets */,
 				64B3DFB6245064F5006B6327 /* LaunchScreen.storyboard */,
 				64B3DFB9245064F5006B6327 /* Info.plist */,
+				64B3DFFF2451A2EF006B6327 /* nhubtestapp-Bridging-Header.h */,
 			);
 			path = nhubtestapp;
+			sourceTree = "<group>";
+		};
+		64B3DFFA2451A296006B6327 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +326,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.nhubtestapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "nhubtestapp/nhubtestapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -331,6 +346,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.nhubtestapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "nhubtestapp/nhubtestapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

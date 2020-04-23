@@ -96,7 +96,7 @@ static dispatch_once_t onceToken;
 }
 
 + (NSArray<NSString *> *)getTags {
-    [[MSNotificationHub sharedInstance] tags];
+    return [[MSNotificationHub sharedInstance] tags];
 }
 
 - (void)addInstallationTag:(NSString *)tag {

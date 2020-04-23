@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "absolute:/Users/foolstack/projects/Microsoft/azure-notificationhubs-ios/Samples/Swift/nhubtestapp/../../../src/WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../nhubtestapp.xcodeproj">
+   </FileRef>
+</Workspace>
