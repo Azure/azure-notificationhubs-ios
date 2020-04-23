@@ -5,7 +5,7 @@ buildFolderPath=$ABSPATH/Build
 testLogPath=$buildFolderPath/CITLog.txt
 
 echo "******* Build and run CIT *******" 2>&1 | tee -a "$testLogPath"
-cd "$ABSPATH/WindowsAzureMessagingTest"
+cd "$ABSPATH/WindowsAzureMessaging/WindowsAzureMessagingTest"
 
 xcodebuild -scheme WindowsAzureMessagingTest -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.4' test 2>&1 | tee -a "$testLogPath"
 
