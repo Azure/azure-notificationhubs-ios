@@ -15,7 +15,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     @IBOutlet weak var addNewTagTextField: UITextField!
     @IBOutlet weak var tagsTable: UITableView!
     
-    var tags = ["tag1", "tag2", "veryveryveryveryveryveryveryveryverylongtag"]
+    var tags = MSNotificationHub.getTags()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +36,13 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        tags.append(textField.text!)
+        MSNotificationHub.addTag(textField.text!)
+        tags = MSNotificationHub.getTags()
         textField.text = ""
         tagsTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return tags.count
     }
     
@@ -52,7 +52,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
             fatalError("The dequeued cell is not an instance of TagCell.")
         }
         
-        cell.tagLabel.text = tags[indexPath.row]
+        cell.tagLabel.text = tags[indexPath.row] as? String
         
         return cell
     }
@@ -60,7 +60,8 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
 
-        tags.remove(at: indexPath.row)
+        MSNotificationHub.removeTag(tags[indexPath.row] as? String)
+        tags = MSNotificationHub.getTags()
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tagsTable.reloadData()
       }

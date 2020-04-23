@@ -18,6 +18,7 @@
 		64B3DFC62450AC3E006B6327 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFC52450AC3E006B6327 /* NotificationTableViewCell.swift */; };
 		64B3DFC824517022006B6327 /* NotificationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFC724517022006B6327 /* NotificationDetailsViewController.swift */; };
 		64B3DFFC2451A296006B6327 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */; };
+		64B3E0072451B415006B6327 /* devsettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64B3E0062451B415006B6327 /* devsettings.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		64B3DFC924518BA4006B6327 /* nhubtestapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nhubtestapp.entitlements; sourceTree = "<group>"; };
 		64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B3DFFF2451A2EF006B6327 /* nhubtestapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nhubtestapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		64B3E0062451B415006B6327 /* devsettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = devsettings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				64B3DFB6245064F5006B6327 /* LaunchScreen.storyboard */,
 				64B3DFB9245064F5006B6327 /* Info.plist */,
 				64B3DFFF2451A2EF006B6327 /* nhubtestapp-Bridging-Header.h */,
+				64B3E0062451B415006B6327 /* devsettings.plist */,
 			);
 			path = nhubtestapp;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				64B3DFB8245064F5006B6327 /* LaunchScreen.storyboard in Resources */,
 				64B3DFB5245064F5006B6327 /* Assets.xcassets in Resources */,
 				64B3DFB3245064F3006B6327 /* Main.storyboard in Resources */,
+				64B3E0072451B415006B6327 /* devsettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
