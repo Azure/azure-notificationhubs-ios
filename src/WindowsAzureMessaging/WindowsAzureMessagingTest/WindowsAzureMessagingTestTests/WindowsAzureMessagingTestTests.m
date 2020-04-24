@@ -31,6 +31,8 @@ NSString* deviceToken2 = @"22";
 {
     [super setUp];
     
+    [NSUserDefaults resetStandardUserDefaults];
+    
     connectionStringSAS = [SBConnectionString stringWithEndpoint:[NSURL URLWithString:@"https://test.servicebus.windows.net/"] fullAccessSecret:@"myFullAccessPwd"];
     
     connectionStringACS = [SBConnectionString stringWithEndpoint:[NSURL URLWithString:@"sb://test.servicebus.windows.net"] issuer:@"owner" issuerSecret:@"GnxQQPqX2xwy72BE2Kmb/RvD58R1p7/NqVL9v8bmqC0="];
