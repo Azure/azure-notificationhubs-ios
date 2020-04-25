@@ -77,7 +77,6 @@
 		A3C669B616A8DB4300CEA9F3 /* WindowsAzureMessagingTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WindowsAzureMessagingTest-Info.plist"; sourceTree = "<group>"; };
 		A3C669B816A8DB4300CEA9F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A3C669BA16A8DB4300CEA9F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A3C669BC16A8DB4300CEA9F3 /* WindowsAzureMessagingTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WindowsAzureMessagingTest-Prefix.pch"; sourceTree = "<group>"; };
 		A3C669BD16A8DB4300CEA9F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A3C669BE16A8DB4300CEA9F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A3C669C016A8DB4300CEA9F3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -194,7 +193,6 @@
 				A3C669B616A8DB4300CEA9F3 /* WindowsAzureMessagingTest-Info.plist */,
 				A3C669B716A8DB4300CEA9F3 /* InfoPlist.strings */,
 				A3C669BA16A8DB4300CEA9F3 /* main.m */,
-				A3C669BC16A8DB4300CEA9F3 /* WindowsAzureMessagingTest-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -458,7 +456,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WindowsAzureMessagingTest/WindowsAzureMessagingTest-Prefix.pch";
 				INFOPLIST_FILE = "WindowsAzureMessagingTest/WindowsAzureMessagingTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -471,7 +468,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WindowsAzureMessagingTest/WindowsAzureMessagingTest-Prefix.pch";
 				INFOPLIST_FILE = "WindowsAzureMessagingTest/WindowsAzureMessagingTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -494,7 +490,6 @@
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WindowsAzureMessagingTest/WindowsAzureMessagingTest-Prefix.pch";
 				INFOPLIST_FILE = "WindowsAzureMessagingTestTests/WindowsAzureMessagingTestTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "";
@@ -515,7 +510,6 @@
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WindowsAzureMessagingTest/WindowsAzureMessagingTest-Prefix.pch";
 				INFOPLIST_FILE = "WindowsAzureMessagingTestTests/WindowsAzureMessagingTestTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "";
