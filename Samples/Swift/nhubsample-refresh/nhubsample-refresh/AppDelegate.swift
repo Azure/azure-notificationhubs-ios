@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let path = Bundle.main.path(forResource: "devsettings", ofType: "plist") {
             if let configValues = NSDictionary(contentsOfFile: path) {
-                connectionString = configValues["notificationHubNamespace"] as? String
-                hubName = configValues["notificationHubName"] as? String
+                connectionString = configValues["connectionString"] as? String
+                hubName = configValues["hubName"] as? String
             }
         }
         
