@@ -112,6 +112,11 @@
 		B3D2855A2456F0E700C78CC8 /* MSDispatcherUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D285582456F0E700C78CC8 /* MSDispatcherUtil.m */; };
 		B3D2855C2456F1F200C78CC8 /* MSHttpClientDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2855B2456F1F200C78CC8 /* MSHttpClientDelegate.h */; };
 		B3D2855D2456F1F200C78CC8 /* MSHttpClientDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2855B2456F1F200C78CC8 /* MSHttpClientDelegate.h */; };
+		B3D2856224570EE400C78CC8 /* MSHttpClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2855E24570EE300C78CC8 /* MSHttpClientTests.m */; };
+		B3D2856324570EE400C78CC8 /* MSHttpIngestionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2855F24570EE300C78CC8 /* MSHttpIngestionTests.m */; };
+		B3D2856424570EE400C78CC8 /* MSHttpUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2856024570EE300C78CC8 /* MSHttpUtilTests.m */; };
+		B3D2856524570EE400C78CC8 /* MSHttpCallTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2856124570EE400C78CC8 /* MSHttpCallTests.m */; };
+		B3D285682457191C00C78CC8 /* MSTestFrameworks.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285672457191C00C78CC8 /* MSTestFrameworks.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +227,11 @@
 		B3D285552456F0D400C78CC8 /* MSDispatcherUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDispatcherUtil.h; sourceTree = "<group>"; };
 		B3D285582456F0E700C78CC8 /* MSDispatcherUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDispatcherUtil.m; sourceTree = "<group>"; };
 		B3D2855B2456F1F200C78CC8 /* MSHttpClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpClientDelegate.h; sourceTree = "<group>"; };
+		B3D2855E24570EE300C78CC8 /* MSHttpClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpClientTests.m; sourceTree = "<group>"; };
+		B3D2855F24570EE300C78CC8 /* MSHttpIngestionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpIngestionTests.m; sourceTree = "<group>"; };
+		B3D2856024570EE300C78CC8 /* MSHttpUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpUtilTests.m; sourceTree = "<group>"; };
+		B3D2856124570EE400C78CC8 /* MSHttpCallTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpCallTests.m; sourceTree = "<group>"; };
+		B3D285672457191C00C78CC8 /* MSTestFrameworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestFrameworks.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,7 +305,13 @@
 		4C8546EB244F5D48005F6B49 /* WindowsAzureMessagingTests */ = {
 			isa = PBXGroup;
 			children = (
+				B3D2856924572A4900C78CC8 /* Frameworks */,
+				B3D28566245718F400C78CC8 /* Utils */,
 				4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */,
+				B3D2856124570EE400C78CC8 /* MSHttpCallTests.m */,
+				B3D2855E24570EE300C78CC8 /* MSHttpClientTests.m */,
+				B3D2855F24570EE300C78CC8 /* MSHttpIngestionTests.m */,
+				B3D2856024570EE300C78CC8 /* MSHttpUtilTests.m */,
 				4C8546EE244F5D48005F6B49 /* Info.plist */,
 			);
 			path = WindowsAzureMessagingTests;
@@ -448,6 +464,21 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		B3D28566245718F400C78CC8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B3D285672457191C00C78CC8 /* MSTestFrameworks.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B3D2856924572A4900C78CC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -502,6 +533,7 @@
 				B3D2852D2456E97F00C78CC8 /* MSHttpClientPrivate.h in Headers */,
 				A358373E16AA3B120041E372 /* SBNotificationHubHelper.h in Headers */,
 				A358374116AA3B190041E372 /* SBURLConnection.h in Headers */,
+				B3D285682457191C00C78CC8 /* MSTestFrameworks.h in Headers */,
 				B3D285272456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */,
 				B3D2852F2456E97F00C78CC8 /* MSHttpClient.h in Headers */,
 				B3D285492456EDD800C78CC8 /* MSConstants+Internal.h in Headers */,
@@ -691,7 +723,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D2856224570EE400C78CC8 /* MSHttpClientTests.m in Sources */,
+				B3D2856424570EE400C78CC8 /* MSHttpUtilTests.m in Sources */,
 				4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */,
+				B3D2856324570EE400C78CC8 /* MSHttpIngestionTests.m in Sources */,
+				B3D2856524570EE400C78CC8 /* MSHttpCallTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
