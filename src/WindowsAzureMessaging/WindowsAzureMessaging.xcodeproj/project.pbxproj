@@ -24,7 +24,6 @@
 /* Begin PBXBuildFile section */
 		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; };
 		4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */; };
-		4C8546EF244F5D48005F6B49 /* libWindowsAzureMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403816A86A3200817A11 /* libWindowsAzureMessaging.a */; };
 		4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
 		4C854707244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
 		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -84,18 +83,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4C8546F0244F5D48005F6B49 /* PBXContainerItemProxy */ = {
+		906E407116A8853000817A11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 906E402F16A86A3200817A11 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 906E403716A86A3200817A11;
 			remoteInfo = WindowsAzureMessaging;
 		};
-		906E407116A8853000817A11 /* PBXContainerItemProxy */ = {
+		B3E112D52457944100FA088F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 906E402F16A86A3200817A11 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 906E403716A86A3200817A11;
+			remoteGlobalIDString = 35B4DBCA22268CB900EAC781;
 			remoteInfo = WindowsAzureMessaging;
 		};
 /* End PBXContainerItemProxy section */
@@ -167,7 +166,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C8546EF244F5D48005F6B49 /* libWindowsAzureMessaging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +366,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4C8546F1244F5D48005F6B49 /* PBXTargetDependency */,
+				B3E112D62457944100FA088F /* PBXTargetDependency */,
 			);
 			name = WindowsAzureMessagingTests;
 			productName = WindowsAzureMessagingTests;
@@ -533,15 +531,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4C8546F1244F5D48005F6B49 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 906E403716A86A3200817A11 /* WindowsAzureMessaging */;
-			targetProxy = 4C8546F0244F5D48005F6B49 /* PBXContainerItemProxy */;
-		};
 		906E407216A8853000817A11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 906E403716A86A3200817A11 /* WindowsAzureMessaging */;
 			targetProxy = 906E407116A8853000817A11 /* PBXContainerItemProxy */;
+		};
+		B3E112D62457944100FA088F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35B4DBCA22268CB900EAC781 /* WindowsAzureMessaging */;
+			targetProxy = B3E112D52457944100FA088F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
