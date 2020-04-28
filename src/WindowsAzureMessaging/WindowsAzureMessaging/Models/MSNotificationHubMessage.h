@@ -26,7 +26,7 @@
 /**
  * Custom data for the notification.
  */
-@property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, NSString *> *customData;
+@property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, NSString *> *additionalData;
 
 -(instancetype)initWithNotification:(NSDictionary *)notification;
 +(MSNotificationHubMessage *)createFromNotification:(NSDictionary *)notification;

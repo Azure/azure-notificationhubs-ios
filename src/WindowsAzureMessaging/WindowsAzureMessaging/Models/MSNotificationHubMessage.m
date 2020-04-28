@@ -8,7 +8,13 @@
 @synthesize title;
 @synthesize message;
 @synthesize badge;
-@synthesize customData;
+@synthesize additionalData;
+
+- (instancetype)init {
+    self = [super init];
+    
+    return self;
+}
 
 - (instancetype)initWithNotification:(NSDictionary *)notification {
     if ((self = [super init])) {
@@ -29,7 +35,7 @@
                 }
                 badge = [[aps valueForKey:@"badge"] integerValue];
             } else {
-                [customData setObject:[notification valueForKey:key] forKey:key];
+                [additionalData setObject:[notification valueForKey:key] forKey:key];
             }
         }
     }
