@@ -8,6 +8,12 @@
 
 #import "MSInstallation.h"
 
+@interface MSInstallation ()
+
+@property(nonatomic, copy) NSString *installationID;
+
+@end
+
 @implementation MSInstallation
 
 - (void)encodeWithCoder:(nonnull NSCoder *)encoder {
@@ -15,7 +21,10 @@
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)decoder {
-    self.installationID = [decoder decodeObjectForKey:@"installationID"];
+    if (self = [super init]) {
+        self.installationID = [decoder decodeObjectForKey:@"installationID"];
+    }
+    
     return self;
 }
 

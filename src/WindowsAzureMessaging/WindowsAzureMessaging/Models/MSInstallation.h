@@ -8,7 +8,7 @@
 
 @interface MSInstallation : NSObject <NSCoding>
 
-@property(nonatomic, copy, readwrite) NSString *installationID;
+@property(nonatomic, copy, readonly) NSString *installationID;
 
 @end
 

@@ -6,8 +6,6 @@
 
 @implementation LocalStorage
 
-MSInstallation* currentInstallation;
-
 - (void) saveInstallation: (MSInstallation *) installation {
     [LocalStorage saveInstallationToLocalStorage:installation];
 }
