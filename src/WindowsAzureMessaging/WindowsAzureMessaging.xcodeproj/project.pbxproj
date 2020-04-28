@@ -82,8 +82,14 @@
 		B300E30E24583A95008A32DA /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */; platformFilter = ios; };
 		B300E31024583BE8008A32DA /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */; platformFilter = ios; };
 		B300E31224583BF4008A32DA /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300E31124583BF4008A32DA /* OCMock.framework */; platformFilter = ios; };
-		B300E32124584D5E008A32DA /* OHHTTPStubs in Resources */ = {isa = PBXBuildFile; fileRef = B300E32024584D5E008A32DA /* OHHTTPStubs */; };
 		B300E32424584DB7008A32DA /* MSHttpTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E32324584DB7008A32DA /* MSHttpTestUtil.m */; };
+		B300E34D2458628C008A32DA /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E33E2458628C008A32DA /* HTTPStubs.m */; };
+		B300E34E2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E33F2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m */; };
+		B300E34F2458628C008A32DA /* HTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E3482458628C008A32DA /* HTTPStubsResponse+JSON.m */; };
+		B300E3502458628C008A32DA /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E3492458628C008A32DA /* HTTPStubsMethodSwizzling.m */; };
+		B300E3512458628C008A32DA /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34A2458628C008A32DA /* HTTPStubsResponse.m */; };
+		B300E3522458628C008A32DA /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */; };
+		B300E3532458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */; };
 		B3D285272456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */; };
 		B3D285282456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */; };
 		B3D285292456E97F00C78CC8 /* MSHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2851F2456E97E00C78CC8 /* MSHttpClient.m */; };
@@ -214,10 +220,23 @@
 		A358371D16AA39850041E372 /* SBRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRegistration.m; path = ../SBRegistration.m; sourceTree = "<group>"; };
 		B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrestIOS.framework; path = ../../Vendor/OCHamcrest/OCHamcrestIOS.framework; sourceTree = "<group>"; };
 		B300E31124583BF4008A32DA /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = ../../Vendor/OCMock/OCMock.framework; sourceTree = "<group>"; };
-		B300E32024584D5E008A32DA /* OHHTTPStubs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OHHTTPStubs; path = ../../Vendor/OHHTTPStubs/Sources/OHHTTPStubs; sourceTree = "<group>"; };
 		B300E32224584DA6008A32DA /* MSHttpTestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpTestUtil.h; sourceTree = "<group>"; };
 		B300E32324584DB7008A32DA /* MSHttpTestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpTestUtil.m; sourceTree = "<group>"; };
 		B300E32524585081008A32DA /* MSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSConstants.h; sourceTree = "<group>"; };
+		B300E33E2458628C008A32DA /* HTTPStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubs.m; sourceTree = "<group>"; };
+		B300E33F2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+HTTPBodyTesting.m"; sourceTree = "<group>"; };
+		B300E3402458628C008A32DA /* HTTPStubsMethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStubsMethodSwizzling.h; sourceTree = "<group>"; };
+		B300E3422458628C008A32DA /* Compatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Compatibility.h; sourceTree = "<group>"; };
+		B300E3432458628C008A32DA /* HTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
+		B300E3442458628C008A32DA /* HTTPStubsPathHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStubsPathHelpers.h; sourceTree = "<group>"; };
+		B300E3452458628C008A32DA /* HTTPStubsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStubsResponse.h; sourceTree = "<group>"; };
+		B300E3462458628C008A32DA /* NSURLRequest+HTTPBodyTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+HTTPBodyTesting.h"; sourceTree = "<group>"; };
+		B300E3472458628C008A32DA /* HTTPStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStubs.h; sourceTree = "<group>"; };
+		B300E3482458628C008A32DA /* HTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
+		B300E3492458628C008A32DA /* HTTPStubsMethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsMethodSwizzling.m; sourceTree = "<group>"; };
+		B300E34A2458628C008A32DA /* HTTPStubsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsResponse.m; sourceTree = "<group>"; };
+		B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsPathHelpers.m; sourceTree = "<group>"; };
+		B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
 		B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpClientProtocol.h; sourceTree = "<group>"; };
 		B3D2851F2456E97E00C78CC8 /* MSHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpClient.m; sourceTree = "<group>"; };
 		B3D285202456E97E00C78CC8 /* MSHttpCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpCall.m; sourceTree = "<group>"; };
@@ -418,6 +437,36 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		B300E33D2458628C008A32DA /* OHHTTPStubs */ = {
+			isa = PBXGroup;
+			children = (
+				B300E33E2458628C008A32DA /* HTTPStubs.m */,
+				B300E33F2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m */,
+				B300E3402458628C008A32DA /* HTTPStubsMethodSwizzling.h */,
+				B300E3412458628C008A32DA /* include */,
+				B300E3482458628C008A32DA /* HTTPStubsResponse+JSON.m */,
+				B300E3492458628C008A32DA /* HTTPStubsMethodSwizzling.m */,
+				B300E34A2458628C008A32DA /* HTTPStubsResponse.m */,
+				B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */,
+				B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */,
+			);
+			name = OHHTTPStubs;
+			path = ../../Vendor/OHHTTPStubs/Sources/OHHTTPStubs;
+			sourceTree = "<group>";
+		};
+		B300E3412458628C008A32DA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				B300E3422458628C008A32DA /* Compatibility.h */,
+				B300E3432458628C008A32DA /* HTTPStubsResponse+JSON.h */,
+				B300E3442458628C008A32DA /* HTTPStubsPathHelpers.h */,
+				B300E3452458628C008A32DA /* HTTPStubsResponse.h */,
+				B300E3462458628C008A32DA /* NSURLRequest+HTTPBodyTesting.h */,
+				B300E3472458628C008A32DA /* HTTPStubs.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		B3D2851D2456DFED00C78CC8 /* HttpClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,9 +535,9 @@
 		B3D2856924572A4900C78CC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B300E33D2458628C008A32DA /* OHHTTPStubs */,
 				B300E31124583BF4008A32DA /* OCMock.framework */,
 				B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */,
-				B300E32024584D5E008A32DA /* OHHTTPStubs */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -670,7 +719,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B300E32124584D5E008A32DA /* OHHTTPStubs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,11 +785,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B300E34F2458628C008A32DA /* HTTPStubsResponse+JSON.m in Sources */,
 				B3D2856224570EE400C78CC8 /* MSHttpClientTests.m in Sources */,
 				B3D2856424570EE400C78CC8 /* MSHttpUtilTests.m in Sources */,
 				4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */,
+				B300E3532458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m in Sources */,
+				B300E3512458628C008A32DA /* HTTPStubsResponse.m in Sources */,
 				B300E32424584DB7008A32DA /* MSHttpTestUtil.m in Sources */,
+				B300E3502458628C008A32DA /* HTTPStubsMethodSwizzling.m in Sources */,
 				B3D2856524570EE400C78CC8 /* MSHttpCallTests.m in Sources */,
+				B300E3522458628C008A32DA /* HTTPStubsPathHelpers.m in Sources */,
+				B300E34E2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m in Sources */,
+				B300E34D2458628C008A32DA /* HTTPStubs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
