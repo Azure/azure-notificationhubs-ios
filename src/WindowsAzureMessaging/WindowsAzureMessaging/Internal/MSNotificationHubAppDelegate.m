@@ -25,7 +25,7 @@ static dispatch_once_t onceToken;
 }
 
 - (instancetype)init {
-    self = [super init])
+    self = [super init];
     
     return self;
 }
