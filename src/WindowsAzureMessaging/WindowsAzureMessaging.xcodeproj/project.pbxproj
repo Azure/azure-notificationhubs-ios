@@ -22,29 +22,29 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		35B4DBEC22268D1000EAC781 /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBD322268D0F00EAC781 /* SBRegistration.m */; };
-		35B4DBED22268D1000EAC781 /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBD422268D0F00EAC781 /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		35B4DBEE22268D1000EAC781 /* SBNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBD522268D0F00EAC781 /* SBNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35B4DBEF22268D1000EAC781 /* SBConnectionString.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBD622268D0F00EAC781 /* SBConnectionString.m */; };
-		35B4DBF022268D1000EAC781 /* SBRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBD722268D0F00EAC781 /* SBRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35B4DBF122268D1000EAC781 /* SBTemplateRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBD822268D0F00EAC781 /* SBTemplateRegistration.m */; };
-		35B4DBF322268D1000EAC781 /* SBTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBDB22268D1000EAC781 /* SBTokenProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35B4DBF422268D1000EAC781 /* SBStaticHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBDC22268D1000EAC781 /* SBStaticHandlerResponse.m */; };
-		35B4DBF522268D1000EAC781 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBDD22268D1000EAC781 /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35B4DBF622268D1000EAC781 /* SBNotificationHubHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBDE22268D1000EAC781 /* SBNotificationHubHelper.m */; };
-		35B4DBF722268D1000EAC781 /* SBStoredRegistrationEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBDF22268D1000EAC781 /* SBStoredRegistrationEntry.m */; };
-		35B4DBF822268D1000EAC781 /* SBRegistrationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE022268D1000EAC781 /* SBRegistrationParser.m */; };
-		35B4DBF922268D1000EAC781 /* SBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE122268D1000EAC781 /* SBURLConnection.m */; };
-		35B4DBFA22268D1000EAC781 /* SBTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE222268D1000EAC781 /* SBTokenProvider.m */; };
-		35B4DBFB22268D1000EAC781 /* SBStaticHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE322268D1000EAC781 /* SBStaticHandlerResponse.h */; };
-		35B4DBFC22268D1000EAC781 /* SBStoredRegistrationEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE422268D1000EAC781 /* SBStoredRegistrationEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35B4DBFD22268D1000EAC781 /* SBNotificationHubHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE522268D1000EAC781 /* SBNotificationHubHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		35B4DBFE22268D1000EAC781 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE622268D1000EAC781 /* SBLocalStorage.m */; };
-		35B4DBFF22268D1000EAC781 /* SBURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE722268D1000EAC781 /* SBURLConnection.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		35B4DC0022268D1000EAC781 /* SBRegistrationParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBE822268D1000EAC781 /* SBRegistrationParser.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		35B4DC0122268D1000EAC781 /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B4DBE922268D1000EAC781 /* SBNotificationHub.m */; };
-		35B4DC0222268D1000EAC781 /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35B4DC0322268D1000EAC781 /* SBConnectionString.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B4DBEB22268D1000EAC781 /* SBConnectionString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBEC22268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBED22268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Private, ); }; };
+		35B4DBEE22268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBEF22268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBF022268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBF122268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBF322268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBF422268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBF522268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBF622268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBF722268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBF822268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBF922268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBFA22268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBFB22268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; };
+		35B4DBFC22268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DBFD22268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Private, ); }; };
+		35B4DBFE22268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DBFF22268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Private, ); }; };
+		35B4DC0022268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Private, ); }; };
+		35B4DC0122268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		35B4DC0222268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
+		35B4DC0322268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
 		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; platformFilter = ios; };
 		4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */; };
 		4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
@@ -91,6 +91,30 @@
 		B300E3522458628C008A32DA /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */; };
 		B300E3532458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */; };
 		B346E12024586DAF00399CE3 /* MSAppCenterErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */; };
+		B34BA79024589F1C002457DC /* TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B34BA78F24589F1C002457DC /* TestHelper.m */; };
+		B34BA79124589FD6002457DC /* SBNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = A358371816AA39850041E372 /* SBNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B34BA79224589FDD002457DC /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371916AA39850041E372 /* SBNotificationHub.m */; };
+		B34BA79324589FE1002457DC /* SBConnectionString.h in Headers */ = {isa = PBXBuildFile; fileRef = A358371616AA39850041E372 /* SBConnectionString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B34BA79424589FE6002457DC /* SBConnectionString.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371716AA39850041E372 /* SBConnectionString.m */; };
+		B34BA7952458A005002457DC /* SBRegistrationParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A358371016AA39850041E372 /* SBRegistrationParser.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B34BA7962458A00A002457DC /* SBRegistrationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371116AA39850041E372 /* SBRegistrationParser.m */; };
+		B34BA7972458A01C002457DC /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8471C92916EABF5600C73674 /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B34BA7982458A022002457DC /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8471C92A16EABF5600C73674 /* SBLocalStorage.m */; };
+		B34BA7992458A052002457DC /* SBNotificationHubHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A358370E16AA39850041E372 /* SBNotificationHubHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B34BA79A2458A058002457DC /* SBNotificationHubHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A358370F16AA39850041E372 /* SBNotificationHubHelper.m */; };
+		B34BA79B2458A0F7002457DC /* SBTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = A358371216AA39850041E372 /* SBTokenProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B34BA79C2458A0FB002457DC /* SBTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371316AA39850041E372 /* SBTokenProvider.m */; };
+		B34BA79D2458A100002457DC /* SBURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = A358371416AA39850041E372 /* SBURLConnection.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B34BA79E2458A105002457DC /* SBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371516AA39850041E372 /* SBURLConnection.m */; };
+		B34BA79F2458A10C002457DC /* SBStoredRegistrationEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 848CB73A16FCC78E00183E8D /* SBStoredRegistrationEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B34BA7A02458A110002457DC /* SBStoredRegistrationEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CB73B16FCC78E00183E8D /* SBStoredRegistrationEntry.m */; };
+		B34BA7A12458A113002457DC /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B34BA7A22458A118002457DC /* SBTemplateRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CB70916FBE52D00183E8D /* SBTemplateRegistration.m */; };
+		B34BA7A32458A11D002457DC /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371D16AA39850041E372 /* SBRegistration.m */; };
+		B34BA7A42458A11F002457DC /* SBRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = A358371C16AA39850041E372 /* SBRegistration.h */; };
+		B34BA7A52458A128002457DC /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 906E404016A86A3200817A11 /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B34BA7A62458A131002457DC /* SBStaticHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 929886EF1857FAB100C1676C /* SBStaticHandlerResponse.h */; };
+		B34BA7A72458A135002457DC /* SBStaticHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 92988747185931DE00C1676C /* SBStaticHandlerResponse.m */; };
 		B3D285272456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */; };
 		B3D285282456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */; };
 		B3D285292456E97F00C78CC8 /* MSHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2851F2456E97E00C78CC8 /* MSHttpClient.m */; };
@@ -159,30 +183,6 @@
 
 /* Begin PBXFileReference section */
 		35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35B4DBD322268D0F00EAC781 /* SBRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRegistration.m; path = WindowsAzureMessaging/SBRegistration.m; sourceTree = SOURCE_ROOT; };
-		35B4DBD422268D0F00EAC781 /* SBTemplateRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBTemplateRegistration.h; path = WindowsAzureMessaging/SBTemplateRegistration.h; sourceTree = SOURCE_ROOT; };
-		35B4DBD522268D0F00EAC781 /* SBNotificationHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBNotificationHub.h; path = WindowsAzureMessaging/SBNotificationHub.h; sourceTree = SOURCE_ROOT; };
-		35B4DBD622268D0F00EAC781 /* SBConnectionString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBConnectionString.m; path = WindowsAzureMessaging/SBConnectionString.m; sourceTree = SOURCE_ROOT; };
-		35B4DBD722268D0F00EAC781 /* SBRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBRegistration.h; path = WindowsAzureMessaging/SBRegistration.h; sourceTree = SOURCE_ROOT; };
-		35B4DBD822268D0F00EAC781 /* SBTemplateRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBTemplateRegistration.m; path = WindowsAzureMessaging/SBTemplateRegistration.m; sourceTree = SOURCE_ROOT; };
-		35B4DBD922268D1000EAC781 /* WindowsAzureMessaging-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WindowsAzureMessaging-prefix.pch"; path = "WindowsAzureMessaging/WindowsAzureMessaging-prefix.pch"; sourceTree = SOURCE_ROOT; };
-		35B4DBDB22268D1000EAC781 /* SBTokenProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTokenProvider.h; sourceTree = "<group>"; };
-		35B4DBDC22268D1000EAC781 /* SBStaticHandlerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStaticHandlerResponse.m; sourceTree = "<group>"; };
-		35B4DBDD22268D1000EAC781 /* SBLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
-		35B4DBDE22268D1000EAC781 /* SBNotificationHubHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNotificationHubHelper.m; sourceTree = "<group>"; };
-		35B4DBDF22268D1000EAC781 /* SBStoredRegistrationEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStoredRegistrationEntry.m; sourceTree = "<group>"; };
-		35B4DBE022268D1000EAC781 /* SBRegistrationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRegistrationParser.m; sourceTree = "<group>"; };
-		35B4DBE122268D1000EAC781 /* SBURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBURLConnection.m; sourceTree = "<group>"; };
-		35B4DBE222268D1000EAC781 /* SBTokenProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTokenProvider.m; sourceTree = "<group>"; };
-		35B4DBE322268D1000EAC781 /* SBStaticHandlerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStaticHandlerResponse.h; sourceTree = "<group>"; };
-		35B4DBE422268D1000EAC781 /* SBStoredRegistrationEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStoredRegistrationEntry.h; sourceTree = "<group>"; };
-		35B4DBE522268D1000EAC781 /* SBNotificationHubHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNotificationHubHelper.h; sourceTree = "<group>"; };
-		35B4DBE622268D1000EAC781 /* SBLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocalStorage.m; sourceTree = "<group>"; };
-		35B4DBE722268D1000EAC781 /* SBURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBURLConnection.h; sourceTree = "<group>"; };
-		35B4DBE822268D1000EAC781 /* SBRegistrationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRegistrationParser.h; sourceTree = "<group>"; };
-		35B4DBE922268D1000EAC781 /* SBNotificationHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBNotificationHub.m; path = WindowsAzureMessaging/SBNotificationHub.m; sourceTree = SOURCE_ROOT; };
-		35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowsAzureMessaging.h; path = WindowsAzureMessaging/WindowsAzureMessaging.h; sourceTree = SOURCE_ROOT; };
-		35B4DBEB22268D1000EAC781 /* SBConnectionString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBConnectionString.h; path = WindowsAzureMessaging/SBConnectionString.h; sourceTree = SOURCE_ROOT; };
 		4C8546EA244F5D48005F6B49 /* WindowsAzureMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowsAzureMessagingTests.m; sourceTree = "<group>"; };
 		4C8546EE244F5D48005F6B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -237,6 +237,8 @@
 		B300E34A2458628C008A32DA /* HTTPStubsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsResponse.m; sourceTree = "<group>"; };
 		B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsPathHelpers.m; sourceTree = "<group>"; };
 		B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
+		B34BA78E24589F1C002457DC /* TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
+		B34BA78F24589F1C002457DC /* TestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelper.m; sourceTree = "<group>"; };
 		B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpClientProtocol.h; sourceTree = "<group>"; };
 		B3D2851F2456E97E00C78CC8 /* MSHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpClient.m; sourceTree = "<group>"; };
 		B3D285202456E97E00C78CC8 /* MSHttpCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpCall.m; sourceTree = "<group>"; };
@@ -290,46 +292,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35B4DBCC22268CB900EAC781 /* WindowsAzureMessagingStatic */ = {
-			isa = PBXGroup;
-			children = (
-				35B4DBDA22268D1000EAC781 /* Helpers */,
-				35B4DBEB22268D1000EAC781 /* SBConnectionString.h */,
-				35B4DBD622268D0F00EAC781 /* SBConnectionString.m */,
-				35B4DBD522268D0F00EAC781 /* SBNotificationHub.h */,
-				35B4DBE922268D1000EAC781 /* SBNotificationHub.m */,
-				35B4DBD722268D0F00EAC781 /* SBRegistration.h */,
-				35B4DBD322268D0F00EAC781 /* SBRegistration.m */,
-				35B4DBD422268D0F00EAC781 /* SBTemplateRegistration.h */,
-				35B4DBD822268D0F00EAC781 /* SBTemplateRegistration.m */,
-				35B4DBD922268D1000EAC781 /* WindowsAzureMessaging-prefix.pch */,
-				35B4DBEA22268D1000EAC781 /* WindowsAzureMessaging.h */,
-			);
-			name = WindowsAzureMessagingStatic;
-			sourceTree = "<group>";
-		};
-		35B4DBDA22268D1000EAC781 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				35B4DBDB22268D1000EAC781 /* SBTokenProvider.h */,
-				35B4DBDC22268D1000EAC781 /* SBStaticHandlerResponse.m */,
-				35B4DBDD22268D1000EAC781 /* SBLocalStorage.h */,
-				35B4DBDE22268D1000EAC781 /* SBNotificationHubHelper.m */,
-				35B4DBDF22268D1000EAC781 /* SBStoredRegistrationEntry.m */,
-				35B4DBE022268D1000EAC781 /* SBRegistrationParser.m */,
-				35B4DBE122268D1000EAC781 /* SBURLConnection.m */,
-				35B4DBE222268D1000EAC781 /* SBTokenProvider.m */,
-				35B4DBE322268D1000EAC781 /* SBStaticHandlerResponse.h */,
-				35B4DBE422268D1000EAC781 /* SBStoredRegistrationEntry.h */,
-				35B4DBE522268D1000EAC781 /* SBNotificationHubHelper.h */,
-				35B4DBE622268D1000EAC781 /* SBLocalStorage.m */,
-				35B4DBE722268D1000EAC781 /* SBURLConnection.h */,
-				35B4DBE822268D1000EAC781 /* SBRegistrationParser.h */,
-			);
-			name = Helpers;
-			path = WindowsAzureMessaging/Helpers;
-			sourceTree = SOURCE_ROOT;
-		};
 		4C8546EB244F5D48005F6B49 /* WindowsAzureMessagingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +320,6 @@
 			isa = PBXGroup;
 			children = (
 				906E403D16A86A3200817A11 /* WindowsAzureMessaging */,
-				35B4DBCC22268CB900EAC781 /* WindowsAzureMessagingStatic */,
 				4C8546EB244F5D48005F6B49 /* WindowsAzureMessagingTests */,
 				906E403A16A86A3200817A11 /* Frameworks */,
 				906E403916A86A3200817A11 /* Products */,
@@ -524,6 +485,8 @@
 		B3D28566245718F400C78CC8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B34BA78E24589F1C002457DC /* TestHelper.h */,
+				B34BA78F24589F1C002457DC /* TestHelper.m */,
 				B300E32224584DA6008A32DA /* MSHttpTestUtil.h */,
 				B300E32324584DB7008A32DA /* MSHttpTestUtil.m */,
 				B3D285672457191C00C78CC8 /* MSTestFrameworks.h */,
@@ -549,16 +512,24 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B4DBEE22268D1000EAC781 /* SBNotificationHub.h in Headers */,
+				B34BA79324589FE1002457DC /* SBConnectionString.h in Headers */,
+				35B4DBEE22268D1000EAC781 /* (null) in Headers */,
 				B3D2852E2456E97F00C78CC8 /* MSHttpClientPrivate.h in Headers */,
-				35B4DC0322268D1000EAC781 /* SBConnectionString.h in Headers */,
-				35B4DBF522268D1000EAC781 /* SBLocalStorage.h in Headers */,
+				B34BA7992458A052002457DC /* SBNotificationHubHelper.h in Headers */,
+				B34BA79F2458A10C002457DC /* SBStoredRegistrationEntry.h in Headers */,
+				35B4DC0322268D1000EAC781 /* (null) in Headers */,
+				B34BA79124589FD6002457DC /* SBNotificationHub.h in Headers */,
+				35B4DBF522268D1000EAC781 /* (null) in Headers */,
+				B34BA79D2458A100002457DC /* SBURLConnection.h in Headers */,
 				B346E12024586DAF00399CE3 /* MSAppCenterErrors.h in Headers */,
-				35B4DC0222268D1000EAC781 /* WindowsAzureMessaging.h in Headers */,
-				35B4DBFC22268D1000EAC781 /* SBStoredRegistrationEntry.h in Headers */,
-				35B4DBF022268D1000EAC781 /* SBRegistration.h in Headers */,
+				B34BA79B2458A0F7002457DC /* SBTokenProvider.h in Headers */,
+				35B4DC0222268D1000EAC781 /* (null) in Headers */,
+				35B4DBFC22268D1000EAC781 /* (null) in Headers */,
+				35B4DBF022268D1000EAC781 /* (null) in Headers */,
 				B3D285572456F0D400C78CC8 /* MSDispatcherUtil.h in Headers */,
 				64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */,
+				B34BA7A12458A113002457DC /* SBTemplateRegistration.h in Headers */,
+				B34BA7A62458A131002457DC /* SBStaticHandlerResponse.h in Headers */,
 				64B3E0012451A86C006B6327 /* MSInstallationTemplate.h in Headers */,
 				64B3E0022451A86C006B6327 /* MSNotificationHubMessage.h in Headers */,
 				B3D285282456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */,
@@ -567,16 +538,20 @@
 				64B3E0052451A86C006B6327 /* MSNotificationHubMessageDelegate.h in Headers */,
 				B3D2854C2456EDD800C78CC8 /* MSCompression.h in Headers */,
 				64B3E0042451A86C006B6327 /* MSNotificationHub.h in Headers */,
-				35B4DBF322268D1000EAC781 /* SBTokenProvider.h in Headers */,
+				35B4DBF322268D1000EAC781 /* (null) in Headers */,
 				B3D285542456F09900C78CC8 /* MS_Reachability.h in Headers */,
-				35B4DBFD22268D1000EAC781 /* SBNotificationHubHelper.h in Headers */,
+				35B4DBFD22268D1000EAC781 /* (null) in Headers */,
+				B34BA7A42458A11F002457DC /* SBRegistration.h in Headers */,
 				B3D285362456E97F00C78CC8 /* MSHttpCall.h in Headers */,
 				B3D285322456E97F00C78CC8 /* MSHttpUtil.h in Headers */,
-				35B4DBED22268D1000EAC781 /* SBTemplateRegistration.h in Headers */,
-				35B4DC0022268D1000EAC781 /* SBRegistrationParser.h in Headers */,
-				35B4DBFF22268D1000EAC781 /* SBURLConnection.h in Headers */,
+				35B4DBED22268D1000EAC781 /* (null) in Headers */,
+				35B4DC0022268D1000EAC781 /* (null) in Headers */,
+				B34BA7972458A01C002457DC /* SBLocalStorage.h in Headers */,
+				35B4DBFF22268D1000EAC781 /* (null) in Headers */,
+				B34BA7952458A005002457DC /* SBRegistrationParser.h in Headers */,
 				B3D2854A2456EDD800C78CC8 /* MSConstants+Internal.h in Headers */,
-				35B4DBFB22268D1000EAC781 /* SBStaticHandlerResponse.h in Headers */,
+				35B4DBFB22268D1000EAC781 /* (null) in Headers */,
+				B34BA7A52458A128002457DC /* WindowsAzureMessaging.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,24 +735,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B4DBFE22268D1000EAC781 /* SBLocalStorage.m in Sources */,
+				B34BA79A2458A058002457DC /* SBNotificationHubHelper.m in Sources */,
+				35B4DBFE22268D1000EAC781 /* (null) in Sources */,
 				B3D2852C2456E97F00C78CC8 /* MSHttpCall.m in Sources */,
-				35B4DBEC22268D1000EAC781 /* SBRegistration.m in Sources */,
-				35B4DBF822268D1000EAC781 /* SBRegistrationParser.m in Sources */,
-				35B4DC0122268D1000EAC781 /* SBNotificationHub.m in Sources */,
+				35B4DBEC22268D1000EAC781 /* (null) in Sources */,
+				35B4DBF822268D1000EAC781 /* (null) in Sources */,
+				35B4DC0122268D1000EAC781 /* (null) in Sources */,
 				B3D285532456F09900C78CC8 /* MS_Reachability.m in Sources */,
+				B34BA79E2458A105002457DC /* SBURLConnection.m in Sources */,
+				B34BA7982458A022002457DC /* SBLocalStorage.m in Sources */,
 				B3D2855A2456F0E700C78CC8 /* MSDispatcherUtil.m in Sources */,
-				35B4DBF722268D1000EAC781 /* SBStoredRegistrationEntry.m in Sources */,
-				35B4DBEF22268D1000EAC781 /* SBConnectionString.m in Sources */,
-				35B4DBF922268D1000EAC781 /* SBURLConnection.m in Sources */,
+				B34BA79224589FDD002457DC /* SBNotificationHub.m in Sources */,
+				B34BA7A32458A11D002457DC /* SBRegistration.m in Sources */,
+				B34BA7962458A00A002457DC /* SBRegistrationParser.m in Sources */,
+				35B4DBF722268D1000EAC781 /* (null) in Sources */,
+				35B4DBEF22268D1000EAC781 /* (null) in Sources */,
+				B34BA79C2458A0FB002457DC /* SBTokenProvider.m in Sources */,
+				35B4DBF922268D1000EAC781 /* (null) in Sources */,
 				B3D285342456E97F00C78CC8 /* MSHttpUtil.m in Sources */,
-				35B4DBF422268D1000EAC781 /* SBStaticHandlerResponse.m in Sources */,
+				35B4DBF422268D1000EAC781 /* (null) in Sources */,
 				4C854707244FD64C005F6B49 /* MSNotificationHub.m in Sources */,
-				35B4DBF622268D1000EAC781 /* SBNotificationHubHelper.m in Sources */,
+				B34BA7A02458A110002457DC /* SBStoredRegistrationEntry.m in Sources */,
+				35B4DBF622268D1000EAC781 /* (null) in Sources */,
+				B34BA79424589FE6002457DC /* SBConnectionString.m in Sources */,
 				B3D2854E2456EDD800C78CC8 /* MSCompression.m in Sources */,
-				35B4DBFA22268D1000EAC781 /* SBTokenProvider.m in Sources */,
+				B34BA7A22458A118002457DC /* SBTemplateRegistration.m in Sources */,
+				35B4DBFA22268D1000EAC781 /* (null) in Sources */,
 				B3D2852A2456E97F00C78CC8 /* MSHttpClient.m in Sources */,
-				35B4DBF122268D1000EAC781 /* SBTemplateRegistration.m in Sources */,
+				35B4DBF122268D1000EAC781 /* (null) in Sources */,
+				B34BA7A72458A135002457DC /* SBStaticHandlerResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,6 +776,7 @@
 				B3D2856424570EE400C78CC8 /* MSHttpUtilTests.m in Sources */,
 				4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */,
 				B300E3532458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m in Sources */,
+				B34BA79024589F1C002457DC /* TestHelper.m in Sources */,
 				B300E3512458628C008A32DA /* HTTPStubsResponse.m in Sources */,
 				B300E32424584DB7008A32DA /* MSHttpTestUtil.m in Sources */,
 				B300E3502458628C008A32DA /* HTTPStubsMethodSwizzling.m in Sources */,
