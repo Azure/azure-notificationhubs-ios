@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6489DDE224570E330021CF36 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B18FC32452D1A900AA38B1 /* WindowsAzureMessaging.framework */; };
+		6489DDE324570E330021CF36 /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 64B18FC32452D1A900AA38B1 /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		64B18FA82452CEEA00AA38B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FA72452CEEA00AA38B1 /* AppDelegate.m */; };
 		64B18FAB2452CEEA00AA38B1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FAA2452CEEA00AA38B1 /* SceneDelegate.m */; };
 		64B18FAE2452CEEA00AA38B1 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FAD2452CEEA00AA38B1 /* SetupViewController.m */; };
@@ -15,14 +17,28 @@
 		64B18FB62452CEEB00AA38B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B18FB52452CEEB00AA38B1 /* Assets.xcassets */; };
 		64B18FB92452CEEB00AA38B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B18FB72452CEEB00AA38B1 /* LaunchScreen.storyboard */; };
 		64B18FBC2452CEEB00AA38B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FBB2452CEEB00AA38B1 /* main.m */; };
-		64B18FC42452D1A900AA38B1 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B18FC32452D1A900AA38B1 /* WindowsAzureMessaging.framework */; };
 		64B18FC92452DA6500AA38B1 /* TagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FC82452DA6500AA38B1 /* TagTableViewCell.m */; };
 		64B18FCF2452E48200AA38B1 /* NotificationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FCE2452E48200AA38B1 /* NotificationDetailsViewController.m */; };
 		64B18FD22452E58C00AA38B1 /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FD12452E58C00AA38B1 /* NotificationTableViewCell.m */; };
 		64B18FD42452EE0A00AA38B1 /* devsettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64B18FD32452EE0A00AA38B1 /* devsettings.plist */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6489DDE424570E330021CF36 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6489DDE324570E330021CF36 /* WindowsAzureMessaging.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6489DDED2457138E0021CF36 /* nhubsample-refresh.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "nhubsample-refresh.entitlements"; sourceTree = "<group>"; };
 		64B18FA32452CEEA00AA38B1 /* nhubsample-refresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nhubsample-refresh.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B18FA62452CEEA00AA38B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		64B18FA72452CEEA00AA38B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -52,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B18FC42452D1A900AA38B1 /* WindowsAzureMessaging.framework in Frameworks */,
+				6489DDE224570E330021CF36 /* WindowsAzureMessaging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +95,7 @@
 		64B18FA52452CEEA00AA38B1 /* nhubsample-refresh */ = {
 			isa = PBXGroup;
 			children = (
+				6489DDED2457138E0021CF36 /* nhubsample-refresh.entitlements */,
 				64B18FA62452CEEA00AA38B1 /* AppDelegate.h */,
 				64B18FA72452CEEA00AA38B1 /* AppDelegate.m */,
 				64B18FD02452E58C00AA38B1 /* NotificationTableViewCell.h */,
@@ -121,6 +138,7 @@
 				64B18F9F2452CEEA00AA38B1 /* Sources */,
 				64B18FA02452CEEA00AA38B1 /* Frameworks */,
 				64B18FA12452CEEA00AA38B1 /* Resources */,
+				6489DDE424570E330021CF36 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				NEW_SETTING = "";
@@ -318,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				NEW_SETTING = "";
@@ -331,6 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "nhubsample-refresh/nhubsample-refresh.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4V3D7CHJR;
 				INFOPLIST_FILE = "nhubsample-refresh/Info.plist";
@@ -348,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "nhubsample-refresh/nhubsample-refresh.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4V3D7CHJR;
 				INFOPLIST_FILE = "nhubsample-refresh/Info.plist";

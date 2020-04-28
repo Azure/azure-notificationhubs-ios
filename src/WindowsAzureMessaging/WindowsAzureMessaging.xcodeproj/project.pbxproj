@@ -50,6 +50,10 @@
 		4C8546EF244F5D48005F6B49 /* libWindowsAzureMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403816A86A3200817A11 /* libWindowsAzureMessaging.a */; };
 		4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
 		4C854707244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
+		6489DDF624582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */; };
+		6489DDF724582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */; };
+		6489DDF924582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */; };
+		6489DDFA24582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */; };
 		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0012451A86C006B6327 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FD244F8FB4005F6B49 /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0022451A86C006B6327 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -147,6 +151,8 @@
 		4C854703244F9347005F6B49 /* MSNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHub.h; sourceTree = "<group>"; };
 		4C854704244F95A7005F6B49 /* MSNotificationHubMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubMessageDelegate.h; sourceTree = "<group>"; };
 		4C854705244FD64C005F6B49 /* MSNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHub.m; sourceTree = "<group>"; };
+		6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubAppDelegate.h; sourceTree = "<group>"; };
+		6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubAppDelegate.m; sourceTree = "<group>"; };
 		8471C92916EABF5600C73674 /* SBLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
 		8471C92A16EABF5600C73674 /* SBLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocalStorage.m; sourceTree = "<group>"; };
 		848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBTemplateRegistration.h; path = ../SBTemplateRegistration.h; sourceTree = "<group>"; };
@@ -262,6 +268,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		6489DDEE245828650021CF36 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */,
+				6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
 		906E402D16A86A3200817A11 = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +309,7 @@
 		906E403D16A86A3200817A11 /* WindowsAzureMessaging */ = {
 			isa = PBXGroup;
 			children = (
+				6489DDEE245828650021CF36 /* Internal */,
 				4C8546F7244F8DE9005F6B49 /* Models */,
 				A358370D16AA39850041E372 /* Helpers */,
 				A358371616AA39850041E372 /* SBConnectionString.h */,
@@ -351,6 +367,7 @@
 			files = (
 				35B4DBEE22268D1000EAC781 /* SBNotificationHub.h in Headers */,
 				35B4DC0322268D1000EAC781 /* SBConnectionString.h in Headers */,
+				6489DDF724582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */,
 				35B4DBF522268D1000EAC781 /* SBLocalStorage.h in Headers */,
 				35B4DC0222268D1000EAC781 /* WindowsAzureMessaging.h in Headers */,
 				35B4DBFC22268D1000EAC781 /* SBStoredRegistrationEntry.h in Headers */,
@@ -375,6 +392,7 @@
 			files = (
 				A358373916AA3B060041E372 /* SBConnectionString.h in Headers */,
 				A358373A16AA3B080041E372 /* SBNotificationHub.h in Headers */,
+				6489DDF624582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */,
 				A358373D16AA3B0D0041E372 /* WindowsAzureMessaging.h in Headers */,
 				8471C92B16EABF5600C73674 /* SBLocalStorage.h in Headers */,
 				A358374016AA3B160041E372 /* SBTokenProvider.h in Headers */,
@@ -456,6 +474,7 @@
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					35B4DBCA22268CB900EAC781 = {
+						DevelopmentTeam = S4V3D7CHJR;
 						ProvisioningStyle = Automatic;
 					};
 					4C8546E9244F5D48005F6B49 = {
@@ -543,6 +562,7 @@
 				35B4DBEC22268D1000EAC781 /* SBRegistration.m in Sources */,
 				35B4DBF822268D1000EAC781 /* SBRegistrationParser.m in Sources */,
 				35B4DC0122268D1000EAC781 /* SBNotificationHub.m in Sources */,
+				6489DDFA24582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */,
 				35B4DBF722268D1000EAC781 /* SBStoredRegistrationEntry.m in Sources */,
 				35B4DBEF22268D1000EAC781 /* SBConnectionString.m in Sources */,
 				35B4DBF922268D1000EAC781 /* SBURLConnection.m in Sources */,
@@ -570,6 +590,7 @@
 				A358374316AA3B1D0041E372 /* SBRegistrationParser.m in Sources */,
 				A358374516AA3B1F0041E372 /* SBURLConnection.m in Sources */,
 				A358374716AA3B220041E372 /* SBNotificationHub.m in Sources */,
+				6489DDF924582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */,
 				4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */,
 				A358374916AA3B250041E372 /* SBRegistration.m in Sources */,
 				A358374616AA3B210041E372 /* SBConnectionString.m in Sources */,
@@ -621,11 +642,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -636,13 +658,16 @@
 				GCC_PREFIX_HEADER = "WindowsAzureMessaging/WindowsAzureMessaging-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "$(SRCROOT)/WindowsAzureMessagingTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessaging;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -673,12 +698,13 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -689,13 +715,16 @@
 				GCC_PREFIX_HEADER = "WindowsAzureMessaging/WindowsAzureMessaging-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "$(SRCROOT)/WindowsAzureMessagingTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessaging;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

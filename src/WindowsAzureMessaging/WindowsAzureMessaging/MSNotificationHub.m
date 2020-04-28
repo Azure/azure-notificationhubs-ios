@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#import <Foundation/Foundation.h>
-#import <UserNotifications/UserNotifications.h>
 #import "MSNotificationHub.h"
 
 // Singleton
@@ -18,6 +16,8 @@ static dispatch_once_t onceToken;
     if ((self = [super init])) {
         tags = [NSMutableArray new];
         templates = [NSMutableDictionary new];
+        
+        [self registerForRemoteNotifications];
     }
     
     return self;
@@ -36,10 +36,37 @@ static dispatch_once_t onceToken;
     
 }
 
+- (void)registerForRemoteNotifications {
+#if TARGET_OS_OSX
+  [NSApp registerForRemoteNotificationTypes:(NSRemoteNotificationTypeSound | NSRemoteNotificationTypeBadge)];
+#elif TARGET_OS_IOS
+  if (@available(iOS 10.0, *)) {
+      UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+      UNAuthorizationOptions authOptions = (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
+      [center requestAuthorizationWithOptions:authOptions completionHandler:^(BOOL granted, NSError *_Nullable error) {
+          if (granted) {
+              NSLog(@"Push notifications authorization was granted.");
+          } else {
+              NSLog(@"Push notifications authorization was denied.");
+          }
+          if (error) {
+              NSLog(@"Push notifications authorization request has been finished with error: %@", error.localizedDescription);
+          }
+      }];
+  } else {
+    UIUserNotificationType allNotificationTypes = (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+  }
+  [[UIApplication sharedApplication] registerForRemoteNotifications];
+#endif
+}
+
 #pragma mark Instance Callbacks
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *pushToken = [self convertTokenToString:deviceToken];
+    NSLog(@"Registered for push notifications with token: %@", pushToken);
     if ([pushToken isEqualToString:self.pushToken]) {
       return;
     }
@@ -49,7 +76,6 @@ static dispatch_once_t onceToken;
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Registering for push notifications has been finished with error: %@", error.localizedDescription);
 }
-
 
 - (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
     return NO;
@@ -65,11 +91,9 @@ static dispatch_once_t onceToken;
     [sharedInstance didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-
 + (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
     return [sharedInstance didReceiveRemoteNotification:userInfo];
 }
-
 
 #pragma mark SDK Basics
 
