@@ -1,7 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#import <MSNotificationHubAppDelegate.h>
+#import <UIKit/UIKit.h>
+#import <objc/runtime.h>
+
+#import "MSNotificationHubAppDelegate.h"
+#import "MSNotificationHub.h"
 
 // Singleton
 static MSNotificationHubAppDelegate *sharedInstance = nil;
@@ -21,9 +25,7 @@ static dispatch_once_t onceToken;
 }
 
 - (instancetype)init {
-    if ((self = [super init])) {
-        
-    }
+    self = [super init])
     
     return self;
 }
@@ -44,9 +46,7 @@ static dispatch_once_t onceToken;
         [[MSNotificationHubAppDelegate sharedInstance]  swizzleImplForMethod: @selector(application: didRegisterForRemoteNotificationsWithDeviceToken:) inClass:[delegate class] from:[MSNotificationHubAppDelegate class] forDelegate:NO];
         [[MSNotificationHubAppDelegate sharedInstance]  swizzleImplForMethod: @selector(application: didFailToRegisterForRemoteNotificationsWithError:) inClass:[delegate class] from:[MSNotificationHubAppDelegate class] forDelegate:NO];
         [[MSNotificationHubAppDelegate sharedInstance]  swizzleImplForMethod: @selector(application: didReceiveRemoteNotification:) inClass:[delegate class] from:[MSNotificationHubAppDelegate class] forDelegate:NO];
-#if !TARGET_OS_OSX
         [[MSNotificationHubAppDelegate sharedInstance]  swizzleImplForMethod: @selector(application: didReceiveRemoteNotification: fetchCompletionHandler:) inClass:[delegate class] from:[MSNotificationHubAppDelegate class] forDelegate:NO];
-#endif
     });
     
     ((void (*)(id, SEL, id<UIApplicationDelegate>))originalSetDelegateImp)(self, _cmd, delegate);
@@ -96,8 +96,6 @@ static dispatch_once_t onceToken;
     [MSNotificationHub didReceiveRemoteNotification:userInfo];
 }
 
-#if !TARGET_OS_OSX
-
 - (void)custom_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
   BOOL result = [MSNotificationHub didReceiveRemoteNotification:userInfo];
   if (result) {
@@ -106,7 +104,5 @@ static dispatch_once_t onceToken;
     completionHandler(UIBackgroundFetchResultNoData);
   }
 }
-
-#endif
 
 @end

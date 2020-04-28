@@ -1,6 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+#import <UserNotifications/UserNotifications.h>
+#import <UIKit/UIKit.h>
+
 #import "MSNotificationHub.h"
 
 // Singleton
@@ -37,9 +40,6 @@ static dispatch_once_t onceToken;
 }
 
 - (void)registerForRemoteNotifications {
-#if TARGET_OS_OSX
-  [NSApp registerForRemoteNotificationTypes:(NSRemoteNotificationTypeSound | NSRemoteNotificationTypeBadge)];
-#elif TARGET_OS_IOS
   if (@available(iOS 10.0, *)) {
       UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
       UNAuthorizationOptions authOptions = (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
@@ -59,7 +59,6 @@ static dispatch_once_t onceToken;
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
   }
   [[UIApplication sharedApplication] registerForRemoteNotifications];
-#endif
 }
 
 #pragma mark Instance Callbacks

@@ -2,10 +2,6 @@
 // Licensed under the MIT License.
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <objc/runtime.h>
-
-#import "MSNotificationHub.h"
 
 @interface MSNotificationHubAppDelegate: NSObject
 /**

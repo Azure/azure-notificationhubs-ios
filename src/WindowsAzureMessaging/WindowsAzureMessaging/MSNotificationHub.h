@@ -5,8 +5,6 @@
 #define MSNotificationHub_h
 
 #import <Foundation/Foundation.h>
-#import <UserNotifications/UserNotifications.h>
-#import <UIKit/UIKit.h>
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHubMessageDelegate.h"
 
