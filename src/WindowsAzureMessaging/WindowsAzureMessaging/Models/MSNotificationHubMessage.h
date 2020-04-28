@@ -19,9 +19,17 @@
 @property(nonatomic, copy, readonly) NSString *message;
 
 /**
+ * Notification badge.
+ */
+@property(nonatomic, readonly) NSInteger badge;
+
+/**
  * Custom data for the notification.
  */
-@property(nonatomic, copy, readonly) NSDictionary<NSString *, NSString *> *customData;
+@property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, NSString *> *customData;
+
+-(instancetype)initWithNotification:(NSDictionary *)notification;
++(MSNotificationHubMessage *)createFromNotification:(NSDictionary *)notification;
 
 @end
 
