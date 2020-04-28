@@ -77,6 +77,7 @@ static dispatch_once_t onceToken;
 }
 
 - (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    MSNotificationHubMessage *message = [MSNotificationHubMessage createFromNotification:userInfo];
     return NO;
 }
 
