@@ -217,6 +217,7 @@
 		B300E32024584D5E008A32DA /* OHHTTPStubs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OHHTTPStubs; path = ../../Vendor/OHHTTPStubs/Sources/OHHTTPStubs; sourceTree = "<group>"; };
 		B300E32224584DA6008A32DA /* MSHttpTestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpTestUtil.h; sourceTree = "<group>"; };
 		B300E32324584DB7008A32DA /* MSHttpTestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpTestUtil.m; sourceTree = "<group>"; };
+		B300E32524585081008A32DA /* MSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSConstants.h; sourceTree = "<group>"; };
 		B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpClientProtocol.h; sourceTree = "<group>"; };
 		B3D2851F2456E97E00C78CC8 /* MSHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpClient.m; sourceTree = "<group>"; };
 		B3D285202456E97E00C78CC8 /* MSHttpCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpCall.m; sourceTree = "<group>"; };
@@ -477,6 +478,7 @@
 				B300E32224584DA6008A32DA /* MSHttpTestUtil.h */,
 				B300E32324584DB7008A32DA /* MSHttpTestUtil.m */,
 				B3D285672457191C00C78CC8 /* MSTestFrameworks.h */,
+				B300E32524585081008A32DA /* MSConstants.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -933,6 +935,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Vendor/\"/**";
 				INFOPLIST_FILE = WindowsAzureMessagingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -943,6 +946,7 @@
 					"\"$(SRCROOT)/../Vendor/OCMock\"",
 					"\"$(SRCROOT)/../Vendor/OHHTTPStubs\"",
 				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Vendor/\"/**";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessagingTests;
@@ -986,6 +990,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Vendor/\"/**";
 				INFOPLIST_FILE = WindowsAzureMessagingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -996,6 +1001,7 @@
 					"\"$(SRCROOT)/../Vendor/OCMock\"",
 					"\"$(SRCROOT)/../Vendor/OHHTTPStubs\"",
 				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Vendor/\"/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessagingTests;
