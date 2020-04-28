@@ -1,19 +1,16 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#import "AppCenter+Internal.h"
+#import "NSURLRequest+HTTPBodyTesting.h"
+#import "HTTPStubs.h"
+
 #import "MSAppCenterErrors.h"
 #import "MSCompression.h"
 #import "MSConstants+Internal.h"
-#import "MSDevice.h"
-#import "MSDeviceInternal.h"
 #import "MSHttpCall.h"
-#import "MSHttpIngestionPrivate.h"
 #import "MSHttpTestUtil.h"
-#import "MSMockLog.h"
 #import "MSTestFrameworks.h"
-#import "NSURLRequest+HTTPBodyTesting.h"
-#import "HTTPStubs.h"
+
 @interface MSHttpCallTests : XCTestCase
 @end
 

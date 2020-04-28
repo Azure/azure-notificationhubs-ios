@@ -4,11 +4,9 @@
 #import "NSURLRequest+HTTPBodyTesting.h"
 #import "HTTPStubs.h"
 
-//#import "AppCenter+Internal.h"
+#import "MSConstants.h"
 #import "MSAppCenterErrors.h"
 #import "MSConstants+Internal.h"
-//#import "MSDevice.h"
-//#import "MSDeviceInternal.h"
 #import "MSHttpCall.h"
 #import "MSHttpClientPrivate.h"
 #import "MSHttpTestUtil.h"
@@ -725,9 +723,7 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
   // If
   XCTestExpectation *expectation = [self expectationWithDescription:@"Used all retries."];
   NSString *containerId = @"1";
-  MSLogContainer *container = OCMPartialMock([MSLogContainer new]);
-  OCMStub([container isValid]).andReturn(YES);
-  OCMStub([container batchId]).andReturn(containerId);
+
   MSHttpClient *sut = [MSHttpClient new];
   NSURL *url = [NSURL URLWithString:@"https://mock/something?a=b"];
   NSString *method = @"GET";
@@ -763,8 +759,7 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
 
   // If
   XCTestExpectation *responseReceivedExpectation = [self expectationWithDescription:@"Request completed."];
-  MSDevice *device = OCMPartialMock([MSDevice new]);
-  OCMStub([device isValid]).andReturn(YES);
+
   MSHttpClient *httpClient = [MSHttpClient new];
 
   // Mock the call to intercept the retry.

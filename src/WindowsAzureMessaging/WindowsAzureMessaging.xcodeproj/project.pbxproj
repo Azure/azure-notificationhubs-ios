@@ -90,6 +90,7 @@
 		B300E3512458628C008A32DA /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34A2458628C008A32DA /* HTTPStubsResponse.m */; };
 		B300E3522458628C008A32DA /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */; };
 		B300E3532458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */; };
+		B346E12024586DAF00399CE3 /* MSAppCenterErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */; };
 		B3D285272456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */; };
 		B3D285282456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */; };
 		B3D285292456E97F00C78CC8 /* MSHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2851F2456E97E00C78CC8 /* MSHttpClient.m */; };
@@ -106,8 +107,7 @@
 		B3D285342456E97F00C78CC8 /* MSHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D285252456E97F00C78CC8 /* MSHttpUtil.m */; };
 		B3D285352456E97F00C78CC8 /* MSHttpCall.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285262456E97F00C78CC8 /* MSHttpCall.h */; };
 		B3D285362456E97F00C78CC8 /* MSHttpCall.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285262456E97F00C78CC8 /* MSHttpCall.h */; };
-		B3D285412456ED2200C78CC8 /* MSAppCenterErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3D285422456ED2200C78CC8 /* MSAppCenterErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3D285412456ED2200C78CC8 /* MSAppCenterErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */; };
 		B3D285492456EDD800C78CC8 /* MSConstants+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285462456EDD800C78CC8 /* MSConstants+Internal.h */; };
 		B3D2854A2456EDD800C78CC8 /* MSConstants+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285462456EDD800C78CC8 /* MSConstants+Internal.h */; };
 		B3D2854B2456EDD800C78CC8 /* MSCompression.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285472456EDD800C78CC8 /* MSCompression.h */; };
@@ -552,8 +552,8 @@
 				35B4DBEE22268D1000EAC781 /* SBNotificationHub.h in Headers */,
 				B3D2852E2456E97F00C78CC8 /* MSHttpClientPrivate.h in Headers */,
 				35B4DC0322268D1000EAC781 /* SBConnectionString.h in Headers */,
-				B3D285422456ED2200C78CC8 /* MSAppCenterErrors.h in Headers */,
 				35B4DBF522268D1000EAC781 /* SBLocalStorage.h in Headers */,
+				B346E12024586DAF00399CE3 /* MSAppCenterErrors.h in Headers */,
 				35B4DC0222268D1000EAC781 /* WindowsAzureMessaging.h in Headers */,
 				35B4DBFC22268D1000EAC781 /* SBStoredRegistrationEntry.h in Headers */,
 				35B4DBF022268D1000EAC781 /* SBRegistration.h in Headers */,
