@@ -6,9 +6,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MSInstallation : NSObject
+@interface MSInstallation : NSObject <NSCoding>
 
-@property(nonatomic, copy, readonly) NSString *installationID;
+@property(nonatomic, copy, readwrite) NSString *installationID;
 
 @end
 

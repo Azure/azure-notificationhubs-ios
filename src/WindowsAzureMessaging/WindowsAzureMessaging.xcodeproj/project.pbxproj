@@ -83,6 +83,7 @@
 		CE98A78224532F5E00DA1AE8 /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = CE98A78124532F5E00DA1AE8 /* MSLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE98A78424532F9B00DA1AE8 /* MSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE98A78324532F9B00DA1AE8 /* MSLocalStorage.m */; };
 		CE98A7852453306300DA1AE8 /* MSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE98A78324532F9B00DA1AE8 /* MSLocalStorage.m */; };
+		CEA47C2E2458294E007B17B3 /* MSInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA47C2D2458294E007B17B3 /* MSInstallation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +179,7 @@
 		A358371D16AA39850041E372 /* SBRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRegistration.m; path = ../SBRegistration.m; sourceTree = "<group>"; };
 		CE98A78124532F5E00DA1AE8 /* MSLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSLocalStorage.h; sourceTree = "<group>"; };
 		CE98A78324532F9B00DA1AE8 /* MSLocalStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSLocalStorage.m; sourceTree = "<group>"; };
+		CEA47C2D2458294E007B17B3 /* MSInstallation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 				4C8546FC244F8F49005F6B49 /* MSInstallation.h */,
 				4C8546FD244F8FB4005F6B49 /* MSInstallationTemplate.h */,
 				4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */,
+				CEA47C2D2458294E007B17B3 /* MSInstallation.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				35B4DBF922268D1000EAC781 /* SBURLConnection.m in Sources */,
 				CE98A78424532F9B00DA1AE8 /* MSLocalStorage.m in Sources */,
 				35B4DBF422268D1000EAC781 /* SBStaticHandlerResponse.m in Sources */,
+				CEA47C2E2458294E007B17B3 /* MSInstallation.m in Sources */,
 				4C854707244FD64C005F6B49 /* MSNotificationHub.m in Sources */,
 				35B4DBF622268D1000EAC781 /* SBNotificationHubHelper.m in Sources */,
 				35B4DBFA22268D1000EAC781 /* SBTokenProvider.m in Sources */,

@@ -9,17 +9,25 @@
 MSInstallation* currentInstallation;
 
 - (void) saveInstallation: (MSInstallation *) installation {
-    
+    [LocalStorage saveInstallationToLocalStorage:installation];
 }
 
 - (void) updateInstallation: (MSInstallation *) installation {
-    
+    [LocalStorage saveInstallationToLocalStorage:installation];
 }
 
-(void) save: (MSInstallation *) installation {
-    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
++ (void)saveInstallationToLocalStorage:(MSInstallation *)installation {
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation requiringSecureCoding:false error: nil];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:encodedObject forKey:@"installation"];
+    [defaults synchronize];
+}
+
++ (MSInstallation *)loadInstallationFromLocalStorage {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *encodedObject = [defaults objectForKey:@"installation"];
     
-    
+    return [NSKeyedUnarchiver unarchivedObjectOfClass:[MSInstallation class] fromData:encodedObject error: nil];
 }
 
 @end
