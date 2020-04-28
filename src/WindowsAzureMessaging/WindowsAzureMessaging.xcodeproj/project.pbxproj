@@ -90,7 +90,7 @@
 		B300E3512458628C008A32DA /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34A2458628C008A32DA /* HTTPStubsResponse.m */; };
 		B300E3522458628C008A32DA /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */; };
 		B300E3532458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */; };
-		B346E12024586DAF00399CE3 /* MSAppCenterErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */; };
+		B346E12024586DAF00399CE3 /* MSNotificationHubErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSNotificationHubErrors.h */; };
 		B34BA79024589F1C002457DC /* TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B34BA78F24589F1C002457DC /* TestHelper.m */; };
 		B34BA79124589FD6002457DC /* SBNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = A358371816AA39850041E372 /* SBNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34BA79224589FDD002457DC /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371916AA39850041E372 /* SBNotificationHub.m */; };
@@ -131,7 +131,7 @@
 		B3D285342456E97F00C78CC8 /* MSHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D285252456E97F00C78CC8 /* MSHttpUtil.m */; };
 		B3D285352456E97F00C78CC8 /* MSHttpCall.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285262456E97F00C78CC8 /* MSHttpCall.h */; };
 		B3D285362456E97F00C78CC8 /* MSHttpCall.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285262456E97F00C78CC8 /* MSHttpCall.h */; };
-		B3D285412456ED2200C78CC8 /* MSAppCenterErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */; };
+		B3D285412456ED2200C78CC8 /* MSNotificationHubErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSNotificationHubErrors.h */; };
 		B3D285492456EDD800C78CC8 /* MSConstants+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285462456EDD800C78CC8 /* MSConstants+Internal.h */; };
 		B3D2854A2456EDD800C78CC8 /* MSConstants+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285462456EDD800C78CC8 /* MSConstants+Internal.h */; };
 		B3D2854B2456EDD800C78CC8 /* MSCompression.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285472456EDD800C78CC8 /* MSCompression.h */; };
@@ -247,7 +247,7 @@
 		B3D285242456E97F00C78CC8 /* MSHttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpUtil.h; sourceTree = "<group>"; };
 		B3D285252456E97F00C78CC8 /* MSHttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpUtil.m; sourceTree = "<group>"; };
 		B3D285262456E97F00C78CC8 /* MSHttpCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpCall.h; sourceTree = "<group>"; };
-		B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAppCenterErrors.h; sourceTree = "<group>"; };
+		B3D285402456ED2200C78CC8 /* MSNotificationHubErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubErrors.h; sourceTree = "<group>"; };
 		B3D285462456EDD800C78CC8 /* MSConstants+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSConstants+Internal.h"; sourceTree = "<group>"; };
 		B3D285472456EDD800C78CC8 /* MSCompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCompression.h; sourceTree = "<group>"; };
 		B3D285482456EDD800C78CC8 /* MSCompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCompression.m; sourceTree = "<group>"; };
@@ -458,7 +458,7 @@
 				B3D285472456EDD800C78CC8 /* MSCompression.h */,
 				B3D285482456EDD800C78CC8 /* MSCompression.m */,
 				B3D285462456EDD800C78CC8 /* MSConstants+Internal.h */,
-				B3D285402456ED2200C78CC8 /* MSAppCenterErrors.h */,
+				B3D285402456ED2200C78CC8 /* MSNotificationHubErrors.h */,
 				B3D285552456F0D400C78CC8 /* MSDispatcherUtil.h */,
 				B3D285582456F0E700C78CC8 /* MSDispatcherUtil.m */,
 			);
@@ -521,7 +521,7 @@
 				B34BA79124589FD6002457DC /* SBNotificationHub.h in Headers */,
 				35B4DBF522268D1000EAC781 /* (null) in Headers */,
 				B34BA79D2458A100002457DC /* SBURLConnection.h in Headers */,
-				B346E12024586DAF00399CE3 /* MSAppCenterErrors.h in Headers */,
+				B346E12024586DAF00399CE3 /* MSNotificationHubErrors.h in Headers */,
 				B34BA79B2458A0F7002457DC /* SBTokenProvider.h in Headers */,
 				35B4DC0222268D1000EAC781 /* (null) in Headers */,
 				35B4DBFC22268D1000EAC781 /* (null) in Headers */,
@@ -578,7 +578,7 @@
 				B3D2854B2456EDD800C78CC8 /* MSCompression.h in Headers */,
 				B3D285352456E97F00C78CC8 /* MSHttpCall.h in Headers */,
 				A358373F16AA3B140041E372 /* SBRegistrationParser.h in Headers */,
-				B3D285412456ED2200C78CC8 /* MSAppCenterErrors.h in Headers */,
+				B3D285412456ED2200C78CC8 /* MSNotificationHubErrors.h in Headers */,
 				B3D285562456F0D400C78CC8 /* MSDispatcherUtil.h in Headers */,
 				929886F01857FAB100C1676C /* SBStaticHandlerResponse.h in Headers */,
 			);

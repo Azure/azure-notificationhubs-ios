@@ -5,7 +5,7 @@
 #import "HTTPStubs.h"
 
 #import "MSConstants.h"
-#import "MSAppCenterErrors.h"
+#import "MSNotificationHubErrors.h"
 #import "MSConstants+Internal.h"
 #import "MSHttpCall.h"
 #import "MSHttpClientPrivate.h"

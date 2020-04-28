@@ -31,7 +31,7 @@
       mutableHeaders[kMSHeaderContentEncodingKey] = kMSHeaderContentEncoding;
     }
     if (data && ![mutableHeaders objectForKey:kMSHeaderContentTypeKey]) {
-      mutableHeaders[kMSHeaderContentTypeKey] = kMSAppCenterContentType;
+      mutableHeaders[kMSHeaderContentTypeKey] = kMSNotificationHubContentType;
     }
     _data = data;
     _headers = mutableHeaders;

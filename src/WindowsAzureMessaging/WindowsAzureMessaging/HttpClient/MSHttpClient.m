@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 #import "MSHttpClient.h"
-#import "MSAppCenterErrors.h"
+#import "MSNotificationHubErrors.h"
 #import "MSConstants+Internal.h"
 #import "MSHttpCall.h"
 #import "MSHttpClientDelegate.h"
@@ -70,9 +70,9 @@
      completionHandler:(MSHttpRequestCompletionHandler)completionHandler {
   @synchronized(self) {
     if (!self.enabled) {
-      NSError *error = [NSError errorWithDomain:kMSACErrorDomain
-                                           code:MSACDisabledErrorCode
-                                       userInfo:@{NSLocalizedDescriptionKey : kMSACDisabledErrorDesc}];
+      NSError *error = [NSError errorWithDomain:kMSNHErrorDomain
+                                           code:MSNHDisabledErrorCode
+                                       userInfo:@{NSLocalizedDescriptionKey : kMSNHDisabledErrorDesc}];
       completionHandler(nil, nil, error);
       return;
     }
@@ -253,9 +253,9 @@
 
           // Remove pending calls and invoke their completion handler.
           for (MSHttpCall *call in self.pendingCalls) {
-            NSError *error = [NSError errorWithDomain:kMSACErrorDomain
-                                                 code:MSACCanceledErrorCode
-                                             userInfo:@{NSLocalizedDescriptionKey : kMSACCanceledErrorDesc}];
+            NSError *error = [NSError errorWithDomain:kMSNHErrorDomain
+                                                 code:MSNHCanceledErrorCode
+                                             userInfo:@{NSLocalizedDescriptionKey : kMSNHCanceledErrorDesc}];
             call.completionHandler(nil, nil, error);
           }
           [self.pendingCalls removeAllObjects];

@@ -4,7 +4,7 @@
 #import "NSURLRequest+HTTPBodyTesting.h"
 #import "HTTPStubs.h"
 
-#import "MSAppCenterErrors.h"
+#import "MSNotificationHubErrors.h"
 #import "MSCompression.h"
 #import "MSConstants+Internal.h"
 #import "MSHttpCall.h"
@@ -25,7 +25,7 @@
   NSData *longData = [longString dataUsingEncoding:NSUTF8StringEncoding];
   NSData *expectedData = [MSCompression compressData:longData];
   NSDictionary *expectedHeaders =
-      @{kMSHeaderContentEncodingKey : kMSHeaderContentEncoding, kMSHeaderContentTypeKey : kMSAppCenterContentType};
+      @{kMSHeaderContentEncodingKey : kMSHeaderContentEncoding, kMSHeaderContentTypeKey : kMSNotificationHubContentType};
 
   // When
   MSHttpCall *call =
@@ -49,7 +49,7 @@
 
   // HTTP body is small and will not be compressed.
   NSData *shortData = [NSData dataWithBytes:"hi" length:2];
-  NSDictionary *expectedHeaders = @{kMSHeaderContentTypeKey : kMSAppCenterContentType};
+  NSDictionary *expectedHeaders = @{kMSHeaderContentTypeKey : kMSNotificationHubContentType};
 
   // When
   MSHttpCall *call =
@@ -74,7 +74,7 @@
   // HTTP body is big enough to be compressed.
   NSString *longString = [@"" stringByPaddingToLength:kMSHTTPMinGZipLength withString:@"h" startingAtIndex:0];
   NSData *longData = [longString dataUsingEncoding:NSUTF8StringEncoding];
-  NSDictionary *expectedHeaders = @{kMSHeaderContentTypeKey : kMSAppCenterContentType};
+  NSDictionary *expectedHeaders = @{kMSHeaderContentTypeKey : kMSNotificationHubContentType};
 
   // When
   MSHttpCall *call =
