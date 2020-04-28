@@ -6,6 +6,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MSInstallationTemplate.h"
+#import "MSNotificationHubMessage.h"
 #import "MSNotificationHubMessageDelegate.h"
 
 /**
