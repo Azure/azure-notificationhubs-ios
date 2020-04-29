@@ -55,11 +55,12 @@
 		6489DDFA24582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */; };
 		6489DDFC24586C210021CF36 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */; };
 		6489DDFD24586C210021CF36 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */; };
+		6489DE0724598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; };
+		6489DE0824598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0012451A86C006B6327 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FD244F8FB4005F6B49 /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0022451A86C006B6327 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0042451A86C006B6327 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C854703244F9347005F6B49 /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		64B3E0052451A86C006B6327 /* MSNotificationHubMessageDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C854704244F95A7005F6B49 /* MSNotificationHubMessageDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8471C92B16EABF5600C73674 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8471C92916EABF5600C73674 /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8471C92C16EABF5600C73674 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8471C92A16EABF5600C73674 /* SBLocalStorage.m */; };
 		848CB70A16FBE52D00183E8D /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -196,11 +197,11 @@
 		4C8546FD244F8FB4005F6B49 /* MSInstallationTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationTemplate.h; sourceTree = "<group>"; };
 		4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubMessage.h; sourceTree = "<group>"; };
 		4C854703244F9347005F6B49 /* MSNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHub.h; sourceTree = "<group>"; };
-		4C854704244F95A7005F6B49 /* MSNotificationHubMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubMessageDelegate.h; sourceTree = "<group>"; };
 		4C854705244FD64C005F6B49 /* MSNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHub.m; sourceTree = "<group>"; };
 		6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubAppDelegate.h; sourceTree = "<group>"; };
 		6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubAppDelegate.m; sourceTree = "<group>"; };
 		6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubMessage.m; sourceTree = "<group>"; };
+		6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubDelegate.h; sourceTree = "<group>"; };
 		8471C92916EABF5600C73674 /* SBLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
 		8471C92A16EABF5600C73674 /* SBLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocalStorage.m; sourceTree = "<group>"; };
 		848CB70816FBE52D00183E8D /* SBTemplateRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBTemplateRegistration.h; path = ../SBTemplateRegistration.h; sourceTree = "<group>"; };
@@ -380,7 +381,7 @@
 				906E403E16A86A3200817A11 /* Supporting Files */,
 				4C854703244F9347005F6B49 /* MSNotificationHub.h */,
 				4C854705244FD64C005F6B49 /* MSNotificationHub.m */,
-				4C854704244F95A7005F6B49 /* MSNotificationHubMessageDelegate.h */,
+				6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */,
 			);
 			path = WindowsAzureMessaging;
 			sourceTree = "<group>";
@@ -544,6 +545,7 @@
 				B346E12024586DAF00399CE3 /* MSNotificationHubErrors.h in Headers */,
 				B34BA79B2458A0F7002457DC /* SBTokenProvider.h in Headers */,
 				35B4DC0222268D1000EAC781 /* (null) in Headers */,
+				6489DE0824598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */,
 				35B4DBFC22268D1000EAC781 /* (null) in Headers */,
 				35B4DBF022268D1000EAC781 /* (null) in Headers */,
 				B3D285572456F0D400C78CC8 /* MSDispatcherUtil.h in Headers */,
@@ -555,7 +557,6 @@
 				B3D285282456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */,
 				B3D285302456E97F00C78CC8 /* MSHttpClient.h in Headers */,
 				B3D2855D2456F1F200C78CC8 /* MSHttpClientDelegate.h in Headers */,
-				64B3E0052451A86C006B6327 /* MSNotificationHubMessageDelegate.h in Headers */,
 				B3D2854C2456EDD800C78CC8 /* MSCompression.h in Headers */,
 				64B3E0042451A86C006B6327 /* MSNotificationHub.h in Headers */,
 				6489DDF724582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */,
@@ -590,6 +591,7 @@
 				A358374016AA3B160041E372 /* SBTokenProvider.h in Headers */,
 				A358373C16AA3B0B0041E372 /* SBRegistration.h in Headers */,
 				848CB73C16FCC78E00183E8D /* SBStoredRegistrationEntry.h in Headers */,
+				6489DE0724598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */,
 				B3D2852D2456E97F00C78CC8 /* MSHttpClientPrivate.h in Headers */,
 				A358373E16AA3B120041E372 /* SBNotificationHubHelper.h in Headers */,
 				A358374116AA3B190041E372 /* SBURLConnection.h in Headers */,

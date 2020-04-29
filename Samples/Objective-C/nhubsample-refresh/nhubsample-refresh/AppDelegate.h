@@ -4,7 +4,7 @@
 #import <UIKit/UIKit.h>
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MSNotificationHubDelegate>
 
 
 @end
