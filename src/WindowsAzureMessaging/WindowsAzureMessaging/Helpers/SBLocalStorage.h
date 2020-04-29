@@ -4,7 +4,8 @@
 
 #import <Foundation/Foundation.h>
 #import "SBStoredRegistrationEntry.h"
-#import "SBRegistration.h"
+
+@class SBRegistration;
 
 @interface SBLocalStorage : NSObject
 {
