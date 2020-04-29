@@ -1,9 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-@class MSInstallation;
-@interface LocalStorage : NSObject
+#import "MSInstallation.h"
 
-- (void) saveInstallation: (MSInstallation*) installation;
-- (void) updateInstallation: (MSInstallation*) installation;
+@interface MSLocalStorage : NSObject
+
++ (void) saveInstallation: (MSInstallation*) installation;
++ (void) updateInstallation: (MSInstallation*) installation;
 @end

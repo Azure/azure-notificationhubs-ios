@@ -33,7 +33,10 @@ static dispatch_once_t onceToken;
 }
 
 + (void)initWithConnectionString:(NSString *) connectionString withHubName:(NSString*)notificationHubName {
+    // TODO: Create installation via "InstallationHelper" class that use MSLocalStorage
     
+    // TODO: Move save and update to "InstallationHelper" class
+    [MSLocalStorage saveInstallation: [MSInstallation new]];
 }
 
 #pragma mark Instance Callbacks

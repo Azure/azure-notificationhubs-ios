@@ -4,14 +4,14 @@
 #import <Foundation/Foundation.h>
 #import "MSLocalStorage.h"
 
-@implementation LocalStorage
+@implementation MSLocalStorage
 
-- (void) saveInstallation: (MSInstallation *) installation {
-    [LocalStorage saveInstallationToLocalStorage:installation];
++ (void) saveInstallation: (MSInstallation *) installation {
+    [MSLocalStorage saveInstallationToLocalStorage:installation];
 }
 
-- (void) updateInstallation: (MSInstallation *) installation {
-    [LocalStorage saveInstallationToLocalStorage:installation];
++ (void) updateInstallation: (MSInstallation *) installation {
+    [MSLocalStorage saveInstallationToLocalStorage:installation];
 }
 
 + (void)saveInstallationToLocalStorage:(MSInstallation *)installation {

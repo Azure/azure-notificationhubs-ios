@@ -7,12 +7,14 @@
 #import <Foundation/Foundation.h>
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHubMessageDelegate.h"
+#import "MSLocalStorage.h"
 
 /**
  * The Azure Notification Hubs service
 */
 @interface MSNotificationHub : NSObject
 
+@property(nonatomic, copy, readonly) MSInstallation *installation;
 @property(nonatomic, copy, readonly) NSString *hubName;
 @property(nonatomic, copy, readonly) NSURL *serviceEndpoint;
 @property(nonatomic, copy, readonly) NSMutableArray *tags;
