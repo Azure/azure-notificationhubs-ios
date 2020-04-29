@@ -12,20 +12,28 @@ static char decodingTable[128];
 static NSString* decodingTableLock = @"decodingTableLock";
 
 
-+ (MSInstallation *) initInstallationWith:(NSString *)connectionString {
++ (MSInstallation *) initInstallationWith:(NSString *)connectionString withHubName:(NSString *) hubname withDeviceToken: (NSString *) deviceToken{
     NSDictionary *parsedConnectionString = [self parseConnectionString: connectionString];
+    
     NSString *endpoint = [parsedConnectionString objectForKey:@"endpoint"];
-    
-    // TODO: create request uri to create installation
-    // TODO: use request uri string to create
-    
-    NSString *uri = [NSString new];
+
+    NSString *installationId = [[NSUUID UUID] UUIDString];
+
+    NSString *url = [NSString stringWithFormat:@"https://%@/%@/installations/%@?api-version=2017-04", endpoint, hubname, installationId];
     
     NSString *accessKeyName = [parsedConnectionString objectForKey:@"sharedaccesskeyname"];
     NSString *sharedAccessKey = [parsedConnectionString objectForKey:@"sharedaccesskey"];
 
+    NSString *sasToken = [MSInstallationManager prepareSharedAccessTokenWithUrl:url sharedAccessKeyName:accessKeyName sharedAccessKey:sharedAccessKey];
     
-    NSString *sasToken = [MSInstallationManager prepareSharedAccessTokenWithUrl:uri sharedAccessKeyName:accessKeyName sharedAccessKey:sharedAccessKey];
+    NSDictionary *installationJson = @{
+           @"installationId" : installationId,
+           @"platform" : @"APNS",
+           @"pushChannel" : deviceToken
+    };
+    
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:installationJson
+                                                       options:NSJSONWritingPrettyPrinted error:nil];
     
     return [MSInstallation new];
 }
@@ -124,7 +132,6 @@ static NSString* decodingTableLock = @"decodingTableLock";
     NSString* signature = [self toBase64:(unsigned char *)[HMAC bytes] length:[HMAC length]];
 
     return signature;
-
 }
 
 + (NSString*) signString: (NSString*)str withKey:(NSString*) key{

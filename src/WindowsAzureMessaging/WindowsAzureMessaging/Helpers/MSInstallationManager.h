@@ -9,6 +9,6 @@
 @class MSInstallation;
 
 @interface MSInstallationManager : NSObject
-+ (MSInstallation *) initInstallationWith: (NSString *) connectionString;
++ (MSInstallation *) initInstallationWith:(NSString *)connectionString withHubName:(NSString *) hubname withDeviceToken: (NSString *) deviceToken;
 + (MSInstallation *) updateInstallationWith: (MSInstallation *) installation;
 @end

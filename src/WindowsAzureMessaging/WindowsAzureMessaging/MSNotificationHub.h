@@ -8,7 +8,7 @@
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHubMessage.h"
 #import "MSNotificationHubMessageDelegate.h"
-#import "MSLocalStorage.h"
+#import "MSInstallationManager.h"
 
 /**
  * The Azure Notification Hubs service
