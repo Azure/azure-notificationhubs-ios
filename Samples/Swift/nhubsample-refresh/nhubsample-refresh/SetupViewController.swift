@@ -3,7 +3,7 @@
 
 import UIKit
 
-class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, MSNotificationHubDelegate {
     
     @IBOutlet weak var deviceTokenLabel: UILabel!
     @IBOutlet weak var installationIdLabel: UILabel!
@@ -11,6 +11,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     @IBOutlet weak var tagsTable: UITableView!
     
     var tags = MSNotificationHub.getTags()
+    var notificationsTableView:NotificationsTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,11 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         tagsTable.reloadData()
         
         deviceTokenLabel.text = "device-token"
-        
         installationIdLabel.text = "installation-id"
+        
+        notificationsTableView = (self.tabBarController?.viewControllers?[1] as! UINavigationController).viewControllers[0] as? NotificationsTableViewController
+        
+        MSNotificationHub.setDelegate(self)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -60,6 +64,19 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tagsTable.reloadData()
       }
+    }
+    
+    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
+        NSLog("Received notification: %@; %@", notification.title, notification.message)
+        notificationsTableView?.addNotification(notification);
+        
+        let alertController = UIAlertController(title: notification.title, message: notification.message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alertController, animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            alertController.dismiss(animated: true, completion: nil)
+        }
     }
     
 }

@@ -4,7 +4,7 @@
 import UIKit
 
 class NotificationsTableViewController: UITableViewController {
-    var notifications = ["notification1", "notification2", "notification3"]
+    var notifications:[MSNotificationHubMessage] = [];
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class NotificationsTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of NotificationCell.")
         }
         
-        cell.notificationSummaryLabel.text = notifications[indexPath.row]
+        cell.notificationSummaryLabel.text = notifications[indexPath.row].title
         
         return cell
     }
@@ -43,6 +43,11 @@ class NotificationsTableViewController: UITableViewController {
             detailsView.notification = notifications[indexPath.row]
             tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+    
+    func addNotification(_ notification: MSNotificationHubMessage) {
+        self.notifications.append(notification)
+        self.tableView.reloadData()
     }
 }
 
