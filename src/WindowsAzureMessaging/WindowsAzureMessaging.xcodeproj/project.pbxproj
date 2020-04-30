@@ -57,6 +57,8 @@
 		6489DDFD24586C210021CF36 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */; };
 		6489DE0724598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6489DE0824598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6489DE10245AE7600021CF36 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C854703244F9347005F6B49 /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6489DE11245AE77E0021CF36 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0012451A86C006B6327 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FD244F8FB4005F6B49 /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0022451A86C006B6327 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -585,8 +587,10 @@
 				B3D285312456E97F00C78CC8 /* MSHttpUtil.h in Headers */,
 				A358373916AA3B060041E372 /* SBConnectionString.h in Headers */,
 				A358373A16AA3B080041E372 /* SBNotificationHub.h in Headers */,
+				6489DE10245AE7600021CF36 /* MSNotificationHub.h in Headers */,
 				6489DE0724598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */,
 				A358373D16AA3B0D0041E372 /* WindowsAzureMessaging.h in Headers */,
+				6489DE11245AE77E0021CF36 /* MSNotificationHubMessage.h in Headers */,
 				8471C92B16EABF5600C73674 /* SBLocalStorage.h in Headers */,
 				A358374016AA3B160041E372 /* SBTokenProvider.h in Headers */,
 				A358373C16AA3B0B0041E372 /* SBRegistration.h in Headers */,
