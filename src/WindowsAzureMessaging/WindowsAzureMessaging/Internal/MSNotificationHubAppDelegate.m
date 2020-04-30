@@ -20,7 +20,7 @@ static dispatch_once_t onceToken;
     [[MSNotificationHubAppDelegate sharedInstance] setEnabledFromPlistForKey:@"AppDelegateForwardingEnabled"];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(setDelegate:) inClass:[UIApplication class] from:[MSNotificationHubAppDelegate class] forDelegate:YES];
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleSetDelegate];
     });
 }
 
@@ -43,25 +43,29 @@ static dispatch_once_t onceToken;
  
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [[MSNotificationHubAppDelegate sharedInstance]  swizzleImplForMethod: @selector(application: didRegisterForRemoteNotificationsWithDeviceToken:) inClass:[delegate class] from:[MSNotificationHubAppDelegate class] forDelegate:NO];
-        [[MSNotificationHubAppDelegate sharedInstance]  swizzleImplForMethod: @selector(application: didFailToRegisterForRemoteNotificationsWithError:) inClass:[delegate class] from:[MSNotificationHubAppDelegate class] forDelegate:NO];
-        [[MSNotificationHubAppDelegate sharedInstance]  swizzleImplForMethod: @selector(application: didReceiveRemoteNotification:) inClass:[delegate class] from:[MSNotificationHubAppDelegate class] forDelegate:NO];
-        [[MSNotificationHubAppDelegate sharedInstance]  swizzleImplForMethod: @selector(application: didReceiveRemoteNotification: fetchCompletionHandler:) inClass:[delegate class] from:[MSNotificationHubAppDelegate class] forDelegate:NO];
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(application: didRegisterForRemoteNotificationsWithDeviceToken:) inClass:[delegate class]];
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(application: didFailToRegisterForRemoteNotificationsWithError:) inClass:[delegate class]];
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(application: didReceiveRemoteNotification:) inClass:[delegate class]];
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(application: didReceiveRemoteNotification: fetchCompletionHandler:) inClass:[delegate class]];
     });
     
     ((void (*)(id, SEL, id<UIApplicationDelegate>))originalSetDelegateImp)(self, _cmd, delegate);
 }
 
--(void) swizzleImplForMethod:(SEL)originalSelector inClass:(Class)class from:(Class)swizzledClass forDelegate:(BOOL) isDelegate {
+-(void) swizzleSetDelegate{
+    SEL setDelegateSelector = @selector(setDelegate:);
+    Class appClass = [UIApplication class];
+    originalSetDelegateImp = class_getMethodImplementation(appClass, setDelegateSelector);
+    [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:setDelegateSelector inClass:appClass];
+}
+
+-(void) swizzleImplForMethod:(SEL)originalSelector inClass:(Class)class {
     if(self.enabled) {
+        Class swizzledClass = [MSNotificationHubAppDelegate class];
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
         
         SEL swizzledSelector = NSSelectorFromString([@"custom_" stringByAppendingString:NSStringFromSelector(originalSelector)]);
         Method swizzledMethod = class_getInstanceMethod(swizzledClass, swizzledSelector);
-        
-        if (isDelegate) {
-            originalSetDelegateImp = class_getMethodImplementation(class, originalSelector);;
-        }
         
         BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
         
