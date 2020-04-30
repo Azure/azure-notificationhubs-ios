@@ -7,4 +7,5 @@
 
 + (void) saveInstallation: (MSInstallation*) installation;
 + (void) updateInstallation: (MSInstallation*) installation;
++ (MSInstallation *)loadInstallationFromLocalStorage;
 @end

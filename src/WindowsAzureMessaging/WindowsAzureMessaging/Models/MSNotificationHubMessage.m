@@ -17,7 +17,7 @@
 }
 
 - (instancetype)initWithNotification:(NSDictionary *)notification {
-    if ((self = [super init])) {
+    if (self = [super init]) {
         for (id key in notification) {
             if([key isEqual: @"aps"]) {
                 NSDictionary *aps = [notification valueForKey:@"aps"];
@@ -43,7 +43,7 @@
     return self;
 }
 
-+ (MSNotificationHubMessage *)createFromNotification:(NSDictionary *)notification
++ (instancetype)createFromNotification:(NSDictionary *)notification
 {
     MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithNotification:notification];
     return message;

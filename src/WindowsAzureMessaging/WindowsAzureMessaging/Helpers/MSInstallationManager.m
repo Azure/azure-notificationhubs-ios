@@ -1,173 +1,77 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 #import <Foundation/Foundation.h>
 #import "MSInstallation.h"
 #import "MSInstallationManager.h"
-#import <CommonCrypto/CommonHMAC.h>
-#import <CommonCrypto/CommonDigest.h>
+#import "MSHttpClient.h"
+#import "MSTokenProvider.h"
+#import "MSLocalStorage.h"
 
 @implementation MSInstallationManager
 
-const int timeToExpireinMins = 20;
-static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-static char decodingTable[128];
-static NSString* decodingTableLock = @"decodingTableLock";
-
-
-+ (MSInstallation *) initInstallationWith:(NSString *)connectionString withHubName:(NSString *) hubname withDeviceToken: (NSString *) deviceToken{
-    NSDictionary *parsedConnectionString = [self parseConnectionString: connectionString];
+- (MSInstallationManager *) initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)hubName {
+    self = [super init];
     
-    NSString *endpoint = [parsedConnectionString objectForKey:@"endpoint"];
+    _connectionDictionary = [self parseConnectionString:connectionString];
+    _hubName = hubName;
+    _tokenProvider = [[MSTokenProvider alloc] initWithConnectionDictionary:_connectionDictionary];
 
-    NSString *installationId = [[NSUUID UUID] UUIDString];
+    return self;
+}
 
-    NSString *url = [NSString stringWithFormat:@"https://%@/%@/installations/%@?api-version=2017-04", endpoint, hubname, installationId];
+
+- (MSInstallation *) getInstallation: (NSString *) pushToken {
+    MSInstallation *installation = [MSLocalStorage loadInstallationFromLocalStorage];
     
-    NSString *accessKeyName = [parsedConnectionString objectForKey:@"sharedaccesskeyname"];
-    NSString *sharedAccessKey = [parsedConnectionString objectForKey:@"sharedaccesskey"];
+    return installation;
+}
 
-    NSString *sasToken = [MSInstallationManager prepareSharedAccessTokenWithUrl:url sharedAccessKeyName:accessKeyName sharedAccessKey:sharedAccessKey];
+- (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken {
     
-    NSDictionary *installationJson = @{
-           @"installationId" : installationId,
-           @"platform" : @"APNS",
-           @"pushChannel" : deviceToken
+    MSInstallation *installation = [MSLocalStorage loadInstallationFromLocalStorage];
+    
+    if (!installation) {
+        installation = [[MSInstallation alloc] init];
+        installation.installationID = [[NSUUID UUID] UUIDString];
+        installation.platform = @"APNS";
+        installation.pushChannel = deviceToken;
+    }
+    
+    NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
+    NSString *url = [NSString stringWithFormat:@"%@%@/installations/%@?api-version=2017-04", endpoint, _hubName, installation.installationID];
+
+    NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
+    NSURL *requestUrl = [NSURL URLWithString:url];
+    
+    NSDictionary *headers = @{
+       @"Content-Type" : @"application/json",
+       @"x-ms-version" : @"2015-01",
+       @"Authorization" : sasToken
     };
     
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:installationJson
-                                                       options:NSJSONWritingPrettyPrinted error:nil];
-    
-    return [MSInstallation new];
-}
+    MSHttpClient *httpClient = [MSHttpClient new];
 
-+ (NSData*) fromBase64: (NSString*) str{
+    NSData *payload = [installation toJsonData];
     
-    if(decodingTable['B'] != 1)
-    {
-        @synchronized(decodingTableLock)
-        {
-            if(decodingTable['B'] != 1)
-            {
-                memset(decodingTable, 0, 128);
-                int length = (sizeof encodingTable);
-                for (int i = 0; i < length; i++)
-                {
-                    decodingTable[encodingTable[i]] = i;
-                }
-            }
-        }
-    }
-
-    NSData* inputData = [str dataUsingEncoding:NSASCIIStringEncoding];
-    const char* input =inputData.bytes;
-    NSInteger inputLength = inputData.length;
-    
-    if ((input == NULL) || (inputLength% 4 != 0)) {
-        return nil;
-    }
-    
-    while (inputLength > 0 && input[inputLength - 1] == '=') {
-        inputLength--;
-    }
-    
-    NSUInteger outputLength = inputLength * 3 / 4;
-    NSMutableData* outputData = [NSMutableData dataWithLength:outputLength];
-    uint8_t* output = outputData.mutableBytes;
-    
-    NSUInteger outputPos = 0;
-    for (int i=0; i<inputLength; i += 4)
-    {
-        char i0 = input[i];
-        char i1 = input[i+1];
-        char i2 = i+2 < inputLength ? input[i+2] : 'A';
-        char i3 = i+3 < inputLength ? input[i+3] : 'A';
-        
-        char result =(decodingTable[i0] << 2) | (decodingTable[i1] >> 4);
-        output[outputPos++] =  result;
-        if (outputPos < outputLength) {
-            output[outputPos++] = ((decodingTable[i1] & 0xf) << 4) | (decodingTable[i2] >> 2);
-        }
-        if (outputPos < outputLength) {
-            output[outputPos++] = ((decodingTable[i2] & 0x3) << 6) | decodingTable[i3];
-        }
-    }
-    
-    return outputData;
-}
-
-+ (NSString*) toBase64: (unsigned char*) data length:(NSInteger) length{
-    
-    NSMutableString *dest = [[NSMutableString alloc] initWithString:@""];
-    
-    unsigned char * tempData = (unsigned char *)data;
-    NSInteger srcLen = length;
-    
-    for (int i=0; i<srcLen; i += 3)
-    {
-        NSInteger value = 0;
-        for (int j = i; j < (i + 3); j++) {
-            value <<= 8;
-            
-            if (j < length) {
-                value |= (0xFF & tempData[j]);
-            }
+    [httpClient sendAsync:requestUrl
+                method:@"PUT"
+                headers:headers
+                data:payload
+                completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
+        if (!error) {
+            NSLog(@"Error via creating installation");
         }
         
-        [dest appendFormat:@"%c", encodingTable[(value >> 18) & 0x3F]];
-        [dest appendFormat:@"%c", encodingTable[(value >> 12) & 0x3F]];
-        [dest appendFormat:@"%c", (i + 1) < length ? encodingTable[(value >> 6)  & 0x3F] : '='];
-        [dest appendFormat:@"%c", (i + 2) < length ? encodingTable[(value >> 0)  & 0x3F] : '='];
-    }
-    
-    return dest;
+        [httpClient sendAsync:requestUrl method:@"GET" headers:headers data:nil completionHandler:^(NSData * _Nullable responseBody, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
+            NSString *str = [[NSString alloc] initWithData:responseBody encoding:NSUTF8StringEncoding];
+            [installation updateWithJson:str];
+            [MSLocalStorage saveInstallation: installation];
+        }];
+    }];
 }
 
-+ (NSString*) signString: (NSString*)str withKeyData:(const char*) cKey keyLength:(NSInteger) keyLength{
-    const char *cData = [str cStringUsingEncoding:NSUTF8StringEncoding];
-
-    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
-
-    CCHmac(kCCHmacAlgSHA256, cKey, keyLength, cData, strlen(cData), cHMAC);
-
-    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:CC_SHA256_DIGEST_LENGTH];
-
-    NSString* signature = [self toBase64:(unsigned char *)[HMAC bytes] length:[HMAC length]];
-
-    return signature;
-}
-
-+ (NSString*) signString: (NSString*)str withKey:(NSString*) key{
-    const char *cKey = [key cStringUsingEncoding:NSASCIIStringEncoding];
-    return [self signString:str withKeyData:cKey keyLength:strlen(cKey)];
-}
-
-+ (NSString*) urlEncode: (NSString*)urlString{
-    return (__bridge NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)urlString, NULL,CFSTR("!*'();:@&=+$,/?%#[]"),  kCFStringEncodingUTF8);
-}
-
-+ (NSString*) urlDecode: (NSString*)urlString{
-    return [[urlString
-      stringByReplacingOccurrencesOfString:@"+" withString:@" "]
-     stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-}
-
-+ (NSString *) prepareSharedAccessTokenWithUrl:(NSString*)audienceUri sharedAccessKeyName:accessKeyName sharedAccessKey:(NSString*) accessKey
-{
-    // time to live in seconds
-    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
-    int totalSeconds = interval + timeToExpireinMins * 60;
-    NSString* expiresOn = [NSString stringWithFormat:@"%d", totalSeconds];
-
-    audienceUri = [[audienceUri lowercaseString] stringByReplacingOccurrencesOfString:@"https://" withString:@"http://"];
-    audienceUri = [[MSInstallationManager urlEncode:audienceUri] lowercaseString];
-
-    NSString* signature = [MSInstallationManager signString:[audienceUri stringByAppendingFormat:@"\n%@",expiresOn] withKey:accessKey];
-    signature = [MSInstallationManager urlEncode:signature];
-
-    NSString* token = [NSString stringWithFormat:@"SharedAccessSignature sr=%@&sig=%@&se=%@&skn=%@", audienceUri, signature, expiresOn, accessKeyName];
-
-    return token;
-}
-
-+ (NSDictionary*) parseConnectionString:(NSString*) connectionString
+- (NSDictionary*) parseConnectionString:(NSString*) connectionString
 {
     NSArray *allField = [connectionString componentsSeparatedByString:@";"];
     
@@ -207,7 +111,7 @@ static NSString* decodingTableLock = @"decodingTableLock";
         NSString* keyValue = [currentField substringFromIndex:([keyName length] +1)];
         if([keyName isEqualToString:@"endpoint"]){
             {
-                keyValue = [[MSInstallationManager modifyEndpoint:[NSURL URLWithString:keyValue] scheme:@"https"] absoluteString];
+                keyValue = [[self modifyEndpoint:[NSURL URLWithString:keyValue] scheme:@"https"] absoluteString];
             }
         }
         
@@ -217,7 +121,7 @@ static NSString* decodingTableLock = @"decodingTableLock";
     return result;
 }
 
-+ (NSURL*) modifyEndpoint:(NSURL*)endPoint scheme:(NSString*)scheme
+- (NSURL*) modifyEndpoint:(NSURL*)endPoint scheme:(NSString*)scheme
 {
     NSString* modifiedEndpoint = [NSString stringWithString:[endPoint absoluteString]];
     

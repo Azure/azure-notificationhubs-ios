@@ -25,6 +25,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:@"installation"];
     
+    NSString *str = [[NSString alloc] initWithData:encodedObject encoding:NSUTF8StringEncoding];
+    NSLog(str);
+    
     return [NSKeyedUnarchiver unarchivedObjectOfClass:[MSInstallation class] fromData:encodedObject error: nil];
 }
 

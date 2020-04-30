@@ -1,14 +1,22 @@
-//
-//  MSInstallationManager.h
-//  WindowsAzureMessaging
-//
-//  Created by User on 28.04.2020.
-//  Copyright © 2020 Microsoft. All rights reserved.
-//
-#import <Foundation/Foundation.h>
-@class MSInstallation;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-@interface MSInstallationManager : NSObject
-+ (MSInstallation *) initInstallationWith:(NSString *)connectionString withHubName:(NSString *) hubname withDeviceToken: (NSString *) deviceToken;
-+ (MSInstallation *) updateInstallationWith: (MSInstallation *) installation;
+#import <Foundation/Foundation.h>
+
+@class MSInstallation;
+@class MSTokenProvider;
+
+@interface MSInstallationManager : NSObject {
+
+@private
+    MSTokenProvider* _tokenProvider;
+    NSDictionary* _connectionDictionary;
+    NSString* _hubName;
+    NSString* _pushToken;
+}
+
+- (MSInstallationManager *) initWithConnectionString:(NSString *) connectionString withHubName:(NSString *) hubName;
+- (MSInstallation *) getInstallation:(NSString *) pushToken;
+- (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken;
+
 @end

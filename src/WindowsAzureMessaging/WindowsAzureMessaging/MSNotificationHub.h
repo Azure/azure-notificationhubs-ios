@@ -5,10 +5,10 @@
 #define MSNotificationHub_h
 
 #import <Foundation/Foundation.h>
-#import "MSInstallationTemplate.h"
-#import "MSNotificationHubMessage.h"
 #import "MSNotificationHubMessageDelegate.h"
-#import "MSInstallationManager.h"
+
+@class MSInstallation;
+@class MSInstallationTemplate;
 
 /**
  * The Azure Notification Hubs service
