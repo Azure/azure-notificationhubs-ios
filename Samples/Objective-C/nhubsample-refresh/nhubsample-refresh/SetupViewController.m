@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 #import "SetupViewController.h"
+#import "NotificationsTableViewController.h"
 
 @interface SetupViewController ()
 
@@ -21,6 +22,11 @@
     
     self.deviceTokenLabel.text = @"device-token";
     self.installationIdLabel.text = @"installation-id";
+    
+    self.notificationsTableView = (NotificationsTableViewController*) [[(UINavigationController*)[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
+    
+    [MSNotificationHub setDelegate:self];
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -57,6 +63,24 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.tagsTable reloadData];
     }
+}
+
+- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification {
+    NSLog(@"Received notification: %@: %@", notification.title, notification.message);
+    [self.notificationsTableView addNotification:notification];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:notification.title
+                                                                             message:notification.message
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            //no-op
+        }];
+    });
+        
 }
 
 

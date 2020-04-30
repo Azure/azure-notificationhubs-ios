@@ -2,11 +2,13 @@
 // Licensed under the MIT License.
 
 #import <UIKit/UIKit.h>
+#import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 #import "NotificationTableViewCell.h"
 #import "NotificationDetailsViewController.h"
 
 @interface NotificationsTableViewController : UITableViewController
-@property (nonatomic) NSArray<NSString *> *notifications;
+@property (nonatomic) NSMutableArray<MSNotificationHubMessage *> *notifications;
 
+-(void) addNotification:(MSNotificationHubMessage *) notification;
 @end
 
