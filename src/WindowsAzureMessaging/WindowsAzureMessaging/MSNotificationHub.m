@@ -61,6 +61,17 @@ static dispatch_once_t onceToken;
   [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
+- (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    MSNotificationHubMessage *message = [MSNotificationHubMessage createFromNotification:userInfo];
+    [self didReceivePushNotification:message];
+    
+    if(message.additionalData)
+    {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark Instance Callbacks
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -76,9 +87,13 @@ static dispatch_once_t onceToken;
     NSLog(@"Registering for push notifications has been finished with error: %@", error.localizedDescription);
 }
 
-- (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    MSNotificationHubMessage *message = [MSNotificationHubMessage createFromNotification:userInfo];
-    return NO;
+- (void)didReceivePushNotification:(MSNotificationHubMessage *)notification {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    id<MSNotificationHubDelegate> delegate = self.delegate;
+    if ([delegate respondsToSelector:@selector(notificationHub:didReceivePushNotification:)]) {
+      [delegate notificationHub:self didReceivePushNotification:notification];
+    }
+  });
 }
 
 #pragma mark Register Callbacks
@@ -105,7 +120,7 @@ static dispatch_once_t onceToken;
     return YES;
 }
 
-+ (void)setDelegate:(nullable id<MSNotificationHubMessageDelegate>)delegate {
++ (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate {
   [[MSNotificationHub sharedInstance] setDelegate:delegate];
 }
 

@@ -10,7 +10,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     @IBOutlet weak var addNewTagTextField: UITextField!
     @IBOutlet weak var tagsTable: UITableView!
     
-    var tags = MSNotificationHub.getTags()!
+    var tags = MSNotificationHub.getTags()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
 
-        MSNotificationHub.removeTag(tags[indexPath.row] as? String)
+        MSNotificationHub.removeTag((tags[indexPath.row] as? String)!)
         tags = MSNotificationHub.getTags()
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tagsTable.reloadData()

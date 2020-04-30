@@ -21,6 +21,8 @@
     [MSNotificationHub initWithConnectionString:connectionString withHubName:hubName];
     [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
     
+    [MSNotificationHub setDelegate:self];
+    
     return YES;
 }
 
@@ -39,6 +41,10 @@
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+}
+
+- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification {
+    NSLog(@"Received notification %@", notification.message);
 }
 
 
