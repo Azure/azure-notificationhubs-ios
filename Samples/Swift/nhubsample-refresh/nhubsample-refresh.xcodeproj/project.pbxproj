@@ -89,11 +89,11 @@
 			children = (
 				64B3DFC924518BA4006B6327 /* nhubsample-refresh.entitlements */,
 				64B3DFA9245064F3006B6327 /* AppDelegate.swift */,
-				64B3DFAF245064F3006B6327 /* NotificationsTableViewController.swift */,
 				64B3DFAB245064F3006B6327 /* SceneDelegate.swift */,
 				64B3DFAD245064F3006B6327 /* SetupViewController.swift */,
-				64B3DFC724517022006B6327 /* NotificationDetailsViewController.swift */,
 				64B3DFB1245064F3006B6327 /* Main.storyboard */,
+				64B3DFAF245064F3006B6327 /* NotificationsTableViewController.swift */,
+				64B3DFC724517022006B6327 /* NotificationDetailsViewController.swift */,
 				64B3DFC52450AC3E006B6327 /* NotificationTableViewCell.swift */,
 				64B3DFBF24507925006B6327 /* TagTableViewCell.swift */,
 				64B3DFB4245064F5006B6327 /* Assets.xcassets */,
