@@ -5,7 +5,7 @@
 
 @interface MSLocalStorage : NSObject
 
-+ (void) saveInstallation: (MSInstallation*) installation;
-+ (void) updateInstallation: (MSInstallation*) installation;
++ (MSInstallation *)upsertInstallation: (MSInstallation*) installation;
 + (MSInstallation *)loadInstallationFromLocalStorage;
+
 @end

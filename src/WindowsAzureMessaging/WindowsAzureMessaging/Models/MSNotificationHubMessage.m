@@ -11,16 +11,21 @@
 @synthesize additionalData;
 
 - (instancetype)init {
-    self = [super init];
+    if(self = [super init])
+    {
+        additionalData = [NSMutableDictionary new];
+    }
     
     return self;
 }
 
 - (instancetype)initWithNotification:(NSDictionary *)notification {
     if (self = [super init]) {
+        additionalData = [NSMutableDictionary new];
+        
         for (id key in notification) {
             if([key isEqual: @"aps"]) {
-                NSDictionary *aps = [notification valueForKey:@"aps"];
+                NSDictionary *aps = [notification valueForKey:key];
                 NSObject *alertObject = [aps valueForKey:@"alert"];
                 if (alertObject != nil) {
                     if ([alertObject isKindOfClass:[NSDictionary class]]) {

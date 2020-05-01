@@ -8,20 +8,47 @@
 #import "MSTokenProvider.h"
 #import "MSLocalStorage.h"
 
+// Singleton
+static MSInstallationManager *sharedInstance = nil;
+static dispatch_once_t onceToken;
+
+static NSString* _connectionString;
+static NSString* _hubName;
+
 @implementation MSInstallationManager
 
-- (MSInstallationManager *) initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)hubName {
-    self = [super init];
+- (instancetype)init {
+    if(self = [super init]) {
+        connectionDictionary = [MSInstallationManager parseConnectionString:_connectionString];
+        tokenProvider = [MSTokenProvider createFromConnectionDictionary:connectionDictionary];
+    }
     
-    _connectionDictionary = [self parseConnectionString:connectionString];
-    _hubName = hubName;
-    _tokenProvider = [[MSTokenProvider alloc] initWithConnectionDictionary:_connectionDictionary];
-
     return self;
 }
 
++ (instancetype)sharedInstance {
+  dispatch_once(&onceToken, ^{
+    if (sharedInstance == nil) {
+      sharedInstance = [self new];
+    }
+  });
+  return sharedInstance;
+}
 
-- (MSInstallation *) getInstallation: (NSString *) pushToken {
++ (void) initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)hubName {
+    _connectionString = connectionString;
+    _hubName = hubName;
+}
+
++ (MSInstallation *) getInstallation {
+    return [[MSInstallationManager sharedInstance] getInstallation];
+}
+
++ (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken {
+    [[MSInstallationManager sharedInstance] upsertInstallationWithDeviceToken:deviceToken];
+}
+
+- (MSInstallation *) getInstallation {
     MSInstallation *installation = [MSLocalStorage loadInstallationFromLocalStorage];
     
     return installation;
@@ -29,6 +56,10 @@
 
 - (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken {
     
+    if(!tokenProvider) {
+        return;
+    }
+        
     MSInstallation *installation = [MSLocalStorage loadInstallationFromLocalStorage];
     
     if (!installation) {
@@ -38,10 +69,10 @@
         installation.pushChannel = deviceToken;
     }
     
-    NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
+    NSString *endpoint = [connectionDictionary objectForKey:@"endpoint"];
     NSString *url = [NSString stringWithFormat:@"%@%@/installations/%@?api-version=2017-04", endpoint, _hubName, installation.installationID];
 
-    NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
+    NSString *sasToken = [tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
     
     NSDictionary *headers = @{
@@ -59,19 +90,19 @@
                 headers:headers
                 data:payload
                 completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
-        if (!error) {
-            NSLog(@"Error via creating installation");
+        if (error) {
+            NSLog(@"Error via creating installation: %@", error.localizedDescription);
         }
         
         [httpClient sendAsync:requestUrl method:@"GET" headers:headers data:nil completionHandler:^(NSData * _Nullable responseBody, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
             NSString *str = [[NSString alloc] initWithData:responseBody encoding:NSUTF8StringEncoding];
             [installation updateWithJson:str];
-            [MSLocalStorage saveInstallation: installation];
+            [MSLocalStorage upsertInstallation:installation];
         }];
     }];
 }
 
-- (NSDictionary*) parseConnectionString:(NSString*) connectionString
++ (NSDictionary*) parseConnectionString:(NSString*) connectionString
 {
     NSArray *allField = [connectionString componentsSeparatedByString:@";"];
     
@@ -111,7 +142,7 @@
         NSString* keyValue = [currentField substringFromIndex:([keyName length] +1)];
         if([keyName isEqualToString:@"endpoint"]){
             {
-                keyValue = [[self modifyEndpoint:[NSURL URLWithString:keyValue] scheme:@"https"] absoluteString];
+                keyValue = [[MSInstallationManager modifyEndpoint:[NSURL URLWithString:keyValue] scheme:@"https"] absoluteString];
             }
         }
         
@@ -121,7 +152,7 @@
     return result;
 }
 
-- (NSURL*) modifyEndpoint:(NSURL*)endPoint scheme:(NSString*)scheme
++ (NSURL*) modifyEndpoint:(NSURL*)endPoint scheme:(NSString*)scheme
 {
     NSString* modifiedEndpoint = [NSString stringWithString:[endPoint absoluteString]];
     

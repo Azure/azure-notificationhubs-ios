@@ -9,14 +9,17 @@
 @interface MSInstallationManager : NSObject {
 
 @private
-    MSTokenProvider* _tokenProvider;
-    NSDictionary* _connectionDictionary;
-    NSString* _hubName;
-    NSString* _pushToken;
+    MSTokenProvider* tokenProvider;
+    NSDictionary* connectionDictionary;
+    NSString* pushToken;
 }
 
-- (MSInstallationManager *) initWithConnectionString:(NSString *) connectionString withHubName:(NSString *) hubName;
-- (MSInstallation *) getInstallation:(NSString *) pushToken;
++ (void) initWithConnectionString:(NSString *) connectionString withHubName:(NSString *) hubName;
+
++ (MSInstallation *) getInstallation;
++ (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken;
+
+- (MSInstallation *) getInstallation;
 - (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken;
 
 @end

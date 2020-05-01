@@ -10,13 +10,17 @@
 
 @implementation MSInstallation
 
-- (void)encodeWithCoder:(nonnull NSCoder *)encoder {
-    [encoder encodeObject:self.installationID forKey:@"installationID"];
+- (void)encodeWithCoder:(nonnull NSCoder *)coder {
+    [coder encodeObject:self.installationID forKey:@"installationID"];
+    [coder encodeObject:self.pushChannel forKey:@"pushChannel"];
+    [coder encodeObject:self.platform forKey:@"platform"];
 }
 
-- (nullable instancetype)initWithCoder:(nonnull NSCoder *)decoder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
-        self.installationID = [decoder decodeObjectForKey:@"installationID"];
+        self.installationID = [coder decodeObjectForKey:@"installationID"];
+        self.pushChannel = [coder decodeObjectForKey:@"pushChannel"];
+        self.platform = [coder decodeObjectForKey:@"platform"];
     }
     
     return self;

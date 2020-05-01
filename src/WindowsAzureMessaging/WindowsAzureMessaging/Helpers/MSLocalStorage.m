@@ -6,29 +6,20 @@
 
 @implementation MSLocalStorage
 
-+ (void) saveInstallation: (MSInstallation *) installation {
-    [MSLocalStorage saveInstallationToLocalStorage:installation];
-}
-
-+ (void) updateInstallation: (MSInstallation *) installation {
-    [MSLocalStorage saveInstallationToLocalStorage:installation];
-}
-
-+ (void)saveInstallationToLocalStorage:(MSInstallation *)installation {
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation requiringSecureCoding:false error: nil];
++ (MSInstallation *)upsertInstallation:(MSInstallation *)installation {
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:encodedObject forKey:@"installation"];
     [defaults synchronize];
+    
+    return installation;
 }
 
 + (MSInstallation *)loadInstallationFromLocalStorage {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:@"installation"];
     
-    NSString *str = [[NSString alloc] initWithData:encodedObject encoding:NSUTF8StringEncoding];
-    NSLog(str);
-    
-    return [NSKeyedUnarchiver unarchivedObjectOfClass:[MSInstallation class] fromData:encodedObject error: nil];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
 }
 
 @end

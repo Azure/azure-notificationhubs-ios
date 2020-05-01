@@ -13,7 +13,6 @@
 // Singleton
 static MSNotificationHub *sharedInstance = nil;
 static dispatch_once_t onceToken;
-static MSInstallationManager *_installationManager;
  
 @implementation MSNotificationHub
 
@@ -40,7 +39,7 @@ static MSInstallationManager *_installationManager;
 }
 
 + (void)initWithConnectionString:(NSString *) connectionString withHubName:(NSString*)notificationHubName {
-    _installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString withHubName: notificationHubName];
+    [MSInstallationManager initWithConnectionString:connectionString withHubName: notificationHubName];
 }
 
 - (void)registerForRemoteNotifications {
@@ -86,7 +85,7 @@ static MSInstallationManager *_installationManager;
     }
     self.pushToken = pushToken;
     
-    [_installationManager upsertInstallationWithDeviceToken: sharedInstance.pushToken];
+    [MSInstallationManager upsertInstallationWithDeviceToken: sharedInstance.pushToken];
 }
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -178,6 +177,22 @@ static MSInstallationManager *_installationManager;
 }
 
 #pragma mark Helpers
+
++ (NSString *) getPushToken {
+    return [[MSNotificationHub sharedInstance] getPushToken];
+}
+
++ (NSString *) getInstallationId {
+    return [[MSNotificationHub sharedInstance] getInstallationId];
+}
+
+- (NSString *) getPushToken {
+    return [[MSInstallationManager getInstallation] pushChannel];
+}
+
+- (NSString *) getInstallationId {
+    return [[MSInstallationManager getInstallation] installationID];
+}
 
 - (NSString *)convertTokenToString:(NSData *)token {
   if (!token) {

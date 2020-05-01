@@ -13,11 +13,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 static char decodingTable[128];
 static NSString* decodingTableLock = @"decodingTableLock";
 
-- (MSTokenProvider*) initWithConnectionDictionary: (NSDictionary*) connectionDictionary
+- (MSTokenProvider*) initWithConnectionDictionary:(NSDictionary*) connectionDictionary
 {
-    self = [super init];
-    
-    if( self){
+    if(self = [super init]){
         if(![self isSuccessfullyInitWithConnectionString:connectionDictionary])
         {
             return nil;
@@ -25,6 +23,10 @@ static NSString* decodingTableLock = @"decodingTableLock";
     }
     
     return self;
+}
+
++ (MSTokenProvider*) createFromConnectionDictionary:(NSDictionary*) connectionDictionary {
+    return [[MSTokenProvider alloc] initWithConnectionDictionary:connectionDictionary];
 }
 
 - (NSString *) generateSharedAccessTokenWithUrl:(NSString*)audienceUri
@@ -45,7 +47,7 @@ static NSString* decodingTableLock = @"decodingTableLock";
     return token;
 }
 
-- (BOOL) isSuccessfullyInitWithConnectionString: (NSDictionary*) connectionDictionary {
+- (BOOL) isSuccessfullyInitWithConnectionString:(NSDictionary*) connectionDictionary {
     self->timeToExpireinMins = 20;
     
     NSString* endpoint = [connectionDictionary objectForKey:@"endpoint"];

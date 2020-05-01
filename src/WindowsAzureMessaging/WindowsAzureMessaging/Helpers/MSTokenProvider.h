@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic) NSInteger timeToExpireinMins;
++ (MSTokenProvider*) createFromConnectionDictionary:(NSDictionary*) connectionDictionary;
 
 - (MSTokenProvider*) initWithConnectionDictionary: (NSDictionary*) connectionDictionary;
 - (NSString *) generateSharedAccessTokenWithUrl:(NSString*)audienceUri;
