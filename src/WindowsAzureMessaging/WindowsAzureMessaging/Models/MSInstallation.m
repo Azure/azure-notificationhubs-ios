@@ -60,7 +60,7 @@
     installation.installationID = dictionary[@"installationId"];
     installation.platform = dictionary[@"platform"];
     installation.pushChannel = dictionary[@"pushChannel"];
-    installation.pushChannelExpired = (BOOL)dictionary[@"pushChannelExpired"];
+    installation.pushChannelExpired = dictionary[@"pushChannelExpired"];
     
     NSString * dateString = dictionary[@"expirationTime"];
     

@@ -29,11 +29,6 @@ static MSInstallation *installation;
     XCTAssertNotNil(inst);
 }
 
--(void) testLoadInstallation {
-    MSInstallation *inst = [MSLocalStorage loadInstallation];
-    XCTAssertNotNil(inst);
-}
-
 -(void) testUpsertAndLoadInstallation {
     [MSLocalStorage upsertInstallation:installation];
     MSInstallation *inst = [MSLocalStorage loadInstallation];
