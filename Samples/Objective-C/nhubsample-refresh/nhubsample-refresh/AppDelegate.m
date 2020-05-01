@@ -41,9 +41,4 @@
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
 
-- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"Test");
-}
-
-
 @end

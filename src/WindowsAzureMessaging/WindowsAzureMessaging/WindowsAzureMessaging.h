@@ -10,4 +10,4 @@
 #import "MSNotificationHub.h"
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHubMessage.h"
-#import "MSNotificationHubMessageDelegate.h"
+#import "MSNotificationHubDelegate.h"

@@ -5,7 +5,11 @@
 #define MSNotificationHub_h
 
 #import <Foundation/Foundation.h>
-#import "MSNotificationHubMessageDelegate.h"
+#import "MSInstallationTemplate.h"
+#import "MSNotificationHubMessage.h"
+#import "MSNotificationHubDelegate.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class MSInstallation;
 @class MSInstallationTemplate;
@@ -22,7 +26,7 @@
 @property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, MSInstallationTemplate *> *templates;
 
 // TODO: Move to internal
-@property(nonatomic) id<MSNotificationHubMessageDelegate> delegate;
+@property(nonatomic) id<MSNotificationHubDelegate> delegate;
 @property(atomic, copy) NSString *pushToken;
 
 /**
@@ -40,6 +44,8 @@
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 - (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo;
+
++ (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate;
 
 #pragma mark Tags Support
 
@@ -59,5 +65,7 @@
 - (NSString *)convertTokenToString:(NSData *)token;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif /* MSNotificationHub_h */

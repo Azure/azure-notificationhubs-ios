@@ -9,10 +9,18 @@
 
 @implementation NotificationsTableViewController
 
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super initWithCoder:decoder];
+    if (self) {
+        self.notifications = [NSMutableArray new];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.notifications = @[@"notification1", @"notification2", @"notification3"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -28,7 +36,7 @@
     
     NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    cell.notificationSummaryLabel.text = self.notifications[indexPath.row];
+    cell.notificationSummaryLabel.text = [self.notifications objectAtIndex:indexPath.row].title;
     
     return cell;
 }
@@ -41,9 +49,14 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         NotificationDetailsViewController *detailsView = segue.destinationViewController;
         
-        detailsView.notification = self.notifications[indexPath.row];
+        detailsView.notification = [self.notifications objectAtIndex:indexPath.row];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+}
+
+-(void) addNotification:(MSNotificationHubMessage *) notification {
+    [self.notifications addObject:notification];
+    [self.tableView reloadData];
 }
 
 

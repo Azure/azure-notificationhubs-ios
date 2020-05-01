@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
 
-@property (weak, nonatomic) NSString *notification;
+@property (weak, nonatomic) MSNotificationHubMessage *notification;
 
 @end
 
