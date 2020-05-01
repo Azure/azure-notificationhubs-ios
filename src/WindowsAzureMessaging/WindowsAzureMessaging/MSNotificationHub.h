@@ -59,13 +59,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)removeTemplate:(NSString *)key;
 + (MSInstallationTemplate *)getTemplate:(NSString *)key;
 
+#pragma mark Installation Support
++ (MSInstallation *) getInstallation;
+
 #pragma mark Helpers
-+ (NSString *) getPushToken;
-+ (NSString *) getInstallationId ;
-
-- (NSString *) getPushToken;
-- (NSString *) getInstallationId;
-
 // TODO: Move into internal
 - (NSString *)convertTokenToString:(NSData *)token;
 

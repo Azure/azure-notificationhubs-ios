@@ -20,8 +20,8 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         tagsTable.dataSource = self
         tagsTable.reloadData()
         
-        deviceTokenLabel.text = MSNotificationHub.getPushToken()
-        installationIdLabel.text = MSNotificationHub.getInstallationId()
+        deviceTokenLabel.text = MSNotificationHub.getInstallation().installationID
+        installationIdLabel.text = MSNotificationHub.getInstallation().pushChannel
         
         notificationsTableView = (self.tabBarController?.viewControllers?[1] as! UINavigationController).viewControllers[0] as? NotificationsTableViewController
         

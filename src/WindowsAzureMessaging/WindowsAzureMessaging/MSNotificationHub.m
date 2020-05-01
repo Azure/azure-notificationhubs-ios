@@ -176,23 +176,13 @@ static dispatch_once_t onceToken;
     [self.templates removeObjectForKey:key];
 }
 
+#pragma mark Installation
+
++ (MSInstallation *) getInstallation {
+    return [MSInstallationManager getInstallation];
+}
+
 #pragma mark Helpers
-
-+ (NSString *) getPushToken {
-    return [[MSNotificationHub sharedInstance] getPushToken];
-}
-
-+ (NSString *) getInstallationId {
-    return [[MSNotificationHub sharedInstance] getInstallationId];
-}
-
-- (NSString *) getPushToken {
-    return [[MSInstallationManager getInstallation] pushChannel];
-}
-
-- (NSString *) getInstallationId {
-    return [[MSInstallationManager getInstallation] installationID];
-}
 
 - (NSString *)convertTokenToString:(NSData *)token {
   if (!token) {
