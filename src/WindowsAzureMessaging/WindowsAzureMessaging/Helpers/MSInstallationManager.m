@@ -49,7 +49,7 @@ static NSString* _hubName;
 }
 
 - (MSInstallation *) getInstallation {
-    MSInstallation *installation = [MSLocalStorage loadInstallationFromLocalStorage];
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
     
     return installation;
 }
@@ -57,16 +57,14 @@ static NSString* _hubName;
 - (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken {
     
     if(!tokenProvider) {
+        NSLog(@"Invalid connection string");
         return;
     }
         
-    MSInstallation *installation = [MSLocalStorage loadInstallationFromLocalStorage];
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
     
     if (!installation) {
-        installation = [[MSInstallation alloc] init];
-        installation.installationID = [[NSUUID UUID] UUIDString];
-        installation.platform = @"APNS";
-        installation.pushChannel = deviceToken;
+        installation = [MSInstallation createFromDeviceToken:deviceToken];
     }
     
     NSString *endpoint = [connectionDictionary objectForKey:@"endpoint"];
@@ -96,8 +94,7 @@ static NSString* _hubName;
         
         [httpClient sendAsync:requestUrl method:@"GET" headers:headers data:nil completionHandler:^(NSData * _Nullable responseBody, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
             NSString *str = [[NSString alloc] initWithData:responseBody encoding:NSUTF8StringEncoding];
-            [installation updateWithJson:str];
-            [MSLocalStorage upsertInstallation:installation];
+            [MSLocalStorage upsertInstallation:[MSInstallation createFromJsonString:str]];
         }];
     }];
 }

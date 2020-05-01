@@ -5,6 +5,8 @@
 #define MSNotificationHub_h
 
 #import <Foundation/Foundation.h>
+#import "MSTokenProvider.h"
+#import "MSLocalStorage.h"
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHubMessage.h"
 #import "MSNotificationHubDelegate.h"

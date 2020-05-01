@@ -15,7 +15,7 @@
     return installation;
 }
 
-+ (MSInstallation *)loadInstallationFromLocalStorage {
++ (MSInstallation *)loadInstallation {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:@"installation"];
     

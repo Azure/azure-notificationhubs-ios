@@ -6,6 +6,6 @@
 @interface MSLocalStorage : NSObject
 
 + (MSInstallation *)upsertInstallation: (MSInstallation*) installation;
-+ (MSInstallation *)loadInstallationFromLocalStorage;
++ (MSInstallation *)loadInstallation;
 
 @end

@@ -12,8 +12,12 @@
 @property() BOOL pushChannelExpired;
 @property(nonatomic, copy) NSDate *expirationTime;
 
+- (instancetype) initWithDeviceToken:(NSString *) deviceToken;
+
++ (MSInstallation *) createFromDeviceToken:(NSString *) deviceToken;
++ (MSInstallation *) createFromJsonString: (NSString *) jsonString;
+
 - (NSData *) toJsonData;
-- (BOOL) updateWithJson: (NSString *) jsonString;
 
 @end
 

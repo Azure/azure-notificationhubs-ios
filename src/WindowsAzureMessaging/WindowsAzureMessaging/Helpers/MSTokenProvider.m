@@ -51,13 +51,13 @@ static NSString* decodingTableLock = @"decodingTableLock";
     self->timeToExpireinMins = 20;
     
     NSString* endpoint = [connectionDictionary objectForKey:@"endpoint"];
-    if( endpoint)
+    if(endpoint)
     {
         self->_serviceEndPoint = [[NSURL alloc] initWithString:endpoint];
     }
     
     NSString* stsendpoint = [connectionDictionary objectForKey:@"stsendpoint"];
-    if( stsendpoint)
+    if(stsendpoint)
     {
         self->_stsHostName = [[NSURL alloc] initWithString:stsendpoint];
     }

@@ -26,6 +26,53 @@
     return self;
 }
 
+- (instancetype) init {
+    if(self = [super init]) {
+        self.installationID = [[NSUUID UUID] UUIDString];
+        self.platform = @"APNS";
+    }
+    
+    return self;
+}
+
+- (instancetype) initWithDeviceToken:(NSString *) deviceToken {
+    if (self = [self init]) {
+        self.pushChannel = deviceToken;
+    }
+    
+    return self;
+}
+
++ (MSInstallation *) createFromDeviceToken:(NSString *) deviceToken {
+    return [[MSInstallation alloc] initWithDeviceToken:deviceToken];
+}
+
++ (MSInstallation *) createFromJsonString:(NSString *)jsonString {
+    MSInstallation *installation = [MSInstallation new];
+    NSData * data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *error = nil;
+    NSDictionary *dictionary = [NSJSONSerialization
+                                 JSONObjectWithData:data
+                                 options:0
+                                 error:&error];
+    
+    installation.installationID = dictionary[@"installationId"];
+    installation.platform = dictionary[@"platform"];
+    installation.pushChannel = dictionary[@"pushChannel"];
+    installation.pushChannelExpired = (BOOL)dictionary[@"pushChannelExpired"];
+    
+    NSString * dateString = dictionary[@"expirationTime"];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    NSDate *date = [formatter dateFromString:dateString];
+    
+    installation.expirationTime = date;
+    
+    return installation;
+}
+
 - (NSData *) toJsonData {
     
     NSDictionary * dictionary = @{
@@ -36,31 +83,6 @@
     
     return [NSJSONSerialization dataWithJSONObject:dictionary
     options:NSJSONWritingPrettyPrinted error:nil];
-}
-
-- (BOOL) updateWithJson:(NSString *)jsonString {
-    NSData * data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSError *error = nil;
-    NSDictionary *dictionary = [NSJSONSerialization
-                                 JSONObjectWithData:data
-                                 options:0
-                                 error:&error];
-    
-    self.installationID = dictionary[@"installationId"];
-    self.platform = dictionary[@"platform"];
-    self.pushChannel = dictionary[@"pushChannel"];
-    self.pushChannelExpired = dictionary[@"pushChannelExpired"];
-    
-    NSString * dateString = dictionary[@"expirationTime"];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
-    NSDate *date = [formatter dateFromString:dateString];
-    
-    self.expirationTime = date;
-    
-    return true;
 }
 
 @end
