@@ -99,8 +99,7 @@ static NSString* _hubName;
     }];
 }
 
-+ (NSDictionary*) parseConnectionString:(NSString*) connectionString
-{
++ (NSDictionary*) parseConnectionString:(NSString*) connectionString {
     NSArray *allField = [connectionString componentsSeparatedByString:@";"];
     
     NSMutableDictionary* result = [NSMutableDictionary dictionary];
@@ -149,8 +148,7 @@ static NSString* _hubName;
     return result;
 }
 
-+ (NSURL*) modifyEndpoint:(NSURL*)endPoint scheme:(NSString*)scheme
-{
++ (NSURL*) modifyEndpoint:(NSURL*)endPoint scheme:(NSString*)scheme {
     NSString* modifiedEndpoint = [NSString stringWithString:[endPoint absoluteString]];
     
     if(![modifiedEndpoint hasSuffix:@"/"])
