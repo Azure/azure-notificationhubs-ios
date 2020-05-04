@@ -16,10 +16,14 @@
 
 + (void) initWithConnectionString:(NSString *) connectionString withHubName:(NSString *) hubName;
 
++ (void) saveInstallation;
++ (void) setPushChannel:(NSString *) pushChannel;
++ (BOOL) addTags:(NSArray<NSString *> *) tags;
++ (BOOL) removeTags:(NSArray<NSString *> *) tags;
++ (NSArray<NSString *> *) getTags;
++ (void) clearTags;
 + (MSInstallation *) getInstallation;
-+ (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken;
 
-- (MSInstallation *) getInstallation;
-- (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken;
+- (void) saveInstallation;
 
 @end

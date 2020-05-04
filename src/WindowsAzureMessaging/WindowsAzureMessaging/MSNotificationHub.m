@@ -16,11 +16,10 @@ static dispatch_once_t onceToken;
  
 @implementation MSNotificationHub
 
-@synthesize tags, templates;
+@synthesize templates;
 
 - (instancetype)init {
     if ((self = [super init])) {
-        tags = [NSMutableArray new];
         templates = [NSMutableDictionary new];
         
         [self registerForRemoteNotifications];
@@ -80,12 +79,9 @@ static dispatch_once_t onceToken;
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *pushToken = [self convertTokenToString:deviceToken];
     NSLog(@"Registered for push notifications with token: %@", pushToken);
-    if ([pushToken isEqualToString:self.pushToken]) {
-      return;
-    }
-    self.pushToken = pushToken;
     
-    [MSInstallationManager upsertInstallationWithDeviceToken: sharedInstance.pushToken];
+    [MSInstallationManager setPushChannel: pushToken];
+    [MSInstallationManager saveInstallation];
 }
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -131,26 +127,38 @@ static dispatch_once_t onceToken;
 
 #pragma mark Tags
 
-+ (void)addTag:(NSString *)tag {
-    [[MSNotificationHub sharedInstance] addInstallationTag:tag];
++ (BOOL)addTag:(NSString *)tag {
+    return [MSNotificationHub addTags:[NSArray arrayWithObject:tag]];
 }
 
-+ (void)removeTag:(NSString *)tag {
-    [[MSNotificationHub sharedInstance] removeInstallationTag:tag];
++ (BOOL)addTags:(NSArray<NSString *> *)tags {
+    [MSInstallationManager addTags:tags];
+    [MSInstallationManager saveInstallation];
+    
+    return YES;
+}
+
++ (BOOL)removeTag:(NSString *)tag {
+    return [MSNotificationHub removeTags:[NSArray arrayWithObject:tag]];
+}
+
++ (BOOL)removeTags:(NSArray<NSString *> *)tags {
+    if(![MSInstallationManager removeTags:tags]) {
+        return NO;
+    }
+    
+    [MSInstallationManager saveInstallation];
+    
+    return YES;
 }
 
 + (NSArray<NSString *> *)getTags {
-    return [[MSNotificationHub sharedInstance] tags];
+    return [MSInstallationManager getTags];
 }
 
-- (void)addInstallationTag:(NSString *)tag {
-    // TODO: Store in local storage and mark as dirty
-    [self.tags addObject:tag];
-}
-
-- (void)removeInstallationTag:(NSString *)tag {
-    // TODO: Store in local storage and mark as dirty
-    [self.tags removeObject:tag];
++ (void)clearTags {
+    [MSInstallationManager clearTags];
+    [MSInstallationManager saveInstallation];
 }
 
 #pragma mark Templates

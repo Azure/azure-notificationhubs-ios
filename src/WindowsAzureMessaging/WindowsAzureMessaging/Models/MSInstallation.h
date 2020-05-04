@@ -9,8 +9,7 @@
 @interface MSInstallation : NSObject <NSCoding>
 
 @property(nonatomic, copy) NSString *installationID, *pushChannel, *platform;
-@property() BOOL pushChannelExpired;
-@property(nonatomic, copy) NSDate *expirationTime;
+@property(nonatomic, copy) NSArray<NSString *> *tags;
 
 - (instancetype) initWithDeviceToken:(NSString *) deviceToken;
 
@@ -18,6 +17,11 @@
 + (MSInstallation *) createFromJsonString: (NSString *) jsonString;
 
 - (NSData *) toJsonData;
+
+- (BOOL) addTags:(NSArray<NSString *> *) tags;
+- (BOOL) removeTags:(NSArray<NSString *> *) tags;
+- (NSArray<NSString *> *) getTags;
+- (void) clearTags;
 
 @end
 

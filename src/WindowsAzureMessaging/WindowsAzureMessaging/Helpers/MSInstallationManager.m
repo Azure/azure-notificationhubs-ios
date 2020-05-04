@@ -40,21 +40,71 @@ static NSString* _hubName;
     _hubName = hubName;
 }
 
++ (void) setPushChannel:(NSString *)pushChannel {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    installation.pushChannel = pushChannel;
+    
+    [MSLocalStorage upsertInstallation:installation];
+}
+
 + (MSInstallation *) getInstallation {
-    return [[MSInstallationManager sharedInstance] getInstallation];
-}
-
-+ (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken {
-    [[MSInstallationManager sharedInstance] upsertInstallationWithDeviceToken:deviceToken];
-}
-
-- (MSInstallation *) getInstallation {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
     
     return installation;
 }
 
-- (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken {
++ (BOOL) addTags:(NSArray<NSString *> *)tags {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    [installation addTags:tags];
+    
+    [MSLocalStorage upsertInstallation:installation];
+    
+    return YES;
+}
+
++ (BOOL) removeTags:(NSArray<NSString *> *)tags {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if(installation.tags == nil || [installation.tags count] == 0) {
+        return NO;
+    }
+    
+    [installation removeTags:tags];
+    
+    [MSLocalStorage upsertInstallation:installation];
+    
+    return YES;
+}
+
++ (void) clearTags {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if(!installation) {
+        installation = [MSInstallation new];
+    }
+    
+    [installation clearTags];
+    
+    [MSLocalStorage upsertInstallation:installation];
+}
+
++ (NSArray<NSString *> *) getTags {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if(!installation) {
+        installation = [MSInstallation new];
+    }
+    
+    return [installation getTags];
+}
+
++ (void) saveInstallation {
+    [[MSInstallationManager sharedInstance] saveInstallation];
+}
+
+- (void) saveInstallation {
     
     if(!tokenProvider) {
         NSLog(@"Invalid connection string");
@@ -63,8 +113,9 @@ static NSString* _hubName;
         
     MSInstallation *installation = [MSLocalStorage loadInstallation];
     
-    if (!installation) {
-        installation = [MSInstallation createFromDeviceToken:deviceToken];
+    if(!installation.pushChannel) {
+        NSLog(@"You should setup Push Channel before save installation");
+        return;
     }
     
     NSString *endpoint = [connectionDictionary objectForKey:@"endpoint"];
@@ -91,11 +142,6 @@ static NSString* _hubName;
         if (error) {
             NSLog(@"Error via creating installation: %@", error.localizedDescription);
         }
-        
-        [httpClient sendAsync:requestUrl method:@"GET" headers:headers data:nil completionHandler:^(NSData * _Nullable responseBody, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *str = [[NSString alloc] initWithData:responseBody encoding:NSUTF8StringEncoding];
-            [MSLocalStorage upsertInstallation:[MSInstallation createFromJsonString:str]];
-        }];
     }];
 }
 
