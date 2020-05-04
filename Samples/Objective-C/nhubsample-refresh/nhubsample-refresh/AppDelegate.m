@@ -21,8 +21,6 @@
     [MSNotificationHub initWithConnectionString:connectionString withHubName:hubName];
     [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
     
-    [MSNotificationHub setDelegate:self];
-    
     return YES;
 }
 

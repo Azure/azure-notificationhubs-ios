@@ -20,8 +20,8 @@
     self.tagsTable.dataSource = self;
     [self.tagsTable reloadData];
     
-    self.deviceTokenLabel.text = @"device-token";
-    self.installationIdLabel.text = @"installation-id";
+    self.deviceTokenLabel.text = [[MSNotificationHub getInstallation] installationID];
+    self.installationIdLabel.text = [[MSNotificationHub getInstallation] pushChannel];
     
     self.notificationsTableView = (NotificationsTableViewController*) [[(UINavigationController*)[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
     

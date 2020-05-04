@@ -6,9 +6,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MSInstallation : NSObject
+@interface MSInstallation : NSObject <NSCoding>
 
-@property(nonatomic, copy, readonly) NSString *installationID;
+@property(nonatomic, copy) NSString *installationID, *pushChannel, *platform;
+@property() BOOL pushChannelExpired;
+@property(nonatomic, copy) NSDate *expirationTime;
+
+- (instancetype) initWithDeviceToken:(NSString *) deviceToken;
+
++ (MSInstallation *) createFromDeviceToken:(NSString *) deviceToken;
++ (MSInstallation *) createFromJsonString: (NSString *) jsonString;
+
+- (NSData *) toJsonData;
 
 @end
 

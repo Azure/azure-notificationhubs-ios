@@ -29,8 +29,7 @@
 @property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, NSString *> *additionalData;
 
 -(instancetype)initWithNotification:(NSDictionary *)notification;
-+(MSNotificationHubMessage *)createFromNotification:(NSDictionary *)notification;
-
++(instancetype)createFromNotification:(NSDictionary *)notification;
 @end
 
 #endif /* MSNotificationHubMessage_h */

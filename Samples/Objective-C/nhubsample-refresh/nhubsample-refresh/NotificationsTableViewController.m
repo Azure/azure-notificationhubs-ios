@@ -36,7 +36,7 @@
     
     NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    cell.notificationSummaryLabel.text = [self.notifications objectAtIndex:indexPath.row].title;
+    cell.notificationSummaryLabel.text = [self.notifications objectAtIndex:indexPath.row].title ?: [self.notifications objectAtIndex:indexPath.row].message;
     
     return cell;
 }

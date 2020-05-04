@@ -5,17 +5,23 @@
 #define MSNotificationHub_h
 
 #import <Foundation/Foundation.h>
+#import "MSTokenProvider.h"
+#import "MSLocalStorage.h"
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHubMessage.h"
 #import "MSNotificationHubDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MSInstallation;
+@class MSInstallationTemplate;
+
 /**
  * The Azure Notification Hubs service
 */
 @interface MSNotificationHub : NSObject
 
+@property(nonatomic, copy, readonly) MSInstallation *installation;
 @property(nonatomic, copy, readonly) NSString *hubName;
 @property(nonatomic, copy, readonly) NSURL *serviceEndpoint;
 @property(nonatomic, copy, readonly) NSMutableArray *tags;
@@ -55,8 +61,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)removeTemplate:(NSString *)key;
 + (MSInstallationTemplate *)getTemplate:(NSString *)key;
 
-#pragma mark Helpers
+#pragma mark Installation Support
++ (MSInstallation *) getInstallation;
 
+#pragma mark Helpers
 // TODO: Move into internal
 - (NSString *)convertTokenToString:(NSData *)token;
 

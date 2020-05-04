@@ -20,8 +20,8 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         tagsTable.dataSource = self
         tagsTable.reloadData()
         
-        deviceTokenLabel.text = "device-token"
-        installationIdLabel.text = "installation-id"
+        deviceTokenLabel.text = MSNotificationHub.getInstallation().installationID
+        installationIdLabel.text = MSNotificationHub.getInstallation().pushChannel
         
         notificationsTableView = (self.tabBarController?.viewControllers?[1] as! UINavigationController).viewControllers[0] as? NotificationsTableViewController
         
@@ -67,7 +67,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     }
     
     func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
-        NSLog("Received notification: %@; %@", notification.title, notification.message)
+        NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.message)
         notificationsTableView?.addNotification(notification);
         
         let alertController = UIAlertController(title: notification.title, message: notification.message, preferredStyle: .alert)

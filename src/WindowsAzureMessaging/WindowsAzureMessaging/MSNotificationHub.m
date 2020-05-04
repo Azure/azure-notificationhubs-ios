@@ -5,15 +5,18 @@
 #import <UIKit/UIKit.h>
 
 #import "MSNotificationHub.h"
+#import "MSInstallationManager.h"
+#import "MSInstallation.h"
+#import "MSInstallationTemplate.h"
+#import "MSNotificationHubMessage.h"
 
 // Singleton
 static MSNotificationHub *sharedInstance = nil;
 static dispatch_once_t onceToken;
-
+ 
 @implementation MSNotificationHub
 
-@synthesize tags;
-@synthesize templates;
+@synthesize tags, templates;
 
 - (instancetype)init {
     if ((self = [super init])) {
@@ -36,7 +39,7 @@ static dispatch_once_t onceToken;
 }
 
 + (void)initWithConnectionString:(NSString *) connectionString withHubName:(NSString*)notificationHubName {
-    
+    [MSInstallationManager initWithConnectionString:connectionString withHubName: notificationHubName];
 }
 
 - (void)registerForRemoteNotifications {
@@ -81,6 +84,8 @@ static dispatch_once_t onceToken;
       return;
     }
     self.pushToken = pushToken;
+    
+    [MSInstallationManager upsertInstallationWithDeviceToken: sharedInstance.pushToken];
 }
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -169,6 +174,12 @@ static dispatch_once_t onceToken;
 
 - (void)removeInstallationTemplate:(NSString *)key {
     [self.templates removeObjectForKey:key];
+}
+
+#pragma mark Installation
+
++ (MSInstallation *) getInstallation {
+    return [MSInstallationManager getInstallation];
 }
 
 #pragma mark Helpers
