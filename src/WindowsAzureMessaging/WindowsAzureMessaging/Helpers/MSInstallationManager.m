@@ -21,6 +21,7 @@ static NSString* _hubName;
     if(self = [super init]) {
         connectionDictionary = [MSInstallationManager parseConnectionString:_connectionString];
         tokenProvider = [MSTokenProvider createFromConnectionDictionary:connectionDictionary];
+        _httpClient = [MSHttpClient new];
     }
     
     return self;
@@ -35,6 +36,15 @@ static NSString* _hubName;
   return sharedInstance;
 }
 
++ (void)resetInstance {
+    sharedInstance = nil;
+    onceToken = 0;
+}
+
++ (void)setHttpClient:(MSHttpClient *)client {
+    [MSInstallationManager sharedInstance].httpClient = client;
+}
+
 + (void) initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)hubName {
     _connectionString = connectionString;
     _hubName = hubName;
@@ -42,6 +52,7 @@ static NSString* _hubName;
 
 + (void) setPushChannel:(NSString *)pushChannel {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
+
     
     installation.pushChannel = pushChannel;
     
@@ -114,7 +125,7 @@ static NSString* _hubName;
     MSInstallation *installation = [MSLocalStorage loadInstallation];
     
     if(!installation.pushChannel) {
-        NSLog(@"You should setup Push Channel before save installation");
+        NSLog(@"You have to setup Push Channel before save installation");
         return;
     }
     
@@ -129,12 +140,10 @@ static NSString* _hubName;
        @"x-ms-version" : @"2015-01",
        @"Authorization" : sasToken
     };
-    
-    MSHttpClient *httpClient = [MSHttpClient new];
 
     NSData *payload = [installation toJsonData];
     
-    [httpClient sendAsync:requestUrl
+    [_httpClient sendAsync:requestUrl
                 method:@"PUT"
                 headers:headers
                 data:payload

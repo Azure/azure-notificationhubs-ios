@@ -5,6 +5,7 @@
 
 @class MSInstallation;
 @class MSTokenProvider;
+@class MSHttpClient;
 
 @interface MSInstallationManager : NSObject {
 
@@ -13,6 +14,8 @@
     NSDictionary* connectionDictionary;
     NSString* pushToken;
 }
+
+@property(nonatomic) MSHttpClient* httpClient;
 
 + (void) initWithConnectionString:(NSString *) connectionString withHubName:(NSString *) hubName;
 
@@ -23,7 +26,9 @@
 + (NSArray<NSString *> *) getTags;
 + (void) clearTags;
 + (MSInstallation *) getInstallation;
++ (void) setHttpClient:(MSHttpClient *)client;
 
 - (void) saveInstallation;
++ (void) resetInstance;
 
 @end
