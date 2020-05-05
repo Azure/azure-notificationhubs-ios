@@ -132,10 +132,12 @@ static dispatch_once_t onceToken;
 }
 
 + (BOOL)addTags:(NSArray<NSString *> *)tags {
-    [MSInstallationManager addTags:tags];
-    [MSInstallationManager saveInstallation];
+    if([MSInstallationManager addTags:tags]) {
+        [MSInstallationManager saveInstallation];
+        return YES;
+    }
     
-    return YES;
+    return NO;
 }
 
 + (BOOL)removeTag:(NSString *)tag {

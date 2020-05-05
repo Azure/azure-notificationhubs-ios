@@ -67,11 +67,12 @@ static NSString* _hubName;
 + (BOOL) addTags:(NSArray<NSString *> *)tags {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
     
-    [installation addTags:tags];
+    if([installation addTags:tags]) {
+        [MSLocalStorage upsertInstallation:installation];
+        return YES;
+    }
     
-    [MSLocalStorage upsertInstallation:installation];
-    
-    return YES;
+    return NO;
 }
 
 + (BOOL) removeTags:(NSArray<NSString *> *)tags {

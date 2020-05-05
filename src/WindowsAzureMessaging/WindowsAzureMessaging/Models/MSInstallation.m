@@ -82,11 +82,11 @@
     
     for(NSString *tag in tags) {
         if(![tmpTags containsObject:tag]) {
-            if([regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0)
-            {
+            if([regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0) {
                 [tmpTags addObject:tag];
             } else {
                 NSLog(@"Invalid tag: %@", tag);
+                return NO;
             }
             
         }

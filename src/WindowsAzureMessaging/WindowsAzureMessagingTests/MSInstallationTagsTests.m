@@ -40,7 +40,7 @@
     [MSLocalStorage upsertInstallation:installation];
     
     // Then
-    XCTAssertTrue([MSNotificationHub addTag:@"tag 1"]);
+    XCTAssertFalse([MSNotificationHub addTag:@"tag 1"]);
     MSInstallation *installationWithTag = [MSLocalStorage loadInstallation];
     XCTAssertFalse([installationWithTag.tags containsObject:@"tag 1"]);
 }
