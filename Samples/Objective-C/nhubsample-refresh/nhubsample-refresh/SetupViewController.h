@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *addNewTagTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tagsTable;
 
-@property (weak, nonatomic) NSArray<NSString *> *tags;
+@property (nonatomic, copy) NSArray<NSString *> *tags;
 @property (weak, nonatomic) NotificationsTableViewController *notificationsTableView;
 
 @end

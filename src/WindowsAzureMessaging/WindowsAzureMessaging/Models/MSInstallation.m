@@ -9,13 +9,15 @@
     [coder encodeObject:self.installationID forKey:@"installationID"];
     [coder encodeObject:self.pushChannel forKey:@"pushChannel"];
     [coder encodeObject:self.platform forKey:@"platform"];
+    [coder encodeObject:self.tags forKey:@"tags"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
-        self.installationID = [coder decodeObjectForKey:@"installationID"];
+        self.installationID = [coder decodeObjectForKey:@"installationID"] ?: [[NSUUID UUID] UUIDString];
         self.pushChannel = [coder decodeObjectForKey:@"pushChannel"];
-        self.platform = [coder decodeObjectForKey:@"platform"];
+        self.platform = [coder decodeObjectForKey:@"platform"] ?: @"APNS";
+        self.tags = [coder decodeObjectForKey:@"tags"];
     }
     
     return self;
@@ -55,15 +57,7 @@
     installation.installationID = dictionary[@"installationId"];
     installation.platform = dictionary[@"platform"];
     installation.pushChannel = dictionary[@"pushChannel"];
-    installation.pushChannelExpired = dictionary[@"pushChannelExpired"];
-    
-    NSString * dateString = dictionary[@"expirationTime"];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
-    NSDate *date = [formatter dateFromString:dateString];
-    
-    installation.expirationTime = date;
+    installation.tags = dictionary[@"tags"];
     
     return installation;
 }
@@ -73,11 +67,50 @@
     NSDictionary * dictionary = @{
        @"installationId" : self.installationID,
        @"platform" : self.platform,
-       @"pushChannel" : self.pushChannel
+       @"pushChannel" : self.pushChannel,
+       @"tags" : self.tags ?: @""
     };
     
     return [NSJSONSerialization dataWithJSONObject:dictionary
     options:NSJSONWritingPrettyPrinted error:nil];
+}
+
+- (BOOL) addTags:(NSArray<NSString *> *)tags {
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$"
+    options:NSRegularExpressionCaseInsensitive error:nil];
+    NSMutableArray *tmpTags = [NSMutableArray arrayWithArray:self.tags];
+    
+    for(NSString *tag in tags) {
+        if(![tmpTags containsObject:tag]) {
+            if([regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0) {
+                [tmpTags addObject:tag];
+            } else {
+                NSLog(@"Invalid tag: %@", tag);
+                return NO;
+            }
+            
+        }
+    }
+    
+    self.tags = tmpTags;
+    return YES;
+}
+
+- (NSArray<NSString *> *) getTags {
+    return self.tags;
+}
+
+- (BOOL) removeTags:(NSArray<NSString *> *)tags {
+    NSMutableArray *tmpTags = [NSMutableArray arrayWithArray:self.tags];
+    
+    [tmpTags removeObjectsInArray:tags];
+    
+    self.tags = tmpTags;
+    return YES;
+}
+
+- (void) clearTags {
+    self.tags = [NSArray new];
 }
 
 @end

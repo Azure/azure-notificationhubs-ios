@@ -24,12 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, readonly) MSInstallation *installation;
 @property(nonatomic, copy, readonly) NSString *hubName;
 @property(nonatomic, copy, readonly) NSURL *serviceEndpoint;
-@property(nonatomic, copy, readonly) NSMutableArray *tags;
 @property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, MSInstallationTemplate *> *templates;
 
 // TODO: Move to internal
 @property(nonatomic) id<MSNotificationHubDelegate> delegate;
-@property(atomic, copy) NSString *pushToken;
 
 /**
  * Initializes the Notification Hub with the connection string from the Access Policy, and Hub Name.
@@ -51,9 +49,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Tags Support
 
-+ (void)addTag:(NSString *)tag;
-+ (void)removeTag:(NSString *)tag;
++ (BOOL)addTag:(NSString *)tag;
++ (BOOL)addTags:(NSArray<NSString *> *)tags;
++ (BOOL)removeTag:(NSString *)tag;
++ (BOOL)removeTags:(NSArray<NSString *> *)tags;
 + (NSArray *)getTags;
++ (void)clearTags;
 
 #pragma mark Template Support
 

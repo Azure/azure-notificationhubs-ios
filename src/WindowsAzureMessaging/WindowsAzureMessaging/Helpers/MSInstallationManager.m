@@ -21,6 +21,7 @@ static NSString* _hubName;
     if(self = [super init]) {
         connectionDictionary = [MSInstallationManager parseConnectionString:_connectionString];
         tokenProvider = [MSTokenProvider createFromConnectionDictionary:connectionDictionary];
+        _httpClient = [MSHttpClient new];
     }
     
     return self;
@@ -35,26 +36,86 @@ static NSString* _hubName;
   return sharedInstance;
 }
 
++ (void)resetInstance {
+    sharedInstance = nil;
+    onceToken = 0;
+}
+
++ (void)setHttpClient:(MSHttpClient *)client {
+    [MSInstallationManager sharedInstance].httpClient = client;
+}
+
 + (void) initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)hubName {
     _connectionString = connectionString;
     _hubName = hubName;
 }
 
++ (void) setPushChannel:(NSString *)pushChannel {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    installation.pushChannel = pushChannel;
+    
+    [MSLocalStorage upsertInstallation:installation];
+}
+
 + (MSInstallation *) getInstallation {
-    return [[MSInstallationManager sharedInstance] getInstallation];
-}
-
-+ (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken {
-    [[MSInstallationManager sharedInstance] upsertInstallationWithDeviceToken:deviceToken];
-}
-
-- (MSInstallation *) getInstallation {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
     
     return installation;
 }
 
-- (void) upsertInstallationWithDeviceToken: (NSString *) deviceToken {
++ (BOOL) addTags:(NSArray<NSString *> *)tags {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if([installation addTags:tags]) {
+        [MSLocalStorage upsertInstallation:installation];
+        return YES;
+    }
+    
+    return NO;
+}
+
++ (BOOL) removeTags:(NSArray<NSString *> *)tags {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if(installation.tags == nil || [installation.tags count] == 0) {
+        return NO;
+    }
+    
+    [installation removeTags:tags];
+    
+    [MSLocalStorage upsertInstallation:installation];
+    
+    return YES;
+}
+
++ (void) clearTags {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if(!installation) {
+        installation = [MSInstallation new];
+    }
+    
+    [installation clearTags];
+    
+    [MSLocalStorage upsertInstallation:installation];
+}
+
++ (NSArray<NSString *> *) getTags {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if(!installation) {
+        installation = [MSInstallation new];
+    }
+    
+    return [installation getTags];
+}
+
++ (void) saveInstallation {
+    [[MSInstallationManager sharedInstance] saveInstallation];
+}
+
+- (void) saveInstallation {
     
     if(!tokenProvider) {
         NSLog(@"Invalid connection string");
@@ -63,8 +124,9 @@ static NSString* _hubName;
         
     MSInstallation *installation = [MSLocalStorage loadInstallation];
     
-    if (!installation) {
-        installation = [MSInstallation createFromDeviceToken:deviceToken];
+    if(!installation.pushChannel) {
+        NSLog(@"You have to setup Push Channel before save installation");
+        return;
     }
     
     NSString *endpoint = [connectionDictionary objectForKey:@"endpoint"];
@@ -78,12 +140,10 @@ static NSString* _hubName;
        @"x-ms-version" : @"2015-01",
        @"Authorization" : sasToken
     };
-    
-    MSHttpClient *httpClient = [MSHttpClient new];
 
     NSData *payload = [installation toJsonData];
     
-    [httpClient sendAsync:requestUrl
+    [_httpClient sendAsync:requestUrl
                 method:@"PUT"
                 headers:headers
                 data:payload
@@ -91,11 +151,6 @@ static NSString* _hubName;
         if (error) {
             NSLog(@"Error via creating installation: %@", error.localizedDescription);
         }
-        
-        [httpClient sendAsync:requestUrl method:@"GET" headers:headers data:nil completionHandler:^(NSData * _Nullable responseBody, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *str = [[NSString alloc] initWithData:responseBody encoding:NSUTF8StringEncoding];
-            [MSLocalStorage upsertInstallation:[MSInstallation createFromJsonString:str]];
-        }];
     }];
 }
 
