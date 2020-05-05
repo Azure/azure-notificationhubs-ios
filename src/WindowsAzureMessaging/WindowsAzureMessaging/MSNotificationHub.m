@@ -1,31 +1,31 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#import <UserNotifications/UserNotifications.h>
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 
-#import "MSNotificationHub.h"
-#import "MSInstallationManager.h"
 #import "MSInstallation.h"
+#import "MSInstallationManager.h"
 #import "MSInstallationTemplate.h"
+#import "MSNotificationHub.h"
 #import "MSNotificationHubMessage.h"
 
 // Singleton
 static MSNotificationHub *sharedInstance = nil;
 static dispatch_once_t onceToken;
- 
+
 @implementation MSNotificationHub
 
 @synthesize templates;
 
 - (instancetype)init {
-    if ((self = [super init])) {
-        templates = [NSMutableDictionary new];
-        
-        [self registerForRemoteNotifications];
-    }
-    
-    return self;
+  if ((self = [super init])) {
+    templates = [NSMutableDictionary new];
+
+    [self registerForRemoteNotifications];
+  }
+
+  return self;
 }
 
 + (instancetype)sharedInstance {
@@ -37,26 +37,31 @@ static dispatch_once_t onceToken;
   return sharedInstance;
 }
 
-+ (void)initWithConnectionString:(NSString *) connectionString withHubName:(NSString*)notificationHubName {
-    [MSInstallationManager initWithConnectionString:connectionString withHubName: notificationHubName];
++ (void)initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)notificationHubName {
+  [MSInstallationManager initWithConnectionString:connectionString withHubName:notificationHubName];
 }
 
 - (void)registerForRemoteNotifications {
   if (@available(iOS 10.0, *)) {
-      UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-      UNAuthorizationOptions authOptions = (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
-      [center requestAuthorizationWithOptions:authOptions completionHandler:^(BOOL granted, NSError *_Nullable error) {
-          if (granted) {
-              NSLog(@"Push notifications authorization was granted.");
-          } else {
-              NSLog(@"Push notifications authorization was denied.");
-          }
-          if (error) {
-              NSLog(@"Push notifications authorization request has been finished with error: %@", error.localizedDescription);
-          }
-      }];
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    UNAuthorizationOptions authOptions =
+        (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
+    [center requestAuthorizationWithOptions:authOptions
+                          completionHandler:^(BOOL granted, NSError *_Nullable error) {
+                            if (granted) {
+                              NSLog(@"Push notifications authorization was granted.");
+                            } else {
+                              NSLog(@"Push notifications authorization was denied.");
+                            }
+                            if (error) {
+                              NSLog(@"Push notifications authorization request has "
+                                    @"been finished with error: %@",
+                                    error.localizedDescription);
+                            }
+                          }];
   } else {
-    UIUserNotificationType allNotificationTypes = (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+    UIUserNotificationType allNotificationTypes =
+        (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
   }
@@ -64,28 +69,27 @@ static dispatch_once_t onceToken;
 }
 
 - (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    MSNotificationHubMessage *message = [MSNotificationHubMessage createFromNotification:userInfo];
-    [self didReceivePushNotification:message];
-    
-    if(message.additionalData)
-    {
-        return YES;
-    }
-    return NO;
+  MSNotificationHubMessage *message = [MSNotificationHubMessage createFromNotification:userInfo];
+  [self didReceivePushNotification:message];
+
+  if (message.additionalData) {
+    return YES;
+  }
+  return NO;
 }
 
 #pragma mark Instance Callbacks
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString *pushToken = [self convertTokenToString:deviceToken];
-    NSLog(@"Registered for push notifications with token: %@", pushToken);
-    
-    [MSInstallationManager setPushChannel: pushToken];
-    [MSInstallationManager saveInstallation];
+  NSString *pushToken = [self convertTokenToString:deviceToken];
+  NSLog(@"Registered for push notifications with token: %@", pushToken);
+
+  [MSInstallationManager setPushChannel:pushToken];
+  [MSInstallationManager saveInstallation];
 }
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"Registering for push notifications has been finished with error: %@", error.localizedDescription);
+  NSLog(@"Registering for push notifications has been finished with error: %@", error.localizedDescription);
 }
 
 - (void)didReceivePushNotification:(MSNotificationHubMessage *)notification {
@@ -100,25 +104,24 @@ static dispatch_once_t onceToken;
 #pragma mark Register Callbacks
 
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [sharedInstance didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+  [sharedInstance didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 + (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [sharedInstance didFailToRegisterForRemoteNotificationsWithError:error];
+  [sharedInstance didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
 + (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    return [sharedInstance didReceiveRemoteNotification:userInfo];
+  return [sharedInstance didReceiveRemoteNotification:userInfo];
 }
 
 #pragma mark SDK Basics
 
 + (void)setEnabled:(BOOL)isEnabled {
-    
 }
 
 + (BOOL)isEnabled {
-    return YES;
+  return YES;
 }
 
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate {
@@ -128,68 +131,68 @@ static dispatch_once_t onceToken;
 #pragma mark Tags
 
 + (BOOL)addTag:(NSString *)tag {
-    return [MSNotificationHub addTags:[NSArray arrayWithObject:tag]];
+  return [MSNotificationHub addTags:[NSArray arrayWithObject:tag]];
 }
 
 + (BOOL)addTags:(NSArray<NSString *> *)tags {
-    if([MSInstallationManager addTags:tags]) {
-        [MSInstallationManager saveInstallation];
-        return YES;
-    }
-    
-    return NO;
+  if ([MSInstallationManager addTags:tags]) {
+    [MSInstallationManager saveInstallation];
+    return YES;
+  }
+
+  return NO;
 }
 
 + (BOOL)removeTag:(NSString *)tag {
-    return [MSNotificationHub removeTags:[NSArray arrayWithObject:tag]];
+  return [MSNotificationHub removeTags:[NSArray arrayWithObject:tag]];
 }
 
 + (BOOL)removeTags:(NSArray<NSString *> *)tags {
-    if(![MSInstallationManager removeTags:tags]) {
-        return NO;
-    }
-    
-    [MSInstallationManager saveInstallation];
-    
-    return YES;
+  if (![MSInstallationManager removeTags:tags]) {
+    return NO;
+  }
+
+  [MSInstallationManager saveInstallation];
+
+  return YES;
 }
 
 + (NSArray<NSString *> *)getTags {
-    return [MSInstallationManager getTags];
+  return [MSInstallationManager getTags];
 }
 
 + (void)clearTags {
-    [MSInstallationManager clearTags];
-    [MSInstallationManager saveInstallation];
+  [MSInstallationManager clearTags];
+  [MSInstallationManager saveInstallation];
 }
 
 #pragma mark Templates
 
 + (void)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    [[MSNotificationHub sharedInstance] setInstallationTemplate:template forKey:key];
+  [[MSNotificationHub sharedInstance] setInstallationTemplate:template forKey:key];
 }
 
 + (void)removeTemplate:(NSString *)key {
-    [[MSNotificationHub sharedInstance] removeInstallationTemplate:key];
+  [[MSNotificationHub sharedInstance] removeInstallationTemplate:key];
 }
 
 + (MSInstallationTemplate *)getTemplate:(NSString *)name {
-    return nil;
+  return nil;
 }
 
 - (void)setInstallationTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    // TODO: Store in local storage and mark as dirty
-    [self.templates setValue:template forKey:key];
+  // TODO: Store in local storage and mark as dirty
+  [self.templates setValue:template forKey:key];
 }
 
 - (void)removeInstallationTemplate:(NSString *)key {
-    [self.templates removeObjectForKey:key];
+  [self.templates removeObjectForKey:key];
 }
 
 #pragma mark Installation
 
-+ (MSInstallation *) getInstallation {
-    return [MSInstallationManager getInstallation];
++ (MSInstallation *)getInstallation {
+  return [MSInstallationManager getInstallation];
 }
 
 #pragma mark Helpers
