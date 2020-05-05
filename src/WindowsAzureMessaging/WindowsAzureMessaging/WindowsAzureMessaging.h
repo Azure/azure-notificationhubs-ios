@@ -3,12 +3,12 @@
 //----------------------------------------------------------------
 
 // Legacy API
-#import "SBNotificationHub.h"
 #import "SBConnectionString.h"
+#import "SBNotificationHub.h"
 
 // New API
-#import "MSNotificationHub.h"
 #import "MSInstallation.h"
 #import "MSInstallationTemplate.h"
-#import "MSNotificationHubMessage.h"
+#import "MSNotificationHub.h"
 #import "MSNotificationHubDelegate.h"
+#import "MSNotificationHubMessage.h"

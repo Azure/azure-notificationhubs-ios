@@ -4,12 +4,12 @@
 #ifndef MSNotificationHub_h
 #define MSNotificationHub_h
 
-#import <Foundation/Foundation.h>
-#import "MSTokenProvider.h"
-#import "MSLocalStorage.h"
 #import "MSInstallationTemplate.h"
-#import "MSNotificationHubMessage.h"
+#import "MSLocalStorage.h"
 #import "MSNotificationHubDelegate.h"
+#import "MSNotificationHubMessage.h"
+#import "MSTokenProvider.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * The Azure Notification Hubs service
-*/
+ */
 @interface MSNotificationHub : NSObject
 
 @property(nonatomic, copy, readonly) MSInstallation *installation;
@@ -30,10 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) id<MSNotificationHubDelegate> delegate;
 
 /**
- * Initializes the Notification Hub with the connection string from the Access Policy, and Hub Name.
+ * Initializes the Notification Hub with the connection string from the Access
+ * Policy, and Hub Name.
  * @param connectionString The connection string
  */
-+ (void)initWithConnectionString:(NSString *) connectionString withHubName:(NSString*)notificationHubName;
++ (void)initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)notificationHubName;
 
 #pragma mark Push Initialization
 
@@ -63,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (MSInstallationTemplate *)getTemplate:(NSString *)key;
 
 #pragma mark Installation Support
-+ (MSInstallation *) getInstallation;
++ (MSInstallation *)getInstallation;
 
 #pragma mark Helpers
 // TODO: Move into internal
