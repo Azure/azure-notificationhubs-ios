@@ -18,13 +18,12 @@ static NSString *deviceToken = @"deviceToken";
 @implementation MSInstallationManagerTests
 
 - (void)setUp {
-    [super setUp];
+    [super setUp];    
+    [MSLocalStorage upsertInstallation:[MSInstallation new]];
 }
 
 - (void)tearDown {
     [super tearDown];
-    
-    [MSLocalStorage upsertInstallation:[MSInstallation new]];
     [MSInstallationManager resetInstance];
 }
 

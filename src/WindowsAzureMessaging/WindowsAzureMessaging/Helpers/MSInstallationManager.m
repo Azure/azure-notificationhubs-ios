@@ -52,7 +52,6 @@ static NSString* _hubName;
 
 + (void) setPushChannel:(NSString *)pushChannel {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
-
     
     installation.pushChannel = pushChannel;
     
