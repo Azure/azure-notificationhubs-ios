@@ -23,6 +23,10 @@
 
 /* Begin PBXBuildFile section */
 		143025BC24607C0100E85BFF /* MSInstallationTagsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 143025BB24607C0100E85BFF /* MSInstallationTagsTests.m */; };
+		14A17DEB24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */; };
+		14A17DEC24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */; };
+		14A17DED24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */; };
+		14A17DEE24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */; };
 		35B4DBEC22268D1000EAC781 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		35B4DBED22268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Private, ); }; };
 		35B4DBEE22268D1000EAC781 /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
@@ -219,6 +223,8 @@
 
 /* Begin PBXFileReference section */
 		143025BB24607C0100E85BFF /* MSInstallationTagsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallationTagsTests.m; sourceTree = "<group>"; };
+		14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSDebounceInstallationManager.h; sourceTree = "<group>"; };
+		14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSDebounceInstallationManager.m; sourceTree = "<group>"; };
 		35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8546EA244F5D48005F6B49 /* WindowsAzureMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowsAzureMessagingTests.m; sourceTree = "<group>"; };
@@ -466,6 +472,8 @@
 				CEA47C3624586C6F007B17B3 /* MSInstallationManager.m */,
 				CE3023B9245AC525002CF65B /* MSTokenProvider.h */,
 				CE3023BC245AC669002CF65B /* MSTokenProvider.m */,
+				14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */,
+				14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -623,6 +631,7 @@
 				CE3023BB245AC525002CF65B /* MSTokenProvider.h in Headers */,
 				35B4DBF322268D1000EAC781 /* (null) in Headers */,
 				B3D285542456F09900C78CC8 /* MS_Reachability.h in Headers */,
+				14A17DEC24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */,
 				35B4DBFD22268D1000EAC781 /* (null) in Headers */,
 				B34BA7A42458A11F002457DC /* SBRegistration.h in Headers */,
 				B3D285362456E97F00C78CC8 /* MSHttpCall.h in Headers */,
@@ -671,6 +680,7 @@
 				B3821CC42459AFD400567643 /* MSNotificationHubMessage.h in Headers */,
 				B3D285492456EDD800C78CC8 /* MSConstants+Internal.h in Headers */,
 				B347E23A245AFFC900DBBC3D /* MSInstallation.h in Headers */,
+				14A17DEB24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */,
 				848CB70A16FBE52D00183E8D /* SBTemplateRegistration.h in Headers */,
 				CE3023BA245AC525002CF65B /* MSTokenProvider.h in Headers */,
 				B3D2854B2456EDD800C78CC8 /* MSCompression.h in Headers */,
@@ -838,6 +848,7 @@
 				35B4DBEC22268D1000EAC781 /* (null) in Sources */,
 				35B4DBF822268D1000EAC781 /* (null) in Sources */,
 				35B4DC0122268D1000EAC781 /* (null) in Sources */,
+				14A17DEE24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */,
 				CEA47C38245870B2007B17B3 /* MSInstallationManager.m in Sources */,
 				35B4DBF722268D1000EAC781 /* (null) in Sources */,
 				35B4DBEF22268D1000EAC781 /* (null) in Sources */,
@@ -919,6 +930,7 @@
 				6489DDF924582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */,
 				4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */,
 				A358374916AA3B250041E372 /* SBRegistration.m in Sources */,
+				14A17DED24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */,
 				A358374616AA3B210041E372 /* SBConnectionString.m in Sources */,
 				CEA47C3B24598D2D007B17B3 /* MSInstallationManager.m in Sources */,
 				64F993E1245C49DE0086ABF8 /* MSInstallation.m in Sources */,

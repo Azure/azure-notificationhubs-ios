@@ -16,13 +16,13 @@ static dispatch_once_t onceToken;
 
 @implementation MSNotificationHub
 
-@synthesize templates;
+@synthesize templates, debounceInstallationManager;
 
 - (instancetype)init {
   if ((self = [super init])) {
-    templates = [NSMutableDictionary new];
-
-    [self registerForRemoteNotifications];
+      templates = [NSMutableDictionary new];
+      debounceInstallationManager = [[MSDebounceInstallationManager alloc] initWithInterval:2];
+      [self registerForRemoteNotifications];
   }
 
   return self;
@@ -85,7 +85,7 @@ static dispatch_once_t onceToken;
   NSLog(@"Registered for push notifications with token: %@", pushToken);
 
   [MSInstallationManager setPushChannel:pushToken];
-  [MSInstallationManager saveInstallation];
+  [debounceInstallationManager saveInstallation];
 }
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -136,7 +136,7 @@ static dispatch_once_t onceToken;
 
 + (BOOL)addTags:(NSArray<NSString *> *)tags {
   if ([MSInstallationManager addTags:tags]) {
-    [MSInstallationManager saveInstallation];
+    [debounceInstallationManager saveInstallation];
     return YES;
   }
 
@@ -152,7 +152,7 @@ static dispatch_once_t onceToken;
     return NO;
   }
 
-  [MSInstallationManager saveInstallation];
+  [debounceInstallationManager saveInstallation];
 
   return YES;
 }
@@ -163,7 +163,7 @@ static dispatch_once_t onceToken;
 
 + (void)clearTags {
   [MSInstallationManager clearTags];
-  [MSInstallationManager saveInstallation];
+  [debounceInstallationManager saveInstallation];
 }
 
 #pragma mark Templates
