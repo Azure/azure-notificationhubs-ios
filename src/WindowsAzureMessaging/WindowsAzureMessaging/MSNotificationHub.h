@@ -10,12 +10,12 @@
 #import "MSNotificationHubMessage.h"
 #import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
+#import "MSDebounceInstallationManager.h";
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class MSInstallation;
 @class MSInstallationTemplate;
-
 /**
  * The Azure Notification Hubs service
  */
@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, readonly) NSString *hubName;
 @property(nonatomic, copy, readonly) NSURL *serviceEndpoint;
 @property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, MSInstallationTemplate *> *templates;
+@property(nonatomic) MSDebounceInstallationManager *debounceInstallationManager;
 
 // TODO: Move to internal
 @property(nonatomic) id<MSNotificationHubDelegate> delegate;
