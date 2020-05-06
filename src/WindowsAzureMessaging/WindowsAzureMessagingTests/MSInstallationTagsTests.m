@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 #import <Foundation/Foundation.h>
+#import <UserNotifications/UserNotifications.h>
 #import "WindowsAzureMessaging.h"
 #import "MSTestFrameworks.h"
 #import "MSInstallationManager.h"
@@ -20,6 +21,9 @@
     OCMStub(ClassMethod([_managerMock removeTags:[OCMArg any]])).andForwardToRealObject();
     OCMStub(ClassMethod([_managerMock clearTags])).andForwardToRealObject();
     OCMStub(ClassMethod([_managerMock getTags])).andForwardToRealObject();
+    
+    id notificationCenterMock = OCMClassMock([UNUserNotificationCenter class]);
+    OCMStub(ClassMethod([notificationCenterMock currentNotificationCenter])).andReturn(nil);
 }
 
 -(void) testAddTag{
