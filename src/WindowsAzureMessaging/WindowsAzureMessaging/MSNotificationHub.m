@@ -135,6 +135,26 @@ static dispatch_once_t onceToken;
 }
 
 + (BOOL)addTags:(NSArray<NSString *> *)tags {
+  return [[MSNotificationHub sharedInstance] addTags:tags];
+}
+
++ (BOOL)removeTag:(NSString *)tag {
+  return [MSNotificationHub removeTags:[NSArray arrayWithObject:tag]];
+}
+
++ (BOOL)removeTags:(NSArray<NSString *> *)tags {
+  return [[MSNotificationHub sharedInstance] removeTags:tags];
+}
+
++ (NSArray<NSString *> *)getTags {
+  return [MSInstallationManager getTags];
+}
+
++ (void)clearTags {
+  [[MSNotificationHub sharedInstance] clearTags];
+}
+
+- (BOOL)addTags:(NSArray<NSString *> *)tags {
   if ([MSInstallationManager addTags:tags]) {
     [debounceInstallationManager saveInstallation];
     return YES;
@@ -143,11 +163,7 @@ static dispatch_once_t onceToken;
   return NO;
 }
 
-+ (BOOL)removeTag:(NSString *)tag {
-  return [MSNotificationHub removeTags:[NSArray arrayWithObject:tag]];
-}
-
-+ (BOOL)removeTags:(NSArray<NSString *> *)tags {
+- (BOOL)removeTags:(NSArray<NSString *> *)tags {
   if (![MSInstallationManager removeTags:tags]) {
     return NO;
   }
@@ -157,11 +173,7 @@ static dispatch_once_t onceToken;
   return YES;
 }
 
-+ (NSArray<NSString *> *)getTags {
-  return [MSInstallationManager getTags];
-}
-
-+ (void)clearTags {
+- (void)clearTags {
   [MSInstallationManager clearTags];
   [debounceInstallationManager saveInstallation];
 }

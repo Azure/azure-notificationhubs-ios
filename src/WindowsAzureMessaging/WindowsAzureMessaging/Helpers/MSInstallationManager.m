@@ -92,13 +92,10 @@ static NSString* _hubName;
 + (void) clearTags {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
     
-    if(!installation) {
-        installation = [MSInstallation new];
+    if(installation && installation.tags && [installation.tags count] > 0) {
+        [installation clearTags];
+        [MSLocalStorage upsertInstallation:installation];
     }
-    
-    [installation clearTags];
-    
-    [MSLocalStorage upsertInstallation:installation];
 }
 
 + (NSArray<NSString *> *) getTags {
