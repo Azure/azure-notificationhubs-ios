@@ -113,4 +113,23 @@
     self.tags = [NSArray new];
 }
 
+- (NSUInteger) hash {
+    NSUInteger result = 0;
+    
+    result += [self.installationID hash];
+    result += [self.platform hash];
+    result += [self.pushChannel hash];
+    result += [self.tags hash];
+    
+    return result;
+}
+
+- (BOOL) isEqual:(id)object {
+    if (self == object) {
+      return YES;
+    }
+    
+    return [self hash] == [object hash];
+}
+
 @end

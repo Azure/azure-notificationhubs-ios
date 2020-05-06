@@ -147,6 +147,8 @@ static NSString* _hubName;
                 completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
         if (error) {
             NSLog(@"Error via creating installation: %@", error.localizedDescription);
+        } else {
+            [MSLocalStorage upsertLastInstallation:installation];
         }
     }];
 }
