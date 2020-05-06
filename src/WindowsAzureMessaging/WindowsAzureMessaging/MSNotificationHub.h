@@ -10,7 +10,7 @@
 #import "MSNotificationHubMessage.h"
 #import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
-#import "MSDebounceInstallationManager.h";
+#import "MSDebounceInstallationManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

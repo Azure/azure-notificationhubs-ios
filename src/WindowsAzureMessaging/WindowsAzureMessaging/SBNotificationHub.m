@@ -101,7 +101,7 @@ NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=IosSdk; os
     [self retrieveAllRegistrationsWithDeviceToken:refreshDeviceToken
                                        completion:^(NSArray *regs, NSError *error) {
                                          if (error == nil) {
-                                           [storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
+                                             [self->storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
                                            [self createOrUpdateWith:name payload:payload deviceToken:deviceToken completion:completion];
                                          } else {
                                            if (completion) {
@@ -169,7 +169,7 @@ NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=IosSdk; os
     [self retrieveAllRegistrationsWithDeviceToken:refreshDeviceToken
                                        completion:^(NSArray *regs, NSError *error) {
                                          if (error == nil) {
-                                           [storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
+                                             [self->storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
                                            [self createOrUpdateWith:name payload:payload deviceToken:deviceToken completion:completion];
                                          } else {
                                            if (completion) {
@@ -232,7 +232,7 @@ NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=IosSdk; os
                                      NSURL *locationUrl =
                                          [[NSURL alloc] initWithString:[[response allHeaderFields] objectForKey:@"Location"]];
                                      NSString *registrationId = [self extractRegistrationIdFromLocationUri:locationUrl];
-                                     [storageManager updateWithRegistrationName:name
+                                       [self->storageManager updateWithRegistrationName:name
                                                                  registrationId:registrationId
                                                                            eTag:@"*"
                                                                     deviceToken:deviceToken];
@@ -310,7 +310,7 @@ NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=IosSdk; os
                                    }
 
                                    for (SBRegistration *retrieved in registrations) {
-                                     [storageManager updateWithRegistration:retrieved];
+                                       [self->storageManager updateWithRegistration:retrieved];
                                    }
 
                                    if (completion) {
@@ -353,7 +353,7 @@ NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=IosSdk; os
                                        ETag:@"*"
                                  completion:^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                                    if (error == nil || [error code] == 404) {
-                                     [storageManager deleteWithRegistrationName:templateName];
+                                       [self->storageManager deleteWithRegistrationName:templateName];
                                      error = nil;
                                    }
 
