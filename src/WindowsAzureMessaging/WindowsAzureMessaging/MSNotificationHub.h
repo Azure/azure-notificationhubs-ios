@@ -1,16 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#ifndef MSNotificationHub_h
-#define MSNotificationHub_h
-
+#import "MSDebounceInstallationManager.h"
 #import "MSInstallationTemplate.h"
 #import "MSLocalStorage.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
 #import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
-#import "MSDebounceInstallationManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -74,5 +71,3 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
-
-#endif /* MSNotificationHub_h */

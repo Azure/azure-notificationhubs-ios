@@ -42,7 +42,7 @@
       errorMsg = @"Unknown error!";
       break;
     }
-    NSLog(@"Compression failed with error: %@", errorMsg); //error
+    NSLog(@"Compression failed with error: %@", errorMsg); // error
     return nil;
   }
 
@@ -75,7 +75,7 @@
       errorMsg = @"Unknown error!";
       break;
     }
-    NSLog(@"Deflate failed with error: %@", errorMsg); //error
+    NSLog(@"Deflate failed with error: %@", errorMsg); // error
     deflateEnd(&zStreamStruct);
     return nil;
   }

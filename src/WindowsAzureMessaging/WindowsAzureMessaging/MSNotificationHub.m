@@ -20,9 +20,9 @@ static dispatch_once_t onceToken;
 
 - (instancetype)init {
   if ((self = [super init])) {
-      templates = [NSMutableDictionary new];
-      debounceInstallationManager = [[MSDebounceInstallationManager alloc] initWithInterval:2];
-      [self registerForRemoteNotifications];
+    templates = [NSMutableDictionary new];
+    debounceInstallationManager = [[MSDebounceInstallationManager alloc] initWithInterval:2];
+    [self registerForRemoteNotifications];
   }
 
   return self;
@@ -42,30 +42,30 @@ static dispatch_once_t onceToken;
 }
 
 - (void)registerForRemoteNotifications {
-    if (@available(iOS 10.0, *)) {
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        UNAuthorizationOptions authOptions =
-            (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
-        [center requestAuthorizationWithOptions:authOptions
-                              completionHandler:^(BOOL granted, NSError *_Nullable error) {
-                                if (granted) {
-                                  NSLog(@"Push notifications authorization was granted.");
-                                } else {
-                                  NSLog(@"Push notifications authorization was denied.");
-                                }
-                                if (error) {
-                                  NSLog(@"Push notifications authorization request has "
-                                        @"been finished with error: %@",
-                                        error.localizedDescription);
-                                }
-                              }];
-    } else {
-        UIUserNotificationType allNotificationTypes =
-            (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    }
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
+  if (@available(iOS 10.0, *)) {
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    UNAuthorizationOptions authOptions =
+        (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
+    [center requestAuthorizationWithOptions:authOptions
+                          completionHandler:^(BOOL granted, NSError *_Nullable error) {
+                            if (granted) {
+                              NSLog(@"Push notifications authorization was granted.");
+                            } else {
+                              NSLog(@"Push notifications authorization was denied.");
+                            }
+                            if (error) {
+                              NSLog(@"Push notifications authorization request has "
+                                    @"been finished with error: %@",
+                                    error.localizedDescription);
+                            }
+                          }];
+  } else {
+    UIUserNotificationType allNotificationTypes =
+        (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+  }
+  [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 - (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {

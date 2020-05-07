@@ -1,10 +1,5 @@
-//
-//  NotificationTableViewCell.m
-//  nhubsample-refresh
-//
-//  Created by Artem Egorov on 4/24/20.
-//  Copyright © 2020 Microsoft. All rights reserved.
-//
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
 #import "NotificationTableViewCell.h"
 

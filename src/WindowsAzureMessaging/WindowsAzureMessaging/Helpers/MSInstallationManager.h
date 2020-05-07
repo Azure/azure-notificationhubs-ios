@@ -10,25 +10,25 @@
 @interface MSInstallationManager : NSObject {
 
 @private
-    MSTokenProvider* tokenProvider;
-    NSDictionary* connectionDictionary;
-    NSString* pushToken;
+  MSTokenProvider *tokenProvider;
+  NSDictionary *connectionDictionary;
+  NSString *pushToken;
 }
 
-@property(nonatomic) MSHttpClient* httpClient;
+@property(nonatomic) MSHttpClient *httpClient;
 
-+ (void) initWithConnectionString:(NSString *) connectionString withHubName:(NSString *) hubName;
++ (void)initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)hubName;
 
-+ (void) saveInstallation;
-+ (void) setPushChannel:(NSString *) pushChannel;
-+ (BOOL) addTags:(NSArray<NSString *> *) tags;
-+ (BOOL) removeTags:(NSArray<NSString *> *) tags;
-+ (NSArray<NSString *> *) getTags;
-+ (void) clearTags;
-+ (MSInstallation *) getInstallation;
-+ (void) setHttpClient:(MSHttpClient *)client;
++ (void)saveInstallation;
++ (void)setPushChannel:(NSString *)pushChannel;
++ (BOOL)addTags:(NSArray<NSString *> *)tags;
++ (BOOL)removeTags:(NSArray<NSString *> *)tags;
++ (NSArray<NSString *> *)getTags;
++ (void)clearTags;
++ (MSInstallation *)getInstallation;
++ (void)setHttpClient:(MSHttpClient *)client;
 
-- (void) saveInstallation;
-+ (void) resetInstance;
+- (void)saveInstallation;
++ (void)resetInstance;
 
 @end

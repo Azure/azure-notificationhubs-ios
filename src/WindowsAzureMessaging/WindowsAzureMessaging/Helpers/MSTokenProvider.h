@@ -4,17 +4,17 @@
 @interface MSTokenProvider : NSObject {
 
 @private
-    NSString* _sharedAccessKey;
-    NSString* _sharedAccessKeyName ;
-    NSString* _sharedSecret;
-    NSString* _sharedSecretIssurer;
-    NSURL* _stsHostName;
-    NSURL* _serviceEndPoint;
+  NSString *_sharedAccessKey;
+  NSString *_sharedAccessKeyName;
+  NSString *_sharedSecret;
+  NSString *_sharedSecretIssurer;
+  NSURL *_stsHostName;
+  NSURL *_serviceEndPoint;
 }
 
-@property (nonatomic) NSInteger timeToExpireinMins;
-+ (MSTokenProvider*) createFromConnectionDictionary:(NSDictionary*) connectionDictionary;
+@property(nonatomic) NSInteger timeToExpireinMins;
++ (MSTokenProvider *)createFromConnectionDictionary:(NSDictionary *)connectionDictionary;
 
-- (MSTokenProvider*) initWithConnectionDictionary: (NSDictionary*) connectionDictionary;
-- (NSString *) generateSharedAccessTokenWithUrl:(NSString*)audienceUri;
+- (MSTokenProvider *)initWithConnectionDictionary:(NSDictionary *)connectionDictionary;
+- (NSString *)generateSharedAccessTokenWithUrl:(NSString *)audienceUri;
 @end
