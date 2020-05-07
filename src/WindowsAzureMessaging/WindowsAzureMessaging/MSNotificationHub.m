@@ -16,11 +16,10 @@ static dispatch_once_t onceToken;
 
 @implementation MSNotificationHub
 
-@synthesize templates, debounceInstallationManager;
+@synthesize debounceInstallationManager;
 
 - (instancetype)init {
   if ((self = [super init])) {
-      templates = [NSMutableDictionary new];
       debounceInstallationManager = [[MSDebounceInstallationManager alloc] initWithInterval:2];
       [self registerForRemoteNotifications];
   }
@@ -194,11 +193,11 @@ static dispatch_once_t onceToken;
 
 - (void)setInstallationTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
   // TODO: Store in local storage and mark as dirty
-  [self.templates setValue:template forKey:key];
+  //[self.templates setValue:template forKey:key];
 }
 
 - (void)removeInstallationTemplate:(NSString *)key {
-  [self.templates removeObjectForKey:key];
+  //[self.templates removeObjectForKey:key];
 }
 
 #pragma mark Installation

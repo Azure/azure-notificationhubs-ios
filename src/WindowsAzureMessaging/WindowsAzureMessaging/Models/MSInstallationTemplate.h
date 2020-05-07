@@ -1,13 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#ifndef MSInstallationTemplate_h
-#define MSInstallationTemplate_h
-
 #import <Foundation/Foundation.h>
 
 @interface MSInstallationTemplate : NSObject
 
-@end
+@property(nonatomic, copy) NSString *body;
+@property(nonatomic, copy) NSMutableArray<NSString *> *tags;
+@property(nonatomic, copy) NSMutableDictionary<NSString *, NSString*> *headers;
 
-#endif /* MSInstallationTemplate_h */
+@end

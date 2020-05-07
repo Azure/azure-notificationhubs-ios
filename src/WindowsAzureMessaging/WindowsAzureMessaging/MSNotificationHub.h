@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, readonly) MSInstallation *installation;
 @property(nonatomic, copy, readonly) NSString *hubName;
 @property(nonatomic, copy, readonly) NSURL *serviceEndpoint;
-@property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, MSInstallationTemplate *> *templates;
 @property(nonatomic) MSDebounceInstallationManager *debounceInstallationManager;
 
 // TODO: Move to internal

@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 
 @class MSInstallation;
+@class MSInstallationTemplate;
 @class MSTokenProvider;
 @class MSHttpClient;
 
@@ -30,5 +31,8 @@
 
 - (void) saveInstallation;
 + (void) resetInstance;
+
+- (void) addTemplate: (MSInstallationTemplate *) template forKey:(NSString *)key;
+- (void) removeTemplate: (NSString *)templateKey;
 
 @end

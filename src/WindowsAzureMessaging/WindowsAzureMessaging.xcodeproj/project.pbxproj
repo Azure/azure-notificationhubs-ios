@@ -182,6 +182,8 @@
 		CE3023BB245AC525002CF65B /* MSTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = CE3023B9245AC525002CF65B /* MSTokenProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE3023BD245AC669002CF65B /* MSTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3023BC245AC669002CF65B /* MSTokenProvider.m */; };
 		CE3023BE245AC669002CF65B /* MSTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3023BC245AC669002CF65B /* MSTokenProvider.m */; };
+		CE98706A24644F9900A71FA3 /* MSInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE98706924644F9900A71FA3 /* MSInstallationTemplate.m */; };
+		CE98706B24644F9900A71FA3 /* MSInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE98706924644F9900A71FA3 /* MSInstallationTemplate.m */; };
 		CE98A78224532F5E00DA1AE8 /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = CE98A78124532F5E00DA1AE8 /* MSLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE98A78424532F9B00DA1AE8 /* MSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE98A78324532F9B00DA1AE8 /* MSLocalStorage.m */; };
 		CE98A7852453306300DA1AE8 /* MSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE98A78324532F9B00DA1AE8 /* MSLocalStorage.m */; };
@@ -311,6 +313,7 @@
 		B3D285672457191C00C78CC8 /* MSTestFrameworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestFrameworks.h; sourceTree = "<group>"; };
 		CE3023B9245AC525002CF65B /* MSTokenProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSTokenProvider.h; sourceTree = "<group>"; };
 		CE3023BC245AC669002CF65B /* MSTokenProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSTokenProvider.m; sourceTree = "<group>"; };
+		CE98706924644F9900A71FA3 /* MSInstallationTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallationTemplate.m; sourceTree = "<group>"; };
 		CE98A78124532F5E00DA1AE8 /* MSLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSLocalStorage.h; sourceTree = "<group>"; };
 		CE98A78324532F9B00DA1AE8 /* MSLocalStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSLocalStorage.m; sourceTree = "<group>"; };
 		CEA47C2D2458294E007B17B3 /* MSInstallation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallation.m; sourceTree = "<group>"; };
@@ -374,6 +377,7 @@
 				4C8546FC244F8F49005F6B49 /* MSInstallation.h */,
 				CEA47C2D2458294E007B17B3 /* MSInstallation.m */,
 				6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */,
+				CE98706924644F9900A71FA3 /* MSInstallationTemplate.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -851,6 +855,7 @@
 				14A17DEE24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */,
 				CEA47C38245870B2007B17B3 /* MSInstallationManager.m in Sources */,
 				35B4DBF722268D1000EAC781 /* (null) in Sources */,
+				CE98706B24644F9900A71FA3 /* MSInstallationTemplate.m in Sources */,
 				35B4DBEF22268D1000EAC781 /* (null) in Sources */,
 				35B4DBF922268D1000EAC781 /* (null) in Sources */,
 				CE98A78424532F9B00DA1AE8 /* MSLocalStorage.m in Sources */,
@@ -928,6 +933,7 @@
 				A358374716AA3B220041E372 /* SBNotificationHub.m in Sources */,
 				CE3023BD245AC669002CF65B /* MSTokenProvider.m in Sources */,
 				6489DDF924582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */,
+				CE98706A24644F9900A71FA3 /* MSInstallationTemplate.m in Sources */,
 				4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */,
 				A358374916AA3B250041E372 /* SBRegistration.m in Sources */,
 				14A17DED24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */,

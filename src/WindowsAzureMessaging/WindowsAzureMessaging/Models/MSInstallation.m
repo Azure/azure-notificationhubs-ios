@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 #import "MSInstallation.h"
+#import "MSInstallationTemplate.h"
 
 @implementation MSInstallation
 
@@ -10,6 +11,7 @@
     [coder encodeObject:self.pushChannel forKey:@"pushChannel"];
     [coder encodeObject:self.platform forKey:@"platform"];
     [coder encodeObject:self.tags forKey:@"tags"];
+    [coder encodeObject:self.templates forKey:@"templates"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -18,6 +20,7 @@
         self.pushChannel = [coder decodeObjectForKey:@"pushChannel"];
         self.platform = [coder decodeObjectForKey:@"platform"] ?: @"APNS";
         self.tags = [coder decodeObjectForKey:@"tags"];
+        self.templates = [coder decodeObjectForKey:@"templates"];
     }
     
     return self;
@@ -58,6 +61,7 @@
     installation.platform = dictionary[@"platform"];
     installation.pushChannel = dictionary[@"pushChannel"];
     installation.tags = dictionary[@"tags"];
+    installation.templates = dictionary[@"templates"];
     
     return installation;
 }
@@ -68,7 +72,8 @@
        @"installationId" : self.installationID,
        @"platform" : self.platform,
        @"pushChannel" : self.pushChannel,
-       @"tags" : self.tags ?: @""
+       @"tags" : self.tags ?: @"",
+       @"templates": self.templates ?: @""
     };
     
     return [NSJSONSerialization dataWithJSONObject:dictionary
@@ -113,6 +118,28 @@
     self.tags = [NSArray new];
 }
 
+- (BOOL) addTemplate:(MSInstallationTemplate *) template forKey:(NSString *) templateKey {
+    NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
+    
+    if ([[tmpTemplates objectForKey:templateKey] isEqual:template]) {
+        return NO;
+    }
+    
+    [tmpTemplates setObject:template forKey:templateKey];
+    return YES;
+}
+
+- (BOOL) removeTemplate:(NSString *)templateKey {
+    NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
+    
+    if (![tmpTemplates objectForKey:templateKey]) {
+        return NO;
+    }
+    
+    [tmpTemplates removeObjectForKey:templateKey];
+    return YES;
+}
+
 - (NSUInteger) hash {
     NSUInteger result = 0;
     
@@ -120,6 +147,7 @@
     result += [self.platform hash];
     result += [self.pushChannel hash];
     result += [self.tags hash];
+    result += [self.templates hash];
     
     return result;
 }

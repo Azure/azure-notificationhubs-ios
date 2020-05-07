@@ -6,10 +6,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class MSInstallationTemplate;
+
 @interface MSInstallation : NSObject <NSCoding>
 
 @property(nonatomic, copy) NSString *installationID, *pushChannel, *platform;
 @property(nonatomic, copy) NSArray<NSString *> *tags;
+@property(nonatomic, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
 
 - (instancetype) initWithDeviceToken:(NSString *) deviceToken;
 
@@ -22,6 +25,9 @@
 - (BOOL) removeTags:(NSArray<NSString *> *) tags;
 - (NSArray<NSString *> *) getTags;
 - (void) clearTags;
+
+- (BOOL) addTemplate: (MSInstallationTemplate *) template forKey: (NSString *) key;
+- (BOOL) removeTemplate: (NSString *) key;
 
 @end
 
