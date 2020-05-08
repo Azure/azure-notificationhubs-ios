@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1406DA6824654C8300F47E96 /* MSInstallationTemplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1406DA6724654C8300F47E96 /* MSInstallationTemplateTests.m */; };
 		143025BC24607C0100E85BFF /* MSInstallationTagsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 143025BB24607C0100E85BFF /* MSInstallationTagsTests.m */; };
 		14A17DEB24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14A17DEC24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -224,6 +225,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1406DA6724654C8300F47E96 /* MSInstallationTemplateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallationTemplateTests.m; sourceTree = "<group>"; };
 		143025BB24607C0100E85BFF /* MSInstallationTagsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallationTagsTests.m; sourceTree = "<group>"; };
 		14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSDebounceInstallationManager.h; sourceTree = "<group>"; };
 		14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSDebounceInstallationManager.m; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				64F993E8245C7FB60086ABF8 /* MSInstallationManagerTests.m */,
 				4C8546EE244F5D48005F6B49 /* Info.plist */,
 				143025BB24607C0100E85BFF /* MSInstallationTagsTests.m */,
+				1406DA6724654C8300F47E96 /* MSInstallationTemplateTests.m */,
 			);
 			path = WindowsAzureMessagingTests;
 			sourceTree = "<group>";
@@ -901,6 +904,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64F993E5245C5D9A0086ABF8 /* MSTokenProviderTests.m in Sources */,
+				1406DA6824654C8300F47E96 /* MSInstallationTemplateTests.m in Sources */,
 				B300E34F2458628C008A32DA /* HTTPStubsResponse+JSON.m in Sources */,
 				B3D2856224570EE400C78CC8 /* MSHttpClientTests.m in Sources */,
 				B3D2856424570EE400C78CC8 /* MSHttpUtilTests.m in Sources */,

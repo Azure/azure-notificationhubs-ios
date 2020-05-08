@@ -5,8 +5,8 @@
 
 @interface MSInstallationTemplate : NSObject
 
-@property(nonatomic, copy) NSString *body;
-@property(nonatomic, copy) NSMutableArray<NSString *> *tags;
-@property(nonatomic, copy) NSMutableDictionary<NSString *, NSString*> *headers;
+@property(nonatomic) NSString *body;
+@property(nonatomic) NSMutableArray<NSString *> *tags;
+@property(nonatomic) NSMutableDictionary<NSString *, NSString*> *headers;
 
 @end

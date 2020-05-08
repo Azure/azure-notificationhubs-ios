@@ -121,11 +121,12 @@
 - (BOOL) addTemplate:(MSInstallationTemplate *) template forKey:(NSString *) templateKey {
     NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
     
-    if ([[tmpTemplates objectForKey:templateKey] isEqual:template]) {
+    if ([[tmpTemplates allKeysForObject:template] count] > 0) {
         return NO;
     }
     
     [tmpTemplates setObject:template forKey:templateKey];
+    self.templates = tmpTemplates;
     return YES;
 }
 
@@ -137,6 +138,7 @@
     }
     
     [tmpTemplates removeObjectForKey:templateKey];
+    self.templates = tmpTemplates;
     return YES;
 }
 

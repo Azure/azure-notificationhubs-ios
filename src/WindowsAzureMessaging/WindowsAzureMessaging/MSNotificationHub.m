@@ -179,28 +179,35 @@ static dispatch_once_t onceToken;
 
 #pragma mark Templates
 
-+ (void)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    [[MSNotificationHub sharedInstance] addTemplate:template forKey:key];
++ (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+    return [[MSNotificationHub sharedInstance] addTemplate:template forKey:key];
 }
 
-+ (void)removeTemplate:(NSString *)key {
-    [[MSNotificationHub sharedInstance] removeTemplate:key];
++ (BOOL)removeTemplate:(NSString *)key {
+    return [[MSNotificationHub sharedInstance] removeTemplate:key];
 }
 
 + (MSInstallationTemplate *)getTemplate:(NSString *)key {
     return [MSInstallationManager getTemplate:key];
 }
 
-- (void)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
     if ([MSInstallationManager addTemplate:template forKey:key]) {
-        [debounceInstallationManager saveInstallation];
+      [debounceInstallationManager saveInstallation];
+      return YES;
     }
+
+    return NO;
 }
 
-- (void)removeTemplate:(NSString *)key {
-    if ([MSInstallationManager removeTemplate:key]) {
-        [debounceInstallationManager saveInstallation];
+- (BOOL)removeTemplate:(NSString *)key {
+    if (![MSInstallationManager removeTemplate:key]) {
+      return NO;
     }
+
+    [debounceInstallationManager saveInstallation];
+
+    return YES;
 }
 
 #pragma mark Installation
