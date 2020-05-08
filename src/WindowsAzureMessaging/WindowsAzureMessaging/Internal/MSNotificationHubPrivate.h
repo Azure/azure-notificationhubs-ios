@@ -2,13 +2,15 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#ifndef MSInstallationTemplate_h
-#define MSInstallationTemplate_h
-
 #import <Foundation/Foundation.h>
+#import "MSNotificationHub.h"
 
-@interface MSInstallationTemplate : NSObject
+@interface MSNotificationHub ()
+
+- (NSString *)convertTokenToString:(NSData *)token;
+
+@property(nonatomic) id<MSNotificationHubDelegate> delegate;
+
+
 
 @end
-
-#endif /* MSInstallationTemplate_h */

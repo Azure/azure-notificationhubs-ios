@@ -19,7 +19,7 @@
     NSString *connectionString = [configValues objectForKey:@"connectionString"];
     NSString *hubName = [configValues objectForKey:@"hubName"];
     
-    [MSNotificationHub initWithConnectionString:connectionString withHubName:hubName];
+    [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
     [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
     
     return YES;

@@ -7,7 +7,7 @@
 @interface MSInstallation : NSObject <NSCoding>
 
 @property(nonatomic, copy) NSString *installationID, *pushChannel, *platform;
-@property(nonatomic, copy) NSArray<NSString *> *tags;
+@property(nonatomic, copy) NSSet<NSString *> *tags;
 
 - (instancetype)initWithDeviceToken:(NSString *)deviceToken;
 
@@ -16,9 +16,9 @@
 
 - (NSData *)toJsonData;
 
-- (BOOL)addTags:(NSArray<NSString *> *)tags;
-- (BOOL)removeTags:(NSArray<NSString *> *)tags;
-- (NSArray<NSString *> *)getTags;
+- (BOOL)addTags:(NSSet<NSString *> *)tags;
+- (BOOL)removeTags:(NSSet<NSString *> *)tags;
+- (NSSet<NSString *> *)getTags;
 - (void)clearTags;
 
 @end

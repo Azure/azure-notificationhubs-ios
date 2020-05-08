@@ -3,7 +3,6 @@
 //----------------------------------------------------------------
 
 #import "MSDebounceInstallationManager.h"
-#import "MSInstallationTemplate.h"
 #import "MSLocalStorage.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
@@ -25,15 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, MSInstallationTemplate *> *templates;
 @property(nonatomic) MSDebounceInstallationManager *debounceInstallationManager;
 
-// TODO: Move to internal
-@property(nonatomic) id<MSNotificationHubDelegate> delegate;
-
 /**
  * Initializes the Notification Hub with the connection string from the Access
  * Policy, and Hub Name.
  * @param connectionString The connection string
  */
-+ (void)initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)notificationHubName;
++ (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName;
 
 #pragma mark Push Initialization
 
@@ -50,24 +46,14 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Tags Support
 
 + (BOOL)addTag:(NSString *)tag;
-+ (BOOL)addTags:(NSArray<NSString *> *)tags;
++ (BOOL)addTags:(NSSet<NSString *> *)tags;
 + (BOOL)removeTag:(NSString *)tag;
-+ (BOOL)removeTags:(NSArray<NSString *> *)tags;
-+ (NSArray *)getTags;
++ (BOOL)removeTags:(NSSet<NSString *> *)tags;
++ (NSSet<NSString *> *)getTags;
 + (void)clearTags;
-
-#pragma mark Template Support
-
-+ (void)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
-+ (void)removeTemplate:(NSString *)key;
-+ (MSInstallationTemplate *)getTemplate:(NSString *)key;
 
 #pragma mark Installation Support
 + (MSInstallation *)getInstallation;
-
-#pragma mark Helpers
-// TODO: Move into internal
-- (NSString *)convertTokenToString:(NSData *)token;
 
 @end
 

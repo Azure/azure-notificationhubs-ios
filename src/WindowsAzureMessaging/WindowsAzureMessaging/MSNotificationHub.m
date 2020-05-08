@@ -7,9 +7,9 @@
 
 #import "MSInstallation.h"
 #import "MSInstallationManager.h"
-#import "MSInstallationTemplate.h"
 #import "MSNotificationHub.h"
 #import "MSNotificationHubMessage.h"
+#import "MSNotificationHubPrivate.h"
 
 // Singleton
 static MSNotificationHub *sharedInstance = nil;
@@ -38,8 +38,8 @@ static dispatch_once_t onceToken;
     return sharedInstance;
 }
 
-+ (void)initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)notificationHubName {
-    [MSInstallationManager initWithConnectionString:connectionString withHubName:notificationHubName];
++ (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName {
+    [MSInstallationManager initWithConnectionString:connectionString hubName:notificationHubName];
 }
 
 - (void)registerForRemoteNotifications {
@@ -132,22 +132,22 @@ static dispatch_once_t onceToken;
 #pragma mark Tags
 
 + (BOOL)addTag:(NSString *)tag {
-    return [MSNotificationHub addTags:[NSArray arrayWithObject:tag]];
+    return [MSNotificationHub addTags:[NSSet setWithObject:tag]];
 }
 
-+ (BOOL)addTags:(NSArray<NSString *> *)tags {
++ (BOOL)addTags:(NSSet<NSString *> *)tags {
     return [[MSNotificationHub sharedInstance] addTags:tags];
 }
 
 + (BOOL)removeTag:(NSString *)tag {
-    return [MSNotificationHub removeTags:[NSArray arrayWithObject:tag]];
+    return [MSNotificationHub removeTags:[NSSet setWithObject:tag]];
 }
 
-+ (BOOL)removeTags:(NSArray<NSString *> *)tags {
++ (BOOL)removeTags:(NSSet<NSString *> *)tags {
     return [[MSNotificationHub sharedInstance] removeTags:tags];
 }
 
-+ (NSArray<NSString *> *)getTags {
++ (NSSet<NSString *> *)getTags {
     return [MSInstallationManager getTags];
 }
 
@@ -155,7 +155,7 @@ static dispatch_once_t onceToken;
     [[MSNotificationHub sharedInstance] clearTags];
 }
 
-- (BOOL)addTags:(NSArray<NSString *> *)tags {
+- (BOOL)addTags:(NSSet<NSString *> *)tags {
     if ([MSInstallationManager addTags:tags]) {
         [debounceInstallationManager saveInstallation];
         return YES;
@@ -164,7 +164,7 @@ static dispatch_once_t onceToken;
     return NO;
 }
 
-- (BOOL)removeTags:(NSArray<NSString *> *)tags {
+- (BOOL)removeTags:(NSSet<NSString *> *)tags {
     if (![MSInstallationManager removeTags:tags]) {
         return NO;
     }
@@ -177,29 +177,6 @@ static dispatch_once_t onceToken;
 - (void)clearTags {
     [MSInstallationManager clearTags];
     [debounceInstallationManager saveInstallation];
-}
-
-#pragma mark Templates
-
-+ (void)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    [[MSNotificationHub sharedInstance] setInstallationTemplate:template forKey:key];
-}
-
-+ (void)removeTemplate:(NSString *)key {
-    [[MSNotificationHub sharedInstance] removeInstallationTemplate:key];
-}
-
-+ (MSInstallationTemplate *)getTemplate:(NSString *)name {
-    return nil;
-}
-
-- (void)setInstallationTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    // TODO: Store in local storage and mark as dirty
-    [self.templates setValue:template forKey:key];
-}
-
-- (void)removeInstallationTemplate:(NSString *)key {
-    [self.templates removeObjectForKey:key];
 }
 
 #pragma mark Installation

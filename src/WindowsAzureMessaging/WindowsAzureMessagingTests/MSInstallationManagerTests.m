@@ -33,7 +33,7 @@ static NSString *deviceToken = @"deviceToken";
     NSString *method = @"PUT";
     OCMStub([httpClient sendCallAsync:OCMOCK_ANY]).andDo(nil);
     
-    [MSInstallationManager initWithConnectionString:connectionString withHubName:hubName];
+    [MSInstallationManager initWithConnectionString:connectionString hubName:hubName];
     [MSInstallationManager setHttpClient:httpClient];
     [MSInstallationManager setPushChannel:deviceToken];
 
@@ -79,7 +79,7 @@ static NSString *deviceToken = @"deviceToken";
 -(void) testSaveInstallationFailsIfNoPushChannel {
     // If
     MSHttpClient *httpClient = OCMPartialMock([MSHttpClient new]);
-    [MSInstallationManager initWithConnectionString:connectionString withHubName:hubName];
+    [MSInstallationManager initWithConnectionString:connectionString hubName:hubName];
     [MSInstallationManager setHttpClient:httpClient];
     
     // Then
@@ -92,7 +92,7 @@ static NSString *deviceToken = @"deviceToken";
 -(void) testSaveInstallationFailsIfInvalidConnectionString {
     // If
     MSHttpClient *httpClient = OCMPartialMock([MSHttpClient new]);
-    [MSInstallationManager initWithConnectionString:@"" withHubName:hubName];
+    [MSInstallationManager initWithConnectionString:@"" hubName:hubName];
     [MSInstallationManager setPushChannel:deviceToken];
     [MSInstallationManager setHttpClient:httpClient];
     

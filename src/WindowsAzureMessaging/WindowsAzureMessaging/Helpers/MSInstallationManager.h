@@ -18,13 +18,13 @@
 
 @property(nonatomic) MSHttpClient *httpClient;
 
-+ (void)initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)hubName;
++ (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
 
 + (void)saveInstallation;
 + (void)setPushChannel:(NSString *)pushChannel;
-+ (BOOL)addTags:(NSArray<NSString *> *)tags;
-+ (BOOL)removeTags:(NSArray<NSString *> *)tags;
-+ (NSArray<NSString *> *)getTags;
++ (BOOL)addTags:(NSSet<NSString *> *)tags;
++ (BOOL)removeTags:(NSSet<NSString *> *)tags;
++ (NSSet<NSString *> *)getTags;
 + (void)clearTags;
 + (MSInstallation *)getInstallation;
 + (void)setHttpClient:(MSHttpClient *)client;

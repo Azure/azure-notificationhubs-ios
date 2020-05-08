@@ -46,7 +46,7 @@ static NSString *_hubName;
     [MSInstallationManager sharedInstance].httpClient = client;
 }
 
-+ (void)initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)hubName {
++ (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName {
     _connectionString = connectionString;
     _hubName = hubName;
 }
@@ -65,7 +65,7 @@ static NSString *_hubName;
     return installation;
 }
 
-+ (BOOL)addTags:(NSArray<NSString *> *)tags {
++ (BOOL)addTags:(NSSet<NSString *> *)tags {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
 
     if ([installation addTags:tags]) {
@@ -76,7 +76,7 @@ static NSString *_hubName;
     return NO;
 }
 
-+ (BOOL)removeTags:(NSArray<NSString *> *)tags {
++ (BOOL)removeTags:(NSSet<NSString *> *)tags {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
 
     if (installation.tags == nil || [installation.tags count] == 0) {
@@ -99,7 +99,7 @@ static NSString *_hubName;
     }
 }
 
-+ (NSArray<NSString *> *)getTags {
++ (NSSet<NSString *> *)getTags {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
 
     if (!installation) {
