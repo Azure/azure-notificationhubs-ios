@@ -108,6 +108,41 @@ static NSString* _hubName;
     return [installation getTags];
 }
 
++ (BOOL) addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if([installation addTemplate:template forKey:key]) {
+        [MSLocalStorage upsertInstallation:installation];
+        return YES;
+    }
+    
+    return NO;
+}
+
++ (BOOL) removeTemplate:(NSString *)templateKey {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if(installation.templates == nil || [installation.templates count] == 0) {
+        return NO;
+    }
+    
+    [installation removeTemplate:templateKey];
+    
+    [MSLocalStorage upsertInstallation:installation];
+    
+    return YES;
+}
+
++ (MSInstallationTemplate *) getTemplate:(NSString *)templateKey {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    
+    if(!installation) {
+        return nil;
+    }
+    
+    return [installation.templates objectForKey:templateKey];
+}
+
 + (void) saveInstallation {
     [[MSInstallationManager sharedInstance] saveInstallation];
 }

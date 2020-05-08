@@ -32,7 +32,8 @@
 - (void) saveInstallation;
 + (void) resetInstance;
 
-- (void) addTemplate: (MSInstallationTemplate *) template forKey:(NSString *)key;
-- (void) removeTemplate: (NSString *)templateKey;
++ (BOOL) addTemplate: (MSInstallationTemplate *) template forKey:(NSString *)key;
++ (BOOL) removeTemplate: (NSString *)templateKey;
++ (MSInstallationTemplate *) getTemplate: (NSString *)templateKey;
 
 @end
