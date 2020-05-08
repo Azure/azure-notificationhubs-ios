@@ -1,5 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
 
@@ -9,10 +10,10 @@
 
 @interface MSInstallationManager : NSObject {
 
-@private
-  MSTokenProvider *tokenProvider;
-  NSDictionary *connectionDictionary;
-  NSString *pushToken;
+  @private
+    MSTokenProvider *tokenProvider;
+    NSDictionary *connectionDictionary;
+    NSString *pushToken;
 }
 
 @property(nonatomic) MSHttpClient *httpClient;

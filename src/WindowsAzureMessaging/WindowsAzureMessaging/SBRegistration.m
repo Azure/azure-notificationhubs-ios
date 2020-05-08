@@ -19,17 +19,17 @@ NSString *const nativeRegistrationFormat = @"<entry xmlns=\"http://www.w3.org/20
 @synthesize ETag, expiresAt, tags, deviceToken, registrationId;
 
 + (NSString *)Name {
-  return nativeRegistrationName;
+    return nativeRegistrationName;
 }
 
 + (NSString *)payloadWithDeviceToken:(NSString *)deviceToken tags:(NSSet *)tags {
-  NSString *tagNode = @"";
-  NSString *tagString = [SBNotificationHubHelper convertTagSetToString:tags];
-  if ([tagString length] > 0) {
-    tagNode = [NSString stringWithFormat:@"<Tags>%@</Tags>", tagString];
-  }
+    NSString *tagNode = @"";
+    NSString *tagString = [SBNotificationHubHelper convertTagSetToString:tags];
+    if ([tagString length] > 0) {
+        tagNode = [NSString stringWithFormat:@"<Tags>%@</Tags>", tagString];
+    }
 
-  return [NSString stringWithFormat:nativeRegistrationFormat, tagNode, deviceToken];
+    return [NSString stringWithFormat:nativeRegistrationFormat, tagNode, deviceToken];
 }
 
 @end

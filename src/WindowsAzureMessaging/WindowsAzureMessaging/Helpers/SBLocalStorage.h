@@ -8,12 +8,12 @@
 @class SBRegistration;
 
 @interface SBLocalStorage : NSObject {
-@private
-  NSString *_path;
-  NSMutableDictionary *_registrations;
-  NSString *_versionKey;
-  NSString *_deviceTokenKey;
-  NSString *_registrationsKey;
+  @private
+    NSString *_path;
+    NSMutableDictionary *_registrations;
+    NSString *_versionKey;
+    NSString *_deviceTokenKey;
+    NSString *_registrationsKey;
 }
 
 @property(copy, nonatomic) NSString *deviceToken;

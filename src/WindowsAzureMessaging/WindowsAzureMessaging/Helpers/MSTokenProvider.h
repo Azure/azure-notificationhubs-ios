@@ -1,15 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 @interface MSTokenProvider : NSObject {
 
-@private
-  NSString *_sharedAccessKey;
-  NSString *_sharedAccessKeyName;
-  NSString *_sharedSecret;
-  NSString *_sharedSecretIssurer;
-  NSURL *_stsHostName;
-  NSURL *_serviceEndPoint;
+  @private
+    NSString *_sharedAccessKey;
+    NSString *_sharedAccessKeyName;
+    NSString *_sharedSecret;
+    NSString *_sharedSecretIssurer;
+    NSURL *_stsHostName;
+    NSURL *_serviceEndPoint;
 }
 
 @property(nonatomic) NSInteger timeToExpireinMins;

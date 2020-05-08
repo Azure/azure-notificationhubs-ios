@@ -5,10 +5,10 @@
 #import "SBRegistration.h"
 
 @interface SBRegistrationParser : NSObject {
-@private
-  NSMutableArray *_allRegistrations;
-  NSMutableString *_currentElementValue;
-  SBRegistration *_currentRegistration;
+  @private
+    NSMutableArray *_allRegistrations;
+    NSMutableString *_currentElementValue;
+    SBRegistration *_currentRegistration;
 }
 
 - (SBRegistrationParser *)initParserWithResult:(NSMutableArray *)result;

@@ -4,13 +4,13 @@
 
 @interface SBTokenProvider : NSObject {
 
-@private
-  NSString *_sharedAccessKey;
-  NSString *_sharedAccessKeyName;
-  NSString *_sharedSecret;
-  NSString *_sharedSecretIssurer;
-  NSURL *_stsHostName;
-  NSURL *_serviceEndPoint;
+  @private
+    NSString *_sharedAccessKey;
+    NSString *_sharedAccessKeyName;
+    NSString *_sharedSecret;
+    NSString *_sharedSecretIssurer;
+    NSURL *_stsHostName;
+    NSURL *_serviceEndPoint;
 }
 
 @property(nonatomic) NSInteger timeToExpireinMins;

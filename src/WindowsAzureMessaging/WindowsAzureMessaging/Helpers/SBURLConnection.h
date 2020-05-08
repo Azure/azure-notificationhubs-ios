@@ -9,11 +9,11 @@ typedef void (^SBURLConnectionCompletion)(NSHTTPURLResponse *, NSData *, NSError
 typedef SBStaticHandlerResponse * (^StaticHandleBlock)(NSURLRequest *);
 
 @interface SBURLConnection : NSObject {
-@private
-  NSURLRequest *_request;
-  NSHTTPURLResponse *_response;
-  SBURLConnectionCompletion _completion;
-  NSMutableData *_data;
+  @private
+    NSURLRequest *_request;
+    NSHTTPURLResponse *_response;
+    SBURLConnectionCompletion _completion;
+    NSMutableData *_data;
 }
 
 - (void)sendRequest:(NSURLRequest *)request completion:(void (^)(NSHTTPURLResponse *, NSData *, NSError *))completion;
