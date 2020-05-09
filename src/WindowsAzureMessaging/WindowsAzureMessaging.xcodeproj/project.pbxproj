@@ -219,7 +219,6 @@
 		848CB73B16FCC78E00183E8D /* SBStoredRegistrationEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStoredRegistrationEntry.m; sourceTree = "<group>"; };
 		906E403816A86A3200817A11 /* libWindowsAzureMessaging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWindowsAzureMessaging.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		906E403B16A86A3200817A11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		906E403F16A86A3200817A11 /* WindowsAzureMessaging-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WindowsAzureMessaging-Prefix.pch"; sourceTree = "<group>"; };
 		906E404016A86A3200817A11 /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsAzureMessaging.h; sourceTree = "<group>"; };
 		929886EF1857FAB100C1676C /* SBStaticHandlerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStaticHandlerResponse.h; sourceTree = "<group>"; };
 		92988747185931DE00C1676C /* SBStaticHandlerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStaticHandlerResponse.m; sourceTree = "<group>"; };
@@ -405,14 +404,6 @@
 				6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */,
 			);
 			path = WindowsAzureMessaging;
-			sourceTree = "<group>";
-		};
-		906E403E16A86A3200817A11 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				906E403F16A86A3200817A11 /* WindowsAzureMessaging-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A358370D16AA39850041E372 /* Helpers */ = {
@@ -927,7 +918,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "WindowsAzureMessaging/WindowsAzureMessaging-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/WindowsAzureMessagingTests/Info.plist";
@@ -990,7 +981,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "WindowsAzureMessaging/WindowsAzureMessaging-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/WindowsAzureMessagingTests/Info.plist";
@@ -1218,7 +1209,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/WindowsAzureMessaging.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WindowsAzureMessaging/WindowsAzureMessaging-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				OTHER_CFLAGS = "-fembed-bitcode-marker";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1232,7 +1223,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/WindowsAzureMessaging.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WindowsAzureMessaging/WindowsAzureMessaging-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

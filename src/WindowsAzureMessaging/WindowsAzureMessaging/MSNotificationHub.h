@@ -2,16 +2,14 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import "MSDebounceInstallationManager.h"
-#import "MSLocalStorage.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
-#import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class MSInstallation;
+@class MSDebounceInstallationManager;
 /**
  * The Azure Notification Hubs service
  */

@@ -5,11 +5,14 @@
 #import <UIKit/UIKit.h>
 #import <UserNotifications/UserNotifications.h>
 
+#import "MSDebounceInstallationManager.h"
 #import "MSInstallation.h"
 #import "MSInstallationManager.h"
+#import "MSLocalStorage.h"
 #import "MSNotificationHub.h"
 #import "MSNotificationHubMessage.h"
 #import "MSNotificationHubPrivate.h"
+#import "MSTokenProvider.h"
 
 // Singleton
 static MSNotificationHub *sharedInstance = nil;
