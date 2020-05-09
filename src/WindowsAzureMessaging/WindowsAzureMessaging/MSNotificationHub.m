@@ -17,13 +17,9 @@ static dispatch_once_t onceToken;
 
 @implementation MSNotificationHub
 
-@synthesize templates, debounceInstallationManager;
-
 - (instancetype)init {
     if ((self = [super init])) {
-        templates = [NSMutableDictionary new];
-        debounceInstallationManager = [[MSDebounceInstallationManager alloc] initWithInterval:2];
-        [self registerForRemoteNotifications];
+        
     }
 
     return self;
@@ -39,7 +35,15 @@ static dispatch_once_t onceToken;
 }
 
 + (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName {
-    [MSInstallationManager initWithConnectionString:connectionString hubName:notificationHubName];
+    MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString hubName:notificationHubName];
+    
+    [sharedInstance setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2 installationManager:installationManager]];
+    
+    [sharedInstance registerForRemoteNotifications];
+}
+
+- (void)setDebounceInstallationManager:(MSDebounceInstallationManager *)debounceInstallationManager {
+    _debounceInstallationManager = debounceInstallationManager;
 }
 
 - (void)registerForRemoteNotifications {
@@ -85,8 +89,8 @@ static dispatch_once_t onceToken;
     NSString *pushToken = [self convertTokenToString:deviceToken];
     NSLog(@"Registered for push notifications with token: %@", pushToken);
 
-    [MSInstallationManager setPushChannel:pushToken];
-    [debounceInstallationManager saveInstallation];
+    [self setPushChannel:pushToken];
+    [_debounceInstallationManager saveInstallation:[self getInstallation]];
 }
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -126,63 +130,106 @@ static dispatch_once_t onceToken;
 }
 
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate {
-    [[MSNotificationHub sharedInstance] setDelegate:delegate];
+    [sharedInstance setDelegate:delegate];
+}
+
+#pragma mark Installations
+
+- (void)setPushChannel:(NSString *)pushChannel {
+    MSInstallation *installation = [self getInstallation];
+
+    installation.pushChannel = pushChannel;
+
+    [MSLocalStorage upsertInstallation:installation];
+}
+
+- (MSInstallation *)getInstallation {
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+
+    if (!installation) {
+        installation = [MSInstallation new];
+    }
+    
+    return installation;
+}
+
+- (void)upsertInstallation:(MSInstallation *)installation; {
+    [MSLocalStorage upsertInstallation:installation];
 }
 
 #pragma mark Tags
 
 + (BOOL)addTag:(NSString *)tag {
-    return [MSNotificationHub addTags:[NSSet setWithObject:tag]];
+    return [MSNotificationHub addTags:[NSArray arrayWithObject:tag]];
 }
 
-+ (BOOL)addTags:(NSSet<NSString *> *)tags {
-    return [[MSNotificationHub sharedInstance] addTags:tags];
-}
-
-+ (BOOL)removeTag:(NSString *)tag {
-    return [MSNotificationHub removeTags:[NSSet setWithObject:tag]];
-}
-
-+ (BOOL)removeTags:(NSSet<NSString *> *)tags {
-    return [[MSNotificationHub sharedInstance] removeTags:tags];
-}
-
-+ (NSSet<NSString *> *)getTags {
-    return [MSInstallationManager getTags];
++ (BOOL)addTags:(NSArray<NSString *> *)tags {
+    return [sharedInstance addTags:tags];
 }
 
 + (void)clearTags {
-    [[MSNotificationHub sharedInstance] clearTags];
+    [sharedInstance clearTags];
 }
 
-- (BOOL)addTags:(NSSet<NSString *> *)tags {
-    if ([MSInstallationManager addTags:tags]) {
-        [debounceInstallationManager saveInstallation];
++ (NSSet<NSString *> *)getTags {
+    return [sharedInstance getTags];
+}
+
++ (BOOL)removeTag:(NSString *)tag {
+    return [sharedInstance removeTag:tag];
+}
+
++ (BOOL)removeTags:(NSArray<NSString *> *)tags {
+    return [sharedInstance removeTags:tags];
+}
+
+- (BOOL)addTag:(NSString *)tag {
+    return [self addTags:[NSArray arrayWithObject:tag]];
+}
+
+- (BOOL)addTags:(NSArray<NSString *> *)tags {
+    MSInstallation *installation = [self getInstallation];
+
+    if ([installation addTags:tags]) {
+        [self upsertInstallation:installation];
+        [_debounceInstallationManager saveInstallation: installation];
         return YES;
     }
 
     return NO;
 }
 
-- (BOOL)removeTags:(NSSet<NSString *> *)tags {
-    if (![MSInstallationManager removeTags:tags]) {
+- (void)clearTags {
+    MSInstallation *installation = [self getInstallation];
+
+    if (installation && installation.tags && [installation.tags count] > 0) {
+        [installation clearTags];
+        [self upsertInstallation:installation];
+        [_debounceInstallationManager saveInstallation: installation];
+    }
+}
+
+- (NSSet<NSString *> *)getTags {
+    return [[self getInstallation] getTags];
+}
+
+- (BOOL)removeTag:(NSString *)tag {
+    return [self removeTags:[NSArray arrayWithObject:tag]];
+}
+
+- (BOOL)removeTags:(NSArray<NSString *> *)tags {
+    MSInstallation *installation = [self getInstallation];
+
+    if (installation.tags == nil || [installation.tags count] == 0) {
         return NO;
     }
 
-    [debounceInstallationManager saveInstallation];
+    [installation removeTags:tags];
+
+    [self upsertInstallation:installation];
+    [_debounceInstallationManager saveInstallation: installation];
 
     return YES;
-}
-
-- (void)clearTags {
-    [MSInstallationManager clearTags];
-    [debounceInstallationManager saveInstallation];
-}
-
-#pragma mark Installation
-
-+ (MSInstallation *)getInstallation {
-    return [MSInstallationManager getInstallation];
 }
 
 #pragma mark Helpers

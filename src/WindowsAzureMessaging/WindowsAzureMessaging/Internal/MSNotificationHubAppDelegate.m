@@ -18,7 +18,7 @@ static dispatch_once_t onceToken;
 @synthesize enabled;
 
 + (void)load {
-    [[MSNotificationHubAppDelegate sharedInstance] setEnabledFromPlistForKey:@"AppDelegateForwardingEnabled"];
+    [[MSNotificationHubAppDelegate sharedInstance] setEnabledFromPlistForKey:@"NHAppDelegateForwardingEnabled"];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
       [[MSNotificationHubAppDelegate sharedInstance] swizzleSetDelegate];

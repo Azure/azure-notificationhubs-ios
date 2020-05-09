@@ -4,15 +4,20 @@
 
 #import <Foundation/Foundation.h>
 
+@class MSInstallation;
+@class MSInstallationManager;
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MSDebounceInstallationManager : NSObject
+@interface MSDebounceInstallationManager : NSObject {
+    @private
+    double _interval;
+    NSTimer *_debounceTimer;
+    MSInstallationManager *_installationManager;
+}
 
-@property(nonatomic) double interval;
-@property(nonatomic) NSTimer *debounceTimer;
-
-- (instancetype)initWithInterval:(double)interval;
-- (void)saveInstallation;
+- (instancetype)initWithInterval:(double)interval installationManager:(MSInstallationManager *)installationManager;
+- (void)saveInstallation:(MSInstallation *)installation;
 
 @end
 

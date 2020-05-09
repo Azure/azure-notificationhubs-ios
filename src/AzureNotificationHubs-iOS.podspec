@@ -3,10 +3,10 @@ Pod::Spec.new do |s|
   s.version             = "NEW_VERSION_NUMBER"
   s.source              = { :http => "https://github.com/Azure/azure-notificationhubs-ios/releases/download/#{s.version}/WindowsAzureMessaging.framework.zip" }
   s.vendored_frameworks = "WindowsAzureMessaging.framework"
-  s.platform            = :ios, "6.0"
+  s.platform            = :ios, "8.0"
   s.author              = { "Microsoft" => "http://microsoft.com" }
   s.documentation_url   = "https://docs.microsoft.com/en-us/azure/notification-hubs/"
-  s.homepage            = "http://azure.microsoft.com/en-gb/services/notification-hubs/"
+  s.homepage            = "http://azure.microsoft.com/en-us/services/notification-hubs/"
   s.requires_arc        = true
   s.summary             = "Push notifications for consumer and enterprise apps – from any backend to any device platform"
   s.description         = <<-DESC

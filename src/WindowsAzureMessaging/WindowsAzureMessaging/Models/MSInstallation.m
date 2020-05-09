@@ -72,21 +72,19 @@
   return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
 
-- (BOOL)addTags:(NSSet<NSString *> *)tags {
+- (BOOL)addTags:(NSArray<NSString *> *)tags {
   NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$"
                                                                          options:NSRegularExpressionCaseInsensitive
                                                                            error:nil];
   NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
   for (NSString *tag in tags) {
-    if (![tmpTags containsObject:tag]) {
       if ([regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0) {
         [tmpTags addObject:tag];
       } else {
         NSLog(@"Invalid tag: %@", tag);
         return NO;
       }
-    }
   }
 
   self.tags = tmpTags;
@@ -97,10 +95,10 @@
   return self.tags;
 }
 
-- (BOOL)removeTags:(NSSet<NSString *> *)tags {
+- (BOOL)removeTags:(NSArray<NSString *> *)tags {
   NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
-  [tmpTags minusSet:tags];
+  [tmpTags minusSet:[NSSet setWithArray:tags]];
 
   self.tags = tmpTags;
   return YES;

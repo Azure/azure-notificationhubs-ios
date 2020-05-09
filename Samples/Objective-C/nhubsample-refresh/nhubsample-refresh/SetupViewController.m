@@ -71,7 +71,7 @@
     [self.notificationsTableView addNotification:notification];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:notification.title
-                                                                             message:notification.message
+                                                                             message:notification.body
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];

@@ -7,7 +7,7 @@
 @implementation MSNotificationHubMessage
 
 @synthesize title;
-@synthesize message;
+@synthesize body;
 @synthesize badge;
 @synthesize additionalData;
 
@@ -31,9 +31,9 @@
           if ([alertObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *alertDict = (NSDictionary *)alertObject;
             title = [alertDict valueForKey:@"title"];
-            message = [alertObject valueForKey:@"body"];
+            body = [alertObject valueForKey:@"body"];
           } else if ([alertObject isKindOfClass:[NSString class]]) {
-            message = (NSString *)alertObject;
+            body = (NSString *)alertObject;
           } else {
             NSLog(@"Unable to parse notification content. Unexpected format: %@", alertObject);
           }

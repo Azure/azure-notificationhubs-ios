@@ -14,7 +14,7 @@
 /**
  * Notification message.
  */
-@property(nonatomic, copy, readonly) NSString *message;
+@property(nonatomic, copy, readonly) NSString *body;
 
 /**
  * Notification badge.

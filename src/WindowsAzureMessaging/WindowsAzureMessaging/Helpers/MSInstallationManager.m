@@ -9,129 +9,37 @@
 #import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
 
-// Singleton
-static MSInstallationManager *sharedInstance = nil;
-static dispatch_once_t onceToken;
-
-static NSString *_connectionString;
-static NSString *_hubName;
-
 @implementation MSInstallationManager
 
-- (instancetype)init {
+- (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName {
     if (self = [super init]) {
-        connectionDictionary = [MSInstallationManager parseConnectionString:_connectionString];
-        tokenProvider = [MSTokenProvider createFromConnectionDictionary:connectionDictionary];
+        _connectionDictionary = [MSInstallationManager parseConnectionString:_connectionString];
+        _tokenProvider = [MSTokenProvider createFromConnectionDictionary:_connectionDictionary];
         _httpClient = [MSHttpClient new];
+        _connectionString = connectionString;
+        _hubName = hubName;
     }
 
     return self;
 }
 
-+ (instancetype)sharedInstance {
-    dispatch_once(&onceToken, ^{
-      if (sharedInstance == nil) {
-          sharedInstance = [self new];
-      }
-    });
-    return sharedInstance;
-}
+- (void)saveInstallation:(MSInstallation *)installation {
 
-+ (void)resetInstance {
-    sharedInstance = nil;
-    onceToken = 0;
-}
-
-+ (void)setHttpClient:(MSHttpClient *)client {
-    [MSInstallationManager sharedInstance].httpClient = client;
-}
-
-+ (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName {
-    _connectionString = connectionString;
-    _hubName = hubName;
-}
-
-+ (void)setPushChannel:(NSString *)pushChannel {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-
-    installation.pushChannel = pushChannel;
-
-    [MSLocalStorage upsertInstallation:installation];
-}
-
-+ (MSInstallation *)getInstallation {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-
-    return installation;
-}
-
-+ (BOOL)addTags:(NSSet<NSString *> *)tags {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-
-    if ([installation addTags:tags]) {
-        [MSLocalStorage upsertInstallation:installation];
-        return YES;
-    }
-
-    return NO;
-}
-
-+ (BOOL)removeTags:(NSSet<NSString *> *)tags {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-
-    if (installation.tags == nil || [installation.tags count] == 0) {
-        return NO;
-    }
-
-    [installation removeTags:tags];
-
-    [MSLocalStorage upsertInstallation:installation];
-
-    return YES;
-}
-
-+ (void)clearTags {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-
-    if (installation && installation.tags && [installation.tags count] > 0) {
-        [installation clearTags];
-        [MSLocalStorage upsertInstallation:installation];
-    }
-}
-
-+ (NSSet<NSString *> *)getTags {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-
-    if (!installation) {
-        installation = [MSInstallation new];
-    }
-
-    return [installation getTags];
-}
-
-+ (void)saveInstallation {
-    [[MSInstallationManager sharedInstance] saveInstallation];
-}
-
-- (void)saveInstallation {
-
-    if (!tokenProvider) {
+    if (!_tokenProvider) {
         NSLog(@"Invalid connection string");
         return;
     }
-
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
 
     if (!installation.pushChannel) {
         NSLog(@"You have to setup Push Channel before save installation");
         return;
     }
 
-    NSString *endpoint = [connectionDictionary objectForKey:@"endpoint"];
+    NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
     NSString *url =
         [NSString stringWithFormat:@"%@%@/installations/%@?api-version=2017-04", endpoint, _hubName, installation.installationID];
 
-    NSString *sasToken = [tokenProvider generateSharedAccessTokenWithUrl:url];
+    NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
     NSDictionary *headers = @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken};
@@ -184,7 +92,7 @@ static NSString *_hubName;
         NSString *keyValue = [currentField substringFromIndex:([keyName length] + 1)];
         if ([keyName isEqualToString:@"endpoint"]) {
             {
-                keyValue = [[MSInstallationManager modifyEndpoint:[NSURL URLWithString:keyValue] scheme:@"https"] absoluteString];
+                keyValue = [[MSInstallationManager fixupEndpoint:[NSURL URLWithString:keyValue] scheme:@"https"] absoluteString];
             }
         }
 
@@ -194,7 +102,7 @@ static NSString *_hubName;
     return result;
 }
 
-+ (NSURL *)modifyEndpoint:(NSURL *)endPoint scheme:(NSString *)scheme {
++ (NSURL *)fixupEndpoint:(NSURL *)endPoint scheme:(NSString *)scheme {
     NSString *modifiedEndpoint = [NSString stringWithString:[endPoint absoluteString]];
 
     if (![modifiedEndpoint hasSuffix:@"/"]) {

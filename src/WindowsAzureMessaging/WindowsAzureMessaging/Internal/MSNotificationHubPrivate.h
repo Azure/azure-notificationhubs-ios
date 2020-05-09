@@ -11,6 +11,4 @@
 
 @property(nonatomic) id<MSNotificationHubDelegate> delegate;
 
-
-
 @end

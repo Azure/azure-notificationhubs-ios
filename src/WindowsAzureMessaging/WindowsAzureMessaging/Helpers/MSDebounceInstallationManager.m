@@ -8,34 +8,35 @@
 
 @implementation MSDebounceInstallationManager
 
-- (instancetype)initWithInterval:(double)interval {
+- (instancetype)initWithInterval:(double)interval installationManager:(nonnull MSInstallationManager *)installationManager{
     if (self = [super init]) {
-        self.interval = interval;
+        _interval = interval;
+        _installationManager = installationManager;
     }
 
     return self;
 }
 
-- (void)saveInstallation {
+- (void)saveInstallation:(MSInstallation *)installation {
     if (_debounceTimer != nil) {
         [_debounceTimer invalidate];
     }
 
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
     MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
 
     if (![installation isEqual:lastInstallation]) {
         _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval
                                                           target:self
                                                         selector:@selector(execute)
-                                                        userInfo:nil
+                                                        userInfo:installation
                                                          repeats:false];
         [[NSRunLoop mainRunLoop] addTimer:_debounceTimer forMode:NSRunLoopCommonModes];
     }
 }
 
-- (void)execute {
-    [MSInstallationManager saveInstallation];
+- (void)execute{
+    MSInstallation *installation = [_debounceTimer userInfo];
+    [_installationManager saveInstallation:installation];
 }
 
 @end

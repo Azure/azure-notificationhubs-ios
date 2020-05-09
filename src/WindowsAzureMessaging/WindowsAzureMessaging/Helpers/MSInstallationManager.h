@@ -10,26 +10,16 @@
 
 @interface MSInstallationManager : NSObject {
 
-  @private
-    MSTokenProvider *tokenProvider;
-    NSDictionary *connectionDictionary;
-    NSString *pushToken;
+    @private
+    NSString *_connectionString;
+    NSString *_hubName;
+    MSTokenProvider *_tokenProvider;
+    NSDictionary *_connectionDictionary;
 }
 
 @property(nonatomic) MSHttpClient *httpClient;
 
-+ (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
-
-+ (void)saveInstallation;
-+ (void)setPushChannel:(NSString *)pushChannel;
-+ (BOOL)addTags:(NSSet<NSString *> *)tags;
-+ (BOOL)removeTags:(NSSet<NSString *> *)tags;
-+ (NSSet<NSString *> *)getTags;
-+ (void)clearTags;
-+ (MSInstallation *)getInstallation;
-+ (void)setHttpClient:(MSHttpClient *)client;
-
-- (void)saveInstallation;
-+ (void)resetInstance;
+- (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
+- (void)saveInstallation:(MSInstallation *)installation;
 
 @end
