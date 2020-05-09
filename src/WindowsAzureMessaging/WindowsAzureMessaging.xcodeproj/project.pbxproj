@@ -602,19 +602,19 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3023B82459C127002CF65B /* MSNotificationHubMessage.h in Headers */,
+				6489DE0724598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */,
 				A358373916AA3B060041E372 /* SBConnectionString.h in Headers */,
 				B3D2855C2456F1F200C78CC8 /* MSHttpClientDelegate.h in Headers */,
 				848CB73C16FCC78E00183E8D /* SBStoredRegistrationEntry.h in Headers */,
 				4CD6F4972465C6EA00BA554A /* MSNotificationHubPrivate.h in Headers */,
 				B3D285312456E97F00C78CC8 /* MSHttpUtil.h in Headers */,
 				A358373A16AA3B080041E372 /* SBNotificationHub.h in Headers */,
-				6489DE0724598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */,
 				8471C92B16EABF5600C73674 /* SBLocalStorage.h in Headers */,
 				A358373D16AA3B0D0041E372 /* WindowsAzureMessaging.h in Headers */,
 				A358374016AA3B160041E372 /* SBTokenProvider.h in Headers */,
 				A358373C16AA3B0B0041E372 /* SBRegistration.h in Headers */,
 				6489DDF624582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */,
-				CE3023B82459C127002CF65B /* MSNotificationHubMessage.h in Headers */,
 				B3D2852D2456E97F00C78CC8 /* MSHttpClientPrivate.h in Headers */,
 				A358373E16AA3B120041E372 /* SBNotificationHubHelper.h in Headers */,
 				14A17DEB24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */,

@@ -109,22 +109,28 @@
 }
 
 - (NSUInteger)hash {
-  NSUInteger result = 0;
+    return [self.installationID hash] ^
+        [self.platform hash] ^
+        [self.pushChannel hash] ^
+        [self.tags hash];
+}
 
-  result += [self.installationID hash];
-  result += [self.platform hash];
-  result += [self.pushChannel hash];
-  result += [self.tags hash];
-
-  return result;
+- (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
+    return [self.installationID isEqualToString:installation.installationID] &&
+        [self.platform isEqualToString:installation.platform] &&
+        [self.tags isEqualToSet:installation.tags];
 }
 
 - (BOOL)isEqual:(id)object {
   if (self == object) {
-    return YES;
+      return YES;
   }
 
-  return [self hash] == [object hash];
+  if (![object isKindOfClass:[MSInstallation class]]) {
+      return NO;
+  }
+
+  return [self isEqualToMSInstallation:(MSInstallation *)object];
 }
 
 @end
