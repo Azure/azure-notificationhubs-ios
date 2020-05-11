@@ -91,9 +91,7 @@
 
         NSString *keyValue = [currentField substringFromIndex:([keyName length] + 1)];
         if ([keyName isEqualToString:@"endpoint"]) {
-            {
-                keyValue = [[MSInstallationManager fixupEndpoint:[NSURL URLWithString:keyValue] scheme:@"https"] absoluteString];
-            }
+            keyValue = [[MSInstallationManager fixupEndpoint:[NSURL URLWithString:keyValue] scheme:@"https"] absoluteString];
         }
 
         [result setObject:keyValue forKey:keyName];

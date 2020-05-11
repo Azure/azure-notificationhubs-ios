@@ -14,7 +14,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 static char decodingTable[128];
 static NSString *decodingTableLock = @"decodingTableLock";
 
-- (MSTokenProvider *)initWithConnectionDictionary:(NSDictionary *)connectionDictionary {
+- (instancetype)initWithConnectionDictionary:(NSDictionary *)connectionDictionary {
     if (self = [super init]) {
         if (![self isSuccessfullyInitWithConnectionString:connectionDictionary]) {
             return nil;
@@ -37,62 +37,62 @@ static NSString *decodingTableLock = @"decodingTableLock";
     audienceUri = [[audienceUri lowercaseString] stringByReplacingOccurrencesOfString:@"https://" withString:@"http://"];
     audienceUri = [[self urlEncode:audienceUri] lowercaseString];
 
-    NSString *signature = [self signString:[audienceUri stringByAppendingFormat:@"\n%@", expiresOn] withKey:self->_sharedAccessKey];
+    NSString *signature = [self signString:[audienceUri stringByAppendingFormat:@"\n%@", expiresOn] withKey:_sharedAccessKey];
     signature = [self urlEncode:signature];
 
     NSString *token = [NSString
-        stringWithFormat:@"SharedAccessSignature sr=%@&sig=%@&se=%@&skn=%@", audienceUri, signature, expiresOn, self->_sharedAccessKeyName];
+        stringWithFormat:@"SharedAccessSignature sr=%@&sig=%@&se=%@&skn=%@", audienceUri, signature, expiresOn, _sharedAccessKeyName];
 
     return token;
 }
 
 - (BOOL)isSuccessfullyInitWithConnectionString:(NSDictionary *)connectionDictionary {
-    self->timeToExpireinMins = 20;
+    timeToExpireinMins = 20;
 
     NSString *endpoint = [connectionDictionary objectForKey:@"endpoint"];
     if (endpoint) {
-        self->_serviceEndPoint = [[NSURL alloc] initWithString:endpoint];
+        _serviceEndPoint = [[NSURL alloc] initWithString:endpoint];
     }
 
     NSString *stsendpoint = [connectionDictionary objectForKey:@"stsendpoint"];
     if (stsendpoint) {
-        self->_stsHostName = [[NSURL alloc] initWithString:stsendpoint];
+        _stsHostName = [[NSURL alloc] initWithString:stsendpoint];
     }
 
-    self->_sharedAccessKey = [connectionDictionary objectForKey:@"sharedaccesskey"];
-    self->_sharedAccessKeyName = [connectionDictionary objectForKey:@"sharedaccesskeyname"];
-    self->_sharedSecret = [connectionDictionary objectForKey:@"sharedsecretvalue"];
-    self->_sharedSecretIssurer = [connectionDictionary objectForKey:@"sharedsecretissuer"];
+    _sharedAccessKey = [connectionDictionary objectForKey:@"sharedaccesskey"];
+    _sharedAccessKeyName = [connectionDictionary objectForKey:@"sharedaccesskeyname"];
+    _sharedSecret = [connectionDictionary objectForKey:@"sharedsecretvalue"];
+    _sharedSecretIssurer = [connectionDictionary objectForKey:@"sharedsecretissuer"];
 
     // validation
-    if (self->_serviceEndPoint == nil || [self->_serviceEndPoint host] == nil) {
+    if (_serviceEndPoint == nil || [_serviceEndPoint host] == nil) {
         NSLog(@"%@", @"Endpoint is missing or not in URL format in connectionString.");
-        return FALSE;
+        return NO;
     }
 
-    if ((self->_sharedAccessKey == nil || self->_sharedAccessKeyName == nil) && self->_sharedSecret == nil) {
+    if ((_sharedAccessKey == nil || _sharedAccessKeyName == nil) && _sharedSecret == nil) {
         NSLog(@"%@", @"Security information is missing in connectionString.");
-        return FALSE;
+        return NO;
     }
 
-    if (self->_stsHostName == nil) {
-        NSString *nameSpace = [[[self->_serviceEndPoint host] componentsSeparatedByString:@"."] objectAtIndex:0];
-        self->_stsHostName =
+    if (_stsHostName == nil) {
+        NSString *nameSpace = [[[_serviceEndPoint host] componentsSeparatedByString:@"."] objectAtIndex:0];
+        _stsHostName =
             [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net", nameSpace]];
     } else {
-        if ([self->_stsHostName host] == nil) {
+        if ([_stsHostName host] == nil) {
             NSLog(@"%@", @"StsHostname is not in URL format in connectionString.");
-            return FALSE;
+            return NO;
         }
 
-        self->_stsHostName = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@", [self->_stsHostName host]]];
+        _stsHostName = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@", [_stsHostName host]]];
     }
 
-    if (self->_sharedSecret && !self->_sharedSecretIssurer) {
-        self->_sharedSecretIssurer = @"owner";
+    if (_sharedSecret && !_sharedSecretIssurer) {
+        _sharedSecretIssurer = @"owner";
     }
 
-    return TRUE;
+    return YES;
 }
 
 - (NSData *)fromBase64:(NSString *)str {

@@ -8,7 +8,7 @@
 
 @implementation MSDebounceInstallationManager
 
-- (instancetype)initWithInterval:(double)interval installationManager:(nonnull MSInstallationManager *)installationManager {
+- (instancetype)initWithInterval:(double)interval installationManager:(MSInstallationManager *)installationManager {
     if (self = [super init]) {
         _interval = interval;
         _installationManager = installationManager;
