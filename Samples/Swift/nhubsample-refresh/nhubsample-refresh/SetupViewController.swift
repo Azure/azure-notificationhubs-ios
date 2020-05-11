@@ -52,7 +52,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
             fatalError("The dequeued cell is not an instance of TagCell.")
         }
         
-        cell.tagLabel.text = tags[tags.index(tags.startIndex, offsetBy: indexPath.row)]
+        cell.tagLabel.text = tags[indexPath.row]
         
         return cell
     }
@@ -60,7 +60,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
 
-        MSNotificationHub.removeTag((tags[tags.index(tags.startIndex, offsetBy: indexPath.row)]))
+        MSNotificationHub.removeTag(tags[indexPath.row])
         tags = MSNotificationHub.getTags()
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tagsTable.reloadData()

@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tags = [[MSNotificationHub getTags] allObjects];
+    self.tags = [MSNotificationHub getTags];
     
     self.addNewTagTextField.delegate = self;
     self.tagsTable.delegate = self;
@@ -38,7 +38,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [MSNotificationHub addTag:textField.text];
-    self.tags = [[MSNotificationHub getTags] allObjects];
+    self.tags = [MSNotificationHub getTags];
     textField.text = @"";
     [self.tagsTable reloadData];
 }
@@ -60,7 +60,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [MSNotificationHub removeTag:self.tags[indexPath.row]];
-        self.tags = [[MSNotificationHub getTags] allObjects];
+        self.tags = [MSNotificationHub getTags];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.tagsTable reloadData];
     }

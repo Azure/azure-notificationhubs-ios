@@ -7,7 +7,6 @@
 #import "SBNotificationHub.h"
 
 // New API
-#import "MSInstallation.h"
 #import "MSNotificationHub.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"

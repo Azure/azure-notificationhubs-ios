@@ -16,9 +16,9 @@
 
 - (NSData *)toJsonData;
 
-- (BOOL)addTags:(NSSet<NSString *> *)tags;
-- (BOOL)removeTags:(NSSet<NSString *> *)tags;
-- (NSSet<NSString *> *)getTags;
+- (BOOL)addTags:(NSArray<NSString *> *)tags;
+- (BOOL)removeTags:(NSArray<NSString *> *)tags;
+- (NSArray<NSString *> *)getTags;
 - (void)clearTags;
 
 @end

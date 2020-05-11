@@ -73,7 +73,7 @@
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
 
-- (BOOL)addTags:(NSSet<NSString *> *)tags {
+- (BOOL)addTags:(NSArray<NSString *> *)tags {
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$"
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:nil];
@@ -88,20 +88,20 @@
         }
     }
 
-    self.tags = tmpTags;
+    self.tags = [tmpTags copy];
     return YES;
 }
 
-- (NSSet<NSString *> *)getTags {
-    return [self.tags copy];
+- (NSArray<NSString *> *)getTags {
+    return [[self.tags copy] allObjects];
 }
 
-- (BOOL)removeTags:(NSSet<NSString *> *)tags {
+- (BOOL)removeTags:(NSArray<NSString *> *)tags {
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
-    [tmpTags minusSet:[NSSet setWithSet:tags]];
+    [tmpTags minusSet:[NSSet setWithArray:tags]];
 
-    self.tags = tmpTags;
+    self.tags = [tmpTags copy];
     return YES;
 }
 

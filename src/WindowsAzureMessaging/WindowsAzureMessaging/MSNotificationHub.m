@@ -181,10 +181,10 @@ static dispatch_once_t onceToken;
 #pragma mark Tags
 
 + (BOOL)addTag:(NSString *)tag {
-    return [MSNotificationHub addTags:[NSSet setWithObject:tag]];
+    return [MSNotificationHub addTags:[NSArray arrayWithObject:tag]];
 }
 
-+ (BOOL)addTags:(NSSet<NSString *> *)tags {
++ (BOOL)addTags:(NSArray<NSString *> *)tags {
     return [sharedInstance addTags:tags];
 }
 
@@ -192,7 +192,7 @@ static dispatch_once_t onceToken;
     [sharedInstance clearTags];
 }
 
-+ (NSSet<NSString *> *)getTags {
++ (NSArray<NSString *> *)getTags {
     return [sharedInstance getTags];
 }
 
@@ -200,15 +200,15 @@ static dispatch_once_t onceToken;
     return [sharedInstance removeTag:tag];
 }
 
-+ (BOOL)removeTags:(NSSet<NSString *> *)tags {
++ (BOOL)removeTags:(NSArray<NSString *> *)tags {
     return [sharedInstance removeTags:tags];
 }
 
 - (BOOL)addTag:(NSString *)tag {
-    return [self addTags:[NSSet setWithObject:tag]];
+    return [self addTags:[NSArray arrayWithObject:tag]];
 }
 
-- (BOOL)addTags:(NSSet<NSString *> *)tags {
+- (BOOL)addTags:(NSArray<NSString *> *)tags {
     MSInstallation *installation = [self getInstallation];
 
     if ([installation addTags:tags]) {
@@ -230,15 +230,15 @@ static dispatch_once_t onceToken;
     }
 }
 
-- (NSSet<NSString *> *)getTags {
+- (NSArray<NSString *> *)getTags {
     return [[self getInstallation] getTags];
 }
 
 - (BOOL)removeTag:(NSString *)tag {
-    return [self removeTags:[NSSet setWithObject:tag]];
+    return [self removeTags:[NSArray arrayWithObject:tag]];
 }
 
-- (BOOL)removeTags:(NSSet<NSString *> *)tags {
+- (BOOL)removeTags:(NSArray<NSString *> *)tags {
     MSInstallation *installation = [self getInstallation];
 
     if (installation.tags == nil || [installation.tags count] == 0) {
