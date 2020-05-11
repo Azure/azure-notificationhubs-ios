@@ -6,21 +6,16 @@
 #import "WindowsAzureMessaging.h"
 #import "MSTestFrameworks.h"
 #import "MSInstallationManager.h"
+#import "MSLocalStorage.h"
 
 @interface MSInstallationTagsTests : XCTestCase
-@property id managerMock;
+
 @end
 
 @implementation MSInstallationTagsTests
 
 - (void)setUp {
     [super setUp];
-    _managerMock = OCMClassMock([MSInstallationManager class]);
-    OCMStub(ClassMethod([_managerMock saveInstallation])).andDo(nil);
-    OCMStub(ClassMethod([_managerMock addTags:[OCMArg any]])).andForwardToRealObject();
-    OCMStub(ClassMethod([_managerMock removeTags:[OCMArg any]])).andForwardToRealObject();
-    OCMStub(ClassMethod([_managerMock clearTags])).andForwardToRealObject();
-    OCMStub(ClassMethod([_managerMock getTags])).andForwardToRealObject();
     
     id notificationCenterMock = OCMClassMock([UNUserNotificationCenter class]);
     OCMStub(ClassMethod([notificationCenterMock currentNotificationCenter])).andReturn(nil);
@@ -52,7 +47,7 @@
 -(void) testAddTagFailsIfTagAlreadyExist{
     // If
     MSInstallation *installation = [MSInstallation new];
-    installation.tags = @[@"tag1", @"tag2"];
+    installation.tags = [NSSet setWithArray:@[@"tag1", @"tag2"]];
     [MSLocalStorage upsertInstallation:installation];
     
     // Then
@@ -78,7 +73,7 @@
 -(void) testRemoveTags{
     // If
     MSInstallation *installation = [MSInstallation new];
-    installation.tags = @[@"tag1", @"tag2", @"tag3"];
+    installation.tags = [NSSet setWithArray:@[@"tag1", @"tag2", @"tag3"]];
     [MSLocalStorage upsertInstallation:installation];
     NSArray<NSString *> *tags = @[@"tag1", @"tag2"];
     
@@ -102,7 +97,7 @@
 -(void) testClearTags{
     // If
     MSInstallation *installation = [MSInstallation new];
-    installation.tags = @[@"tag1", @"tag2", @"tag3"];
+    installation.tags = [NSSet setWithArray:@[@"tag1", @"tag2", @"tag3"]];
     [MSLocalStorage upsertInstallation:installation];
     
     // Then
@@ -114,7 +109,7 @@
 -(void) testGetTags{
     // If
     MSInstallation *installation = [MSInstallation new];
-    installation.tags = @[@"tag1", @"tag2", @"tag3"];
+    installation.tags = [NSSet setWithArray:@[@"tag1", @"tag2", @"tag3"]];
     [MSLocalStorage upsertInstallation:installation];
     
     // When
@@ -123,51 +118,6 @@
     // Then
     XCTAssertNotNil(tags);
     XCTAssertTrue([tags count] == 3, @"Installation tags count actually is %lul", [tags count]);
-}
-
--(void) testDebounceAddTags{
-    // If
-    MSInstallation *installation = [MSInstallation new];
-    [MSLocalStorage upsertInstallation:installation];
-    NSArray<NSString *> *tags = @[@"tag1", @"tag2"];
-    NSArray<NSString *> *tags2 = @[@"tag2", @"tag3"];
-    id mock = OCMPartialMock([MSInstallationManager new]);
-        
-    // Then
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Test debounce add tags"];
-    [expectation setInverted:YES];
-    __block int counter = 0;
-    OCMStub(ClassMethod([mock saveInstallation])).andDo(^(NSInvocation *invocation){
-        if(++counter > 1){
-            [expectation fulfill];
-        }
-    });
-    
-    // When
-    [MSNotificationHub addTags:tags];
-    [MSNotificationHub addTags:tags2];
-    [self waitForExpectationsWithTimeout:3 handler:nil];
-}
-
--(void) testDebounceAddTagsNotExecutedForSameInstallation{
-    // If
-    MSInstallation *installation = [MSInstallation new];
-    NSArray<NSString *> *tags = @[@"tag1", @"tag2"];
-    installation.tags = tags;
-    [MSLocalStorage upsertInstallation:installation];
-    [MSLocalStorage upsertLastInstallation:installation];
-    id mock = OCMPartialMock([MSInstallationManager new]);
-        
-    // Then
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Test debounce add tags for same installation"];
-    [expectation setInverted:YES];
-    OCMStub(ClassMethod([mock saveInstallation])).andDo(^(NSInvocation *invocation){
-        [expectation fulfill];
-    });
-    
-    // When
-    [MSNotificationHub addTags:tags];
-    [self waitForExpectationsWithTimeout:3 handler:nil];
 }
 
 @end

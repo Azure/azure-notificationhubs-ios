@@ -24,7 +24,6 @@ static NSString *deviceToken = @"deviceToken";
 
 - (void)tearDown {
     [super tearDown];
-    [MSInstallationManager resetInstance];
 }
 
 -(void) testSaveInstallation {
@@ -33,11 +32,11 @@ static NSString *deviceToken = @"deviceToken";
     NSString *method = @"PUT";
     OCMStub([httpClient sendCallAsync:OCMOCK_ANY]).andDo(nil);
     
-    [MSInstallationManager initWithConnectionString:connectionString hubName:hubName];
-    [MSInstallationManager setHttpClient:httpClient];
-    [MSInstallationManager setPushChannel:deviceToken];
-
-    MSInstallation * installation = [MSLocalStorage loadInstallation];
+    MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString hubName:hubName];
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    [installation setPushChannel:deviceToken];
+    [installationManager setHttpClient:httpClient];
+    
     NSString *expectedUrl = [NSString stringWithFormat:@"https://test-namespace.servicebus.windows.net/nubName/installations/%@?api-version=2017-04", installation.installationID];
     NSString *expectedSasTokenUrl = [NSString stringWithFormat:@"http://test-namespace.servicebus.windows.net/nubName/installations/%@", installation.installationID];
     NSString *encodedSasTokenUrl = [expectedSasTokenUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
@@ -53,7 +52,7 @@ static NSString *deviceToken = @"deviceToken";
     NSData *expectedData = [NSJSONSerialization dataWithJSONObject:dictionary
                                                            options:NSJSONWritingPrettyPrinted error:nil];
     // When
-    [MSInstallationManager saveInstallation];
+    [installationManager saveInstallation:installation];
     
     // Then
     OCMVerify([httpClient sendAsync:[OCMArg checkWithBlock:^BOOL(NSURL *url){
@@ -79,28 +78,30 @@ static NSString *deviceToken = @"deviceToken";
 -(void) testSaveInstallationFailsIfNoPushChannel {
     // If
     MSHttpClient *httpClient = OCMPartialMock([MSHttpClient new]);
-    [MSInstallationManager initWithConnectionString:connectionString hubName:hubName];
-    [MSInstallationManager setHttpClient:httpClient];
+    MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString hubName:hubName];
+    [installationManager setHttpClient:httpClient];
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
     
     // Then
     OCMReject([httpClient sendAsync:OCMOCK_ANY method:OCMOCK_ANY headers:OCMOCK_ANY data:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
         
     // When
-    [MSInstallationManager saveInstallation];
+    [installationManager saveInstallation:installation];
 }
 
 -(void) testSaveInstallationFailsIfInvalidConnectionString {
     // If
     MSHttpClient *httpClient = OCMPartialMock([MSHttpClient new]);
-    [MSInstallationManager initWithConnectionString:@"" hubName:hubName];
-    [MSInstallationManager setPushChannel:deviceToken];
-    [MSInstallationManager setHttpClient:httpClient];
+    MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:@"" hubName:hubName];
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    [installation setPushChannel:deviceToken];
+    [installationManager setHttpClient:httpClient];
     
     // Then
     OCMReject([httpClient sendAsync:OCMOCK_ANY method:OCMOCK_ANY headers:OCMOCK_ANY data:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
         
     // When
-    [MSInstallationManager saveInstallation];
+    [installationManager saveInstallation:installation];
 }
 
 @end

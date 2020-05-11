@@ -23,6 +23,10 @@
     return self;
 }
 
+- (void)setHttpClient:(MSHttpClient *)httpClient {
+    _httpClient = httpClient;
+}
+
 - (void)saveInstallation:(MSInstallation *)installation {
 
     if (!_tokenProvider) {

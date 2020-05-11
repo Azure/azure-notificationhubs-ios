@@ -722,7 +722,7 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
 
   // If
   XCTestExpectation *expectation = [self expectationWithDescription:@"Used all retries."];
-  NSString *containerId = @"1";
+  //NSString *containerId = @"1";
 
   MSHttpClient *sut = [MSHttpClient new];
   NSURL *url = [NSURL URLWithString:@"https://mock/something?a=b"];

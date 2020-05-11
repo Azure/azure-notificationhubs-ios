@@ -22,4 +22,8 @@
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
 - (void)saveInstallation:(MSInstallation *)installation;
 
+#pragma mark For Testing
+
+- (void)setHttpClient:(MSHttpClient *)httpClient;
+
 @end
