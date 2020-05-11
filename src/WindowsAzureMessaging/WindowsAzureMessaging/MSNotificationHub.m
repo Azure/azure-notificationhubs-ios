@@ -40,10 +40,10 @@ static dispatch_once_t onceToken;
     MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString
                                                                                                  hubName:notificationHubName];
 
-    [sharedInstance setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2
+    [[MSNotificationHub sharedInstance] setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2
                                                                                        installationManager:installationManager]];
 
-    [sharedInstance registerForRemoteNotifications];
+    [[MSNotificationHub sharedInstance] registerForRemoteNotifications];
 }
 
 - (void)setDebounceInstallationManager:(MSDebounceInstallationManager *)debounceInstallationManager {
@@ -139,6 +139,24 @@ static dispatch_once_t onceToken;
 
 #pragma mark Installations
 
++ (NSString *) getPushChannel {
+    return [sharedInstance getPushChannel];
+}
+
++ (NSString *) getInstallationId {
+    return [sharedInstance getInstallationId];
+}
+
+- (NSString *) getPushChannel {
+    MSInstallation *installation = [self getInstallation];
+    return installation.pushChannel;
+}
+
+- (NSString *) getInstallationId {
+    MSInstallation *installation = [self getInstallation];
+    return installation.installationID;
+}
+
 - (void)setPushChannel:(NSString *)pushChannel {
     MSInstallation *installation = [self getInstallation];
 
@@ -174,7 +192,7 @@ static dispatch_once_t onceToken;
     [sharedInstance clearTags];
 }
 
-+ (NSSet<NSString *> *)getTags {
++ (NSArray<NSString *> *)getTags {
     return [sharedInstance getTags];
 }
 
@@ -212,7 +230,7 @@ static dispatch_once_t onceToken;
     }
 }
 
-- (NSSet<NSString *> *)getTags {
+- (NSArray<NSString *> *)getTags {
     return [[self getInstallation] getTags];
 }
 

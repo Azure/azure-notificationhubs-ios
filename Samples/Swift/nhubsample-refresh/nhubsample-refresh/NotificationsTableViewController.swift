@@ -27,7 +27,7 @@ class NotificationsTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of NotificationCell.")
         }
         
-        cell.notificationSummaryLabel.text = notifications[indexPath.row].title ?? notifications[indexPath.row].message
+        cell.notificationSummaryLabel.text = notifications[indexPath.row].title ?? notifications[indexPath.row].body
         
         return cell
     }

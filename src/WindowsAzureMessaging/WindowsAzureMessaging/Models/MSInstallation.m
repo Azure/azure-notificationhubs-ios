@@ -28,6 +28,7 @@
     if (self = [super init]) {
         self.installationID = [[NSUUID UUID] UUIDString];
         self.platform = @"APNS";
+        self.tags = [NSSet new];
     }
 
     return self;
@@ -66,7 +67,7 @@
         @"installationId" : self.installationID,
         @"platform" : self.platform,
         @"pushChannel" : self.pushChannel,
-        @"tags" : self.tags ?: @""
+        @"tags" : [self.tags allObjects] ?: [NSArray new]
     };
 
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
@@ -87,12 +88,12 @@
         }
     }
 
-    self.tags = tmpTags;
+    self.tags = [tmpTags copy];
     return YES;
 }
 
-- (NSSet<NSString *> *)getTags {
-    return [self.tags copy];
+- (NSArray<NSString *> *)getTags {
+    return [[self.tags copy] allObjects];
 }
 
 - (BOOL)removeTags:(NSArray<NSString *> *)tags {
@@ -100,7 +101,7 @@
 
     [tmpTags minusSet:[NSSet setWithArray:tags]];
 
-    self.tags = tmpTags;
+    self.tags = [tmpTags copy];
     return YES;
 }
 

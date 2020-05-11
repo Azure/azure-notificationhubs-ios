@@ -13,7 +13,7 @@
 
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName {
     if (self = [super init]) {
-        _connectionDictionary = [MSInstallationManager parseConnectionString:_connectionString];
+        _connectionDictionary = [MSInstallationManager parseConnectionString:connectionString];
         _tokenProvider = [MSTokenProvider createFromConnectionDictionary:_connectionDictionary];
         _httpClient = [MSHttpClient new];
         _connectionString = connectionString;

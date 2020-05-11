@@ -18,7 +18,7 @@
 
 - (BOOL)addTags:(NSArray<NSString *> *)tags;
 - (BOOL)removeTags:(NSArray<NSString *> *)tags;
-- (NSSet<NSString *> *)getTags;
+- (NSArray<NSString *> *)getTags;
 - (void)clearTags;
 
 @end

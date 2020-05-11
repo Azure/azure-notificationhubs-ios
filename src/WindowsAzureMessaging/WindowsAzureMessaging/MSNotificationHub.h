@@ -46,15 +46,21 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)addTags:(NSArray<NSString *> *)tags;
 + (BOOL)removeTag:(NSString *)tag;
 + (BOOL)removeTags:(NSArray<NSString *> *)tags;
-+ (NSSet<NSString *> *)getTags;
++ (NSArray<NSString *> *)getTags;
 + (void)clearTags;
+
++ (NSString *) getPushChannel;
++ (NSString *) getInstallationId;
 
 - (BOOL)addTag:(NSString *)tag;
 - (BOOL)addTags:(NSArray<NSString *> *)tags;
 - (BOOL)removeTag:(NSString *)tag;
 - (BOOL)removeTags:(NSArray<NSString *> *)tags;
-- (NSSet<NSString *> *)getTags;
+- (NSArray<NSString *> *)getTags;
 - (void)clearTags;
+
+- (NSString *) getPushChannel;
+- (NSString *) getInstallationId;
 
 @end
 

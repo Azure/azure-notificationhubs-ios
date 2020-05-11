@@ -21,8 +21,8 @@
     self.tagsTable.dataSource = self;
     [self.tagsTable reloadData];
     
-    self.deviceTokenLabel.text = [[MSNotificationHub getInstallation] installationID];
-    self.installationIdLabel.text = [[MSNotificationHub getInstallation] pushChannel];
+    self.deviceTokenLabel.text = [MSNotificationHub getPushChannel];
+    self.installationIdLabel.text = [MSNotificationHub getInstallationId];
     
     self.notificationsTableView = (NotificationsTableViewController*) [[(UINavigationController*)[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
     
@@ -67,7 +67,7 @@
 }
 
 - (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification {
-    NSLog(@"Received notification: %@: %@", notification.title, notification.message);
+    NSLog(@"Received notification: %@: %@", notification.title, notification.body);
     [self.notificationsTableView addNotification:notification];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:notification.title

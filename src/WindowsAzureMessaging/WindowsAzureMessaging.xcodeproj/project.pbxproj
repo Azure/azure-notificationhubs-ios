@@ -33,15 +33,15 @@
 		4C854707244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
 		4CD6F4972465C6EA00BA554A /* MSNotificationHubPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD6F4962465C6EA00BA554A /* MSNotificationHubPrivate.h */; };
 		4CD6F4982465C6EA00BA554A /* MSNotificationHubPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD6F4962465C6EA00BA554A /* MSNotificationHubPrivate.h */; };
-		4CD6F4A224663D3C00BA554A /* MSNotificationHubAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */; };
-		4CD6F4A324663D6F00BA554A /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; };
-		6489DDF624582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4CD6F4A224663D3C00BA554A /* MSNotificationHubAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CD6F4A324663D6F00BA554A /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6489DDF624582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6489DDF924582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */; };
 		6489DDFA24582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */; };
 		6489DDFC24586C210021CF36 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */; };
 		6489DDFD24586C210021CF36 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */; };
 		6489DE0724598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0022451A86C006B6327 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0042451A86C006B6327 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C854703244F9347005F6B49 /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64F993DF245C448B0086ABF8 /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = CE98A78124532F5E00DA1AE8 /* MSLocalStorage.h */; };
@@ -398,7 +398,6 @@
 				A358371816AA39850041E372 /* SBNotificationHub.h */,
 				A358371916AA39850041E372 /* SBNotificationHub.m */,
 				906E404016A86A3200817A11 /* WindowsAzureMessaging.h */,
-				906E403E16A86A3200817A11 /* Supporting Files */,
 				4C854703244F9347005F6B49 /* MSNotificationHub.h */,
 				4C854705244FD64C005F6B49 /* MSNotificationHub.m */,
 				6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */,
