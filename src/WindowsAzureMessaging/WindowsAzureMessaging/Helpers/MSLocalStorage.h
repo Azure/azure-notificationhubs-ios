@@ -7,6 +7,9 @@
 
 @interface MSLocalStorage : NSObject
 
++ (BOOL)isEnabled;
++ (void)setEnabled:(BOOL)enabled;
+
 + (MSInstallation *)upsertInstallation:(MSInstallation *)installation;
 + (MSInstallation *)loadInstallation;
 

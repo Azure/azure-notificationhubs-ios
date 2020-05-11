@@ -36,6 +36,13 @@ static dispatch_once_t onceToken;
     return sharedInstance;
 }
 
++ (void)resetSharedInstance {
+
+  // Resets the once_token so dispatch_once will run again
+  onceToken = 0;
+  sharedInstance = nil;
+}
+
 + (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName {
     MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString
                                                                                                  hubName:notificationHubName];
@@ -92,6 +99,10 @@ static dispatch_once_t onceToken;
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *pushToken = [self convertTokenToString:deviceToken];
     NSLog(@"Registered for push notifications with token: %@", pushToken);
+    
+    if ([pushToken isEqualToString:[self getPushChannel]]) {
+        return;
+    }
 
     [self setPushChannel:pushToken];
     [_debounceInstallationManager saveInstallation:[self getInstallation]];
@@ -127,10 +138,26 @@ static dispatch_once_t onceToken;
 #pragma mark SDK Basics
 
 + (void)setEnabled:(BOOL)isEnabled {
+    [sharedInstance setEnabled:isEnabled];
 }
 
 + (BOOL)isEnabled {
-    return YES;
+    return [sharedInstance isEnabled];
+}
+
+- (void)setEnabled:(BOOL)isEnabled {
+    [MSLocalStorage setEnabled:isEnabled];
+    
+    if (isEnabled) {
+        [self upsertInstallation:[self getInstallation]];
+        NSLog(@"Notification Hubs SDK has been enabled");
+    } else {
+        NSLog(@"Notification Hub SDK has been disabled");
+    }
+}
+
+- (BOOL)isEnabled {
+    return [MSLocalStorage isEnabled];
 }
 
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate {
@@ -175,8 +202,13 @@ static dispatch_once_t onceToken;
     return installation;
 }
 
-- (void)upsertInstallation:(MSInstallation *)installation;
-{ [MSLocalStorage upsertInstallation:installation]; }
+- (void)upsertInstallation:(MSInstallation *)installation {
+    [MSLocalStorage upsertInstallation:installation];
+    
+    if ([self isEnabled]) {
+        [_debounceInstallationManager saveInstallation:installation];
+    }
+}
 
 #pragma mark Tags
 
@@ -213,7 +245,6 @@ static dispatch_once_t onceToken;
 
     if ([installation addTags:tags]) {
         [self upsertInstallation:installation];
-        [_debounceInstallationManager saveInstallation:installation];
         return YES;
     }
 
@@ -226,7 +257,6 @@ static dispatch_once_t onceToken;
     if (installation && installation.tags && [installation.tags count] > 0) {
         [installation clearTags];
         [self upsertInstallation:installation];
-        [_debounceInstallationManager saveInstallation:installation];
     }
 }
 

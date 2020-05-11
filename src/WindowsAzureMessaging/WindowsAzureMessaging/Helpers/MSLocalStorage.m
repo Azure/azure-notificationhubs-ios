@@ -7,8 +7,29 @@
 
 static NSString *const installationKey = @"installation";
 static NSString *const lastInstallationKey = @"lastInstallation";
+static NSString *const enabledKey = @"notificationHubEnabled";
 
 @implementation MSLocalStorage
+
++ (BOOL)isEnabled {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *encodedObject = [defaults objectForKey:enabledKey];
+    if (encodedObject == nil) {
+        return YES;
+    }
+
+    NSNumber *enabledNumber = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    
+    return [enabledNumber boolValue];
+}
+
++ (void)setEnabled:(BOOL)enabled {
+    NSNumber *enabledNumber = [NSNumber numberWithBool:enabled];
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:enabledNumber];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:encodedObject forKey:enabledKey];
+    [defaults synchronize];
+}
 
 + (MSInstallation *)upsertInstallation:(MSInstallation *)installation {
     return [MSLocalStorage upsertInstallation:installation forKey:installationKey];

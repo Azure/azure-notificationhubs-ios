@@ -40,6 +40,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate;
 
++ (BOOL)isEnabled;
++ (void)setEnabled:(BOOL)isEnabled;
+- (BOOL)isEnabled;
+- (void)setEnabled:(BOOL)isEnabled;
+
+#pragma mark Installation Support
+
+- (NSString *) getPushChannel;
+- (NSString *) getInstallationId;
+
++ (NSString *) getPushChannel;
++ (NSString *) getInstallationId;
+
 #pragma mark Tags Support
 
 + (BOOL)addTag:(NSString *)tag;
@@ -49,18 +62,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray<NSString *> *)getTags;
 + (void)clearTags;
 
-+ (NSString *) getPushChannel;
-+ (NSString *) getInstallationId;
-
 - (BOOL)addTag:(NSString *)tag;
 - (BOOL)addTags:(NSArray<NSString *> *)tags;
 - (BOOL)removeTag:(NSString *)tag;
 - (BOOL)removeTags:(NSArray<NSString *> *)tags;
 - (NSArray<NSString *> *)getTags;
 - (void)clearTags;
-
-- (NSString *) getPushChannel;
-- (NSString *) getInstallationId;
 
 @end
 
