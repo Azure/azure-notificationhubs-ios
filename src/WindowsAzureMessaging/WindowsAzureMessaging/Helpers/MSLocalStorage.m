@@ -28,14 +28,14 @@ static NSString *const lastInstallationKey = @"lastInstallation";
 }
 
 + (MSInstallation *)loadInstallation {
-    return [MSLocalStorage loadLastInstallationForKey:installationKey];
+    return [MSLocalStorage loadInstallationForKey:installationKey];
 }
 
 + (MSInstallation *)loadLastInstallation {
-    return [MSLocalStorage loadLastInstallationForKey:lastInstallationKey];
+    return [MSLocalStorage loadInstallationForKey:lastInstallationKey];
 }
 
-+ (MSInstallation *)loadLastInstallationForKey:(NSString *)key {
++ (MSInstallation *)loadInstallationForKey:(NSString *)key {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:key];
 

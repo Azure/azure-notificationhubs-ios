@@ -14,15 +14,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tags = [MSNotificationHub getTags];
+    self.tags = [[MSNotificationHub getTags] allObjects];
     
     self.addNewTagTextField.delegate = self;
     self.tagsTable.delegate = self;
     self.tagsTable.dataSource = self;
     [self.tagsTable reloadData];
     
-    self.deviceTokenLabel.text = [[MSNotificationHub getInstallation] installationID];
-    self.installationIdLabel.text = [[MSNotificationHub getInstallation] pushChannel];
+    self.deviceTokenLabel.text = [MSNotificationHub getPushChannel];
+    self.installationIdLabel.text = [MSNotificationHub getInstallationId];
     
     self.notificationsTableView = (NotificationsTableViewController*) [[(UINavigationController*)[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
     
@@ -38,7 +38,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [MSNotificationHub addTag:textField.text];
-    self.tags = [MSNotificationHub getTags];
+    self.tags = [[MSNotificationHub getTags] allObjects];
     textField.text = @"";
     [self.tagsTable reloadData];
 }
@@ -60,14 +60,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [MSNotificationHub removeTag:self.tags[indexPath.row]];
-        self.tags = [MSNotificationHub getTags];
+        self.tags = [[MSNotificationHub getTags] allObjects];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.tagsTable reloadData];
     }
 }
 
 - (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification {
-    NSLog(@"Received notification: %@: %@", notification.title, notification.message);
+    NSLog(@"Received notification: %@: %@", notification.title, notification.body);
     [self.notificationsTableView addNotification:notification];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:notification.title

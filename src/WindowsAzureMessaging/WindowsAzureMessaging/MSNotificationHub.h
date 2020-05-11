@@ -43,18 +43,24 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Tags Support
 
 + (BOOL)addTag:(NSString *)tag;
-+ (BOOL)addTags:(NSArray<NSString *> *)tags;
++ (BOOL)addTags:(NSSet<NSString *> *)tags;
 + (BOOL)removeTag:(NSString *)tag;
-+ (BOOL)removeTags:(NSArray<NSString *> *)tags;
++ (BOOL)removeTags:(NSSet<NSString *> *)tags;
 + (NSSet<NSString *> *)getTags;
 + (void)clearTags;
 
++ (NSString *) getPushChannel;
++ (NSString *) getInstallationId;
+
 - (BOOL)addTag:(NSString *)tag;
-- (BOOL)addTags:(NSArray<NSString *> *)tags;
+- (BOOL)addTags:(NSSet<NSString *> *)tags;
 - (BOOL)removeTag:(NSString *)tag;
-- (BOOL)removeTags:(NSArray<NSString *> *)tags;
+- (BOOL)removeTags:(NSSet<NSString *> *)tags;
 - (NSSet<NSString *> *)getTags;
 - (void)clearTags;
+
+- (NSString *) getPushChannel;
+- (NSString *) getInstallationId;
 
 @end
 

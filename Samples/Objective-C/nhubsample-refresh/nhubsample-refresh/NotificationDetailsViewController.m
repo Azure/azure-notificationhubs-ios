@@ -15,7 +15,7 @@
     // Do any additional setup after loading the view.
     
     self.summaryLabel.text = self.notification.title;
-    self.detailsLabel.text = self.notification.message;
+    self.detailsLabel.text = self.notification.body;
     
     [self.detailsLabel sizeToFit];
 }

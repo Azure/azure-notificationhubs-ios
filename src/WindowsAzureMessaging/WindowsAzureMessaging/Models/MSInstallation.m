@@ -28,6 +28,7 @@
     if (self = [super init]) {
         self.installationID = [[NSUUID UUID] UUIDString];
         self.platform = @"APNS";
+        self.tags = [NSSet new];
     }
 
     return self;
@@ -66,13 +67,13 @@
         @"installationId" : self.installationID,
         @"platform" : self.platform,
         @"pushChannel" : self.pushChannel,
-        @"tags" : self.tags ?: @""
+        @"tags" : [self.tags allObjects] ?: [NSArray new]
     };
 
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
 
-- (BOOL)addTags:(NSArray<NSString *> *)tags {
+- (BOOL)addTags:(NSSet<NSString *> *)tags {
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$"
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:nil];
@@ -95,10 +96,10 @@
     return [self.tags copy];
 }
 
-- (BOOL)removeTags:(NSArray<NSString *> *)tags {
+- (BOOL)removeTags:(NSSet<NSString *> *)tags {
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
-    [tmpTags minusSet:[NSSet setWithArray:tags]];
+    [tmpTags minusSet:[NSSet setWithSet:tags]];
 
     self.tags = tmpTags;
     return YES;

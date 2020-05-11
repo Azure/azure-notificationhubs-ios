@@ -13,7 +13,7 @@ class NotificationDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         summaryLabel.text = notification.title
-        detailsLabel.text = notification.message
+        detailsLabel.text = notification.body
         detailsLabel.sizeToFit()
     }
 }
