@@ -100,12 +100,14 @@ static dispatch_once_t onceToken;
     NSString *pushToken = [self convertTokenToString:deviceToken];
     NSLog(@"Registered for push notifications with token: %@", pushToken);
     
-    if ([pushToken isEqualToString:[self getPushChannel]]) {
+    MSInstallation *installation = [self getInstallation];
+    
+    if ([pushToken isEqualToString:installation.pushChannel]) {
         return;
     }
-
-    [self setPushChannel:pushToken];
-    [_debounceInstallationManager saveInstallation:[self getInstallation]];
+    
+    installation.pushChannel = pushToken;
+    [self upsertInstallation:installation];
 }
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -182,14 +184,6 @@ static dispatch_once_t onceToken;
 - (NSString *) getInstallationId {
     MSInstallation *installation = [self getInstallation];
     return installation.installationID;
-}
-
-- (void)setPushChannel:(NSString *)pushChannel {
-    MSInstallation *installation = [self getInstallation];
-
-    installation.pushChannel = pushChannel;
-
-    [MSLocalStorage upsertInstallation:installation];
 }
 
 - (MSInstallation *)getInstallation {
@@ -278,7 +272,6 @@ static dispatch_once_t onceToken;
     [installation removeTags:tags];
 
     [self upsertInstallation:installation];
-    [_debounceInstallationManager saveInstallation:installation];
 
     return YES;
 }
