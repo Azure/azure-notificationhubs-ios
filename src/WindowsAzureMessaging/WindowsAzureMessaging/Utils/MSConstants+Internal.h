@@ -41,9 +41,9 @@ static short const kMSHTTPMinGZipLength = 1400;
  * Enum indicating result of a MSIngestionCall.
  */
 typedef NS_ENUM(NSInteger, MSIngestionCallResult) {
-  MSIngestionCallResultSuccess = 100,
-  MSIngestionCallResultRecoverableError = 500,
-  MSIngestionCallResultFatalError = 999
+    MSIngestionCallResultSuccess = 100,
+    MSIngestionCallResultRecoverableError = 500,
+    MSIngestionCallResultFatalError = 999
 };
 
 /**

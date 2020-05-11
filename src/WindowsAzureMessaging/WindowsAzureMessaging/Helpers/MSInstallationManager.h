@@ -10,7 +10,7 @@
 
 @interface MSInstallationManager : NSObject {
 
-    @private
+  @private
     NSString *_connectionString;
     NSString *_hubName;
     MSTokenProvider *_tokenProvider;

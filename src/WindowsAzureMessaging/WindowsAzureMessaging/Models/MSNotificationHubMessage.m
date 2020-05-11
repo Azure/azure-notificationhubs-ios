@@ -12,45 +12,45 @@
 @synthesize additionalData;
 
 - (instancetype)init {
-  if (self = [super init]) {
-    additionalData = [NSMutableDictionary new];
-  }
+    if (self = [super init]) {
+        additionalData = [NSMutableDictionary new];
+    }
 
-  return self;
+    return self;
 }
 
 - (instancetype)initWithNotification:(NSDictionary *)notification {
-  if (self = [super init]) {
-    additionalData = [NSMutableDictionary new];
+    if (self = [super init]) {
+        additionalData = [NSMutableDictionary new];
 
-    for (id key in notification) {
-      if ([key isEqual:@"aps"]) {
-        NSDictionary *aps = [notification valueForKey:key];
-        NSObject *alertObject = [aps valueForKey:@"alert"];
-        if (alertObject != nil) {
-          if ([alertObject isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *alertDict = (NSDictionary *)alertObject;
-            title = [alertDict valueForKey:@"title"];
-            body = [alertObject valueForKey:@"body"];
-          } else if ([alertObject isKindOfClass:[NSString class]]) {
-            body = (NSString *)alertObject;
-          } else {
-            NSLog(@"Unable to parse notification content. Unexpected format: %@", alertObject);
-          }
+        for (id key in notification) {
+            if ([key isEqual:@"aps"]) {
+                NSDictionary *aps = [notification valueForKey:key];
+                NSObject *alertObject = [aps valueForKey:@"alert"];
+                if (alertObject != nil) {
+                    if ([alertObject isKindOfClass:[NSDictionary class]]) {
+                        NSDictionary *alertDict = (NSDictionary *)alertObject;
+                        title = [alertDict valueForKey:@"title"];
+                        body = [alertObject valueForKey:@"body"];
+                    } else if ([alertObject isKindOfClass:[NSString class]]) {
+                        body = (NSString *)alertObject;
+                    } else {
+                        NSLog(@"Unable to parse notification content. Unexpected format: %@", alertObject);
+                    }
+                }
+                badge = [[aps valueForKey:@"badge"] integerValue];
+            } else {
+                [additionalData setObject:[notification valueForKey:key] forKey:key];
+            }
         }
-        badge = [[aps valueForKey:@"badge"] integerValue];
-      } else {
-        [additionalData setObject:[notification valueForKey:key] forKey:key];
-      }
     }
-  }
 
-  return self;
+    return self;
 }
 
 + (instancetype)createFromNotification:(NSDictionary *)notification {
-  MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithNotification:notification];
-  return message;
+    MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithNotification:notification];
+    return message;
 }
 
 @end

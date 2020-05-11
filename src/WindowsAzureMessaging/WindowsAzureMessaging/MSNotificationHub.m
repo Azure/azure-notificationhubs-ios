@@ -22,7 +22,6 @@ static dispatch_once_t onceToken;
 
 - (instancetype)init {
     if ((self = [super init])) {
-        
     }
 
     return self;
@@ -38,10 +37,12 @@ static dispatch_once_t onceToken;
 }
 
 + (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName {
-    MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString hubName:notificationHubName];
-    
-    [sharedInstance setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2 installationManager:installationManager]];
-    
+    MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString
+                                                                                                 hubName:notificationHubName];
+
+    [sharedInstance setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2
+                                                                                       installationManager:installationManager]];
+
     [sharedInstance registerForRemoteNotifications];
 }
 
@@ -152,13 +153,12 @@ static dispatch_once_t onceToken;
     if (!installation) {
         installation = [MSInstallation new];
     }
-    
+
     return installation;
 }
 
-- (void)upsertInstallation:(MSInstallation *)installation; {
-    [MSLocalStorage upsertInstallation:installation];
-}
+- (void)upsertInstallation:(MSInstallation *)installation;
+{ [MSLocalStorage upsertInstallation:installation]; }
 
 #pragma mark Tags
 
@@ -195,7 +195,7 @@ static dispatch_once_t onceToken;
 
     if ([installation addTags:tags]) {
         [self upsertInstallation:installation];
-        [_debounceInstallationManager saveInstallation: installation];
+        [_debounceInstallationManager saveInstallation:installation];
         return YES;
     }
 
@@ -208,7 +208,7 @@ static dispatch_once_t onceToken;
     if (installation && installation.tags && [installation.tags count] > 0) {
         [installation clearTags];
         [self upsertInstallation:installation];
-        [_debounceInstallationManager saveInstallation: installation];
+        [_debounceInstallationManager saveInstallation:installation];
     }
 }
 
@@ -230,7 +230,7 @@ static dispatch_once_t onceToken;
     [installation removeTags:tags];
 
     [self upsertInstallation:installation];
-    [_debounceInstallationManager saveInstallation: installation];
+    [_debounceInstallationManager saveInstallation:installation];
 
     return YES;
 }

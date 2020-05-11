@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
  * The Azure Notification Hubs service
  */
 @interface MSNotificationHub : NSObject {
-    @private
+  @private
     MSInstallation *_installation;
     MSDebounceInstallationManager *_debounceInstallationManager;
     NSString *_hubName;

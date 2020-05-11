@@ -9,18 +9,18 @@
 + (void)performBlockOnMainThread:(void (^)(void))block {
 
 #if TARGET_OS_OSX
-  [self performSelectorOnMainThread:@selector(runBlock:) withObject:block waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(runBlock:) withObject:block waitUntilDone:NO];
 #else
-  if ([NSThread isMainThread]) {
-    block();
-  } else {
-    dispatch_async(dispatch_get_main_queue(), block);
-  }
+    if ([NSThread isMainThread]) {
+        block();
+    } else {
+        dispatch_async(dispatch_get_main_queue(), block);
+    }
 #endif
 }
 
 + (void)runBlock:(void (^)(void))block {
-  block();
+    block();
 }
 
 @end

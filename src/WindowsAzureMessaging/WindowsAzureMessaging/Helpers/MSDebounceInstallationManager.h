@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MSDebounceInstallationManager : NSObject {
-    @private
+  @private
     double _interval;
     NSTimer *_debounceTimer;
     MSInstallationManager *_installationManager;
