@@ -71,13 +71,19 @@
         [templates setObject:[[self.templates objectForKey:key] toDictionary] forKey:key];
     };
     
-    NSDictionary *dictionary = @{
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{
         @"installationId" : self.installationID,
         @"platform" : self.platform,
-        @"pushChannel" : self.pushChannel,
-        @"tags" : [NSArray arrayWithArray:[self.tags allObjects]],
-        @"templates": templates ?: [NSDictionary new]
-    };
+        @"pushChannel" : self.pushChannel
+    }];
+    
+    if (self.tags && [self.tags count] > 0) {
+        [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:@"tags"];
+    }
+    
+    if (self.templates && [self.templates count] > 0) {
+        [dictionary setObject:templates forKey:@"templates"];
+    }
     
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
