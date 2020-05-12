@@ -44,9 +44,9 @@ static NSString *deviceToken = @"deviceToken";
     
     NSDictionary * dictionary = @{
            @"installationId" : installation.installationID,
-           @"platform" : installation.platform,
+           @"platform" : @"apns",
            @"pushChannel" : installation.pushChannel,
-           @"tags" : installation.tags ?: @""
+           @"tags" : [installation.tags allObjects] ?: [NSArray new]
     };
 
     NSData *expectedData = [NSJSONSerialization dataWithJSONObject:dictionary
