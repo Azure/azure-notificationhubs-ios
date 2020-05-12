@@ -28,4 +28,6 @@
 - (BOOL) removeTemplate: (NSString *) key;
 - (MSInstallationTemplate *) getTemplate: (NSString *) key;
 
+- (NSDictionary *) toDictionary;
+
 @end

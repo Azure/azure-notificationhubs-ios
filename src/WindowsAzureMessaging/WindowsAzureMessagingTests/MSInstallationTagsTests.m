@@ -14,11 +14,16 @@
 
 @implementation MSInstallationTagsTests
 
+static NSString *connectionString= @"Endpoint=sb://test-namespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=HqKHjkhjg674hjGHdskJ795GJFJ=";
+static NSString *hubName = @"nubName";
+
 - (void)setUp {
     [super setUp];
     
     id notificationCenterMock = OCMClassMock([UNUserNotificationCenter class]);
     OCMStub(ClassMethod([notificationCenterMock currentNotificationCenter])).andReturn(nil);
+
+    [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
 }
 
 -(void) testAddTag{

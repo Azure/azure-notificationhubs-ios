@@ -6,6 +6,7 @@
 #import "MSHttpClientPrivate.h"
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
+#import "MSInstallationTemplate.h"
 
 @interface MSInstallationManagerTests : XCTestCase
 
@@ -42,12 +43,17 @@ static NSString *deviceToken = @"deviceToken";
     NSString *encodedSasTokenUrl = [expectedSasTokenUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     NSString *expectedSubstring = [NSString stringWithFormat:@"SharedAccessSignature sr=%@", encodedSasTokenUrl];
     
+    NSMutableDictionary *templates = [NSMutableDictionary new];
+    for(NSString *key in [installation.templates allKeys]){
+        [templates setObject:[[installation.templates objectForKey:key] toDictionary] forKey:key];
+    };
+
     NSDictionary * dictionary = @{
            @"installationId" : installation.installationID,
            @"platform" : installation.platform,
            @"pushChannel" : installation.pushChannel,
-           @"tags" : installation.tags ?: @"",
-           @"templates" : installation.templates ?: @""
+           @"tags" : [NSMutableArray arrayWithArray:[installation.tags allObjects]] ?: [NSArray new],
+           @"templates": templates ?: [NSDictionary new]
     };
 
     NSData *expectedData = [NSJSONSerialization dataWithJSONObject:dictionary

@@ -126,25 +126,25 @@ static dispatch_once_t onceToken;
 #pragma mark Register Callbacks
 
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [[MSNotificationHub sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    [sharedInstance didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 + (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [[MSNotificationHub sharedInstance] didFailToRegisterForRemoteNotificationsWithError:error];
+    [sharedInstance didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
 + (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    return [[MSNotificationHub sharedInstance] didReceiveRemoteNotification:userInfo];
+    return [sharedInstance didReceiveRemoteNotification:userInfo];
 }
 
 #pragma mark SDK Basics
 
 + (void)setEnabled:(BOOL)isEnabled {
-    [[MSNotificationHub sharedInstance] setEnabled:isEnabled];
+    [sharedInstance setEnabled:isEnabled];
 }
 
 + (BOOL)isEnabled {
-    return [[MSNotificationHub sharedInstance] isEnabled];
+    return [sharedInstance isEnabled];
 }
 
 - (void)setEnabled:(BOOL)isEnabled {
@@ -163,17 +163,17 @@ static dispatch_once_t onceToken;
 }
 
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate {
-    [[MSNotificationHub sharedInstance] setDelegate:delegate];
+    [sharedInstance setDelegate:delegate];
 }
 
 #pragma mark Installations
 
 + (NSString *) getPushChannel {
-    return [[MSNotificationHub sharedInstance] getPushChannel];
+    return [sharedInstance getPushChannel];
 }
 
 + (NSString *) getInstallationId {
-    return [[MSNotificationHub sharedInstance] getInstallationId];
+    return [sharedInstance getInstallationId];
 }
 
 - (NSString *) getPushChannel {
@@ -211,35 +211,35 @@ static dispatch_once_t onceToken;
 }
 
 + (BOOL)addTags:(NSArray<NSString *> *)tags {
-    return [[MSNotificationHub sharedInstance] addTags:tags];
+    return [sharedInstance addTags:tags];
 }
 
 + (void)clearTags {
-    [[MSNotificationHub sharedInstance] clearTags];
+    [sharedInstance clearTags];
 }
 
 + (NSArray<NSString *> *)getTags {
-    return [[MSNotificationHub sharedInstance] getTags];
+    return [sharedInstance getTags];
 }
 
 + (BOOL)removeTag:(NSString *)tag {
-    return [[MSNotificationHub sharedInstance] removeTag:tag];
+    return [sharedInstance removeTag:tag];
 }
 
 + (BOOL)removeTags:(NSArray<NSString *> *)tags {
-    return [[MSNotificationHub sharedInstance] removeTags:tags];
+    return [sharedInstance removeTags:tags];
 }
 
 + (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    return [[MSNotificationHub sharedInstance] addTemplate:template forKey:key];
+    return [sharedInstance addTemplate:template forKey:key];
 }
 
 + (BOOL)removeTemplate:(NSString *)key {
-    return [[MSNotificationHub sharedInstance] removeTemplate:key];
+    return [sharedInstance removeTemplate:key];
 }
 
 + (MSInstallationTemplate *)getTemplate:(NSString *)key {
-    return [[MSNotificationHub sharedInstance] getTemplate:key];
+    return [sharedInstance getTemplate:key];
 }
 
 - (MSInstallationTemplate *)getTemplate:(NSString *)key {

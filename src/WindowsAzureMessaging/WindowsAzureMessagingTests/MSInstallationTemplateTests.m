@@ -15,6 +15,8 @@
 
 @implementation MSInstallationTemplateTests
 
+static NSString *connectionString= @"Endpoint=sb://test-namespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=HqKHjkhjg674hjGHdskJ795GJFJ=";
+static NSString *hubName = @"nubName";
 static NSString *key;
 
 - (void)setUp {
@@ -22,6 +24,8 @@ static NSString *key;
     
     id notificationCenterMock = OCMClassMock([UNUserNotificationCenter class]);
     OCMStub(ClassMethod([notificationCenterMock currentNotificationCenter])).andReturn(nil);
+    
+    [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
     
     key = @"template1";
     NSString *tag1 = @"tag1";
@@ -35,7 +39,6 @@ static NSString *key;
     [_template setBody:body];
     [_template.headers setObject:headerObject forKey:headerKey];
 }
-
 
 -(void) testAddTemplate{
     // If
@@ -80,15 +83,15 @@ static NSString *key;
 -(void) testGetTemplate{
     // If
     MSInstallation *installation = [MSInstallation new];
+    [installation addTemplate:_template forKey:key];
     [MSLocalStorage upsertInstallation:installation];
-    [MSNotificationHub addTemplate:_template forKey:key];
 
     // When
     MSInstallationTemplate *actualTemplate = [MSNotificationHub getTemplate:key];
     
     // Then
     XCTAssertNotNil(actualTemplate);
-    XCTAssertTrue([actualTemplate isEqual:_template]);    
+    XCTAssertTrue([actualTemplate isEqual:_template]);
 }
 
 @end

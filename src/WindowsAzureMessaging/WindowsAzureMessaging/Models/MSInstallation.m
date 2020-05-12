@@ -66,14 +66,19 @@
 }
 
 - (NSData *)toJsonData {
-
+    NSMutableDictionary *templates = [NSMutableDictionary new];
+    for(NSString *key in [self.templates allKeys]){
+        [templates setObject:[[self.templates objectForKey:key] toDictionary] forKey:key];
+    };
+    
     NSDictionary *dictionary = @{
         @"installationId" : self.installationID,
         @"platform" : self.platform,
         @"pushChannel" : self.pushChannel,
-        @"tags" : [self.tags allObjects] ?: [NSArray new]
+        @"tags" : [NSArray arrayWithArray:[self.tags allObjects]],
+        @"templates": templates ?: [NSDictionary new]
     };
-
+    
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
 
@@ -114,7 +119,7 @@
 }
 
 - (NSUInteger)hash {
-    return [self.installationID hash] ^ [self.platform hash] ^ [self.pushChannel hash] ^ [self.tags hash];
+    return [self.installationID hash] ^ [self.platform hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
 }
 
 - (BOOL) addTemplate:(MSInstallationTemplate *) template forKey:(NSString *) templateKey {
@@ -147,7 +152,7 @@
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
     return [self.installationID isEqualToString:installation.installationID] && [self.platform isEqualToString:installation.platform] &&
-           [self.tags isEqualToSet:installation.tags];
+    [self.tags isEqualToSet:installation.tags] && [self.templates isEqual:installation.templates];
 }
 
 - (BOOL)isEqual:(id)object {

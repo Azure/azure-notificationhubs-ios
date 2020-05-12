@@ -7,13 +7,7 @@
 @implementation MSInstallationTemplate
 
 - (NSUInteger) hash {
-    NSUInteger result = 0;
-    
-    result += [self.body hash];
-    result += [NSKeyedArchiver archivedDataWithRootObject:self.headers].hash;
-    result += [NSKeyedArchiver archivedDataWithRootObject:self.tags].hash;
-    
-    return result;
+     return [self.body hash] ^ [self.headers hash] ^ [self.tags hash];
 }
 
 - (instancetype) init {
@@ -35,9 +29,18 @@
       return YES;
     }
     
-    return [self hash] == [object hash];
+    if (![object isKindOfClass:[MSInstallationTemplate class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToMSInstallationTemplate:(MSInstallationTemplate *)object];
 }
 
+- (BOOL)isEqualToMSInstallationTemplate:(MSInstallationTemplate *)template {
+    return [self.body isEqualToString:template.body]
+    && [self.tags isEqualToSet:template.tags]
+    && [self.headers isEqualToDictionary:template.headers];
+}
         
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
@@ -47,6 +50,14 @@
     }
     
     return self;
+}
+
+- (NSDictionary *) toDictionary{
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            self.body,@"body",
+            [NSArray arrayWithArray:[self.tags allObjects]],@"tags",
+            self.headers,@"headers",
+            nil];
 }
 
 @end
