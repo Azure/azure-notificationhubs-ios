@@ -48,14 +48,20 @@ static NSString *deviceToken = @"deviceToken";
         [templates setObject:[[installation.templates objectForKey:key] toDictionary] forKey:key];
     };
 
-    NSDictionary * dictionary = @{
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{
            @"installationId" : installation.installationID,
            @"platform" : installation.platform,
-           @"pushChannel" : installation.pushChannel,
-           @"tags" : [NSMutableArray arrayWithArray:[installation.tags allObjects]] ?: [NSArray new],
-           @"templates": templates ?: [NSDictionary new]
-    };
+           @"pushChannel" : installation.pushChannel
+    }];
 
+    if (installation.tags && [installation.tags count] > 0) {
+           [dictionary setObject:[NSArray arrayWithArray:[installation.tags allObjects]] forKey:@"tags"];
+       }
+       
+       if (installation.templates && [installation.templates count] > 0) {
+           [dictionary setObject:templates forKey:@"templates"];
+       }
+    
     NSData *expectedData = [NSJSONSerialization dataWithJSONObject:dictionary
                                                            options:NSJSONWritingPrettyPrinted error:nil];
     // When
