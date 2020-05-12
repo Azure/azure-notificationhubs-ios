@@ -1,5 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
 
@@ -40,9 +41,9 @@ static short const kMSHTTPMinGZipLength = 1400;
  * Enum indicating result of a MSIngestionCall.
  */
 typedef NS_ENUM(NSInteger, MSIngestionCallResult) {
-  MSIngestionCallResultSuccess = 100,
-  MSIngestionCallResultRecoverableError = 500,
-  MSIngestionCallResultFatalError = 999
+    MSIngestionCallResultSuccess = 100,
+    MSIngestionCallResultRecoverableError = 500,
+    MSIngestionCallResultFatalError = 999
 };
 
 /**

@@ -1,8 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-#ifndef MSNotificationHubMessage_h
-#define MSNotificationHubMessage_h
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
 
@@ -16,7 +14,7 @@
 /**
  * Notification message.
  */
-@property(nonatomic, copy, readonly) NSString *message;
+@property(nonatomic, copy, readonly) NSString *body;
 
 /**
  * Notification badge.
@@ -28,8 +26,6 @@
  */
 @property(nonatomic, copy, readonly) NSMutableDictionary<NSString *, NSString *> *additionalData;
 
--(instancetype)initWithNotification:(NSDictionary *)notification;
-+(instancetype)createFromNotification:(NSDictionary *)notification;
+- (instancetype)initWithNotification:(NSDictionary *)notification;
++ (instancetype)createFromNotification:(NSDictionary *)notification;
 @end
-
-#endif /* MSNotificationHubMessage_h */

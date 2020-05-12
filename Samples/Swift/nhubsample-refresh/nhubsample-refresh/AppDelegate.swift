@@ -1,5 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 import UIKit
 import WindowsAzureMessaging
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        MSNotificationHub.initWithConnectionString(connectionString!, withHubName: hubName!)
+        MSNotificationHub.initWithConnectionString(connectionString!, hubName: hubName!)
         MSNotificationHub.addTag("userAgent:com.example.nhubsample-refresh:1.0")
         
         return true

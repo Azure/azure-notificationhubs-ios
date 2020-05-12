@@ -1,10 +1,6 @@
-//
-//  NotificationDetailsViewController.m
-//  nhubsample-refresh
-//
-//  Created by Artem Egorov on 4/24/20.
-//  Copyright © 2020 Microsoft. All rights reserved.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import "NotificationDetailsViewController.h"
 
@@ -19,7 +15,7 @@
     // Do any additional setup after loading the view.
     
     self.summaryLabel.text = self.notification.title;
-    self.detailsLabel.text = self.notification.message;
+    self.detailsLabel.text = self.notification.body;
     
     [self.detailsLabel sizeToFit];
 }

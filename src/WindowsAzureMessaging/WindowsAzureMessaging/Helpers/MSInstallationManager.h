@@ -1,5 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
 
@@ -10,30 +11,20 @@
 
 @interface MSInstallationManager : NSObject {
 
-@private
-    MSTokenProvider* tokenProvider;
-    NSDictionary* connectionDictionary;
-    NSString* pushToken;
+  @private
+    NSString *_connectionString;
+    NSString *_hubName;
+    MSTokenProvider *_tokenProvider;
+    NSDictionary *_connectionDictionary;
 }
 
-@property(nonatomic) MSHttpClient* httpClient;
+@property(nonatomic) MSHttpClient *httpClient;
 
-+ (void) initWithConnectionString:(NSString *) connectionString withHubName:(NSString *) hubName;
+- (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
+- (void)saveInstallation:(MSInstallation *)installation;
 
-+ (void) saveInstallation;
-+ (void) setPushChannel:(NSString *) pushChannel;
-+ (BOOL) addTags:(NSArray<NSString *> *) tags;
-+ (BOOL) removeTags:(NSArray<NSString *> *) tags;
-+ (NSArray<NSString *> *) getTags;
-+ (void) clearTags;
-+ (MSInstallation *) getInstallation;
-+ (void) setHttpClient:(MSHttpClient *)client;
+#pragma mark For Testing
 
-- (void) saveInstallation;
-+ (void) resetInstance;
-
-+ (BOOL) addTemplate: (MSInstallationTemplate *) template forKey:(NSString *)key;
-+ (BOOL) removeTemplate: (NSString *)templateKey;
-+ (MSInstallationTemplate *) getTemplate: (NSString *)templateKey;
+- (void)setHttpClient:(MSHttpClient *)httpClient;
 
 @end

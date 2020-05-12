@@ -1,5 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import "NotificationsTableViewController.h"
 
@@ -36,7 +37,7 @@
     
     NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    cell.notificationSummaryLabel.text = [self.notifications objectAtIndex:indexPath.row].title ?: [self.notifications objectAtIndex:indexPath.row].message;
+    cell.notificationSummaryLabel.text = [self.notifications objectAtIndex:indexPath.row].title ?: [self.notifications objectAtIndex:indexPath.row].body;
     
     return cell;
 }

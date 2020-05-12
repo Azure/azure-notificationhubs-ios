@@ -2,9 +2,13 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#import "MSNotificationHub.h"
 #import <Foundation/Foundation.h>
 
-@interface SBStaticHandlerResponse : NSObject
-@property(copy, nonatomic) NSData *Data;
-@property(copy, nonatomic) NSDictionary *Headers;
+@interface MSNotificationHub ()
+
+- (NSString *)convertTokenToString:(NSData *)token;
+
+@property(nonatomic) id<MSNotificationHubDelegate> delegate;
+
 @end

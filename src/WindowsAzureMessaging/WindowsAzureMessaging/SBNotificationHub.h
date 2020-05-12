@@ -8,11 +8,11 @@
 #import "SBTokenProvider.h"
 
 @interface SBNotificationHub : NSObject {
-@private
-  NSString *_path;
-  NSURL *_serviceEndPoint;
-  SBTokenProvider *tokenProvider;
-  SBLocalStorage *storageManager;
+  @private
+    NSString *_path;
+    NSURL *_serviceEndPoint;
+    SBTokenProvider *tokenProvider;
+    SBLocalStorage *storageManager;
 }
 
 + (NSString *)version;

@@ -1,5 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import "MSInstallation.h"
 #import "MSInstallationTemplate.h"
@@ -22,100 +23,98 @@
         self.tags = [coder decodeObjectForKey:@"tags"];
         self.templates = [coder decodeObjectForKey:@"templates"];
     }
-    
+
     return self;
 }
 
-- (instancetype) init {
-    if(self = [super init]) {
+- (instancetype)init {
+    if (self = [super init]) {
         self.installationID = [[NSUUID UUID] UUIDString];
         self.platform = @"APNS";
+        self.tags = [NSSet new];
     }
-    
+
     return self;
 }
 
-- (instancetype) initWithDeviceToken:(NSString *) deviceToken {
+- (instancetype)initWithDeviceToken:(NSString *)deviceToken {
     if (self = [self init]) {
         self.pushChannel = deviceToken;
     }
-    
+
     return self;
 }
 
-+ (MSInstallation *) createFromDeviceToken:(NSString *) deviceToken {
++ (MSInstallation *)createFromDeviceToken:(NSString *)deviceToken {
     return [[MSInstallation alloc] initWithDeviceToken:deviceToken];
 }
 
-+ (MSInstallation *) createFromJsonString:(NSString *)jsonString {
++ (MSInstallation *)createFromJsonString:(NSString *)jsonString {
     MSInstallation *installation = [MSInstallation new];
-    NSData * data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    
+    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+
     NSError *error = nil;
-    NSDictionary *dictionary = [NSJSONSerialization
-                                 JSONObjectWithData:data
-                                 options:0
-                                 error:&error];
-    
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+
     installation.installationID = dictionary[@"installationId"];
     installation.platform = dictionary[@"platform"];
     installation.pushChannel = dictionary[@"pushChannel"];
     installation.tags = dictionary[@"tags"];
     installation.templates = dictionary[@"templates"];
-    
+
     return installation;
 }
 
-- (NSData *) toJsonData {
-    
-    NSDictionary * dictionary = @{
-       @"installationId" : self.installationID,
-       @"platform" : self.platform,
-       @"pushChannel" : self.pushChannel,
-       @"tags" : self.tags ?: @"",
-       @"templates": self.templates ?: @""
+- (NSData *)toJsonData {
+
+    NSDictionary *dictionary = @{
+        @"installationId" : self.installationID,
+        @"platform" : self.platform,
+        @"pushChannel" : self.pushChannel,
+        @"tags" : [self.tags allObjects] ?: [NSArray new]
     };
-    
-    return [NSJSONSerialization dataWithJSONObject:dictionary
-    options:NSJSONWritingPrettyPrinted error:nil];
+
+    return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
 
-- (BOOL) addTags:(NSArray<NSString *> *)tags {
+- (BOOL)addTags:(NSArray<NSString *> *)tags {
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$"
-    options:NSRegularExpressionCaseInsensitive error:nil];
-    NSMutableArray *tmpTags = [NSMutableArray arrayWithArray:self.tags];
-    
-    for(NSString *tag in tags) {
-        if(![tmpTags containsObject:tag]) {
-            if([regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0) {
-                [tmpTags addObject:tag];
-            } else {
-                NSLog(@"Invalid tag: %@", tag);
-                return NO;
-            }
-            
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
+
+    for (NSString *tag in tags) {
+        if ([regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0) {
+            [tmpTags addObject:tag];
+        } else {
+            NSLog(@"Invalid tag: %@", tag);
+            return NO;
         }
     }
-    
-    self.tags = tmpTags;
+
+    self.tags = [tmpTags copy];
     return YES;
 }
 
-- (NSArray<NSString *> *) getTags {
-    return self.tags;
+- (NSArray<NSString *> *)getTags {
+    return [[self.tags copy] allObjects];
 }
 
-- (BOOL) removeTags:(NSArray<NSString *> *)tags {
-    NSMutableArray *tmpTags = [NSMutableArray arrayWithArray:self.tags];
-    
-    [tmpTags removeObjectsInArray:tags];
-    
-    self.tags = tmpTags;
+- (BOOL)removeTags:(NSArray<NSString *> *)tags {
+    NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
+
+    [tmpTags minusSet:[NSSet setWithArray:tags]];
+
+    self.tags = [tmpTags copy];
     return YES;
 }
 
-- (void) clearTags {
-    self.tags = [NSArray new];
+- (void)clearTags {
+    self.tags = [NSSet new];
+}
+
+- (NSUInteger)hash {
+    return [self.installationID hash] ^ [self.platform hash] ^ [self.pushChannel hash] ^ [self.tags hash];
 }
 
 - (BOOL) addTemplate:(MSInstallationTemplate *) template forKey:(NSString *) templateKey {
@@ -142,24 +141,21 @@
     return YES;
 }
 
-- (NSUInteger) hash {
-    NSUInteger result = 0;
-    
-    result += [self.installationID hash];
-    result += [self.platform hash];
-    result += [self.pushChannel hash];
-    result += [self.tags hash];
-    result += [self.templates hash];
-    
-    return result;
+- (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
+    return [self.installationID isEqualToString:installation.installationID] && [self.platform isEqualToString:installation.platform] &&
+           [self.tags isEqualToSet:installation.tags];
 }
 
-- (BOOL) isEqual:(id)object {
+- (BOOL)isEqual:(id)object {
     if (self == object) {
-      return YES;
+        return YES;
     }
-    
-    return [self hash] == [object hash];
+
+    if (![object isKindOfClass:[MSInstallation class]]) {
+        return NO;
+    }
+
+    return [self isEqualToMSInstallation:(MSInstallation *)object];
 }
 
 @end

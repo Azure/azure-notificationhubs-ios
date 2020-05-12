@@ -1,37 +1,43 @@
-//
-//  MSDebounceInstallationManager.m
-//  WindowsAzureMessaging
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import "MSDebounceInstallationManager.h"
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
+#import "MSInstallation.h"
 
 @implementation MSDebounceInstallationManager
 
-- (instancetype)initWithInterval:(double)interval {
-    if(self = [super init]){
-        self.interval = interval;
+- (instancetype)initWithInterval:(double)interval installationManager:(MSInstallationManager *)installationManager {
+    if (self = [super init]) {
+        _interval = interval;
+        _installationManager = installationManager;
     }
-    
+
     return self;
 }
 
-- (void)saveInstallation {
-    if(_debounceTimer != nil){
+- (void)saveInstallation:(MSInstallation *)installation {
+    if (_debounceTimer != nil) {
         [_debounceTimer invalidate];
     }
-    
-    MSInstallation * installation = [MSLocalStorage loadInstallation];
-    MSInstallation * lastInstallation = [MSLocalStorage loadLastInstallation];
-    
-    if(![installation isEqual:lastInstallation]) {
-        _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval target:self selector:@selector(execute) userInfo:nil repeats:false];
+
+    MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
+
+    if (![installation isEqual:lastInstallation]) {
+        _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval
+                                                          target:self
+                                                        selector:@selector(execute)
+                                                        userInfo:installation
+                                                         repeats:false];
         [[NSRunLoop mainRunLoop] addTimer:_debounceTimer forMode:NSRunLoopCommonModes];
     }
 }
 
-- (void)execute{
-    [MSInstallationManager saveInstallation];
+- (void)execute {
+    MSInstallation *installation = [_debounceTimer userInfo];
+    [_installationManager saveInstallation:installation];
 }
 
 @end

@@ -1,5 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 import UIKit
 
@@ -20,8 +21,8 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         tagsTable.dataSource = self
         tagsTable.reloadData()
         
-        deviceTokenLabel.text = MSNotificationHub.getInstallation().installationID
-        installationIdLabel.text = MSNotificationHub.getInstallation().pushChannel
+        deviceTokenLabel.text = MSNotificationHub.getPushChannel()
+        installationIdLabel.text = MSNotificationHub.getInstallationId()
         
         notificationsTableView = (self.tabBarController?.viewControllers?[1] as! UINavigationController).viewControllers[0] as? NotificationsTableViewController
         
@@ -51,7 +52,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
             fatalError("The dequeued cell is not an instance of TagCell.")
         }
         
-        cell.tagLabel.text = tags[indexPath.row] as? String
+        cell.tagLabel.text = tags[indexPath.row]
         
         return cell
     }
@@ -59,7 +60,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
 
-        MSNotificationHub.removeTag((tags[indexPath.row] as? String)!)
+        MSNotificationHub.removeTag(tags[indexPath.row])
         tags = MSNotificationHub.getTags()
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tagsTable.reloadData()
@@ -67,10 +68,10 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     }
     
     func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
-        NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.message)
+        NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.body)
         notificationsTableView?.addNotification(notification);
         
-        let alertController = UIAlertController(title: notification.title, message: notification.message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: notification.title, message: notification.body, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alertController, animated: true, completion: nil)
         

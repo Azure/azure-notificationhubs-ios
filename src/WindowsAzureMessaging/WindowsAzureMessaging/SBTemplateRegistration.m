@@ -23,24 +23,24 @@ NSString *const templateRegistrationFormat = @"<entry xmlns=\"http://www.w3.org/
                     priorityTemplate:(NSString *)priorityTemplate
                                 tags:(NSSet *)tags
                         templateName:(NSString *)templateName {
-  NSString *expiryFullString = @"";
-  if (expiryTemplate && [expiryTemplate length] > 0) {
-    expiryFullString = [NSString stringWithFormat:@"<Expiry>%@</Expiry>", expiryTemplate];
-  }
+    NSString *expiryFullString = @"";
+    if (expiryTemplate && [expiryTemplate length] > 0) {
+        expiryFullString = [NSString stringWithFormat:@"<Expiry>%@</Expiry>", expiryTemplate];
+    }
 
-  NSString *priorityFullString = @"";
-  if (priorityTemplate && [priorityTemplate length] > 0) {
-    priorityFullString = [NSString stringWithFormat:@"<Priority>%@</Priority>", priorityTemplate];
-  }
+    NSString *priorityFullString = @"";
+    if (priorityTemplate && [priorityTemplate length] > 0) {
+        priorityFullString = [NSString stringWithFormat:@"<Priority>%@</Priority>", priorityTemplate];
+    }
 
-  NSString *tagNode = @"";
-  NSString *tagString = [SBNotificationHubHelper convertTagSetToString:tags];
-  if ([tagString length] > 0) {
-    tagNode = [NSString stringWithFormat:@"<Tags>%@</Tags>", tagString];
-  }
+    NSString *tagNode = @"";
+    NSString *tagString = [SBNotificationHubHelper convertTagSetToString:tags];
+    if ([tagString length] > 0) {
+        tagNode = [NSString stringWithFormat:@"<Tags>%@</Tags>", tagString];
+    }
 
-  return [NSString
-      stringWithFormat:templateRegistrationFormat, tagNode, deviceToken, bodyTemplate, expiryFullString, priorityFullString, templateName];
+    return [NSString stringWithFormat:templateRegistrationFormat, tagNode, deviceToken, bodyTemplate, expiryFullString, priorityFullString,
+                                      templateName];
 }
 
 @end

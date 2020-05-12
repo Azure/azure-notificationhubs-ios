@@ -1,40 +1,33 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
-#ifndef MSNotificationHub_h
-#define MSNotificationHub_h
-
-#import "MSInstallationTemplate.h"
-#import "MSLocalStorage.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
-#import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
-#import "MSDebounceInstallationManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class MSInstallation;
+@class MSDebounceInstallationManager;
 @class MSInstallationTemplate;
 /**
  * The Azure Notification Hubs service
  */
-@interface MSNotificationHub : NSObject
-
-@property(nonatomic, copy, readonly) MSInstallation *installation;
-@property(nonatomic, copy, readonly) NSString *hubName;
-@property(nonatomic, copy, readonly) NSURL *serviceEndpoint;
-@property(nonatomic) MSDebounceInstallationManager *debounceInstallationManager;
-
-// TODO: Move to internal
-@property(nonatomic) id<MSNotificationHubDelegate> delegate;
+@interface MSNotificationHub : NSObject {
+  @private
+    MSInstallation *_installation;
+    MSDebounceInstallationManager *_debounceInstallationManager;
+    NSString *_hubName;
+    NSURL *_serviceEndpoint;
+}
 
 /**
  * Initializes the Notification Hub with the connection string from the Access
  * Policy, and Hub Name.
  * @param connectionString The connection string
  */
-+ (void)initWithConnectionString:(NSString *)connectionString withHubName:(NSString *)notificationHubName;
++ (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName;
 
 #pragma mark Push Initialization
 
@@ -48,14 +41,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate;
 
++ (BOOL)isEnabled;
++ (void)setEnabled:(BOOL)isEnabled;
+- (BOOL)isEnabled;
+- (void)setEnabled:(BOOL)isEnabled;
+
+#pragma mark Installation Support
+
+- (NSString *) getPushChannel;
+- (NSString *) getInstallationId;
+
++ (NSString *) getPushChannel;
++ (NSString *) getInstallationId;
+
 #pragma mark Tags Support
 
 + (BOOL)addTag:(NSString *)tag;
 + (BOOL)addTags:(NSArray<NSString *> *)tags;
 + (BOOL)removeTag:(NSString *)tag;
 + (BOOL)removeTags:(NSArray<NSString *> *)tags;
-+ (NSArray *)getTags;
++ (NSArray<NSString *> *)getTags;
 + (void)clearTags;
+
+- (NSString *)convertTokenToString:(NSData *)token;
+- (BOOL)addTag:(NSString *)tag;
+- (BOOL)addTags:(NSArray<NSString *> *)tags;
+- (BOOL)removeTag:(NSString *)tag;
+- (BOOL)removeTags:(NSArray<NSString *> *)tags;
+- (NSArray<NSString *> *)getTags;
+- (void)clearTags;
 
 #pragma mark Template Support
 
@@ -63,15 +77,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)removeTemplate:(NSString *)key;
 + (MSInstallationTemplate *)getTemplate:(NSString *)key;
 
-#pragma mark Installation Support
-+ (MSInstallation *)getInstallation;
-
-#pragma mark Helpers
-// TODO: Move into internal
-- (NSString *)convertTokenToString:(NSData *)token;
-
 @end
 
 NS_ASSUME_NONNULL_END
-
-#endif /* MSNotificationHub_h */

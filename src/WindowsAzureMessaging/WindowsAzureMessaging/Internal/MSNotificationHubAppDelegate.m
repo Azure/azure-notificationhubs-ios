@@ -1,11 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
-#import "MSNotificationHubAppDelegate.h"
 #import "MSNotificationHub.h"
+#import "MSNotificationHubAppDelegate.h"
 
 // Singleton
 static MSNotificationHubAppDelegate *sharedInstance = nil;
@@ -17,58 +18,66 @@ static dispatch_once_t onceToken;
 @synthesize enabled;
 
 + (void)load {
-    [[MSNotificationHubAppDelegate sharedInstance] setEnabledFromPlistForKey:@"AppDelegateForwardingEnabled"];
+    [[MSNotificationHubAppDelegate sharedInstance] setEnabledFromPlistForKey:@"NHAppDelegateForwardingEnabled"];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [[MSNotificationHubAppDelegate sharedInstance] swizzleSetDelegate];
+      [[MSNotificationHubAppDelegate sharedInstance] swizzleSetDelegate];
     });
 }
 
 - (instancetype)init {
     self = [super init];
-    
+
     return self;
 }
 
 + (instancetype)sharedInstance {
-  dispatch_once(&onceToken, ^{
-    if (sharedInstance == nil) {
-      sharedInstance = [self new];
-    }
-  });
-  return sharedInstance;
+    dispatch_once(&onceToken, ^{
+      if (sharedInstance == nil) {
+          sharedInstance = [self new];
+      }
+    });
+    return sharedInstance;
 }
 
-- (void)custom_setDelegate:(id <UIApplicationDelegate>)delegate {
- 
+- (void)custom_setDelegate:(id<UIApplicationDelegate>)delegate {
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(application: didRegisterForRemoteNotificationsWithDeviceToken:) inClass:[delegate class]];
-        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(application: didFailToRegisterForRemoteNotificationsWithError:) inClass:[delegate class]];
-        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(application: didReceiveRemoteNotification:) inClass:[delegate class]];
-        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod: @selector(application: didReceiveRemoteNotification: fetchCompletionHandler:) inClass:[delegate class]];
+      [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
+                                                                              didRegisterForRemoteNotificationsWithDeviceToken:)
+                                                                  inClass:[delegate class]];
+      [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
+                                                                              didFailToRegisterForRemoteNotificationsWithError:)
+                                                                  inClass:[delegate class]];
+      [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:didReceiveRemoteNotification:)
+                                                                  inClass:[delegate class]];
+      [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
+                                                                              didReceiveRemoteNotification:fetchCompletionHandler:)
+                                                                  inClass:[delegate class]];
     });
-    
+
     ((void (*)(id, SEL, id<UIApplicationDelegate>))originalSetDelegateImp)(self, _cmd, delegate);
 }
 
--(void) swizzleSetDelegate{
+- (void)swizzleSetDelegate {
     SEL setDelegateSelector = @selector(setDelegate:);
     Class appClass = [UIApplication class];
     originalSetDelegateImp = class_getMethodImplementation(appClass, setDelegateSelector);
     [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:setDelegateSelector inClass:appClass];
 }
 
--(void) swizzleImplForMethod:(SEL)originalSelector inClass:(Class)class {
-    if(self.enabled) {
+- (void)swizzleImplForMethod:(SEL)originalSelector inClass:(Class)class {
+    if (self.enabled) {
         Class swizzledClass = [MSNotificationHubAppDelegate class];
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
-        
+
         SEL swizzledSelector = NSSelectorFromString([@"custom_" stringByAppendingString:NSStringFromSelector(originalSelector)]);
         Method swizzledMethod = class_getInstanceMethod(swizzledClass, swizzledSelector);
-        
-        BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
-        
+
+        BOOL didAddMethod =
+            class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+
         if (didAddMethod && originalMethod) {
             class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
         } else {
@@ -88,25 +97,27 @@ static dispatch_once_t onceToken;
     }
 }
 
-- (void) custom_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+- (void)custom_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [MSNotificationHub didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
-- (void) custom_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+- (void)custom_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     [MSNotificationHub didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-- (void) custom_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+- (void)custom_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [MSNotificationHub didReceiveRemoteNotification:userInfo];
 }
 
-- (void)custom_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-  BOOL result = [MSNotificationHub didReceiveRemoteNotification:userInfo];
-  if (result) {
-    completionHandler(UIBackgroundFetchResultNewData);
-  } else {
-    completionHandler(UIBackgroundFetchResultNoData);
-  }
+- (void)custom_application:(UIApplication *)application
+    didReceiveRemoteNotification:(NSDictionary *)userInfo
+          fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    BOOL result = [MSNotificationHub didReceiveRemoteNotification:userInfo];
+    if (result) {
+        completionHandler(UIBackgroundFetchResultNewData);
+    } else {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
 }
 
 @end
