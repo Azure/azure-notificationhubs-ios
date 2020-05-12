@@ -3,6 +3,7 @@
 //----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class MSNotificationHub;
 @class MSNotificationHubMessage;
@@ -18,6 +19,6 @@
  * @param notificationHub The instance of MSNotificationHub
  * @param message The push notification details.
  */
-- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message;
+- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 @end

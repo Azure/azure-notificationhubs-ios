@@ -84,14 +84,10 @@ static dispatch_once_t onceToken;
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
-- (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
+- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo
+              fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     MSNotificationHubMessage *message = [MSNotificationHubMessage createFromNotification:userInfo];
-    [self didReceivePushNotification:message];
-
-    if (message.additionalData) {
-        return YES;
-    }
-    return NO;
+    [self didReceivePushNotification:message fetchCompletionHandler:completionHandler];
 }
 
 #pragma mark Instance Callbacks
@@ -114,11 +110,12 @@ static dispatch_once_t onceToken;
     NSLog(@"Registering for push notifications has been finished with error: %@", error.localizedDescription);
 }
 
-- (void)didReceivePushNotification:(MSNotificationHubMessage *)notification {
+- (void)didReceivePushNotification:(MSNotificationHubMessage *)notification
+            fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     dispatch_async(dispatch_get_main_queue(), ^{
       id<MSNotificationHubDelegate> delegate = self.delegate;
-      if ([delegate respondsToSelector:@selector(notificationHub:didReceivePushNotification:)]) {
-          [delegate notificationHub:self didReceivePushNotification:notification];
+        if ([delegate respondsToSelector:@selector(notificationHub:didReceivePushNotification:fetchCompletionHandler:)]) {
+            [delegate notificationHub:self didReceivePushNotification:notification fetchCompletionHandler:completionHandler];
       }
     });
 }
@@ -133,8 +130,9 @@ static dispatch_once_t onceToken;
     [sharedInstance didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-+ (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    return [sharedInstance didReceiveRemoteNotification:userInfo];
++ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo
+              fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    return [sharedInstance didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
 #pragma mark SDK Basics
