@@ -33,7 +33,6 @@ static MSInstallation *installation;
     [MSLocalStorage upsertInstallation:installation];
     MSInstallation *inst = [MSLocalStorage loadInstallation];
     XCTAssertEqualObjects(installation.installationID, inst.installationID);
-    XCTAssertEqualObjects(installation.platform, inst.platform);
     XCTAssertEqualObjects(installation.pushChannel, inst.pushChannel);
 }
 
