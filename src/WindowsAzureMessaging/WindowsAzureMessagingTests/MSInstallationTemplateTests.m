@@ -7,9 +7,9 @@
 #import "MSTestFrameworks.h"
 #import "MSInstallationManager.h"
 #import "MSInstallationTemplate.h"
+#import "MSLocalStorage.h"
 
 @interface MSInstallationTemplateTests : XCTestCase
-@property id managerMock;
 @property MSInstallationTemplate *template;
 @end
 
@@ -19,10 +19,6 @@ static NSString *key;
 
 - (void)setUp {
     [super setUp];
-    _managerMock = OCMClassMock([MSInstallationManager class]);
-    OCMStub(ClassMethod([_managerMock saveInstallation])).andDo(nil);
-    OCMStub(ClassMethod([_managerMock addTemplate:[OCMArg any] forKey:[OCMArg any]])).andForwardToRealObject();
-    OCMStub(ClassMethod([_managerMock removeTemplate:[OCMArg any]])).andForwardToRealObject();
     
     id notificationCenterMock = OCMClassMock([UNUserNotificationCenter class]);
     OCMStub(ClassMethod([notificationCenterMock currentNotificationCenter])).andReturn(nil);

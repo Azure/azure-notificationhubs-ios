@@ -141,6 +141,10 @@
     return YES;
 }
 
+- (MSInstallationTemplate *) getTemplate:(NSString *)templateKey {
+    return [self.templates objectForKey:templateKey];
+}
+
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
     return [self.installationID isEqualToString:installation.installationID] && [self.platform isEqualToString:installation.platform] &&
            [self.tags isEqualToSet:installation.tags];

@@ -28,8 +28,9 @@
 		14A17DEC24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */; };
 		14A17DED24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */; };
 		14A17DEE24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */; };
-		14E28A20246A863D00B976C4 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 14E28A1F246A863D00B976C4 /* MSInstallationTemplate.h */; };
-		14E28A21246A863D00B976C4 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 14E28A1F246A863D00B976C4 /* MSInstallationTemplate.h */; };
+		14E28A20246A863D00B976C4 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 14E28A1F246A863D00B976C4 /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		14E28A21246A863D00B976C4 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 14E28A1F246A863D00B976C4 /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		14E28A22246A8ED500B976C4 /* MSInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE98706924644F9900A71FA3 /* MSInstallationTemplate.m */; };
 		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; platformFilter = ios; };
 		4C7B719E2469E13100BF416F /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */; };
@@ -801,6 +802,7 @@
 				B3D2852C2456E97F00C78CC8 /* MSHttpCall.m in Sources */,
 				B3D285532456F09900C78CC8 /* MS_Reachability.m in Sources */,
 				B34BA79E2458A105002457DC /* SBURLConnection.m in Sources */,
+				14E28A22246A8ED500B976C4 /* MSInstallationTemplate.m in Sources */,
 				B34BA7982458A022002457DC /* SBLocalStorage.m in Sources */,
 				B3D2855A2456F0E700C78CC8 /* MSDispatcherUtil.m in Sources */,
 				B34BA79224589FDD002457DC /* SBNotificationHub.m in Sources */,
