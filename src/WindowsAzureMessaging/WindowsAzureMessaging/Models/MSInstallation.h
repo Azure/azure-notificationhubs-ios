@@ -6,7 +6,7 @@
 
 @interface MSInstallation : NSObject <NSCoding>
 
-@property(nonatomic, copy) NSString *installationID, *pushChannel, *platform;
+@property(nonatomic, copy) NSString *installationID, *pushChannel;
 @property(nonatomic, copy) NSSet<NSString *> *tags;
 
 - (instancetype)initWithDeviceToken:(NSString *)deviceToken;

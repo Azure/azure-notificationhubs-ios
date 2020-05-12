@@ -50,8 +50,6 @@ static dispatch_once_t onceToken;
       [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
                                                                               didFailToRegisterForRemoteNotificationsWithError:)
                                                                   inClass:[delegate class]];
-      [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:didReceiveRemoteNotification:)
-                                                                  inClass:[delegate class]];
       [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
                                                                               didReceiveRemoteNotification:fetchCompletionHandler:)
                                                                   inClass:[delegate class]];
@@ -105,19 +103,10 @@ static dispatch_once_t onceToken;
     [MSNotificationHub didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-- (void)custom_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [MSNotificationHub didReceiveRemoteNotification:userInfo];
-}
-
 - (void)custom_application:(UIApplication *)application
     didReceiveRemoteNotification:(NSDictionary *)userInfo
           fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    BOOL result = [MSNotificationHub didReceiveRemoteNotification:userInfo];
-    if (result) {
-        completionHandler(UIBackgroundFetchResultNewData);
-    } else {
-        completionHandler(UIBackgroundFetchResultNoData);
-    }
+    [MSNotificationHub didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
 @end

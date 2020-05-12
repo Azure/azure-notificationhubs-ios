@@ -77,7 +77,6 @@
 		A358374916AA3B250041E372 /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371D16AA39850041E372 /* SBRegistration.m */; };
 		B300E30E24583A95008A32DA /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */; platformFilter = ios; };
 		B300E31024583BE8008A32DA /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */; platformFilter = ios; };
-		B300E31224583BF4008A32DA /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300E31124583BF4008A32DA /* OCMock.framework */; platformFilter = ios; };
 		B300E32424584DB7008A32DA /* MSHttpTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E32324584DB7008A32DA /* MSHttpTestUtil.m */; };
 		B300E34D2458628C008A32DA /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E33E2458628C008A32DA /* HTTPStubs.m */; };
 		B300E34E2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E33F2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m */; };
@@ -111,8 +110,10 @@
 		B34BA7A52458A128002457DC /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 906E404016A86A3200817A11 /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34BA7A62458A131002457DC /* SBStaticHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 929886EF1857FAB100C1676C /* SBStaticHandlerResponse.h */; };
 		B34BA7A72458A135002457DC /* SBStaticHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 92988747185931DE00C1676C /* SBStaticHandlerResponse.m */; };
+		B372117E246AD832008664BD /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D111AB246AD033004CDF56 /* OCMock.framework */; platformFilter = ios; };
 		B3821CC02459AFB500567643 /* MS_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D285512456F09900C78CC8 /* MS_Reachability.m */; };
 		B3821CC12459AFB800567643 /* MS_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285522456F09900C78CC8 /* MS_Reachability.h */; };
+		B391A3C3246AE24E004D8AF0 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C854703244F9347005F6B49 /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D285272456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */; };
 		B3D285282456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */; };
 		B3D285292456E97F00C78CC8 /* MSHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2851F2456E97E00C78CC8 /* MSHttpClient.m */; };
@@ -177,6 +178,55 @@
 			remoteGlobalIDString = 35B4DBCA22268CB900EAC781;
 			remoteInfo = WindowsAzureMessaging;
 		};
+		B3D111A2246AD033004CDF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0A814632FD000B04273;
+			remoteInfo = OCMock;
+		};
+		B3D111A4246AD033004CDF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03565A3118F0566E003AE91E;
+			remoteInfo = OCMockTests;
+		};
+		B3D111A6246AD033004CDF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0DC14632FF700B04273;
+			remoteInfo = OCMockLib;
+		};
+		B3D111A8246AD033004CDF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D31108AD1828DB8700737925;
+			remoteInfo = OCMockLibTests;
+		};
+		B3D111AA246AD033004CDF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F0B950F11B0080BE00942C38;
+			remoteInfo = "OCMock iOS";
+		};
+		B3D111AC246AD033004CDF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 817EB1621BD765130047E85A;
+			remoteInfo = "OCMock tvOS";
+		};
+		B3D111AE246AD033004CDF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DE97CA022B43EE60098C63F;
+			remoteInfo = "OCMock watchOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -238,7 +288,6 @@
 		A358371C16AA39850041E372 /* SBRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBRegistration.h; path = ../SBRegistration.h; sourceTree = "<group>"; };
 		A358371D16AA39850041E372 /* SBRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRegistration.m; path = ../SBRegistration.m; sourceTree = "<group>"; };
 		B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrestIOS.framework; path = ../../Vendor/OCHamcrest/OCHamcrestIOS.framework; sourceTree = "<group>"; };
-		B300E31124583BF4008A32DA /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = ../../Vendor/OCMock/OCMock.framework; sourceTree = "<group>"; };
 		B300E32224584DA6008A32DA /* MSHttpTestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpTestUtil.h; sourceTree = "<group>"; };
 		B300E32324584DB7008A32DA /* MSHttpTestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpTestUtil.m; sourceTree = "<group>"; };
 		B300E32524585081008A32DA /* MSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSConstants.h; sourceTree = "<group>"; };
@@ -258,6 +307,7 @@
 		B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
 		B34BA78E24589F1C002457DC /* TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
 		B34BA78F24589F1C002457DC /* TestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelper.m; sourceTree = "<group>"; };
+		B3D11198246AD032004CDF56 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = ../../Vendor/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		B3D2851E2456E97E00C78CC8 /* MSHttpClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpClientProtocol.h; sourceTree = "<group>"; };
 		B3D2851F2456E97E00C78CC8 /* MSHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpClient.m; sourceTree = "<group>"; };
 		B3D285202456E97E00C78CC8 /* MSHttpCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpCall.m; sourceTree = "<group>"; };
@@ -301,8 +351,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B372117E246AD832008664BD /* OCMock.framework in Frameworks */,
 				B300E30E24583A95008A32DA /* WindowsAzureMessaging.framework in Frameworks */,
-				B300E31224583BF4008A32DA /* OCMock.framework in Frameworks */,
 				B300E31024583BE8008A32DA /* OCHamcrestIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +519,20 @@
 			path = include;
 			sourceTree = "<group>";
 		};
+		B3D11199246AD032004CDF56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3D111A3246AD033004CDF56 /* OCMock.framework */,
+				B3D111A5246AD033004CDF56 /* OCMockTests.xctest */,
+				B3D111A7246AD033004CDF56 /* libOCMock.a */,
+				B3D111A9246AD033004CDF56 /* OCMockLibTests.xctest */,
+				B3D111AB246AD033004CDF56 /* OCMock.framework */,
+				B3D111AD246AD033004CDF56 /* OCMock.framework */,
+				B3D111AF246AD033004CDF56 /* OCMock.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B3D2851D2456DFED00C78CC8 /* HttpClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,8 +603,8 @@
 		B3D2856924572A4900C78CC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3D11198246AD032004CDF56 /* OCMock.xcodeproj */,
 				B300E33D2458628C008A32DA /* OHHTTPStubs */,
-				B300E31124583BF4008A32DA /* OCMock.framework */,
 				B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */,
 			);
 			name = Frameworks;
@@ -604,6 +668,7 @@
 				8471C92B16EABF5600C73674 /* SBLocalStorage.h in Headers */,
 				A358373D16AA3B0D0041E372 /* WindowsAzureMessaging.h in Headers */,
 				A358374016AA3B160041E372 /* SBTokenProvider.h in Headers */,
+				B391A3C3246AE24E004D8AF0 /* MSNotificationHub.h in Headers */,
 				A358373C16AA3B0B0041E372 /* SBRegistration.h in Headers */,
 				6489DDF624582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */,
 				B3D2852D2456E97F00C78CC8 /* MSHttpClientPrivate.h in Headers */,
@@ -717,6 +782,12 @@
 			mainGroup = 906E402D16A86A3200817A11;
 			productRefGroup = 906E403916A86A3200817A11 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B3D11199246AD032004CDF56 /* Products */;
+					ProjectRef = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				906E406D16A8851E00817A11 /* Framework */,
@@ -726,6 +797,58 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B3D111A3246AD033004CDF56 /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = B3D111A2246AD033004CDF56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B3D111A5246AD033004CDF56 /* OCMockTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockTests.xctest;
+			remoteRef = B3D111A4246AD033004CDF56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B3D111A7246AD033004CDF56 /* libOCMock.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOCMock.a;
+			remoteRef = B3D111A6246AD033004CDF56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B3D111A9246AD033004CDF56 /* OCMockLibTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockLibTests.xctest;
+			remoteRef = B3D111A8246AD033004CDF56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B3D111AB246AD033004CDF56 /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = B3D111AA246AD033004CDF56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B3D111AD246AD033004CDF56 /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = B3D111AC246AD033004CDF56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B3D111AF246AD033004CDF56 /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = B3D111AE246AD033004CDF56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		35B4DBC922268CB900EAC781 /* Resources */ = {
