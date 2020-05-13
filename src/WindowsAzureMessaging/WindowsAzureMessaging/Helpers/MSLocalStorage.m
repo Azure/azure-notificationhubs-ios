@@ -5,55 +5,43 @@
 #import "MSLocalStorage.h"
 #import <Foundation/Foundation.h>
 
-static NSString *const installationKey = @"installation";
-static NSString *const lastInstallationKey = @"lastInstallation";
-static NSString *const enabledKey = @"notificationHubEnabled";
+static NSString *const kInstallationKey = @"MSNH_Installation";
+static NSString *const kLastInstallationKey = @"MSNH_LastInstallation";
+static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
 
 @implementation MSLocalStorage
 
 + (BOOL)isEnabled {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *encodedObject = [defaults objectForKey:enabledKey];
-    if (encodedObject == nil) {
-        return YES;
-    }
-
-    NSNumber *enabledNumber = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    NSNumber *enabledNumber = [[NSUserDefaults standardUserDefaults] objectForKey:kEnabledKey];
     
-    return [enabledNumber boolValue];
+    return (enabledNumber) ? [enabledNumber boolValue] : YES;
 }
 
 + (void)setEnabled:(BOOL)enabled {
-    NSNumber *enabledNumber = [NSNumber numberWithBool:enabled];
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:enabledNumber];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:encodedObject forKey:enabledKey];
-    [defaults synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:@(enabled) forKey:kEnabledKey];
 }
 
 + (MSInstallation *)upsertInstallation:(MSInstallation *)installation {
-    return [MSLocalStorage upsertInstallation:installation forKey:installationKey];
+    return [MSLocalStorage upsertInstallation:installation forKey:kInstallationKey];
 }
 
 + (MSInstallation *)upsertLastInstallation:(MSInstallation *)installation {
-    return [MSLocalStorage upsertInstallation:installation forKey:lastInstallationKey];
+    return [MSLocalStorage upsertInstallation:installation forKey:kLastInstallationKey];
 }
 
 + (MSInstallation *)upsertInstallation:(MSInstallation *)installation forKey:(NSString *)key {
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:encodedObject forKey:key];
-    [defaults synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:key];
 
     return installation;
 }
 
 + (MSInstallation *)loadInstallation {
-    return [MSLocalStorage loadInstallationForKey:installationKey];
+    return [MSLocalStorage loadInstallationForKey:kInstallationKey];
 }
 
 + (MSInstallation *)loadLastInstallation {
-    return [MSLocalStorage loadInstallationForKey:lastInstallationKey];
+    return [MSLocalStorage loadInstallationForKey:kLastInstallationKey];
 }
 
 + (MSInstallation *)loadInstallationForKey:(NSString *)key {
