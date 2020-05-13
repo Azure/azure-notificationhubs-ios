@@ -50,7 +50,7 @@ static NSString *deviceToken = @"deviceToken";
 
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{
            @"installationId" : installation.installationID,
-           @"platform" : installation.platform,
+           @"platform" : @"apns",
            @"pushChannel" : installation.pushChannel
     }];
 

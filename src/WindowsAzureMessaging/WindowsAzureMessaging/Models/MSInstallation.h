@@ -8,7 +8,7 @@
 
 @interface MSInstallation : NSObject <NSCoding>
 
-@property(nonatomic, copy) NSString *installationID, *pushChannel, *platform;
+@property(nonatomic, copy) NSString *installationID, *pushChannel;
 @property(nonatomic, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
 @property(nonatomic, copy) NSSet<NSString *> *tags;
 

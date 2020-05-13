@@ -5,6 +5,7 @@
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,11 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 + (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-+ (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo;
++ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-- (BOOL)didReceiveRemoteNotification:(NSDictionary *)userInfo;
+- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate;
 

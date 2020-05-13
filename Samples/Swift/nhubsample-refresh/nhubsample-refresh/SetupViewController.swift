@@ -67,7 +67,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
       }
     }
     
-    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
+    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!, fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.body)
         notificationsTableView?.addNotification(notification);
         
@@ -78,6 +78,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             alertController.dismiss(animated: true, completion: nil)
         }
+        completionHandler((notification.data != nil && notification.data.count > 0) ? .newData : .noData)
     }
     
 }

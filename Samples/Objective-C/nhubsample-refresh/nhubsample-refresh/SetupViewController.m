@@ -66,7 +66,7 @@
     }
 }
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification {
+- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler  {
     NSLog(@"Received notification: %@: %@", notification.title, notification.body);
     [self.notificationsTableView addNotification:notification];
     
@@ -79,7 +79,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [alertController dismissViewControllerAnimated:YES completion: nil];
     });
-        
+    completionHandler((notification.data != nil && [notification.data count] > 0) ? UIBackgroundFetchResultNewData : UIBackgroundFetchResultNoData);
 }
 
 

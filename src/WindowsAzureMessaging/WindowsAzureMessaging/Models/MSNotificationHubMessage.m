@@ -9,19 +9,11 @@
 @synthesize title;
 @synthesize body;
 @synthesize badge;
-@synthesize additionalData;
-
-- (instancetype)init {
-    if (self = [super init]) {
-        additionalData = [NSMutableDictionary new];
-    }
-
-    return self;
-}
+@synthesize data;
 
 - (instancetype)initWithNotification:(NSDictionary *)notification {
     if (self = [super init]) {
-        additionalData = [NSMutableDictionary new];
+        NSMutableDictionary *messageData = [NSMutableDictionary new];
 
         for (id key in notification) {
             if ([key isEqual:@"aps"]) {
@@ -40,9 +32,11 @@
                 }
                 badge = [[aps valueForKey:@"badge"] integerValue];
             } else {
-                [additionalData setObject:[notification valueForKey:key] forKey:key];
+                [messageData setObject:[notification valueForKey:key] forKey:key];
             }
         }
+        
+        data = [NSDictionary dictionaryWithDictionary:messageData];
     }
 
     return self;
