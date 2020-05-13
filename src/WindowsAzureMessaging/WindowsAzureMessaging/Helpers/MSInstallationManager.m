@@ -3,6 +3,7 @@
 //----------------------------------------------------------------
 
 #import "MSInstallationManager.h"
+#import "MSInstallationManagerPrivate.h"
 #import "MSHttpClient.h"
 #import "MSInstallation.h"
 #import "MSLocalStorage.h"

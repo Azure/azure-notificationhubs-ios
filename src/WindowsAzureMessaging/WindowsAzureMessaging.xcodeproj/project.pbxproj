@@ -28,6 +28,8 @@
 		14A17DED24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */; };
 		14A17DEE24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */; };
 		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; platformFilter = ios; };
+		4C2C05D7246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */; };
+		4C2C05D8246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */; };
 		4C7B719E2469E13100BF416F /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */; };
 		4C854706244FD64C005F6B49 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C854705244FD64C005F6B49 /* MSNotificationHub.m */; };
@@ -247,6 +249,7 @@
 		14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSDebounceInstallationManager.h; sourceTree = "<group>"; };
 		14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSDebounceInstallationManager.m; sourceTree = "<group>"; };
 		35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationManagerPrivate.h; sourceTree = "<group>"; };
 		4C8546EA244F5D48005F6B49 /* WindowsAzureMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8546EC244F5D48005F6B49 /* WindowsAzureMessagingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowsAzureMessagingTests.m; sourceTree = "<group>"; };
 		4C8546EE244F5D48005F6B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -403,6 +406,7 @@
 				6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */,
 				6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */,
 				4CD6F4962465C6EA00BA554A /* MSNotificationHubPrivate.h */,
+				4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -635,6 +639,7 @@
 				4CD6F4A224663D3C00BA554A /* MSNotificationHubAppDelegate.h in Headers */,
 				B34BA7A62458A131002457DC /* SBStaticHandlerResponse.h in Headers */,
 				64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */,
+				4C2C05D8246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */,
 				CE3023BB245AC525002CF65B /* MSTokenProvider.h in Headers */,
 				CE98A78224532F5E00DA1AE8 /* MSLocalStorage.h in Headers */,
 				14A17DEC24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */,
@@ -675,6 +680,7 @@
 				A358373E16AA3B120041E372 /* SBNotificationHubHelper.h in Headers */,
 				14A17DEB24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */,
 				A358374116AA3B190041E372 /* SBURLConnection.h in Headers */,
+				4C2C05D7246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */,
 				B3D285272456E97F00C78CC8 /* MSHttpClientProtocol.h in Headers */,
 				64F993DF245C448B0086ABF8 /* MSLocalStorage.h in Headers */,
 				B3D2852F2456E97F00C78CC8 /* MSHttpClient.h in Headers */,
