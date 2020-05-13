@@ -118,7 +118,7 @@
 }
 
 - (NSUInteger)hash {
-    return [self.installationID hash] ^ [self.platform hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
+    return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
 }
 
 - (BOOL) addTemplate:(MSInstallationTemplate *) template forKey:(NSString *) templateKey {
@@ -150,7 +150,7 @@
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    return [self.installationID isEqualToString:installation.installationID] && [self.platform isEqualToString:installation.platform] &&
+    return [self.installationID isEqualToString:installation.installationID] &&
     [self.tags isEqualToSet:installation.tags] && [self.templates isEqual:installation.templates];
 }
 
