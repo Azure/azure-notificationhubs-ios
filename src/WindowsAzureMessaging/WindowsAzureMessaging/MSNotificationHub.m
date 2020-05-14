@@ -138,11 +138,15 @@ static dispatch_once_t onceToken;
 #pragma mark SDK Basics
 
 + (void)setEnabled:(BOOL)isEnabled {
-    [[MSNotificationHub sharedInstance] setEnabled:isEnabled];
+    @synchronized([self sharedInstance]) {
+        [[self sharedInstance] setEnabled:isEnabled];
+    }
 }
 
 + (BOOL)isEnabled {
-    return [[MSNotificationHub sharedInstance] isEnabled];
+    @synchronized([self sharedInstance]) {
+        return [[self sharedInstance] isEnabled];
+    }
 }
 
 - (void)setEnabled:(BOOL)isEnabled {

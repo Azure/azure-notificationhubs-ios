@@ -3,11 +3,16 @@
 //----------------------------------------------------------------
 
 #import "MSInstallationManager.h"
+#import "MSInstallationManagerPrivate.h"
 #import "MSHttpClient.h"
 #import "MSInstallation.h"
 #import "MSLocalStorage.h"
 #import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV3.0.0-Preview1; os=%@; os_version=%@;)";
+NSString *const kAPIVersion = @"2017-04";
 
 @implementation MSInstallationManager
 
@@ -76,12 +81,14 @@
 
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
     NSString *url =
-        [NSString stringWithFormat:@"%@%@/installations/%@?api-version=2017-04", endpoint, _hubName, installation.installationID];
+        [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, kAPIVersion];
 
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
-    NSDictionary *headers = @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken};
+    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]];
+    
+    NSDictionary *headers = @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken, @"User-Agent": userAgent };
 
     NSData *payload = [installation toJsonData];
 

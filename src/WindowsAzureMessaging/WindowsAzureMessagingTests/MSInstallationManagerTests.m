@@ -75,7 +75,7 @@ static NSString *deviceToken = @"deviceToken";
         method:method
         headers:[OCMArg checkWithBlock:^BOOL(NSDictionary<NSString *, NSString *> *headers){
             NSString *sasToken = [headers objectForKey:@"Authorization"];
-            XCTAssertTrue([headers count] == 3);
+            XCTAssertTrue([headers count] == 4);
             XCTAssertNotNil(sasToken);
             XCTAssertFalse([sasToken rangeOfString:expectedSubstring options:NSCaseInsensitiveSearch].location == NSNotFound);
         
