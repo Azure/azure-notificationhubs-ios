@@ -23,7 +23,7 @@ static dispatch_once_t onceToken;
 - (instancetype)init {
     if ((self = [super init])) {
     }
-    
+
     return self;
 }
 
@@ -38,17 +38,17 @@ static dispatch_once_t onceToken;
 
 + (void)resetSharedInstance {
 
-  // Resets the once_token so dispatch_once will run again
-  onceToken = 0;
-  sharedInstance = nil;
+    // Resets the once_token so dispatch_once will run again
+    onceToken = 0;
+    sharedInstance = nil;
 }
 
 + (void)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName {
     MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString
                                                                                                  hubName:notificationHubName];
 
-    [[MSNotificationHub sharedInstance] setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2
-                                                                                       installationManager:installationManager]];
+    [[MSNotificationHub sharedInstance]
+        setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2 installationManager:installationManager]];
 
     [[MSNotificationHub sharedInstance] registerForRemoteNotifications];
 }
@@ -84,8 +84,7 @@ static dispatch_once_t onceToken;
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
-- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo
-              fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     MSNotificationHubMessage *message = [MSNotificationHubMessage createFromNotification:userInfo];
     [self didReceivePushNotification:message fetchCompletionHandler:completionHandler];
 }
@@ -95,13 +94,13 @@ static dispatch_once_t onceToken;
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *pushToken = [self convertTokenToString:deviceToken];
     NSLog(@"Registered for push notifications with token: %@", pushToken);
-    
+
     MSInstallation *installation = [self getInstallation];
-    
+
     if ([pushToken isEqualToString:installation.pushChannel]) {
         return;
     }
-    
+
     installation.pushChannel = pushToken;
     [self upsertInstallation:installation];
 }
@@ -114,8 +113,8 @@ static dispatch_once_t onceToken;
             fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     dispatch_async(dispatch_get_main_queue(), ^{
       id<MSNotificationHubDelegate> delegate = self.delegate;
-        if ([delegate respondsToSelector:@selector(notificationHub:didReceivePushNotification:fetchCompletionHandler:)]) {
-            [delegate notificationHub:self didReceivePushNotification:notification fetchCompletionHandler:completionHandler];
+      if ([delegate respondsToSelector:@selector(notificationHub:didReceivePushNotification:fetchCompletionHandler:)]) {
+          [delegate notificationHub:self didReceivePushNotification:notification fetchCompletionHandler:completionHandler];
       }
     });
 }
@@ -130,8 +129,7 @@ static dispatch_once_t onceToken;
     [[MSNotificationHub sharedInstance] didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-+ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo
-              fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
++ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     return [[MSNotificationHub sharedInstance] didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
@@ -151,7 +149,7 @@ static dispatch_once_t onceToken;
 
 - (void)setEnabled:(BOOL)isEnabled {
     [MSLocalStorage setEnabled:isEnabled];
-    
+
     if (isEnabled) {
         [self upsertInstallation:[self getInstallation]];
         NSLog(@"Notification Hubs SDK has been enabled");
@@ -170,20 +168,20 @@ static dispatch_once_t onceToken;
 
 #pragma mark Installations
 
-+ (NSString *) getPushChannel {
++ (NSString *)getPushChannel {
     return [[MSNotificationHub sharedInstance] getPushChannel];
 }
 
-+ (NSString *) getInstallationId {
++ (NSString *)getInstallationId {
     return [[MSNotificationHub sharedInstance] getInstallationId];
 }
 
-- (NSString *) getPushChannel {
+- (NSString *)getPushChannel {
     MSInstallation *installation = [self getInstallation];
     return installation.pushChannel;
 }
 
-- (NSString *) getInstallationId {
+- (NSString *)getInstallationId {
     MSInstallation *installation = [self getInstallation];
     return installation.installationID;
 }
@@ -200,7 +198,7 @@ static dispatch_once_t onceToken;
 
 - (void)upsertInstallation:(MSInstallation *)installation {
     [MSLocalStorage upsertInstallation:installation];
-    
+
     if ([self isEnabled]) {
         [_debounceInstallationManager saveInstallation:installation];
     }
@@ -230,48 +228,6 @@ static dispatch_once_t onceToken;
 
 + (BOOL)removeTags:(NSArray<NSString *> *)tags {
     return [[MSNotificationHub sharedInstance] removeTags:tags];
-}
-
-+ (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    return [sharedInstance addTemplate:template forKey:key];
-}
-
-+ (BOOL)removeTemplate:(NSString *)key {
-    return [sharedInstance removeTemplate:key];
-}
-
-+ (MSInstallationTemplate *)getTemplate:(NSString *)key {
-    return [sharedInstance getTemplate:key];
-}
-
-- (MSInstallationTemplate *)getTemplate:(NSString *)key {
-    MSInstallation *i = [self getInstallation];
-     return [[self getInstallation] getTemplate:key];
-}
-
-- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    MSInstallation *installation = [self getInstallation];
-
-    if ([installation addTemplate:template forKey:key]) {
-        [self upsertInstallation:installation];
-        return YES;
-    }
-
-    return NO;
-}
-
-- (BOOL)removeTemplate:(NSString *)key {
-    MSInstallation *installation = [self getInstallation];
-
-    if (installation.templates == nil || [installation.templates count] == 0) {
-        return NO;
-    }
-
-    [installation removeTemplate:key];
-
-    [self upsertInstallation:installation];
-
-    return YES;
 }
 
 - (BOOL)addTag:(NSString *)tag {
@@ -322,6 +278,47 @@ static dispatch_once_t onceToken;
 
 #pragma mark Templates
 
++ (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+    return [sharedInstance addTemplate:template forKey:key];
+}
+
++ (BOOL)removeTemplate:(NSString *)key {
+    return [sharedInstance removeTemplate:key];
+}
+
++ (MSInstallationTemplate *)getTemplate:(NSString *)key {
+    return [sharedInstance getTemplate:key];
+}
+
+- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+    MSInstallation *installation = [self getInstallation];
+
+    if ([installation addTemplate:template forKey:key]) {
+        [self upsertInstallation:installation];
+        return YES;
+    }
+
+    return NO;
+}
+
+- (BOOL)removeTemplate:(NSString *)key {
+    MSInstallation *installation = [self getInstallation];
+
+    if (installation.templates == nil || [installation.templates count] == 0) {
+        return NO;
+    }
+
+    [installation removeTemplate:key];
+
+    [self upsertInstallation:installation];
+
+    return YES;
+}
+
+- (MSInstallationTemplate *)getTemplate:(NSString *)key {
+    MSInstallation *i = [self getInstallation];
+    return [[self getInstallation] getTemplate:key];
+}
 
 #pragma mark Helpers
 

@@ -1,10 +1,14 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import "MSInstallationTemplate.h"
 
 @implementation MSInstallationTemplate
+
+@synthesize body;
+@synthesize tags;
+@synthesize headers;
 
 - (NSUInteger) hash {
      return [self.body hash] ^ [self.headers hash] ^ [self.tags hash];
@@ -12,16 +16,16 @@
 
 - (instancetype) init {
     if(self = [super init]){
-        self.tags = [NSMutableSet new];
-        self.headers = [NSMutableDictionary new];
+        tags = [NSMutableSet new];
+        headers = [NSMutableDictionary new];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:self.body forKey:@"body"];
-    [coder encodeObject:self.tags forKey:@"tags"];
-    [coder encodeObject:self.headers forKey:@"headers"];
+    [coder encodeObject:body forKey:@"body"];
+    [coder encodeObject:tags forKey:@"tags"];
+    [coder encodeObject:headers forKey:@"headers"];
 }
 
 - (BOOL) isEqual:(id)object {
@@ -36,27 +40,27 @@
     return [self isEqualToMSInstallationTemplate:(MSInstallationTemplate *)object];
 }
 
-- (BOOL)isEqualToMSInstallationTemplate:(MSInstallationTemplate *)template {
-    return [self.body isEqualToString:template.body]
-    && [self.tags isEqualToSet:template.tags]
-    && [self.headers isEqualToDictionary:template.headers];
+- (BOOL)isEqualToMSInstallationTemplate:(MSInstallationTemplate *) template {
+    return [body isEqualToString:template.body]
+    && [tags isEqualToSet:template.tags]
+    && [headers isEqualToDictionary:template.headers];
 }
         
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
-        self.body = [coder decodeObjectForKey:@"body"] ?: @"";
-        self.tags = [coder decodeObjectForKey:@"tags"];
-        self.headers = [coder decodeObjectForKey:@"headers"];
+        body = [coder decodeObjectForKey:@"body"] ?: @"";
+        tags = [coder decodeObjectForKey:@"tags"];
+        headers = [coder decodeObjectForKey:@"headers"];
     }
     
     return self;
 }
 
-- (NSDictionary *) toDictionary{
+- (NSDictionary *)toDictionary {
     return [NSDictionary dictionaryWithObjectsAndKeys:
-            self.body,@"body",
-            [NSArray arrayWithArray:[self.tags allObjects]],@"tags",
-            self.headers,@"headers",
+            body,@"body",
+            [NSArray arrayWithArray:[tags allObjects]],@"tags",
+            headers,@"headers",
             nil];
 }
 

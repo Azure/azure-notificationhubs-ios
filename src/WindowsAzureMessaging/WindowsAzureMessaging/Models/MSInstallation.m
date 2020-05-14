@@ -150,8 +150,9 @@
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    return [self.installationID isEqualToString:installation.installationID] &&
-    [self.tags isEqualToSet:installation.tags] && [self.templates isEqual:installation.templates];
+    return [self.installationID isEqualToString:installation.installationID]
+    && [self.tags isEqualToSet:installation.tags]
+    && [self.templates isEqual:installation.templates];
 }
 
 - (BOOL)isEqual:(id)object {

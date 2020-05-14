@@ -32,41 +32,6 @@ NSString *const kAPIVersion = @"2017-04";
     _httpClient = httpClient;
 }
 
-+ (BOOL) addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-    
-    if([installation addTemplate:template forKey:key]) {
-        [MSLocalStorage upsertInstallation:installation];
-        return YES;
-    }
-    
-    return NO;
-}
-
-+ (BOOL) removeTemplate:(NSString *)templateKey {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-    
-    if(installation.templates == nil || [installation.templates count] == 0) {
-        return NO;
-    }
-    
-    [installation removeTemplate:templateKey];
-    
-    [MSLocalStorage upsertInstallation:installation];
-    
-    return YES;
-}
-
-+ (MSInstallationTemplate *) getTemplate:(NSString *)templateKey {
-    MSInstallation *installation = [MSLocalStorage loadInstallation];
-    
-    if(!installation) {
-        return nil;
-    }
-    
-    return [installation.templates objectForKey:templateKey];
-}
-
 - (void)saveInstallation:(MSInstallation *)installation {
 
     if (!_tokenProvider) {

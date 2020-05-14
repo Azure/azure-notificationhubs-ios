@@ -49,11 +49,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Installation Support
 
-- (NSString *) getPushChannel;
-- (NSString *) getInstallationId;
+- (NSString *)getPushChannel;
+- (NSString *)getInstallationId;
 
-+ (NSString *) getPushChannel;
-+ (NSString *) getInstallationId;
++ (NSString *)getPushChannel;
++ (NSString *)getInstallationId;
 
 #pragma mark Tags Support
 
@@ -64,7 +64,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray<NSString *> *)getTags;
 + (void)clearTags;
 
-- (NSString *)convertTokenToString:(NSData *)token;
 - (BOOL)addTag:(NSString *)tag;
 - (BOOL)addTags:(NSArray<NSString *> *)tags;
 - (BOOL)removeTag:(NSString *)tag;
