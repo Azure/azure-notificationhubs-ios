@@ -77,8 +77,7 @@ static NSString *decodingTableLock = @"decodingTableLock";
 
     if (_stsHostName == nil) {
         NSString *nameSpace = [[[_serviceEndPoint host] componentsSeparatedByString:@"."] objectAtIndex:0];
-        _stsHostName =
-            [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net", nameSpace]];
+        _stsHostName = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net", nameSpace]];
     } else {
         if ([_stsHostName host] == nil) {
             NSLog(@"%@", @"StsHostname is not in URL format in connectionString.");

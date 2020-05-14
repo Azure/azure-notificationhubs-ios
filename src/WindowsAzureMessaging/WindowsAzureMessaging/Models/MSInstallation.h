@@ -24,10 +24,10 @@
 - (NSArray<NSString *> *)getTags;
 - (void)clearTags;
 
-- (BOOL) addTemplate: (MSInstallationTemplate *) template forKey: (NSString *) key;
-- (BOOL) removeTemplate: (NSString *) key;
-- (MSInstallationTemplate *) getTemplate: (NSString *) key;
+- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
+- (BOOL)removeTemplate:(NSString *)key;
+- (MSInstallationTemplate *)getTemplate:(NSString *)key;
 
-- (NSDictionary *) toDictionary;
+- (NSDictionary *)toDictionary;
 
 @end

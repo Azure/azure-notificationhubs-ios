@@ -13,6 +13,6 @@
 - (void)addTag:(NSString *)tags;
 - (void)setHeader:(NSString *)value forKey:(NSString *)key;
 
-- (NSDictionary *) toDictionary;
+- (NSDictionary *)toDictionary;
 
 @end

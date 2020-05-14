@@ -63,24 +63,21 @@
 
 - (NSData *)toJsonData {
     NSMutableDictionary *templates = [NSMutableDictionary new];
-    for(NSString *key in [self.templates allKeys]){
+    for (NSString *key in [self.templates allKeys]) {
         [templates setObject:[[self.templates objectForKey:key] toDictionary] forKey:key];
     };
-    
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{
-        @"installationId" : self.installationID,
-        @"platform" : @"apns",
-        @"pushChannel" : self.pushChannel
-    }];
-    
+
+    NSMutableDictionary *dictionary = [NSMutableDictionary
+        dictionaryWithDictionary:@{@"installationId" : self.installationID, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
+
     if (self.tags && [self.tags count] > 0) {
         [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:@"tags"];
     }
-    
+
     if (self.templates && [self.templates count] > 0) {
         [dictionary setObject:templates forKey:@"templates"];
     }
-    
+
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
 
@@ -121,38 +118,37 @@
     return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
 }
 
-- (BOOL) addTemplate:(MSInstallationTemplate *) template forKey:(NSString *) templateKey {
+- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)templateKey {
     NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
-    
+
     if ([[tmpTemplates allKeysForObject:template] count] > 0) {
         return NO;
     }
-    
+
     [tmpTemplates setObject:template forKey:templateKey];
     self.templates = tmpTemplates;
     return YES;
 }
 
-- (BOOL) removeTemplate:(NSString *)templateKey {
+- (BOOL)removeTemplate:(NSString *)templateKey {
     NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
-    
+
     if (![tmpTemplates objectForKey:templateKey]) {
         return NO;
     }
-    
+
     [tmpTemplates removeObjectForKey:templateKey];
     self.templates = tmpTemplates;
     return YES;
 }
 
-- (MSInstallationTemplate *) getTemplate:(NSString *)templateKey {
+- (MSInstallationTemplate *)getTemplate:(NSString *)templateKey {
     return [self.templates objectForKey:templateKey];
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    return [self.installationID isEqualToString:installation.installationID]
-    && [self.tags isEqualToSet:installation.tags]
-    && [self.templates isEqual:installation.templates];
+    return [self.installationID isEqualToString:installation.installationID] && [self.tags isEqualToSet:installation.tags] &&
+           [self.templates isEqual:installation.templates];
 }
 
 - (BOOL)isEqual:(id)object {
@@ -169,9 +165,10 @@
 
 + (BOOL)isValidTag:(NSString *)tag {
     NSString *tagPattern = @"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:tagPattern options:NSRegularExpressionCaseInsensitive
-      error:nil];
-    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:tagPattern
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+
     return [regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0;
 }
 

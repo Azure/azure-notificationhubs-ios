@@ -35,7 +35,7 @@
                 [messageData setObject:[notification valueForKey:key] forKey:key];
             }
         }
-        
+
         data = [NSDictionary dictionaryWithDictionary:messageData];
     }
 

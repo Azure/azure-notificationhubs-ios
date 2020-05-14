@@ -3,9 +3,9 @@
 //----------------------------------------------------------------
 
 #import "MSDebounceInstallationManager.h"
+#import "MSInstallation.h"
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
-#import "MSInstallation.h"
 
 @implementation MSDebounceInstallationManager
 

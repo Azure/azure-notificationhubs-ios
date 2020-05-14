@@ -10,8 +10,8 @@
 @synthesize tags;
 @synthesize headers;
 
-- (instancetype) init {
-    if(self = [super init]){
+- (instancetype)init {
+    if (self = [super init]) {
         tags = [NSSet new];
         headers = [NSDictionary new];
     }
@@ -40,40 +40,35 @@
     [coder encodeObject:headers forKey:@"headers"];
 }
 
-- (BOOL) isEqual:(id)object {
+- (BOOL)isEqual:(id)object {
     if (self == object) {
-      return YES;
+        return YES;
     }
-    
+
     if (![object isKindOfClass:[MSInstallationTemplate class]]) {
         return NO;
     }
-    
+
     return [self isEqualToMSInstallationTemplate:(MSInstallationTemplate *)object];
 }
 
-- (BOOL)isEqualToMSInstallationTemplate:(MSInstallationTemplate *) template {
-    return [body isEqualToString:template.body]
-    && [tags isEqualToSet:template.tags]
-    && [headers isEqualToDictionary:template.headers];
+- (BOOL)isEqualToMSInstallationTemplate:(MSInstallationTemplate *)template {
+    return [body isEqualToString:template.body] && [tags isEqualToSet:template.tags] && [headers isEqualToDictionary:template.headers];
 }
-        
+
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
         body = [coder decodeObjectForKey:@"body"] ?: @"";
         tags = [coder decodeObjectForKey:@"tags"];
         headers = [coder decodeObjectForKey:@"headers"];
     }
-    
+
     return self;
 }
 
 - (NSDictionary *)toDictionary {
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            body,@"body",
-            [NSArray arrayWithArray:[tags allObjects]],@"tags",
-            headers,@"headers",
-            nil];
+    return [NSDictionary
+        dictionaryWithObjectsAndKeys:body, @"body", [NSArray arrayWithArray:[tags allObjects]], @"tags", headers, @"headers", nil];
 }
 
 @end
