@@ -6,9 +6,12 @@
 
 @interface MSInstallationTemplate : NSObject
 
-@property(nonatomic) NSString *body;
-@property(nonatomic) NSMutableSet<NSString *> *tags;
-@property(nonatomic) NSMutableDictionary<NSString *, NSString*> *headers;
+@property(nonatomic, copy) NSString *body;
+@property(nonatomic, copy) NSSet<NSString *> *tags;
+@property(nonatomic, copy) NSDictionary<NSString *, NSString *> *headers;
+
+- (void)addTag:(NSString *)tags;
+- (void)setHeader:(NSString *)value forKey:(NSString *)key;
 
 - (NSDictionary *) toDictionary;
 

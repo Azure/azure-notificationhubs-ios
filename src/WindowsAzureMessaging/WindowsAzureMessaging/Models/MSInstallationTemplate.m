@@ -10,16 +10,28 @@
 @synthesize tags;
 @synthesize headers;
 
-- (NSUInteger) hash {
-     return [self.body hash] ^ [self.headers hash] ^ [self.tags hash];
-}
-
 - (instancetype) init {
     if(self = [super init]){
-        tags = [NSMutableSet new];
-        headers = [NSMutableDictionary new];
+        tags = [NSSet new];
+        headers = [NSDictionary new];
     }
     return self;
+}
+
+- (void)addTag:(NSString *)tag {
+    NSMutableSet *tmpTags = [NSMutableSet setWithSet:tags];
+    [tmpTags addObject:tag];
+    tags = [tmpTags copy];
+}
+
+- (void)setHeader:(NSString *)value forKey:(NSString *)key {
+    NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
+    [tmpHeaders setObject:value forKey:key];
+    headers = [tmpHeaders copy];
+}
+
+- (NSUInteger)hash {
+    return [self.body hash] ^ [self.headers hash] ^ [self.tags hash];
 }
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {

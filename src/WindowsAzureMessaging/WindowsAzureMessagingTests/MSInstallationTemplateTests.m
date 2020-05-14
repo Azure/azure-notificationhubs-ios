@@ -34,10 +34,10 @@ static NSString *key;
     NSString *headerObject = @"wns/title";
     NSString *headerKey = @"X-WNS-Type";
     _template = [MSInstallationTemplate new];
-    [_template.tags addObject:tag1];
-    [_template.tags addObject:tag2];
+    [_template addTag:tag1];
+    [_template addTag:tag2];
     [_template setBody:body];
-    [_template.headers setObject:headerObject forKey:headerKey];
+    [_template setHeader:headerObject forKey:headerKey];
 }
 
 -(void) testAddTemplate{
