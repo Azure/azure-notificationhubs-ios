@@ -2,40 +2,38 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import <Foundation/Foundation.h>
 #import "SBRegistration.h"
+#import <Foundation/Foundation.h>
 
 @interface SBNotificationHubHelper : NSObject
 
-+ (NSString*) urlEncode: (NSString*)urlString;
-+ (NSString*) urlDecode: (NSString*)urlString;
++ (NSString *)urlEncode:(NSString *)urlString;
++ (NSString *)urlDecode:(NSString *)urlString;
 
-+ (NSString*) createHashWithData:(NSData*)data;
++ (NSString *)createHashWithData:(NSData *)data;
 
-+ (NSString*) signString: (NSString*)str withKey:(NSString*) key;
-+ (NSString*) signString: (NSString*)str withKeyData:(const char*) cKey keyLength:(NSInteger) keyLength;
++ (NSString *)signString:(NSString *)str withKey:(NSString *)key;
++ (NSString *)signString:(NSString *)str withKeyData:(const char *)cKey keyLength:(NSInteger)keyLength;
 
-+ (NSData*) fromBase64: (NSString*) str;
-+ (NSString*) toBase64: (unsigned char*) data length:(NSInteger) length;
++ (NSData *)fromBase64:(NSString *)str;
++ (NSString *)toBase64:(unsigned char *)data length:(NSInteger)length;
 
-+ (NSString*) convertTagSetToString:(NSSet*)tagSet;
++ (NSString *)convertTagSetToString:(NSSet *)tagSet;
 
-+ (NSError*) errorWithMsg:(NSString*)msg code:(NSInteger)code;
++ (NSError *)errorWithMsg:(NSString *)msg code:(NSInteger)code;
 
-+ (NSError*) errorForNullDeviceToken;
++ (NSError *)errorForNullDeviceToken;
 
-+ (NSError*) errorForReservedTemplateName;
++ (NSError *)errorForReservedTemplateName;
 
-+ (NSError*) errorForInvalidTemplateName;
++ (NSError *)errorForInvalidTemplateName;
 
-+ (NSError*) registrationNotFoundError;
++ (NSError *)registrationNotFoundError;
 
-+ (NSDictionary*) parseConnectionString:(NSString*) connectionString;
++ (NSDictionary *)parseConnectionString:(NSString *)connectionString;
 
-+ (NSURL*) modifyEndpoint:(NSURL*)endPoint scheme:(NSString*)scheme;
++ (NSURL *)modifyEndpoint:(NSURL *)endPoint scheme:(NSString *)scheme;
 
-+ (NSString*) nameOfRegistration:(SBRegistration*)registration;
++ (NSString *)nameOfRegistration:(SBRegistration *)registration;
 
 @end
-
-
