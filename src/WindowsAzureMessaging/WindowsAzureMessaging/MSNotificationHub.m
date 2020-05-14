@@ -86,7 +86,7 @@ static dispatch_once_t onceToken;
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo
               fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    MSNotificationHubMessage *message = [MSNotificationHubMessage createFromNotification:userInfo];
+    MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithUserInfo:userInfo];
     [self didReceivePushNotification:message fetchCompletionHandler:completionHandler];
 }
 

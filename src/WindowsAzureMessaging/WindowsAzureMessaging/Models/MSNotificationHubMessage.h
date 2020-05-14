@@ -4,28 +4,28 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MSNotificationHubMessage : NSObject
+@interface MSNotificationHubMessage : NSObject {
+    @private
+    NSString *_title;
+    NSString *_body;
+    NSDictionary *_userInfo;
+}
 
 /**
  * Notification title.
  */
-@property(nonatomic, copy, readonly) NSString *title;
+@property(nonatomic, readonly) NSString *title;
 
 /**
  * Notification message.
  */
-@property(nonatomic, copy, readonly) NSString *body;
+@property(nonatomic, readonly) NSString *body;
 
 /**
- * Notification badge.
+ * Notification data.
  */
-@property(nonatomic, readonly) NSInteger badge;
+@property(nonatomic, readonly) NSDictionary *userInfo;
 
-/**
- * Custom data for the notification.
- */
-@property(nonatomic, copy, readonly) NSDictionary<NSString *, NSString *> *data;
+- (instancetype)initWithUserInfo:(NSDictionary *)userInfo;
 
-- (instancetype)initWithNotification:(NSDictionary *)notification;
-+ (instancetype)createFromNotification:(NSDictionary *)notification;
 @end
