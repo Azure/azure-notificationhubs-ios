@@ -42,7 +42,6 @@ typedef void (^MSHttpRequestCompletionHandler)(NSData *_Nullable responseBody, N
  * @param headers HTTP headers.
  * @param data A data instance that will be transformed request body.
  * @param retryIntervals The retry intervals for the request.
- * @param compressionEnabled Whether to compress the request data when it exceeds a certain size.
  * @param completionHandler Completion handler.
  */
 - (void)sendAsync:(NSURL *)url
@@ -50,7 +49,6 @@ typedef void (^MSHttpRequestCompletionHandler)(NSData *_Nullable responseBody, N
                headers:(nullable NSDictionary<NSString *, NSString *> *)headers
                   data:(nullable NSData *)data
         retryIntervals:(NSArray *)retryIntervals
-    compressionEnabled:(BOOL)compressionEnabled
      completionHandler:(nullable MSHttpRequestCompletionHandler)completionHandler;
 
 /**

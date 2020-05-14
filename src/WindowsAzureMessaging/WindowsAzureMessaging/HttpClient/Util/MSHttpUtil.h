@@ -45,13 +45,4 @@ static NSString *const kMSHidingStringForAppSecret = @"*";
  */
 + (BOOL)isSSLConnectionError:(NSError *)error;
 
-/**
- * Hide a secret replacing the first N characters by a hiding character.
- *
- * @param secret the secret string.
- *
- * @return secret by hiding some characters.
- */
-+ (NSString *)hideSecret:(NSString *)secret;
-
 @end

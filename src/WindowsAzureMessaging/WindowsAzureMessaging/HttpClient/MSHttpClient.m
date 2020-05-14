@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 #import "MSHttpClient.h"
-#import "MSConstants+Internal.h"
 #import "MSHttpCall.h"
 #import "MSHttpClientDelegate.h"
 #import "MSHttpClientPrivate.h"
@@ -13,6 +12,8 @@
 #define DEFAULT_RETRY_INTERVALS @[ @10, @(5 * 60), @(20 * 60) ]
 
 #define MS_NOTIFICATION_CENTER [NSNotificationCenter defaultCenter]
+
+static NSString *const kMSRetryHeaderKey = @"x-ms-retry-after-ms";
 
 @implementation MSHttpClient
 
@@ -60,7 +61,6 @@
                    headers:headers
                       data:data
             retryIntervals:DEFAULT_RETRY_INTERVALS
-        compressionEnabled:YES
          completionHandler:completionHandler];
 }
 
@@ -69,7 +69,6 @@
                headers:(nullable NSDictionary<NSString *, NSString *> *)headers
                   data:(nullable NSData *)data
         retryIntervals:(NSArray *)retryIntervals
-    compressionEnabled:(BOOL)compressionEnabled
      completionHandler:(MSHttpRequestCompletionHandler)completionHandler {
     @synchronized(self) {
         if (!self.enabled) {
@@ -84,7 +83,6 @@
                                                    headers:headers
                                                       data:data
                                             retryIntervals:retryIntervals
-                                        compressionEnabled:compressionEnabled
                                          completionHandler:completionHandler];
         [self sendCallAsync:call];
     }

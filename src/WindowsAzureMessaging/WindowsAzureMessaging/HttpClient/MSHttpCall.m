@@ -2,8 +2,6 @@
 // Licensed under the MIT License.
 
 #import "MSHttpCall.h"
-#import "MSCompression.h"
-#import "MSConstants+Internal.h"
 
 @implementation MSHttpCall
 
@@ -12,7 +10,6 @@
                     headers:(NSDictionary<NSString *, NSString *> *)headers
                        data:(NSData *)data
              retryIntervals:(NSArray *)retryIntervals
-         compressionEnabled:(BOOL)compressionEnabled
           completionHandler:(MSHttpRequestCompletionHandler)completionHandler {
     if ((self = [super init])) {
         _url = url;
@@ -21,20 +18,8 @@
         _completionHandler = completionHandler;
         _retryCount = 0;
         _inProgress = NO;
-
-        // Create copy of given headers. Mutable in case compression header must be added.
-        NSMutableDictionary *mutableHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
-
-        // Zip data if it is long enough.
-        if (compressionEnabled && data.length >= kMSHTTPMinGZipLength) {
-            data = [MSCompression compressData:data];
-            mutableHeaders[kMSHeaderContentEncodingKey] = kMSHeaderContentEncoding;
-        }
-        if (data && ![mutableHeaders objectForKey:kMSHeaderContentTypeKey]) {
-            mutableHeaders[kMSHeaderContentTypeKey] = kMSNotificationHubContentType;
-        }
         _data = data;
-        _headers = mutableHeaders;
+        _headers = headers;
     }
     return self;
 }
