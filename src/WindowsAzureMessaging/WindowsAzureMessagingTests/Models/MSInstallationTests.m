@@ -8,11 +8,11 @@
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
 
-@interface MSInstallationTagsTests : XCTestCase
+@interface MSInstallationTests : XCTestCase
 
 @end
 
-@implementation MSInstallationTagsTests
+@implementation MSInstallationTests
 
 - (void)setUp {
     [super setUp];
