@@ -5,8 +5,8 @@ This repository for Microsoft Azure Notification Hubs SDK for iOS includes mater
 
 
 1.  Visual Studio App Center SDK for iOS and macOS (https://github.com/microsoft/appcenter-sdk-apple)
-2.	OCHamcrest  (https://github.com/hamcrest/OCHamcrest)
-3.	OCMock  (https://github.com/erikdoe/ocmock)
+2.	 OCHamcrest  (https://github.com/hamcrest/OCHamcrest)
+3.	 OCMock  (https://github.com/erikdoe/ocmock)
 4.  Reachability  (https://developer.apple.com/library/content/samplecode/Reachability/Introduction/Intro.html#//apple_ref/doc/uid/DTS40007324-Intro-DontLinkElementID_2)
 
 %% Visual Studio App Center SDK for Apple platforms  NOTICES AND INFORMATION BEGIN HERE

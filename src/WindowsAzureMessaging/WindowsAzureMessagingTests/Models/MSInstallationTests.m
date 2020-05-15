@@ -8,11 +8,11 @@
 #import <Foundation/Foundation.h>
 #import <UserNotifications/UserNotifications.h>
 
-@interface MSInstallationTagsTests : XCTestCase
+@interface MSInstallationTests : XCTestCase
 
 @end
 
-@implementation MSInstallationTagsTests
+@implementation MSInstallationTests
 
 static NSString *connectionString = @"Endpoint=sb://test-namespace.servicebus.windows.net/"
                                     @";SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=HqKHjkhjg674hjGHdskJ795GJFJ=";

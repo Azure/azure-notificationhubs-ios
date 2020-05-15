@@ -6,45 +6,36 @@
 
 @implementation MSNotificationHubMessage
 
-@synthesize title;
-@synthesize body;
-@synthesize badge;
-@synthesize data;
+- (NSString *)getTitle {
+    return _title;
+}
 
-- (instancetype)initWithNotification:(NSDictionary *)notification {
+- (NSString *)getBody {
+    return _body;
+}
+
+- (instancetype)initWithUserInfo:(NSDictionary *)userInfo {
     if (self = [super init]) {
-        NSMutableDictionary *messageData = [NSMutableDictionary new];
+        _userInfo = userInfo;
 
-        for (id key in notification) {
-            if ([key isEqual:@"aps"]) {
-                NSDictionary *aps = [notification valueForKey:key];
-                NSObject *alertObject = [aps valueForKey:@"alert"];
-                if (alertObject != nil) {
-                    if ([alertObject isKindOfClass:[NSDictionary class]]) {
-                        NSDictionary *alertDict = (NSDictionary *)alertObject;
-                        title = [alertDict valueForKey:@"title"];
-                        body = [alertObject valueForKey:@"body"];
-                    } else if ([alertObject isKindOfClass:[NSString class]]) {
-                        body = (NSString *)alertObject;
-                    } else {
-                        NSLog(@"Unable to parse notification content. Unexpected format: %@", alertObject);
-                    }
-                }
-                badge = [[aps valueForKey:@"badge"] integerValue];
+        NSDictionary *aps = [userInfo valueForKey:@"aps"];
+        NSObject *alertObject = [aps valueForKey:@"alert"];
+        if (alertObject != nil) {
+            if ([alertObject isKindOfClass:[NSDictionary class]]) {
+                _title = [alertObject valueForKey:@"title"];
+                _body = [alertObject valueForKey:@"body"];
+            } else if ([alertObject isKindOfClass:[NSString class]]) {
+                _title = nil;
+                _body = (NSString *)alertObject;
             } else {
-                [messageData setObject:[notification valueForKey:key] forKey:key];
+                NSLog(@"Unable to extract alert content. Unexpected class for the alert value: %@", NSStringFromClass(alertObject.class));
+                _title = nil;
+                _body = nil;
             }
         }
-
-        data = [NSDictionary dictionaryWithDictionary:messageData];
     }
 
     return self;
-}
-
-+ (instancetype)createFromNotification:(NSDictionary *)notification {
-    MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithNotification:notification];
-    return message;
 }
 
 @end

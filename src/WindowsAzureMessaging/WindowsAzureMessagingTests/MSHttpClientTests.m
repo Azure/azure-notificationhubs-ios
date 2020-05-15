@@ -6,7 +6,6 @@
 
 #import "MSConstants.h"
 #import "MSNotificationHubErrors.h"
-#import "MSConstants+Internal.h"
 #import "MSHttpCall.h"
 #import "MSHttpClientPrivate.h"
 #import "MSHttpTestUtil.h"
@@ -125,7 +124,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                           headers:nil
                              data:nil
                    retryIntervals:defaultRetryIntervals
-               compressionEnabled:YES
                 completionHandler:OCMOCK_ANY]);
 }
 
@@ -264,7 +262,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                  headers:nil
                     data:nil
           retryIntervals:retryIntervals
-      compressionEnabled:YES
        completionHandler:^(__unused NSData *responseBody, __unused NSHTTPURLResponse *response, __unused NSError *error) {
          completionHandlerCalled = YES;
          XCTAssertNotNil(responseBody);
@@ -336,7 +333,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                  headers:nil
                     data:nil
           retryIntervals:retryIntervals
-      compressionEnabled:YES
        completionHandler:^(__unused NSData *responseBody, __unused NSHTTPURLResponse *response, __unused NSError *error) {
          completionHandlerCalled = YES;
          XCTAssertNotNil(responseBody);
@@ -396,7 +392,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                  headers:nil
                     data:nil
           retryIntervals:@[ @1 ]
-      compressionEnabled:YES
        completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
          // Then
          XCTAssertEqual(response.statusCode, MSHTTPCodesNo204NoContent);
@@ -454,7 +449,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                  headers:nil
                     data:nil
           retryIntervals:retryIntervals
-      compressionEnabled:YES
        completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
          // Then
          XCTAssertEqual(response.statusCode, MSHTTPCodesNo500InternalServerError);
@@ -508,7 +502,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                  headers:nil
                     data:nil
           retryIntervals:@[]
-      compressionEnabled:YES
        completionHandler:^(__unused NSData *responseBody, __unused NSHTTPURLResponse *response, __unused NSError *error){
        }];
 
@@ -552,7 +545,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                  headers:nil
                     data:nil
           retryIntervals:@[ @1 ]
-      compressionEnabled:YES
        completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
          // Then
          XCTAssertNotNil(error);
@@ -656,7 +648,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                  headers:nil
                     data:nil
           retryIntervals:retryIntervals
-      compressionEnabled:YES
        completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
          // Then
          XCTAssertEqual(response.statusCode, MSHTTPCodesNo204NoContent);
@@ -740,7 +731,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                  headers:nil
                     data:nil
           retryIntervals:intervals
-      compressionEnabled:YES
        completionHandler:^(NSData *_Nullable responseBody __unused, NSHTTPURLResponse *_Nullable response __unused,
                            NSError *_Nullable error __unused) {
          [expectation fulfill];
@@ -770,7 +760,6 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
                               headers:nil
                                  data:nil
                        retryIntervals:intervals
-                   compressionEnabled:YES
                     completionHandler:^(NSData *_Nullable responseBody __unused, NSHTTPURLResponse *_Nullable response __unused,
                                         NSError *_Nullable error __unused){
                     }];

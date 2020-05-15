@@ -78,7 +78,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             alertController.dismiss(animated: true, completion: nil)
         }
-        completionHandler((notification.data != nil && notification.data.count > 0) ? .newData : .noData)
+        completionHandler(.noData)
     }
     
 }
