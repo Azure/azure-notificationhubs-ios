@@ -1,18 +1,10 @@
 # Push podspec to CocoaPods
-resp="$(pod trunk push ./AzureNotificationHubs-iOS.podspec)"
-echo $resp
+pod trunk push ./AzureNotificationHubs-iOS.podspec
+retval=$?
 
-# Check error from the response
-error="$(echo $resp | grep -i 'error\|fatal|The spec did not pass validation')"
-if [ "$error" ]; then
-    echo "Cannot publish to CocoaPods"
+if [ $retval -eq 0 ]; then
+    echo $'\360\237\215\272 Podspec published to CocoaPods successfully"'
+else
+    echo -e '\xf0\x9f\x91\xbf Cannot publish to CocoaPods'
     exit 1
 fi
-
-successFlag="$(echo $resp | grep -i 'successfully published')"
-if [ -z "$successFlag" ]; then
-    echo "Cannot publish to CocoaPods"
-    exit 1
-fi
-
-echo "Podspec published to CocoaPods successfully"
