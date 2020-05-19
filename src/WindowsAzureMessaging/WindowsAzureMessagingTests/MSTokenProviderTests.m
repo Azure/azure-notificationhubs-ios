@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#import "WindowsAzureMessaging.h"
 #import "MSTestFrameworks.h"
 #import "MSTokenProvider.h"
+#import "WindowsAzureMessaging.h"
 
 static NSMutableDictionary *connectionDictionary;
 
@@ -27,26 +27,26 @@ static NSMutableDictionary *connectionDictionary;
     [super tearDown];
 }
 
--(void) testInitWithConnectionDictionaryCorrect {
+- (void)testInitWithConnectionDictionaryCorrect {
     MSTokenProvider *provider = [[MSTokenProvider alloc] initWithConnectionDictionary:connectionDictionary];
     XCTAssertNotNil(provider);
 }
 
--(void) testCreateFromConnectionDictionary {
+- (void)testCreateFromConnectionDictionary {
     MSTokenProvider *provider = [MSTokenProvider createFromConnectionDictionary:connectionDictionary];
     XCTAssertNotNil(provider);
 }
 
--(void) testInitWithConnectionDictionaryIncorrect {
+- (void)testInitWithConnectionDictionaryIncorrect {
     [connectionDictionary setObject:@"test.servicebus.windows.net" forKey:@"endpoint"];
     MSTokenProvider *provider = [[MSTokenProvider alloc] initWithConnectionDictionary:connectionDictionary];
     XCTAssertNil(provider);
 }
 
--(void) testGenerateSharedAccessTokenWithUrl {
+- (void)testGenerateSharedAccessTokenWithUrl {
     MSTokenProvider *provider = [MSTokenProvider createFromConnectionDictionary:connectionDictionary];
     NSString *token = [provider generateSharedAccessTokenWithUrl:@"https://test.url.com/hub"];
-    
+
     XCTAssertNotNil(token);
     XCTAssertTrue([token containsString:@"SharedAccessSignature sr=http%3a%2f%2ftest.url.com%2fhub&sig="]);
 }

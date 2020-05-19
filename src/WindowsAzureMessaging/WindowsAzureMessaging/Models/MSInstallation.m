@@ -3,6 +3,7 @@
 //----------------------------------------------------------------
 
 #import "MSInstallation.h"
+#import "MSInstallationTemplate.h"
 
 @implementation MSInstallation
 
@@ -10,6 +11,7 @@
     [coder encodeObject:self.installationID forKey:@"installationID"];
     [coder encodeObject:self.pushChannel forKey:@"pushChannel"];
     [coder encodeObject:self.tags forKey:@"tags"];
+    [coder encodeObject:self.templates forKey:@"templates"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -17,6 +19,7 @@
         self.installationID = [coder decodeObjectForKey:@"installationID"] ?: [[NSUUID UUID] UUIDString];
         self.pushChannel = [coder decodeObjectForKey:@"pushChannel"];
         self.tags = [coder decodeObjectForKey:@"tags"];
+        self.templates = [coder decodeObjectForKey:@"templates"];
     }
 
     return self;
@@ -53,18 +56,27 @@
     installation.installationID = dictionary[@"installationId"];
     installation.pushChannel = dictionary[@"pushChannel"];
     installation.tags = dictionary[@"tags"];
+    installation.templates = dictionary[@"templates"];
 
     return installation;
 }
 
 - (NSData *)toJsonData {
-
-    NSDictionary *dictionary = @{
-        @"installationId" : self.installationID,
-        @"platform" : @"apns",
-        @"pushChannel" : self.pushChannel,
-        @"tags" : [self.tags allObjects] ?: [NSArray new]
+    NSMutableDictionary *templates = [NSMutableDictionary new];
+    for (NSString *key in [self.templates allKeys]) {
+        [templates setObject:[[self.templates objectForKey:key] toDictionary] forKey:key];
     };
+
+    NSMutableDictionary *dictionary = [NSMutableDictionary
+        dictionaryWithDictionary:@{@"installationId" : self.installationID, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
+
+    if (self.tags && [self.tags count] > 0) {
+        [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:@"tags"];
+    }
+
+    if (self.templates && [self.templates count] > 0) {
+        [dictionary setObject:templates forKey:@"templates"];
+    }
 
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
@@ -103,12 +115,40 @@
 }
 
 - (NSUInteger)hash {
-    return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash];
+    return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
+}
+
+- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)templateKey {
+    NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
+
+    if ([[tmpTemplates allKeysForObject:template] count] > 0) {
+        return NO;
+    }
+
+    [tmpTemplates setObject:template forKey:templateKey];
+    self.templates = tmpTemplates;
+    return YES;
+}
+
+- (BOOL)removeTemplate:(NSString *)templateKey {
+    NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
+
+    if (![tmpTemplates objectForKey:templateKey]) {
+        return NO;
+    }
+
+    [tmpTemplates removeObjectForKey:templateKey];
+    self.templates = tmpTemplates;
+    return YES;
+}
+
+- (MSInstallationTemplate *)getTemplate:(NSString *)templateKey {
+    return [self.templates objectForKey:templateKey];
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    return [self.installationID isEqualToString:installation.installationID] &&
-           [self.tags isEqualToSet:installation.tags];
+    return [self.installationID isEqualToString:installation.installationID] && [self.tags isEqualToSet:installation.tags] &&
+           [self.templates isEqual:installation.templates];
 }
 
 - (BOOL)isEqual:(id)object {
@@ -125,9 +165,10 @@
 
 + (BOOL)isValidTag:(NSString *)tag {
     NSString *tagPattern = @"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:tagPattern options:NSRegularExpressionCaseInsensitive
-      error:nil];
-    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:tagPattern
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+
     return [regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0;
 }
 

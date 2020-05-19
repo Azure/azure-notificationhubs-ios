@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class MSInstallation;
 @class MSDebounceInstallationManager;
+@class MSInstallationTemplate;
 /**
  * The Azure Notification Hubs service
  */
@@ -48,11 +49,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Installation Support
 
-- (NSString *) getPushChannel;
-- (NSString *) getInstallationId;
+- (NSString *)getPushChannel;
+- (NSString *)getInstallationId;
 
-+ (NSString *) getPushChannel;
-+ (NSString *) getInstallationId;
++ (NSString *)getPushChannel;
++ (NSString *)getInstallationId;
 
 #pragma mark Tags Support
 
@@ -69,6 +70,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)removeTags:(NSArray<NSString *> *)tags;
 - (NSArray<NSString *> *)getTags;
 - (void)clearTags;
+
+#pragma mark Template Support
+
++ (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
++ (BOOL)removeTemplate:(NSString *)key;
++ (MSInstallationTemplate *)getTemplate:(NSString *)key;
 
 @end
 

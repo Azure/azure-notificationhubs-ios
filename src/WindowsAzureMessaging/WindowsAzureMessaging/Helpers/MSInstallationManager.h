@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 
 @class MSInstallation;
+@class MSInstallationTemplate;
 @class MSTokenProvider;
 @class MSHttpClient;
 

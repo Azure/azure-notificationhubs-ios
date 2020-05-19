@@ -13,7 +13,7 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
 
 + (BOOL)isEnabled {
     NSNumber *enabledNumber = [[NSUserDefaults standardUserDefaults] objectForKey:kEnabledKey];
-    
+
     return (enabledNumber) ? [enabledNumber boolValue] : YES;
 }
 
