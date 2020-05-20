@@ -77,7 +77,8 @@ static NSString *decodingTableLock = @"decodingTableLock";
 
     if (_stsHostName == nil) {
         NSString *nameSpace = [[[_serviceEndPoint host] componentsSeparatedByString:@"."] objectAtIndex:0];
-        _stsHostName = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net", nameSpace]];
+        _stsHostName =
+            [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net", nameSpace]];
     } else {
         if ([_stsHostName host] == nil) {
             NSLog(@"%@", @"StsHostname is not in URL format in connectionString.");
@@ -189,9 +190,13 @@ static NSString *decodingTableLock = @"decodingTableLock";
     return [self signString:str withKeyData:cKey keyLength:strlen(cKey)];
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 - (NSString *)urlEncode:(NSString *)urlString {
-    return [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)urlString, NULL,
+                                                                        CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8);
 }
+#pragma GCC diagnostic pop
 
 - (NSString *)urlDecode:(NSString *)urlString {
     return [[urlString stringByReplacingOccurrencesOfString:@"+"

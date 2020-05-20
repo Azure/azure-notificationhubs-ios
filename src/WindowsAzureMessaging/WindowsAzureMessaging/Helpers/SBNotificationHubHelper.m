@@ -21,13 +21,10 @@ static NSString *decodingTableLock = @"decodingTableLock";
 }
 #pragma GCC diagnostic pop
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 + (NSString *)urlDecode:(NSString *)urlString {
     return [[urlString stringByReplacingOccurrencesOfString:@"+"
-                                                 withString:@" "] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                                                 withString:@" "] stringByRemovingPercentEncoding];
 }
-#pragma GCC diagnostic pop
 
 + (NSString *)createHashWithData:(NSData *)data {
 

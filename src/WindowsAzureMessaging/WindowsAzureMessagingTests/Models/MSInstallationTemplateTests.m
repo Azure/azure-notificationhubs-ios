@@ -121,7 +121,7 @@
     NSString *value = @"Sample-Value";
     
     // Act
-    [template setHeader:value forKey:value];
+    [template setHeader:value forKey:key];
     
     // Assert
     XCTAssertEqual(value, [template getHeader:key]);
