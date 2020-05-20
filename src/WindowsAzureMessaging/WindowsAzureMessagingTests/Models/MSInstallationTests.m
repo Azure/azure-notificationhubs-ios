@@ -1,10 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#import "MSInstallationManager.h"
-#import "MSLocalStorage.h"
+#import "MSInstallation.h"
 #import "MSTestFrameworks.h"
-#import "WindowsAzureMessaging.h"
 #import <Foundation/Foundation.h>
 #import <UserNotifications/UserNotifications.h>
 
@@ -14,112 +12,81 @@
 
 @implementation MSInstallationTests
 
-static NSString *connectionString = @"Endpoint=sb://test-namespace.servicebus.windows.net/"
-                                    @";SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=HqKHjkhjg674hjGHdskJ795GJFJ=";
-static NSString *hubName = @"nubName";
 
 - (void)setUp {
     [super setUp];
-
-    id notificationCenterMock = OCMClassMock([UNUserNotificationCenter class]);
-    OCMStub(ClassMethod([notificationCenterMock currentNotificationCenter])).andReturn(nil);
-
-    [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
 }
 
 - (void)testAddTag {
     // If
-    MSInstallation *installation = [MSInstallation new];
-    [MSLocalStorage upsertInstallation:installation];
+    MSInstallation *installation = [[MSInstallation alloc] init];
 
     // Then
-    XCTAssertTrue([MSNotificationHub addTag:@"tag1"]);
-    MSInstallation *installationWithTag = [MSLocalStorage loadInstallation];
-    XCTAssertTrue([installationWithTag.tags count] == 1, @"Installation tags count actually is %lul", [installationWithTag.tags count]);
-    XCTAssertTrue([installationWithTag.tags containsObject:@"tag1"]);
+    XCTAssertTrue([installation addTag:@"tag1"]);
+    XCTAssertTrue([installation.tags count] == 1, @"Installation tags count actually is %lul", [installation.tags count]);
+    XCTAssertTrue([installation.tags containsObject:@"tag1"]);
 }
 
 - (void)testAddTagFailsIfTagDoesNotMatchPattern {
     // If
-    MSInstallation *installation = [MSInstallation new];
-    [MSLocalStorage upsertInstallation:installation];
+    MSInstallation *installation = [[MSInstallation alloc] init];
 
     // Then
-    XCTAssertFalse([MSNotificationHub addTag:@"tag 1"]);
-    MSInstallation *installationWithTag = [MSLocalStorage loadInstallation];
-    XCTAssertFalse([installationWithTag.tags containsObject:@"tag 1"]);
+    XCTAssertFalse([installation addTag:@"tag 1"]);
+    XCTAssertFalse([installation.tags containsObject:@"tag 1"]);
 }
 
 - (void)testAddTagFailsIfTagAlreadyExist {
     // If
-    MSInstallation *installation = [MSInstallation new];
-    installation.tags = [NSSet setWithArray:@[ @"tag1", @"tag2" ]];
-    [MSLocalStorage upsertInstallation:installation];
+    MSInstallation *installation = [[MSInstallation alloc] init];
+    [installation addTags:@[@"tag1", @"tag2" ]];
 
     // Then
-    XCTAssertTrue([MSNotificationHub addTag:@"tag1"]);
-    MSInstallation *installationWithTag = [MSLocalStorage loadInstallation];
-    XCTAssertTrue([installationWithTag.tags count] == 2, @"Installation tags count actually is %lul", [installationWithTag.tags count]);
+    XCTAssertTrue([installation addTag:@"tag1"]);
+    XCTAssertTrue([installation.tags count] == 2, @"Installation tags count actually is %lul", [installation.tags count]);
 }
 
 - (void)testAddTags {
     // If
     MSInstallation *installation = [MSInstallation new];
-    [MSLocalStorage upsertInstallation:installation];
     NSArray<NSString *> *tags = @[ @"tag1", @"tag2" ];
 
     // Then
-    XCTAssertTrue([MSNotificationHub addTags:tags]);
-    MSInstallation *installationWithTag = [MSLocalStorage loadInstallation];
-    XCTAssertTrue([installationWithTag.tags count] == 2, @"Installation tags count actually is %lul", [installationWithTag.tags count]);
-    XCTAssertTrue([installationWithTag.tags containsObject:@"tag1"]);
-    XCTAssertTrue([installationWithTag.tags containsObject:@"tag2"]);
+    XCTAssertTrue([installation addTags:tags]);
+    XCTAssertTrue([installation.tags count] == 2, @"Installation tags count actually is %lul", [installation.tags count]);
+    XCTAssertTrue([installation.tags containsObject:@"tag1"]);
+    XCTAssertTrue([installation.tags containsObject:@"tag2"]);
 }
 
 - (void)testRemoveTags {
     // If
     MSInstallation *installation = [MSInstallation new];
-    installation.tags = [NSSet setWithArray:@[ @"tag1", @"tag2", @"tag3" ]];
-    [MSLocalStorage upsertInstallation:installation];
+    [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     NSArray<NSString *> *tags = @[ @"tag1", @"tag2" ];
 
     // Then
-    XCTAssertTrue([MSNotificationHub removeTags:tags]);
-    MSInstallation *installationWithTag = [MSLocalStorage loadInstallation];
-    XCTAssertTrue([installationWithTag.tags count] == 1, @"Installation tags count actually is %lul", [installationWithTag.tags count]);
-    XCTAssertTrue([installationWithTag.tags containsObject:@"tag3"]);
-}
-
-- (void)testRemoveTagsFailsIfInstallationDoesNotHaveTags {
-    // If
-    MSInstallation *installation = [MSInstallation new];
-    [MSLocalStorage upsertInstallation:installation];
-    NSArray<NSString *> *tags = @[ @"tag1", @"tag2" ];
-
-    // Then
-    XCTAssertFalse([MSNotificationHub removeTags:tags]);
+    XCTAssertTrue([installation removeTags:tags]);
+    XCTAssertTrue([installation.tags count] == 1, @"Installation tags count actually is %lul", [installation.tags count]);
+    XCTAssertTrue([installation.tags containsObject:@"tag3"]);
 }
 
 - (void)testClearTags {
     // If
     MSInstallation *installation = [MSInstallation new];
-    installation.tags = [NSSet setWithArray:@[ @"tag1", @"tag2", @"tag3" ]];
-    [MSLocalStorage upsertInstallation:installation];
+    [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
 
     // Then
-    XCTAssertNoThrow([MSNotificationHub clearTags]);
-    MSInstallation *installationWithTag = [MSLocalStorage loadInstallation];
-    XCTAssertTrue([installationWithTag.tags count] == 0, @"Installation tags count actually is %lul", [installationWithTag.tags count]);
+    XCTAssertNoThrow([installation clearTags]);
+    XCTAssertTrue([installation.tags count] == 0, @"Installation tags count actually is %lul", [installation.tags count]);
 }
 
 - (void)testGetTags {
     // If
     MSInstallation *installation = [MSInstallation new];
-    installation.tags = [NSSet setWithArray:@[ @"tag1", @"tag2", @"tag3" ]];
-    [MSLocalStorage upsertInstallation:installation];
+    [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
 
     // When
-    NSArray<NSString *> *tags = [MSNotificationHub getTags];
+    NSArray<NSString *> *tags = [installation getTags];
 
     // Then
     XCTAssertNotNil(tags);

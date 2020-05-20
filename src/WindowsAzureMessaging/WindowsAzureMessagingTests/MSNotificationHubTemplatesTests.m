@@ -1,5 +1,5 @@
-//  MSInstallationTemplateTests.m
-//  WindowsAzureMessagingTests
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
 #import "MSInstallationManager.h"
 #import "MSInstallationTemplate.h"
@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UserNotifications/UserNotifications.h>
 
-@interface MSInstallationTemplateTests : XCTestCase
+@interface MSNotificationHubTemplateTests : XCTestCase
 @property MSInstallationTemplate *template;
 @end
 
-@implementation MSInstallationTemplateTests
+@implementation MSNotificationHubTemplateTests
 
 static NSString *connectionString = @"Endpoint=sb://test-namespace.servicebus.windows.net/"
                                     @";SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=HqKHjkhjg674hjGHdskJ795GJFJ=";
