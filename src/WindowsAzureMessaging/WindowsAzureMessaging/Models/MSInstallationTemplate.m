@@ -58,10 +58,6 @@
     return YES;
 }
 
-- (NSArray<NSString *> *)getTags {
-    return [[self.tags copy] allObjects];
-}
-
 - (BOOL)removeTag:(NSString *)tag {
     return [self removeTags:[NSArray arrayWithObject:tag]];
 }

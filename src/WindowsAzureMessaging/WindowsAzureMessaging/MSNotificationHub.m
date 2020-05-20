@@ -256,7 +256,8 @@ static dispatch_once_t onceToken;
 }
 
 - (NSArray<NSString *> *)getTags {
-    return [[self getInstallation] getTags];
+    MSInstallation *installation = [self getInstallation];
+    return [installation.tags allObjects];
 }
 
 - (BOOL)removeTag:(NSString *)tag {

@@ -3,18 +3,12 @@
 //----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
+#import "MSTaggable.h"
 
-@interface MSInstallationTemplate : NSObject
+@interface MSInstallationTemplate : NSObject<MSTaggable>
 
 @property(nonatomic, copy) NSString *body;
-@property(nonatomic, copy, readonly) NSSet<NSString *> *tags;
 @property(nonatomic, copy, readonly) NSDictionary<NSString *, NSString *> *headers;
-
-- (BOOL)addTag:(NSString *)tag;
-- (BOOL)addTags:(NSArray<NSString *> *)tagsToAdd;
-- (BOOL)removeTag:(NSString *)tag;
-- (BOOL)removeTags:(NSArray<NSString *> *)tagsToRemove;
-- (void)clearTags;
 
 // Headers
 - (void)setHeader:(NSString *)value forKey:(NSString *)key;

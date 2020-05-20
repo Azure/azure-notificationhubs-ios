@@ -13,6 +13,8 @@ StaticHandleBlock _staticHandler;
     _staticHandler = staticHandler;
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 - (void)sendRequest:(NSURLRequest *)request completion:(void (^)(NSHTTPURLResponse *, NSData *, NSError *))completion;
 {
     if (self) {
@@ -40,7 +42,10 @@ StaticHandleBlock _staticHandler;
         completion(nil, nil, [SBNotificationHubHelper errorWithMsg:msg code:-1]);
     }
 }
+#pragma GCC diagnostic pop
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 - (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error {
     if (_staticHandler != nil) {
         SBStaticHandlerResponse *mockResponse = _staticHandler(request);
@@ -56,6 +61,7 @@ StaticHandleBlock _staticHandler;
 
     return [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
 }
+#pragma GCC diagnostic pop
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     if (!self->_completion) {

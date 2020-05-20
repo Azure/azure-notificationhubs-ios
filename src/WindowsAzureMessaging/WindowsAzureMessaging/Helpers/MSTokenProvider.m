@@ -190,13 +190,12 @@ static NSString *decodingTableLock = @"decodingTableLock";
 }
 
 - (NSString *)urlEncode:(NSString *)urlString {
-    return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)urlString, NULL,
-                                                                        CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8);
+    return [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 - (NSString *)urlDecode:(NSString *)urlString {
     return [[urlString stringByReplacingOccurrencesOfString:@"+"
-                                                 withString:@" "] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                                                 withString:@" "] stringByRemovingPercentEncoding];
 }
 
 @end
