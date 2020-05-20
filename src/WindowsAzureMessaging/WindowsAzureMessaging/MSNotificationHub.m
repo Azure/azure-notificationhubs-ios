@@ -317,7 +317,6 @@ static dispatch_once_t onceToken;
 }
 
 - (MSInstallationTemplate *)getTemplate:(NSString *)key {
-    MSInstallation *i = [self getInstallation];
     return [[self getInstallation] getTemplate:key];
 }
 

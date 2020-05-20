@@ -4,6 +4,14 @@
 
 #import "MSInstallation.h"
 #import "MSInstallationTemplate.h"
+#import "MSTagHelper.h"
+
+@interface MSInstallation ()
+
+@property(nonatomic, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
+@property(nonatomic, copy) NSSet<NSString *> *tags;
+
+@end
 
 @implementation MSInstallation
 
@@ -81,11 +89,15 @@
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
 }
 
+- (BOOL)addTag:(NSString *)tag {
+    return [self addTags:[NSArray arrayWithObject:tag]];
+}
+
 - (BOOL)addTags:(NSArray<NSString *> *)tags {
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
     for (NSString *tag in tags) {
-        if ([MSInstallation isValidTag:tag]) {
+        if (isValidTag(tag)) {
             [tmpTags addObject:tag];
         } else {
             NSLog(@"Invalid tag: %@", tag);
@@ -99,6 +111,10 @@
 
 - (NSArray<NSString *> *)getTags {
     return [[self.tags copy] allObjects];
+}
+
+- (BOOL)removeTag:(NSString *)tag {
+    return [self removeTags:[NSArray arrayWithObject:tag]];
 }
 
 - (BOOL)removeTags:(NSArray<NSString *> *)tags {
@@ -161,15 +177,6 @@
     }
 
     return [self isEqualToMSInstallation:(MSInstallation *)object];
-}
-
-+ (BOOL)isValidTag:(NSString *)tag {
-    NSString *tagPattern = @"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:tagPattern
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:nil];
-
-    return [regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0;
 }
 
 @end
