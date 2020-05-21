@@ -15,6 +15,26 @@
     [super setUp];
 }
 
+- (void)testIsDirtyIsWhenInitFalse {
+    // Arrange
+    MSInstallationTemplate *template = [MSInstallationTemplate new];
+    
+    // Act
+    // Assert
+    XCTAssertFalse(template.isDirty);
+}
+
+- (void)testIsDirtyWhenBodyChangedIsTrue {
+    // Arrange
+    MSInstallationTemplate *template = [MSInstallationTemplate new];
+    
+    // Act
+    template.body = @"some-body";
+    
+    // Assert
+    XCTAssertTrue(template.isDirty);
+}
+
 - (void)testAddTag {
     // Arrange
     MSInstallationTemplate *template = [MSInstallationTemplate new];
@@ -24,6 +44,7 @@
     
     // Assert
     XCTAssertEqual(1, [[template tags] count]);
+    XCTAssertTrue(template.isDirty);
 }
 
 - (void)testAddTagDuplicateDoesNotAdd {
@@ -121,10 +142,10 @@
     NSString *value = @"Sample-Value";
     
     // Act
-    [template setHeader:value forKey:key];
+    [template setHeaderValue:value forKey:key];
     
     // Assert
-    XCTAssertEqual(value, [template getHeader:key]);
+    XCTAssertEqual(value, [template getHeaderValueForKey:key]);
 }
 
 @end

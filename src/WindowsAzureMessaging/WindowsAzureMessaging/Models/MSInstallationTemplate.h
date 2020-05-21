@@ -4,17 +4,17 @@
 
 #import <Foundation/Foundation.h>
 #import "MSTaggable.h"
+#import "MSChangeTracking.h"
 
-@interface MSInstallationTemplate : NSObject<MSTaggable>
+@interface MSInstallationTemplate : NSObject<MSTaggable, MSChangeTracking>
 
 @property(nonatomic, copy) NSString *body;
 @property(nonatomic, copy, readonly) NSDictionary<NSString *, NSString *> *headers;
 
 // Headers
-- (void)setHeader:(NSString *)value forKey:(NSString *)key;
-- (void)removeHeader:(NSString *)key;
-- (NSString *)getHeader:(NSString *)key;
-- (NSDictionary<NSString *, NSString *> *)getHeaders;
+- (void)setHeaderValue:(NSString *)value forKey:(NSString *)key;
+- (void)removeHeaderValueForKey:(NSString *)key;
+- (NSString *)getHeaderValueForKey:(NSString *)key;
 
 // Serialize
 - (NSDictionary *)toDictionary;

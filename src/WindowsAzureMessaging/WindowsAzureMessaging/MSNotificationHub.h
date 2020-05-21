@@ -74,8 +74,12 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Template Support
 
 + (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
-+ (BOOL)removeTemplate:(NSString *)key;
-+ (MSInstallationTemplate *)getTemplate:(NSString *)key;
++ (BOOL)removeTemplateForKey:(NSString *)key;
++ (MSInstallationTemplate *)getTemplateForKey:(NSString *)key;
+
+- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
+- (BOOL)removeTemplateForKey:(NSString *)key;
+- (MSInstallationTemplate *)getTemplateForKey:(NSString *)key;
 
 @end
 

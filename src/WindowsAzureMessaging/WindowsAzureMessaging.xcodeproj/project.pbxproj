@@ -51,6 +51,8 @@
 		4CD6F4982465C6EA00BA554A /* MSNotificationHubPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD6F4962465C6EA00BA554A /* MSNotificationHubPrivate.h */; };
 		4CD6F4A224663D3C00BA554A /* MSNotificationHubAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CD6F4A324663D6F00BA554A /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CDB3EDE2476E84F00499D0D /* MSChangeTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CDB3EDD2476E84F00499D0D /* MSChangeTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CDB3EDF2476E84F00499D0D /* MSChangeTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CDB3EDD2476E84F00499D0D /* MSChangeTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6489DDF624582A270021CF36 /* MSNotificationHubAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6489DDF924582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */; };
 		6489DDFA24582A390021CF36 /* MSNotificationHubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */; };
@@ -273,6 +275,7 @@
 		4C854703244F9347005F6B49 /* MSNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHub.h; sourceTree = "<group>"; };
 		4C854705244FD64C005F6B49 /* MSNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHub.m; sourceTree = "<group>"; };
 		4CD6F4962465C6EA00BA554A /* MSNotificationHubPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubPrivate.h; sourceTree = "<group>"; };
+		4CDB3EDD2476E84F00499D0D /* MSChangeTracking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSChangeTracking.h; sourceTree = "<group>"; };
 		6489DDF524582A270021CF36 /* MSNotificationHubAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubAppDelegate.h; sourceTree = "<group>"; };
 		6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubAppDelegate.m; sourceTree = "<group>"; };
 		6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubMessage.m; sourceTree = "<group>"; };
@@ -424,6 +427,7 @@
 				4C7BF48D2474764400B8DF8A /* MSTagHelper.h */,
 				4C7BF4972474779900B8DF8A /* MSTagHelper.m */,
 				4C7BF4A02475CE8500B8DF8A /* MSTaggable.h */,
+				4CDB3EDD2476E84F00499D0D /* MSChangeTracking.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -651,6 +655,7 @@
 				B34BA79324589FE1002457DC /* SBConnectionString.h in Headers */,
 				B3D2852E2456E97F00C78CC8 /* MSHttpClientPrivate.h in Headers */,
 				B34BA7992458A052002457DC /* SBNotificationHubHelper.h in Headers */,
+				4CDB3EDF2476E84F00499D0D /* MSChangeTracking.h in Headers */,
 				B34BA79F2458A10C002457DC /* SBStoredRegistrationEntry.h in Headers */,
 				B34BA79B2458A0F7002457DC /* SBTokenProvider.h in Headers */,
 				B34BA79124589FD6002457DC /* SBNotificationHub.h in Headers */,
@@ -693,6 +698,7 @@
 				A358373916AA3B060041E372 /* SBConnectionString.h in Headers */,
 				14E28A20246A863D00B976C4 /* MSInstallationTemplate.h in Headers */,
 				B3D2855C2456F1F200C78CC8 /* MSHttpClientDelegate.h in Headers */,
+				4CDB3EDE2476E84F00499D0D /* MSChangeTracking.h in Headers */,
 				848CB73C16FCC78E00183E8D /* SBStoredRegistrationEntry.h in Headers */,
 				4CD6F4972465C6EA00BA554A /* MSNotificationHubPrivate.h in Headers */,
 				B3D285312456E97F00C78CC8 /* MSHttpUtil.h in Headers */,

@@ -284,12 +284,12 @@ static dispatch_once_t onceToken;
     return [sharedInstance addTemplate:template forKey:key];
 }
 
-+ (BOOL)removeTemplate:(NSString *)key {
-    return [sharedInstance removeTemplate:key];
++ (BOOL)removeTemplateForKey:(NSString *)key {
+    return [sharedInstance removeTemplateForKey:key];
 }
 
-+ (MSInstallationTemplate *)getTemplate:(NSString *)key {
-    return [sharedInstance getTemplate:key];
++ (MSInstallationTemplate *)getTemplateForKey:(NSString *)key {
+    return [sharedInstance getTemplateForKey:key];
 }
 
 - (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
@@ -303,22 +303,23 @@ static dispatch_once_t onceToken;
     return NO;
 }
 
-- (BOOL)removeTemplate:(NSString *)key {
+- (BOOL)removeTemplateForKey:(NSString *)key {
     MSInstallation *installation = [self getInstallation];
 
     if (installation.templates == nil || [installation.templates count] == 0) {
         return NO;
     }
 
-    [installation removeTemplate:key];
-
-    [self upsertInstallation:installation];
-
-    return YES;
+    if ([installation removeTemplateForKey:key]) {
+        [self upsertInstallation:installation];
+        return YES;
+    }
+    
+    return NO;
 }
 
-- (MSInstallationTemplate *)getTemplate:(NSString *)key {
-    return [[self getInstallation] getTemplate:key];
+- (MSInstallationTemplate *)getTemplateForKey:(NSString *)key {
+    return [[self getInstallation] getTemplateForKey:key];
 }
 
 #pragma mark Helpers
