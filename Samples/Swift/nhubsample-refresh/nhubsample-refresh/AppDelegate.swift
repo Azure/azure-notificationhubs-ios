@@ -6,7 +6,7 @@ import UIKit
 import WindowsAzureMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentDelegate {
 
     var connectionString: String?
     var hubName: String?
@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        MSNotificationHub.setEnrichmentDelegate(self)
         MSNotificationHub.initWithConnectionString(connectionString!, hubName: hubName!)
         MSNotificationHub.addTag("userAgent:com.example.nhubsample-refresh:1.0")
         
@@ -38,6 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func notificationHub(_ notificationHub: MSNotificationHub!, willEnrichInstallation installation: MSInstallation!) {
+        NSLog("willEnrichInstallation");
     }
 
 }

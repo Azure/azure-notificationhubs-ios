@@ -3,9 +3,10 @@
 //----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
+#import "MSInstallationEnrichmentDelegate.h"
+#import "MSInstallationManager.h"
 
 @class MSInstallation;
-@class MSInstallationManager;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,10 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
     double _interval;
     NSTimer *_debounceTimer;
     MSInstallationManager *_installationManager;
+    InstallationEnrichmentHandler _enrichmentHandler;
 }
 
 - (instancetype)initWithInterval:(double)interval installationManager:(MSInstallationManager *)installationManager;
-- (void)saveInstallation:(MSInstallation *)installation;
+- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler;
 
 @end
 

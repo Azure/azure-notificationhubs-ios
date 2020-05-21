@@ -37,7 +37,7 @@
 		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; platformFilter = ios; };
 		4C2C05D7246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */; };
 		4C2C05D8246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */; };
-		4C7B719E2469E13100BF416F /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4C7B719E2469E13100BF416F /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C7BF48E2474764400B8DF8A /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7BF48D2474764400B8DF8A /* MSTagHelper.h */; };
 		4C7BF48F2474764400B8DF8A /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7BF48D2474764400B8DF8A /* MSTagHelper.h */; };
 		4C7BF4982474779900B8DF8A /* MSTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BF4972474779900B8DF8A /* MSTagHelper.m */; };
@@ -57,9 +57,13 @@
 		6489DDFC24586C210021CF36 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */; };
 		6489DDFD24586C210021CF36 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */; };
 		6489DE0724598D5B0021CF36 /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0022451A86C006B6327 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0042451A86C006B6327 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C854703244F9347005F6B49 /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64BD3EB22476AD2500970653 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB12476AD2500970653 /* UserNotifications.framework */; platformFilter = ios; };
+		64BD3EB42476AD2E00970653 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB32476AD2E00970653 /* SystemConfiguration.framework */; platformFilter = ios; };
+		64BD3EB62476AD3A00970653 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB52476AD3900970653 /* UserNotifications.framework */; };
+		64BD3EB82476AD4200970653 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB72476AD4200970653 /* SystemConfiguration.framework */; };
 		64F993DF245C448B0086ABF8 /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = CE98A78124532F5E00DA1AE8 /* MSLocalStorage.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		64F993E1245C49DE0086ABF8 /* MSInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA47C2D2458294E007B17B3 /* MSInstallation.m */; };
 		64F993E5245C5D9A0086ABF8 /* MSTokenProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F993E4245C5D9A0086ABF8 /* MSTokenProviderTests.m */; };
@@ -277,6 +281,10 @@
 		6489DDF824582A390021CF36 /* MSNotificationHubAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubAppDelegate.m; sourceTree = "<group>"; };
 		6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubMessage.m; sourceTree = "<group>"; };
 		6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubDelegate.h; sourceTree = "<group>"; };
+		64BD3EB12476AD2500970653 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		64BD3EB32476AD2E00970653 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		64BD3EB52476AD3900970653 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
+		64BD3EB72476AD4200970653 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		64F993E4245C5D9A0086ABF8 /* MSTokenProviderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSTokenProviderTests.m; sourceTree = "<group>"; };
 		64F993E6245C6A4F0086ABF8 /* MSLocalStorageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSLocalStorageTests.m; sourceTree = "<group>"; };
 		64F993E8245C7FB60086ABF8 /* MSInstallationManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallationManagerTests.m; sourceTree = "<group>"; };
@@ -358,6 +366,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64BD3EB42476AD2E00970653 /* SystemConfiguration.framework in Frameworks */,
+				64BD3EB22476AD2500970653 /* UserNotifications.framework in Frameworks */,
 				35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +386,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64BD3EB82476AD4200970653 /* SystemConfiguration.framework in Frameworks */,
+				64BD3EB62476AD3A00970653 /* UserNotifications.framework in Frameworks */,
 				906E403C16A86A3200817A11 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +473,10 @@
 		906E403A16A86A3200817A11 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64BD3EB72476AD4200970653 /* SystemConfiguration.framework */,
+				64BD3EB52476AD3900970653 /* UserNotifications.framework */,
+				64BD3EB32476AD2E00970653 /* SystemConfiguration.framework */,
+				64BD3EB12476AD2500970653 /* UserNotifications.framework */,
 				906E403B16A86A3200817A11 /* Foundation.framework */,
 			);
 			name = Frameworks;

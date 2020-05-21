@@ -27,7 +27,7 @@
 }
 
 - (void)notificationHub:(MSNotificationHub *)notificationHub willEnrichInstallation:(MSInstallation *)installation{
-    [installation addTag:@"enrich.instalation.tag:1"];
+    NSLog(@"willEnrichInstallation");
 }
 
 #pragma mark - UISceneSession lifecycle

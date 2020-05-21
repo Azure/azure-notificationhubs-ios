@@ -199,15 +199,15 @@ static dispatch_once_t onceToken;
 
 - (void)upsertInstallation:(MSInstallation *)installation {
     [MSLocalStorage upsertInstallation:installation];
-
+    
     if ([self isEnabled]) {
-        
-        id<MSInstallationEnrichmentDelegate> delegate = self.enrichmentDelegate;
-        if ([delegate respondsToSelector:@selector(notificationHub:willEnrichInstallation:)]) {
-            [delegate notificationHub:self willEnrichInstallation:installation];
-        }
-        
-        [_debounceInstallationManager saveInstallation:installation];
+        [_debounceInstallationManager saveInstallation:installation withEnrichmentHandler:^void() {
+            id<MSInstallationEnrichmentDelegate> enrichmentDelegate = self.enrichmentDelegate;
+            if ([enrichmentDelegate respondsToSelector:@selector(notificationHub:willEnrichInstallation:)]) {
+                [enrichmentDelegate notificationHub:self willEnrichInstallation:installation];
+                [MSLocalStorage upsertInstallation:installation];
+            }
+        }];
     }
 }
 

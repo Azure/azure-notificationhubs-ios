@@ -9,8 +9,9 @@
 @class MSTokenProvider;
 @class MSHttpClient;
 
-@interface MSInstallationManager : NSObject {
+typedef void (^InstallationEnrichmentHandler)(void);
 
+@interface MSInstallationManager : NSObject {
   @private
     NSString *_connectionString;
     NSString *_hubName;
@@ -21,6 +22,6 @@
 @property(nonatomic) MSHttpClient *httpClient;
 
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
-- (void)saveInstallation:(MSInstallation *)installation;
+- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler;
 
 @end

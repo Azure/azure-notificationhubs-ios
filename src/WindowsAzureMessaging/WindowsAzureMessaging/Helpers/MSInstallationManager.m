@@ -32,7 +32,7 @@ NSString *const kAPIVersion = @"2017-04";
     _httpClient = httpClient;
 }
 
-- (void)saveInstallation:(MSInstallation *)installation {
+- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler {
 
     if (!_tokenProvider) {
         NSLog(@"Invalid connection string");
@@ -43,7 +43,9 @@ NSString *const kAPIVersion = @"2017-04";
         NSLog(@"You have to setup Push Channel before save installation");
         return;
     }
-
+    
+    enrichmentHandler();
+    
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
     NSString *url =
         [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, kAPIVersion];
