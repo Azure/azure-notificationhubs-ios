@@ -68,8 +68,11 @@ static NSString *deviceToken = @"deviceToken";
     }
 
     NSData *expectedData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
+
     // When
-    [installationManager saveInstallation:installation];
+    [installationManager saveInstallation:installation
+                    withEnrichmentHandler:^(void){
+                    }];
 
     // Then
     OCMVerify([httpClient
@@ -104,7 +107,9 @@ static NSString *deviceToken = @"deviceToken";
     OCMReject([httpClient sendAsync:OCMOCK_ANY method:OCMOCK_ANY headers:OCMOCK_ANY data:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
 
     // When
-    [installationManager saveInstallation:installation];
+    [installationManager saveInstallation:installation
+                    withEnrichmentHandler:^(void){
+                    }];
 }
 
 - (void)testSaveInstallationFailsIfInvalidConnectionString {
@@ -119,7 +124,10 @@ static NSString *deviceToken = @"deviceToken";
     OCMReject([httpClient sendAsync:OCMOCK_ANY method:OCMOCK_ANY headers:OCMOCK_ANY data:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
 
     // When
-    [installationManager saveInstallation:installation];
+    [installationManager saveInstallation:installation
+                    withEnrichmentHandler:^(void){
+                    }];
 }
+// clang-format -i -style=file *.h *.m
 
 @end
