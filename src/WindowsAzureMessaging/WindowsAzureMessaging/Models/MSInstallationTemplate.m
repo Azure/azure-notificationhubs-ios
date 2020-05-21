@@ -92,7 +92,7 @@
     if (hasTags && !isDirty) {
         isDirty = YES;
     }
-    
+
     [tmpTags minusSet:[NSSet setWithArray:tagsToRemove]];
 
     self.tags = [tmpTags copy];
@@ -116,11 +116,11 @@
 }
 
 - (void)removeHeaderValueForKey:(NSString *)key {
-   NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
+    NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
     if (!isDirty && [tmpHeaders objectForKey:key]) {
         isDirty = YES;
     }
-    
+
     [tmpHeaders removeObjectForKey:key];
     headers = [tmpHeaders copy];
 }
@@ -159,9 +159,9 @@
 
 - (NSDictionary *)toDictionary {
     return @{
-        @"body": body,
-        @"tags": [tags allObjects],
-        @"headers": headers,
+        @"body" : body,
+        @"tags" : [tags allObjects],
+        @"headers" : headers,
     };
 }
 

@@ -2,11 +2,11 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import <Foundation/Foundation.h>
-#import "MSTaggable.h"
 #import "MSChangeTracking.h"
+#import "MSTaggable.h"
+#import <Foundation/Foundation.h>
 
-@interface MSInstallationTemplate : NSObject<MSTaggable, MSChangeTracking>
+@interface MSInstallationTemplate : NSObject <MSTaggable, MSChangeTracking>
 
 @property(nonatomic, copy) NSString *body;
 @property(nonatomic, copy, readonly) NSDictionary<NSString *, NSString *> *headers;

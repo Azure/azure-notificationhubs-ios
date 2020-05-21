@@ -64,11 +64,11 @@
     [self removeObserver:self forKeyPath:@"isDirty"];
 }
 
-+ (MSInstallation *)createFromDeviceToken:(NSString *)deviceToken {
++ (instancetype)createFromDeviceToken:(NSString *)deviceToken {
     return [[MSInstallation alloc] initWithDeviceToken:deviceToken];
 }
 
-+ (MSInstallation *)createFromJsonString:(NSString *)jsonString {
++ (instancetype)createFromJsonString:(NSString *)jsonString {
     MSInstallation *installation = [MSInstallation new];
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
 
@@ -152,7 +152,7 @@
     if (hasTags && !isDirty) {
         isDirty = YES;
     }
-    
+
     [tmpTags minusSet:[NSSet setWithArray:tagsToRemove]];
 
     self.tags = [tmpTags copy];

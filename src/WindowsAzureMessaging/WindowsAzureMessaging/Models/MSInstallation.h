@@ -2,9 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import <Foundation/Foundation.h>
-#import "MSTaggable.h"
 #import "MSChangeTracking.h"
+#import "MSTaggable.h"
+#import <Foundation/Foundation.h>
 
 @class MSInstallationTemplate;
 
@@ -15,8 +15,8 @@
 
 - (instancetype)initWithDeviceToken:(NSString *)deviceToken;
 
-+ (MSInstallation *)createFromDeviceToken:(NSString *)deviceToken;
-+ (MSInstallation *)createFromJsonString:(NSString *)jsonString;
++ (instancetype)createFromDeviceToken:(NSString *)deviceToken;
++ (instancetype)createFromJsonString:(NSString *)jsonString;
 
 - (NSData *)toJsonData;
 
