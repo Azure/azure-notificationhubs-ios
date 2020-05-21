@@ -23,6 +23,8 @@
 
 /* Begin PBXBuildFile section */
 		1406DA6824654C8300F47E96 /* MSNotificationHubTemplatesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1406DA6724654C8300F47E96 /* MSNotificationHubTemplatesTests.m */; };
+		1457AD5F24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1457AD5E24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1457AD6024759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1457AD5E24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14A17DEB24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */; };
 		14A17DEC24628CDB00255FF2 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */; };
 		14A17DED24628CDB00255FF2 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */; };
@@ -251,6 +253,7 @@
 
 /* Begin PBXFileReference section */
 		1406DA6724654C8300F47E96 /* MSNotificationHubTemplatesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubTemplatesTests.m; sourceTree = "<group>"; };
+		1457AD5E24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationEnrichmentDelegate.h; sourceTree = "<group>"; };
 		14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSDebounceInstallationManager.h; sourceTree = "<group>"; };
 		14A17DEA24628CDB00255FF2 /* MSDebounceInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSDebounceInstallationManager.m; sourceTree = "<group>"; };
 		14BFB06A246E8E0400059DD2 /* MSInstallationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSInstallationTests.m; sourceTree = "<group>"; };
@@ -480,6 +483,7 @@
 				4C854703244F9347005F6B49 /* MSNotificationHub.h */,
 				4C854705244FD64C005F6B49 /* MSNotificationHub.m */,
 				6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */,
+				1457AD5E24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h */,
 			);
 			path = WindowsAzureMessaging;
 			sourceTree = "<group>";
@@ -669,6 +673,7 @@
 				B3D285302456E97F00C78CC8 /* MSHttpClient.h in Headers */,
 				4CD6F4982465C6EA00BA554A /* MSNotificationHubPrivate.h in Headers */,
 				B3D2855D2456F1F200C78CC8 /* MSHttpClientDelegate.h in Headers */,
+				1457AD6024759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h in Headers */,
 				B3D285542456F09900C78CC8 /* MS_Reachability.h in Headers */,
 				B34BA7A42458A11F002457DC /* SBRegistration.h in Headers */,
 				4C7BF48F2474764400B8DF8A /* MSTagHelper.h in Headers */,
@@ -710,6 +715,7 @@
 				B3821CC12459AFB800567643 /* MS_Reachability.h in Headers */,
 				CE3023B72459C0BC002CF65B /* MSInstallationManager.h in Headers */,
 				4C7B719E2469E13100BF416F /* MSInstallation.h in Headers */,
+				1457AD5F24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h in Headers */,
 				848CB70A16FBE52D00183E8D /* SBTemplateRegistration.h in Headers */,
 				B3D285352456E97F00C78CC8 /* MSHttpCall.h in Headers */,
 				4C7BF48E2474764400B8DF8A /* MSTagHelper.h in Headers */,
@@ -1295,7 +1301,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1318,6 +1324,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fembed-bitcode-marker";
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};

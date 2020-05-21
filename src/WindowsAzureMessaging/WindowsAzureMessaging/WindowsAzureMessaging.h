@@ -11,3 +11,4 @@
 #import "MSNotificationHub.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
+#import "MSInstallationEnrichmentDelegate.h"

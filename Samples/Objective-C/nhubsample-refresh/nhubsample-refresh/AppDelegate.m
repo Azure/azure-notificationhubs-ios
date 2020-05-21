@@ -19,12 +19,16 @@
     NSString *connectionString = [configValues objectForKey:@"connectionString"];
     NSString *hubName = [configValues objectForKey:@"hubName"];
     
+    [MSNotificationHub setEnrichmentDelegate: self];
     [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
     [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
     
     return YES;
 }
 
+- (void)notificationHub:(MSNotificationHub *)notificationHub willEnrichInstallation:(MSInstallation *)installation{
+    [installation addTag:@"enrich.instalation.tag:1"];
+}
 
 #pragma mark - UISceneSession lifecycle
 

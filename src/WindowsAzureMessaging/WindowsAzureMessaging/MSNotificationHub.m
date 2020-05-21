@@ -201,6 +201,12 @@ static dispatch_once_t onceToken;
     [MSLocalStorage upsertInstallation:installation];
 
     if ([self isEnabled]) {
+        
+        id<MSInstallationEnrichmentDelegate> delegate = self.enrichmentDelegate;
+        if ([delegate respondsToSelector:@selector(notificationHub:willEnrichInstallation:)]) {
+            [delegate notificationHub:self willEnrichInstallation:installation];
+        }
+        
         [_debounceInstallationManager saveInstallation:installation];
     }
 }
@@ -318,6 +324,12 @@ static dispatch_once_t onceToken;
 
 - (MSInstallationTemplate *)getTemplate:(NSString *)key {
     return [[self getInstallation] getTemplate:key];
+}
+
+#pragma mark Installation management support
+
++ (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate {
+    [[MSNotificationHub sharedInstance] setEnrichmentDelegate:enrichmentDelegate];
 }
 
 #pragma mark Helpers

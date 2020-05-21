@@ -4,6 +4,7 @@
 
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
+#import "MSInstallationEnrichmentDelegate.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -22,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
     NSString *_hubName;
     NSURL *_serviceEndpoint;
 }
+
+@property(nonatomic) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
 
 /**
  * Initializes the Notification Hub with the connection string from the Access
@@ -76,6 +79,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
 + (BOOL)removeTemplate:(NSString *)key;
 + (MSInstallationTemplate *)getTemplate:(NSString *)key;
+
+#pragma mark Installation management support
+
++ (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate;
 
 @end
 
