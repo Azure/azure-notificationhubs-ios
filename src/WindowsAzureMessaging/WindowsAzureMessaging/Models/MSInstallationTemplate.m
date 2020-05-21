@@ -116,7 +116,7 @@
 }
 
 - (void)removeHeaderValueForKey:(NSString *)key {
-       NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
+   NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
     if (!isDirty && [tmpHeaders objectForKey:key]) {
         isDirty = YES;
     }
