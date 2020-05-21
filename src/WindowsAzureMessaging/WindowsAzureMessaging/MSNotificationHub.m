@@ -280,8 +280,8 @@ static dispatch_once_t onceToken;
 
 #pragma mark Templates
 
-+ (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    return [sharedInstance addTemplate:template forKey:key];
++ (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+    return [sharedInstance setTemplate:template forKey:key];
 }
 
 + (BOOL)removeTemplateForKey:(NSString *)key {
@@ -292,10 +292,10 @@ static dispatch_once_t onceToken;
     return [sharedInstance getTemplateForKey:key];
 }
 
-- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
     MSInstallation *installation = [self getInstallation];
 
-    if ([installation addTemplate:template forKey:key]) {
+    if ([installation setTemplate:template forKey:key]) {
         [self upsertInstallation:installation];
         return YES;
     }

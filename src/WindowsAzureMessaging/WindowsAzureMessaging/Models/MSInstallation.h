@@ -20,7 +20,7 @@
 
 - (NSData *)toJsonData;
 
-- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
+- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
 - (BOOL)removeTemplateForKey:(NSString *)key;
 - (MSInstallationTemplate *)getTemplateForKey:(NSString *)key;
 

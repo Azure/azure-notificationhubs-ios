@@ -168,12 +168,8 @@
 
 #pragma mark Templates
 
-- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)templateKey {
+- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)templateKey {
     NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
-
-    if ([[tmpTemplates allKeysForObject:template] count] > 0) {
-        return NO;
-    }
 
     [tmpTemplates setObject:template forKey:templateKey];
     self.templates = tmpTemplates;
