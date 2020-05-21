@@ -3,20 +3,39 @@
 //----------------------------------------------------------------
 
 #import "MSInstallation.h"
+#import "MSInstallationTemplate.h"
+#import "MSTagHelper.h"
+
+@interface MSInstallation ()
+
+@property(nonatomic, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
+@property(nonatomic, copy) NSSet<NSString *> *tags;
+
+@end
 
 @implementation MSInstallation
 
+@synthesize isDirty;
+@synthesize installationID;
+@synthesize pushChannel;
+@synthesize tags;
+@synthesize templates;
+
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:self.installationID forKey:@"installationID"];
-    [coder encodeObject:self.pushChannel forKey:@"pushChannel"];
-    [coder encodeObject:self.tags forKey:@"tags"];
+    [coder encodeObject:installationID forKey:@"installationID"];
+    [coder encodeObject:pushChannel forKey:@"pushChannel"];
+    [coder encodeObject:tags forKey:@"tags"];
+    [coder encodeObject:templates forKey:@"templates"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
-        self.installationID = [coder decodeObjectForKey:@"installationID"] ?: [[NSUUID UUID] UUIDString];
-        self.pushChannel = [coder decodeObjectForKey:@"pushChannel"];
-        self.tags = [coder decodeObjectForKey:@"tags"];
+        installationID = [coder decodeObjectForKey:@"installationID"] ?: [[NSUUID UUID] UUIDString];
+        pushChannel = [coder decodeObjectForKey:@"pushChannel"];
+        tags = [coder decodeObjectForKey:@"tags"];
+        templates = [coder decodeObjectForKey:@"templates"];
+        isDirty = NO;
+        [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
     }
 
     return self;
@@ -24,8 +43,10 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.installationID = [[NSUUID UUID] UUIDString];
-        self.tags = [NSSet new];
+        installationID = [[NSUUID UUID] UUIDString];
+        tags = [NSSet new];
+        isDirty = NO;
+        [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
     }
 
     return self;
@@ -33,17 +54,21 @@
 
 - (instancetype)initWithDeviceToken:(NSString *)deviceToken {
     if (self = [self init]) {
-        self.pushChannel = deviceToken;
+        pushChannel = deviceToken;
     }
 
     return self;
 }
 
-+ (MSInstallation *)createFromDeviceToken:(NSString *)deviceToken {
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"isDirty"];
+}
+
++ (instancetype)createFromDeviceToken:(NSString *)deviceToken {
     return [[MSInstallation alloc] initWithDeviceToken:deviceToken];
 }
 
-+ (MSInstallation *)createFromJsonString:(NSString *)jsonString {
++ (instancetype)createFromJsonString:(NSString *)jsonString {
     MSInstallation *installation = [MSInstallation new];
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
 
@@ -53,28 +78,59 @@
     installation.installationID = dictionary[@"installationId"];
     installation.pushChannel = dictionary[@"pushChannel"];
     installation.tags = dictionary[@"tags"];
+    installation.templates = dictionary[@"templates"];
+    installation.isDirty = NO;
 
     return installation;
 }
 
 - (NSData *)toJsonData {
-
-    NSDictionary *dictionary = @{
-        @"installationId" : self.installationID,
-        @"platform" : @"apns",
-        @"pushChannel" : self.pushChannel,
-        @"tags" : [self.tags allObjects] ?: [NSArray new]
+    NSMutableDictionary *templates = [NSMutableDictionary new];
+    for (NSString *key in [templates allKeys]) {
+        [templates setObject:[[templates objectForKey:key] toDictionary] forKey:key];
     };
 
+    NSMutableDictionary *dictionary = [NSMutableDictionary
+        dictionaryWithDictionary:@{@"installationId" : self.installationID, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
+
+    if (tags && [tags count] > 0) {
+        [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:@"tags"];
+    }
+
+    if (templates && [templates count] > 0) {
+        [dictionary setObject:templates forKey:@"templates"];
+    }
+
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
+}
+
+#pragma mark Dirty Checks
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"isDirty"]) {
+        isDirty = YES;
+    }
+}
+
++ (NSSet *)keyPathsForValuesAffectingIsDirty {
+    return [NSSet setWithObjects:NSStringFromSelector(@selector(installationID)), NSStringFromSelector(@selector(pushChannel)), nil];
+}
+
+#pragma mark Tags
+
+- (BOOL)addTag:(NSString *)tag {
+    return [self addTags:[NSArray arrayWithObject:tag]];
 }
 
 - (BOOL)addTags:(NSArray<NSString *> *)tags {
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
     for (NSString *tag in tags) {
-        if ([MSInstallation isValidTag:tag]) {
+        if (isValidTag(tag)) {
             [tmpTags addObject:tag];
+            if (!isDirty) {
+                isDirty = YES;
+            }
         } else {
             NSLog(@"Invalid tag: %@", tag);
             return NO;
@@ -85,30 +141,68 @@
     return YES;
 }
 
-- (NSArray<NSString *> *)getTags {
-    return [[self.tags copy] allObjects];
+- (BOOL)removeTag:(NSString *)tag {
+    return [self removeTags:[NSArray arrayWithObject:tag]];
 }
 
-- (BOOL)removeTags:(NSArray<NSString *> *)tags {
+- (BOOL)removeTags:(NSArray<NSString *> *)tagsToRemove {
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
-    [tmpTags minusSet:[NSSet setWithArray:tags]];
+    BOOL hasTags = [[NSSet setWithArray:tagsToRemove] intersectsSet:tmpTags];
+    if (hasTags && !isDirty) {
+        isDirty = YES;
+    }
+
+    [tmpTags minusSet:[NSSet setWithArray:tagsToRemove]];
 
     self.tags = [tmpTags copy];
     return YES;
 }
 
 - (void)clearTags {
+    if (!isDirty && self.tags.count > 0) {
+        isDirty = YES;
+    }
     self.tags = [NSSet new];
 }
 
+#pragma mark Templates
+
+- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)templateKey {
+    NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
+
+    [tmpTemplates setObject:template forKey:templateKey];
+    self.templates = tmpTemplates;
+    self.isDirty = YES;
+    return YES;
+}
+
+- (BOOL)removeTemplateForKey:(NSString *)templateKey {
+    NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
+
+    if (![tmpTemplates objectForKey:templateKey]) {
+        return NO;
+    }
+
+    [tmpTemplates removeObjectForKey:templateKey];
+    self.templates = tmpTemplates;
+    self.isDirty = YES;
+    return YES;
+}
+
+- (MSInstallationTemplate *)getTemplateForKey:(NSString *)templateKey {
+    return [self.templates objectForKey:templateKey];
+}
+
+#pragma mark Equality
+
 - (NSUInteger)hash {
-    return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash];
+    return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    return [self.installationID isEqualToString:installation.installationID] &&
-           [self.tags isEqualToSet:installation.tags];
+    return [self.installationID isEqualToString:installation.installationID] && [self.tags isEqualToSet:installation.tags] &&
+           [self.templates isEqual:installation.templates];
 }
 
 - (BOOL)isEqual:(id)object {
@@ -121,14 +215,6 @@
     }
 
     return [self isEqualToMSInstallation:(MSInstallation *)object];
-}
-
-+ (BOOL)isValidTag:(NSString *)tag {
-    NSString *tagPattern = @"^[a-zA-Z0-9_@#\\.:\\-]{1,120}$";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:tagPattern options:NSRegularExpressionCaseInsensitive
-      error:nil];
-    
-    return [regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, tag.length)] > 0;
 }
 
 @end
