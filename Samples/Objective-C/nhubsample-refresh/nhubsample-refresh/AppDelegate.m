@@ -20,7 +20,7 @@
     NSString *hubName = [configValues objectForKey:@"hubName"];
     
     [MSNotificationHub setEnrichmentDelegate: self];
-    [MSNotificationHub setManagementDelegate: self]
+    [MSNotificationHub setManagementDelegate: self];
     [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
     [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
     
