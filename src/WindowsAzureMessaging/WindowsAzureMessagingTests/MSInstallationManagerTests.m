@@ -71,9 +71,9 @@ static NSString *deviceToken = @"deviceToken";
 
     // When
     [installationManager saveInstallation:installation
-                    withEnrichmentHandler:^(void){
-                    }];
-
+                    withEnrichmentHandler:^(void){}
+                    withManagementHandler:^BOOL{ return false; }];
+                
     // Then
     OCMVerify([httpClient
                 sendAsync:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
@@ -108,8 +108,8 @@ static NSString *deviceToken = @"deviceToken";
 
     // When
     [installationManager saveInstallation:installation
-                    withEnrichmentHandler:^(void){
-                    }];
+                    withEnrichmentHandler:^(void){}
+                    withManagementHandler:^BOOL{ return false; }];
 }
 
 - (void)testSaveInstallationFailsIfInvalidConnectionString {
@@ -125,8 +125,7 @@ static NSString *deviceToken = @"deviceToken";
 
     // When
     [installationManager saveInstallation:installation
-                    withEnrichmentHandler:^(void){
-                    }];
+                    withEnrichmentHandler:^(void){} withManagementHandler:^BOOL{ return false; }];
 }
 
 @end

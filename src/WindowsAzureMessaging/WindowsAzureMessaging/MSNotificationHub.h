@@ -3,6 +3,7 @@
 //----------------------------------------------------------------
 
 #import "MSInstallationEnrichmentDelegate.h"
+#import "MSInstallationManagementDelegate.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
 #import <Foundation/Foundation.h>
@@ -13,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class MSInstallation;
 @class MSDebounceInstallationManager;
 @class MSInstallationTemplate;
+
 /**
  * The Azure Notification Hubs service
  */
@@ -25,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @property(nonatomic) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
+@property(nonatomic) id<MSInstallationManagementDelegate> managementDelegate;
 
 /**
  * Initializes the Notification Hub with the connection string from the Access
@@ -87,6 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Installation management support
 
 + (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate;
++ (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate;
 
 @end
 

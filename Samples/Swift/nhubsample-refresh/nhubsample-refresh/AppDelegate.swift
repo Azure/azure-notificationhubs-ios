@@ -6,7 +6,7 @@ import UIKit
 import WindowsAzureMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentDelegate, MSInstallationManagementDelegate {
 
     var connectionString: String?
     var hubName: String?
@@ -21,10 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
         }
         
         MSNotificationHub.setEnrichmentDelegate(self)
+        MSNotificationHub.setManagementDelegate(self)
         MSNotificationHub.initWithConnectionString(connectionString!, hubName: hubName!)
         MSNotificationHub.addTag("userAgent:com.example.nhubsample-refresh:1.0")
         
         return true
+    }
+    
+    func notificationHub(_ notificationHub: MSNotificationHub!, willUpsertInstallation installation: MSInstallation!, withCompletionHandler completionHandler:
+        @escaping (Bool) -> Void) {
+        NSLog("willUpsertInstallation");
+        completionHandler(true);
     }
 
     // MARK: UISceneSession Lifecycle

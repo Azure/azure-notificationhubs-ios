@@ -201,13 +201,29 @@ static dispatch_once_t onceToken;
 
     if ([self isEnabled]) {
         [_debounceInstallationManager saveInstallation:installation
-                                 withEnrichmentHandler:^void() {
-                                   id<MSInstallationEnrichmentDelegate> enrichmentDelegate = self.enrichmentDelegate;
-                                   if ([enrichmentDelegate respondsToSelector:@selector(notificationHub:willEnrichInstallation:)]) {
-                                       [enrichmentDelegate notificationHub:self willEnrichInstallation:installation];
-                                       [MSLocalStorage upsertInstallation:installation];
-                                   }
-                                 }];
+            withEnrichmentHandler:^void() {
+              id<MSInstallationEnrichmentDelegate> enrichmentDelegate = self.enrichmentDelegate;
+              if ([enrichmentDelegate respondsToSelector:@selector(notificationHub:willEnrichInstallation:)]) {
+                  [enrichmentDelegate notificationHub:self willEnrichInstallation:installation];
+                  [MSLocalStorage upsertInstallation:installation];
+              }
+            }
+            withManagementHandler:^BOOL() {
+              id<MSInstallationManagementDelegate> managementDelegate = self.managementDelegate;
+              if ([managementDelegate respondsToSelector:@selector(notificationHub:willUpsertInstallation:withCompletionHandler:)]) {
+                  [managementDelegate notificationHub:self
+                               willUpsertInstallation:installation
+                                withCompletionHandler:^(BOOL result) {
+                                  if (result) {
+                                      [MSLocalStorage upsertLastInstallation:installation];
+                                  }
+                                }];
+
+                  return true;
+              }
+
+              return false;
+            }];
     }
 }
 
@@ -332,6 +348,10 @@ static dispatch_once_t onceToken;
 
 + (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate {
     [[MSNotificationHub sharedInstance] setEnrichmentDelegate:enrichmentDelegate];
+}
+
++ (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate {
+    [[MSNotificationHub sharedInstance] setManagementDelegate:managementDelegate];
 }
 
 #pragma mark Helpers

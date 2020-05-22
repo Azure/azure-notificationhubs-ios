@@ -10,6 +10,7 @@
 @class MSHttpClient;
 
 typedef void (^InstallationEnrichmentHandler)(void);
+typedef BOOL (^InstallationManagementHandler)(void);
 
 @interface MSInstallationManager : NSObject {
   @private
@@ -22,6 +23,6 @@ typedef void (^InstallationEnrichmentHandler)(void);
 @property(nonatomic) MSHttpClient *httpClient;
 
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
-- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler;
+- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler withManagementHandler:(InstallationManagementHandler)managementHandler;
 
 @end

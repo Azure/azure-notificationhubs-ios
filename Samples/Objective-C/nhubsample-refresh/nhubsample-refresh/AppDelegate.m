@@ -20,6 +20,7 @@
     NSString *hubName = [configValues objectForKey:@"hubName"];
     
     [MSNotificationHub setEnrichmentDelegate: self];
+    [MSNotificationHub setManagementDelegate: self]
     [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
     [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
     
@@ -28,6 +29,16 @@
 
 - (void)notificationHub:(MSNotificationHub *)notificationHub willEnrichInstallation:(MSInstallation *)installation{
     NSLog(@"willEnrichInstallation");
+}
+
+- (void)notificationHub:(MSNotificationHub *)notificationHub willUpsertInstallation:(MSInstallation *)installation
+  withCompletionHandler:(void(^)(BOOL))completionHandler {
+    NSLog(@"Will do upsert on custom back end.");
+    completionHandler(true);
+}
+
+- (void)notificationHub:(MSNotificationHub *)notificationHub willDeleteInstallation:(NSString *)installationId {
+    NSLog(@"Will do delete on custom back end.");
 }
 
 #pragma mark - UISceneSession lifecycle
