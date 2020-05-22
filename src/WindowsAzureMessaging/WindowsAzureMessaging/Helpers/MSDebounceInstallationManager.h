@@ -5,7 +5,6 @@
 #import "MSInstallationEnrichmentDelegate.h"
 #import "MSInstallationManager.h"
 #import <Foundation/Foundation.h>
-#import "MSInstallationManager.h"
 
 @class MSInstallation;
 
@@ -17,13 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
     NSTimer *_debounceTimer;
     MSInstallationManager *_installationManager;
     InstallationEnrichmentHandler _enrichmentHandler;
+    InstallationManagementHandler _managementHandler;
 }
 
 - (instancetype)initWithInterval:(double)interval installationManager:(MSInstallationManager *)installationManager;
-- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler 
-withManagementHandler:(InstallationManagementHandler)managementHandler;
-    InstallationManagementHandler _managementHandler;
-}
+- (void)saveInstallation:(MSInstallation *)installation
+    withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
+    withManagementHandler:(InstallationManagementHandler)managementHandler;
 
 @end
 

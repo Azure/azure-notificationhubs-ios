@@ -31,15 +31,16 @@
     NSLog(@"willEnrichInstallation");
 }
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub willUpsertInstallation:(MSInstallation *)installation
-  withCompletionHandler:(void(^)(BOOL))completionHandler {
-    NSLog(@"Will do upsert on custom back end.");
-    completionHandler(true);
-}
+// Sample usage of MSInstallationManagementDelegate
+//- (void)notificationHub:(MSNotificationHub *)notificationHub willUpsertInstallation:(MSInstallation *)installation
+//  withCompletionHandler:(void(^)(BOOL))completionHandler {
+//    NSLog(@"Will do upsert on custom back end.");
+//    completionHandler(false);
+//}
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub willDeleteInstallation:(NSString *)installationId {
-    NSLog(@"Will do delete on custom back end.");
-}
+//- (void)notificationHub:(MSNotificationHub *)notificationHub willDeleteInstallation:(NSString *)installationId {
+//    NSLog(@"Will do delete on custom back end.");
+//}
 
 #pragma mark - UISceneSession lifecycle
 

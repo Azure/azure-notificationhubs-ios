@@ -18,8 +18,9 @@
     return self;
 }
 
-- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler 
- withManagementHandler:(InstallationManagementHandler)managementHandler {
+- (void)saveInstallation:(MSInstallation *)installation
+    withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
+    withManagementHandler:(InstallationManagementHandler)managementHandler {
     if (_debounceTimer != nil) {
         [_debounceTimer invalidate];
     }
@@ -28,7 +29,7 @@
     _managementHandler = managementHandler;
 
     MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
-    
+
     if (![installation isEqual:lastInstallation]) {
         _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval
                                                           target:self

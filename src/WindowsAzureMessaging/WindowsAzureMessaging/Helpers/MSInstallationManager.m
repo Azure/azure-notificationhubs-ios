@@ -34,12 +34,15 @@ NSString *const kAPIVersion = @"2017-04";
     _httpClient = httpClient;
 }
 
-- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler  withManagementHandler:(InstallationManagementHandler)managementHandler{
+- (void)saveInstallation:(MSInstallation *)installation
+    withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
+    withManagementHandler:(InstallationManagementHandler)managementHandler {
 
-    if(managementHandler()){
+    enrichmentHandler();
+    if (managementHandler()) {
         return;
     }
-    
+
     if (!_tokenProvider) {
         NSLog(@"Invalid connection string");
         return;

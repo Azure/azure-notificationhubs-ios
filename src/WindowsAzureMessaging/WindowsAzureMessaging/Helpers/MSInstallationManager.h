@@ -23,6 +23,8 @@ typedef BOOL (^InstallationManagementHandler)(void);
 @property(nonatomic) MSHttpClient *httpClient;
 
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
-- (void)saveInstallation:(MSInstallation *)installation withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler withManagementHandler:(InstallationManagementHandler)managementHandler;
+- (void)saveInstallation:(MSInstallation *)installation
+    withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
+    withManagementHandler:(InstallationManagementHandler)managementHandler;
 
 @end

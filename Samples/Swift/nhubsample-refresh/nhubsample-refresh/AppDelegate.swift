@@ -27,12 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
         
         return true
     }
-    
-    func notificationHub(_ notificationHub: MSNotificationHub!, willUpsertInstallation installation: MSInstallation!, withCompletionHandler completionHandler:
-        @escaping (Bool) -> Void) {
-        NSLog("willUpsertInstallation");
-        completionHandler(true);
-    }
+
+// Sample usage of MSInstallationManagementDelegate
+//    func notificationHub(_ notificationHub: MSNotificationHub!, willUpsertInstallation installation: MSInstallation!, withCompletionHandler completionHandler:
+//        @escaping (Bool) -> Void) {
+//        NSLog("willUpsertInstallation");
+//        completionHandler(false);
+//    }
 
     // MARK: UISceneSession Lifecycle
 
