@@ -2,32 +2,26 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#import "MSChangeTracking.h"
+#import "MSTaggable.h"
 #import <Foundation/Foundation.h>
 
 @class MSInstallationTemplate;
 
-@interface MSInstallation : NSObject <NSCoding>
+@interface MSInstallation : NSObject <NSCoding, MSTaggable, MSChangeTracking>
 
 @property(nonatomic, copy) NSString *installationID, *pushChannel;
 @property(nonatomic, readonly, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
-@property(nonatomic, readonly, copy) NSSet<NSString *> *tags;
 
 - (instancetype)initWithDeviceToken:(NSString *)deviceToken;
 
-+ (MSInstallation *)createFromDeviceToken:(NSString *)deviceToken;
-+ (MSInstallation *)createFromJsonString:(NSString *)jsonString;
++ (instancetype)createFromDeviceToken:(NSString *)deviceToken;
++ (instancetype)createFromJsonString:(NSString *)jsonString;
 
 - (NSData *)toJsonData;
 
-- (BOOL)addTag:(NSString *)tag;
-- (BOOL)addTags:(NSArray<NSString *> *)tags;
-- (BOOL)removeTag:(NSString *)tag;
-- (BOOL)removeTags:(NSArray<NSString *> *)tags;
-- (NSArray<NSString *> *)getTags;
-- (void)clearTags;
-
-- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
-- (BOOL)removeTemplate:(NSString *)key;
-- (MSInstallationTemplate *)getTemplate:(NSString *)key;
+- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
+- (BOOL)removeTemplateForKey:(NSString *)key;
+- (MSInstallationTemplate *)getTemplateForKey:(NSString *)key;
 
 @end

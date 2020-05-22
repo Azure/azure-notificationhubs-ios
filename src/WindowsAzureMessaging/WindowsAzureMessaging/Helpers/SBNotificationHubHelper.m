@@ -13,14 +13,17 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 static char decodingTable[128];
 static NSString *decodingTableLock = @"decodingTableLock";
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 + (NSString *)urlEncode:(NSString *)urlString {
     return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)urlString, NULL,
                                                                         CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8);
 }
+#pragma GCC diagnostic pop
 
 + (NSString *)urlDecode:(NSString *)urlString {
     return [[urlString stringByReplacingOccurrencesOfString:@"+"
-                                                 withString:@" "] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                                                 withString:@" "] stringByRemovingPercentEncoding];
 }
 
 + (NSString *)createHashWithData:(NSData *)data {

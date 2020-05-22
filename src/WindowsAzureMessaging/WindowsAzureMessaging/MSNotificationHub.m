@@ -84,8 +84,7 @@ static dispatch_once_t onceToken;
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
-- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo
-              fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithUserInfo:userInfo];
     [self didReceivePushNotification:message fetchCompletionHandler:completionHandler];
 }
@@ -262,7 +261,8 @@ static dispatch_once_t onceToken;
 }
 
 - (NSArray<NSString *> *)getTags {
-    return [[self getInstallation] getTags];
+    MSInstallation *installation = [self getInstallation];
+    return [installation.tags allObjects];
 }
 
 - (BOOL)removeTag:(NSString *)tag {
@@ -285,22 +285,22 @@ static dispatch_once_t onceToken;
 
 #pragma mark Templates
 
-+ (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    return [sharedInstance addTemplate:template forKey:key];
++ (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+    return [sharedInstance setTemplate:template forKey:key];
 }
 
-+ (BOOL)removeTemplate:(NSString *)key {
-    return [sharedInstance removeTemplate:key];
++ (BOOL)removeTemplateForKey:(NSString *)key {
+    return [sharedInstance removeTemplateForKey:key];
 }
 
-+ (MSInstallationTemplate *)getTemplate:(NSString *)key {
-    return [sharedInstance getTemplate:key];
++ (MSInstallationTemplate *)getTemplateForKey:(NSString *)key {
+    return [sharedInstance getTemplateForKey:key];
 }
 
-- (BOOL)addTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
     MSInstallation *installation = [self getInstallation];
 
-    if ([installation addTemplate:template forKey:key]) {
+    if ([installation setTemplate:template forKey:key]) {
         [self upsertInstallation:installation];
         return YES;
     }
@@ -308,22 +308,23 @@ static dispatch_once_t onceToken;
     return NO;
 }
 
-- (BOOL)removeTemplate:(NSString *)key {
+- (BOOL)removeTemplateForKey:(NSString *)key {
     MSInstallation *installation = [self getInstallation];
 
     if (installation.templates == nil || [installation.templates count] == 0) {
         return NO;
     }
 
-    [installation removeTemplate:key];
+    if ([installation removeTemplateForKey:key]) {
+        [self upsertInstallation:installation];
+        return YES;
+    }
 
-    [self upsertInstallation:installation];
-
-    return YES;
+    return NO;
 }
 
-- (MSInstallationTemplate *)getTemplate:(NSString *)key {
-    return [[self getInstallation] getTemplate:key];
+- (MSInstallationTemplate *)getTemplateForKey:(NSString *)key {
+    return [[self getInstallation] getTemplateForKey:key];
 }
 
 #pragma mark Installation management support

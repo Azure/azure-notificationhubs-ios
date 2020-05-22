@@ -80,17 +80,4 @@
     XCTAssertTrue([installation.tags count] == 0, @"Installation tags count actually is %lul", [installation.tags count]);
 }
 
-- (void)testGetTags {
-    // If
-    MSInstallation *installation = [MSInstallation new];
-    [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
-
-    // When
-    NSArray<NSString *> *tags = [installation getTags];
-
-    // Then
-    XCTAssertNotNil(tags);
-    XCTAssertTrue([tags count] == 3, @"Installation tags count actually is %lul", [tags count]);
-}
-
 @end

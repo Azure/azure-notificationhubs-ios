@@ -38,16 +38,16 @@ static NSString *key;
     [_template addTag:tag1];
     [_template addTag:tag2];
     [_template setBody:body];
-    [_template setHeader:headerObject forKey:headerKey];
+    [_template setHeaderValue:headerObject forKey:headerKey];
 }
 
-- (void)testAddTemplate {
+- (void)testSetTemplate {
     // If
     MSInstallation *installation = [MSInstallation new];
     [MSLocalStorage upsertInstallation:installation];
 
     // Then
-    XCTAssertTrue([MSNotificationHub addTemplate:_template forKey:key]);
+    XCTAssertTrue([MSNotificationHub setTemplate:_template forKey:key]);
     MSInstallation *installationWithTemplate = [MSLocalStorage loadInstallation];
     XCTAssertNotNil(installationWithTemplate.templates);
     XCTAssertTrue([installationWithTemplate.templates count] == 1, @"Installation templates count actually is %lul",
@@ -56,41 +56,31 @@ static NSString *key;
     XCTAssertTrue([actualTemplate isEqual:_template]);
 }
 
-- (void)testAddTemplateDoesNotAddSameTemplate {
-    // If
-    MSInstallation *installation = [MSInstallation new];
-    [installation addTemplate:_template forKey:key];
-    [MSLocalStorage upsertInstallation:installation];
-
-    // Then
-    XCTAssertFalse([MSNotificationHub addTemplate:_template forKey:key]);
-}
-
 - (void)testRemoveTemplate {
     // If
     MSInstallation *installation = [MSInstallation new];
     [MSLocalStorage upsertInstallation:installation];
-    [MSNotificationHub addTemplate:_template forKey:key];
+    [MSNotificationHub setTemplate:_template forKey:key];
 
     // Then
-    XCTAssertTrue([MSNotificationHub removeTemplate:key]);
+    XCTAssertTrue([MSNotificationHub removeTemplateForKey:key]);
     MSInstallation *actualInstallation = [MSLocalStorage loadInstallation];
     XCTAssertTrue([actualInstallation.templates count] == 0, @"Installation templates count actually is %lul",
                   [actualInstallation.templates count]);
 }
 
 - (void)testRemoveTemplateReturnsNoForNotExistingTemplate {
-    XCTAssertFalse([MSNotificationHub removeTemplate:@"not_existing_key"]);
+    XCTAssertFalse([MSNotificationHub removeTemplateForKey:@"not_existing_key"]);
 }
 
 - (void)testGetTemplate {
     // If
     MSInstallation *installation = [MSInstallation new];
-    [installation addTemplate:_template forKey:key];
+    [installation setTemplate:_template forKey:key];
     [MSLocalStorage upsertInstallation:installation];
 
     // When
-    MSInstallationTemplate *actualTemplate = [MSNotificationHub getTemplate:key];
+    MSInstallationTemplate *actualTemplate = [MSNotificationHub getTemplateForKey:key];
 
     // Then
     XCTAssertNotNil(actualTemplate);

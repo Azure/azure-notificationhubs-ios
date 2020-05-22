@@ -5,7 +5,7 @@
 #import <Foundation/Foundation.h>
 
 @interface MSNotificationHubMessage : NSObject {
-    @private
+  @private
     NSString *_title;
     NSString *_body;
     NSDictionary *_userInfo;

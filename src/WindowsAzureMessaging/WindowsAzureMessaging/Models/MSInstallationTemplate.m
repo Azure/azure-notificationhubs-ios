@@ -17,11 +17,13 @@
 @synthesize body;
 @synthesize tags;
 @synthesize headers;
+@synthesize isDirty;
 
 - (instancetype)init {
     if (self = [super init]) {
         tags = [NSSet new];
         headers = [NSDictionary new];
+        [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
     }
     return self;
 }
@@ -31,9 +33,27 @@
         body = [coder decodeObjectForKey:@"body"] ?: @"";
         tags = [coder decodeObjectForKey:@"tags"];
         headers = [coder decodeObjectForKey:@"headers"];
+        isDirty = NO;
+        [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
     }
 
     return self;
+}
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"isDirty"];
+}
+
+#pragma mark Dirty Checks
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"isDirty"]) {
+        isDirty = YES;
+    }
+}
+
++ (NSSet *)keyPathsForValuesAffectingIsDirty {
+    return [NSSet setWithObjects:NSStringFromSelector(@selector(body)), nil];
 }
 
 #pragma mark Tags
@@ -48,6 +68,9 @@
     for (NSString *tag in tagsToAdd) {
         if (isValidTag(tag)) {
             [tmpTags addObject:tag];
+            if (!isDirty) {
+                isDirty = YES;
+            }
         } else {
             NSLog(@"Invalid tag: %@", tag);
             return NO;
@@ -58,16 +81,17 @@
     return YES;
 }
 
-- (NSArray<NSString *> *)getTags {
-    return [[self.tags copy] allObjects];
-}
-
 - (BOOL)removeTag:(NSString *)tag {
     return [self removeTags:[NSArray arrayWithObject:tag]];
 }
 
 - (BOOL)removeTags:(NSArray<NSString *> *)tagsToRemove {
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
+
+    BOOL hasTags = [[NSSet setWithArray:tagsToRemove] intersectsSet:tmpTags];
+    if (hasTags && !isDirty) {
+        isDirty = YES;
+    }
 
     [tmpTags minusSet:[NSSet setWithArray:tagsToRemove]];
 
@@ -76,29 +100,33 @@
 }
 
 - (void)clearTags {
+    if (!isDirty && self.tags.count > 0) {
+        isDirty = YES;
+    }
     self.tags = [NSSet new];
 }
 
 #pragma mark Headers
 
-- (void)setHeader:(NSString *)value forKey:(NSString *)key {
+- (void)setHeaderValue:(NSString *)value forKey:(NSString *)key {
     NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
     [tmpHeaders setObject:value forKey:key];
+    isDirty = YES;
     headers = [tmpHeaders copy];
 }
 
-- (void)removeHeader:(NSString *)key {
-       NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
+- (void)removeHeaderValueForKey:(NSString *)key {
+    NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
+    if (!isDirty && [tmpHeaders objectForKey:key]) {
+        isDirty = YES;
+    }
+
     [tmpHeaders removeObjectForKey:key];
     headers = [tmpHeaders copy];
 }
 
-- (NSString *)getHeader:(NSString *)key {
+- (NSString *)getHeaderValueForKey:(NSString *)key {
     return [headers objectForKey:key];
-}
-
-- (NSDictionary<NSString *, NSString *> *)getHeaders {
-    return [headers copy];
 }
 
 #pragma mark Equality
@@ -130,8 +158,11 @@
 }
 
 - (NSDictionary *)toDictionary {
-    return [NSDictionary
-        dictionaryWithObjectsAndKeys:body, @"body", [NSArray arrayWithArray:[tags allObjects]], @"tags", headers, @"headers", nil];
+    return @{
+        @"body" : body,
+        @"tags" : [tags allObjects],
+        @"headers" : headers,
+    };
 }
 
 @end

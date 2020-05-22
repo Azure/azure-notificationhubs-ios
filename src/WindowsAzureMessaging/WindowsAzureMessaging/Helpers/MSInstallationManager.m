@@ -11,7 +11,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV3.0.0-Preview1; os=%@; os_version=%@;)";
+// TODO: Move to loading from constants file
+NSString *const kSDKVersion = @"3.0.0-Preview2";
+NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
 NSString *const kAPIVersion = @"2017-04";
 
 @implementation MSInstallationManager
@@ -54,7 +56,7 @@ NSString *const kAPIVersion = @"2017-04";
     NSURL *requestUrl = [NSURL URLWithString:url];
 
     NSString *userAgent = [NSString
-        stringWithFormat:kUserAgentFormat, kAPIVersion, [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]];
+        stringWithFormat:kUserAgentFormat, kAPIVersion, kSDKVersion, [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]];
 
     NSDictionary *headers =
         @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken, @"User-Agent" : userAgent};
