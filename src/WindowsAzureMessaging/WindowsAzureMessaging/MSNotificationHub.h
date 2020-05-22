@@ -2,9 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#import "MSInstallationEnrichmentDelegate.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
-#import "MSInstallationEnrichmentDelegate.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 

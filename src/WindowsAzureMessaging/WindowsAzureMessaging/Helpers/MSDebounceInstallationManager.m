@@ -22,7 +22,7 @@
     if (_debounceTimer != nil) {
         [_debounceTimer invalidate];
     }
-    
+
     _enrichmentHandler = enrichmentHandler;
 
     MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];

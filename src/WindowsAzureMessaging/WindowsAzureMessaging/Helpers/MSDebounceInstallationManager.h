@@ -2,9 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import <Foundation/Foundation.h>
 #import "MSInstallationEnrichmentDelegate.h"
 #import "MSInstallationManager.h"
+#import <Foundation/Foundation.h>
 
 @class MSInstallation;
 

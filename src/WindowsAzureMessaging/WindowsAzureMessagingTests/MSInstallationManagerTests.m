@@ -128,6 +128,5 @@ static NSString *deviceToken = @"deviceToken";
                     withEnrichmentHandler:^(void){
                     }];
 }
-// clang-format -i -style=file *.h *.m
 
 @end

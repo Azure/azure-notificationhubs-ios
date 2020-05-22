@@ -45,9 +45,9 @@ NSString *const kAPIVersion = @"2017-04";
         NSLog(@"You have to setup Push Channel before save installation");
         return;
     }
-    
+
     enrichmentHandler();
-    
+
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
     NSString *url =
         [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, kAPIVersion];
@@ -55,8 +55,8 @@ NSString *const kAPIVersion = @"2017-04";
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
-    NSString *userAgent = [NSString
-        stringWithFormat:kUserAgentFormat, kAPIVersion, kSDKVersion, [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]];
+    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, kSDKVersion, [[UIDevice currentDevice] systemName],
+                                                     [[UIDevice currentDevice] systemVersion]];
 
     NSDictionary *headers =
         @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken, @"User-Agent" : userAgent};
