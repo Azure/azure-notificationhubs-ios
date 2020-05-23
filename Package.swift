@@ -3,6 +3,7 @@
 
 import PackageDescription
 
+let sources = ["", "Helpers", "HttpClient", "HttpClient/Util", "Internal", "Models", "Utils", "Vendor/Reachability"]
 let package = Package(
     name: "WindowsAzureMessaging",
     platforms: [
@@ -18,17 +19,8 @@ let package = Package(
         .target(
             name: "WindowsAzureMessaging",
             path: "src/WindowsAzureMessaging/WindowsAzureMessaging",
-            sources: ["", "Helpers", "HttpClient", "HttpClient/Util", "Internal", "Models", "Utils", "Vendor/Reachability"],
-            cSettings: [
-                .headerSearchPath(""),
-                .headerSearchPath("Helpers"),
-                .headerSearchPath("HttpClient"),
-                .headerSearchPath("HttpClient/Util"),
-                .headerSearchPath("Internal"),
-                .headerSearchPath("Models"),
-                .headerSearchPath("Utils"),
-                .headerSearchPath("Vendor/Reachability"),
-            ]
+            sources: sources,
+            cSettings: sources.map { CSetting.headerSearchPath($0) }
         )
     ]
 )
