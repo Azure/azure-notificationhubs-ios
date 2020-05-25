@@ -4,6 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class MSNotificationHub;
 @class MSInstallation;
 
@@ -18,7 +20,7 @@
  */
 - (void)notificationHub:(MSNotificationHub *)notificationHub
     willUpsertInstallation:(MSInstallation *)installation
-     withCompletionHandler:(void (^)(BOOL))completionHandler;
+         completionHandler:(void (^)(NSError *_Nullable))completionHandler;
 
 /**
  Method that allows to delete installation from custom backend
@@ -28,3 +30,5 @@
 - (void)notificationHub:(MSNotificationHub *)notificationHub willDeleteInstallation:(NSString *)installationId;
 
 @end
+
+NS_ASSUME_NONNULL_END

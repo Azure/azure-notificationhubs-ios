@@ -20,13 +20,15 @@
 
 - (void)saveInstallation:(MSInstallation *)installation
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
-    withManagementHandler:(InstallationManagementHandler)managementHandler {
+    withManagementHandler:(InstallationManagementHandler)managementHandler
+    completionHandler:(InstallationCompletionHandler)completionHandler {
     if (_debounceTimer != nil) {
         [_debounceTimer invalidate];
     }
 
     _enrichmentHandler = enrichmentHandler;
     _managementHandler = managementHandler;
+    _completionHandler = completionHandler;
 
     MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
 
@@ -40,9 +42,11 @@
     }
 }
 
+
+
 - (void)execute {
     MSInstallation *installation = [_debounceTimer userInfo];
-    [_installationManager saveInstallation:installation withEnrichmentHandler:_enrichmentHandler withManagementHandler:_managementHandler];
+    [_installationManager saveInstallation:installation withEnrichmentHandler:_enrichmentHandler withManagementHandler:_managementHandler completionHandler:_completionHandler];
 }
 
 @end

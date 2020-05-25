@@ -3,6 +3,7 @@
 //----------------------------------------------------------------
 
 #import "MSInstallationEnrichmentDelegate.h"
+#import "MSInstallationLifecycleDelegate.h"
 #import "MSInstallationManagementDelegate.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
@@ -26,8 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
     NSURL *_serviceEndpoint;
 }
 
-@property(nonatomic) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
-@property(nonatomic) id<MSInstallationManagementDelegate> managementDelegate;
+@property(nonatomic, weak, nullable) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
+@property(nonatomic, weak, nullable) id<MSInstallationManagementDelegate> managementDelegate;
+@property(nonatomic, weak, nullable) id<MSInstallationLifecycleDelegate> lifecycleDelegate;
 
 /**
  * Initializes the Notification Hub with the connection string from the Access
@@ -91,6 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate;
 + (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate;
++ (void)setLifecycleDelegate:(nullable id<MSInstallationLifecycleDelegate>)lifecycleDelegate;
 
 @end
 

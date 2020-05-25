@@ -17,12 +17,14 @@ NS_ASSUME_NONNULL_BEGIN
     MSInstallationManager *_installationManager;
     InstallationEnrichmentHandler _enrichmentHandler;
     InstallationManagementHandler _managementHandler;
+    InstallationCompletionHandler _completionHandler;
 }
 
 - (instancetype)initWithInterval:(double)interval installationManager:(MSInstallationManager *)installationManager;
 - (void)saveInstallation:(MSInstallation *)installation
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
-    withManagementHandler:(InstallationManagementHandler)managementHandler;
+    withManagementHandler:(InstallationManagementHandler)managementHandler
+    completionHandler:(InstallationCompletionHandler)completionHandler;
 
 @end
 

@@ -5,7 +5,7 @@
 #import <UIKit/UIKit.h>
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, MSInstallationEnrichmentDelegate, MSInstallationManagementDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MSInstallationEnrichmentDelegate, MSInstallationManagementDelegate, MSInstallationLifecycleDelegate>
 
 @end
 

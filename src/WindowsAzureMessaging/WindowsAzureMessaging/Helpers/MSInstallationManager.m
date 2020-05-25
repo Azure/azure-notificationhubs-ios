@@ -8,6 +8,7 @@
 #import "MSInstallationManagerPrivate.h"
 #import "MSLocalStorage.h"
 #import "MSTokenProvider.h"
+#import "MSNotificationHub.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -36,10 +37,12 @@ NSString *const kAPIVersion = @"2017-04";
 
 - (void)saveInstallation:(MSInstallation *)installation
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
-    withManagementHandler:(InstallationManagementHandler)managementHandler {
-
+    withManagementHandler:(InstallationManagementHandler)managementHandler
+    completionHandler:(InstallationCompletionHandler)completionHandler
+{
     enrichmentHandler();
-    if (managementHandler()) {
+    
+    if(managementHandler()) {
         return;
     }
 
@@ -52,8 +55,6 @@ NSString *const kAPIVersion = @"2017-04";
         NSLog(@"You have to setup Push Channel before save installation");
         return;
     }
-
-    enrichmentHandler();
 
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
     NSString *url =
@@ -75,11 +76,7 @@ NSString *const kAPIVersion = @"2017-04";
                    headers:headers
                       data:payload
          completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
-           if (error) {
-               NSLog(@"Error via creating installation: %@", error.localizedDescription);
-           } else {
-               [MSLocalStorage upsertLastInstallation:installation];
-           }
+           completionHandler(error);
          }];
 }
 

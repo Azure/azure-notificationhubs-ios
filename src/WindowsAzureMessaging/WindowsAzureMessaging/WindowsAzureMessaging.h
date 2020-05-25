@@ -9,6 +9,7 @@
 // New API
 #import "MSInstallation.h"
 #import "MSInstallationEnrichmentDelegate.h"
+#import "MSInstallationLifecycleDelegate.h"
 #import "MSInstallationManagementDelegate.h"
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHub.h"

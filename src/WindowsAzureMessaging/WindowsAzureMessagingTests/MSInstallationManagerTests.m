@@ -72,7 +72,8 @@ static NSString *deviceToken = @"deviceToken";
     // When
     [installationManager saveInstallation:installation
                     withEnrichmentHandler:^(void){}
-                    withManagementHandler:^BOOL{ return false; }];
+                    withManagementHandler:^BOOL{ return false; }
+                    completionHandler:^void(NSError * _Nullable error) {}];
                 
     // Then
     OCMVerify([httpClient
@@ -105,11 +106,12 @@ static NSString *deviceToken = @"deviceToken";
 
     // Then
     OCMReject([httpClient sendAsync:OCMOCK_ANY method:OCMOCK_ANY headers:OCMOCK_ANY data:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
-
+    
     // When
     [installationManager saveInstallation:installation
                     withEnrichmentHandler:^(void){}
-                    withManagementHandler:^BOOL{ return false; }];
+                    withManagementHandler:^BOOL{ return false; }
+                    completionHandler:^void(NSError * _Nullable error) {}];
 }
 
 - (void)testSaveInstallationFailsIfInvalidConnectionString {
@@ -125,7 +127,9 @@ static NSString *deviceToken = @"deviceToken";
 
     // When
     [installationManager saveInstallation:installation
-                    withEnrichmentHandler:^(void){} withManagementHandler:^BOOL{ return false; }];
+                    withEnrichmentHandler:^(void){}
+                    withManagementHandler:^BOOL{ return false; }
+                    completionHandler:^void(NSError * _Nullable error) {}];
 }
 
 @end

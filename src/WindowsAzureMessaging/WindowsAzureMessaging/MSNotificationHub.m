@@ -199,6 +199,21 @@ static dispatch_once_t onceToken;
 - (void)upsertInstallation:(MSInstallation *)installation {
     [MSLocalStorage upsertInstallation:installation];
 
+    void (^completion)(NSError *_Nullable) = ^void(NSError *_Nullable error) {
+      id<MSInstallationLifecycleDelegate> lifecycleDelegate = self.lifecycleDelegate;
+      if (error == nil) {
+          [MSLocalStorage upsertLastInstallation:installation];
+          if ([lifecycleDelegate respondsToSelector:@selector(notificationHub:didSaveInstallation:)]) {
+              [lifecycleDelegate notificationHub:self didSaveInstallation:installation];
+          };
+      } else {
+          NSLog(@"Error via creating installation: %@", error.localizedDescription);
+          if ([lifecycleDelegate respondsToSelector:@selector(notificationHub:didFailToSaveInstallationWithError:)]) {
+              [lifecycleDelegate notificationHub:self didFailToSaveInstallationWithError:error];
+          };
+      }
+    };
+
     if ([self isEnabled]) {
         [_debounceInstallationManager saveInstallation:installation
             withEnrichmentHandler:^void() {
@@ -210,20 +225,14 @@ static dispatch_once_t onceToken;
             }
             withManagementHandler:^BOOL() {
               id<MSInstallationManagementDelegate> managementDelegate = self.managementDelegate;
-              if ([managementDelegate respondsToSelector:@selector(notificationHub:willUpsertInstallation:withCompletionHandler:)]) {
-                  [managementDelegate notificationHub:self
-                               willUpsertInstallation:installation
-                                withCompletionHandler:^(BOOL result) {
-                                  if (result) {
-                                      [MSLocalStorage upsertLastInstallation:installation];
-                                  }
-                                }];
-
+              if ([managementDelegate respondsToSelector:@selector(notificationHub:willUpsertInstallation:completionHandler:)]) {
+                  [managementDelegate notificationHub:self willUpsertInstallation:installation completionHandler:completion];
                   return true;
               }
 
               return false;
-            }];
+            }
+            completionHandler:completion];
     }
 }
 
@@ -352,6 +361,10 @@ static dispatch_once_t onceToken;
 
 + (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate {
     [[MSNotificationHub sharedInstance] setManagementDelegate:managementDelegate];
+}
+
++ (void)setLifecycleDelegate:(nullable id<MSInstallationLifecycleDelegate>)lifecycleDelegate {
+    [[MSNotificationHub sharedInstance] setLifecycleDelegate:lifecycleDelegate];
 }
 
 #pragma mark Helpers

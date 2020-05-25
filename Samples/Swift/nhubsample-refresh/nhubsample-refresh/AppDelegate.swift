@@ -6,7 +6,7 @@ import UIKit
 import WindowsAzureMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentDelegate, MSInstallationManagementDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentDelegate, MSInstallationManagementDelegate, MSInstallationLifecycleDelegate {
 
     var connectionString: String?
     var hubName: String?
@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
         
         MSNotificationHub.setEnrichmentDelegate(self)
         MSNotificationHub.setManagementDelegate(self)
+        MSNotificationHub.setLifecycleDelegate(self)
         MSNotificationHub.initWithConnectionString(connectionString!, hubName: hubName!)
         MSNotificationHub.addTag("userAgent:com.example.nhubsample-refresh:1.0")
         
@@ -35,6 +36,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
 //        completionHandler(false);
 //    }
 
+//    func notificationHub(_ notificationHub: MSNotificationHub!, willDeleteInstallation installationId: String {
+//        NSLog("willDeleteInstallation");
+//    }
+    
+// Sample usage of MSInstallationLifecycleDelegate
+//    func notificationHub(_ notificationHub: MSNotificationHub!, didSaveInstallation installation: MSInstallation! {
+//        NSLog("didSaveInstallation");
+//    }
+//    
+//    func notificationHub(_ notificationHub: MSNotificationHub!, didFailToSaveInstallationWithError error: NSError? {
+//        NSLog("didSaveInstallation");
+//    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
