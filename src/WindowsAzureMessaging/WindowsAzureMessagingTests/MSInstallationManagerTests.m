@@ -71,10 +71,14 @@ static NSString *deviceToken = @"deviceToken";
 
     // When
     [installationManager saveInstallation:installation
-                    withEnrichmentHandler:^(void){}
-                    withManagementHandler:^BOOL{ return false; }
-                    completionHandler:^void(NSError * _Nullable error) {}];
-                
+        withEnrichmentHandler:^(void) {
+        }
+        withManagementHandler:^BOOL(InstallationCompletionHandler completion) {
+          return false;
+        }
+        completionHandler:^void(NSError *_Nullable error){
+        }];
+
     // Then
     OCMVerify([httpClient
                 sendAsync:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
@@ -106,12 +110,16 @@ static NSString *deviceToken = @"deviceToken";
 
     // Then
     OCMReject([httpClient sendAsync:OCMOCK_ANY method:OCMOCK_ANY headers:OCMOCK_ANY data:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
-    
+
     // When
     [installationManager saveInstallation:installation
-                    withEnrichmentHandler:^(void){}
-                    withManagementHandler:^BOOL{ return false; }
-                    completionHandler:^void(NSError * _Nullable error) {}];
+        withEnrichmentHandler:^(void) {
+        }
+        withManagementHandler:^BOOL(InstallationCompletionHandler completion) {
+          return false;
+        }
+        completionHandler:^void(NSError *_Nullable error){
+        }];
 }
 
 - (void)testSaveInstallationFailsIfInvalidConnectionString {
@@ -127,9 +135,13 @@ static NSString *deviceToken = @"deviceToken";
 
     // When
     [installationManager saveInstallation:installation
-                    withEnrichmentHandler:^(void){}
-                    withManagementHandler:^BOOL{ return false; }
-                    completionHandler:^void(NSError * _Nullable error) {}];
+        withEnrichmentHandler:^(void) {
+        }
+        withManagementHandler:^BOOL(InstallationCompletionHandler completion) {
+          return false;
+        }
+        completionHandler:^void(NSError *_Nullable error){
+        }];
 }
 
 @end
