@@ -19,12 +19,42 @@
     NSString *connectionString = [configValues objectForKey:@"connectionString"];
     NSString *hubName = [configValues objectForKey:@"hubName"];
     
+    [MSNotificationHub setEnrichmentDelegate: self];
+    [MSNotificationHub setManagementDelegate: self];
+    [MSNotificationHub setLifecycleDelegate: self];
     [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
     [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
     
     return YES;
 }
 
+- (void)notificationHub:(MSNotificationHub *)notificationHub willEnrichInstallation:(MSInstallation *)installation{
+    NSLog(@"willEnrichInstallation");
+}
+
+/*:
+ 
+ Sample usage of MSInstallationManagementDelegate
+ 
+ - (void)notificationHub:(MSNotificationHub *)notificationHub willUpsertInstallation:(MSInstallation *)installation
+ completionHandler:(void(^)(NSError * _Nullable))completionHandler {
+ NSLog(@"Will do upsert on custom back end.");
+ completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": @"not implemented"}]);
+ }
+ 
+ - (void)notificationHub:(MSNotificationHub *)notificationHub willDeleteInstallation:(NSString *)installationId {
+ NSLog(@"Will do delete on custom back end.");
+ }
+
+*/
+
+- (void)notificationHub:(MSNotificationHub *)notificationHub didSaveInstallation:(MSInstallation *)installation {
+    NSLog(@"didSaveInstallation");
+}
+
+- (void)notificationHub:(MSNotificationHub *)notificationHub didFailToSaveInstallationWithError:(NSError *)error {
+    NSLog(@"didFailToSaveInstallationWithError: %@", error.userInfo);
+}
 
 #pragma mark - UISceneSession lifecycle
 

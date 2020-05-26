@@ -68,8 +68,16 @@ static NSString *deviceToken = @"deviceToken";
     }
 
     NSData *expectedData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
+
     // When
-    [installationManager saveInstallation:installation];
+    [installationManager saveInstallation:installation
+        withEnrichmentHandler:^(void) {
+        }
+        withManagementHandler:^BOOL(InstallationCompletionHandler completion) {
+          return false;
+        }
+        completionHandler:^void(NSError *_Nullable error){
+        }];
 
     // Then
     OCMVerify([httpClient
@@ -104,7 +112,14 @@ static NSString *deviceToken = @"deviceToken";
     OCMReject([httpClient sendAsync:OCMOCK_ANY method:OCMOCK_ANY headers:OCMOCK_ANY data:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
 
     // When
-    [installationManager saveInstallation:installation];
+    [installationManager saveInstallation:installation
+        withEnrichmentHandler:^(void) {
+        }
+        withManagementHandler:^BOOL(InstallationCompletionHandler completion) {
+          return false;
+        }
+        completionHandler:^void(NSError *_Nullable error){
+        }];
 }
 
 - (void)testSaveInstallationFailsIfInvalidConnectionString {
@@ -119,7 +134,14 @@ static NSString *deviceToken = @"deviceToken";
     OCMReject([httpClient sendAsync:OCMOCK_ANY method:OCMOCK_ANY headers:OCMOCK_ANY data:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
 
     // When
-    [installationManager saveInstallation:installation];
+    [installationManager saveInstallation:installation
+        withEnrichmentHandler:^(void) {
+        }
+        withManagementHandler:^BOOL(InstallationCompletionHandler completion) {
+          return false;
+        }
+        completionHandler:^void(NSError *_Nullable error){
+        }];
 }
 
 @end

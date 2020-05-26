@@ -201,8 +201,12 @@
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    return [self.installationID isEqualToString:installation.installationID] && [self.tags isEqualToSet:installation.tags] &&
-           [self.templates isEqual:installation.templates];
+    BOOL isInstallationsIdEqual = [self.installationID isEqualToString:installation.installationID];
+    BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
+    // We have to check for nil values
+    BOOL isTemplatesDictionaryEqual =
+        self.templates == installation.templates ?: [self.templates isEqualToDictionary:installation.templates];
+    return isInstallationsIdEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
 }
 
 - (BOOL)isEqual:(id)object {

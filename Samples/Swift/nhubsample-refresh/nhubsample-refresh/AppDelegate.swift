@@ -6,7 +6,7 @@ import UIKit
 import WindowsAzureMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentDelegate, MSInstallationManagementDelegate, MSInstallationLifecycleDelegate {
 
     var connectionString: String?
     var hubName: String?
@@ -20,12 +20,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        MSNotificationHub.setEnrichmentDelegate(self)
+        MSNotificationHub.setManagementDelegate(self)
+        MSNotificationHub.setLifecycleDelegate(self)
         MSNotificationHub.initWithConnectionString(connectionString!, hubName: hubName!)
         MSNotificationHub.addTag("userAgent:com.example.nhubsample-refresh:1.0")
         
         return true
     }
 
+// Sample usage of MSInstallationManagementDelegate
+//    func notificationHub(_ notificationHub: MSNotificationHub!, willUpsertInstallation installation: MSInstallation!, withCompletionHandler completionHandler:
+//        @escaping (Bool) -> Void) {
+//        NSLog("willUpsertInstallation");
+//        completionHandler(false);
+//    }
+
+//    func notificationHub(_ notificationHub: MSNotificationHub!, willDeleteInstallation installationId: String {
+//        NSLog("willDeleteInstallation");
+//    }
+    
+// Sample usage of MSInstallationLifecycleDelegate
+//    func notificationHub(_ notificationHub: MSNotificationHub!, didSaveInstallation installation: MSInstallation! {
+//        NSLog("didSaveInstallation");
+//    }
+//    
+//    func notificationHub(_ notificationHub: MSNotificationHub!, didFailToSaveInstallationWithError error: NSError? {
+//        NSLog("didSaveInstallation");
+//    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -38,6 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func notificationHub(_ notificationHub: MSNotificationHub!, willEnrichInstallation installation: MSInstallation!) {
+        NSLog("willEnrichInstallation");
     }
 
 }

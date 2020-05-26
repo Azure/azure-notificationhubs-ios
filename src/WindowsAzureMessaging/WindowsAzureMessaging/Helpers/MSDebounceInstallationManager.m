@@ -18,26 +18,35 @@
     return self;
 }
 
-- (void)saveInstallation:(MSInstallation *)installation {
+- (void)saveInstallation:(MSInstallation *)installation
+    withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
+    withManagementHandler:(InstallationManagementHandler)managementHandler
+        completionHandler:(InstallationCompletionHandler)completionHandler {
     if (_debounceTimer != nil) {
         [_debounceTimer invalidate];
     }
 
-    MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
+    _enrichmentHandler = enrichmentHandler;
+    _managementHandler = managementHandler;
+    _completionHandler = completionHandler;
 
-    if (![installation isEqual:lastInstallation]) {
-        _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval
-                                                          target:self
-                                                        selector:@selector(execute)
-                                                        userInfo:installation
-                                                         repeats:false];
-        [[NSRunLoop mainRunLoop] addTimer:_debounceTimer forMode:NSRunLoopCommonModes];
-    }
+    _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval
+                                                      target:self
+                                                    selector:@selector(execute)
+                                                    userInfo:installation
+                                                     repeats:false];
+    [[NSRunLoop mainRunLoop] addTimer:_debounceTimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)execute {
+    MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
     MSInstallation *installation = [_debounceTimer userInfo];
-    [_installationManager saveInstallation:installation];
+    if (![installation isEqual:lastInstallation]) {
+        [_installationManager saveInstallation:installation
+                         withEnrichmentHandler:_enrichmentHandler
+                         withManagementHandler:_managementHandler
+                             completionHandler:_completionHandler];
+    }
 }
 
 @end

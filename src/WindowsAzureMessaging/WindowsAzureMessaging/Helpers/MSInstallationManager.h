@@ -4,13 +4,19 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class MSInstallation;
 @class MSInstallationTemplate;
 @class MSTokenProvider;
 @class MSHttpClient;
 
-@interface MSInstallationManager : NSObject {
+typedef void (^InstallationCompletionHandler)(NSError *_Nullable);
 
+typedef void (^InstallationEnrichmentHandler)(void);
+typedef BOOL (^InstallationManagementHandler)(InstallationCompletionHandler _Nonnull);
+
+@interface MSInstallationManager : NSObject {
   @private
     NSString *_connectionString;
     NSString *_hubName;
@@ -21,6 +27,11 @@
 @property(nonatomic) MSHttpClient *httpClient;
 
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
-- (void)saveInstallation:(MSInstallation *)installation;
+- (void)saveInstallation:(MSInstallation *)installation
+    withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
+    withManagementHandler:(InstallationManagementHandler)managementHandler
+        completionHandler:(InstallationCompletionHandler)completionHandler;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 #import "MSInstallation.h"
+#import "MSInstallationTemplate.h"
 #import "MSTestFrameworks.h"
 #import <Foundation/Foundation.h>
 #import <UserNotifications/UserNotifications.h>
@@ -11,7 +12,6 @@
 @end
 
 @implementation MSInstallationTests
-
 
 - (void)setUp {
     [super setUp];
@@ -39,7 +39,7 @@
 - (void)testAddTagFailsIfTagAlreadyExist {
     // If
     MSInstallation *installation = [[MSInstallation alloc] init];
-    [installation addTags:@[@"tag1", @"tag2" ]];
+    [installation addTags:@[ @"tag1", @"tag2" ]];
 
     // Then
     XCTAssertTrue([installation addTag:@"tag1"]);
@@ -78,6 +78,34 @@
     // Then
     XCTAssertNoThrow([installation clearTags]);
     XCTAssertTrue([installation.tags count] == 0, @"Installation tags count actually is %lul", [installation.tags count]);
+}
+
+- (void)testInstallationsEquality {
+    // If
+    MSInstallationTemplate *templateA = [MSInstallationTemplate new];
+    [templateA setBody:@"body"];
+    [templateA addTags:@[ @"tag1", @"tag2" ]];
+    [templateA setHeaderValue:@"Sample-Value" forKey:@"Sample-Key"];
+
+    MSInstallationTemplate *templateB = [MSInstallationTemplate new];
+    [templateB setBody:@"body"];
+    [templateB addTags:@[ @"tag1", @"tag2" ]];
+    [templateB setHeaderValue:@"Sample-Value" forKey:@"Sample-Key"];
+
+    NSString *installationId = @"installationID";
+    NSString *key = @"key";
+    MSInstallation *installation = [MSInstallation new];
+    installation.installationID = installationId;
+    [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
+    [installation setTemplate:templateA forKey:key];
+
+    MSInstallation *installation2 = [MSInstallation new];
+    installation2.installationID = installationId;
+    [installation2 addTags:@[ @"tag1", @"tag2", @"tag3" ]];
+    [installation2 setTemplate:templateB forKey:key];
+
+    // Then
+    XCTAssertTrue([installation isEqual:installation2]);
 }
 
 @end

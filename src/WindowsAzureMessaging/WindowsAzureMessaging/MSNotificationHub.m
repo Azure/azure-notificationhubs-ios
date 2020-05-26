@@ -200,7 +200,37 @@ static dispatch_once_t onceToken;
     [MSLocalStorage upsertInstallation:installation];
 
     if ([self isEnabled]) {
-        [_debounceInstallationManager saveInstallation:installation];
+        [_debounceInstallationManager saveInstallation:installation
+            withEnrichmentHandler:^void() {
+              id<MSInstallationEnrichmentDelegate> enrichmentDelegate = self.enrichmentDelegate;
+              if ([enrichmentDelegate respondsToSelector:@selector(notificationHub:willEnrichInstallation:)]) {
+                  [enrichmentDelegate notificationHub:self willEnrichInstallation:installation];
+                  [MSLocalStorage upsertInstallation:installation];
+              }
+            }
+            withManagementHandler:^BOOL(InstallationCompletionHandler completion) {
+              id<MSInstallationManagementDelegate> managementDelegate = self.managementDelegate;
+              if ([managementDelegate respondsToSelector:@selector(notificationHub:willUpsertInstallation:completionHandler:)]) {
+                  [managementDelegate notificationHub:self willUpsertInstallation:installation completionHandler:completion];
+                  return true;
+              }
+
+              return false;
+            }
+            completionHandler:^void(NSError *_Nullable error) {
+              id<MSInstallationLifecycleDelegate> lifecycleDelegate = self.lifecycleDelegate;
+              if (error == nil) {
+                  [MSLocalStorage upsertLastInstallation:installation];
+                  if ([lifecycleDelegate respondsToSelector:@selector(notificationHub:didSaveInstallation:)]) {
+                      [lifecycleDelegate notificationHub:self didSaveInstallation:installation];
+                  };
+              } else {
+                  NSLog(@"Error while creating installation: %@\n%@", error.localizedDescription, error.userInfo);
+                  if ([lifecycleDelegate respondsToSelector:@selector(notificationHub:didFailToSaveInstallationWithError:)]) {
+                      [lifecycleDelegate notificationHub:self didFailToSaveInstallationWithError:error];
+                  };
+              }
+            }];
     }
 }
 
@@ -319,6 +349,20 @@ static dispatch_once_t onceToken;
 
 - (MSInstallationTemplate *)getTemplateForKey:(NSString *)key {
     return [[self getInstallation] getTemplateForKey:key];
+}
+
+#pragma mark Installation management support
+
++ (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate {
+    [[MSNotificationHub sharedInstance] setEnrichmentDelegate:enrichmentDelegate];
+}
+
++ (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate {
+    [[MSNotificationHub sharedInstance] setManagementDelegate:managementDelegate];
+}
+
++ (void)setLifecycleDelegate:(nullable id<MSInstallationLifecycleDelegate>)lifecycleDelegate {
+    [[MSNotificationHub sharedInstance] setLifecycleDelegate:lifecycleDelegate];
 }
 
 #pragma mark Helpers

@@ -7,6 +7,7 @@
 #import "MSInstallation.h"
 #import "MSInstallationManagerPrivate.h"
 #import "MSLocalStorage.h"
+#import "MSNotificationHub.h"
 #import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -34,15 +35,25 @@ NSString *const kAPIVersion = @"2017-04";
     _httpClient = httpClient;
 }
 
-- (void)saveInstallation:(MSInstallation *)installation {
+- (void)saveInstallation:(MSInstallation *)installation
+    withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
+    withManagementHandler:(InstallationManagementHandler)managementHandler
+        completionHandler:(InstallationCompletionHandler)completionHandler {
+    enrichmentHandler();
+
+    if (managementHandler(completionHandler)) {
+        return;
+    }
 
     if (!_tokenProvider) {
-        NSLog(@"Invalid connection string");
+        NSString *msg = @"Invalid connection string";
+        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error" : msg}]);
         return;
     }
 
     if (!installation.pushChannel) {
-        NSLog(@"You have to setup Push Channel before save installation");
+        NSString *msg = @"You have to setup Push Channel before save installation";
+        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error" : msg}]);
         return;
     }
 
@@ -53,8 +64,8 @@ NSString *const kAPIVersion = @"2017-04";
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
-    NSString *userAgent = [NSString
-        stringWithFormat:kUserAgentFormat, kAPIVersion, kSDKVersion, [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]];
+    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, kSDKVersion, [[UIDevice currentDevice] systemName],
+                                                     [[UIDevice currentDevice] systemVersion]];
 
     NSDictionary *headers =
         @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken, @"User-Agent" : userAgent};
@@ -66,11 +77,7 @@ NSString *const kAPIVersion = @"2017-04";
                    headers:headers
                       data:payload
          completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
-           if (error) {
-               NSLog(@"Error via creating installation: %@", error.localizedDescription);
-           } else {
-               [MSLocalStorage upsertLastInstallation:installation];
-           }
+           completionHandler(error);
          }];
 }
 
