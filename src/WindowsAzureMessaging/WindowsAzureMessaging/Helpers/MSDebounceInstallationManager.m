@@ -29,24 +29,23 @@
     _enrichmentHandler = enrichmentHandler;
     _managementHandler = managementHandler;
     _completionHandler = completionHandler;
-
-    MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
-
-    if (![installation isEqual:lastInstallation]) {
-        _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval
-                                                          target:self
-                                                        selector:@selector(execute)
-                                                        userInfo:installation
-                                                         repeats:false];
-        [[NSRunLoop mainRunLoop] addTimer:_debounceTimer forMode:NSRunLoopCommonModes];
-    }
+    
+    _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval
+                                                      target:self
+                                                    selector:@selector(execute)
+                                                    userInfo:installation
+                                                     repeats:false];
+    [[NSRunLoop mainRunLoop] addTimer:_debounceTimer forMode:NSRunLoopCommonModes];
 }
 
 
 
 - (void)execute {
+    MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
     MSInstallation *installation = [_debounceTimer userInfo];
-    [_installationManager saveInstallation:installation withEnrichmentHandler:_enrichmentHandler withManagementHandler:_managementHandler completionHandler:_completionHandler];
+    if (![installation isEqual:lastInstallation]) {
+        [_installationManager saveInstallation:installation withEnrichmentHandler:_enrichmentHandler withManagementHandler:_managementHandler completionHandler:_completionHandler];
+    }
 }
 
 @end

@@ -42,17 +42,19 @@ NSString *const kAPIVersion = @"2017-04";
 {
     enrichmentHandler();
     
-    if(managementHandler()) {
+    if(managementHandler(completionHandler)) {
         return;
     }
 
     if (!_tokenProvider) {
-        NSLog(@"Invalid connection string");
+        NSString *msg = @"Invalid connection string";
+        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": msg}]);
         return;
     }
 
     if (!installation.pushChannel) {
-        NSLog(@"You have to setup Push Channel before save installation");
+        NSString *msg = @"You have to setup Push Channel before save installation";
+        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": msg}]);
         return;
     }
 

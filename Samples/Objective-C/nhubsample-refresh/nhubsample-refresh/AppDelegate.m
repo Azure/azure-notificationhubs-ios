@@ -36,7 +36,7 @@
 //- (void)notificationHub:(MSNotificationHub *)notificationHub willUpsertInstallation:(MSInstallation *)installation
 //  completionHandler:(void(^)(NSError * _Nullable))completionHandler {
 //    NSLog(@"Will do upsert on custom back end.");
-//    completionHandler();
+//    completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": @"not implemented"}]);
 //}
 
 //- (void)notificationHub:(MSNotificationHub *)notificationHub willDeleteInstallation:(NSString *)installationId {
@@ -48,7 +48,7 @@
 }
 
 - (void)notificationHub:(MSNotificationHub *)notificationHub didFailToSaveInstallationWithError:(NSError *)error {
-    NSLog(@"didFailToSaveInstallationWithError");
+    NSLog(@"didFailToSaveInstallationWithError: %@", error.userInfo);
 }
 
 #pragma mark - UISceneSession lifecycle
