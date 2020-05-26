@@ -7,8 +7,8 @@
 #import "MSInstallation.h"
 #import "MSInstallationManagerPrivate.h"
 #import "MSLocalStorage.h"
-#import "MSTokenProvider.h"
 #import "MSNotificationHub.h"
+#import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -38,23 +38,22 @@ NSString *const kAPIVersion = @"2017-04";
 - (void)saveInstallation:(MSInstallation *)installation
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
     withManagementHandler:(InstallationManagementHandler)managementHandler
-    completionHandler:(InstallationCompletionHandler)completionHandler
-{
+        completionHandler:(InstallationCompletionHandler)completionHandler {
     enrichmentHandler();
-    
-    if(managementHandler(completionHandler)) {
+
+    if (managementHandler(completionHandler)) {
         return;
     }
 
     if (!_tokenProvider) {
         NSString *msg = @"Invalid connection string";
-        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": msg}]);
+        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error" : msg}]);
         return;
     }
 
     if (!installation.pushChannel) {
         NSString *msg = @"You have to setup Push Channel before save installation";
-        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": msg}]);
+        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error" : msg}]);
         return;
     }
 

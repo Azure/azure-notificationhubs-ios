@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class MSTokenProvider;
 @class MSHttpClient;
 
-typedef void (^InstallationCompletionHandler)(NSError * _Nullable);
+typedef void (^InstallationCompletionHandler)(NSError *_Nullable);
 
 typedef void (^InstallationEnrichmentHandler)(void);
 typedef BOOL (^InstallationManagementHandler)(InstallationCompletionHandler _Nonnull);
@@ -30,7 +30,7 @@ typedef BOOL (^InstallationManagementHandler)(InstallationCompletionHandler _Non
 - (void)saveInstallation:(MSInstallation *)installation
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
     withManagementHandler:(InstallationManagementHandler)managementHandler
-    completionHandler:(InstallationCompletionHandler)completionHandler;
+        completionHandler:(InstallationCompletionHandler)completionHandler;
 
 @end
 

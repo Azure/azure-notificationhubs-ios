@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveInstallation:(MSInstallation *)installation
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
     withManagementHandler:(InstallationManagementHandler)managementHandler
-    completionHandler:(InstallationCompletionHandler)completionHandler;
+        completionHandler:(InstallationCompletionHandler)completionHandler;
 
 @end
 

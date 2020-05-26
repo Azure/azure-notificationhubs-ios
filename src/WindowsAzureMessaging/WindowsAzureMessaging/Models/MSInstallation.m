@@ -204,7 +204,8 @@
     BOOL isInstallationsIdEqual = [self.installationID isEqualToString:installation.installationID];
     BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
     // We have to check for nil values
-    BOOL isTemplatesDictionaryEqual = self.templates == installation.templates ?: [self.templates isEqualToDictionary:installation.templates];
+    BOOL isTemplatesDictionaryEqual =
+        self.templates == installation.templates ?: [self.templates isEqualToDictionary:installation.templates];
     return isInstallationsIdEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
 }
 
