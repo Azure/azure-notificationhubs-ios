@@ -29,25 +29,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
         return true
     }
 
-// Sample usage of MSInstallationManagementDelegate
-//    func notificationHub(_ notificationHub: MSNotificationHub!, willUpsertInstallation installation: MSInstallation!, withCompletionHandler completionHandler:
-//        @escaping (Bool) -> Void) {
-//        NSLog("willUpsertInstallation");
-//        completionHandler(false);
-//    }
-
-//    func notificationHub(_ notificationHub: MSNotificationHub!, willDeleteInstallation installationId: String {
-//        NSLog("willDeleteInstallation");
-//    }
+    // Sample usage of MSInstallationLifecycleDelegate
+    func notificationHub(_ notificationHub: MSNotificationHub!, didSave installation: MSInstallation) {
+        NSLog("didSaveInstallation")
+    }
     
-// Sample usage of MSInstallationLifecycleDelegate
-//    func notificationHub(_ notificationHub: MSNotificationHub!, didSaveInstallation installation: MSInstallation! {
-//        NSLog("didSaveInstallation");
-//    }
-//    
-//    func notificationHub(_ notificationHub: MSNotificationHub!, didFailToSaveInstallationWithError error: NSError? {
-//        NSLog("didSaveInstallation");
-//    }
+    func notificationHub(_ notificationHub: MSNotificationHub!, didFailToSaveInstallationWithError error: Error) {
+        NSLog("didFailToSaveInstallationWithError: %@", (error as NSError).userInfo)
+    }
+    
+/*
+    // Sample of using MSInstallationManagementDelegate
+    func notificationHub(_ notificationHub: MSNotificationHub, willDeleteInstallation installationId: String, completionHandler: @escaping (Error?) -> Void) {
+        
+        NSLog("Will do delete on custom back end.")
+        completionHandler(NSError(domain: "WindowsAzureMessaging", code: -1))
+    }
+    
+    func notificationHub(_ notificationHub: MSNotificationHub, willUpsertInstallation installation: MSInstallation, completionHandler: @escaping (Error?) -> Void) {
+        
+        NSLog("Will do upsert on custom back end.")
+        completionHandler(NSError(domain: "WindowsAzureMessaging", code: -1))
+    }
+*/
     
     // MARK: UISceneSession Lifecycle
 

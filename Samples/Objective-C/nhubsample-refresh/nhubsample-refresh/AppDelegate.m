@@ -32,18 +32,22 @@
     NSLog(@"willEnrichInstallation");
 }
 
-/*:
+/*
  
  Sample usage of MSInstallationManagementDelegate
  
  - (void)notificationHub:(MSNotificationHub *)notificationHub willUpsertInstallation:(MSInstallation *)installation
- completionHandler:(void(^)(NSError * _Nullable))completionHandler {
- NSLog(@"Will do upsert on custom back end.");
- completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": @"not implemented"}]);
+        completionHandler:(void(^)(NSError * _Nullable))completionHandler {
+ 
+    NSLog(@"Will do upsert on custom back end.");
+    completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": @"not implemented"}]);
  }
  
- - (void)notificationHub:(MSNotificationHub *)notificationHub willDeleteInstallation:(NSString *)installationId {
- NSLog(@"Will do delete on custom back end.");
+ - (void)notificationHub:(MSNotificationHub *)notificationHub willDeleteInstallation:(NSString *)installationId
+        completionHandler:(void(^)(NSError * _Nullable))completionHandler {
+ 
+    NSLog(@"Will do delete on custom back end.");
+    completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error": @"not implemented"}]);
  }
 
 */
