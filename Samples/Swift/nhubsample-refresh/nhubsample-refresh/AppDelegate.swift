@@ -39,18 +39,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
     }
     
 /*
+
     // Sample of using MSInstallationManagementDelegate
     func notificationHub(_ notificationHub: MSNotificationHub, willDeleteInstallation installationId: String, completionHandler: @escaping (Error?) -> Void) {
         
         NSLog("Will do delete on custom back end.")
-        completionHandler(NSError(domain: "WindowsAzureMessaging", code: -1))
+        completionHandler(NSError(domain: "WindowsAzureMessaging", code: -1, userInfo: ["Error": "Not implemented" ]))
     }
     
     func notificationHub(_ notificationHub: MSNotificationHub, willUpsertInstallation installation: MSInstallation, completionHandler: @escaping (Error?) -> Void) {
         
         NSLog("Will do upsert on custom back end.")
-        completionHandler(NSError(domain: "WindowsAzureMessaging", code: -1))
+        completionHandler(NSError(domain: "WindowsAzureMessaging", code: -1, userInfo: ["Error": "Not implemented" ]))
     }
+
 */
     
     // MARK: UISceneSession Lifecycle
