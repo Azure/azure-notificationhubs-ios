@@ -3,6 +3,7 @@
 //----------------------------------------------------------------
 
 #import "MSInstallationManager.h"
+#import "MSConstants.h"
 #import "MSHttpClient.h"
 #import "MSInstallation.h"
 #import "MSInstallationManagerPrivate.h"
@@ -11,11 +12,6 @@
 #import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-// TODO: Move to loading from constants file
-NSString *const kSDKVersion = @"3.0.0-Preview2";
-NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
-NSString *const kAPIVersion = @"2017-04";
 
 @implementation MSInstallationManager
 
@@ -58,13 +54,16 @@ NSString *const kAPIVersion = @"2017-04";
     }
 
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
+
+    NSString *apiVersion = [MSInstallationManager getApiVersionFromEndpoint:endpoint];
+
     NSString *url =
-        [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, kAPIVersion];
+        [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, apiVersion];
 
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
-    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, kSDKVersion, [[UIDevice currentDevice] systemName],
+    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, apiVersion, kSDKVersion, [[UIDevice currentDevice] systemName],
                                                      [[UIDevice currentDevice] systemVersion]];
 
     NSDictionary *headers =
@@ -137,6 +136,17 @@ NSString *const kAPIVersion = @"2017-04";
     }
 
     return [NSURL URLWithString:modifiedEndpoint];
+}
+
++ (NSString *)getApiVersionFromEndpoint:(NSString *)endpoint {
+    if ([endpoint containsString:AzureEnvironmentINT7] || [endpoint containsString:AzureEnvironmentPROD]) {
+        return ApiVersion2020_06;
+    } else if ([endpoint containsString:AzureEnvironmentFFPROD] || [endpoint containsString:AzureEnvironmentBFPROD] ||
+               [endpoint containsString:AzureEnvironmentCHPROD]) {
+        return ApiVersion2017_04;
+    }
+
+    return @"";
 }
 
 @end
