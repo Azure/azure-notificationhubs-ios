@@ -633,7 +633,7 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
           if (numRequests < 3) {
               return [HTTPStubsResponse responseWithData:[NSData data]
                                               statusCode:MSHTTPCodesNo429TooManyRequests
-                                                 headers:@{@"retry-after" : @"100"}];
+                                                 headers:@{@"retry-after" : @"1"}];
           }
           return [HTTPStubsResponse responseWithData:[NSData data] statusCode:MSHTTPCodesNo204NoContent headers:nil];
         }];

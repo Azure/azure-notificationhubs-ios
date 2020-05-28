@@ -163,7 +163,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
                     NSNumber *retryAfterMilliseconds;
                     if (retryAfter) {
                         NSNumberFormatter *formatter = [NSNumberFormatter new];
-                        retryAfterMilliseconds = [formatter numberFromString:retryAfter];
+                        retryAfterMilliseconds = @([[formatter numberFromString:retryAfter] intValue] * 1000);
                     }
                     [httpCall startRetryTimerWithStatusCode:httpResponse.statusCode
                                                  retryAfter:retryAfterMilliseconds
