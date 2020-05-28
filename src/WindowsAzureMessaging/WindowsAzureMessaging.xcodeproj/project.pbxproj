@@ -265,6 +265,7 @@
 
 /* Begin PBXFileReference section */
 		1406DA6724654C8300F47E96 /* MSNotificationHubTemplatesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubTemplatesTests.m; sourceTree = "<group>"; };
+		142B0915247FA6E10054DE1E /* Global.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Global.xcconfig; sourceTree = "<group>"; };
 		14463F3C2477D22300A4024A /* MSInstallationManagementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationManagementDelegate.h; sourceTree = "<group>"; };
 		1457AD5E24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationEnrichmentDelegate.h; sourceTree = "<group>"; };
 		14A17DE924628CDA00255FF2 /* MSDebounceInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSDebounceInstallationManager.h; sourceTree = "<group>"; };
@@ -407,6 +408,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		142B090D247F99370054DE1E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				142B0915247FA6E10054DE1E /* Global.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		2A45D3AB246CCAC7004581C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +508,7 @@
 		906E403D16A86A3200817A11 /* WindowsAzureMessaging */ = {
 			isa = PBXGroup;
 			children = (
+				142B090D247F99370054DE1E /* Config */,
 				6489DDEE245828650021CF36 /* Internal */,
 				B3D2854F2456F09900C78CC8 /* Vendor */,
 				B3D285372456EAE300C78CC8 /* Utils */,
@@ -1320,6 +1330,7 @@
 		};
 		906E404416A86A3200817A11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 142B0915247FA6E10054DE1E /* Global.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1370,6 +1381,7 @@
 		};
 		906E404516A86A3200817A11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 142B0915247FA6E10054DE1E /* Global.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

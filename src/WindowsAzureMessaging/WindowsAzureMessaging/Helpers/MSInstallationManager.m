@@ -13,7 +13,6 @@
 #import <UIKit/UIKit.h>
 
 // TODO: Move to loading from constants file
-NSString *const kSDKVersion = @"3.0.0-Preview2";
 NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
 NSString *const kAPIVersion = @"2017-04";
 
@@ -64,7 +63,9 @@ NSString *const kAPIVersion = @"2017-04";
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
-    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, kSDKVersion, [[UIDevice currentDevice] systemName],
+    NSString *sdkVersion = [NSString stringWithUTF8String:SDK_VERSION];
+
+    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, sdkVersion, [[UIDevice currentDevice] systemName],
                                                      [[UIDevice currentDevice] systemVersion]];
 
     NSDictionary *headers =
