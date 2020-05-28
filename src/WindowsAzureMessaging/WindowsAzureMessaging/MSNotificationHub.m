@@ -226,8 +226,8 @@ static dispatch_once_t onceToken;
                   };
               } else {
                   NSLog(@"Error while creating installation: %@\n%@", error.localizedDescription, error.userInfo);
-                  if ([lifecycleDelegate respondsToSelector:@selector(notificationHub:didFailToSaveInstallationWithError:)]) {
-                      [lifecycleDelegate notificationHub:self didFailToSaveInstallationWithError:error];
+                  if ([lifecycleDelegate respondsToSelector:@selector(notificationHub:didFailToSaveInstallation:withError:)]) {
+                      [lifecycleDelegate notificationHub:self didFailToSaveInstallation:installation withError:error];
                   };
               }
             }];

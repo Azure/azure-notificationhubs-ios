@@ -13,6 +13,6 @@
 
 - (void)notificationHub:(MSNotificationHub *)notificationHub didSaveInstallation:(MSInstallation *)installation;
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub didFailToSaveInstallationWithError:(NSError *)error;
+- (void)notificationHub:(MSNotificationHub *)notificationHub didFailToSaveInstallation:(MSInstallation *)installation withError:(NSError *)error;
 
 @end

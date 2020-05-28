@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
         NSLog("didSaveInstallation")
     }
     
-    func notificationHub(_ notificationHub: MSNotificationHub!, didFailToSaveInstallationWithError error: Error) {
+    func notificationHub(_ notificationHub: MSNotificationHub!, didFailToSave installation: MSInstallation!, withError error: Error!) {
         NSLog("didFailToSaveInstallationWithError: %@", (error as NSError).userInfo)
     }
     
