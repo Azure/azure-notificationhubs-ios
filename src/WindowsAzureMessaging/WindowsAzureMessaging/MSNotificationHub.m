@@ -95,6 +95,13 @@ static dispatch_once_t onceToken;
     NSString *pushToken = [self convertTokenToString:deviceToken];
     NSLog(@"Registered for push notifications with token: %@", pushToken);
 
+    dispatch_async(dispatch_get_main_queue(), ^{
+      id<MSNotificationHubDelegate> delegate = self.delegate;
+        if ([delegate respondsToSelector:@selector(notificationHub:receivedPushToken:)]) {
+            [delegate notificationHub:self receivedPushToken:pushToken];
+      }
+    });
+
     MSInstallation *installation = [self getInstallation];
 
     if ([pushToken isEqualToString:installation.pushChannel]) {
@@ -107,6 +114,13 @@ static dispatch_once_t onceToken;
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Registering for push notifications has been finished with error: %@", error.localizedDescription);
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+      id<MSNotificationHubDelegate> delegate = self.delegate;
+        if ([delegate respondsToSelector:@selector(notificationHub:didFailToRegisterForRemoteNotificationsWithError:)]) {
+            [delegate notificationHub:self didFailToRegisterForRemoteNotificationsWithError:error];
+      }
+    });
 }
 
 - (void)didReceivePushNotification:(MSNotificationHubMessage *)notification
