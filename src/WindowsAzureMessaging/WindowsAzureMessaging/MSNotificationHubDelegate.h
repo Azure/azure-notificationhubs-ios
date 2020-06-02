@@ -18,6 +18,7 @@
  *
  * @param notificationHub The instance of MSNotificationHub
  * @param message The push notification details.
+ * @param completionHandler The completion handler which should be called with NoData upon completion.
  */
 - (void)notificationHub:(MSNotificationHub *)notificationHub
     didReceivePushNotification:(MSNotificationHubMessage *)message

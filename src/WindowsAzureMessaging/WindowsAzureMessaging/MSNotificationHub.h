@@ -21,10 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface MSNotificationHub : NSObject {
   @private
-    MSInstallation *_installation;
     MSDebounceInstallationManager *_debounceInstallationManager;
-    NSString *_hubName;
-    NSURL *_serviceEndpoint;
 }
 
 @property(nonatomic, weak, nullable) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
@@ -57,6 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Installation Support
 
++ (void)willSaveInstallation;
+- (void)willSaveInstallation;
+
 - (NSString *)getPushChannel;
 - (NSString *)getInstallationId;
 
@@ -84,10 +84,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
 + (BOOL)removeTemplateForKey:(NSString *)key;
 + (MSInstallationTemplate *)getTemplateForKey:(NSString *)key;
++ (NSDictionary<NSString *, MSInstallationTemplate *> *)getTemplates;
 
 - (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
 - (BOOL)removeTemplateForKey:(NSString *)key;
 - (MSInstallationTemplate *)getTemplateForKey:(NSString *)key;
+- (NSDictionary<NSString *, MSInstallationTemplate *> *)getTemplates;
 
 #pragma mark Installation management support
 

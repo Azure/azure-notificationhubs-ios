@@ -56,7 +56,7 @@
     NSLog(@"didSaveInstallation");
 }
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub didFailToSaveInstallationWithError:(NSError *)error {
+- (void)notificationHub:(MSNotificationHub *)notificationHub didFailToSaveInstallation:(MSInstallation *)installation withError:(NSError *)error {
     NSLog(@"didFailToSaveInstallationWithError: %@", error.userInfo);
 }
 

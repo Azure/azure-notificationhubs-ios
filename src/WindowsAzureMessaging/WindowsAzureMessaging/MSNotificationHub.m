@@ -226,8 +226,8 @@ static dispatch_once_t onceToken;
                   };
               } else {
                   NSLog(@"Error while creating installation: %@\n%@", error.localizedDescription, error.userInfo);
-                  if ([lifecycleDelegate respondsToSelector:@selector(notificationHub:didFailToSaveInstallationWithError:)]) {
-                      [lifecycleDelegate notificationHub:self didFailToSaveInstallationWithError:error];
+                  if ([lifecycleDelegate respondsToSelector:@selector(notificationHub:didFailToSaveInstallation:withError:)]) {
+                      [lifecycleDelegate notificationHub:self didFailToSaveInstallation:installation withError:error];
                   };
               }
             }];
@@ -321,6 +321,10 @@ static dispatch_once_t onceToken;
     return [sharedInstance getTemplateForKey:key];
 }
 
++ (NSDictionary<NSString *, MSInstallationTemplate *> *)getTemplates {
+    return [sharedInstance getTemplates];
+}
+
 - (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
     MSInstallation *installation = [self getInstallation];
 
@@ -351,7 +355,19 @@ static dispatch_once_t onceToken;
     return [[self getInstallation] getTemplateForKey:key];
 }
 
+- (NSDictionary<NSString *, MSInstallationTemplate *> *)getTemplates {
+    return [[self getInstallation] templates];
+}
+
 #pragma mark Installation management support
+
++ (void)willSaveInstallation {
+    [sharedInstance willSaveInstallation];
+}
+
+- (void)willSaveInstallation {
+    [self upsertInstallation:[self getInstallation]];
+}
 
 + (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate {
     [[MSNotificationHub sharedInstance] setEnrichmentDelegate:enrichmentDelegate];

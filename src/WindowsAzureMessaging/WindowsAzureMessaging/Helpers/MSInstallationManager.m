@@ -63,7 +63,9 @@
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
-    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, apiVersion, kSDKVersion, [[UIDevice currentDevice] systemName],
+    NSString *sdkVersion = [NSString stringWithUTF8String:SDK_VERSION];
+
+    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, apiVersion, sdkVersion, [[UIDevice currentDevice] systemName],
                                                      [[UIDevice currentDevice] systemVersion]];
 
     NSDictionary *headers =

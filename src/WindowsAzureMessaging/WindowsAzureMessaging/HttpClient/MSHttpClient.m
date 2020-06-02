@@ -13,7 +13,7 @@
 
 #define MS_NOTIFICATION_CENTER [NSNotificationCenter defaultCenter]
 
-static NSString *const kMSRetryHeaderKey = @"x-ms-retry-after-ms";
+static NSString *const kMSRetryHeaderKey = @"retry-after";
 
 @implementation MSHttpClient
 
@@ -163,7 +163,7 @@ static NSString *const kMSRetryHeaderKey = @"x-ms-retry-after-ms";
                     NSNumber *retryAfterMilliseconds;
                     if (retryAfter) {
                         NSNumberFormatter *formatter = [NSNumberFormatter new];
-                        retryAfterMilliseconds = [formatter numberFromString:retryAfter];
+                        retryAfterMilliseconds = @([[formatter numberFromString:retryAfter] intValue] * 1000);
                     }
                     [httpCall startRetryTimerWithStatusCode:httpResponse.statusCode
                                                  retryAfter:retryAfterMilliseconds

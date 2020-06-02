@@ -63,21 +63,19 @@
 }
 
 - (BOOL)addTags:(NSArray<NSString *> *)tagsToAdd {
+    NSArray *invalidTags = [tagsToAdd filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return !isValidTag(evaluatedObject);
+    }]];
+                             
+     if (invalidTags.count > 0) {
+         return NO;
+     }
+    
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
+    [tmpTags addObjectsFromArray:tagsToAdd];
+    isDirty = YES;
 
-    for (NSString *tag in tagsToAdd) {
-        if (isValidTag(tag)) {
-            [tmpTags addObject:tag];
-            if (!isDirty) {
-                isDirty = YES;
-            }
-        } else {
-            NSLog(@"Invalid tag: %@", tag);
-            return NO;
-        }
-    }
-
-    self.tags = [tmpTags copy];
+    tags = [tmpTags copy];
     return YES;
 }
 
@@ -89,21 +87,30 @@
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
     BOOL hasTags = [[NSSet setWithArray:tagsToRemove] intersectsSet:tmpTags];
+    
+    if (!hasTags) {
+        return NO;
+    }
+    
     if (hasTags && !isDirty) {
         isDirty = YES;
     }
 
     [tmpTags minusSet:[NSSet setWithArray:tagsToRemove]];
 
-    self.tags = [tmpTags copy];
+    tags = [tmpTags copy];
     return YES;
 }
 
 - (void)clearTags {
-    if (!isDirty && self.tags.count > 0) {
+    if (tags.count == 0) {
+        return;
+    }
+    
+    if (!isDirty && tags.count > 0) {
         isDirty = YES;
     }
-    self.tags = [NSSet new];
+    tags = [NSSet new];
 }
 
 #pragma mark Headers
