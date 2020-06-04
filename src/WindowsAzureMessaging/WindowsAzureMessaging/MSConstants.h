@@ -17,9 +17,6 @@ typedef NSString *AzureEnvironment NS_STRING_ENUM;
 
 static AzureEnvironment const AzureEnvironmentINT7 = @"int7.windows-int.net";
 static AzureEnvironment const AzureEnvironmentPROD = @"windows.net";
-static AzureEnvironment const AzureEnvironmentFFPROD = @"cloudapi.de";
-static AzureEnvironment const AzureEnvironmentBFPROD = @"usgovcloudapi.net";
-static AzureEnvironment const AzureEnvironmentCHPROD = @"chinacloudapi.cn";
 
 /**
  * Api versions
