@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Policy, and Hub Name.
  * @param connectionString The connection string
  */
-+ (void)setupWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName NS_SWIFT_NAME(setup(connectionString:hubName:));
++ (void)startWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
 
 #pragma mark Push Initialization
 

@@ -43,7 +43,7 @@ static dispatch_once_t onceToken;
     sharedInstance = nil;
 }
 
-+ (void)setupWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName {
++ (void)startWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName {
     MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString
                                                                                                  hubName:notificationHubName];
 
