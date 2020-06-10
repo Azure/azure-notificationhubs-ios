@@ -17,12 +17,12 @@
     NSDictionary *configValues = [NSDictionary dictionaryWithContentsOfFile:path];
     
     NSString *connectionString = [configValues objectForKey:@"connectionString"];
-    NSString *hubName = [configValues objectForKey:@"hubName"];
+    NSString *hubName = [configValues objectForKey:@"hubName"]  ;
     
     [MSNotificationHub setEnrichmentDelegate: self];
     [MSNotificationHub setManagementDelegate: self];
     [MSNotificationHub setLifecycleDelegate: self];
-    [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
+    [MSNotificationHub setupWithConnectionString:connectionString hubName:hubName];
     [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
     
     return YES;
