@@ -24,9 +24,22 @@
     didReceivePushNotification:(MSNotificationHubMessage *)message
         fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
+/**
+ * Callback method that will be called whenever the push token is retrieved.
+ *
+ * @param notificationHub The instance of MSNotificationHub
+ * @param pushToken The push token
+ */
 - (void)notificationHub:(MSNotificationHub *)notificationHub 
-    didReceivedPushToken:(NSString *)pushToken;
+    didReceivePushToken:(NSString *)pushToken NS_SWIFT_NAME(notificationHub(_:pushToken:));
 
+/**
+ * Callback method that will be called whenever there is an error in
+ * registering for remote notifications.
+ *
+ * @param notificationHub The instance of MSNotificationHub
+ * @param error The error received
+ */
 - (void)notificationHub:(MSNotificationHub *)notificationHub
     didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 

@@ -63,7 +63,9 @@ NSString *const kAPIVersion = @"2017-04";
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
-    NSString *sdkVersion = [NSString stringWithUTF8String:SDK_VERSION];
+    // TODO: come up with a way to handle this and work with SPM (seems xcconfig values don't get pulled into SPM)
+    //NSString *sdkVersion = [NSString stringWithUTF8String:SDK_VERSION];
+    NSString *sdkVersion = @"3.0.0-preview2";
 
     NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, sdkVersion, [[UIDevice currentDevice] systemName],
                                                      [[UIDevice currentDevice] systemVersion]];

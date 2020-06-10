@@ -97,8 +97,8 @@ static dispatch_once_t onceToken;
 
     dispatch_async(dispatch_get_main_queue(), ^{
       id<MSNotificationHubDelegate> delegate = self.delegate;
-        if ([delegate respondsToSelector:@selector(notificationHub:receivedPushToken:)]) {
-            [delegate notificationHub:self receivedPushToken:pushToken];
+        if ([delegate respondsToSelector:@selector(notificationHub:didReceivePushToken:)]) {
+            [delegate notificationHub:self didReceivePushToken:pushToken];
       }
     });
 
