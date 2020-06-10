@@ -24,8 +24,10 @@
     didReceivePushNotification:(MSNotificationHubMessage *)message
         fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub receivedPushToken:(NSString *)pushToken;
+- (void)notificationHub:(MSNotificationHub *)notificationHub 
+    didReceivedPushToken:(NSString *)pushToken;
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+- (void)notificationHub:(MSNotificationHub *)notificationHub
+    didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 
 @end
