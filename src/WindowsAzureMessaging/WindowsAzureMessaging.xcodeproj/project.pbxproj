@@ -449,9 +449,9 @@
 			isa = PBXGroup;
 			children = (
 				4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */,
+				6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */,
 				4C8546FC244F8F49005F6B49 /* MSInstallation.h */,
 				CEA47C2D2458294E007B17B3 /* MSInstallation.m */,
-				6489DDFB24586C210021CF36 /* MSNotificationHubMessage.m */,
 				CE98706924644F9900A71FA3 /* MSInstallationTemplate.m */,
 				14E28A1F246A863D00B976C4 /* MSInstallationTemplate.h */,
 				4C7BF48D2474764400B8DF8A /* MSTagHelper.h */,

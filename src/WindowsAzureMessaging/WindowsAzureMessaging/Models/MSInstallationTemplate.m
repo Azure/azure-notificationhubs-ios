@@ -14,6 +14,11 @@
 
 @implementation MSInstallationTemplate
 
+NSString * const kTemplateBody = @"body";
+NSString * const kTemplateTags = @"tags";
+NSString * const kTemplateHeaders = @"headers";
+NSString * const kTemplateIsDirty = @"isDirty";
+
 @synthesize body;
 @synthesize tags;
 @synthesize headers;
@@ -23,18 +28,18 @@
     if (self = [super init]) {
         tags = [NSSet new];
         headers = [NSDictionary new];
-        [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
+        [self addObserver:self forKeyPath:kTemplateIsDirty options:0 context:NULL];
     }
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
-        body = [coder decodeObjectForKey:@"body"] ?: @"";
-        tags = [coder decodeObjectForKey:@"tags"];
-        headers = [coder decodeObjectForKey:@"headers"];
+        body = [coder decodeObjectForKey:kTemplateBody] ?: @"";
+        tags = [coder decodeObjectForKey:kTemplateTags];
+        headers = [coder decodeObjectForKey:kTemplateHeaders];
         isDirty = NO;
-        [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
+        [self addObserver:self forKeyPath:kTemplateIsDirty options:0 context:NULL];
     }
 
     return self;
@@ -47,7 +52,7 @@
 #pragma mark Dirty Checks
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"isDirty"]) {
+    if ([keyPath isEqualToString:kTemplateIsDirty]) {
         isDirty = YES;
     }
 }
@@ -163,16 +168,16 @@
 }
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:body forKey:@"body"];
-    [coder encodeObject:tags forKey:@"tags"];
-    [coder encodeObject:headers forKey:@"headers"];
+    [coder encodeObject:body forKey:kTemplateBody];
+    [coder encodeObject:tags forKey:kTemplateTags];
+    [coder encodeObject:headers forKey:kTemplateHeaders];
 }
 
 - (NSDictionary *)toDictionary {
     return @{
-        @"body" : body,
-        @"tags" : [tags allObjects],
-        @"headers" : headers,
+        kTemplateBody : body,
+        kTemplateTags : [tags allObjects],
+        kTemplateHeaders : headers,
     };
 }
 

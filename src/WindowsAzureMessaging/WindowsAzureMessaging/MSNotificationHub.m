@@ -183,7 +183,7 @@ static dispatch_once_t onceToken;
 
 - (NSString *)getInstallationId {
     MSInstallation *installation = [self getInstallation];
-    return installation.installationID;
+    return installation.installationId;
 }
 
 - (MSInstallation *)getInstallation {

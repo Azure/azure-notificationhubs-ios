@@ -6,13 +6,6 @@
 #import "MSInstallationTemplate.h"
 #import "MSTagHelper.h"
 
-NSString *kInstallationId = @"installationId";
-NSString *kPushChannel = @"pushChannel";
-NSString *kExpiration = @"expiration";
-NSString *kTags = @"tags";
-NSString *kTemplates = @"templates";
-NSString *kIsDirty = @"isDirty";
-
 @interface MSInstallation ()
 
 @property(nonatomic, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
@@ -22,15 +15,22 @@ NSString *kIsDirty = @"isDirty";
 
 @implementation MSInstallation
 
+NSString * const kInstallationId = @"installationId";
+NSString * const kPushChannel = @"pushChannel";
+NSString * const kExpiration = @"expiration";
+NSString * const kTags = @"tags";
+NSString * const kTemplates = @"templates";
+NSString * const kIsDirty = @"isDirty";
+
 @synthesize isDirty;
-@synthesize installationID;
+@synthesize installationId;
 @synthesize expiration;
 @synthesize pushChannel;
 @synthesize tags;
 @synthesize templates;
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:installationID forKey:kInstallationId];
+    [coder encodeObject:installationId forKey:kInstallationId];
     [coder encodeObject:pushChannel forKey:kPushChannel];
     [coder encodeObject:expiration forKey:kExpiration];
     [coder encodeObject:tags forKey:kTags];
@@ -39,7 +39,7 @@ NSString *kIsDirty = @"isDirty";
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
-        installationID = [coder decodeObjectForKey:kInstallationId] ?: [[NSUUID UUID] UUIDString];
+        installationId = [coder decodeObjectForKey:kInstallationId] ?: [[NSUUID UUID] UUIDString];
         pushChannel = [coder decodeObjectForKey:kPushChannel];
         expiration = [coder decodeObjectForKey:kExpiration];
         tags = [coder decodeObjectForKey:kTags];
@@ -53,7 +53,7 @@ NSString *kIsDirty = @"isDirty";
 
 - (instancetype)init {
     if (self = [super init]) {
-        installationID = [[NSUUID UUID] UUIDString];
+        installationId = [[NSUUID UUID] UUIDString];
         tags = [NSSet new];
         isDirty = NO;
         [self addObserver:self forKeyPath:kIsDirty options:0 context:NULL];
@@ -85,7 +85,7 @@ NSString *kIsDirty = @"isDirty";
     NSError *error = nil;
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
 
-    installation.installationID = dictionary[kInstallationId];
+    installation.installationId = dictionary[kInstallationId];
     installation.pushChannel = dictionary[kPushChannel];
     installation.expiration = dictionary[kExpiration];
     installation.tags = dictionary[kTags];
@@ -102,7 +102,7 @@ NSString *kIsDirty = @"isDirty";
     };
 
     NSMutableDictionary *dictionary = [NSMutableDictionary
-        dictionaryWithDictionary:@{kInstallationId : self.installationID, @"platform" : @"apns", kPushChannel : self.pushChannel}];
+        dictionaryWithDictionary:@{kInstallationId : self.installationId, @"platform" : @"apns", kPushChannel : self.pushChannel}];
 
     if (tags && [tags count] > 0) {
         [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:kTags];
@@ -124,7 +124,7 @@ NSString *kIsDirty = @"isDirty";
 }
 
 + (NSSet *)keyPathsForValuesAffectingIsDirty {
-    return [NSSet setWithObjects:NSStringFromSelector(@selector(installationID)), NSStringFromSelector(@selector(pushChannel)), nil];
+    return [NSSet setWithObjects:NSStringFromSelector(@selector(installationId)), NSStringFromSelector(@selector(pushChannel)), nil];
 }
 
 #pragma mark Tags
@@ -214,11 +214,11 @@ NSString *kIsDirty = @"isDirty";
 #pragma mark Equality
 
 - (NSUInteger)hash {
-    return [self.installationID hash] ^ [self.expiration hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
+    return [self.installationId hash] ^ [self.expiration hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    BOOL isInstallationsIdEqual = [self.installationID isEqualToString:installation.installationID];
+    BOOL isInstallationsIdEqual = [self.installationId isEqualToString:installation.installationId];
     BOOL isExpirationEqual = [self.expiration isEqualToDate:installation.expiration];
     BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
     // We have to check for nil values
