@@ -26,7 +26,7 @@ static NSString *key;
     id notificationCenterMock = OCMClassMock([UNUserNotificationCenter class]);
     OCMStub(ClassMethod([notificationCenterMock currentNotificationCenter])).andReturn(nil);
 
-    [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
+    [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
 
     key = @"template1";
     NSString *tag1 = @"tag1";

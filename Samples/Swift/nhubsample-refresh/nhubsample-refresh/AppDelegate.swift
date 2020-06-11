@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
         MSNotificationHub.setEnrichmentDelegate(self)
         MSNotificationHub.setManagementDelegate(self)
         MSNotificationHub.setLifecycleDelegate(self)
-        MSNotificationHub.initWithConnectionString(connectionString!, hubName: hubName!)
+        MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
         MSNotificationHub.addTag("userAgent:com.example.nhubsample-refresh:1.0")
         
         return true
