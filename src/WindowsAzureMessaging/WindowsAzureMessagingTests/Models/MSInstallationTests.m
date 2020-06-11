@@ -82,6 +82,10 @@
 
 - (void)testInstallationsEquality {
     // If
+    NSString *dateString = @"01-01-2030";
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    
     MSInstallationTemplate *templateA = [MSInstallationTemplate new];
     [templateA setBody:@"body"];
     [templateA addTags:@[ @"tag1", @"tag2" ]];
@@ -96,11 +100,13 @@
     NSString *key = @"key";
     MSInstallation *installation = [MSInstallation new];
     installation.installationId = installationId;
+    installation.expiration = [dateFormatter dateFromString:dateString];
     [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     [installation setTemplate:templateA forKey:key];
 
     MSInstallation *installation2 = [MSInstallation new];
     installation2.installationId = installationId;
+    installation2.expiration = [dateFormatter dateFromString:dateString];
     [installation2 addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     [installation2 setTemplate:templateB forKey:key];
 
