@@ -214,17 +214,17 @@ NSString * const kIsDirty = @"isDirty";
 #pragma mark Equality
 
 - (NSUInteger)hash {
-    return [self.installationId hash] ^ [self.expiration hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
+    return [installationId hash] ^ [expiration hash] ^ [pushChannel hash] ^ [tags hash] ^ [templates hash];
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    BOOL isInstallationsIdEqual = [self.installationId isEqualToString:installation.installationId];
-    BOOL isExpirationEqual = [self.expiration isEqualToDate:installation.expiration];
-    BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
+    BOOL isInstallationsIdEqual = [installationId isEqualToString:installation.installationId];
+    BOOL isExpirationEqual = [expiration isEqualToDate:installation.expiration];
+    BOOL isTagsSetEqual = [tags isEqualToSet:installation.tags];
     // We have to check for nil values
     BOOL isTemplatesDictionaryEqual =
-        self.templates == installation.templates ?: [self.templates isEqualToDictionary:installation.templates];
-    return isInstallationsIdEqual && isExpirationEqual&& isTagsSetEqual && isTemplatesDictionaryEqual;
+        templates == installation.templates ?: [templates isEqualToDictionary:installation.templates];
+    return isInstallationsIdEqual && isExpirationEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
 }
 
 - (BOOL)isEqual:(id)object {
