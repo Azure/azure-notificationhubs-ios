@@ -4,3 +4,6 @@
 [submodule "src/Vendor/OCMock"]
 	path = src/Vendor/OCMock
 	url = https://github.com/erikdoe/ocmock.git
+[submodule "src/Vendor/OCHamcrest"]
+	path = src/Vendor/OCHamcrest
+	url = https://github.com/hamcrest/OCHamcrest.git

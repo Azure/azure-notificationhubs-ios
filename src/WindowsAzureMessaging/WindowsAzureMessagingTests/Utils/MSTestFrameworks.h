@@ -9,7 +9,7 @@
 #pragma clang diagnostic ignored "-Wdocumentation-unknown-command"
 #pragma clang diagnostic ignored "-Wobjc-interface-ivars"
 
-#import <OCHamcrestIOS/OCHamcrestIOS.h>
+#import <OCHamcrest/OCHamcrest.h>
 #import <OCMock/OCMock.h>
 #import <XCTest/XCTest.h>
 

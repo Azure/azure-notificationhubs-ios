@@ -41,6 +41,8 @@
 		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; platformFilter = ios; };
 		4C2C05D7246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */; };
 		4C2C05D8246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */; };
+		4C5FDD00249542DB00824C82 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5FDCFB249542A300824C82 /* OCHamcrest.framework */; };
+		4C5FDD1C2495437100824C82 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5FDD112495433800824C82 /* OHHTTPStubs.framework */; };
 		4C7B719E2469E13100BF416F /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C7BF48E2474764400B8DF8A /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7BF48D2474764400B8DF8A /* MSTagHelper.h */; };
 		4C7BF48F2474764400B8DF8A /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7BF48D2474764400B8DF8A /* MSTagHelper.h */; };
@@ -103,15 +105,7 @@
 		A358374716AA3B220041E372 /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371916AA39850041E372 /* SBNotificationHub.m */; };
 		A358374916AA3B250041E372 /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371D16AA39850041E372 /* SBRegistration.m */; };
 		B300E30E24583A95008A32DA /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */; platformFilter = ios; };
-		B300E31024583BE8008A32DA /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */; platformFilter = ios; };
 		B300E32424584DB7008A32DA /* MSHttpTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E32324584DB7008A32DA /* MSHttpTestUtil.m */; };
-		B300E34D2458628C008A32DA /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E33E2458628C008A32DA /* HTTPStubs.m */; };
-		B300E34E2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E33F2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m */; };
-		B300E34F2458628C008A32DA /* HTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E3482458628C008A32DA /* HTTPStubsResponse+JSON.m */; };
-		B300E3502458628C008A32DA /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E3492458628C008A32DA /* HTTPStubsMethodSwizzling.m */; };
-		B300E3512458628C008A32DA /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34A2458628C008A32DA /* HTTPStubsResponse.m */; };
-		B300E3522458628C008A32DA /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */; };
-		B300E3532458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */; };
 		B346E12024586DAF00399CE3 /* MSNotificationHubErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSNotificationHubErrors.h */; };
 		B34BA79024589F1C002457DC /* TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B34BA78F24589F1C002457DC /* TestHelper.m */; };
 		B34BA79124589FD6002457DC /* SBNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = A358371816AA39850041E372 /* SBNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -185,6 +179,111 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4C5FDCF2249542A300824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 087601E213440806001B439B;
+			remoteInfo = OCHamcrest;
+		};
+		4C5FDCF4249542A300824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 087601F713440807001B439B;
+			remoteInfo = OCHamcrestTests;
+		};
+		4C5FDCF6249542A300824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 081BEE621345979F003F846A;
+			remoteInfo = libochamcrest;
+		};
+		4C5FDCF8249542A300824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 081BEE6C1345979F003F846A;
+			remoteInfo = libochamcrestTests;
+		};
+		4C5FDCFA249542A300824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 24C5BFE91C1777D900C2BAFD;
+			remoteInfo = "OCHamcrest-iOS";
+		};
+		4C5FDCFC249542A300824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 24C5BFF61C17781400C2BAFD;
+			remoteInfo = "OCHamcrest-tvOS";
+		};
+		4C5FDCFE249542A300824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 24C5C0031C17782500C2BAFD;
+			remoteInfo = "OCHamcrest-watchOS";
+		};
+		4C5FDD0C2495433800824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09110A4119805F4800D175E4;
+			remoteInfo = "OHHTTPStubs iOS StaticLib";
+		};
+		4C5FDD0E2495433800824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09110A5119805F4800D175E4;
+			remoteInfo = "OHHTTPStubs iOS Lib Tests";
+		};
+		4C5FDD102495433800824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 725CD99B1A9EB65100F84C8B;
+			remoteInfo = "OHHTTPStubs iOS Framework";
+		};
+		4C5FDD122495433800824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 093442F91B80EC4A00A91535;
+			remoteInfo = "OHHTTPStubs iOS Fmk Tests";
+		};
+		4C5FDD142495433800824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 095981C219806A7900807DBE;
+			remoteInfo = "OHHTTPStubs Mac Framework";
+		};
+		4C5FDD162495433800824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 095981D219806A7900807DBE;
+			remoteInfo = "OHHTTPStubs Mac Tests";
+		};
+		4C5FDD182495433800824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EAA436A51BE1598D000E9E99;
+			remoteInfo = "OHHTTPStubs tvOS Framework";
+		};
+		4C5FDD1A2495433800824C82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA100AB71BE15BE400129352;
+			remoteInfo = "OHHTTPStubs tvOS Fmk Tests";
+		};
 		906E407116A8853000817A11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 906E402F16A86A3200817A11 /* Project object */;
@@ -276,6 +375,8 @@
 		2A45D3B3246CCB8F004581C4 /* MSNotificationHubMessageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubMessageTests.m; sourceTree = "<group>"; };
 		35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationManagerPrivate.h; sourceTree = "<group>"; };
+		4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCHamcrest.xcodeproj; path = ../../Vendor/OCHamcrest/Source/OCHamcrest.xcodeproj; sourceTree = "<group>"; };
+		4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = ../../Vendor/OHHTTPStubs/OHHTTPStubs.xcodeproj; sourceTree = "<group>"; };
 		4C7BF48D2474764400B8DF8A /* MSTagHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSTagHelper.h; sourceTree = "<group>"; };
 		4C7BF4972474779900B8DF8A /* MSTagHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSTagHelper.m; sourceTree = "<group>"; };
 		4C7BF49A24747F6C00B8DF8A /* MSInstallationTemplateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallationTemplateTests.m; sourceTree = "<group>"; };
@@ -326,24 +427,9 @@
 		A358371916AA39850041E372 /* SBNotificationHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNotificationHub.m; sourceTree = "<group>"; };
 		A358371C16AA39850041E372 /* SBRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBRegistration.h; path = ../SBRegistration.h; sourceTree = "<group>"; };
 		A358371D16AA39850041E372 /* SBRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRegistration.m; path = ../SBRegistration.m; sourceTree = "<group>"; };
-		B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrestIOS.framework; path = ../../Vendor/OCHamcrest/OCHamcrestIOS.framework; sourceTree = "<group>"; };
 		B300E32224584DA6008A32DA /* MSHttpTestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHttpTestUtil.h; sourceTree = "<group>"; };
 		B300E32324584DB7008A32DA /* MSHttpTestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHttpTestUtil.m; sourceTree = "<group>"; };
 		B300E32524585081008A32DA /* MSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSConstants.h; sourceTree = "<group>"; };
-		B300E33E2458628C008A32DA /* HTTPStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubs.m; sourceTree = "<group>"; };
-		B300E33F2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+HTTPBodyTesting.m"; sourceTree = "<group>"; };
-		B300E3402458628C008A32DA /* HTTPStubsMethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStubsMethodSwizzling.h; sourceTree = "<group>"; };
-		B300E3422458628C008A32DA /* Compatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Compatibility.h; sourceTree = "<group>"; };
-		B300E3432458628C008A32DA /* HTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
-		B300E3442458628C008A32DA /* HTTPStubsPathHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStubsPathHelpers.h; sourceTree = "<group>"; };
-		B300E3452458628C008A32DA /* HTTPStubsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStubsResponse.h; sourceTree = "<group>"; };
-		B300E3462458628C008A32DA /* NSURLRequest+HTTPBodyTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+HTTPBodyTesting.h"; sourceTree = "<group>"; };
-		B300E3472458628C008A32DA /* HTTPStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStubs.h; sourceTree = "<group>"; };
-		B300E3482458628C008A32DA /* HTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
-		B300E3492458628C008A32DA /* HTTPStubsMethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsMethodSwizzling.m; sourceTree = "<group>"; };
-		B300E34A2458628C008A32DA /* HTTPStubsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsResponse.m; sourceTree = "<group>"; };
-		B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsPathHelpers.m; sourceTree = "<group>"; };
-		B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
 		B34BA78E24589F1C002457DC /* TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
 		B34BA78F24589F1C002457DC /* TestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelper.m; sourceTree = "<group>"; };
 		B3D11198246AD032004CDF56 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = ../../Vendor/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
@@ -389,9 +475,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5FDD1C2495437100824C82 /* OHHTTPStubs.framework in Frameworks */,
+				4C5FDD00249542DB00824C82 /* OCHamcrest.framework in Frameworks */,
 				B372117E246AD832008664BD /* OCMock.framework in Frameworks */,
 				B300E30E24583A95008A32DA /* WindowsAzureMessaging.framework in Frameworks */,
-				B300E31024583BE8008A32DA /* OCHamcrestIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +511,35 @@
 				4C7BF49A24747F6C00B8DF8A /* MSInstallationTemplateTests.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4C5FDCE9249542A300824C82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C5FDCF3249542A300824C82 /* OCHamcrest.framework */,
+				4C5FDCF5249542A300824C82 /* OCHamcrestTests.xctest */,
+				4C5FDCF7249542A300824C82 /* libochamcrest.a */,
+				4C5FDCF9249542A300824C82 /* libochamcrestTests.xctest */,
+				4C5FDCFB249542A300824C82 /* OCHamcrest.framework */,
+				4C5FDCFD249542A300824C82 /* OCHamcrest.framework */,
+				4C5FDCFF249542A300824C82 /* OCHamcrest.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C5FDD022495433800824C82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C5FDD0D2495433800824C82 /* libOHHTTPStubs.a */,
+				4C5FDD0F2495433800824C82 /* OHHTTPStubs iOS Lib Tests.xctest */,
+				4C5FDD112495433800824C82 /* OHHTTPStubs.framework */,
+				4C5FDD132495433800824C82 /* OHHTTPStubs iOS Fmk Tests.xctest */,
+				4C5FDD152495433800824C82 /* OHHTTPStubs.framework */,
+				4C5FDD172495433800824C82 /* OHHTTPStubs Mac Tests.xctest */,
+				4C5FDD192495433800824C82 /* OHHTTPStubs.framework */,
+				4C5FDD1B2495433800824C82 /* OHHTTPStubs tvOS Fmk Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4C8546EB244F5D48005F6B49 /* WindowsAzureMessagingTests */ = {
@@ -563,36 +679,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		B300E33D2458628C008A32DA /* OHHTTPStubs */ = {
-			isa = PBXGroup;
-			children = (
-				B300E33E2458628C008A32DA /* HTTPStubs.m */,
-				B300E33F2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m */,
-				B300E3402458628C008A32DA /* HTTPStubsMethodSwizzling.h */,
-				B300E3412458628C008A32DA /* include */,
-				B300E3482458628C008A32DA /* HTTPStubsResponse+JSON.m */,
-				B300E3492458628C008A32DA /* HTTPStubsMethodSwizzling.m */,
-				B300E34A2458628C008A32DA /* HTTPStubsResponse.m */,
-				B300E34B2458628C008A32DA /* HTTPStubsPathHelpers.m */,
-				B300E34C2458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m */,
-			);
-			name = OHHTTPStubs;
-			path = ../../Vendor/OHHTTPStubs/Sources/OHHTTPStubs;
-			sourceTree = "<group>";
-		};
-		B300E3412458628C008A32DA /* include */ = {
-			isa = PBXGroup;
-			children = (
-				B300E3422458628C008A32DA /* Compatibility.h */,
-				B300E3432458628C008A32DA /* HTTPStubsResponse+JSON.h */,
-				B300E3442458628C008A32DA /* HTTPStubsPathHelpers.h */,
-				B300E3452458628C008A32DA /* HTTPStubsResponse.h */,
-				B300E3462458628C008A32DA /* NSURLRequest+HTTPBodyTesting.h */,
-				B300E3472458628C008A32DA /* HTTPStubs.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
 		B3D11199246AD032004CDF56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,9 +760,9 @@
 		B3D2856924572A4900C78CC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */,
+				4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */,
 				B3D11198246AD032004CDF56 /* OCMock.xcodeproj */,
-				B300E33D2458628C008A32DA /* OHHTTPStubs */,
-				B300E30F24583BE7008A32DA /* OCHamcrestIOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -867,8 +953,16 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 4C5FDCE9249542A300824C82 /* Products */;
+					ProjectRef = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+				},
+				{
 					ProductGroup = B3D11199246AD032004CDF56 /* Products */;
 					ProjectRef = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+				},
+				{
+					ProductGroup = 4C5FDD022495433800824C82 /* Products */;
+					ProjectRef = 4C5FDD012495433800824C82 /* OHHTTPStubs.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -882,6 +976,111 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		4C5FDCF3249542A300824C82 /* OCHamcrest.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCHamcrest.framework;
+			remoteRef = 4C5FDCF2249542A300824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDCF5249542A300824C82 /* OCHamcrestTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCHamcrestTests.xctest;
+			remoteRef = 4C5FDCF4249542A300824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDCF7249542A300824C82 /* libochamcrest.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libochamcrest.a;
+			remoteRef = 4C5FDCF6249542A300824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDCF9249542A300824C82 /* libochamcrestTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = libochamcrestTests.xctest;
+			remoteRef = 4C5FDCF8249542A300824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDCFB249542A300824C82 /* OCHamcrest.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCHamcrest.framework;
+			remoteRef = 4C5FDCFA249542A300824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDCFD249542A300824C82 /* OCHamcrest.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCHamcrest.framework;
+			remoteRef = 4C5FDCFC249542A300824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDCFF249542A300824C82 /* OCHamcrest.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCHamcrest.framework;
+			remoteRef = 4C5FDCFE249542A300824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDD0D2495433800824C82 /* libOHHTTPStubs.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOHHTTPStubs.a;
+			remoteRef = 4C5FDD0C2495433800824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDD0F2495433800824C82 /* OHHTTPStubs iOS Lib Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "OHHTTPStubs iOS Lib Tests.xctest";
+			remoteRef = 4C5FDD0E2495433800824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDD112495433800824C82 /* OHHTTPStubs.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OHHTTPStubs.framework;
+			remoteRef = 4C5FDD102495433800824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDD132495433800824C82 /* OHHTTPStubs iOS Fmk Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "OHHTTPStubs iOS Fmk Tests.xctest";
+			remoteRef = 4C5FDD122495433800824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDD152495433800824C82 /* OHHTTPStubs.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OHHTTPStubs.framework;
+			remoteRef = 4C5FDD142495433800824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDD172495433800824C82 /* OHHTTPStubs Mac Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "OHHTTPStubs Mac Tests.xctest";
+			remoteRef = 4C5FDD162495433800824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDD192495433800824C82 /* OHHTTPStubs.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OHHTTPStubs.framework;
+			remoteRef = 4C5FDD182495433800824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C5FDD1B2495433800824C82 /* OHHTTPStubs tvOS Fmk Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "OHHTTPStubs tvOS Fmk Tests.xctest";
+			remoteRef = 4C5FDD1A2495433800824C82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B3D111A3246AD033004CDF56 /* OCMock.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1022,23 +1221,16 @@
 				64F993E5245C5D9A0086ABF8 /* MSTokenProviderTests.m in Sources */,
 				14BFB072246E8E0400059DD2 /* MSInstallationTests.m in Sources */,
 				1406DA6824654C8300F47E96 /* MSNotificationHubTemplatesTests.m in Sources */,
-				B300E34F2458628C008A32DA /* HTTPStubsResponse+JSON.m in Sources */,
 				4C7BF49B24747F6C00B8DF8A /* MSInstallationTemplateTests.m in Sources */,
 				2A45D3B4246CCB8F004581C4 /* MSNotificationHubMessageTests.m in Sources */,
 				B3D2856224570EE400C78CC8 /* MSHttpClientTests.m in Sources */,
 				4C7BF49D247481BF00B8DF8A /* MSNotificationHubTagsTests.m in Sources */,
 				B3D2856424570EE400C78CC8 /* MSHttpUtilTests.m in Sources */,
 				4C8546ED244F5D48005F6B49 /* WindowsAzureMessagingTests.m in Sources */,
-				B300E3532458628C008A32DA /* HTTPStubs+NSURLSessionConfiguration.m in Sources */,
 				B34BA79024589F1C002457DC /* TestHelper.m in Sources */,
 				64F993E9245C7FB60086ABF8 /* MSInstallationManagerTests.m in Sources */,
 				64F993E7245C6A4F0086ABF8 /* MSLocalStorageTests.m in Sources */,
-				B300E3512458628C008A32DA /* HTTPStubsResponse.m in Sources */,
 				B300E32424584DB7008A32DA /* MSHttpTestUtil.m in Sources */,
-				B300E3502458628C008A32DA /* HTTPStubsMethodSwizzling.m in Sources */,
-				B300E3522458628C008A32DA /* HTTPStubsPathHelpers.m in Sources */,
-				B300E34E2458628C008A32DA /* NSURLRequest+HTTPBodyTesting.m in Sources */,
-				B300E34D2458628C008A32DA /* HTTPStubs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
