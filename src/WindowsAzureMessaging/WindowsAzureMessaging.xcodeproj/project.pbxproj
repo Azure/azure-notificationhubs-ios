@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -38,7 +38,7 @@
 		14E58B20247BB25B00EF4F0B /* MSInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 14E58B1F247BB25B00EF4F0B /* MSInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14E58B21247BB25B00EF4F0B /* MSInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 14E58B1F247BB25B00EF4F0B /* MSInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2A45D3B4246CCB8F004581C4 /* MSNotificationHubMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A45D3B3246CCB8F004581C4 /* MSNotificationHubMessageTests.m */; };
-		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; platformFilter = ios; };
+		35B4DC0422268D6700EAC781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E403B16A86A3200817A11 /* Foundation.framework */; };
 		4C2C05D7246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */; };
 		4C2C05D8246C694F00877B9E /* MSInstallationManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2C05D6246C694F00877B9E /* MSInstallationManagerPrivate.h */; };
 		4C5FDD00249542DB00824C82 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5FDCFB249542A300824C82 /* OCHamcrest.framework */; };
@@ -70,8 +70,8 @@
 		64B3E0002451A86C006B6327 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FC244F8F49005F6B49 /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0022451A86C006B6327 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8546FE244F9075005F6B49 /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64B3E0042451A86C006B6327 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C854703244F9347005F6B49 /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		64BD3EB22476AD2500970653 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB12476AD2500970653 /* UserNotifications.framework */; platformFilter = ios; };
-		64BD3EB42476AD2E00970653 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB32476AD2E00970653 /* SystemConfiguration.framework */; platformFilter = ios; };
+		64BD3EB22476AD2500970653 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB12476AD2500970653 /* UserNotifications.framework */; };
+		64BD3EB42476AD2E00970653 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB32476AD2E00970653 /* SystemConfiguration.framework */; };
 		64BD3EB62476AD3A00970653 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB52476AD3900970653 /* UserNotifications.framework */; };
 		64BD3EB82476AD4200970653 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD3EB72476AD4200970653 /* SystemConfiguration.framework */; };
 		64F993DF245C448B0086ABF8 /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = CE98A78124532F5E00DA1AE8 /* MSLocalStorage.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -104,7 +104,7 @@
 		A358374616AA3B210041E372 /* SBConnectionString.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371716AA39850041E372 /* SBConnectionString.m */; };
 		A358374716AA3B220041E372 /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371916AA39850041E372 /* SBNotificationHub.m */; };
 		A358374916AA3B250041E372 /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = A358371D16AA39850041E372 /* SBRegistration.m */; };
-		B300E30E24583A95008A32DA /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */; platformFilter = ios; };
+		B300E30E24583A95008A32DA /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B4DBCB22268CB900EAC781 /* WindowsAzureMessaging.framework */; };
 		B300E32424584DB7008A32DA /* MSHttpTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B300E32324584DB7008A32DA /* MSHttpTestUtil.m */; };
 		B346E12024586DAF00399CE3 /* MSNotificationHubErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285402456ED2200C78CC8 /* MSNotificationHubErrors.h */; };
 		B34BA79024589F1C002457DC /* TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B34BA78F24589F1C002457DC /* TestHelper.m */; };
@@ -131,7 +131,7 @@
 		B34BA7A52458A128002457DC /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 906E404016A86A3200817A11 /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34BA7A62458A131002457DC /* SBStaticHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 929886EF1857FAB100C1676C /* SBStaticHandlerResponse.h */; };
 		B34BA7A72458A135002457DC /* SBStaticHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 92988747185931DE00C1676C /* SBStaticHandlerResponse.m */; };
-		B372117E246AD832008664BD /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D111AB246AD033004CDF56 /* OCMock.framework */; platformFilter = ios; };
+		B372117E246AD832008664BD /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D111AB246AD033004CDF56 /* OCMock.framework */; };
 		B3821CC02459AFB500567643 /* MS_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D285512456F09900C78CC8 /* MS_Reachability.m */; };
 		B3821CC12459AFB800567643 /* MS_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D285522456F09900C78CC8 /* MS_Reachability.h */; };
 		B391A3C3246AE24E004D8AF0 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C854703244F9347005F6B49 /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1277,7 +1277,6 @@
 		};
 		B300E30D24583A90008A32DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = 35B4DBCA22268CB900EAC781 /* WindowsAzureMessaging */;
 			targetProxy = B300E30C24583A90008A32DA /* PBXContainerItemProxy */;
 		};
@@ -1328,11 +1327,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/WindowsAzureMessagingTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MARKETING_VERSION = 3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1340,7 +1335,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessaging;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1392,18 +1387,14 @@
 				INFOPLIST_FILE = "$(SRCROOT)/WindowsAzureMessagingTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MARKETING_VERSION = 3.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessaging;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1447,14 +1438,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Vendor/\"/**";
 				INFOPLIST_FILE = WindowsAzureMessagingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-					"\"$(SRCROOT)/../Vendor/OCHamcrest\"",
-					"\"$(SRCROOT)/../Vendor/OCMock\"",
-					"\"$(SRCROOT)/../Vendor/OHHTTPStubs\"",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks \"$(SRCROOT)/../Vendor/OCHamcrest\" \"$(SRCROOT)/../Vendor/OCMock\" \"$(SRCROOT)/../Vendor/OHHTTPStubs\"";
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Vendor/\"/**";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1503,14 +1487,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Vendor/\"/**";
 				INFOPLIST_FILE = WindowsAzureMessagingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-					"\"$(SRCROOT)/../Vendor/OCHamcrest\"",
-					"\"$(SRCROOT)/../Vendor/OCMock\"",
-					"\"$(SRCROOT)/../Vendor/OHHTTPStubs\"",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks \"$(SRCROOT)/../Vendor/OCHamcrest\" \"$(SRCROOT)/../Vendor/OCMock\" \"$(SRCROOT)/../Vendor/OHHTTPStubs\"";
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Vendor/\"/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
