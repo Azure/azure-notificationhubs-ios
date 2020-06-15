@@ -57,11 +57,10 @@ static dispatch_once_t onceToken;
     _debounceInstallationManager = debounceInstallationManager;
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
+
 
 - (void)registerForRemoteNotifications {
-    if (@available(iOS 10.0, *)) {
+    if (NSClassFromString(@"UNUserNotificationCenter")) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         UNAuthorizationOptions authOptions =
             (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
@@ -73,20 +72,21 @@ static dispatch_once_t onceToken;
                                     NSLog(@"Push notifications authorization was denied.");
                                 }
                                 if (error) {
-                                    NSLog(@"Push notifications authorization request has "
-                                          @"been finished with error: %@",
-                                          error.localizedDescription);
+                                    NSLog(@"Push notifications authorization request has been finished with error: %@", error.localizedDescription);
                                 }
                               }];
     } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
         UIUserNotificationType allNotificationTypes =
             (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+#pragma clang diagnostic pop
     }
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
-#pragma clang diagnostic pop
+
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithUserInfo:userInfo];

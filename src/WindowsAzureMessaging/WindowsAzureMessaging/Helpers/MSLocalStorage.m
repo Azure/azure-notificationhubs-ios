@@ -29,17 +29,21 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
     return [MSLocalStorage upsertInstallation:installation forKey:kLastInstallationKey];
 }
 
++ (MSInstallation *)upsertInstallation:(MSInstallation *)installation forKey:(NSString *)key {
+    if ([[NSKeyedArchiver class] respondsToSelector:@selector(archivedDataWithRootObject:requiringSecureCoding:error:)]) {
+        NSError *error = nil;
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation requiringSecureCoding:NO error:&error];
+        [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:key];
+    } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
-
-+ (MSInstallation *)upsertInstallation:(MSInstallation *)installation forKey:(NSString *)key {
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation];
-    [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:key];
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation];
+#pragma clang diagnostic pop
+        [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:key];
+    }
 
     return installation;
 }
-
-#pragma clang diagnostic pop
 
 + (MSInstallation *)loadInstallation {
     return [MSLocalStorage loadInstallationForKey:kInstallationKey];
@@ -49,16 +53,23 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
     return [MSLocalStorage loadInstallationForKey:kLastInstallationKey];
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
+
 
 + (MSInstallation *)loadInstallationForKey:(NSString *)key {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:key];
 
+    if ([[NSKeyedUnarchiver class] respondsToSelector:@selector(unarchivedObjectOfClass:fromData:error:)]) {
+        NSError *error = nil;
+        return [NSKeyedUnarchiver unarchivedObjectOfClass:[MSInstallation class] fromData:encodedObject error:&error];
+    }
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
     return [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+#pragma clang diagnostic pop
 }
 
-#pragma clang diagnostic pop
+
 
 @end
