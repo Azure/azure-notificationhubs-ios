@@ -29,12 +29,17 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
     return [MSLocalStorage upsertInstallation:installation forKey:kLastInstallationKey];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
+
 + (MSInstallation *)upsertInstallation:(MSInstallation *)installation forKey:(NSString *)key {
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation];
     [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:key];
 
     return installation;
 }
+
+#pragma clang diagnostic pop
 
 + (MSInstallation *)loadInstallation {
     return [MSLocalStorage loadInstallationForKey:kInstallationKey];
@@ -44,11 +49,16 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
     return [MSLocalStorage loadInstallationForKey:kLastInstallationKey];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
+
 + (MSInstallation *)loadInstallationForKey:(NSString *)key {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:key];
 
     return [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
 }
+
+#pragma clang diagnostic pop
 
 @end

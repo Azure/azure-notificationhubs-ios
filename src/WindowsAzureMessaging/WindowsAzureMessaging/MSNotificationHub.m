@@ -57,6 +57,9 @@ static dispatch_once_t onceToken;
     _debounceInstallationManager = debounceInstallationManager;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
+
 - (void)registerForRemoteNotifications {
     if (@available(iOS 10.0, *)) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -83,6 +86,7 @@ static dispatch_once_t onceToken;
     }
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
+#pragma clang diagnostic pop
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithUserInfo:userInfo];
