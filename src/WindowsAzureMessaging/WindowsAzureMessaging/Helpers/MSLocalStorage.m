@@ -31,8 +31,7 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
 
 + (MSInstallation *)upsertInstallation:(MSInstallation *)installation forKey:(NSString *)key {
     if ([[NSKeyedArchiver class] respondsToSelector:@selector(archivedDataWithRootObject:requiringSecureCoding:error:)]) {
-        NSError *error = nil;
-        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation requiringSecureCoding:NO error:&error];
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation requiringSecureCoding:NO error:nil];
         [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:key];
     } else {
 #pragma clang diagnostic push
@@ -60,8 +59,7 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
     NSData *encodedObject = [defaults objectForKey:key];
 
     if ([[NSKeyedUnarchiver class] respondsToSelector:@selector(unarchivedObjectOfClass:fromData:error:)]) {
-        NSError *error = nil;
-        return [NSKeyedUnarchiver unarchivedObjectOfClass:[MSInstallation class] fromData:encodedObject error:&error];
+        return [NSKeyedUnarchiver unarchivedObjectOfClass:[MSInstallation class] fromData:encodedObject error:nil];
     }
     
 #pragma clang diagnostic push

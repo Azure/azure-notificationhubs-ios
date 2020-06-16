@@ -2,9 +2,6 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import <UIKit/UIKit.h>
-#import <UserNotifications/UserNotifications.h>
-
 #import "MSDebounceInstallationManager.h"
 #import "MSInstallation.h"
 #import "MSInstallationManager.h"
@@ -13,6 +10,7 @@
 #import "MSNotificationHubMessage.h"
 #import "MSNotificationHubPrivate.h"
 #import "MSTokenProvider.h"
+#import <UserNotifications/UserNotifications.h>
 
 // Singleton
 static MSNotificationHub *sharedInstance = nil;
@@ -22,6 +20,7 @@ static dispatch_once_t onceToken;
 
 - (instancetype)init {
     if ((self = [super init])) {
+
     }
 
     return self;
@@ -57,8 +56,6 @@ static dispatch_once_t onceToken;
     _debounceInstallationManager = debounceInstallationManager;
 }
 
-
-
 - (void)registerForRemoteNotifications {
     if (NSClassFromString(@"UNUserNotificationCenter")) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -89,6 +86,12 @@ static dispatch_once_t onceToken;
 
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    // Do not send message if SDK is disabled
+    if (![self isEnabled]) {
+        return;
+    }
+    
     MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithUserInfo:userInfo];
     [self didReceivePushNotification:message fetchCompletionHandler:completionHandler];
 }
