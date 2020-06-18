@@ -2,29 +2,91 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#import <objc/runtime.h>
+#else
+#import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
+#endif
+
 #import "MSDebounceInstallationManager.h"
 #import "MSInstallation.h"
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
 #import "MSNotificationHub.h"
+#import "MSNotificationHubAppDelegate.h"
+#import "MSUserNotificationCenterDelegate.h"
 #import "MSNotificationHubMessage.h"
 #import "MSNotificationHubPrivate.h"
 #import "MSTokenProvider.h"
-#import <UserNotifications/UserNotifications.h>
+
+#if TARGET_OS_OSX
+static NSString *const kMSUserNotificationCenterDelegateKey = @"delegate";
+#endif
 
 // Singleton
 static MSNotificationHub *sharedInstance = nil;
 static dispatch_once_t onceToken;
+#if TARGET_OS_OSX
+static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDelegateContext;
+#endif
 
 @implementation MSNotificationHub
 
 - (instancetype)init {
     if ((self = [super init])) {
+#if TARGET_OS_OSX
+        NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
 
+        /*
+         * If there is a user notification center delegate already set by a customer before starting Push, assign the delegate to custom
+         * user notification center delegate.
+         */
+        if (center.delegate) {
+            _originalUserNotificationCenterDelegate = center.delegate;
+        }
+
+        // Set a delegate that will forward notifications to Push as well as a customer's delegate.
+        center.delegate = self;
+
+        // Observe delegate property changes.
+        [center addObserver:self
+                 forKeyPath:kMSUserNotificationCenterDelegateKey
+                    options:NSKeyValueObservingOptionNew
+                    context:UserNotificationCenterDelegateContext];
+#endif
     }
 
     return self;
 }
+
+#if TARGET_OS_OSX
+- (void)dealloc {
+    [[NSUserNotificationCenter defaultUserNotificationCenter] removeObserver:self
+                                                                  forKeyPath:kMSUserNotificationCenterDelegateKey
+                                                                     context:UserNotificationCenterDelegateContext];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (context == UserNotificationCenterDelegateContext && [keyPath isEqualToString:kMSUserNotificationCenterDelegateKey]) {
+        id delegate = [change objectForKey:NSKeyValueChangeNewKey];
+        if (delegate != self) {
+            self.originalUserNotificationCenterDelegate = delegate;
+            [NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
++ (void *)userNotificationCenterDelegateContext {
+    return UserNotificationCenterDelegateContext;
+}
+
+#endif
+
+#pragma mark Singleton and Initialization
 
 + (instancetype)sharedInstance {
     dispatch_once(&onceToken, ^{
@@ -36,8 +98,6 @@ static dispatch_once_t onceToken;
 }
 
 + (void)resetSharedInstance {
-
-    // Resets the once_token so dispatch_once will run again
     onceToken = 0;
     sharedInstance = nil;
 }
@@ -57,46 +117,67 @@ static dispatch_once_t onceToken;
 }
 
 - (void)registerForRemoteNotifications {
-    if (NSClassFromString(@"UNUserNotificationCenter")) {
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        UNAuthorizationOptions authOptions =
-            (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
-        [center requestAuthorizationWithOptions:authOptions
-                              completionHandler:^(BOOL granted, NSError *_Nullable error) {
-                                if (granted) {
-                                    NSLog(@"Push notifications authorization was granted.");
-                                } else {
-                                    NSLog(@"Push notifications authorization was denied.");
-                                }
-                                if (error) {
-                                    NSLog(@"Push notifications authorization request has been finished with error: %@", error.localizedDescription);
-                                }
-                              }];
-    } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations" // Mac Catalyst warnings
-        UIUserNotificationType allNotificationTypes =
-            (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-#pragma clang diagnostic pop
-    }
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    UNAuthorizationOptions authOptions =
+        (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
+    [center
+        requestAuthorizationWithOptions:authOptions
+                      completionHandler:^(BOOL granted, NSError *_Nullable error) {
+                        if (granted) {
+                            NSLog(@"Push notifications authorization was granted.");
+                        } else {
+                            NSLog(@"Push notifications authorization was denied.");
+                        }
+                        if (error) {
+                            NSLog(@"Push notifications authorization request has been finished with error: %@", error.localizedDescription);
+                        }
+                      }];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
+#pragma mark UIApplicationDelegate
 
-- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    // Do not send message if SDK is disabled
-    if (![self isEnabled]) {
-        return;
-    }
-    
-    MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithUserInfo:userInfo];
-    [self didReceivePushNotification:message fetchCompletionHandler:completionHandler];
++ (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[MSNotificationHub sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
-#pragma mark Instance Callbacks
++ (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [[MSNotificationHub sharedInstance] didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
++ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [[MSNotificationHub sharedInstance] didReceiveRemoteNotification:userInfo fromUserNotification:NO];
+}
+
+- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fromUserNotification:(BOOL)userNotification {
+
+#if !TARGET_OS_OSX
+    (void)userNotification;
+#endif
+
+    // Do not send message if SDK is disabled
+    if (![self isEnabled]) {
+        NSLog(@"Notification received while the SDK was ]enabled but it is disabled now, discard the notification.");
+        return;
+    }
+
+#if TARGET_OS_OSX
+    if ([NSApp isActive] || userNotification) {
+#endif
+        MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithUserInfo:userInfo];
+
+        [self didReceivePushNotification:message];
+#if TARGET_OS_OSX
+    } else {
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = (NSString *)title;
+        notification.informativeText = (NSString *)message;
+        notification.userInfo = userInfo;
+        NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+        [center deliverNotification:notification];
+    }
+#endif
+}
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *pushToken = [self convertTokenToString:deviceToken];
@@ -116,28 +197,15 @@ static dispatch_once_t onceToken;
     NSLog(@"Registering for push notifications has been finished with error: %@", error.localizedDescription);
 }
 
-- (void)didReceivePushNotification:(MSNotificationHubMessage *)notification
-            fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+#pragma mark Delegate Forwarding
+
+- (void)didReceivePushNotification:(MSNotificationHubMessage *)notification {
     dispatch_async(dispatch_get_main_queue(), ^{
       id<MSNotificationHubDelegate> delegate = self.delegate;
-      if ([delegate respondsToSelector:@selector(notificationHub:didReceivePushNotification:fetchCompletionHandler:)]) {
-          [delegate notificationHub:self didReceivePushNotification:notification fetchCompletionHandler:completionHandler];
+      if ([delegate respondsToSelector:@selector(notificationHub:didReceivePushNotification:)]) {
+          [delegate notificationHub:self didReceivePushNotification:notification];
       }
     });
-}
-
-#pragma mark Register Callbacks
-
-+ (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [[MSNotificationHub sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-}
-
-+ (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [[MSNotificationHub sharedInstance] didFailToRegisterForRemoteNotificationsWithError:error];
-}
-
-+ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    return [[MSNotificationHub sharedInstance] didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
 #pragma mark SDK Basics
@@ -158,9 +226,18 @@ static dispatch_once_t onceToken;
     [MSLocalStorage setEnabled:isEnabled];
 
     if (isEnabled) {
+#if TARGET_OS_OSX
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidFinishLaunching:)
+                                                     name:NSApplicationDidFinishLaunchingNotification
+                                                   object:nil];
+#endif
         [self upsertInstallation:[self getInstallation]];
         NSLog(@"Notification Hubs SDK has been enabled");
     } else {
+#if TARGET_OS_OSX
+        [[MSAppDelegateForwarder sharedInstance] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
+#endif
         NSLog(@"Notification Hub SDK has been disabled");
     }
 }

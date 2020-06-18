@@ -24,8 +24,6 @@
     [MSNotificationHub setLifecycleDelegate: self];
     [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
     
-    [self addTags];
-    
     return YES;
 }
 
@@ -59,18 +57,6 @@
 
 - (void)notificationHub:(MSNotificationHub *)notificationHub didFailToSaveInstallation:(MSInstallation *)installation withError:(NSError *)error {
     NSLog(@"didFailToSaveInstallationWithError: %@", error.userInfo);
-}
-
-- (void)addTags {
-    // Get language and country code for common tag values
-    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
-    NSString *countryCode = [[NSLocale currentLocale] countryCode];
-    
-    // Create tags with type_value format
-    NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
-    NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
-    
-    [MSNotificationHub addTags:@[languageTag, countryCodeTag]];
 }
 
 #pragma mark - UISceneSession lifecycle

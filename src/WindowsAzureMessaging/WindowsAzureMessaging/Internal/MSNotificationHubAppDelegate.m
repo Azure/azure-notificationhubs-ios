@@ -44,15 +44,21 @@ static dispatch_once_t onceToken;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-      [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
                                                                               didRegisterForRemoteNotificationsWithDeviceToken:)
                                                                   inClass:[delegate class]];
-      [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
                                                                               didFailToRegisterForRemoteNotificationsWithError:)
                                                                   inClass:[delegate class]];
-      [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
+        
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
+                                                                              didReceiveRemoteNotification:)
+                                                                  inClass:[delegate class]];
+#if !TARGET_OS_OSX
+        [[MSNotificationHubAppDelegate sharedInstance] swizzleImplForMethod:@selector(application:
                                                                               didReceiveRemoteNotification:fetchCompletionHandler:)
                                                                   inClass:[delegate class]];
+#endif
     });
 
     ((void (*)(id, SEL, id<UIApplicationDelegate>))originalSetDelegateImp)(self, _cmd, delegate);
@@ -104,9 +110,17 @@ static dispatch_once_t onceToken;
 }
 
 - (void)custom_application:(UIApplication *)application
+    didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [MSNotificationHub didReceiveRemoteNotification:userInfo];
+}
+
+#if !TARGET_OS_OSX
+- (void)custom_application:(UIApplication *)application
     didReceiveRemoteNotification:(NSDictionary *)userInfo
           fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    [MSNotificationHub didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+    [MSNotificationHub didReceiveRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNoData);
 }
+#endif
 
 @end

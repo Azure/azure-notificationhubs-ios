@@ -8,7 +8,6 @@
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,17 +32,16 @@ NS_ASSUME_NONNULL_BEGIN
  * Policy, and Hub Name.
  * @param connectionString The connection string
  */
-+ (void)startWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
++ (void)startWithConnectionString:(NSString *)connectionString
+                          hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
 
-#pragma mark Push Initialization
+#pragma mark UIApplicationDelegate
 
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 + (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-+ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
++ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo;
 
-- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
-- (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+#pragma mark Initialization
 
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate;
 

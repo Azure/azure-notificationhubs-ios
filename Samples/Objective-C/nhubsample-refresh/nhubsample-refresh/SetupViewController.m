@@ -28,6 +28,7 @@
     
     [MSNotificationHub setDelegate:self];
 
+    [self addTags];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -66,7 +67,7 @@
     }
 }
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler  {
+- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification {
     NSLog(@"Received notification: %@: %@", notification.title, notification.body);
     [self.notificationsTableView addNotification:notification];
     
@@ -79,7 +80,18 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [alertController dismissViewControllerAnimated:YES completion: nil];
     });
-    completionHandler(UIBackgroundFetchResultNoData);
+}
+
+- (void)addTags {
+    // Get language and country code for common tag values
+    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSString *countryCode = [[NSLocale currentLocale] countryCode];
+    
+    // Create tags with type_value format
+    NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
+    NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
+    
+    [MSNotificationHub addTags:@[languageTag, countryCodeTag]];
 }
 
 
