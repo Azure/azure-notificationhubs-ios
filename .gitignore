@@ -78,12 +78,12 @@ fastlane/test_output
 iOSInjectionProject/
 
 # Project specific
-src/WindowsAzureMessaging/BVT/RunTests.sh
-src/WindowsAzureMessaging/BVT/GHUnitIOS.framework
-src/WindowsAzureMessaging/BVT/WindowsAzureMessaging.framework
-src/WindowsAzureMessaging/BVT/IosSdkTests/Default.png
-src/WindowsAzureMessaging/BVT/IosSdkTests/Default-568h@2x.png
-src/WindowsAzureMessaging/BVT/IosSdkTests/Default@2x.png
+WindowsAzureMessaging/BVT/RunTests.sh
+WindowsAzureMessaging/BVT/GHUnitIOS.framework
+WindowsAzureMessaging/BVT/WindowsAzureMessaging.framework
+WindowsAzureMessaging/BVT/IosSdkTests/Default.png
+WindowsAzureMessaging/BVT/IosSdkTests/Default-568h@2x.png
+WindowsAzureMessaging/BVT/IosSdkTests/Default@2x.png
 
 # macOS specific below
 .DS_Store

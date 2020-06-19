@@ -1,0 +1,10 @@
+#include "./Framework.xcconfig"
+
+SDKROOT = macosx
+ARCHS = x86_64
+VALID_ARCHS = $(ARCHS) i386
+SKIP_INSTALL = YES
+
+NH_BUILD_PLATFORM = macOS
+
+OTHER_LDFLAGS = $(inherited) -framework AppKit 

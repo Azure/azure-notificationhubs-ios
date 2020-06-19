@@ -18,7 +18,7 @@ let package = Package(
     targets: [
         .target(
             name: "WindowsAzureMessaging",
-            path: "src/WindowsAzureMessaging/WindowsAzureMessaging",
+            path: "WindowsAzureMessaging/WindowsAzureMessaging",
             sources: sources,
             cSettings: sources.map { CSetting.headerSearchPath($0) }
         )

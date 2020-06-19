@@ -1,0 +1,12 @@
+#include "./Framework.xcconfig"
+
+SDKROOT = iphoneos
+TARGETED_DEVICE_FAMILY = 1,2
+SUPPORTS_MACCATALYST = YES
+ARCHS[sdk=iphoneos*] = $(ARCHS_STANDARD) armv7s arm64e
+SKIP_INSTALL = YES
+
+NH_BUILD_PLATFORM = iOS
+SUPPORTS_MACCATALYST = YES
+
+OTHER_LDFLAGS = $(inherited) -framework UIKit
