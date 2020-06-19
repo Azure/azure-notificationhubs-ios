@@ -157,8 +157,9 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 #if TARGET_OS_OSX
 - (BOOL)didReceiveUserNotification:(NSUserNotification *)notification {
-  if (notification && [self didReceiveRemoteNotification:notification.userInfo fromUserNotification:YES]) {
-    NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+  if (notification) {
+      [self didReceiveRemoteNotification:notification.userInfo fromUserNotification:YES];
+      NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
 
     // The delivered notification should be removed.
     [center removeDeliveredNotification:notification];
@@ -278,7 +279,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
         NSLog(@"Notification Hubs SDK has been enabled");
     } else {
 #if TARGET_OS_OSX
-        [[MSAppDelegateForwarder sharedInstance] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
 #endif
         NSLog(@"Notification Hub SDK has been disabled");
     }

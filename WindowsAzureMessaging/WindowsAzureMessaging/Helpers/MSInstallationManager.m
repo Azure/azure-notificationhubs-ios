@@ -16,7 +16,7 @@
 #else
 #import <UIKit/UIKit.h>
 #endif
-NSString *const kSDKVersion = @"3.0.0-preview2";
+
 NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
 NSString *const kAPIVersion = @"2017-04";
 
@@ -83,11 +83,9 @@ NSString *const kAPIVersion = @"2017-04";
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
-    // TODO: Read version from somewhere else
-    NSString *sdkVersion = kSDKVersion;
+    NSString *sdkVersion = [NSString stringWithUTF8String:NH_C_VERSION];
 
-    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, sdkVersion, [[UIDevice currentDevice] systemName],
-                                                     [[UIDevice currentDevice] systemVersion]];
+    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, sdkVersion, [self getOsName], [self getOsVersion]];
 
     NSDictionary *headers =
         @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken, @"User-Agent" : userAgent};

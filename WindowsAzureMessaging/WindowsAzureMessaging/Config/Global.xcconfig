@@ -23,7 +23,6 @@ GCC_C_LANGUAGE_STANDARD = gnu99
 
 // :Mark: Search paths
 ALWAYS_SEARCH_USER_PATHS = NO
-//USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../AppCenter/AppCenter"/**
 
 // :Mark: Code signing
 CODE_SIGN_IDENTITY =
@@ -60,7 +59,7 @@ OTHER_CFLAGS[config=Release][sdk=appletvos*] = $(OTHER_CFLAGS) -fembed-bitcode
 APPLICATION_EXTENSION_API_ONLY = YES;
 
 // :Mark: GCC_PREPROCESSOR_DEFINITIONS
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) APP_CENTER_C_VERSION="\""$(VERSION_STRING)"\"" APP_CENTER_C_BUILD="\""$(BUILD_NUMBER)"\""
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) NH_C_VERSION="\""$(VERSION_STRING)"\"" NH_C_BUILD="\""$(BUILD_NUMBER)"\""
 
 // :Mark: Configuration of warnings. We're listing every warning that we disabled and explain the reason why.
 //

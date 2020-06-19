@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -25,6 +25,7 @@
 				4C61C8AC249D1E2100A81418 /* Build Universal Framework */,
 			);
 			dependencies = (
+				4C61C8CD249D342600A81418 /* PBXTargetDependency */,
 			);
 			name = "WindowsAzureMessaging macOS Fat Framework";
 			productName = "WindowsAzureMessaging macOS Fat Framework";
@@ -309,6 +310,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 087601E113440806001B439B;
 			remoteInfo = OCHamcrest;
+		};
+		4C61C8CC249D342600A81418 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 906E402F16A86A3200817A11 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C42DDAF249AFDF400454E25;
+			remoteInfo = "WindowsAzureMessaging macOS Framework";
 		};
 		B300E30C24583A90008A32DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1443,6 +1451,12 @@
 			isa = PBXTargetDependency;
 			name = OCHamcrest;
 			targetProxy = 4C61C8A8249D1DBE00A81418 /* PBXContainerItemProxy */;
+		};
+		4C61C8CD249D342600A81418 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = maccatalyst;
+			target = 4C42DDAF249AFDF400454E25 /* WindowsAzureMessaging macOS Framework */;
+			targetProxy = 4C61C8CC249D342600A81418 /* PBXContainerItemProxy */;
 		};
 		B300E30D24583A90008A32DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
