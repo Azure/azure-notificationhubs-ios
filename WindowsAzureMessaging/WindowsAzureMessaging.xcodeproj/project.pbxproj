@@ -11,6 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 4C4F76C0249C429800B8F71A /* Build configuration list for PBXAggregateTarget "WindowsAzureMessage iOS Fat Framework" */;
 			buildPhases = (
+				4C61C8A2249D1CD900A81418 /* Build Universal Framework */,
 			);
 			dependencies = (
 			);
@@ -21,6 +22,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 4C4F76C2249C42E400B8F71A /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging macOS Fat Framework" */;
 			buildPhases = (
+				4C61C8AC249D1E2100A81418 /* Build Universal Framework */,
 			);
 			dependencies = (
 			);
@@ -94,6 +96,8 @@
 		4C42DDF7249B07A800454E25 /* MSApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C42DDF4249B07A800454E25 /* MSApplication.h */; };
 		4C5FDD00249542DB00824C82 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5FDCFB249542A300824C82 /* OCHamcrest.framework */; };
 		4C5FDD1C2495437100824C82 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5FDD112495433800824C82 /* OHHTTPStubs.framework */; };
+		4C61C8AA249D1DCE00A81418 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5FDCF3249542A300824C82 /* OCHamcrest.framework */; };
+		4C61C8AB249D1DE300A81418 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D111A3246AD033004CDF56 /* OCMock.framework */; };
 		4C7BF48F2474764400B8DF8A /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7BF48D2474764400B8DF8A /* MSTagHelper.h */; };
 		4C7BF4992474779900B8DF8A /* MSTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BF4972474779900B8DF8A /* MSTagHelper.m */; };
 		4C7BF49B24747F6C00B8DF8A /* MSInstallationTemplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BF49A24747F6C00B8DF8A /* MSInstallationTemplateTests.m */; };
@@ -277,6 +281,34 @@
 			proxyType = 2;
 			remoteGlobalIDString = EA100AB71BE15BE400129352;
 			remoteInfo = "OHHTTPStubs tvOS Fmk Tests";
+		};
+		4C61C89E249D1C9A00A81418 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F0B950F01B0080BE00942C38;
+			remoteInfo = "OCMock iOS";
+		};
+		4C61C8A0249D1CA200A81418 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 24C5BFE81C1777D900C2BAFD;
+			remoteInfo = "OCHamcrest-iOS";
+		};
+		4C61C8A6249D1DAF00A81418 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D11198246AD032004CDF56 /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 030EF0A714632FD000B04273;
+			remoteInfo = OCMock;
+		};
+		4C61C8A8249D1DBE00A81418 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5FDCE8249542A300824C82 /* OCHamcrest.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 087601E113440806001B439B;
+			remoteInfo = OCHamcrest;
 		};
 		B300E30C24583A90008A32DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -476,6 +508,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C61C8AB249D1DE300A81418 /* OCMock.framework in Frameworks */,
+				4C61C8AA249D1DCE00A81418 /* OCHamcrest.framework in Frameworks */,
 				4C42DDB9249AFDF400454E25 /* WindowsAzureMessaging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -880,6 +914,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35B4DBD222268CB900EAC781 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging iOS Framework" */;
 			buildPhases = (
+				4C61C887249C4F4400A81418 /* Verify No Build Settings */,
 				35B4DBC622268CB900EAC781 /* Headers */,
 				35B4DBC722268CB900EAC781 /* Sources */,
 				35B4DBC822268CB900EAC781 /* Frameworks */,
@@ -902,6 +937,7 @@
 				4C42DDAC249AFDF400454E25 /* Sources */,
 				4C42DDAD249AFDF400454E25 /* Frameworks */,
 				4C42DDAE249AFDF400454E25 /* Resources */,
+				4C61C8A3249D1D4700A81418 /* Verify No Build Settings */,
 			);
 			buildRules = (
 			);
@@ -923,6 +959,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				4C61C8A9249D1DBE00A81418 /* PBXTargetDependency */,
+				4C61C8A7249D1DAF00A81418 /* PBXTargetDependency */,
 				4C42DDBB249AFDF400454E25 /* PBXTargetDependency */,
 			);
 			name = "WindowsAzureMessaging macOS FrameworkTests";
@@ -941,6 +979,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				4C61C8A1249D1CA200A81418 /* PBXTargetDependency */,
+				4C61C89F249D1C9A00A81418 /* PBXTargetDependency */,
 				B300E30D24583A90008A32DA /* PBXTargetDependency */,
 			);
 			name = "WindowsAzureMessaging iOS Tests";
@@ -1213,6 +1253,85 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4C61C887249C4F4400A81418 /* Verify No Build Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Verify No Build Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/VerifyNoBuildSettings.swift\" ${PROJECT_NAME}.xcodeproj/project.pbxproj\n";
+			showEnvVarsInLog = 0;
+		};
+		4C61C8A2249D1CD900A81418 /* Build Universal Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Universal Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/build-ios-framework.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C61C8A3249D1D4700A81418 /* Verify No Build Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Verify No Build Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/VerifyNoBuildSettings.swift\" ${PROJECT_NAME}.xcodeproj/project.pbxproj\n";
+			showEnvVarsInLog = 0;
+		};
+		4C61C8AC249D1E2100A81418 /* Build Universal Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Universal Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/build-macos-framework.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35B4DBC722268CB900EAC781 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1305,6 +1424,26 @@
 			target = 4C42DDAF249AFDF400454E25 /* WindowsAzureMessaging macOS Framework */;
 			targetProxy = 4C42DDBA249AFDF400454E25 /* PBXContainerItemProxy */;
 		};
+		4C61C89F249D1C9A00A81418 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OCMock iOS";
+			targetProxy = 4C61C89E249D1C9A00A81418 /* PBXContainerItemProxy */;
+		};
+		4C61C8A1249D1CA200A81418 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OCHamcrest-iOS";
+			targetProxy = 4C61C8A0249D1CA200A81418 /* PBXContainerItemProxy */;
+		};
+		4C61C8A7249D1DAF00A81418 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OCMock;
+			targetProxy = 4C61C8A6249D1DAF00A81418 /* PBXContainerItemProxy */;
+		};
+		4C61C8A9249D1DBE00A81418 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OCHamcrest;
+			targetProxy = 4C61C8A8249D1DBE00A81418 /* PBXContainerItemProxy */;
+		};
 		B300E30D24583A90008A32DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 35B4DBCA22268CB900EAC781 /* WindowsAzureMessaging iOS Framework */;
@@ -1359,18 +1498,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C056367249C0F2E0018416F /* iOS.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S4V3D7CHJR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		4C4F76A9249C429800B8F71A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S4V3D7CHJR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1378,18 +1511,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C056366249C0E760018416F /* macOS.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S4V3D7CHJR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		4C4F76C4249C42E400B8F71A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S4V3D7CHJR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
