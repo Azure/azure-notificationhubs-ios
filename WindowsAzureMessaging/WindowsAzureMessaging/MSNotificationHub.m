@@ -2,10 +2,13 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#import <Foundation/Foundation.h>
+
 #if TARGET_OS_OSX
 #import <AppKit/AppKit.h>
 #import <objc/runtime.h>
 #else
+#import <UIKit/UIKit.h>
 #import <UserNotifications/UserNotifications.h>
 #endif
 
