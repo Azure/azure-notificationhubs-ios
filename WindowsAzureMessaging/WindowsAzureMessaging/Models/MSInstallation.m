@@ -22,14 +22,14 @@
 @synthesize templates;
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:installationID forKey:@"installationID"];
-    [coder encodeObject:pushChannel forKey:@"pushChannel"];
-    [coder encodeObject:tags forKey:@"tags"];
-    [coder encodeObject:templates forKey:@"templates"];
+    [coder encodeObject:self.installationID forKey:@"installationID"];
+    [coder encodeObject:self.pushChannel forKey:@"pushChannel"];
+    [coder encodeObject:self.tags forKey:@"tags"];
+    [coder encodeObject:self.templates forKey:@"templates"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
-    if (self = [super init]) {
+    if ((self = [super init]) != nil) {
         installationID = [coder decodeObjectForKey:@"installationID"] ?: [[NSUUID UUID] UUIDString];
         pushChannel = [coder decodeObjectForKey:@"pushChannel"];
         tags = [coder decodeObjectForKey:@"tags"];
@@ -42,7 +42,7 @@
 }
 
 - (instancetype)init {
-    if (self = [super init]) {
+    if ((self = [super init]) != nil) {
         installationID = [[NSUUID UUID] UUIDString];
         tags = [NSSet new];
         isDirty = NO;
@@ -53,7 +53,7 @@
 }
 
 - (instancetype)initWithDeviceToken:(NSString *)deviceToken {
-    if (self = [self init]) {
+    if ((self = [self init]) != nil) {
         pushChannel = deviceToken;
     }
 
@@ -85,20 +85,21 @@
 }
 
 - (NSData *)toJsonData {
-    NSMutableDictionary *templates = [NSMutableDictionary new];
-    for (NSString *key in [templates allKeys]) {
-        [templates setObject:[[templates objectForKey:key] toDictionary] forKey:key];
-    };
+    NSMutableDictionary *jsonTemplates = [NSMutableDictionary new];
+    for (NSString *key in [self.templates allKeys]) {
+        MSInstallationTemplate *template = [self.templates objectForKey:key];
+        [jsonTemplates setObject:[template toDictionary] forKey:key];
+    }
 
     NSMutableDictionary *dictionary = [NSMutableDictionary
         dictionaryWithDictionary:@{@"installationId" : self.installationID, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
 
-    if (tags && [tags count] > 0) {
+    if (self.tags && [self.tags count] > 0) {
         [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:@"tags"];
     }
 
-    if (templates && [templates count] > 0) {
-        [dictionary setObject:templates forKey:@"templates"];
+    if (self.templates && [self.templates count] > 0) {
+        [dictionary setObject:self.templates forKey:@"templates"];
     }
 
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
@@ -108,7 +109,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"isDirty"]) {
-        isDirty = YES;
+        self.isDirty = YES;
     }
 }
 
@@ -123,7 +124,7 @@
 }
 
 - (BOOL)addTags:(NSArray<NSString *> *)tagsToAdd {
-    NSArray *invalidTags = [tagsToAdd filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    NSArray *invalidTags = [tagsToAdd filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, __unused NSDictionary *bindings) {
         return !isValidTag(evaluatedObject);
     }]];
                              
@@ -131,11 +132,11 @@
          return NO;
      }
     
-    NSMutableSet *tmpTags = [NSMutableSet setWithSet:tags];
+    NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
     [tmpTags addObjectsFromArray:tagsToAdd];
-    isDirty = YES;
+    self.isDirty = YES;
 
-    tags = [tmpTags copy];
+    self.tags = [tmpTags copy];
     return YES;
 }
 
@@ -144,32 +145,32 @@
 }
 
 - (BOOL)removeTags:(NSArray<NSString *> *)tagsToRemove {
-    NSMutableSet *tmpTags = [NSMutableSet setWithSet:tags];
+    NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
 
     BOOL hasTags = [[NSSet setWithArray:tagsToRemove] intersectsSet:tmpTags];
     if (!hasTags) {
         return NO;
     }
     
-    if (hasTags && !isDirty) {
-        isDirty = YES;
+    if (hasTags && !self.isDirty) {
+        self.isDirty = YES;
     }
 
     [tmpTags minusSet:[NSSet setWithArray:tagsToRemove]];
 
-    tags = [tmpTags copy];
+    self.tags = [tmpTags copy];
     return YES;
 }
 
 - (void)clearTags {
-    if (tags.count == 0) {
+    if (self.tags.count == 0) {
         return;
     }
     
-    if (!isDirty && tags.count > 0) {
-        isDirty = YES;
+    if (!self.isDirty && self.tags.count > 0) {
+        self.isDirty = YES;
     }
-    tags = [NSSet new];
+    self.tags = [NSSet new];
 }
 
 #pragma mark Templates
@@ -209,9 +210,7 @@
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
     BOOL isInstallationsIdEqual = [self.installationID isEqualToString:installation.installationID];
     BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
-    // We have to check for nil values
-    BOOL isTemplatesDictionaryEqual =
-        self.templates == installation.templates ?: [self.templates isEqualToDictionary:installation.templates];
+    BOOL isTemplatesDictionaryEqual = ((!self.templates && !installation.templates) || [self.templates isEqualToDictionary:installation.templates]);
     return isInstallationsIdEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
 }
 
@@ -220,7 +219,7 @@
         return YES;
     }
 
-    if (![object isKindOfClass:[MSInstallation class]]) {
+    if (![(NSObject *)object isKindOfClass:[MSInstallation class]]) {
         return NO;
     }
 

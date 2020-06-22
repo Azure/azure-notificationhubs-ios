@@ -4,6 +4,7 @@
 
 #import "MSNotificationHub.h"
 #import "MSNotificationHubDelegate.h"
+#import "MSDebounceInstallationManager.h"
 #import <Foundation/Foundation.h>
 
 @protocol MSCustomApplicationDelegate;
@@ -15,6 +16,8 @@
 #endif
 
 @property(nonatomic) id<MSNotificationHubDelegate> delegate;
+
+@property(nonatomic) MSDebounceInstallationManager *debounceInstallationManager;
 
 #if TARGET_OS_OSX
 @property(nonatomic) id<NSUserNotificationCenterDelegate> originalUserNotificationCenterDelegate;

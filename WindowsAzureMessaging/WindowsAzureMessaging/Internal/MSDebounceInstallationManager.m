@@ -3,6 +3,7 @@
 //----------------------------------------------------------------
 
 #import "MSDebounceInstallationManager.h"
+#import "MSDebounceInstallationManager+Private.h"
 #import "MSInstallation.h"
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
@@ -10,7 +11,7 @@
 @implementation MSDebounceInstallationManager
 
 - (instancetype)initWithInterval:(double)interval installationManager:(MSInstallationManager *)installationManager {
-    if (self = [super init]) {
+    if ((self = [super init]) != nil) {
         _interval = interval;
         _installationManager = installationManager;
     }
@@ -22,30 +23,30 @@
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
     withManagementHandler:(InstallationManagementHandler)managementHandler
         completionHandler:(InstallationCompletionHandler)completionHandler {
-    if (_debounceTimer != nil) {
-        [_debounceTimer invalidate];
+    if (self.debounceTimer != nil) {
+        [self.debounceTimer invalidate];
     }
 
-    _enrichmentHandler = enrichmentHandler;
-    _managementHandler = managementHandler;
-    _completionHandler = completionHandler;
+    self.enrichmentHandler = enrichmentHandler;
+    self.managementHandler = managementHandler;
+    self.completionHandler = completionHandler;
 
-    _debounceTimer = [NSTimer scheduledTimerWithTimeInterval:_interval
+    self.debounceTimer = [NSTimer scheduledTimerWithTimeInterval:self.interval
                                                       target:self
                                                     selector:@selector(execute)
                                                     userInfo:installation
                                                      repeats:false];
-    [[NSRunLoop mainRunLoop] addTimer:_debounceTimer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop mainRunLoop] addTimer:self.debounceTimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)execute {
     MSInstallation *lastInstallation = [MSLocalStorage loadLastInstallation];
-    MSInstallation *installation = [_debounceTimer userInfo];
+    MSInstallation *installation = [self.debounceTimer userInfo];
     if (![installation isEqual:lastInstallation]) {
-        [_installationManager saveInstallation:installation
-                         withEnrichmentHandler:_enrichmentHandler
-                         withManagementHandler:_managementHandler
-                             completionHandler:_completionHandler];
+        [self.installationManager saveInstallation:installation
+                             withEnrichmentHandler:self.enrichmentHandler
+                             withManagementHandler:self.managementHandler
+                                 completionHandler:self.completionHandler];
     }
 }
 

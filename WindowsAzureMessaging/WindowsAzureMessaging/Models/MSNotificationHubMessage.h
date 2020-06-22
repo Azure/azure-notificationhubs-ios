@@ -4,12 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MSNotificationHubMessage : NSObject {
-  @private
-    NSString *_title;
-    NSString *_body;
-    NSDictionary *_userInfo;
-}
+@interface MSNotificationHubMessage : NSObject
 
 /**
  * Notification title.
@@ -25,7 +20,5 @@
  * Notification data.
  */
 @property(nonatomic, readonly) NSDictionary *userInfo;
-
-- (instancetype)initWithUserInfo:(NSDictionary *)userInfo;
 
 @end

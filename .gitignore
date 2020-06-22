@@ -5,6 +5,7 @@
 ## Build generated
 WindowsAzureMessaging/iOS/
 WindowsAzureMessaging/macOS/
+WindowsAzureMessaging/XCFramework/
 build/
 DerivedData/
 

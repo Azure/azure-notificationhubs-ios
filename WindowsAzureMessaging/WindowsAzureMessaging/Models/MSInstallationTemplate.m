@@ -20,7 +20,7 @@
 @synthesize isDirty;
 
 - (instancetype)init {
-    if (self = [super init]) {
+    if ((self = [super init]) != nil) {
         tags = [NSSet new];
         headers = [NSDictionary new];
         [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
@@ -29,7 +29,7 @@
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
-    if (self = [super init]) {
+    if ((self = [super init]) != nil) {
         body = [coder decodeObjectForKey:@"body"] ?: @"";
         tags = [coder decodeObjectForKey:@"tags"];
         headers = [coder decodeObjectForKey:@"headers"];
@@ -48,7 +48,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"isDirty"]) {
-        isDirty = YES;
+        self.isDirty = YES;
     }
 }
 
@@ -63,7 +63,7 @@
 }
 
 - (BOOL)addTags:(NSArray<NSString *> *)tagsToAdd {
-    NSArray *invalidTags = [tagsToAdd filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    NSArray *invalidTags = [tagsToAdd filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, __unused NSDictionary *bindings) {
         return !isValidTag(evaluatedObject);
     }]];
                              
@@ -73,9 +73,9 @@
     
     NSMutableSet *tmpTags = [NSMutableSet setWithSet:self.tags];
     [tmpTags addObjectsFromArray:tagsToAdd];
-    isDirty = YES;
+    self.isDirty = YES;
 
-    tags = [tmpTags copy];
+    self.tags = [tmpTags copy];
     return YES;
 }
 
@@ -92,48 +92,48 @@
         return NO;
     }
     
-    if (hasTags && !isDirty) {
-        isDirty = YES;
+    if (hasTags && !self.isDirty) {
+        self.isDirty = YES;
     }
 
     [tmpTags minusSet:[NSSet setWithArray:tagsToRemove]];
 
-    tags = [tmpTags copy];
+    self.tags = [tmpTags copy];
     return YES;
 }
 
 - (void)clearTags {
-    if (tags.count == 0) {
+    if (self.tags.count == 0) {
         return;
     }
     
-    if (!isDirty && tags.count > 0) {
-        isDirty = YES;
+    if (!self.isDirty && self.tags.count > 0) {
+        self.isDirty = YES;
     }
-    tags = [NSSet new];
+    self.tags = [NSSet new];
 }
 
 #pragma mark Headers
 
 - (void)setHeaderValue:(NSString *)value forKey:(NSString *)key {
-    NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
+    NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:self.headers];
     [tmpHeaders setObject:value forKey:key];
-    isDirty = YES;
-    headers = [tmpHeaders copy];
+    self.isDirty = YES;
+    self.headers = [tmpHeaders copy];
 }
 
 - (void)removeHeaderValueForKey:(NSString *)key {
-    NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
-    if (!isDirty && [tmpHeaders objectForKey:key]) {
-        isDirty = YES;
+    NSMutableDictionary *tmpHeaders = [NSMutableDictionary dictionaryWithDictionary:self.headers];
+    if (!self.isDirty && [tmpHeaders objectForKey:key]) {
+        self.isDirty = YES;
     }
 
     [tmpHeaders removeObjectForKey:key];
-    headers = [tmpHeaders copy];
+    self.headers = [tmpHeaders copy];
 }
 
 - (NSString *)getHeaderValueForKey:(NSString *)key {
-    return [headers objectForKey:key];
+    return [self.headers objectForKey:key];
 }
 
 #pragma mark Equality
@@ -147,7 +147,7 @@
         return YES;
     }
 
-    if (![object isKindOfClass:[MSInstallationTemplate class]]) {
+    if (![(NSObject *)object isKindOfClass:[MSInstallationTemplate class]]) {
         return NO;
     }
 
@@ -155,24 +155,23 @@
 }
 
 - (BOOL)isEqualToMSInstallationTemplate:(MSInstallationTemplate *)template {
-    // We have to check for nil values
-    BOOL isBodyEqual = body == template.body || [body isEqualToString:template.body];
-    BOOL isTagsSetEqual = [tags isEqualToSet:template.tags];
-    BOOL isHeadersDictionaryEqual = [headers isEqualToDictionary:template.headers];
+    BOOL isBodyEqual = ((!self.body && !template.body) || [self.body isEqualToString:template.body]);
+    BOOL isTagsSetEqual = [self.tags isEqualToSet:template.tags];
+    BOOL isHeadersDictionaryEqual = [self.headers isEqualToDictionary:template.headers];
     return isBodyEqual && isTagsSetEqual && isHeadersDictionaryEqual;
 }
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:body forKey:@"body"];
-    [coder encodeObject:tags forKey:@"tags"];
-    [coder encodeObject:headers forKey:@"headers"];
+    [coder encodeObject:self.body forKey:@"body"];
+    [coder encodeObject:self.tags forKey:@"tags"];
+    [coder encodeObject:self.headers forKey:@"headers"];
 }
 
 - (NSDictionary *)toDictionary {
     return @{
-        @"body" : body,
-        @"tags" : [tags allObjects],
-        @"headers" : headers,
+        @"body" : self.body,
+        @"tags" : [self.tags allObjects],
+        @"headers" : self.headers,
     };
 }
 

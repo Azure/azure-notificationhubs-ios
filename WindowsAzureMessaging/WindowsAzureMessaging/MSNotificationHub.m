@@ -20,7 +20,8 @@
 #import "MSNotificationHubAppDelegate.h"
 #import "MSUserNotificationCenterDelegate.h"
 #import "MSNotificationHubMessage.h"
-#import "MSNotificationHubPrivate.h"
+#import "MSNotificationHubMessage+Private.h"
+#import "MSNotificationHub+Private.h"
 #import "MSTokenProvider.h"
 
 #if TARGET_OS_OSX
@@ -36,8 +37,10 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 @implementation MSNotificationHub
 
+@synthesize debounceInstallationManager;
+
 - (instancetype)init {
-    if ((self = [super init])) {
+    if ((self = [super init]) != nil) {
 #if TARGET_OS_OSX
         NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
 
@@ -112,10 +115,6 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
         setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2 installationManager:installationManager]];
 
     [[MSNotificationHub sharedInstance] registerForRemoteNotifications];
-}
-
-- (void)setDebounceInstallationManager:(MSDebounceInstallationManager *)debounceInstallationManager {
-    _debounceInstallationManager = debounceInstallationManager;
 }
 
 - (void)registerForRemoteNotifications {
@@ -327,7 +326,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
     [MSLocalStorage upsertInstallation:installation];
 
     if ([self isEnabled]) {
-        [_debounceInstallationManager saveInstallation:installation
+        [self.debounceInstallationManager saveInstallation:installation
             withEnrichmentHandler:^void() {
               id<MSInstallationEnrichmentDelegate> enrichmentDelegate = self.enrichmentDelegate;
               if ([enrichmentDelegate respondsToSelector:@selector(notificationHub:willEnrichInstallation:)]) {

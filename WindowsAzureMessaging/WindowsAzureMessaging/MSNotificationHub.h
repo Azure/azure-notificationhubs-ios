@@ -18,10 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * The Azure Notification Hubs service
  */
-@interface MSNotificationHub : NSObject {
-  @private
-    MSDebounceInstallationManager *_debounceInstallationManager;
-}
+@interface MSNotificationHub : NSObject
 
 @property(nonatomic, weak, nullable) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
 @property(nonatomic, weak, nullable) id<MSInstallationManagementDelegate> managementDelegate;

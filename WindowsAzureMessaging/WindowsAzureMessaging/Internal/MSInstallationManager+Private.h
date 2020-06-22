@@ -9,9 +9,16 @@
 
 @interface MSInstallationManager ()
 
-- (void)setHttpClient:(MSHttpClient *)httpClient;
+@property (nonatomic, copy) NSString *connectionString;
+
+@property (nonatomic, copy) NSString *hubName;
+
+@property (nonatomic, strong) MSTokenProvider *tokenProvider;
+
+@property (nonatomic, copy) NSDictionary *connectionDictionary;
 
 - (NSString *)getOsVersion;
 
 - (NSString *)getOsName;
+
 @end

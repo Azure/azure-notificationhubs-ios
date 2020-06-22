@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
 
 # Updates SDK version.
 # Usage: update-version.sh -v <new-version>
@@ -46,4 +45,4 @@ done
 sed -i '' "s/\(\.version[[:space:]]*= \)\'.*\'$/\1'$new_version'/1" $PODSPEC_FILE
 
 # Update SwiftPM version
-sed -i '' 's/\(define("APP_CENTER_C_VERSION",[[:space:]]*to:*\).*/\1''"\\"'$new_version'\\""),''/g' $SWIFTPM_FILE
+sed -i '' 's/\(define("NH_C_VERSION",[[:space:]]*to:*\).*/\1''"\\"'$new_version'\\""),''/g' $SWIFTPM_FILE

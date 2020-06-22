@@ -3,9 +3,9 @@
 //----------------------------------------------------------------
 
 #import "MSInstallationManager.h"
+#import "MSInstallationManager+Private.h"
 #import "MSHttpClient.h"
 #import "MSInstallation.h"
-#import "MSInstallationManagerPrivate.h"
 #import "MSLocalStorage.h"
 #import "MSNotificationHub.h"
 #import "MSTokenProvider.h"
@@ -17,18 +17,18 @@
 #import <UIKit/UIKit.h>
 #endif
 
-NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
-NSString *const kAPIVersion = @"2017-04";
+static NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
+static NSString *const kAPIVersion = @"2017-04";
 
 @implementation MSInstallationManager
 
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName {
-    if (self = [super init]) {
-        _connectionDictionary = [MSInstallationManager parseConnectionString:connectionString];
-        _tokenProvider = [MSTokenProvider createFromConnectionDictionary:_connectionDictionary];
-        _httpClient = [MSHttpClient new];
-        _connectionString = connectionString;
-        _hubName = hubName;
+    if ((self = [super init]) != nil) {
+        self.connectionDictionary = [MSInstallationManager parseConnectionString:connectionString];
+        self.tokenProvider = [MSTokenProvider createFromConnectionDictionary:_connectionDictionary];
+        self.httpClient = [MSHttpClient new];
+        self.connectionString = connectionString;
+        self.hubName = hubName;
     }
 
     return self;
@@ -64,7 +64,7 @@ NSString *const kAPIVersion = @"2017-04";
         return;
     }
 
-    if (!_tokenProvider) {
+    if (!self.tokenProvider) {
         NSString *msg = @"Invalid connection string";
         completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error" : msg}]);
         return;
@@ -76,11 +76,11 @@ NSString *const kAPIVersion = @"2017-04";
         return;
     }
 
-    NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
+    NSString *endpoint = [self.connectionDictionary objectForKey:@"endpoint"];
     NSString *url =
-        [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, kAPIVersion];
+    [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, self.hubName, installation.installationID, kAPIVersion];
 
-    NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
+    NSString *sasToken = [self.tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
     NSString *sdkVersion = [NSString stringWithUTF8String:NH_C_VERSION];
@@ -92,11 +92,11 @@ NSString *const kAPIVersion = @"2017-04";
 
     NSData *payload = [installation toJsonData];
 
-    [_httpClient sendAsync:requestUrl
+    [self.httpClient sendAsync:requestUrl
                     method:@"PUT"
                    headers:headers
                       data:payload
-         completionHandler:^(NSData *responseBody, NSHTTPURLResponse *response, NSError *error) {
+         completionHandler:^(NSData *responseBody __unused, NSHTTPURLResponse *response __unused, NSError *error) {
            completionHandler(error);
          }];
 }
@@ -107,7 +107,7 @@ NSString *const kAPIVersion = @"2017-04";
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
     NSString *previousLeft = @"";
-    for (int i = 0; i < [allField count]; i++) {
+    for (unsigned long i = 0; i < [allField count]; i++) {
         NSString *currentField = (NSString *)[allField objectAtIndex:i];
 
         if ((i + 1) < [allField count]) {
@@ -129,7 +129,7 @@ NSString *const kAPIVersion = @"2017-04";
             break;
         }
 
-        NSString *keyName = [[keyValuePairs objectAtIndex:0] lowercaseString];
+        NSString *keyName = [(NSString *)[keyValuePairs objectAtIndex:0] lowercaseString];
 
         NSString *keyValue = [currentField substringFromIndex:([keyName length] + 1)];
         if ([keyName isEqualToString:@"endpoint"]) {
@@ -143,7 +143,8 @@ NSString *const kAPIVersion = @"2017-04";
 }
 
 + (NSURL *)fixupEndpoint:(NSURL *)endPoint scheme:(NSString *)scheme {
-    NSString *modifiedEndpoint = [NSString stringWithString:[endPoint absoluteString]];
+    NSString *urlAbsoluteString = [endPoint absoluteString];
+    NSString *modifiedEndpoint = [NSString stringWithString:urlAbsoluteString];
 
     if (![modifiedEndpoint hasSuffix:@"/"]) {
         modifiedEndpoint = [NSString stringWithFormat:@"%@/", modifiedEndpoint];

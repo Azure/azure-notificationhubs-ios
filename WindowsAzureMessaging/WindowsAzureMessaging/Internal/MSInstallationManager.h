@@ -16,15 +16,9 @@ typedef void (^InstallationCompletionHandler)(NSError *_Nullable);
 typedef void (^InstallationEnrichmentHandler)(void);
 typedef BOOL (^InstallationManagementHandler)(InstallationCompletionHandler _Nonnull);
 
-@interface MSInstallationManager : NSObject {
-  @private
-    NSString *_connectionString;
-    NSString *_hubName;
-    MSTokenProvider *_tokenProvider;
-    NSDictionary *_connectionDictionary;
-}
+@interface MSInstallationManager : NSObject
 
-@property(nonatomic) MSHttpClient *httpClient;
+@property(nonatomic, strong) MSHttpClient *httpClient;
 
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
 - (void)saveInstallation:(MSInstallation *)installation

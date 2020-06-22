@@ -6,16 +6,8 @@
 
 @implementation MSNotificationHubMessage
 
-- (NSString *)getTitle {
-    return _title;
-}
-
-- (NSString *)getBody {
-    return _body;
-}
-
 - (instancetype)initWithUserInfo:(NSDictionary *)userInfo {
-    if (self = [super init]) {
+    if ((self = [super init]) != nil) {
         _userInfo = userInfo;
 
         NSDictionary *aps = [userInfo valueForKey:@"aps"];
