@@ -748,17 +748,17 @@
 				B3D2851D2456DFED00C78CC8 /* HttpClient */,
 				4C8546F7244F8DE9005F6B49 /* Models */,
 				A358370D16AA39850041E372 /* Helpers */,
+				1457AD5E24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h */,
+				14463F3C2477D22300A4024A /* MSInstallationManagementDelegate.h */,
+				14E58B1F247BB25B00EF4F0B /* MSInstallationLifecycleDelegate.h */,
+				4C854703244F9347005F6B49 /* MSNotificationHub.h */,
+				4C854705244FD64C005F6B49 /* MSNotificationHub.m */,
+				6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */,
 				A358371616AA39850041E372 /* SBConnectionString.h */,
 				A358371716AA39850041E372 /* SBConnectionString.m */,
 				A358371816AA39850041E372 /* SBNotificationHub.h */,
 				A358371916AA39850041E372 /* SBNotificationHub.m */,
 				906E404016A86A3200817A11 /* WindowsAzureMessaging.h */,
-				4C854703244F9347005F6B49 /* MSNotificationHub.h */,
-				4C854705244FD64C005F6B49 /* MSNotificationHub.m */,
-				6489DE0624598D5B0021CF36 /* MSNotificationHubDelegate.h */,
-				1457AD5E24759D9900AAD7FC /* MSInstallationEnrichmentDelegate.h */,
-				14463F3C2477D22300A4024A /* MSInstallationManagementDelegate.h */,
-				14E58B1F247BB25B00EF4F0B /* MSInstallationLifecycleDelegate.h */,
 			);
 			path = WindowsAzureMessaging;
 			sourceTree = "<group>";
