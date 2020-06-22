@@ -7,14 +7,16 @@
 
 @implementation SBURLConnection
 
-StaticHandleBlock _staticHandler;
+static StaticHandleBlock _staticHandler;
 
 + (void)setStaticHandler:(StaticHandleBlock)staticHandler {
     _staticHandler = staticHandler;
 }
 
 #pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdirect-ivar-access"
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#pragma GCC diagnostic ignored "-Wnullable-to-nonnull-conversion"
 - (void)sendRequest:(NSURLRequest *)request completion:(void (^)(NSHTTPURLResponse *, NSData *, NSError *))completion
 {
     if (self) {
@@ -45,8 +47,10 @@ StaticHandleBlock _staticHandler;
 #pragma GCC diagnostic pop
 
 #pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdirect-ivar-access"
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-- (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error {
+#pragma GCC diagnostic ignored "-Wnullable-to-nonnull-conversion"
+- (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse * __autoreleasing*)response error:(NSError * __autoreleasing*)error {
     if (_staticHandler != nil) {
         SBStaticHandlerResponse *mockResponse = _staticHandler(request);
         if (mockResponse != nil) {
@@ -62,6 +66,9 @@ StaticHandleBlock _staticHandler;
     return [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
 }
 #pragma GCC diagnostic pop
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdirect-ivar-access"
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     if (!self->_completion) {
@@ -121,5 +128,7 @@ StaticHandleBlock _staticHandler;
         self->_completion = nil;
     }
 }
+
+#pragma GCC diagnostic pop
 
 @end
