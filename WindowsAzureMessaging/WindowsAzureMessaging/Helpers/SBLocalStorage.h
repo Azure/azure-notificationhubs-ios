@@ -8,6 +8,8 @@
 @class SBRegistration;
 
 @interface SBLocalStorage : NSObject {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wobjc-interface-ivars"
   @private
     NSString *_path;
     NSMutableDictionary *_registrations;
@@ -15,6 +17,8 @@
     NSString *_deviceTokenKey;
     NSString *_registrationsKey;
 }
+
+#pragma GCC diagnostic pop
 
 @property(copy, nonatomic) NSString *deviceToken;
 @property(nonatomic) BOOL isRefreshNeeded;

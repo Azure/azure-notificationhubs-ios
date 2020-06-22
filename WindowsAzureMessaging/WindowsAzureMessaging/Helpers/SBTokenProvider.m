@@ -8,7 +8,7 @@
 
 @implementation SBTokenProvider
 
-const int defaultTimeToExpireinMins = 20;
+static const int defaultTimeToExpireinMins = 20;
 
 @synthesize timeToExpireinMins;
 
@@ -23,6 +23,9 @@ const int defaultTimeToExpireinMins = 20;
 
     return self;
 }
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdirect-ivar-access"
 
 - (BOOL)initMembersWithDictionary:(NSDictionary *)connectionDictionary {
     self->timeToExpireinMins = defaultTimeToExpireinMins;
@@ -73,7 +76,7 @@ const int defaultTimeToExpireinMins = 20;
     return TRUE;
 }
 
-- (BOOL)setTokenWithRequest:(NSMutableURLRequest *)request error:(NSError **)error {
+- (BOOL)setTokenWithRequest:(NSMutableURLRequest *)request error:(NSError * __autoreleasing *)error {
     NSString *token;
 
     if ([self->_sharedAccessKey length] > 0) {
@@ -174,6 +177,8 @@ const int defaultTimeToExpireinMins = 20;
         [self setSharedSecretTokenAsync:request completion:completion];
     }
 }
+
+#pragma GCC diagnostic pop
 
 - (void)setSharedAccessTokenWithRequest:(NSMutableURLRequest *)request completion:(void (^)(NSError *))completion {
     NSString *token = [self PrepareSharedAccessTokenWithUrl:[request URL]];

@@ -63,14 +63,14 @@ static dispatch_once_t onceToken;
     ((void (*)(id, SEL, id<UNUserNotificationCenterDelegate>))originalSetDelegateImp)(self, _cmd, delegate);
 }
 
-- (void)swizzleSetDelegate  API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
+- (void)swizzleSetDelegate API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
     SEL setDelegateSelector = @selector(setDelegate:);
     Class appClass = [UNUserNotificationCenter class];
     originalSetDelegateImp = class_getMethodImplementation(appClass, setDelegateSelector);
     [[MSUserNotificationCenterDelegate sharedInstance] swizzleImplForMethod:setDelegateSelector inClass:appClass];
 }
 
-- (void)swizzleImplForMethod:(SEL)originalSelector inClass:(Class)class {
+- (void)swizzleImplForMethod:(SEL)originalSelector inClass:(Class)class API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
     if (self.enabled) {
         Class swizzledClass = [MSUserNotificationCenterDelegate class];
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
@@ -102,14 +102,14 @@ static dispatch_once_t onceToken;
 
 - (void)custom_userNotificationCenter:(UNUserNotificationCenter *)center
           willPresentNotification:(UNNotification *)notification
-            withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+            withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
     [MSNotificationHub didReceiveRemoteNotification:notification.request.content.userInfo];
     completionHandler(UNNotificationPresentationOptionNone);
 }
 
 - (void)custom_userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
-         withCompletionHandler:(void (^)(void))completionHandler {
+         withCompletionHandler:(void (^)(void))completionHandler API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
     [MSNotificationHub didReceiveRemoteNotification:response.notification.request.content.userInfo];
     completionHandler();
 }

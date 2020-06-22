@@ -6,6 +6,8 @@
 
 @interface SBTokenProvider : NSObject {
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wobjc-interface-ivars"
   @private
     NSString *_sharedAccessKey;
     NSString *_sharedAccessKeyName;
@@ -14,6 +16,8 @@
     NSURL *_stsHostName;
     NSURL *_serviceEndPoint;
 }
+
+#pragma GCC diagnostic pop
 
 @property(nonatomic) NSInteger timeToExpireinMins;
 

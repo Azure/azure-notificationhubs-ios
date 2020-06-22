@@ -8,12 +8,16 @@
 #import "SBTokenProvider.h"
 
 @interface SBNotificationHub : NSObject {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wobjc-interface-ivars"
   @private
     NSString *_path;
     NSURL *_serviceEndPoint;
     SBTokenProvider *tokenProvider;
     SBLocalStorage *storageManager;
 }
+
+#pragma GCC diagnostic pop
 
 + (NSString *)version;
 

@@ -5,11 +5,15 @@
 #import "SBRegistration.h"
 
 @interface SBRegistrationParser : NSObject {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wobjc-interface-ivars"
   @private
     NSMutableArray *_allRegistrations;
     NSMutableString *_currentElementValue;
     SBRegistration *_currentRegistration;
 }
+
+#pragma GCC diagnostic pop
 
 - (SBRegistrationParser *)initParserWithResult:(NSMutableArray *)result;
 
