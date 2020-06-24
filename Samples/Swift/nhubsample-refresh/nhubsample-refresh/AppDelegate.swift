@@ -23,8 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
         MSNotificationHub.setEnrichmentDelegate(self)
         MSNotificationHub.setManagementDelegate(self)
         MSNotificationHub.setLifecycleDelegate(self)
-        MSNotificationHub.initWithConnectionString(connectionString!, hubName: hubName!)
-        MSNotificationHub.addTag("userAgent:com.example.nhubsample-refresh:1.0")
+        MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
+        
+        addTags()
         
         return true
     }
@@ -70,7 +71,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSInstallationEnrichmentD
     }
     
     func notificationHub(_ notificationHub: MSNotificationHub!, willEnrichInstallation installation: MSInstallation!) {
-        NSLog("willEnrichInstallation");
+        NSLog("willEnrichInstallation")
     }
 
+    // Adds some basic tags such as language and country
+    func addTags() {
+        // Get language and country code for common tag values
+        let language = Bundle.main.preferredLocalizations.first!
+        let countryCode = NSLocale.current.regionCode!
+        
+        // Create tags with type_value format
+        let languageTag = "language_" + language
+        let countryCodeTag = "country_" + countryCode
+        
+        MSNotificationHub.addTags([languageTag, countryCodeTag])
+    }
+    
 }

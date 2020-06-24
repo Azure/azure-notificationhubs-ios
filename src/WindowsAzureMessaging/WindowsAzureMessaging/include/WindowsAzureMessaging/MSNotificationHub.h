@@ -2,9 +2,6 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import "MSInstallationEnrichmentDelegate.h"
-#import "MSInstallationLifecycleDelegate.h"
-#import "MSInstallationManagementDelegate.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"
 #import <Foundation/Foundation.h>
@@ -15,25 +12,23 @@ NS_ASSUME_NONNULL_BEGIN
 @class MSInstallation;
 @class MSDebounceInstallationManager;
 @class MSInstallationTemplate;
-
 /**
  * The Azure Notification Hubs service
  */
 @interface MSNotificationHub : NSObject {
   @private
+    MSInstallation *_installation;
     MSDebounceInstallationManager *_debounceInstallationManager;
+    NSString *_hubName;
+    NSURL *_serviceEndpoint;
 }
-
-@property(nonatomic, weak, nullable) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
-@property(nonatomic, weak, nullable) id<MSInstallationManagementDelegate> managementDelegate;
-@property(nonatomic, weak, nullable) id<MSInstallationLifecycleDelegate> lifecycleDelegate;
 
 /**
  * Initializes the Notification Hub with the connection string from the Access
  * Policy, and Hub Name.
  * @param connectionString The connection string
  */
-+ (void)startWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
++ (void)setupWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName NS_SWIFT_NAME(setup(connectionString:hubName:));
 
 #pragma mark Push Initialization
 
@@ -53,9 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setEnabled:(BOOL)isEnabled;
 
 #pragma mark Installation Support
-
-+ (void)willSaveInstallation;
-- (void)willSaveInstallation;
 
 - (NSString *)getPushChannel;
 - (NSString *)getInstallationId;
@@ -84,18 +76,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
 + (BOOL)removeTemplateForKey:(NSString *)key;
 + (MSInstallationTemplate *)getTemplateForKey:(NSString *)key;
-+ (NSDictionary<NSString *, MSInstallationTemplate *> *)getTemplates;
 
 - (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
 - (BOOL)removeTemplateForKey:(NSString *)key;
 - (MSInstallationTemplate *)getTemplateForKey:(NSString *)key;
-- (NSDictionary<NSString *, MSInstallationTemplate *> *)getTemplates;
-
-#pragma mark Installation management support
-
-+ (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate;
-+ (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate;
-+ (void)setLifecycleDelegate:(nullable id<MSInstallationLifecycleDelegate>)lifecycleDelegate;
 
 @end
 

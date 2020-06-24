@@ -17,13 +17,14 @@
     NSDictionary *configValues = [NSDictionary dictionaryWithContentsOfFile:path];
     
     NSString *connectionString = [configValues objectForKey:@"connectionString"];
-    NSString *hubName = [configValues objectForKey:@"hubName"];
+    NSString *hubName = [configValues objectForKey:@"hubName"]  ;
     
     [MSNotificationHub setEnrichmentDelegate: self];
     [MSNotificationHub setManagementDelegate: self];
     [MSNotificationHub setLifecycleDelegate: self];
-    [MSNotificationHub initWithConnectionString:connectionString hubName:hubName];
-    [MSNotificationHub addTag:@"userAgent:com.example.nhubsample-refresh:1.0"];
+    [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
+    
+    [self addTags];
     
     return YES;
 }
@@ -58,6 +59,18 @@
 
 - (void)notificationHub:(MSNotificationHub *)notificationHub didFailToSaveInstallation:(MSInstallation *)installation withError:(NSError *)error {
     NSLog(@"didFailToSaveInstallationWithError: %@", error.userInfo);
+}
+
+- (void)addTags {
+    // Get language and country code for common tag values
+    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSString *countryCode = [[NSLocale currentLocale] countryCode];
+    
+    // Create tags with type_value format
+    NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
+    NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
+    
+    [MSNotificationHub addTags:@[languageTag, countryCodeTag]];
 }
 
 #pragma mark - UISceneSession lifecycle
