@@ -6,4 +6,5 @@ framework module WindowsAzureMessaging {
   
   link framework "Foundation"
   link framework "AppKit"
+  link framework "UserNotifications"
 }

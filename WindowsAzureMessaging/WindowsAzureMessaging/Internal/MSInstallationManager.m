@@ -10,7 +10,11 @@
 #import "MSNotificationHub.h"
 #import "MSTokenProvider.h"
 #import <Foundation/Foundation.h>
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#else
 #import <UIKit/UIKit.h>
+#endif
 
 static NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
 static NSString *const kAPIVersion = @"2017-04";
@@ -33,6 +37,22 @@ static NSString *const kAPIVersion = @"2017-04";
     }
 
     return self;
+}
+
+- (NSString *)getOsName {
+#if TARGET_OS_OSX
+    return @"macOS";
+#else
+    return [[UIDevice currentDevice] systemName];
+#endif
+}
+
+- (NSString *)getOsVersion {
+#if TARGET_OS_OSX
+    return [[NSProcessInfo processInfo] operatingSystemVersionString];
+#else
+    return [[UIDevice currentDevice] systemVersion];
+#endif
 }
 
 - (void)setHttpClient:(MSHttpClient *)httpClient {
@@ -62,16 +82,14 @@ static NSString *const kAPIVersion = @"2017-04";
     }
 
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
-    NSString *url =
-        [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, kAPIVersion];
+    NSString *url = [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, kAPIVersion];
 
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
 
     NSString *sdkVersion = [NSString stringWithUTF8String:NH_C_VERSION];
 
-    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, sdkVersion, [[UIDevice currentDevice] systemName],
-                                                     [[UIDevice currentDevice] systemVersion]];
+    NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, sdkVersion, [self getOsName], [self getOsVersion]];
 
     NSDictionary *headers =
         @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken, @"User-Agent" : userAgent};
@@ -93,7 +111,7 @@ static NSString *const kAPIVersion = @"2017-04";
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
     NSString *previousLeft = @"";
-    for (int i = 0; i < [allField count]; i++) {
+    for (unsigned long i = 0; i < [allField count]; i++) {
         NSString *currentField = (NSString *)[allField objectAtIndex:i];
 
         if ((i + 1) < [allField count]) {
@@ -115,7 +133,7 @@ static NSString *const kAPIVersion = @"2017-04";
             break;
         }
 
-        NSString *keyName = [[keyValuePairs objectAtIndex:0] lowercaseString];
+        NSString *keyName = [(NSString *)[keyValuePairs objectAtIndex:0] lowercaseString];
 
         NSString *keyValue = [currentField substringFromIndex:([keyName length] + 1)];
         if ([keyName isEqualToString:@"endpoint"]) {

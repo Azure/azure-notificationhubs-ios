@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
 set -e
 
 # Sets the target folders and the final framework product.

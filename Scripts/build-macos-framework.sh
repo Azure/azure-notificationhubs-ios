@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
 set -e
 
 # The directory for final output of the framework.

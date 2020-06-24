@@ -187,7 +187,8 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 #if TARGET_OS_OSX
 - (BOOL)didReceiveUserNotification:(NSUserNotification *)notification {
-  if (notification && [self didReceiveRemoteNotification:notification.userInfo fromUserNotification:YES]) {
+  if (notification) {
+      [self didReceiveRemoteNotification:notification.userInfo fromUserNotification:YES];
     NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
 
     // The delivered notification should be removed.

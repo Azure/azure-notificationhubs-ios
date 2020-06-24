@@ -8,15 +8,11 @@
 #import "MSUserNotificationCenterDelegate.h"
 
 #import <Foundation/Foundation.h>
-#if !TARGET_OS_OSX
 #import <UserNotifications/UserNotifications.h>
-#endif
 
 // Singleton
 static MSUserNotificationCenterDelegate *sharedInstance = nil;
-#if !TARGET_OS_OSX
 static IMP originalSetDelegateImp = nil;
-#endif
 static dispatch_once_t onceToken;
 
 @implementation MSUserNotificationCenterDelegate
@@ -24,15 +20,13 @@ static dispatch_once_t onceToken;
 @synthesize enabled;
 
 + (void)load {
-#if !TARGET_OS_OSX
-    if (@available(iOS 10.0, *)) {
+    if (@available(iOS 10.0, tvOS 10.0, watchOS 3.0, macOS 10.14, *)) {
         [[MSUserNotificationCenterDelegate sharedInstance] setEnabledFromPlistForKey:@"NHUserNotificationCenterDelegateForwarderEnabled"];
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             [[MSUserNotificationCenterDelegate sharedInstance] swizzleSetDelegate];
         });
     }
-#endif
 }
 
 - (instancetype)init {
@@ -50,9 +44,7 @@ static dispatch_once_t onceToken;
     return sharedInstance;
 }
 
-#if !TARGET_OS_OSX
-
-- (void)custom_setDelegate:(id<UNUserNotificationCenterDelegate>)delegate  API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
+- (void)custom_setDelegate:(id<UNUserNotificationCenterDelegate>)delegate  API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0), macos(10.14)) {
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -65,7 +57,7 @@ static dispatch_once_t onceToken;
     ((void (*)(id, SEL, id<UNUserNotificationCenterDelegate>))originalSetDelegateImp)(self, _cmd, delegate);
 }
 
-- (void)swizzleSetDelegate API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
+- (void)swizzleSetDelegate API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0), macos(10.14)) {
     SEL setDelegateSelector = @selector(setDelegate:);
     Class appClass = [UNUserNotificationCenter class];
     originalSetDelegateImp = class_getMethodImplementation(appClass, setDelegateSelector);
@@ -104,18 +96,16 @@ static dispatch_once_t onceToken;
 
 - (void)custom_userNotificationCenter:(UNUserNotificationCenter *)center
           willPresentNotification:(UNNotification *)notification
-            withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
+                withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0), macos(10.14)) {
     [MSNotificationHub didReceiveRemoteNotification:notification.request.content.userInfo];
     completionHandler(UNNotificationPresentationOptionNone);
 }
 
 - (void)custom_userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
-         withCompletionHandler:(void (^)(void))completionHandler API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
+         withCompletionHandler:(void (^)(void))completionHandler API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0), macos(10.14)) {
     [MSNotificationHub didReceiveRemoteNotification:response.notification.request.content.userInfo];
     completionHandler();
 }
-
-#endif
 
 @end

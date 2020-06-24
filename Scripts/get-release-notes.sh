@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
 
 # Reads release notes for the release.
 # Usage: get-release-notes.sh [<version>]
