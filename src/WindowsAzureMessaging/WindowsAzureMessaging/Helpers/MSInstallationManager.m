@@ -69,7 +69,7 @@
                                                      [[UIDevice currentDevice] systemVersion]];
 
     NSDictionary *headers =
-        @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken, @"User-Agent" : userAgent};
+        @{@"Content-Type" : @"application/json", @"x-ms-version" : apiVersion, @"Authorization" : sasToken, @"User-Agent" : userAgent};
 
     NSData *payload = [installation toJsonData];
 
