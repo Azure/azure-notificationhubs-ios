@@ -141,8 +141,14 @@
 }
 
 + (NSString *)getApiVersionFromEndpoint:(NSString *)endpoint {
-    return [endpoint containsString:AzureEnvironmentINT7] || [endpoint containsString:AzureEnvironmentPROD] ? ApiVersion2020_06
-                                                                                                            : ApiVersion2017_04;
+    if ([endpoint containsString:AzureEnvironmentINT7] || [endpoint containsString:AzureEnvironmentPROD]) {
+        return ApiVersion2020_06;
+    } else if ([endpoint containsString:AzureEnvironmentFFPROD] || [endpoint containsString:AzureEnvironmentBFPROD] ||
+               [endpoint containsString:AzureEnvironmentCHPROD]) {
+        return ApiVersion2017_04;
+    }
+
+    return @"";
 }
 
 @end
