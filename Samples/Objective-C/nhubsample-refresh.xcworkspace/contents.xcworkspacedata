@@ -5,6 +5,6 @@
       location = "group:nhubsample-refresh/nhubsample-refresh.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../src/WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
+      location = "group:../../WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
    </FileRef>
 </Workspace>

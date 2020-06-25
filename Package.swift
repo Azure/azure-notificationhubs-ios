@@ -1,27 +1,40 @@
-// swift-tools-version:5.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.0
+
+// Copyright (c) Microsoft Corporation. All rights reserved.
 
 import PackageDescription
 
-let sources = ["", "Helpers", "HttpClient", "HttpClient/Util", "Internal", "Models", "Utils", "Vendor/Reachability"]
 let package = Package(
     name: "WindowsAzureMessaging",
     platforms: [
-        .iOS(.v10)
+        .iOS(.v9),
+        .macOS(.v10_10),
+        .tvOS(.v11)
     ],
     products: [
         .library(
             name: "WindowsAzureMessaging",
+            type: .static,
             targets: ["WindowsAzureMessaging"]),
     ],
     dependencies: [],
     targets: [
         .target(
             name: "WindowsAzureMessaging",
-            path: "src/WindowsAzureMessaging/WindowsAzureMessaging",
-            sources: sources,
-            cSettings: sources.map { CSetting.headerSearchPath($0) }
+            path: "WindowsAzureMessaging/WindowsAzureMessaging",
+            exclude: ["Support"],
+            cSettings: [
+                .define("NH_C_VERSION", to:"\"3.0.0-preview2\""),
+                .define("NH_C_BUILD", to:"\"1\""),
+                .headerSearchPath("**"),
+            ],
+            linkerSettings: [
+                .linkedFramework("Foundation"),
+                .linkedFramework("SystemConfiguration"),
+                .linkedFramework("UserNotifications"),
+                .linkedFramework("AppKit", .when(platforms: [.macOS])),
+                .linkedFramework("UIKit", .when(platforms: [.iOS, .tvOS]))
+            ]
         )
     ]
 )
-
