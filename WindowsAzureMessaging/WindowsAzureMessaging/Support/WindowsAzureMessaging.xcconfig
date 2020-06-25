@@ -1,5 +1,5 @@
 PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.WindowsAzureMessaging
 
-APPLICATION_EXTENSION_API_ONLY = NO;
+APPLICATION_EXTENSION_API_ONLY = NO
 
 OTHER_LDFLAGS=$(inherited) -framework Foundation
