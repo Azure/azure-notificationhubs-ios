@@ -80,9 +80,7 @@ VERSION="$($(dirname "$0")/framework-version.sh)"
 archive "$PRODUCT_NAME-$VERSION.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
 
 # Archive fat frameworks for Carthage.
-mv "$PRODUCTS_DIR/iOS/AppCenterDistributeResources.bundle" "$PRODUCTS_DIR/iOS/AppCenterDistribute.framework"
 archive "$PRODUCT_NAME-$VERSION.carthage.framework.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
-mv "$PRODUCTS_DIR/iOS/AppCenterDistribute.framework/AppCenterDistributeResources.bundle" "$PRODUCTS_DIR/iOS"
 
 # Archive XCFrameworks.
 archive "$PRODUCT_NAME-XCFramework-$VERSION.zip" $(ls -d "$PRODUCT_NAME/XCFramework"/*)
