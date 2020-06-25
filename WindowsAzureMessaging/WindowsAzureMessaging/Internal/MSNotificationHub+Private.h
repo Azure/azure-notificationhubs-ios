@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) id<NSUserNotificationCenterDelegate> originalUserNotificationCenterDelegate;
 #endif
 
-@property(nonatomic) id<MSNotificationHubDelegate> delegate;
+@property(nonatomic, nullable) id<MSNotificationHubDelegate> delegate;
 @property(nonatomic, weak, nullable) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
 @property(nonatomic, weak, nullable) id<MSInstallationManagementDelegate> managementDelegate;
 @property(nonatomic, weak, nullable) id<MSInstallationLifecycleDelegate> lifecycleDelegate;

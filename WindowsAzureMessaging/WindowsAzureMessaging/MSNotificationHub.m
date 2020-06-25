@@ -126,7 +126,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 #if TARGET_OS_OSX
   [NSApp registerForRemoteNotificationTypes:(NSRemoteNotificationTypeSound | NSRemoteNotificationTypeBadge)];
 #elif TARGET_OS_IOS
-    if (@available(iOS 10.0, *)) {
+    if (@available(iOS 10.0, maccatalyst 13.0, *)) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         UNAuthorizationOptions authOptions =
             (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);

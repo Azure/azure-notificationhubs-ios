@@ -124,6 +124,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64B3DFBC245064F5006B6327 /* Build configuration list for PBXNativeTarget "nhubsample-refresh" */;
 			buildPhases = (
+				4CA7336424A53A59006AC99D /* Verify No Build Settings */,
 				64B3DFA2245064F3006B6327 /* Sources */,
 				64B3DFA3245064F3006B6327 /* Frameworks */,
 				64B3DFA4245064F3006B6327 /* Resources */,
@@ -184,6 +185,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CA7336424A53A59006AC99D /* Verify No Build Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Verify No Build Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#\"${SRCROOT}/../../../Scripts/VerifyNoBuildSettings.swift\" ${PROJECT_NAME}.xcodeproj/project.pbxproj\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		64B3DFA2245064F3006B6327 /* Sources */ = {
