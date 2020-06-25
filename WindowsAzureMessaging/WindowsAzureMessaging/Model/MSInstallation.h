@@ -13,11 +13,6 @@
 @property(nonatomic, copy) NSString *installationID, *pushChannel;
 @property(nonatomic, readonly, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
 
-- (instancetype)initWithDeviceToken:(NSString *)deviceToken;
-
-+ (instancetype)createFromDeviceToken:(NSString *)deviceToken;
-+ (instancetype)createFromJsonString:(NSString *)jsonString;
-
 - (NSData *)toJsonData;
 
 - (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;

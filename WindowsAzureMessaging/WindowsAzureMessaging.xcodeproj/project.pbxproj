@@ -231,6 +231,16 @@
 		4CA7330924A3E96C006AC99D /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D724A1B99E006AC99D /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7330A24A3E983006AC99D /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7330B24A3E984006AC99D /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7335024A42C64006AC99D /* MSInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */; };
+		4CA7335124A42C64006AC99D /* MSInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */; };
+		4CA7335C24A42D59006AC99D /* TestHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732EC24A3B3E1006AC99D /* TestHelper.h */; };
+		4CA7335D24A42D5B006AC99D /* TestHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732EC24A3B3E1006AC99D /* TestHelper.h */; };
+		4CA7335E24A42D5E006AC99D /* MSTestFrameworks.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732EA24A3B3E0006AC99D /* MSTestFrameworks.h */; };
+		4CA7335F24A42D5F006AC99D /* MSTestFrameworks.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732EA24A3B3E0006AC99D /* MSTestFrameworks.h */; };
+		4CA7336024A42D66006AC99D /* MSHttpTestUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732EB24A3B3E1006AC99D /* MSHttpTestUtil.h */; };
+		4CA7336124A42D67006AC99D /* MSHttpTestUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732EB24A3B3E1006AC99D /* MSHttpTestUtil.h */; };
+		4CA7336224A42D6A006AC99D /* MSConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732E924A3B3E0006AC99D /* MSConstants.h */; };
+		4CA7336324A42D6B006AC99D /* MSConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732E924A3B3E0006AC99D /* MSConstants.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -518,6 +528,7 @@
 		4CA732EC24A3B3E1006AC99D /* TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
 		4CA732ED24A3B3E1006AC99D /* TestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelper.m; sourceTree = "<group>"; };
 		4CA732F224A3DAC2006AC99D /* MSApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSApplication.h; sourceTree = "<group>"; };
+		4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSInstallation+Private.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -776,6 +787,7 @@
 			isa = PBXGroup;
 			children = (
 				4CA731DF24A1BA4A006AC99D /* MSNotificationHubMessage+Private.h */,
+				4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -876,17 +888,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA732BE24A2D04F006AC99D /* NSURLRequest+HTTPBodyTesting.h in Headers */,
+				4CA7335024A42C64006AC99D /* MSInstallation+Private.h in Headers */,
+				4CA7335D24A42D5B006AC99D /* TestHelper.h in Headers */,
 				4CA731BE24A1893C006AC99D /* SBConnectionString.h in Headers */,
 				4CA732B924A2D04E006AC99D /* Compatibility.h in Headers */,
 				4CA7317824A18082006AC99D /* MSHttpClientDelegate.h in Headers */,
 				4CA7320724A1C4E9006AC99D /* MSNotificationHub+Private.h in Headers */,
 				4CA731ED24A1BFE2006AC99D /* MSInstallationManager.h in Headers */,
 				4CA731CF24A190A9006AC99D /* MSInstallation.h in Headers */,
+				4CA7336224A42D6A006AC99D /* MSConstants.h in Headers */,
 				4CA731C724A1901D006AC99D /* MSLocalStorage.h in Headers */,
 				4CA731B824A187A6006AC99D /* SBStaticHandlerResponse.h in Headers */,
 				4CA7316224A17BA7006AC99D /* MSNotificationHubErrors.h in Headers */,
 				4CA731F424A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */,
 				4CA7317224A1801C006AC99D /* MSHttpClient.h in Headers */,
+				4CA7335F24A42D5F006AC99D /* MSTestFrameworks.h in Headers */,
 				4CA7320A24A1C55E006AC99D /* MSNotificationHubDelegate.h in Headers */,
 				4CA731E024A1BA4A006AC99D /* MSNotificationHubMessage+Private.h in Headers */,
 				4CA7316924A17D83006AC99D /* MSHttpClient+Private.h in Headers */,
@@ -900,6 +916,7 @@
 				4CA7317C24A180C0006AC99D /* MSHttpUtil.h in Headers */,
 				4CA731C124A18A8B006AC99D /* MSTokenProvider.h in Headers */,
 				4CA732BC24A2D04F006AC99D /* HTTPStubsResponse.h in Headers */,
+				4CA7336124A42D67006AC99D /* MSHttpTestUtil.h in Headers */,
 				4CA731D224A1B927006AC99D /* MSChangeTracking.h in Headers */,
 				4CA7316624A17C6B006AC99D /* MSHttpClientProtocol.h in Headers */,
 				4CA7318B24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */,
@@ -942,12 +959,15 @@
 				4CA7317324A1801C006AC99D /* MSHttpClient.h in Headers */,
 				4CA732C224A2D051006AC99D /* HTTPStubsResponse.h in Headers */,
 				4CA7316A24A17D83006AC99D /* MSHttpClient+Private.h in Headers */,
+				4CA7335124A42C64006AC99D /* MSInstallation+Private.h in Headers */,
 				4CA732C324A2D051006AC99D /* HTTPStubsResponse+JSON.h in Headers */,
+				4CA7335C24A42D59006AC99D /* TestHelper.h in Headers */,
 				4CA7317D24A180C0006AC99D /* MSHttpUtil.h in Headers */,
 				4CA732C024A2D051006AC99D /* HTTPStubs.h in Headers */,
 				4CA731C224A18A8C006AC99D /* MSTokenProvider.h in Headers */,
 				4CA7316724A17C6B006AC99D /* MSHttpClientProtocol.h in Headers */,
 				4CA731F524A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */,
+				4CA7336024A42D66006AC99D /* MSHttpTestUtil.h in Headers */,
 				4CA7318C24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */,
 				4CA7318F24A18662006AC99D /* MSInstallationLifecycleDelegate.h in Headers */,
 				4CA7316D24A17F6B006AC99D /* MSHttpCall.h in Headers */,
@@ -955,7 +975,9 @@
 				4CA732F424A3DAC2006AC99D /* MSApplication.h in Headers */,
 				4CA7318524A1820A006AC99D /* MS_Reachability.h in Headers */,
 				4CA7315D24A17AC8006AC99D /* MSDispatcherUtil.h in Headers */,
+				4CA7335E24A42D5E006AC99D /* MSTestFrameworks.h in Headers */,
 				4CA731C824A1901D006AC99D /* MSLocalStorage.h in Headers */,
+				4CA7336324A42D6B006AC99D /* MSConstants.h in Headers */,
 				4CA732BF24A2D050006AC99D /* Compatibility.h in Headers */,
 				4CA7312324A15A25006AC99D /* WindowsAzureMessaging.h in Headers */,
 				4CA7320824A1C4E9006AC99D /* MSNotificationHub+Private.h in Headers */,

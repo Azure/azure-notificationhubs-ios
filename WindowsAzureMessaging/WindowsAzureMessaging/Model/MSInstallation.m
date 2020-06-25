@@ -3,15 +3,9 @@
 //----------------------------------------------------------------
 
 #import "MSInstallation.h"
+#import "MSInstallation+Private.h"
 #import "MSInstallationTemplate.h"
 #import "MSTagHelper.h"
-
-@interface MSInstallation ()
-
-@property(nonatomic, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
-@property(nonatomic, copy) NSSet<NSString *> *tags;
-
-@end
 
 @implementation MSInstallation
 

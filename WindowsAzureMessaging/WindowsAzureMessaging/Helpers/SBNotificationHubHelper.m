@@ -17,7 +17,7 @@ static NSString *const domain = @"WindowsAzureMessaging";
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 + (NSString *)urlEncode:(NSString *)urlString {
-    return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)urlString, NULL,
+    return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)urlString, NULL,
                                                                         CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8);
 }
 #pragma GCC diagnostic pop

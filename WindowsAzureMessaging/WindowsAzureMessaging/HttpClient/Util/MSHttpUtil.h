@@ -1,10 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-
-static short const kMSMaxCharactersDisplayedForAppSecret = 8;
-static NSString *const kMSHidingStringForAppSecret = @"*";
 
 @interface MSHttpUtil : NSObject
 
