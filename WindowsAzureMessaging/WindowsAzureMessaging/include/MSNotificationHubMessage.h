@@ -1,1 +1,1 @@
-../MSNotificationHubMessage.h
+../Model/MSNotificationHubMessage.h

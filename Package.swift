@@ -7,7 +7,6 @@ import PackageDescription
 let package = Package(
     name: "WindowsAzureMessaging",
     platforms: [
-    platforms: [
         .iOS(.v9),
         .macOS(.v10_10),
         .tvOS(.v11)
@@ -39,4 +38,3 @@ let package = Package(
         )
     ]
 )
-
