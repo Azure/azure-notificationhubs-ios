@@ -4,7 +4,7 @@
 #import "HTTPStubs.h"
 #import "NSURLRequest+HTTPBodyTesting.h"
 
-#import "Utils/MSConstants.h"
+#import "Util/MSConstants.h"
 #import "MSNotificationHubErrors.h"
 #import "MSHttpCall.h"
 #import "MSHttpClient+Private.h"
