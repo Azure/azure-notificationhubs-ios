@@ -30,7 +30,7 @@ fi
 
 PROJECT_DIR="$(dirname "$0")/.."
 DOCUMENT_DIR="$PROJECT_DIR/Documentation"
-PODSPEC_FILE="$PROJECT_DIR/AppCenter.podspec"
+PODSPEC_FILE="$PROJECT_DIR/AzureNotificationHubs-iOS.podspec"
 SWIFTPM_FILE="$PROJECT_DIR/Package.swift"
 
 # Update framework version

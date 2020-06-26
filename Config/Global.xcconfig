@@ -47,7 +47,7 @@ OTHER_CFLAGS = $(GLOBAL_CFLAGS)
 APPLICATION_EXTENSION_API_ONLY = YES
 
 // :Mark: GCC_PREPROCESSOR_DEFINITIONS
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) NH_C_VERSION="\""$(VERSION_STRING)"\"" APP_CENTER_C_BUILD="\""$(BUILD_NUMBER)"\""
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) NH_C_VERSION="\""$(VERSION_STRING)"\"" NH_C_BUILD="\""$(BUILD_NUMBER)"\""
 
 // :Mark: Configuration of warnings. We're listing every warning that we disabled and explain the reason why.
 //
