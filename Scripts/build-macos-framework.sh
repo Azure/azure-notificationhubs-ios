@@ -4,7 +4,7 @@
 set -e
 
 # The directory for final output of the framework.
-PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging/macOS"
+PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging-SDK-Apple/macOS"
 
 # Cleaning the previous builds.
 rm -rf "${PRODUCTS_DIR}/${PROJECT_NAME}.framework"

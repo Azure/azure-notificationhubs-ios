@@ -8,7 +8,7 @@
 # Note: it must be run from Xcode.
 
 OS_NAME=$1
-PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging/${OS_NAME}"
+PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging-SDK-Apple/${OS_NAME}"
 INSTALL_DIR="${PRODUCTS_DIR}/${PROJECT_NAME}.framework"
 DOCUMENTATION_DIR="${PRODUCTS_DIR}/Documentation/${PROJECT_NAME}"
 

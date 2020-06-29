@@ -7,7 +7,7 @@ set -e
 TARGET_NAME="${PROJECT_NAME} iOS Framework"
 
 # The directory for final output of the framework.
-PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging/iOS"
+PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging-SDK-Apple/iOS"
 
 # Build result paths.
 SCRIPT_BUILD_DIR="${SRCROOT}/build"

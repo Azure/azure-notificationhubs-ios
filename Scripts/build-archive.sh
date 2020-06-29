@@ -7,7 +7,7 @@
 # Usage: build-archive.sh
 
 PROJECT_DIR="$(dirname "$0")/.."
-PRODUCT_NAME="WindowsAzureMessaging"
+PRODUCT_NAME="WindowsAzureMessaging-SDK-Apple"
 PRODUCTS_DIR="$PROJECT_DIR/$PRODUCT_NAME"
 
 # Check if the frameworks are already built.
