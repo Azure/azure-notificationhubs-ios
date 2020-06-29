@@ -9,10 +9,10 @@
 PROJECT_DIR="$(dirname "$0")/.."
 PRODUCT_NAME="WindowsAzureMessaging-SDK-Apple"
 PRODUCTS_DIR="$PROJECT_DIR/$PRODUCT_NAME"
+echo $PRODUCTS_DIR
 
 # Check if the frameworks are already built.
-if [ ! -d "$PRODUCTS_DIR/iOS" ] || [ ! -d "$PRODUCTS_DIR/macOS" ] || \
-    [ ! -d "$PRODUCTS_DIR/tvOS" ] || [ ! -d "$PRODUCTS_DIR/XCFramework" ]; then
+if [ ! -d "$PRODUCTS_DIR/iOS" ] || [ ! -d "$PRODUCTS_DIR/macOS" ] || [ ! -d "$PRODUCTS_DIR/XCFramework" ]; then
   echo "Cannot find frameworks to archive, please run build first"
   exit 1
 fi
@@ -25,13 +25,11 @@ function verify_bitcode() {
 }
 for framework in \
     $PRODUCTS_DIR/iOS/*.framework \
-    $PRODUCTS_DIR/tvOS/*.framework \
-    $PRODUCTS_DIR/XCFramework/*.xcframework/ios-arm*/*.framework \
-    $PRODUCTS_DIR/XCFramework/*.xcframework/tvos-arm*/*.framework; do
+    $PRODUCTS_DIR/XCFramework/*.xcframework/ios-arm*/*.framework; do
   verify_bitcode "$framework" || invalid_bitcode+=(${framework#"$PRODUCTS_DIR"/})
 done
 if [ ${#invalid_bitcode[@]} -ne 0 ]; then
-  echo "There are iOS/tvOS binaries without valid bitcode: ${invalid_bitcode[@]}"
+  echo "There are iOS binaries without valid bitcode: ${invalid_bitcode[@]}"
   exit 1
 fi
 for framework in \
@@ -77,10 +75,10 @@ function archive() {
 VERSION="$($(dirname "$0")/framework-version.sh)"
 
 # Archive fat frameworks for CocoaPods.
-archive "$PRODUCT_NAME-$VERSION.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
+archive "$PRODUCT_NAME-$VERSION.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS"
 
 # Archive fat frameworks for Carthage.
-archive "$PRODUCT_NAME-$VERSION.carthage.framework.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
+archive "$PRODUCT_NAME-$VERSION.carthage.framework.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS"
 
 # Archive XCFrameworks.
 archive "$PRODUCT_NAME-XCFramework-$VERSION.zip" $(ls -d "$PRODUCT_NAME/XCFramework"/*)
