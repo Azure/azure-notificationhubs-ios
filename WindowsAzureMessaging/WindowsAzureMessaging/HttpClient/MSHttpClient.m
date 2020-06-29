@@ -8,7 +8,7 @@
 #import "MSHttpClient+Private.h"
 #import "MSHttpUtil.h"
 #import "MSNotificationHubErrors.h"
-#import "MS_Reachability.h"
+#import "ANH_Reachability.h"
 
 #define DEFAULT_RETRY_INTERVALS @[ @10, @(5 * 60), @(20 * 60) ]
 
@@ -21,15 +21,15 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
 @synthesize delegate = _delegate;
 
 - (instancetype)init {
-    return [self initWithMaxHttpConnectionsPerHost:nil reachability:[MS_Reachability reachabilityForInternetConnection]];
+    return [self initWithMaxHttpConnectionsPerHost:nil reachability:[ANH_Reachability reachabilityForInternetConnection]];
 }
 
 - (instancetype)initWithMaxHttpConnectionsPerHost:(NSInteger)maxHttpConnectionsPerHost {
     return [self initWithMaxHttpConnectionsPerHost:@(maxHttpConnectionsPerHost)
-                                      reachability:[MS_Reachability reachabilityForInternetConnection]];
+                                      reachability:[ANH_Reachability reachabilityForInternetConnection]];
 }
 
-- (instancetype)initWithMaxHttpConnectionsPerHost:(NSNumber *)maxHttpConnectionsPerHost reachability:(MS_Reachability *)reachability {
+- (instancetype)initWithMaxHttpConnectionsPerHost:(NSNumber *)maxHttpConnectionsPerHost reachability:(ANH_Reachability *)reachability {
     if ((self = [super init])) {
         _sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         if (maxHttpConnectionsPerHost) {
@@ -45,7 +45,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
         // Add listener to reachability.
         [MS_NOTIFICATION_CENTER addObserver:self
                                    selector:@selector(networkStateChanged:)
-                                       name:kMSReachabilityChangedNotification
+                                       name:kANHReachabilityChangedNotification
                                      object:nil];
         [self.reachability startNotifier];
     }
@@ -270,7 +270,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
 
 - (void)dealloc {
     [self.reachability stopNotifier];
-    [MS_NOTIFICATION_CENTER removeObserver:self name:kMSReachabilityChangedNotification object:nil];
+    [MS_NOTIFICATION_CENTER removeObserver:self name:kANHReachabilityChangedNotification object:nil];
     [self.session finishTasksAndInvalidate];
 }
 

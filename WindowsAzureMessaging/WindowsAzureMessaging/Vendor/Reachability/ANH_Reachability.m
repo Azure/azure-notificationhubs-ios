@@ -10,12 +10,12 @@
 #import <arpa/inet.h>
 #import "MSDispatcherUtil.h"
 
-#import "MS_Reachability.h"
+#import "ANH_Reachability.h"
 
 #pragma mark IPv6 Support
 
-NSString *kMSReachabilityChangedNotification =
-    @"kMSNetworkReachabilityChangedNotification";
+NSString *kANHReachabilityChangedNotification =
+    @"kANHNetworkReachabilityChangedNotification";
 
 #pragma mark - Supporting functions
 
@@ -42,20 +42,20 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
                                  SCNetworkReachabilityFlags flags, void *info) {
 #pragma unused(target, flags)
   NSCAssert(info != NULL, @"info was NULL in ReachabilityCallback");
-  NSCAssert([(__bridge NSObject *)info isKindOfClass:[MS_Reachability class]],
+  NSCAssert([(__bridge NSObject *)info isKindOfClass:[ANH_Reachability class]],
             @"info was wrong class in ReachabilityCallback");
 
-  MS_Reachability *noteObject = (__bridge MS_Reachability *)info;
+  ANH_Reachability *noteObject = (__bridge ANH_Reachability *)info;
   // Post a notification to notify the client that the network reachability
   // changed.
   [[NSNotificationCenter defaultCenter]
-      postNotificationName:kMSReachabilityChangedNotification
+      postNotificationName:kANHReachabilityChangedNotification
                     object:noteObject];
 }
 
 #pragma mark - Reachability extension
 
-@interface MS_Reachability ()
+@interface ANH_Reachability ()
 
 @property(nonatomic) SCNetworkReachabilityRef reachabilityRef;
 
@@ -71,7 +71,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
  * crashes that are caused by accessing a disposed instance especially when
  * reachability is used for local variables.
  */
-@implementation MS_Reachability {
+@implementation ANH_Reachability {
 }
 
 // It's based on Apple's sample code. Disable an one warning type for this
@@ -80,11 +80,11 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 #pragma clang diagnostic ignored "-Wnullable-to-nonnull-conversion"
 
 + (instancetype)reachabilityWithHostName:(NSString *)hostName {
-  MS_Reachability *returnValue = NULL;
+  ANH_Reachability *returnValue = NULL;
   SCNetworkReachabilityRef reachability =
       SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
   if (reachability != NULL) {
-    returnValue = [[MS_Reachability alloc] init];
+    returnValue = [[ANH_Reachability alloc] init];
     if (returnValue != NULL) {
       returnValue.reachabilityRef = reachability;
     } else {
@@ -97,11 +97,11 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 #pragma clang diagnostic pop
 
 + (instancetype)reachabilityWithAddress:(const struct sockaddr *)hostAddress {
-  MS_Reachability *returnValue = NULL;
+  ANH_Reachability *returnValue = NULL;
   SCNetworkReachabilityRef reachability =
       SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, hostAddress);
   if (reachability != NULL) {
-    returnValue = [[MS_Reachability alloc] init];
+    returnValue = [[ANH_Reachability alloc] init];
     if (returnValue != NULL) {
       returnValue.reachabilityRef = reachability;
     } else {
@@ -131,7 +131,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
       if (SCNetworkReachabilityScheduleWithRunLoop(self.reachabilityRef,
                                                    CFRunLoopGetCurrent(),
                                                    kCFRunLoopDefaultMode)) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kMSReachabilityChangedNotification
+        [[NSNotificationCenter defaultCenter] postNotificationName:kANHReachabilityChangedNotification
                                                             object:self];
       }
     }
@@ -213,7 +213,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
   SCNetworkReachabilityFlags flags;
 
   if (SCNetworkReachabilityGetFlags(self.reachabilityRef, &flags)) {
-    return (flags & kSCNetworkReachabilityFlagsConnectionRequired);
+      return ((flags & kSCNetworkReachabilityFlagsConnectionRequired) ? YES : NO);
   }
 
   return NO;

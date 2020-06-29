@@ -19,9 +19,9 @@ typedef enum : NSInteger {
 #pragma mark IPv6 Support
 // Reachability fully support IPv6.  For full details, see ReadMe.md.
 
-extern NSString *kMSReachabilityChangedNotification;
+extern NSString *kANHReachabilityChangedNotification;
 
-@interface MS_Reachability : NSObject
+@interface ANH_Reachability : NSObject
 
 /*!
  * Use to check the reachability of a given host name.

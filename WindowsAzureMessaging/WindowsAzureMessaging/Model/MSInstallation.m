@@ -11,6 +11,7 @@
 
 @synthesize isDirty;
 @synthesize installationID;
+@synthesize expirationTime;
 @synthesize pushChannel;
 @synthesize tags;
 @synthesize templates;
@@ -198,15 +199,13 @@
 #pragma mark Equality
 
 - (NSUInteger)hash {
-    return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash];
+    return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash] ^ [self.expirationTime hash];
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
     BOOL isInstallationsIdEqual = [self.installationID isEqualToString:installation.installationID];
     BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
-    // We have to check for nil values
-    BOOL isTemplatesDictionaryEqual =
-        self.templates == installation.templates ?: [self.templates isEqualToDictionary:installation.templates];
+    BOOL isTemplatesDictionaryEqual = ((!self.templates && !installation.templates) || [self.templates isEqualToDictionary:installation.templates]);
     return isInstallationsIdEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
 }
 

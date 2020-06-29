@@ -93,10 +93,10 @@
 		4CA7317D24A180C0006AC99D /* MSHttpUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7317B24A180C0006AC99D /* MSHttpUtil.h */; };
 		4CA7317F24A180E5006AC99D /* MSHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7317E24A180E5006AC99D /* MSHttpUtil.m */; };
 		4CA7318024A180E5006AC99D /* MSHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7317E24A180E5006AC99D /* MSHttpUtil.m */; };
-		4CA7318424A1820A006AC99D /* MS_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318324A1820A006AC99D /* MS_Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7318524A1820A006AC99D /* MS_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318324A1820A006AC99D /* MS_Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7318724A18233006AC99D /* MS_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7318624A18233006AC99D /* MS_Reachability.m */; };
-		4CA7318824A18233006AC99D /* MS_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7318624A18233006AC99D /* MS_Reachability.m */; };
+		4CA7318424A1820A006AC99D /* ANH_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318324A1820A006AC99D /* ANH_Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7318524A1820A006AC99D /* ANH_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318324A1820A006AC99D /* ANH_Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7318724A18233006AC99D /* ANH_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7318624A18233006AC99D /* ANH_Reachability.m */; };
+		4CA7318824A18233006AC99D /* ANH_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7318624A18233006AC99D /* ANH_Reachability.m */; };
 		4CA7318B24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7318C24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7318E24A18662006AC99D /* MSInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318D24A18662006AC99D /* MSInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -249,7 +249,7 @@
 			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4CA730DE24A14FF2006AC99D;
-			remoteInfo = WindowsAzureMessaging;
+			remoteInfo = "WindowsAzureMessaging iOS Framework";
 		};
 		4CA7321324A1CEFE006AC99D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -446,8 +446,8 @@
 		4CA7317724A18082006AC99D /* MSHttpClientDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHttpClientDelegate.h; sourceTree = "<group>"; };
 		4CA7317B24A180C0006AC99D /* MSHttpUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHttpUtil.h; sourceTree = "<group>"; };
 		4CA7317E24A180E5006AC99D /* MSHttpUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHttpUtil.m; sourceTree = "<group>"; };
-		4CA7318324A1820A006AC99D /* MS_Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MS_Reachability.h; sourceTree = "<group>"; };
-		4CA7318624A18233006AC99D /* MS_Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MS_Reachability.m; sourceTree = "<group>"; };
+		4CA7318324A1820A006AC99D /* ANH_Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANH_Reachability.h; sourceTree = "<group>"; };
+		4CA7318624A18233006AC99D /* ANH_Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANH_Reachability.m; sourceTree = "<group>"; };
 		4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationEnrichmentDelegate.h; sourceTree = "<group>"; };
 		4CA7318D24A18662006AC99D /* MSInstallationLifecycleDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationLifecycleDelegate.h; sourceTree = "<group>"; };
 		4CA7319024A186A3006AC99D /* SBNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBNotificationHub.h; sourceTree = "<group>"; };
@@ -737,8 +737,8 @@
 		4CA7318224A181ED006AC99D /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				4CA7318324A1820A006AC99D /* MS_Reachability.h */,
-				4CA7318624A18233006AC99D /* MS_Reachability.m */,
+				4CA7318324A1820A006AC99D /* ANH_Reachability.h */,
+				4CA7318624A18233006AC99D /* ANH_Reachability.m */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -930,7 +930,7 @@
 				4CA7320124A1C460006AC99D /* MSNotificationHubAppDelegate.h in Headers */,
 				4CA7316C24A17F6B006AC99D /* MSHttpCall.h in Headers */,
 				4CA7314424A16B50006AC99D /* SBRegistration.h in Headers */,
-				4CA7318424A1820A006AC99D /* MS_Reachability.h in Headers */,
+				4CA7318424A1820A006AC99D /* ANH_Reachability.h in Headers */,
 				4CA7315124A16C6D006AC99D /* SBTemplateRegistration.h in Headers */,
 				4CA7315C24A17AC8006AC99D /* MSDispatcherUtil.h in Headers */,
 				4CA732BB24A2D04F006AC99D /* HTTPStubsPathHelpers.h in Headers */,
@@ -973,7 +973,7 @@
 				4CA7316D24A17F6B006AC99D /* MSHttpCall.h in Headers */,
 				4CA731EE24A1BFE2006AC99D /* MSInstallationManager.h in Headers */,
 				4CA732F424A3DAC2006AC99D /* MSApplication.h in Headers */,
-				4CA7318524A1820A006AC99D /* MS_Reachability.h in Headers */,
+				4CA7318524A1820A006AC99D /* ANH_Reachability.h in Headers */,
 				4CA7315D24A17AC8006AC99D /* MSDispatcherUtil.h in Headers */,
 				4CA7335E24A42D5E006AC99D /* MSTestFrameworks.h in Headers */,
 				4CA731C824A1901D006AC99D /* MSLocalStorage.h in Headers */,
@@ -1388,7 +1388,7 @@
 				4CA7314724A16B9B006AC99D /* SBRegistration.m in Sources */,
 				4CA7314E24A16C3E006AC99D /* SBNotificationHubHelper.m in Sources */,
 				4CA7315424A16C87006AC99D /* SBTemplateRegistration.m in Sources */,
-				4CA7318724A18233006AC99D /* MS_Reachability.m in Sources */,
+				4CA7318724A18233006AC99D /* ANH_Reachability.m in Sources */,
 				4CA731B024A187A6006AC99D /* SBTokenProvider.m in Sources */,
 				4CA7321024A1C77D006AC99D /* MSUserNotificationCenterDelegate.m in Sources */,
 				4CA731D524A1B971006AC99D /* MSInstallation.m in Sources */,
@@ -1473,7 +1473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CA7318824A18233006AC99D /* MS_Reachability.m in Sources */,
+				4CA7318824A18233006AC99D /* ANH_Reachability.m in Sources */,
 				4CA731E824A1BB9C006AC99D /* MSTagHelper.m in Sources */,
 				4CA7320524A1C4B6006AC99D /* MSNotificationHubAppDelegate.m in Sources */,
 				4CA731FF24A1C3C4006AC99D /* MSNotificationHub.m in Sources */,
