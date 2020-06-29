@@ -5,6 +5,7 @@
 ## Build generated
 build/
 DerivedData/
+WindowsAzureMessaging-SDK-Apple
 
 ## Various settings
 *.pbxuser

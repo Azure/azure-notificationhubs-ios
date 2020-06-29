@@ -36,11 +36,6 @@ SWIFTPM_FILE="$PROJECT_DIR/Package.swift"
 # Update framework version
 $(dirname "$0")/framework-version.sh $new_version
 
-# Update documentation version
-for file in `find $DOCUMENT_DIR -name '.jazzy.yaml' -type f`; do
-  sed -i '' 's/\(module_version: \).*/\1'$new_version'/g' $file
-done
-
 # Update CocoaPods version
 sed -i '' "s/\(\.version[[:space:]]*= \)\'.*\'$/\1'$new_version'/1" $PODSPEC_FILE
 
