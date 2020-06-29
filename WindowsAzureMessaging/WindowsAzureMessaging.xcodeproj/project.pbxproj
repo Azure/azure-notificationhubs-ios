@@ -49,7 +49,6 @@
 /* Begin PBXBuildFile section */
 		4CA730EE24A14FF2006AC99D /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA730ED24A14FF2006AC99D /* WindowsAzureMessagingTests.m */; };
 		4CA730F024A14FF2006AC99D /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7311824A15A1F006AC99D /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA730ED24A14FF2006AC99D /* WindowsAzureMessagingTests.m */; };
 		4CA7312324A15A25006AC99D /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7314124A16AD6006AC99D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7313F24A16AB8006AC99D /* UserNotifications.framework */; };
 		4CA7314424A16B50006AC99D /* SBRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7314324A16B50006AC99D /* SBRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1436,7 +1435,6 @@
 				4CA732E524A3B38F006AC99D /* MSInstallationTemplateTests.m in Sources */,
 				4CA732A524A2D021006AC99D /* HTTPStubsMethodSwizzling.m in Sources */,
 				4CA7329924A2D021006AC99D /* HTTPStubsResponse+JSON.m in Sources */,
-				4CA7311824A15A1F006AC99D /* WindowsAzureMessagingTests.m in Sources */,
 				4CA732A324A2D021006AC99D /* HTTPStubsResponse.m in Sources */,
 				4CA732E124A3B38F006AC99D /* MSInstallationTests.m in Sources */,
 				4CA7329B24A2D021006AC99D /* HTTPStubsPathHelpers.m in Sources */,
