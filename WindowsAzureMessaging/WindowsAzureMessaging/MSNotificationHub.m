@@ -322,7 +322,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 - (NSString *)getInstallationId {
     MSInstallation *installation = [self getInstallation];
-    return installation.installationID;
+    return installation.installationId;
 }
 
 - (MSInstallation *)getInstallation {

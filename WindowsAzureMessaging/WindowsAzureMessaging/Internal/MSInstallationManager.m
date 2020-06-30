@@ -82,7 +82,7 @@ static NSString *const kAPIVersion = @"2017-04";
     }
 
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
-    NSString *url = [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, kAPIVersion];
+    NSString *url = [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationId, kAPIVersion];
 
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];

@@ -10,7 +10,7 @@
 
 @interface MSInstallation : NSObject <NSCoding, MSTaggable, MSChangeTracking>
 
-@property(nonatomic, copy) NSString *installationID, *pushChannel;
+@property(nonatomic, copy) NSString *installationId, *pushChannel;
 @property(nonatomic, copy) NSDate *expirationTime;
 @property(nonatomic, readonly, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
 

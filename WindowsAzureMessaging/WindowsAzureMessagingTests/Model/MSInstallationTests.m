@@ -95,12 +95,12 @@
     NSString *installationId = @"installationID";
     NSString *key = @"key";
     MSInstallation *installation = [MSInstallation new];
-    installation.installationID = installationId;
+    installation.installationId = installationId;
     [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     [installation setTemplate:templateA forKey:key];
 
     MSInstallation *installation2 = [MSInstallation new];
-    installation2.installationID = installationId;
+    installation2.installationId = installationId;
     [installation2 addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     [installation2 setTemplate:templateB forKey:key];
 

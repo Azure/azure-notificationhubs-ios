@@ -10,14 +10,15 @@
 @implementation MSInstallation
 
 @synthesize isDirty;
-@synthesize installationID;
+@synthesize installationId;
 @synthesize expirationTime;
 @synthesize pushChannel;
 @synthesize tags;
 @synthesize templates;
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:installationID forKey:@"installationID"];
+    [coder encodeObject:installationId forKey:@"installationId"];
+    [coder encodeObject:expirationTime forKey:@"expirationTime"];
     [coder encodeObject:pushChannel forKey:@"pushChannel"];
     [coder encodeObject:tags forKey:@"tags"];
     [coder encodeObject:templates forKey:@"templates"];
@@ -25,7 +26,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if ((self = [super init]) != nil) {
-        installationID = [coder decodeObjectForKey:@"installationID"] ?: [[NSUUID UUID] UUIDString];
+        installationId = [coder decodeObjectForKey:@"installationId"] ?: [[NSUUID UUID] UUIDString];
         pushChannel = [coder decodeObjectForKey:@"pushChannel"];
         tags = [coder decodeObjectForKey:@"tags"];
         templates = [coder decodeObjectForKey:@"templates"];
@@ -38,7 +39,7 @@
 
 - (instancetype)init {
     if ((self = [super init]) != nil) {
-        installationID = [[NSUUID UUID] UUIDString];
+        installationId = [[NSUUID UUID] UUIDString];
         tags = [NSSet new];
         isDirty = NO;
         [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
@@ -70,11 +71,19 @@
     NSError *error = nil;
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
 
-    installation.installationID = dictionary[@"installationId"];
+    installation.installationId = dictionary[@"installationId"];
     installation.pushChannel = dictionary[@"pushChannel"];
     installation.tags = dictionary[@"tags"];
     installation.templates = dictionary[@"templates"];
     installation.isDirty = NO;
+    
+    NSString *expiration = dictionary[@"expirationTime"];
+    if (expiration) {
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mmZ"];
+        
+        installation.expirationTime = [dateFormatter dateFromString:expiration];
+    }
 
     return installation;
 }
@@ -87,7 +96,14 @@
     }
 
     NSMutableDictionary *dictionary = [NSMutableDictionary
-        dictionaryWithDictionary:@{@"installationId" : self.installationID, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
+        dictionaryWithDictionary:@{@"installationId" : self.installationId, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
+    
+    if (expirationTime) {
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mmZ"];
+        
+        [dictionary setObject:[dateFormatter stringFromDate:expirationTime] forKey:@"expirationTime"];
+    }
 
     if (tags && [tags count] > 0) {
         [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:@"tags"];
@@ -109,7 +125,7 @@
 }
 
 + (NSSet *)keyPathsForValuesAffectingIsDirty {
-    return [NSSet setWithObjects:NSStringFromSelector(@selector(installationID)), NSStringFromSelector(@selector(pushChannel)), nil];
+    return [NSSet setWithObjects:NSStringFromSelector(@selector(installationId)), NSStringFromSelector(@selector(pushChannel)), nil];
 }
 
 #pragma mark Tags
@@ -199,11 +215,11 @@
 #pragma mark Equality
 
 - (NSUInteger)hash {
-    return [self.installationID hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash] ^ [self.expirationTime hash];
+    return [self.installationId hash] ^ [self.pushChannel hash] ^ [self.tags hash] ^ [self.templates hash] ^ [self.expirationTime hash];
 }
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
-    BOOL isInstallationsIdEqual = [self.installationID isEqualToString:installation.installationID];
+    BOOL isInstallationsIdEqual = [self.installationId isEqualToString:installation.installationId];
     BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
     BOOL isTemplatesDictionaryEqual = ((!self.templates && !installation.templates) || [self.templates isEqualToDictionary:installation.templates]);
     return isInstallationsIdEqual && isTagsSetEqual && isTemplatesDictionaryEqual;

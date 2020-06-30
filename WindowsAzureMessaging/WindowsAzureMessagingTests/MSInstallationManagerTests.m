@@ -42,9 +42,9 @@ static NSString *deviceToken = @"deviceToken";
 
     NSString *expectedUrl =
         [NSString stringWithFormat:@"https://test-namespace.servicebus.windows.net/nubName/installations/%@?api-version=2017-04",
-                                   installation.installationID];
+                                   installation.installationId];
     NSString *expectedSasTokenUrl =
-        [NSString stringWithFormat:@"http://test-namespace.servicebus.windows.net/nubName/installations/%@", installation.installationID];
+        [NSString stringWithFormat:@"http://test-namespace.servicebus.windows.net/nubName/installations/%@", installation.installationId];
     NSString *encodedSasTokenUrl =
         [expectedSasTokenUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     NSString *expectedSubstring = [NSString stringWithFormat:@"SharedAccessSignature sr=%@", encodedSasTokenUrl];
@@ -55,7 +55,7 @@ static NSString *deviceToken = @"deviceToken";
     };
 
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{
-        @"installationId" : installation.installationID,
+        @"installationId" : installation.installationId,
         @"platform" : @"apns",
         @"pushChannel" : installation.pushChannel
     }];
