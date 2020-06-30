@@ -54,6 +54,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getPushChannel;
 + (NSString *)getInstallationId;
 
++ (NSDate *)getExpirationTime;
+- (NSDate *)getExpirationTime;
++ (void)setExpirationTime:(NSDate *)expiration;
+- (void)setExpirationTime:(NSDate *)expiration;
+
 #pragma mark Tags Support
 
 + (BOOL)addTag:(NSString *)tag;

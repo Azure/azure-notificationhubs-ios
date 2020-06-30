@@ -55,6 +55,15 @@ static NSString *const kAPIVersion = @"2017-04";
 #endif
 }
 
+- (void)setExpiration:(MSInstallation *)installation {
+    if (!installation.expirationTime) {
+        return;
+    }
+    
+    NSTimeInterval expirationInSeconds = 60L * 60L * 24L * 90L;
+    installation.expirationTime = [installation.expirationTime dateByAddingTimeInterval:expirationInSeconds];
+}
+
 - (void)setHttpClient:(MSHttpClient *)httpClient {
     _httpClient = httpClient;
 }
@@ -63,8 +72,10 @@ static NSString *const kAPIVersion = @"2017-04";
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
     withManagementHandler:(InstallationManagementHandler)managementHandler
         completionHandler:(InstallationCompletionHandler)completionHandler {
+    [self setExpiration:installation];
+    
     enrichmentHandler();
-
+    
     if (managementHandler(completionHandler)) {
         return;
     }
