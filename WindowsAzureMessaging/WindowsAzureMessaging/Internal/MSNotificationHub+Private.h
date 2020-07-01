@@ -7,6 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MSInstallation;
 @protocol MSCustomApplicationDelegate;
 
 #if TARGET_OS_OSX
@@ -23,6 +24,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)convertTokenToString:(NSData *)token;
 
 /**
+ * Gets the current installation
+ */
+- (MSInstallation *)getInstallation;
+
+/**
+ * Upserts the given installation
+ * @param installation The installation to save on the back end.
+ */
+- (void)upsertInstallation:(MSInstallation *)installation;
+
+/**
  * Method registers notification settings and an application for remote notifications.
  */
 - (void)registerForRemoteNotifications;
@@ -32,10 +44,6 @@ NS_ASSUME_NONNULL_BEGIN
 */
 + (void)resetSharedInstance;
 
-#if TARGET_OS_OSX
-@property(nonatomic) id<NSUserNotificationCenterDelegate> originalUserNotificationCenterDelegate;
-#endif
-
 @property(nonatomic, nullable) id<MSNotificationHubDelegate> delegate;
 
 @property(nonatomic, weak, nullable) id<MSInstallationEnrichmentDelegate> enrichmentDelegate;
@@ -43,6 +51,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak, nullable) id<MSInstallationLifecycleDelegate> lifecycleDelegate;
 
 #if TARGET_OS_OSX
+
+@property(nonatomic) id<NSUserNotificationCenterDelegate> originalUserNotificationCenterDelegate;
 
 /**
  * Method to return a context for observing delegate changes.

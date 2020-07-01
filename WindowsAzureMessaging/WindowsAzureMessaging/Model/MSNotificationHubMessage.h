@@ -4,6 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * The Push Notification message.
+ */
 @interface MSNotificationHubMessage : NSObject
 
 /**

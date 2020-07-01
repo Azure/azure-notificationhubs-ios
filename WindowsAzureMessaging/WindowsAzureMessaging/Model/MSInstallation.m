@@ -27,6 +27,7 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if ((self = [super init]) != nil) {
         installationId = [coder decodeObjectForKey:@"installationId"] ?: [[NSUUID UUID] UUIDString];
+        expirationTime = [coder decodeObjectForKey:@"expirationTime"];
         pushChannel = [coder decodeObjectForKey:@"pushChannel"];
         tags = [coder decodeObjectForKey:@"tags"];
         templates = [coder decodeObjectForKey:@"templates"];
@@ -220,9 +221,10 @@
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
     BOOL isInstallationsIdEqual = [self.installationId isEqualToString:installation.installationId];
+    BOOL isExpirationTimeEqual = ((!self.expirationTime && !installation.expirationTime) || [self.expirationTime isEqualToDate:installation.expirationTime]);
     BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
     BOOL isTemplatesDictionaryEqual = ((!self.templates && !installation.templates) || [self.templates isEqualToDictionary:installation.templates]);
-    return isInstallationsIdEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
+    return isInstallationsIdEqual && isExpirationTimeEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
 }
 
 - (BOOL)isEqual:(id)object {

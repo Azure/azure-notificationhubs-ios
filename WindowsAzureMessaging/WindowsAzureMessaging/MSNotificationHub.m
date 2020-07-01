@@ -332,24 +332,6 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
     return installation.installationId;
 }
 
-+ (NSDate *)getExpirationTime {
-    return [[MSNotificationHub sharedInstance] getExpirationTime];
-}
-
-- (NSDate *)getExpirationTime {
-    MSInstallation *installation = [self getInstallation];
-    return installation.expirationTime;
-}
-
-+ (void)setExpirationTime:(NSDate *)expiration {
-    [[MSNotificationHub sharedInstance] setExpirationTime:expiration];
-}
-
-- (void)setExpirationTime:(NSDate *)expiration {
-    MSInstallation *installation = [self getInstallation];
-    installation.expirationTime = expiration;
-}
-
 - (MSInstallation *)getInstallation {
     MSInstallation *installation = [MSLocalStorage loadInstallation];
 
