@@ -14,6 +14,7 @@
 		4C10494B24ABA6E300FA339E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C10494A24ABA6E300FA339E /* main.m */; };
 		4C10497A24ABA94600FA339E /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497924ABA94600FA339E /* WindowsAzureMessaging.framework */; };
 		4C10497B24ABA94600FA339E /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497924ABA94600FA339E /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C1049C324ACE3C200FA339E /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C1049C224ACE3C100FA339E /* DevSettings.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,7 @@
 		4C10494A24ABA6E300FA339E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C10494C24ABA6E300FA339E /* SampleNHAppMacObjC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleNHAppMacObjC.entitlements; sourceTree = "<group>"; };
 		4C10497924ABA94600FA339E /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1049C224ACE3C100FA339E /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				4C10494924ABA6E300FA339E /* Info.plist */,
 				4C10494A24ABA6E300FA339E /* main.m */,
 				4C10494C24ABA6E300FA339E /* SampleNHAppMacObjC.entitlements */,
+				4C1049C224ACE3C100FA339E /* DevSettings.plist */,
 			);
 			path = SampleNHAppMacObjC;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			files = (
 				4C10494524ABA6E300FA339E /* Assets.xcassets in Resources */,
 				4C10494824ABA6E300FA339E /* Main.storyboard in Resources */,
+				4C1049C324ACE3C200FA339E /* DevSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 		4C10496624ABA75600FA339E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C10496424ABA75600FA339E /* Main.storyboard */; };
 		4C10497F24ABA95B00FA339E /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */; };
 		4C10498024ABA95B00FA339E /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C1049C124ACE3AB00FA339E /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C1049C024ACE3AB00FA339E /* DevSettings.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,7 @@
 		4C10496724ABA75600FA339E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C10496824ABA75600FA339E /* SampleNHAppMacSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleNHAppMacSwift.entitlements; sourceTree = "<group>"; };
 		4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1049C024ACE3AB00FA339E /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				4C10496424ABA75600FA339E /* Main.storyboard */,
 				4C10496724ABA75600FA339E /* Info.plist */,
 				4C10496824ABA75600FA339E /* SampleNHAppMacSwift.entitlements */,
+				4C1049C024ACE3AB00FA339E /* DevSettings.plist */,
 			);
 			path = SampleNHAppMacSwift;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				4C10496324ABA75600FA339E /* Assets.xcassets in Resources */,
 				4C10496624ABA75600FA339E /* Main.storyboard in Resources */,
+				4C1049C124ACE3AB00FA339E /* DevSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
