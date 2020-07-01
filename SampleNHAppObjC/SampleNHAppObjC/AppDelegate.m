@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <UserNotifications/UserNotifications.h>
+#import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <MSNotificationHubDelegate>
 
 @end
 
@@ -16,8 +18,40 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"DevSettings" ofType:@"plist"];
+    NSDictionary *configValues = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    NSString *connectionString = [configValues objectForKey:@"CONNECTION_STRING"];
+    NSString *hubName = [configValues objectForKey:@"HUB_NAME"];
+    
+    [MSNotificationHub setDelegate:self];
+    [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
+    
     return YES;
+}
+
+#pragma mark MSNotificationHubDelegate
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  NSLog(@"Did register for remote notifications with device token.");
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(nonnull NSError *)error {
+  NSLog(@"Did fail to register for remote notifications with error %@.", [error localizedDescription]);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary<NSString *, id> *)userInfo {
+  NSLog(@"Did receive remote notification");
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didActivateNotification:(UNNotification *)notification {
+  NSLog(@"Did receive user notification");
+}
+
+- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message {
+    NSLog(@"Message title: %@", message.title);
+    NSLog(@"Message body: %@", message.body);
 }
 
 

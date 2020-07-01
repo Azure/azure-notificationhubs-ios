@@ -13,7 +13,5 @@
 #import "MSInstallationManagementDelegate.h"
 #import "MSInstallationTemplate.h"
 #import "MSNotificationHub.h"
-#import "MSNotificationHubAppDelegate.h"
-#import "MSUserNotificationCenterDelegate.h"
 #import "MSNotificationHubDelegate.h"
 #import "MSNotificationHubMessage.h"

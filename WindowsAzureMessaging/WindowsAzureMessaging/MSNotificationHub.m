@@ -17,10 +17,12 @@
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
 #import "MSNotificationHub.h"
+#import "MSNotificationHubAppDelegateForwarder.h"
 #import "MSNotificationHubMessage.h"
 #import "MSNotificationHubMessage+Private.h"
 #import "MSNotificationHub+Private.h"
 #import "MSTokenProvider.h"
+#import "MSUserNotificationCenterDelegateForwarder.h"
 
 #if TARGET_OS_OSX
 static NSString *const kMSUserNotificationCenterDelegateKey = @"delegate";
@@ -40,6 +42,11 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 - (instancetype)init {
     if ((self = [super init])) {
+        
+        // Force load for swizzling
+        [MSNotificationHubAppDelegateForwarder doNothingButForceLoadTheClass];
+        [MSUserNotificationCenterDelegateForwarder doNothingButForceLoadTheClass];
+        
 #if TARGET_OS_OSX
         NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
 
