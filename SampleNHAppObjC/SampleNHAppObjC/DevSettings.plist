@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>HUB_NAME</key>
-	<string>ios-sdk-sample</string>
+	<string></string>
 	<key>CONNECTION_STRING</key>
-	<string>Endpoint=sb://sdk-sample-namespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=9BxiNz2uoNRsxRTrmyFUmUgAEcVXg4Sb72TkQL/Jifc=</string>
+	<string></string>
 </dict>
 </plist>
