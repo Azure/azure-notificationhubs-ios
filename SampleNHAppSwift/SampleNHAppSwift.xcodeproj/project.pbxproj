@@ -37,8 +37,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C98C6C624AE9F1F00140DE6 /* SampleNHApp.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHApp.xcconfig; sourceTree = "<group>"; };
 		644974E824ADF16600196CBD /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
-		645AFD1224AE518A003584EA /* SampleNHAppSwift.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHAppSwift.xcconfig; sourceTree = "<group>"; };
 		64B3DFA6245064F3006B6327 /* SampleNHAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleNHAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B3DFA9245064F3006B6327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B3DFAB245064F3006B6327 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C98C6C524AE9E8A00140DE6 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4C98C6C624AE9F1F00140DE6 /* SampleNHApp.xcconfig */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		64B3DF9D245064F3006B6327 = {
 			isa = PBXGroup;
 			children = (
@@ -88,10 +96,10 @@
 		64B3DFA8245064F3006B6327 /* SampleNHAppSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4C98C6C524AE9E8A00140DE6 /* Support */,
 				64B3DFC924518BA4006B6327 /* SampleNHAppSwift.entitlements */,
 				64B3DFA9245064F3006B6327 /* AppDelegate.swift */,
 				64B3DFAB245064F3006B6327 /* SceneDelegate.swift */,
-				645AFD1224AE518A003584EA /* SampleNHAppSwift.xcconfig */,
 				64B3DFAD245064F3006B6327 /* SetupViewController.swift */,
 				64B3DFB1245064F3006B6327 /* Main.storyboard */,
 				64B3DFAF245064F3006B6327 /* NotificationsTableViewController.swift */,
@@ -143,7 +151,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					64B3DFA5245064F3006B6327 = {
@@ -222,14 +230,14 @@
 /* Begin XCBuildConfiguration section */
 		64B3DFBA245064F5006B6327 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 645AFD1224AE518A003584EA /* SampleNHAppSwift.xcconfig */;
+			baseConfigurationReference = 4C98C6C624AE9F1F00140DE6 /* SampleNHApp.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		64B3DFBB245064F5006B6327 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 645AFD1224AE518A003584EA /* SampleNHAppSwift.xcconfig */;
+			baseConfigurationReference = 4C98C6C624AE9F1F00140DE6 /* SampleNHApp.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;

@@ -38,7 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6405F98424AE377300AFA459 /* SampleNHAppObjC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHAppObjC.xcconfig; sourceTree = "<group>"; };
+		4C98C6C824AEA4CB00140DE6 /* SampleNHApp.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHApp.xcconfig; sourceTree = "<group>"; };
 		648D01E324ADD9EE0081397A /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
 		648D01E724ADDF300081397A /* SampleNHAppObjC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = SampleNHAppObjC.entitlements; sourceTree = "<group>"; };
 		64B18FA32452CEEA00AA38B1 /* SampleNHAppObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleNHAppObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C98C6C724AEA4A900140DE6 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4C98C6C824AEA4CB00140DE6 /* SampleNHApp.xcconfig */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		64B18F9A2452CEEA00AA38B1 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +104,7 @@
 		64B18FA52452CEEA00AA38B1 /* SampleNHAppObjC */ = {
 			isa = PBXGroup;
 			children = (
+				4C98C6C724AEA4A900140DE6 /* Support */,
 				648D01E724ADDF300081397A /* SampleNHAppObjC.entitlements */,
 				64B18FA62452CEEA00AA38B1 /* AppDelegate.h */,
 				64B18FA72452CEEA00AA38B1 /* AppDelegate.m */,
@@ -103,7 +112,6 @@
 				64B18FD02452E58C00AA38B1 /* NotificationTableViewCell.h */,
 				64B18FD12452E58C00AA38B1 /* NotificationTableViewCell.m */,
 				64B18FA92452CEEA00AA38B1 /* SceneDelegate.h */,
-				6405F98424AE377300AFA459 /* SampleNHAppObjC.xcconfig */,
 				64B18FAA2452CEEA00AA38B1 /* SceneDelegate.m */,
 				64B18FAC2452CEEA00AA38B1 /* SetupViewController.h */,
 				64B18FAD2452CEEA00AA38B1 /* SetupViewController.m */,
@@ -157,7 +165,7 @@
 		64B18F9B2452CEEA00AA38B1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					64B18FA22452CEEA00AA38B1 = {
@@ -237,14 +245,14 @@
 /* Begin XCBuildConfiguration section */
 		64B18FBD2452CEEB00AA38B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6405F98424AE377300AFA459 /* SampleNHAppObjC.xcconfig */;
+			baseConfigurationReference = 4C98C6C824AEA4CB00140DE6 /* SampleNHApp.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		64B18FBE2452CEEB00AA38B1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6405F98424AE377300AFA459 /* SampleNHAppObjC.xcconfig */;
+			baseConfigurationReference = 4C98C6C824AEA4CB00140DE6 /* SampleNHApp.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
