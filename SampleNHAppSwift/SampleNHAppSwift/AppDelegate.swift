@@ -1,20 +1,28 @@
-//
-//  AppDelegate.swift
-//  SampleNHAppSwift
-//
-//  Created by Matthew Podwysocki on 6/30/20.
-//  Copyright © 2020 Matthew Podwysocki. All rights reserved.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 import UIKit
+import WindowsAzureMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var connectionString: String?
+    var hubName: String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if let path = Bundle.main.path(forResource: "DevSettings", ofType: "plist") {
+            if let configValues = NSDictionary(contentsOfFile: path) {
+                connectionString = configValues["CONNECTION_STRING"] as? String
+                hubName = configValues["HUB_NAME"] as? String
+            }
+        }
+        
+        MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
+        MSNotificationHub.addTag("userAgent:com.microsoft.SampleNHAppSwift:1.0")
+        
         return true
     }
 
@@ -32,6 +40,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
-
