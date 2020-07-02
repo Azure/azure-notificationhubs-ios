@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:Config"
+      name = "Config">
+      <FileRef
+         location = "group:App.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Global Release.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Global Debug.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:macOS.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Tests macOS.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Framework.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Global.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Version.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:iOS.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Tests.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Tests iOS.xcconfig">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:SampleNHAppMacSwift/SampleNHAppMacSwift.xcodeproj">
    </FileRef>
