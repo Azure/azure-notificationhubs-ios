@@ -237,7 +237,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
     // Do not send message if SDK is disabled
     if (![self isEnabled]) {
-        NSLog(@"Notification received while the SDK was ]enabled but it is disabled now, discard the notification.");
+        NSLog(@"Notification received while the SDK was enabled but it is disabled now, discard the notification.");
         return;
     }
     
