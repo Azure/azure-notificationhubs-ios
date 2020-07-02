@@ -87,10 +87,6 @@ GCC_OPTIMIZATION_LEVEL_Debug = 0
 GCC_OPTIMIZATION_LEVEL_Release = s
 GCC_OPTIMIZATION_LEVEL = $(GCC_OPTIMIZATION_LEVEL_$(CONFIGURATION))
 
-OTHER_CFLAGS_Debug = $(inherited) -fembed-bitcode-marker
-OTHER_CFLAGS_Release = $(inherited) -fembed-bitcode-marker -fembed-bitcode
-OTHER_CFLAGS = $(OTHER_CFLAGS_$(CONFIGURATION))
-
 // :Mark: App Options
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
 CODE_SIGN_STYLE = Automatic
