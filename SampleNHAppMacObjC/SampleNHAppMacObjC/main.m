@@ -1,15 +1,16 @@
-//----------------------------------------------------------------
-//  Copyright (c) Microsoft Corporation. All rights reserved.
-//----------------------------------------------------------------
+//
+//  main.m
+//  SampleNHAppMacObjC
+//
+//  Created by Matthew Podwysocki on 6/30/20.
+//  Copyright © 2020 Matthew Podwysocki. All rights reserved.
+//
 
-#import <UIKit/UIKit.h>
-#import "AppDelegate.h"
+#import <Cocoa/Cocoa.h>
 
-int main(int argc, char * argv[]) {
-    NSString * appDelegateClassName;
+int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
-        appDelegateClassName = NSStringFromClass([AppDelegate class]);
     }
-    return UIApplicationMain(argc, argv, nil, appDelegateClassName);
+    return NSApplicationMain(argc, argv);
 }

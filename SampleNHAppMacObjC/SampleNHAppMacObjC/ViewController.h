@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ViewController.h
 //  SampleNHAppMacObjC
 //
 //  Created by Matthew Podwysocki on 6/30/20.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface ViewController : NSViewController
 
 
 @end
