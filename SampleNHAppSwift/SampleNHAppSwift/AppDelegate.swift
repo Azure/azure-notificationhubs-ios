@@ -17,14 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let configValues = NSDictionary(contentsOfFile: path) {
                 connectionString = configValues["CONNECTION_STRING"] as? String
                 hubName = configValues["HUB_NAME"] as? String
+                
+                if (!(connectionString ?? "").isEmpty && !(hubName ?? "").isEmpty)
+                {
+                    MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
+                    
+                    addTags()
+                    
+                    return true
+                }
             }
         }
         
-        MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
+        NSLog("Please setup CONNECTION_STRING and HUB_NAME in DevSettings.plist and restart application")
         
-        addTags()
-        
-        return true
+        exit(-1)
     }
     
     // Adds some basic tags such as language and country

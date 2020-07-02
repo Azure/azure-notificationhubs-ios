@@ -19,11 +19,17 @@
     NSString *connectionString = [configValues objectForKey:@"CONNECTION_STRING"];
     NSString *hubName = [configValues objectForKey:@"HUB_NAME"];
     
-    [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
+    if([connectionString length] != 0 && [hubName length] != 0) {
+        [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
+        
+        [self addTags];
+        
+        return YES;
+    }
     
-    [self addTags];
+    NSLog(@"Please setup CONNECTION_STRING and HUB_NAME in DevSettings.plist and restart application");
     
-    return YES;
+    exit(-1);
 }
 
 // Adds some basic tags such as language and country
