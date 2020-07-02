@@ -21,9 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
-        MSNotificationHub.addTag("userAgent:com.microsoft.SampleNHAppSwift:1.0")
+        
+        addTags()
         
         return true
+    }
+    
+    // Adds some basic tags such as language and country
+    func addTags() {
+        // Get language and country code for common tag values
+        let language = Bundle.main.preferredLocalizations.first!
+        let countryCode = NSLocale.current.regionCode!
+
+        // Create tags with type_value format
+        let languageTag = "language_" + language
+        let countryCodeTag = "country_" + countryCode
+
+        MSNotificationHub.addTags([languageTag, countryCodeTag])
     }
 
     // MARK: UISceneSession Lifecycle

@@ -20,11 +20,24 @@
     NSString *hubName = [configValues objectForKey:@"HUB_NAME"];
     
     [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
-    [MSNotificationHub addTag:@"userAgent:com.microsoft.SampleNHAppObjC:1.0"];
+    
+    [self addTags];
     
     return YES;
 }
 
+// Adds some basic tags such as language and country
+- (void)addTags {
+    // Get language and country code for common tag values
+    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSString *countryCode = [[NSLocale currentLocale] countryCode];
+
+    // Create tags with type_value format
+    NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
+    NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
+
+    [MSNotificationHub addTags:@[languageTag, countryCodeTag]];
+}
 
 #pragma mark - UISceneSession lifecycle
 
