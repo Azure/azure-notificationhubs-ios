@@ -1,26 +1,35 @@
-//
-//  AppDelegate.swift
-//  SampleNHAppMacSwift
-//
-//  Created by Matthew Podwysocki on 6/30/20.
-//  Copyright © 2020 Matthew Podwysocki. All rights reserved.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 import Cocoa
+import WindowsAzureMessaging
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    var connectionString: String?
+    var hubName: String?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        if let path = Bundle.main.path(forResource: "DevSettings", ofType: "plist") {
+            if let configValues = NSDictionary(contentsOfFile: path) {
+                connectionString = configValues["CONNECTION_STRING"] as? String
+                hubName = configValues["HUB_NAME"] as? String
+            }
+        }
+        
+        MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
+        MSNotificationHub.addTag("userAgent:com.microsoft.SampleNHAppSwift:1.1")
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
+    
+    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
+        NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.body)
+    }
 
 }
 

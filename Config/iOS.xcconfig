@@ -1,11 +1,13 @@
+#include "App.xcconfig"
+
 SDKROOT = iphoneos
 TARGETED_DEVICE_FAMILY = 1,2
 SUPPORTS_MACCATALYST = YES
-ARCHS[sdk=iphoneos*] = $(ARCHS_STANDARD) armv7s arm64e
+ARCHS = $(ARCHS_STANDARD) armv7s arm64e
 SKIP_INSTALL = YES
 
-OTHER_CFLAGS = $(inherited) -fembed-bitcode-marker
-OTHER_CFLAGS[config=Release][sdk=iphoneos*] = $(GLOBAL_CFLAGS) -fembed-bitcode
-OTHER_CFLAGS[sdk=macosx*] = $(GLOBAL_CFLAGS)
+OTHER_CFLAGS_Debug = $(inherited) -fembed-bitcode-marker
+OTHER_CFLAGS_Release = $(inherited) -fembed-bitcode-marker -fembed-bitcode
+OTHER_CFLAGS = $(OTHER_CFLAGS_$(CONFIGURATION))
 
 NH_BUILD_PLATFORM = iOS

@@ -3,10 +3,12 @@
 //----------------------------------------------------------------
 
 #import <UIKit/UIKit.h>
-#import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
+@interface NotificationTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *notificationSummaryLabel;
 
 @end
 
+NS_ASSUME_NONNULL_END

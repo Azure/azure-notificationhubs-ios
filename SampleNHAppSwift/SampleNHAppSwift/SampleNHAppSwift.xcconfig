@@ -1,0 +1,8 @@
+#include "../Config/iOS.xcconfig"
+
+PRODUCT_NAME = SampleNHAppSwift
+
+PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.$(PRODUCT_NAME)
+INFOPLIST_FILE = $(PRODUCT_NAME)/Info.plist
+CODE_SIGN_ENTITLEMENTS = $(PRODUCT_NAME)/$(PRODUCT_NAME).entitlements
+SWIFT_OBJC_BRIDGING_HEADER = $(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h;
