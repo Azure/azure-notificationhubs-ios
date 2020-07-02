@@ -17,7 +17,7 @@
 #endif
 
 static NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
-static NSString *const kAPIVersion = @"2017-04";
+static NSString *const kAPIVersion = @"2020-06";
 
 @implementation MSInstallationManager {
   @private
