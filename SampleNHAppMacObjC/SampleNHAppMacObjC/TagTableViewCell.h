@@ -3,10 +3,12 @@
 //----------------------------------------------------------------
 
 #import <UIKit/UIKit.h>
-#import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
+@interface TagTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 
 @end
 
+NS_ASSUME_NONNULL_END

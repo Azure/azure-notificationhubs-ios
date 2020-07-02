@@ -3,10 +3,10 @@
 //----------------------------------------------------------------
 
 #import <UIKit/UIKit.h>
-#import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
 
+@property (strong, nonatomic) UIWindow * window;
 
 @end
 
