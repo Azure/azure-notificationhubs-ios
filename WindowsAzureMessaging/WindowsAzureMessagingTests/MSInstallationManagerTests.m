@@ -41,7 +41,7 @@ static NSString *deviceToken = @"deviceToken";
     [installationManager setHttpClient:httpClient];
 
     NSString *expectedUrl =
-        [NSString stringWithFormat:@"https://test-namespace.servicebus.windows.net/nubName/installations/%@?api-version=2017-04",
+        [NSString stringWithFormat:@"https://test-namespace.servicebus.windows.net/nubName/installations/%@?api-version=2020-06",
                                    installation.installationId];
     NSString *expectedSasTokenUrl =
         [NSString stringWithFormat:@"http://test-namespace.servicebus.windows.net/nubName/installations/%@", installation.installationId];
