@@ -4,9 +4,6 @@
 
 #import <Foundation/Foundation.h>
 
-// SDK version
-static NSString *const kSDKVersion = @"3.0.0-Preview2";
-
 // User agent format
 static NSString *const kUserAgentFormat = @"NOTIFICATIONHUBS/%@(api-origin=IosSdkV%@; os=%@; os_version=%@;)";
 

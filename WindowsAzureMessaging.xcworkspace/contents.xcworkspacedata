@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:SampleNHAppMacSwift/SampleNHAppMacSwift.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleNHAppMacObjC/SampleNHAppMacObjC.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleNHAppSwift/SampleNHAppSwift.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleNHAppObjC/SampleNHAppObjC.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -7,7 +7,7 @@ set -e
 TARGET_NAME="${PROJECT_NAME} tvOS Framework"
 
 # The directory for final output of the framework.
-PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging/tvOS"
+PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging-SDK-Apple/tvOS"
 
 # Build result paths.
 SCRIPT_BUILD_DIR="${SRCROOT}/build"

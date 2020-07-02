@@ -11,7 +11,7 @@
 #import "MSHttpTestUtil.h"
 #import "MSNotificationHubErrors.h"
 #import "MSTestFrameworks.h"
-#import "MS_Reachability.h"
+#import "ANH_Reachability.h"
 
 static NSTimeInterval const kMSTestTimeout = 5.0;
 
@@ -24,7 +24,7 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
 
 @interface MSHttpClient ()
 
-- (instancetype)initWithMaxHttpConnectionsPerHost:(NSNumber *)maxHttpConnectionsPerHost reachability:(MS_Reachability *)reachability;
+- (instancetype)initWithMaxHttpConnectionsPerHost:(NSNumber *)maxHttpConnectionsPerHost reachability:(ANH_Reachability *)reachability;
 
 @end
 
@@ -34,7 +34,7 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
     [super setUp];
 
     // Mock reachability.
-    self.reachabilityMock = OCMClassMock([MS_Reachability class]);
+    self.reachabilityMock = OCMClassMock([ANH_Reachability class]);
     self.currentNetworkStatus = ReachableViaWiFi;
     OCMStub([self.reachabilityMock currentReachabilityStatus]).andDo(^(NSInvocation *invocation) {
       NetworkStatus test = self.currentNetworkStatus;
@@ -801,7 +801,7 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
 
 - (void)simulateReachabilityChangedNotification:(NetworkStatus)status {
     self.currentNetworkStatus = status;
-    [[NSNotificationCenter defaultCenter] postNotificationName:kMSReachabilityChangedNotification object:self.reachabilityMock];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kANHReachabilityChangedNotification object:self.reachabilityMock];
 }
 
 @end

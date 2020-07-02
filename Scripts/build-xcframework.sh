@@ -3,7 +3,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 
 # The directory for final output of the framework.
-PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging/XCFramework"
+PRODUCTS_DIR="${SRCROOT}/../WindowsAzureMessaging-SDK-Apple/XCFramework"
 
 # Build result paths.
 SCRIPT_BUILD_DIR="${SRCROOT}/build"

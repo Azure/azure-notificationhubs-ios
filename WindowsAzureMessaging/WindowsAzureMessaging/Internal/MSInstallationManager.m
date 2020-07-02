@@ -53,6 +53,15 @@
 #endif
 }
 
+- (void)setExpiration:(MSInstallation *)installation {
+    if (!installation.expirationTime) {
+        return;
+    }
+    
+    NSTimeInterval expirationInSeconds = 60L * 60L * 24L * 90L;
+    installation.expirationTime = [installation.expirationTime dateByAddingTimeInterval:expirationInSeconds];
+}
+
 - (void)setHttpClient:(MSHttpClient *)httpClient {
     _httpClient = httpClient;
 }
@@ -61,8 +70,10 @@
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
     withManagementHandler:(InstallationManagementHandler)managementHandler
         completionHandler:(InstallationCompletionHandler)completionHandler {
+    [self setExpiration:installation];
+    
     enrichmentHandler();
-
+    
     if (managementHandler(completionHandler)) {
         return;
     }
@@ -81,7 +92,7 @@
 
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
     NSString *apiVersion = [MSInstallationManager getApiVersionFromEndpoint:endpoint];
-    NSString *url = [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationID, apiVersion];
+    NSString *url = [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationId, apiVersion];
 
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];

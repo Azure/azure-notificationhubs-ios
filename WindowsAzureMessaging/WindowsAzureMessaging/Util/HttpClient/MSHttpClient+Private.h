@@ -7,7 +7,7 @@
 #import "MSHttpCall.h"
 #import "MSHttpClient.h"
 
-@class MS_Reachability;
+@class ANH_Reachability;
 
 @interface MSHttpClient ()
 
@@ -19,7 +19,7 @@
 /**
  * Reachability library object, which listens for changes in the network state.
  */
-@property(nonatomic) MS_Reachability *reachability;
+@property(nonatomic) ANH_Reachability *reachability;
 
 /**
  * Pending http calls.
