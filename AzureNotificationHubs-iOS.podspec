@@ -19,8 +19,9 @@ Pod::Spec.new do |s|
 
   s.frameworks          = "Foundation", "SystemConfiguration"
   s.ios.frameworks      = "UIKit"
-  s.ios.weak_frameworks = "UserNotifications"  
+  s.ios.weak_frameworks = "UserNotifications" 
   s.osx.frameworks      = "AppKit"
+  s.osx.weak_frameworks = "UserNotifications" 
   s.ios.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/iOS/WindowsAzureMessaging.framework"
   s.osx.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/macOS/WindowsAzureMessaging.framework"
 
