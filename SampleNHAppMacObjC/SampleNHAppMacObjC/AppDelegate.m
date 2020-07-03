@@ -9,10 +9,6 @@
 #import "AppDelegate.h"
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-@interface AppDelegate () <MSNotificationHubDelegate>
-
-@end
-
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -22,32 +18,11 @@
     NSString *connectionString = [configValues objectForKey:@"CONNECTION_STRING"];
     NSString *hubName = [configValues objectForKey:@"HUB_NAME"];
     
-    [MSNotificationHub setDelegate:self];
     [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
-
-#pragma mark MSNotificationHubDelegate
-
-- (void)application:(NSApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  NSLog(@"Did register for remote notifications with device token.");
-}
-
-- (void)application:(NSApplication *)application didFailToRegisterForRemoteNotificationsWithError:(nonnull NSError *)error {
-  NSLog(@"Did fail to register for remote notifications with error %@.", [error localizedDescription]);
-}
-
-- (void)application:(NSApplication *)application didReceiveRemoteNotification:(NSDictionary<NSString *, id> *)userInfo {
-  NSLog(@"Did receive remote notification");
-}
-
-- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message {
-    NSLog(@"Message title: %@", message.title);
-    NSLog(@"Message body: %@", message.body);
-}
-
 
 @end

@@ -8,8 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController<NSTableViewDataSource, NSApplicationDelegate>
 
+@property (nonatomic, copy) NSArray<NSString *> *tags;
+
+@property (weak) IBOutlet NSTextField *InstallationIdTextField;
+@property (weak) IBOutlet NSTextField *DeviceTokenTextField;
+@property (weak) IBOutlet NSTableView *TagsTable;
 
 @end
 
