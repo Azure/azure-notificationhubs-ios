@@ -7,7 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *const kMSAppDelegateForwarderEnabledKey = @"AppCenterAppDelegateForwarderEnabled";
+static NSString *const kMSAppDelegateForwarderEnabledKey = @"NHAppDelegateForwarderEnabled";
 
 @interface MSNotificationHubAppDelegateForwarder : MSDelegateForwarder
 
