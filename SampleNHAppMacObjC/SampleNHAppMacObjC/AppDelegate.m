@@ -21,6 +21,17 @@
     [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
 }
 
+- (void) addTags {
+    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSString *countryCode = [[NSLocale currentLocale] countryCode];
+    
+    // Create tags with type_value format
+    NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
+    NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
+
+    [MSNotificationHub addTags:@[languageTag, countryCodeTag]];
+}
+
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
