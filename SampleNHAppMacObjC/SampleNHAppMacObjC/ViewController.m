@@ -1,10 +1,6 @@
-//
-//  ViewController.m
-//  SampleNHAppMacObjC
-//
-//  Created by Matthew Podwysocki on 6/30/20.
-//  Copyright © 2020 Matthew Podwysocki. All rights reserved.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import "ViewController.h"
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
@@ -15,19 +11,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.TagsTable.delegate = self;
-    self.TagsTable.dataSource = self;
-    self.TagsTextField.delegate = self;
+    [MSNotificationHub setDelegate:self];
+    self.tagsTable.delegate = self;
+    self.tagsTable.dataSource = self;
+    self.tagsTextField.delegate = self;
     
-    self.NotificationsTableViewController = [[NotificationsTableViewController alloc] initWithTableView: self.NotificationsTable];
+    self.notificationsTableViewController = [[NotificationsTableViewController alloc] initWithTableView: self.notificationsTable];
 
     _tags = [MSNotificationHub getTags];
     
-    [_DeviceTokenTextField  setStringValue:[MSNotificationHub getPushChannel]];
-    [_InstallationIdTextField setStringValue:[MSNotificationHub getInstallationId]];
+    [_deviceTokenTextField  setStringValue:[MSNotificationHub getPushChannel]];
+    [_installationIdTextField setStringValue:[MSNotificationHub getInstallationId]];
     
-    [self.TagsTable reloadData];
-    [self.NotificationsTable reloadData];
+    [self.tagsTable reloadData];
+    [self.notificationsTable reloadData];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -41,21 +38,21 @@
         cell.textField.stringValue = _tags[row];
         
         return cell;
-    };
+    }
     
     return nil;
 }
 
 - (BOOL)control:(NSControl *)control textView:(NSTextField *)fieldEditor doCommandBySelector:(SEL)commandSelector {
     if (commandSelector == @selector(insertNewline:)) {
-        NSString *tag = self.TagsTextField.stringValue;
+        NSString *tag = self.tagsTextField.stringValue;
         if (tag != @"") {
             [MSNotificationHub addTag:tag];
-            self.TagsTextField.stringValue = @"";
+            self.tagsTextField.stringValue = @"";
         }
         
         _tags = [MSNotificationHub getTags];
-        [self.TagsTable reloadData];
+        [self.tagsTable reloadData];
         
         return YES;
     }
@@ -65,10 +62,10 @@
 
 - (void) deleteSelectedItems: (NSTableView *)tableView {
     NSInteger row = [tableView selectedRow];
-    
     if (row >= 0) {
         NSTableCellView *selectedRow = [tableView viewAtColumn:0 row:row makeIfNecessary:YES];
-        [MSNotificationHub removeTag:selectedRow.textField.stringValue];
+        NSString *tag = selectedRow.textField.stringValue;
+        [MSNotificationHub removeTag:tag];
         
         _tags = [MSNotificationHub getTags];
         
@@ -82,7 +79,7 @@
         NSString *theKey = [theEvent charactersIgnoringModifiers];
         unichar keyChar = [theKey characterAtIndex:0];
         if ( keyChar == NSDeleteFunctionKey ) {
-            [self deleteSelectedItems:self.TagsTable];
+            [self deleteSelectedItems:self.tagsTable];
             return;
         }
     }
@@ -109,8 +106,8 @@
     NSLog(@"Message title: %@", message.title);
     NSLog(@"Message body: %@", message.body);
     
-    [self.NotificationsTableViewController addNotificationHubMessage:message];
-    [self.NotificationsTable reloadData];
+    [self.notificationsTableViewController addNotificationHubMessage:message];
+    [self.notificationsTable reloadData];
 }
 
 @end

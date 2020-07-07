@@ -1,10 +1,6 @@
-//
-//  NotificationsTableViewController.h
-//  SampleNHAppMacObjC
-//
-//  Created by User on 06.07.2020.
-//  Copyright © 2020 Matthew Podwysocki. All rights reserved.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <Cocoa/Cocoa.h>
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>

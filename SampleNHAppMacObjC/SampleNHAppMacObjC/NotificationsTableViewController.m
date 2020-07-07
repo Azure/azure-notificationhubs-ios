@@ -1,10 +1,6 @@
-//
-//  NotificationsTableViewController.m
-//  SampleNHAppMacObjC
-//
-//  Created by User on 06.07.2020.
-//  Copyright © 2020 Matthew Podwysocki. All rights reserved.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import "NotificationsTableViewController.h"
 
@@ -35,7 +31,7 @@
         
         if (tableColumn == tableView.tableColumns[0]) {
             cell = [tableView makeViewWithIdentifier:@"TitleNotificationCell" owner:nil];
-            cell.textField.stringValue = _notificationDetails[row].title;
+            cell.textField.stringValue = _notificationDetails[row].title ?: @"<no title>";
         } else if (tableColumn == tableView.tableColumns[1]) {
             cell = [tableView makeViewWithIdentifier:@"BodyNotificationCell" owner:nil];
             cell.textField.stringValue = _notificationDetails[row].body;

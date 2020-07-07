@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>HUB_NAME</key>
-	<string>nh-hub-coordinator-test12</string>
+	<string></string>
 	<key>CONNECTION_STRING</key>
-	<string>Endpoint=sb://runners-nh-int7-sn1-001-7.notificationhub.int7.windows-int.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=ao1JT9NELFsaPTcGt5Odld3/1HqYjIdEw9CPitclydI=</string>
+	<string></string>
 </dict>
 </plist>

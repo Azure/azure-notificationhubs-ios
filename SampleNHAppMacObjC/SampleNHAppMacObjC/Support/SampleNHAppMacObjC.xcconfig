@@ -1,0 +1,4 @@
+
+#include "../../../Config/App.xcconfig"
+#include "../../../Config/Global.xcconfig"
+#include "../../../Config/macOS.xcconfig"

@@ -706,11 +706,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="689" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="676" height="496"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8SN-6i-shT">
-                                <rect key="frame" x="18" y="468" width="89" height="16"/>
+                                <rect key="frame" x="18" y="460" width="89" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Device Token:" id="5Ek-2M-En6">
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -719,7 +719,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ht4-Em-cYD">
-                                <rect key="frame" x="18" y="444" width="90" height="16"/>
+                                <rect key="frame" x="18" y="436" width="90" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Installation ID:" id="IAy-qC-pkE">
                                     <font key="font" metaFont="system"/>
@@ -728,7 +728,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gYf-hZ-w4b">
-                                <rect key="frame" x="123" y="468" width="535" height="16"/>
+                                <rect key="frame" x="123" y="460" width="535" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" id="f0p-16-6ud">
                                     <font key="font" metaFont="system"/>
@@ -737,7 +737,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpa-Nv-YYW">
-                                <rect key="frame" x="123" y="444" width="535" height="16"/>
+                                <rect key="frame" x="123" y="436" width="535" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" id="7oz-mU-S2X">
                                     <font key="font" metaFont="system"/>
@@ -746,7 +746,7 @@
                                 </textFieldCell>
                             </textField>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cD-gx-xHo">
-                                <rect key="frame" x="20" y="205" width="636" height="178"/>
+                                <rect key="frame" x="20" y="197" width="636" height="178"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="qfd-CR-ipA">
                                     <rect key="frame" x="1" y="0.0" width="634" height="177"/>
@@ -809,7 +809,7 @@
                                 </tableHeaderView>
                             </scrollView>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i6p-AP-9qX">
-                                <rect key="frame" x="20" y="402" width="636" height="21"/>
+                                <rect key="frame" x="20" y="394" width="636" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="0Zb-af-2tU">
                                     <font key="font" metaFont="system"/>
@@ -818,7 +818,7 @@
                                 </textFieldCell>
                             </textField>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4W-b8-bMx">
-                                <rect key="frame" x="20" y="36" width="636" height="135"/>
+                                <rect key="frame" x="20" y="28" width="636" height="135"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="XxY-G9-GiW">
                                     <rect key="frame" x="1" y="0.0" width="634" height="134"/>
@@ -915,16 +915,20 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="DeviceTokenTextField" destination="gYf-hZ-w4b" id="PCU-1C-W5C"/>
+                        <outlet property="DeviceTokenTextField" destination="gYf-hZ-w4b" id="2Qs-QJ-4oN"/>
                         <outlet property="InstallationIdTextField" destination="qpa-Nv-YYW" id="BsM-gR-vZe"/>
                         <outlet property="NotificationsTable" destination="Y6E-jc-4ED" id="IPY-r7-PbZ"/>
                         <outlet property="TagsTable" destination="6vd-tb-rzf" id="qZg-wt-qZe"/>
                         <outlet property="TagsTextField" destination="i6p-AP-9qX" id="6vZ-q0-QfQ"/>
+                        <outlet property="deviceTokenTextField" destination="gYf-hZ-w4b" id="ili-II-ZVU"/>
+                        <outlet property="notificationsTable" destination="Y6E-jc-4ED" id="wcc-ef-AtD"/>
+                        <outlet property="tagsTable" destination="6vd-tb-rzf" id="HkQ-dj-8YP"/>
+                        <outlet property="tagsTextField" destination="i6p-AP-9qX" id="9ZE-MH-Lko"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179.5" y="772"/>
+            <point key="canvasLocation" x="173" y="768"/>
         </scene>
     </scenes>
 </document>
