@@ -18,6 +18,8 @@
     NSString *connectionString = [configValues objectForKey:@"CONNECTION_STRING"];
     NSString *hubName = [configValues objectForKey:@"HUB_NAME"];
     
+    [self addTags];
+    
     [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
 }
 

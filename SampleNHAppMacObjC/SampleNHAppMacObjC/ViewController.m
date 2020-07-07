@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
+#import "NotificationDetails.h"
 
 @implementation ViewController
 
@@ -18,12 +19,15 @@
     self.TagsTable.dataSource = self;
     self.TagsTextField.delegate = self;
     
+    self.NotificationsTableViewController = [[NotificationsTableViewController alloc] initWithTableView: self.NotificationsTable];
+
     _tags = [MSNotificationHub getTags];
     
     [_DeviceTokenTextField  setStringValue:[MSNotificationHub getPushChannel]];
     [_InstallationIdTextField setStringValue:[MSNotificationHub getInstallationId]];
     
     [self.TagsTable reloadData];
+    [self.NotificationsTable reloadData];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -104,6 +108,9 @@
 - (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message {
     NSLog(@"Message title: %@", message.title);
     NSLog(@"Message body: %@", message.body);
+    
+    [self.NotificationsTableViewController addNotificationHubMessage:message];
+    [self.NotificationsTable reloadData];
 }
 
 @end

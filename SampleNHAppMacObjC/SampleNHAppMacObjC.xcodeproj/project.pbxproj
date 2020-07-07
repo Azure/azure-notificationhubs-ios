@@ -15,6 +15,7 @@
 		4C10497A24ABA94600FA339E /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497924ABA94600FA339E /* WindowsAzureMessaging.framework */; };
 		4C10497B24ABA94600FA339E /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497924ABA94600FA339E /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C1049C324ACE3C200FA339E /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C1049C224ACE3C100FA339E /* DevSettings.plist */; };
+		CEB560F224B369CF000B3990 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB560F124B369CF000B3990 /* NotificationsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,8 @@
 		4C10494C24ABA6E300FA339E /* SampleNHAppMacObjC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleNHAppMacObjC.entitlements; sourceTree = "<group>"; };
 		4C10497924ABA94600FA339E /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1049C224ACE3C100FA339E /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
+		CEB560F024B36933000B3990 /* NotificationsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewController.h; sourceTree = "<group>"; };
+		CEB560F124B369CF000B3990 /* NotificationsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				4C10494A24ABA6E300FA339E /* main.m */,
 				4C10494C24ABA6E300FA339E /* SampleNHAppMacObjC.entitlements */,
 				4C1049C224ACE3C100FA339E /* DevSettings.plist */,
+				CEB560F024B36933000B3990 /* NotificationsTableViewController.h */,
+				CEB560F124B369CF000B3990 /* NotificationsTableViewController.m */,
 			);
 			path = SampleNHAppMacObjC;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 			files = (
 				4C10494324ABA6E200FA339E /* ViewController.m in Sources */,
 				4C10494B24ABA6E300FA339E /* main.m in Sources */,
+				CEB560F224B369CF000B3990 /* NotificationsTableViewController.m in Sources */,
 				4C10494024ABA6E200FA339E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
