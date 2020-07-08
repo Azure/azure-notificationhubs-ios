@@ -6,7 +6,7 @@ import Cocoa
 import WindowsAzureMessaging
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate {
 
     var connectionString: String?
     var hubName: String?
