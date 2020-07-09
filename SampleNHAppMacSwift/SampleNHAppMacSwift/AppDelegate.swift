@@ -6,7 +6,7 @@ import Cocoa
 import WindowsAzureMessaging
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate {
 
     var connectionString: String?
     var hubName: String?
@@ -27,9 +27,5 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate {
         // Insert code here to tear down your application
     }
     
-    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
-        NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.body)
-    }
-
 }
 

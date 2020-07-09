@@ -14,6 +14,8 @@
 		4C10497F24ABA95B00FA339E /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */; };
 		4C10498024ABA95B00FA339E /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C1049C124ACE3AB00FA339E /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C1049C024ACE3AB00FA339E /* DevSettings.plist */; };
+		CEB5610924B744EF000B3990 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5610824B744EF000B3990 /* TagsTableViewController.swift */; };
+		CEB5610D24B75789000B3990 /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5610C24B75789000B3990 /* NotificationsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +43,8 @@
 		4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1049C024ACE3AB00FA339E /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
 		CEB5610724B5F37C000B3990 /* SampleNHAppMacSwift.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHAppMacSwift.xcconfig; sourceTree = "<group>"; };
+		CEB5610824B744EF000B3990 /* TagsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
+		CEB5610C24B75789000B3990 /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				4C10496724ABA75600FA339E /* Info.plist */,
 				4C10496824ABA75600FA339E /* SampleNHAppMacSwift.entitlements */,
 				4C1049C024ACE3AB00FA339E /* DevSettings.plist */,
+				CEB5610824B744EF000B3990 /* TagsTableViewController.swift */,
+				CEB5610C24B75789000B3990 /* NotificationsTableViewController.swift */,
 			);
 			path = SampleNHAppMacSwift;
 			sourceTree = "<group>";
@@ -176,6 +182,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C10496124ABA75500FA339E /* ViewController.swift in Sources */,
+				CEB5610924B744EF000B3990 /* TagsTableViewController.swift in Sources */,
+				CEB5610D24B75789000B3990 /* NotificationsTableViewController.swift in Sources */,
 				4C10495F24ABA75500FA339E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
