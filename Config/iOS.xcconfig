@@ -9,4 +9,3 @@ OTHER_CFLAGS[config=Release][sdk=iphoneos*] = $(GLOBAL_CFLAGS) -fembed-bitcode
 OTHER_CFLAGS[sdk=macosx*] = $(GLOBAL_CFLAGS)
 
 NH_BUILD_PLATFORM = iOS
-DEVELOPMENT_TEAM = S4V3D7CHJR
