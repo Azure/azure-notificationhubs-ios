@@ -20,18 +20,20 @@
 		64B18FC92452DA6500AA38B1 /* TagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FC82452DA6500AA38B1 /* TagTableViewCell.m */; };
 		64B18FCF2452E48200AA38B1 /* NotificationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FCE2452E48200AA38B1 /* NotificationDetailsViewController.m */; };
 		64B18FD22452E58C00AA38B1 /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FD12452E58C00AA38B1 /* NotificationTableViewCell.m */; };
+		64DA219724B8B44200425C1A /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 64B18FC32452D1A900AA38B1 /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		648D01E224ADD85B0081397A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				64DA219724B8B44200425C1A /* WindowsAzureMessaging.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
