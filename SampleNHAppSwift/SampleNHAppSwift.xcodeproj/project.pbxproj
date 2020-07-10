@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		644974E924ADF16600196CBD /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 644974E824ADF16600196CBD /* DevSettings.plist */; };
 		6489DE09245994FF0021CF36 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */; };
-		6489DE0A245994FF0021CF36 /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		64B3DFAA245064F3006B6327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFA9245064F3006B6327 /* AppDelegate.swift */; };
 		64B3DFAC245064F3006B6327 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFAB245064F3006B6327 /* SceneDelegate.swift */; };
 		64B3DFAE245064F3006B6327 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFAD245064F3006B6327 /* SetupViewController.swift */; };
@@ -29,7 +28,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6489DE0A245994FF0021CF36 /* WindowsAzureMessaging.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;

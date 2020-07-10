@@ -1,0 +1,1 @@
+echo $DEV_SETTINGS_PLIST  | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/SampleNHAppObjC/SampleNHAppObjC/DevSettings.plist"
