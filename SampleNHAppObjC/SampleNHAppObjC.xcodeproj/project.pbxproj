@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		648D01E024ADD85B0081397A /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B18FC32452D1A900AA38B1 /* WindowsAzureMessaging.framework */; };
-		648D01E124ADD85B0081397A /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 64B18FC32452D1A900AA38B1 /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		648D01E424ADD9EE0081397A /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 648D01E324ADD9EE0081397A /* DevSettings.plist */; };
 		64B18FA82452CEEA00AA38B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FA72452CEEA00AA38B1 /* AppDelegate.m */; };
 		64B18FAB2452CEEA00AA38B1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FAA2452CEEA00AA38B1 /* SceneDelegate.m */; };
@@ -30,7 +29,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				648D01E124ADD85B0081397A /* WindowsAzureMessaging.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
