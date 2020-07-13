@@ -8,7 +8,7 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 #import <arpa/inet.h>
-#import "MSDispatcherUtil.h"
+#import "ANHDispatcherUtil.h"
 
 #import "ANH_Reachability.h"
 
@@ -65,7 +65,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 
 /*
  * Starting and stopping notifier for reachability
- * instance are enforced to run in main thread. MS_Reachability is not
+ * instance are enforced to run in main thread. ANH_Reachability is not
  * thread-safe so stopNotifier doesn't properly unschedule jobs from the loop
  * when it is called from a different thread, and this generates unexpected
  * crashes that are caused by accessing a disposed instance especially when
@@ -123,7 +123,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 #pragma mark - Start and stop notifier
 
 - (void)startNotifier {
-  [MSDispatcherUtil performBlockOnMainThread:^{
+  [ANHDispatcherUtil performBlockOnMainThread:^{
     SCNetworkReachabilityContext context = {0, (__bridge void *)(self), NULL,
                                             NULL, NULL};
     if (SCNetworkReachabilitySetCallback(self.reachabilityRef,
@@ -139,7 +139,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 }
 
 - (void)stopNotifier {
-  [MSDispatcherUtil performBlockOnMainThread:^{
+  [ANHDispatcherUtil performBlockOnMainThread:^{
     if (self.reachabilityRef != NULL) {
       SCNetworkReachabilityUnscheduleFromRunLoop(
           self.reachabilityRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
@@ -150,7 +150,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 - (void)dealloc {
   __block SCNetworkReachabilityRef reachabilityRef = self.reachabilityRef;
   if (reachabilityRef != NULL) {
-    [MSDispatcherUtil performBlockOnMainThread:^{
+    [ANHDispatcherUtil performBlockOnMainThread:^{
       SCNetworkReachabilityUnscheduleFromRunLoop(reachabilityRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
       CFRelease(reachabilityRef);
     }];

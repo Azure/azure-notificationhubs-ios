@@ -3,7 +3,7 @@
 //----------------------------------------------------------------
 
 #import "MSInstallationManager.h"
-#import "MSHttpClient.h"
+#import "ANHHttpClient.h"
 #import "MSInstallation.h"
 #import "MSInstallationManager+Private.h"
 #import "MSLocalStorage.h"
@@ -31,7 +31,7 @@ static NSString *const kAPIVersion = @"2020-06";
     if ((self = [super init]) != nil) {
         _connectionDictionary = [MSInstallationManager parseConnectionString:connectionString];
         _tokenProvider = [MSTokenProvider createFromConnectionDictionary:_connectionDictionary];
-        _httpClient = [MSHttpClient new];
+        _httpClient = [ANHHttpClient new];
         _connectionString = connectionString;
         _hubName = hubName;
     }
@@ -59,12 +59,12 @@ static NSString *const kAPIVersion = @"2020-06";
     if (!installation.expirationTime) {
         return;
     }
-    
+
     NSTimeInterval expirationInSeconds = 60L * 60L * 24L * 90L;
     installation.expirationTime = [installation.expirationTime dateByAddingTimeInterval:expirationInSeconds];
 }
 
-- (void)setHttpClient:(MSHttpClient *)httpClient {
+- (void)setHttpClient:(ANHHttpClient *)httpClient {
     _httpClient = httpClient;
 }
 
@@ -73,9 +73,9 @@ static NSString *const kAPIVersion = @"2020-06";
     withManagementHandler:(InstallationManagementHandler)managementHandler
         completionHandler:(InstallationCompletionHandler)completionHandler {
     [self setExpiration:installation];
-    
+
     enrichmentHandler();
-    
+
     if (managementHandler(completionHandler)) {
         return;
     }
@@ -93,7 +93,8 @@ static NSString *const kAPIVersion = @"2020-06";
     }
 
     NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
-    NSString *url = [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationId, kAPIVersion];
+    NSString *url =
+        [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installation.installationId, kAPIVersion];
 
     NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
     NSURL *requestUrl = [NSURL URLWithString:url];
@@ -158,7 +159,8 @@ static NSString *const kAPIVersion = @"2020-06";
 }
 
 + (NSURL *)fixupEndpoint:(NSURL *)endPoint scheme:(NSString *)scheme {
-    NSString *modifiedEndpoint = [NSString stringWithString:[endPoint absoluteString]];
+    NSString *absoluteString = [endPoint absoluteString];
+    NSString *modifiedEndpoint = [NSString stringWithString:absoluteString];
 
     if (![modifiedEndpoint hasSuffix:@"/"]) {
         modifiedEndpoint = [NSString stringWithFormat:@"%@/", modifiedEndpoint];

@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MSHttpUtil : NSObject
+@interface ANHHttpUtil : NSObject
 
 /**
  * Indicate if the http response is recoverable.

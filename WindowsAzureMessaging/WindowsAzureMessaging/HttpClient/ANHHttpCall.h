@@ -4,11 +4,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MSHttpClientProtocol.h"
+#import "ANHHttpClientProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MSHttpCall : NSObject
+@interface ANHHttpCall : NSObject
 
 /**
  * Request body.
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Call completion handler used for communicating with calling component.
  */
-@property(nonatomic) MSHttpRequestCompletionHandler completionHandler;
+@property(nonatomic) ANHHttpRequestCompletionHandler completionHandler;
 
 /**
  * A timer source which is used to flush the queue after a certain amount of time.
@@ -72,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
                     headers:(nullable NSDictionary<NSString *, NSString *> *)headers
                        data:(nullable NSData *)data
              retryIntervals:(NSArray *)retryIntervals
-          completionHandler:(MSHttpRequestCompletionHandler)completionHandler;
+          completionHandler:(ANHHttpRequestCompletionHandler)completionHandler;
 
 /**
  * Start the retry timer and invoke a callback after.

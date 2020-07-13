@@ -2,9 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import "MSDispatcherUtil.h"
+#import "ANHDispatcherUtil.h"
 
-@implementation MSDispatcherUtil
+@implementation ANHDispatcherUtil
 
 + (void)performBlockOnMainThread:(void (^)(void))block {
 

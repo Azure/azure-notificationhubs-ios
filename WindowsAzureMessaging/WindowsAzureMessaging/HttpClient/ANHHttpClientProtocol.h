@@ -4,19 +4,19 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MSHttpClientDelegate;
+@protocol ANHHttpClientDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^MSHttpRequestCompletionHandler)(NSData *_Nullable responseBody, NSHTTPURLResponse *_Nullable response,
+typedef void (^ANHHttpRequestCompletionHandler)(NSData *_Nullable responseBody, NSHTTPURLResponse *_Nullable response,
                                                NSError *_Nullable error);
 
-@protocol MSHttpClientProtocol
+@protocol ANHHttpClientProtocol
 
 /**
  * HTTP client delegates.
  */
-@property(nonatomic, weak, nullable) id<MSHttpClientDelegate> delegate;
+@property(nonatomic, weak, nullable) id<ANHHttpClientDelegate> delegate;
 
 @required
 
@@ -33,7 +33,7 @@ typedef void (^MSHttpRequestCompletionHandler)(NSData *_Nullable responseBody, N
                method:(NSString *)method
               headers:(nullable NSDictionary<NSString *, NSString *> *)headers
                  data:(nullable NSData *)data
-    completionHandler:(nullable MSHttpRequestCompletionHandler)completionHandler;
+    completionHandler:(nullable ANHHttpRequestCompletionHandler)completionHandler;
 
 /**
  * Make an HTTP call.
@@ -50,7 +50,7 @@ typedef void (^MSHttpRequestCompletionHandler)(NSData *_Nullable responseBody, N
                headers:(nullable NSDictionary<NSString *, NSString *> *)headers
                   data:(nullable NSData *)data
         retryIntervals:(NSArray *)retryIntervals
-     completionHandler:(nullable MSHttpRequestCompletionHandler)completionHandler;
+     completionHandler:(nullable ANHHttpRequestCompletionHandler)completionHandler;
 
 /**
  * Pause the HTTP client.

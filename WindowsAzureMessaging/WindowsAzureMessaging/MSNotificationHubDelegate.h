@@ -18,7 +18,6 @@
  * @param notificationHub The instance of MSNotificationHub
  * @param message The push notification details.
  */
-- (void)notificationHub:(MSNotificationHub *)notificationHub
-didReceivePushNotification:(MSNotificationHubMessage *)message;
+- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message;
 
 @end

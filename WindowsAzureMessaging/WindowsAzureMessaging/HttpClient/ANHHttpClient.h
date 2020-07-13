@@ -4,9 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MSHttpClientProtocol.h"
+#import "ANHHttpClientProtocol.h"
 
-@interface MSHttpClient : NSObject <MSHttpClientProtocol>
+@interface ANHHttpClient : NSObject <ANHHttpClientProtocol>
 
 /**
  * Creates an instance of MSHttpClient.

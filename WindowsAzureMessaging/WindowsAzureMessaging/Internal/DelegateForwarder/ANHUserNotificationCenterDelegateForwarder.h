@@ -2,24 +2,24 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#import "ANHDelegateForwarder.h"
 #import <Foundation/Foundation.h>
-#import "MSDelegateForwarder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *const kMSUserNotificationCenterDelegateForwarderEnabledKey = @"NHUserNotificationCenterDelegateForwarderEnabled";
+static NSString *const kANHUserNotificationCenterDelegateForwarderEnabledKey = @"NHUserNotificationCenterDelegateForwarderEnabled";
 
 /**
  * The @c MSUserNotificationCenterDelegateForwarder is responsible for swizzling the @c UNUserNotificationCenterDelegate and forwarding
  * delegate calls to Push and customer implementation. The @c UNUserNotificationCenterDelegate is a push only delegate so the forwarder is
  * directly communicating with Push.
  */
-@interface MSUserNotificationCenterDelegateForwarder : MSDelegateForwarder
+@interface ANHUserNotificationCenterDelegateForwarder : ANHDelegateForwarder
 
 /**
  * This is an empty method to be used to force load this class into the runtime.
  */
-+(void)doNothingButForceLoadTheClass;
++ (void)doNothingButForceLoadTheClass;
 
 @end
 

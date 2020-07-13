@@ -19,9 +19,6 @@
 
 @synthesize timeToExpireinMins;
 
-static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-static NSString *decodingTableLock = @"decodingTableLock";
-
 - (instancetype)initWithConnectionDictionary:(NSDictionary *)connectionDictionary {
     if ((self = [super init]) != nil) {
         if (![self isSuccessfullyInitWithConnectionString:connectionDictionary]) {
@@ -39,8 +36,8 @@ static NSString *decodingTableLock = @"decodingTableLock";
 - (NSString *)generateSharedAccessTokenWithUrl:(NSString *)audienceUri {
     // time to live in seconds
     NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
-    int totalSeconds = interval + timeToExpireinMins * 60;
-    NSString *expiresOn = [NSString stringWithFormat:@"%d", totalSeconds];
+    double totalSeconds = interval + timeToExpireinMins * 60;
+    NSString *expiresOn = [NSString stringWithFormat:@"%.f", totalSeconds];
 
     audienceUri = [[audienceUri lowercaseString] stringByReplacingOccurrencesOfString:@"https://" withString:@"http://"];
     audienceUri = [[self urlEncode:audienceUri] lowercaseString];
@@ -85,8 +82,7 @@ static NSString *decodingTableLock = @"decodingTableLock";
 
     if (_stsHostName == nil) {
         NSString *nameSpace = [[[_serviceEndPoint host] componentsSeparatedByString:@"."] objectAtIndex:0];
-        _stsHostName =
-            [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net", nameSpace]];
+        _stsHostName = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net", nameSpace]];
     } else {
         if ([_stsHostName host] == nil) {
             NSLog(@"%@", @"StsHostname is not in URL format in connectionString.");
@@ -103,32 +99,6 @@ static NSString *decodingTableLock = @"decodingTableLock";
     return YES;
 }
 
-- (NSString *)toBase64:(unsigned char *)data length:(NSInteger)length {
-
-    NSMutableString *dest = [[NSMutableString alloc] initWithString:@""];
-
-    unsigned char *tempData = (unsigned char *)data;
-    NSInteger srcLen = length;
-
-    for (int i = 0; i < srcLen; i += 3) {
-        NSInteger value = 0;
-        for (int j = i; j < (i + 3); j++) {
-            value <<= 8;
-
-            if (j < length) {
-                value |= (0xFF & tempData[j]);
-            }
-        }
-
-        [dest appendFormat:@"%c", encodingTable[(value >> 18) & 0x3F]];
-        [dest appendFormat:@"%c", encodingTable[(value >> 12) & 0x3F]];
-        [dest appendFormat:@"%c", (i + 1) < length ? encodingTable[(value >> 6) & 0x3F] : '='];
-        [dest appendFormat:@"%c", (i + 2) < length ? encodingTable[(value >> 0) & 0x3F] : '='];
-    }
-
-    return dest;
-}
-
 - (NSString *)signString:(NSString *)str withKeyData:(const char *)cKey keyLength:(NSInteger)keyLength {
     const char *cData = [str cStringUsingEncoding:NSUTF8StringEncoding];
 
@@ -136,11 +106,9 @@ static NSString *decodingTableLock = @"decodingTableLock";
 
     CCHmac(kCCHmacAlgSHA256, cKey, keyLength, cData, strlen(cData), cHMAC);
 
-    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:CC_SHA256_DIGEST_LENGTH];
-
-    NSString *signature = [self toBase64:(unsigned char *)[HMAC bytes] length:[HMAC length]];
-
-    return signature;
+    NSData *hmac = [[NSData alloc] initWithBytes:cHMAC length:CC_SHA256_DIGEST_LENGTH];
+    
+    return [hmac base64EncodedStringWithOptions:0];
 }
 
 - (NSString *)signString:(NSString *)str withKey:(NSString *)key {
@@ -157,8 +125,7 @@ static NSString *decodingTableLock = @"decodingTableLock";
 #pragma GCC diagnostic pop
 
 - (NSString *)urlDecode:(NSString *)urlString {
-    return [[urlString stringByReplacingOccurrencesOfString:@"+"
-                                                 withString:@" "] stringByRemovingPercentEncoding];
+    return [[urlString stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding];
 }
 
 @end

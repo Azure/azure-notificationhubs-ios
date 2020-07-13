@@ -12,20 +12,20 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+#import "ANHNotificationHubAppDelegateForwarder.h"
+#import "ANHUserNotificationCenterDelegateForwarder.h"
 #import "MSDebounceInstallationManager.h"
 #import "MSInstallation.h"
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
-#import "MSNotificationHub.h"
-#import "MSNotificationHubAppDelegateForwarder.h"
-#import "MSNotificationHubMessage.h"
-#import "MSNotificationHubMessage+Private.h"
 #import "MSNotificationHub+Private.h"
+#import "MSNotificationHub.h"
+#import "MSNotificationHubMessage+Private.h"
+#import "MSNotificationHubMessage.h"
 #import "MSTokenProvider.h"
-#import "MSUserNotificationCenterDelegateForwarder.h"
 
 #if TARGET_OS_OSX
-static NSString *const kMSUserNotificationCenterDelegateKey = @"delegate";
+static NSString *const kANHUserNotificationCenterDelegateKey = @"delegate";
 #endif
 
 // Singleton
@@ -42,11 +42,11 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 - (instancetype)init {
     if ((self = [super init])) {
-        
+
         // Force load for swizzling
-        [MSNotificationHubAppDelegateForwarder doNothingButForceLoadTheClass];
-        [MSUserNotificationCenterDelegateForwarder doNothingButForceLoadTheClass];
-        
+        [ANHNotificationHubAppDelegateForwarder doNothingButForceLoadTheClass];
+        [ANHUserNotificationCenterDelegateForwarder doNothingButForceLoadTheClass];
+
 #if TARGET_OS_OSX
         NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
 
@@ -55,7 +55,8 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
          * user notification center delegate.
          */
         if (center.delegate) {
-            _originalUserNotificationCenterDelegate = center.delegate;
+            id<NSUserNotificationCenterDelegate> centerDelegate = center.delegate;
+            _originalUserNotificationCenterDelegate = centerDelegate;
         }
 
         // Set a delegate that will forward notifications to Push as well as a customer's delegate.
@@ -63,7 +64,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
         // Observe delegate property changes.
         [center addObserver:self
-                 forKeyPath:kMSUserNotificationCenterDelegateKey
+                 forKeyPath:kANHUserNotificationCenterDelegateKey
                     options:NSKeyValueObservingOptionNew
                     context:UserNotificationCenterDelegateContext];
 #endif
@@ -75,12 +76,12 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 #if TARGET_OS_OSX
 - (void)dealloc {
     [[NSUserNotificationCenter defaultUserNotificationCenter] removeObserver:self
-                                                                  forKeyPath:kMSUserNotificationCenterDelegateKey
+                                                                  forKeyPath:kANHUserNotificationCenterDelegateKey
                                                                      context:UserNotificationCenterDelegateContext];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context == UserNotificationCenterDelegateContext && [keyPath isEqualToString:kMSUserNotificationCenterDelegateKey]) {
+    if (context == UserNotificationCenterDelegateContext && [keyPath isEqualToString:kANHUserNotificationCenterDelegateKey]) {
         id delegate = [change objectForKey:NSKeyValueChangeNewKey];
         if (delegate != self) {
             self.originalUserNotificationCenterDelegate = delegate;
@@ -131,7 +132,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 - (void)registerForRemoteNotifications {
 #if TARGET_OS_OSX
-  [NSApp registerForRemoteNotificationTypes:(NSRemoteNotificationTypeSound | NSRemoteNotificationTypeBadge)];
+    [NSApp registerForRemoteNotificationTypes:(NSRemoteNotificationTypeSound | NSRemoteNotificationTypeBadge)];
 #elif TARGET_OS_IOS
     if (@available(iOS 10.0, maccatalyst 13.0, *)) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -194,38 +195,38 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 #if TARGET_OS_OSX
 - (BOOL)didReceiveUserNotification:(NSUserNotification *)notification {
-  if (notification) {
-      [self didReceiveRemoteNotification:notification.userInfo fromUserNotification:YES];
-    NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+    if (notification) {
+        [self didReceiveRemoteNotification:notification.userInfo fromUserNotification:YES];
+        NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
 
-    // The delivered notification should be removed.
-    [center removeDeliveredNotification:notification];
-    return YES;
-  }
-  return NO;
+        // The delivered notification should be removed.
+        [center removeDeliveredNotification:notification];
+        return YES;
+    }
+    return NO;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-  [self didReceiveUserNotification:[notification.userInfo objectForKey:NSApplicationLaunchUserNotificationKey]];
+    [self didReceiveUserNotification:[notification.userInfo objectForKey:NSApplicationLaunchUserNotificationKey]];
 }
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
-  [self didReceiveUserNotification:notification];
-  if ([self.originalUserNotificationCenterDelegate respondsToSelector:@selector(userNotificationCenter:didActivateNotification:)]) {
-    [self.originalUserNotificationCenterDelegate userNotificationCenter:center didActivateNotification:notification];
-  }
+    [self didReceiveUserNotification:notification];
+    if ([self.originalUserNotificationCenterDelegate respondsToSelector:@selector(userNotificationCenter:didActivateNotification:)]) {
+        [self.originalUserNotificationCenterDelegate userNotificationCenter:center didActivateNotification:notification];
+    }
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
 
-  // Testing if the selector is defined in NSUserNotificationCenterDelegate or not.
-  struct objc_method_description hasMethod =
-      protocol_getMethodDescription(@protocol(NSUserNotificationCenterDelegate), [anInvocation selector], NO, YES);
-  if (hasMethod.name != NULL && [self.originalUserNotificationCenterDelegate respondsToSelector:[anInvocation selector]]) {
-    [anInvocation invokeWithTarget:self.originalUserNotificationCenterDelegate];
-  } else {
-    [super forwardInvocation:anInvocation];
-  }
+    // Testing if the selector is defined in NSUserNotificationCenterDelegate or not.
+    struct objc_method_description hasMethod =
+        protocol_getMethodDescription(@protocol(NSUserNotificationCenterDelegate), [anInvocation selector], NO, YES);
+    if (hasMethod.name != NULL && [self.originalUserNotificationCenterDelegate respondsToSelector:[anInvocation selector]]) {
+        [anInvocation invokeWithTarget:self.originalUserNotificationCenterDelegate];
+    } else {
+        [super forwardInvocation:anInvocation];
+    }
 }
 #endif
 
@@ -240,7 +241,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
         NSLog(@"Notification received while the SDK was enabled but it is disabled now, discard the notification.");
         return;
     }
-    
+
     MSNotificationHubMessage *message = [[MSNotificationHubMessage alloc] initWithUserInfo:userInfo];
 
 #if TARGET_OS_OSX
@@ -259,7 +260,6 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 #endif
 }
 
-
 - (void)didReceivePushNotification:(MSNotificationHubMessage *)notification {
     dispatch_async(dispatch_get_main_queue(), ^{
       id<MSNotificationHubDelegate> delegate = self.delegate;
@@ -268,7 +268,6 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
       }
     });
 }
-
 
 #pragma mark SDK Basics
 

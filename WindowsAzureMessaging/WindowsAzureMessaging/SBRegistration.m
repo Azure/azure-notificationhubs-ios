@@ -10,11 +10,11 @@
 static NSString *const nativeRegistrationName = @"$Default";
 
 static NSString *const nativeRegistrationFormat = @"<entry xmlns=\"http://www.w3.org/2005/Atom\"><content "
-                                           @"type=\"text/xml\"><AppleRegistrationDescription "
-                                           @"xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" "
-                                           @"xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/"
-                                           @"connect\">%@<DeviceToken>%@</DeviceToken></"
-                                           @"AppleRegistrationDescription></content></entry>";
+                                                  @"type=\"text/xml\"><AppleRegistrationDescription "
+                                                  @"xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" "
+                                                  @"xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/"
+                                                  @"connect\">%@<DeviceToken>%@</DeviceToken></"
+                                                  @"AppleRegistrationDescription></content></entry>";
 
 @synthesize ETag, expiresAt, tags, deviceToken, registrationId;
 

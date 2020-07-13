@@ -2,21 +2,21 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import "MSHttpClient.h"
-#import "MSHttpCall.h"
-#import "MSHttpClientDelegate.h"
-#import "MSHttpClient+Private.h"
-#import "MSHttpUtil.h"
-#import "MSNotificationHubErrors.h"
+#import "ANHHttpClient.h"
+#import "ANHHttpCall.h"
+#import "ANHHttpClientDelegate.h"
+#import "ANHHttpClient+Private.h"
+#import "ANHHttpUtil.h"
+#import "ANH_Errors.h"
 #import "ANH_Reachability.h"
 
 #define DEFAULT_RETRY_INTERVALS @[ @10, @(5 * 60), @(20 * 60) ]
 
-#define MS_NOTIFICATION_CENTER [NSNotificationCenter defaultCenter]
+#define ANH_NOTIFICATION_CENTER [NSNotificationCenter defaultCenter]
 
-static NSString *const kMSRetryHeaderKey = @"retry-after";
+static NSString *const kANHRetryHeaderKey = @"retry-after";
 
-@implementation MSHttpClient
+@implementation ANHHttpClient
 
 @synthesize delegate = _delegate;
 
@@ -43,7 +43,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
         _delegate = nil;
 
         // Add listener to reachability.
-        [MS_NOTIFICATION_CENTER addObserver:self
+        [ANH_NOTIFICATION_CENTER addObserver:self
                                    selector:@selector(networkStateChanged:)
                                        name:kANHReachabilityChangedNotification
                                      object:nil];
@@ -56,7 +56,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
                method:(NSString *)method
               headers:(nullable NSDictionary<NSString *, NSString *> *)headers
                  data:(nullable NSData *)data
-    completionHandler:(MSHttpRequestCompletionHandler)completionHandler {
+    completionHandler:(ANHHttpRequestCompletionHandler)completionHandler {
     [self sendAsync:url
                     method:method
                    headers:headers
@@ -70,16 +70,16 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
                headers:(nullable NSDictionary<NSString *, NSString *> *)headers
                   data:(nullable NSData *)data
         retryIntervals:(NSArray *)retryIntervals
-     completionHandler:(MSHttpRequestCompletionHandler)completionHandler {
+     completionHandler:(ANHHttpRequestCompletionHandler)completionHandler {
     @synchronized(self) {
         if (!self.enabled) {
-            NSError *error = [NSError errorWithDomain:kMSNHErrorDomain
-                                                 code:MSNHDisabledErrorCode
-                                             userInfo:@{NSLocalizedDescriptionKey : kMSNHDisabledErrorDesc}];
+            NSError *error = [NSError errorWithDomain:kANHErrorDomain
+                                                 code:ANHDisabledErrorCode
+                                             userInfo:@{NSLocalizedDescriptionKey : kANHDisabledErrorDesc}];
             completionHandler(nil, nil, error);
             return;
         }
-        MSHttpCall *call = [[MSHttpCall alloc] initWithUrl:url
+        ANHHttpCall *call = [[ANHHttpCall alloc] initWithUrl:url
                                                     method:method
                                                    headers:headers
                                                       data:data
@@ -89,7 +89,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
     }
 }
 
-- (void)sendCallAsync:(MSHttpCall *)call {
+- (void)sendCallAsync:(ANHHttpCall *)call {
     @synchronized(self) {
         if (![self.pendingCalls containsObject:call]) {
             [self.pendingCalls addObject:call];
@@ -99,7 +99,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
         }
 
         // Call delegate before sending HTTP request.
-        id<MSHttpClientDelegate> strongDelegate = self.delegate;
+        id<ANHHttpClientDelegate> strongDelegate = self.delegate;
         if ([strongDelegate respondsToSelector:@selector(willSendHTTPRequestToURL:withHeaders:)]) {
             [strongDelegate willSendHTTPRequestToURL:call.url withHeaders:call.headers];
         }
@@ -123,7 +123,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
     }
 }
 
-- (void)requestCompletedWithHttpCall:(MSHttpCall *)httpCall data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
+- (void)requestCompletedWithHttpCall:(ANHHttpCall *)httpCall data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
     NSHTTPURLResponse *httpResponse;
     @synchronized(self) {
         httpCall.inProgress = NO;
@@ -135,8 +135,8 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
         }
 
         // Handle NSError (low level error where we don't even get a HTTP response).
-        BOOL internetIsDown = [MSHttpUtil isNoInternetConnectionError:error];
-        BOOL couldNotEstablishSecureConnection = [MSHttpUtil isSSLConnectionError:error];
+        BOOL internetIsDown = [ANHHttpUtil isNoInternetConnectionError:error];
+        BOOL couldNotEstablishSecureConnection = [ANHHttpUtil isSSLConnectionError:error];
         if (error) {
             if (internetIsDown || couldNotEstablishSecureConnection) {
 
@@ -154,13 +154,13 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
         // Handle HTTP error.
         else {
             httpResponse = (NSHTTPURLResponse *)response;
-            if ([MSHttpUtil isRecoverableError:httpResponse.statusCode]) {
+            if ([ANHHttpUtil isRecoverableError:httpResponse.statusCode]) {
                 if ([httpCall hasReachedMaxRetries]) {
                     [self pause];
                 } else {
 
                     // Check if there is a "retry after" header in the response
-                    NSString *retryAfter = httpResponse.allHeaderFields[kMSRetryHeaderKey];
+                    NSString *retryAfter = httpResponse.allHeaderFields[kANHRetryHeaderKey];
                     NSNumber *retryAfterMilliseconds;
                     if (retryAfter) {
                         NSNumberFormatter *formatter = [NSNumberFormatter new];
@@ -173,7 +173,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
                                                       }];
                     return;
                 }
-            } else if (![MSHttpUtil isSuccessStatusCode:httpResponse.statusCode]) {
+            } else if (![ANHHttpUtil isSuccessStatusCode:httpResponse.statusCode]) {
 
                 // Removing the call from pendingCalls and invoking completion handler must be done before disabling to avoid duplicate
                 // invocations.
@@ -213,7 +213,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
         self.paused = YES;
 
         // Reset retry for all calls.
-        for (MSHttpCall *call in self.pendingCalls) {
+        for (ANHHttpCall *call in self.pendingCalls) {
             [call resetRetry];
         }
     }
@@ -228,7 +228,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
             self.paused = NO;
 
             // Resume calls.
-            for (MSHttpCall *call in self.pendingCalls) {
+            for (ANHHttpCall *call in self.pendingCalls) {
                 if (!call.inProgress) {
                     [self sendCallAsync:call];
                 }
@@ -255,10 +255,10 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
                     self.session = nil;
 
                     // Remove pending calls and invoke their completion handler.
-                    for (MSHttpCall *call in self.pendingCalls) {
-                        NSError *error = [NSError errorWithDomain:kMSNHErrorDomain
-                                                             code:MSNHCanceledErrorCode
-                                                         userInfo:@{NSLocalizedDescriptionKey : kMSNHCanceledErrorDesc}];
+                    for (ANHHttpCall *call in self.pendingCalls) {
+                        NSError *error = [NSError errorWithDomain:kANHErrorDomain
+                                                             code:ANHCanceledErrorCode
+                                                         userInfo:@{NSLocalizedDescriptionKey : kANHCanceledErrorDesc}];
                         call.completionHandler(nil, nil, error);
                     }
                     [self.pendingCalls removeAllObjects];
@@ -270,7 +270,7 @@ static NSString *const kMSRetryHeaderKey = @"retry-after";
 
 - (void)dealloc {
     [self.reachability stopNotifier];
-    [MS_NOTIFICATION_CENTER removeObserver:self name:kANHReachabilityChangedNotification object:nil];
+    [ANH_NOTIFICATION_CENTER removeObserver:self name:kANHReachabilityChangedNotification object:nil];
     [self.session finishTasksAndInvalidate];
 }
 

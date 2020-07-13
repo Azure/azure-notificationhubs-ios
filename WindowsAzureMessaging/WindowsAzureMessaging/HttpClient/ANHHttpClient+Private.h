@@ -4,12 +4,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MSHttpCall.h"
-#import "MSHttpClient.h"
+#import "ANHHttpCall.h"
+#import "ANHHttpClient.h"
 
 @class ANH_Reachability;
 
-@interface MSHttpClient ()
+@interface ANHHttpClient ()
 
 /**
  * The HTTP session object.
@@ -56,7 +56,7 @@
  *
  * @param call The HTTP call to send.
  */
-- (void)sendCallAsync:(MSHttpCall *)call;
+- (void)sendCallAsync:(ANHHttpCall *)call;
 
 /**
  * The completion handler for the HTTP call completion.
@@ -66,6 +66,6 @@
  * @param response The HTTP response.
  * @param error The HTTP error.
  */
-- (void)requestCompletedWithHttpCall:(MSHttpCall *)httpCall data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error;
+- (void)requestCompletedWithHttpCall:(ANHHttpCall *)httpCall data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error;
 
 @end

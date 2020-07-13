@@ -4,7 +4,7 @@
 #import "HTTPStubs.h"
 
 #import "MSConstants.h"
-#import "MSHttpTestUtil.h"
+#import "ANHHttpTestUtil.h"
 #import "MSTestFrameworks.h"
 
 /*
@@ -19,7 +19,7 @@ static NSString *const kMSStub200Name = @"httpStub_200";
 static NSString *const kMSStubNetworkDownName = @"httpStub_NetworkDown";
 static NSString *const kMSStubLongResponseTimeOutName = @"httpStub_LongResponseTimeOut";
 
-@implementation MSHttpTestUtil
+@implementation ANHHttpTestUtil
 
 + (void)stubHttp500Response {
     [[self class] stubResponseWithCode:MSHTTPCodesNo500InternalServerError name:kMSStub500Name];

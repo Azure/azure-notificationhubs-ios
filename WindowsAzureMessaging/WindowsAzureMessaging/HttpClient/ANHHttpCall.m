@@ -2,16 +2,16 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import "MSHttpCall.h"
+#import "ANHHttpCall.h"
 
-@implementation MSHttpCall
+@implementation ANHHttpCall
 
 - (instancetype)initWithUrl:(NSURL *)url
                      method:(NSString *)method
                     headers:(NSDictionary<NSString *, NSString *> *)headers
                        data:(NSData *)data
              retryIntervals:(NSArray *)retryIntervals
-          completionHandler:(MSHttpRequestCompletionHandler)completionHandler {
+          completionHandler:(ANHHttpRequestCompletionHandler)completionHandler {
     if ((self = [super init])) {
         _url = url;
         _method = method;
