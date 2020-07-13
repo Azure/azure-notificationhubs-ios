@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		644974E924ADF16600196CBD /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 644974E824ADF16600196CBD /* DevSettings.plist */; };
+		6487E8CD24BC8F4400036D26 /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E8CC24BC8F4400036D26 /* CopyableLabel.swift */; };
 		6489DE09245994FF0021CF36 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */; };
-		6489DE0A245994FF0021CF36 /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		64B3DFAA245064F3006B6327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFA9245064F3006B6327 /* AppDelegate.swift */; };
 		64B3DFAC245064F3006B6327 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFAB245064F3006B6327 /* SceneDelegate.swift */; };
 		64B3DFAE245064F3006B6327 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B3DFAD245064F3006B6327 /* SetupViewController.swift */; };
@@ -29,7 +29,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6489DE0A245994FF0021CF36 /* WindowsAzureMessaging.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +38,7 @@
 /* Begin PBXFileReference section */
 		4C98C6C624AE9F1F00140DE6 /* SampleNHApp.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHApp.xcconfig; sourceTree = "<group>"; };
 		644974E824ADF16600196CBD /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
+		6487E8CC24BC8F4400036D26 /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		64B3DFA6245064F3006B6327 /* SampleNHAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleNHAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B3DFA9245064F3006B6327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B3DFAB245064F3006B6327 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +101,7 @@
 				64B3DFA9245064F3006B6327 /* AppDelegate.swift */,
 				64B3DFAB245064F3006B6327 /* SceneDelegate.swift */,
 				64B3DFAD245064F3006B6327 /* SetupViewController.swift */,
+				6487E8CC24BC8F4400036D26 /* CopyableLabel.swift */,
 				64B3DFB1245064F3006B6327 /* Main.storyboard */,
 				64B3DFAF245064F3006B6327 /* NotificationsTableViewController.swift */,
 				64B3DFC724517022006B6327 /* NotificationDetailsViewController.swift */,
@@ -201,6 +202,7 @@
 				64B3DFC024507925006B6327 /* TagTableViewCell.swift in Sources */,
 				64B3DFC62450AC3E006B6327 /* NotificationTableViewCell.swift in Sources */,
 				64B3DFAE245064F3006B6327 /* SetupViewController.swift in Sources */,
+				6487E8CD24BC8F4400036D26 /* CopyableLabel.swift in Sources */,
 				64B3DFAA245064F3006B6327 /* AppDelegate.swift in Sources */,
 				64B3DFAC245064F3006B6327 /* SceneDelegate.swift in Sources */,
 			);

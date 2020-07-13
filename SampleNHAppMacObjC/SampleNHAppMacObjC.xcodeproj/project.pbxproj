@@ -13,7 +13,6 @@
 		4C10494824ABA6E300FA339E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C10494624ABA6E300FA339E /* Main.storyboard */; };
 		4C10494B24ABA6E300FA339E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C10494A24ABA6E300FA339E /* main.m */; };
 		4C10497A24ABA94600FA339E /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497924ABA94600FA339E /* WindowsAzureMessaging.framework */; };
-		4C10497B24ABA94600FA339E /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497924ABA94600FA339E /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C1049C324ACE3C200FA339E /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C1049C224ACE3C100FA339E /* DevSettings.plist */; };
 		CEB560F224B369CF000B3990 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB560F124B369CF000B3990 /* NotificationsTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -25,7 +24,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4C10497B24ABA94600FA339E /* WindowsAzureMessaging.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
