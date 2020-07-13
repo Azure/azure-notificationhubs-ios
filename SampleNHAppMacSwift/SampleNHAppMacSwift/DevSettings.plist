@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>HUB_NAME</key>
-	<string>samples</string>
+	<string></string>
 	<key>CONNECTION_STRING</key>
-	<string>Endpoint=sb://samples-ns.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=pux6Hm52DPpzSDBIku6ME1BUvukUAzx+CcvTa8JLuKw=</string>
+	<string></string>
 </dict>
 </plist>
