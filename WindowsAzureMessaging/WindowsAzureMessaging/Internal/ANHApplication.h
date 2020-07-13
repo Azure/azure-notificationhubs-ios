@@ -7,22 +7,22 @@
 #if TARGET_OS_OSX
 #import <AppKit/AppKit.h>
 
-#ifndef MSApplicationDelegate
-#define MSApplicationDelegate NSApplicationDelegate
+#ifndef ANHApplicationDelegate
+#define ANHApplicationDelegate NSApplicationDelegate
 #endif
 
-#ifndef MSApplication
-#define MSApplication NSApplication
+#ifndef ANHApplication
+#define ANHApplication NSApplication
 #endif
 #else
 #import <UIKit/UIKit.h>
 
-#ifndef MSApplicationDelegate
-#define MSApplicationDelegate UIApplicationDelegate
+#ifndef ANHApplicationDelegate
+#define ANHApplicationDelegate UIApplicationDelegate
 #endif
 
-#ifndef MSApplication
-#define MSApplication UIApplication
+#ifndef ANHApplication
+#define ANHApplication UIApplication
 #endif
 
 #endif

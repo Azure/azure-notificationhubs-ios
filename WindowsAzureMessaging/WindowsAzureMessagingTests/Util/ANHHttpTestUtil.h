@@ -3,7 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MSHttpTestUtil : NSObject
+@interface ANHHttpTestUtil : NSObject
 
 + (void)stubHttp500Response;
 

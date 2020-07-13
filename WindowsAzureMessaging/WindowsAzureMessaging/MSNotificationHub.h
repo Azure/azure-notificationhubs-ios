@@ -27,29 +27,30 @@ NS_ASSUME_NONNULL_BEGIN
  * @param connectionString The access policy connection string.
  * @param notificationHubName The Azure Notification Hub name
  */
-+ (void)startWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
++ (void)startWithConnectionString:(NSString *)connectionString
+                          hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
 
 #pragma mark Push Initialization
 
 /**
-* Callback for successful registration with push token.
-*
-* @param deviceToken The device token for remote notifications.
-*/
+ * Callback for successful registration with push token.
+ *
+ * @param deviceToken The device token for remote notifications.
+ */
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 
 /**
-* Callback for unsuccessful registration with error.
-*
-* @param error Error of unsuccessful registration.
-*/
+ * Callback for unsuccessful registration with error.
+ *
+ * @param error Error of unsuccessful registration.
+ */
 + (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 
 /**
-* Callback for notification with user info.
-*
-* @param userInfo The user info for the remote notification.
-*/
+ * Callback for notification with user info.
+ *
+ * @param userInfo The user info for the remote notification.
+ */
 + (void)didReceiveRemoteNotification:(NSDictionary *)userInfo;
 
 /**
@@ -63,22 +64,22 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setDelegate:(nullable id<MSNotificationHubDelegate>)delegate;
 
 /**
-* Check whether the Azure Notification Hubs SDK is enabled or not as a whole.
-*
-* @return YES if enabled, NO otherwise.
-*
-* @see setEnabled:
-*/
+ * Check whether the Azure Notification Hubs SDK is enabled or not as a whole.
+ *
+ * @return YES if enabled, NO otherwise.
+ *
+ * @see setEnabled:
+ */
 + (BOOL)isEnabled;
 
 /**
-* Enable or disable the Azure Notification Hubs SDK from receiving messages.
-* The state is persisted in the device's storage across application launches.
-*
-* @param isEnabled YES to enable, NO to disable.
-*
-* @see isEnabled
-*/
+ * Enable or disable the Azure Notification Hubs SDK from receiving messages.
+ * The state is persisted in the device's storage across application launches.
+ *
+ * @param isEnabled YES to enable, NO to disable.
+ *
+ * @see isEnabled
+ */
 + (void)setEnabled:(BOOL)isEnabled;
 
 #pragma mark Installation Support
@@ -198,33 +199,33 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Installation management support
 
 /**
-* Set the enrichment delegate for the installation
-* Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
-*
-* @param enrichmentDelegate The delegate.
-*
-* @see MSInstallationEnrichmentDelegate
-*/
+ * Set the enrichment delegate for the installation
+ * Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
+ *
+ * @param enrichmentDelegate The delegate.
+ *
+ * @see MSInstallationEnrichmentDelegate
+ */
 + (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate;
 
 /**
-* Set the management delegate for the installation to save to a custom backend
-* Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
-*
-* @param managementDelegate The delegate.
-*
-* @see MSInstallationEnrichmentDelegate
-*/
+ * Set the management delegate for the installation to save to a custom backend
+ * Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
+ *
+ * @param managementDelegate The delegate.
+ *
+ * @see MSInstallationEnrichmentDelegate
+ */
 + (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate;
 
 /**
-* Set the lifecycle delegate to be able to intercept whether saving the installation was successful.
-* Defines the class that implements the optional protocol `MSInstallationLifecycleDelegate`.
-*
-* @param lifecycleDelegate The delegate.
-*
-* @see MSInstallationLifecycleDelegate
-*/
+ * Set the lifecycle delegate to be able to intercept whether saving the installation was successful.
+ * Defines the class that implements the optional protocol `MSInstallationLifecycleDelegate`.
+ *
+ * @param lifecycleDelegate The delegate.
+ *
+ * @see MSInstallationLifecycleDelegate
+ */
 + (void)setLifecycleDelegate:(nullable id<MSInstallationLifecycleDelegate>)lifecycleDelegate;
 
 @end

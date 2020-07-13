@@ -2,16 +2,16 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import <Foundation/Foundation.h>
 #import "MSInstallationManager.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class MSHttpClient;
+@class ANHHttpClient;
 
-@interface MSInstallationManager()
+@interface MSInstallationManager ()
 
-@property(nonatomic) MSHttpClient *httpClient;
+@property(nonatomic) ANHHttpClient *httpClient;
 
 @end
 

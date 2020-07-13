@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#import "MSHttpClient+Private.h"
+#import "ANHHttpClient+Private.h"
 #import "MSInstallationManager.h"
 #import "MSInstallationManager+Private.h"
 #import "MSInstallationTemplate.h"
@@ -31,7 +31,7 @@ static NSString *deviceToken = @"deviceToken";
 
 - (void)testSaveInstallation {
     // If
-    MSHttpClient *httpClient = OCMPartialMock([MSHttpClient new]);
+    ANHHttpClient *httpClient = OCMPartialMock([ANHHttpClient new]);
     NSString *method = @"PUT";
     OCMStub([httpClient sendCallAsync:OCMOCK_ANY]).andDo(nil);
 
@@ -104,7 +104,7 @@ static NSString *deviceToken = @"deviceToken";
 
 - (void)testSaveInstallationFailsIfNoPushChannel {
     // If
-    MSHttpClient *httpClient = OCMPartialMock([MSHttpClient new]);
+    ANHHttpClient *httpClient = OCMPartialMock([ANHHttpClient new]);
     MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString hubName:hubName];
     [installationManager setHttpClient:httpClient];
     MSInstallation *installation = [MSLocalStorage loadInstallation];
@@ -125,7 +125,7 @@ static NSString *deviceToken = @"deviceToken";
 
 - (void)testSaveInstallationFailsIfInvalidConnectionString {
     // If
-    MSHttpClient *httpClient = OCMPartialMock([MSHttpClient new]);
+    ANHHttpClient *httpClient = OCMPartialMock([ANHHttpClient new]);
     MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:@"" hubName:hubName];
     MSInstallation *installation = [MSLocalStorage loadInstallation];
     [installation setPushChannel:deviceToken];

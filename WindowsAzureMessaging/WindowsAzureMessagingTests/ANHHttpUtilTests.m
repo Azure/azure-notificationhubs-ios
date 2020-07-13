@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#import "MSHttpUtil.h"
+#import "ANHHttpUtil.h"
 #import "MSTestFrameworks.h"
 
 @interface MSHttpUtilTests : XCTestCase
@@ -16,19 +16,19 @@
     NSError *error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorNotConnectedToInternet userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isNoInternetConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isNoInternetConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorNetworkConnectionLost userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isNoInternetConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isNoInternetConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorServerCertificateHasBadDate userInfo:nil];
 
     // Then
-    XCTAssertFalse([MSHttpUtil isNoInternetConnectionError:error]);
+    XCTAssertFalse([ANHHttpUtil isNoInternetConnectionError:error]);
 }
 
 - (void)testSSLConnectionErrorDetected {
@@ -37,68 +37,68 @@
     NSError *error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorSecureConnectionFailed userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorServerCertificateHasBadDate userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorServerCertificateUntrusted userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorServerCertificateHasUnknownRoot userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorServerCertificateNotYetValid userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorClientCertificateRejected userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorClientCertificateRequired userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorCannotLoadFromNetwork userInfo:nil];
 
     // Then
-    XCTAssertTrue([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertTrue([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorFailingURLErrorKey code:NSURLErrorCannotLoadFromNetwork userInfo:nil];
 
     // Then
-    XCTAssertFalse([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertFalse([ANHHttpUtil isSSLConnectionError:error]);
 
     // When
     error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:10 userInfo:nil];
 
     // Then
-    XCTAssertFalse([MSHttpUtil isSSLConnectionError:error]);
+    XCTAssertFalse([ANHHttpUtil isSSLConnectionError:error]);
 }
 
 - (void)testIsRecoverableError {
     for (int i = 0; i < 530; i++) {
 
         // When
-        BOOL result = [MSHttpUtil isRecoverableError:i];
+        BOOL result = [ANHHttpUtil isRecoverableError:i];
 
         // Then
         if (i >= 500) {

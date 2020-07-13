@@ -6,19 +6,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol MSCustomDelegate;
+@protocol ANHCustomDelegate;
 
 /**
  * Enum used to represent all kind of executors running a completion handler.
  */
-typedef NS_OPTIONS(NSUInteger, MSCompletionExecutor) {
-  MSCompletionExecutorNone = (1 << 0),
-  MSCompletionExecutorOriginal = (1 << 1),
-  MSCompletionExecutorCustom = (1 << 2),
-  MSCompletionExecutorForwarder = (1 << 3)
+typedef NS_OPTIONS(NSUInteger, ANHCompletionExecutor) {
+    MSCompletionExecutorNone = (1 << 0),
+    MSCompletionExecutorOriginal = (1 << 1),
+    MSCompletionExecutorCustom = (1 << 2),
+    MSCompletionExecutorForwarder = (1 << 3)
 };
 
-@interface MSDelegateForwarder : NSObject
+@interface ANHDelegateForwarder : NSObject
 
 /**
  * Enable/Disable Application forwarding.
@@ -28,7 +28,7 @@ typedef NS_OPTIONS(NSUInteger, MSCompletionExecutor) {
 /**
  * Hash table containing all the delegates as weak references.
  */
-@property(nonatomic) NSHashTable<id<MSCustomDelegate>> *delegates;
+@property(nonatomic) NSHashTable<id<ANHCustomDelegate>> *delegates;
 
 /**
  * Hold the original setDelegate implementation.
@@ -67,14 +67,14 @@ typedef NS_OPTIONS(NSUInteger, MSCompletionExecutor) {
  *
  * @param delegate A delegate.
  */
-- (void)addDelegate:(id<MSCustomDelegate>)delegate;
+- (void)addDelegate:(id<ANHCustomDelegate>)delegate;
 
 /**
  * Remove a delegate. This method is thread safe.
  *
  * @param delegate A delegate.
  */
-- (void)removeDelegate:(id<MSCustomDelegate>)delegate;
+- (void)removeDelegate:(id<ANHCustomDelegate>)delegate;
 
 /**
  * Add an app delegate selector to swizzle.

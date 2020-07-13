@@ -2,9 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import "MSHttpUtil.h"
+#import "ANHHttpUtil.h"
 
-@implementation MSHttpUtil
+@implementation ANHHttpUtil
 
 + (BOOL)isRecoverableError:(NSInteger)statusCode {
 

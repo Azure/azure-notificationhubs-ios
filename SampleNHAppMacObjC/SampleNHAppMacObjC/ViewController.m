@@ -46,7 +46,7 @@
 - (BOOL)control:(NSControl *)control textView:(NSTextField *)fieldEditor doCommandBySelector:(SEL)commandSelector {
     if (commandSelector == @selector(insertNewline:)) {
         NSString *tag = self.tagsTextField.stringValue;
-        if (tag != @"") {
+        if ([tag isEqual:@""]) {
             [MSNotificationHub addTag:tag];
             self.tagsTextField.stringValue = @"";
         }
