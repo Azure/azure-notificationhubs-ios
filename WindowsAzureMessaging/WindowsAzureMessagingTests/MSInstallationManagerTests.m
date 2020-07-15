@@ -2,8 +2,10 @@
 // Licensed under the MIT License.
 
 #import "ANHHttpClient+Private.h"
-#import "MSInstallationManager.h"
 #import "MSInstallationManager+Private.h"
+#import "MSInstallationManager.h"
+#import "MSInstallation.h"
+#import "MSInstallation+Private.h"
 #import "MSInstallationTemplate.h"
 #import "MSLocalStorage.h"
 #import "MSTestFrameworks.h"
@@ -49,26 +51,9 @@ static NSString *deviceToken = @"deviceToken";
         [expectedSasTokenUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     NSString *expectedSubstring = [NSString stringWithFormat:@"SharedAccessSignature sr=%@", encodedSasTokenUrl];
 
-    NSMutableDictionary *templates = [NSMutableDictionary new];
-    for (NSString *key in [installation.templates allKeys]) {
-        [templates setObject:[[installation.templates objectForKey:key] toDictionary] forKey:key];
-    };
-
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{
-        @"installationId" : installation.installationId,
-        @"platform" : @"apns",
-        @"pushChannel" : installation.pushChannel
-    }];
-
-    if (installation.tags && [installation.tags count] > 0) {
-        [dictionary setObject:[NSArray arrayWithArray:[installation.tags allObjects]] forKey:@"tags"];
-    }
-
-    if (installation.templates && [installation.templates count] > 0) {
-        [dictionary setObject:templates forKey:@"templates"];
-    }
-
-    NSData *expectedData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
+    // Set expiration time
+    NSTimeInterval expirationInSeconds = 60L * 60L * 24L * 90L;
+    installation.expirationTime = [[NSDate date] dateByAddingTimeInterval:expirationInSeconds];
 
     // When
     [installationManager saveInstallation:installation
@@ -77,29 +62,103 @@ static NSString *deviceToken = @"deviceToken";
         withManagementHandler:^BOOL(__unused InstallationCompletionHandler completion) {
           return false;
         }
-        completionHandler:^void(__unused NSError *_Nullable error){
+        completionHandler:^void(__unused NSError *_Nullable error) {
         }];
 
     // Then
-    OCMVerify([httpClient
-                sendAsync:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
-                  XCTAssertTrue([expectedUrl isEqualToString:[url absoluteString]]);
-                  return YES;
-                }]
-                   method:method
-                  headers:[OCMArg checkWithBlock:^BOOL(NSDictionary<NSString *, NSString *> *headers) {
-                    NSString *sasToken = [headers objectForKey:@"Authorization"];
-                    XCTAssertTrue([headers count] == 4);
-                    XCTAssertNotNil(sasToken);
-                    XCTAssertFalse([sasToken rangeOfString:expectedSubstring options:NSCaseInsensitiveSearch].location == NSNotFound);
+    OCMVerify(
+        [httpClient
+            sendAsync:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
+                XCTAssertTrue([expectedUrl isEqualToString:[url absoluteString]]);
+                return YES;
+            }]
+            method:method
+            headers:[OCMArg checkWithBlock:^BOOL(NSDictionary<NSString *, NSString *> *headers) {
+                NSString *sasToken = [headers objectForKey:@"Authorization"];
+                XCTAssertTrue([headers count] == 4);
+                XCTAssertNotNil(sasToken);
+                XCTAssertFalse([sasToken rangeOfString:expectedSubstring options:NSCaseInsensitiveSearch].location == NSNotFound);
 
-                    return YES;
-                  }]
-                     data:[OCMArg checkWithBlock:^BOOL(NSData *data) {
-                       XCTAssertTrue([expectedData isEqualToData:data]);
-                       return YES;
-                     }]
-        completionHandler:OCMOCK_ANY]);
+                return YES;
+            }]
+            data:[OCMArg checkWithBlock:^BOOL(NSData *data) {
+            
+                NSError *jsonError = nil;
+                NSDictionary *resultJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+                MSInstallation *resultInstallation = [MSInstallation createFromJSON:resultJSON];
+                XCTAssertTrue([resultInstallation.installationId isEqual:installation.installationId]);
+                XCTAssertTrue([resultInstallation.pushChannel isEqual:installation.pushChannel]);
+        
+                XCTAssertTrue([[NSCalendar currentCalendar] isDate:resultInstallation.expirationTime equalToDate:installation.expirationTime toUnitGranularity:NSCalendarUnitDay]);
+                return YES;
+            }]
+            completionHandler:OCMOCK_ANY]
+    );
+}
+
+- (void)testSaveInstallationWithoutExpiration {
+    // If
+    ANHHttpClient *httpClient = OCMPartialMock([ANHHttpClient new]);
+    NSString *method = @"PUT";
+    OCMStub([httpClient sendCallAsync:OCMOCK_ANY]).andDo(nil);
+
+    MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString hubName:hubName];
+    MSInstallation *installation = [MSLocalStorage loadInstallation];
+    [installation setPushChannel:deviceToken];
+    [installationManager setHttpClient:httpClient];
+
+    NSString *expectedUrl =
+        [NSString stringWithFormat:@"https://test-namespace.servicebus.windows.net/nubName/installations/%@?api-version=2020-06",
+                                   installation.installationId];
+    NSString *expectedSasTokenUrl =
+        [NSString stringWithFormat:@"http://test-namespace.servicebus.windows.net/nubName/installations/%@", installation.installationId];
+    NSString *encodedSasTokenUrl =
+        [expectedSasTokenUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    NSString *expectedSubstring = [NSString stringWithFormat:@"SharedAccessSignature sr=%@", encodedSasTokenUrl];
+
+    // Set expiration time
+    NSTimeInterval expirationInSeconds = 60L * 60L * 24L * 90L;
+    NSDate *currentDate = [[NSDate date] dateByAddingTimeInterval:expirationInSeconds];
+
+    // When
+    [installationManager saveInstallation:installation
+        withEnrichmentHandler:^(void) {
+        }
+        withManagementHandler:^BOOL(__unused InstallationCompletionHandler completion) {
+          return false;
+        }
+        completionHandler:^void(__unused NSError *_Nullable error) {
+        }];
+
+    // Then
+    OCMVerify(
+        [httpClient
+            sendAsync:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
+                XCTAssertTrue([expectedUrl isEqualToString:[url absoluteString]]);
+                return YES;
+            }]
+            method:method
+            headers:[OCMArg checkWithBlock:^BOOL(NSDictionary<NSString *, NSString *> *headers) {
+                NSString *sasToken = [headers objectForKey:@"Authorization"];
+                XCTAssertTrue([headers count] == 4);
+                XCTAssertNotNil(sasToken);
+                XCTAssertFalse([sasToken rangeOfString:expectedSubstring options:NSCaseInsensitiveSearch].location == NSNotFound);
+
+                return YES;
+            }]
+            data:[OCMArg checkWithBlock:^BOOL(NSData *data) {
+            
+                NSError *jsonError = nil;
+                NSDictionary *resultJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+                MSInstallation *resultInstallation = [MSInstallation createFromJSON:resultJSON];
+                XCTAssertTrue([resultInstallation.installationId isEqual:installation.installationId]);
+                XCTAssertTrue([resultInstallation.pushChannel isEqual:installation.pushChannel]);
+        
+                XCTAssertTrue([[NSCalendar currentCalendar] isDate:resultInstallation.expirationTime equalToDate:currentDate toUnitGranularity:NSCalendarUnitDay]);
+                return YES;
+            }]
+            completionHandler:OCMOCK_ANY]
+    );
 }
 
 - (void)testSaveInstallationFailsIfNoPushChannel {

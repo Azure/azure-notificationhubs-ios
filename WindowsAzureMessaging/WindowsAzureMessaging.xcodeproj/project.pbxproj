@@ -645,12 +645,12 @@
 				4CA732C924A3B311006AC99D /* ANHHttpUtilTests.m */,
 				4CA732CA24A3B311006AC99D /* MSInstallationManagerTests.m */,
 				4CA732CC24A3B311006AC99D /* MSLocalStorageTests.m */,
+				4CA732C624A3B311006AC99D /* MSTokenProviderTests.m */,
 				4CA732C824A3B311006AC99D /* MSNotificationHubTagsTests.m */,
 				4CA732CB24A3B311006AC99D /* MSNotificationHubTemplatesTests.m */,
-				4CA732C624A3B311006AC99D /* MSTokenProviderTests.m */,
-				4CA7322124A2CCA9006AC99D /* Frameworks */,
 				4CA730ED24A14FF2006AC99D /* WindowsAzureMessagingTests.m */,
 				4CA730EF24A14FF2006AC99D /* Info.plist */,
+				4CA7322124A2CCA9006AC99D /* Frameworks */,
 			);
 			path = WindowsAzureMessagingTests;
 			sourceTree = "<group>";

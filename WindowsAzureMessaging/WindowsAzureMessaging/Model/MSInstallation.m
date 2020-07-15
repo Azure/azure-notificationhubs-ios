@@ -41,7 +41,6 @@
 - (instancetype)init {
     if ((self = [super init]) != nil) {
         installationId = [[NSUUID UUID] UUIDString];
-        tags = [NSSet new];
         isDirty = NO;
         [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
     }
@@ -65,26 +64,24 @@
     return [[MSInstallation alloc] initWithDeviceToken:deviceToken];
 }
 
-+ (instancetype)createFromJsonString:(NSString *)jsonString {
++ (instancetype)createFromJSON:(NSDictionary *)json {
     MSInstallation *installation = [MSInstallation new];
-    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
 
-    NSError *error = nil;
-    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-
-    installation.installationId = dictionary[@"installationId"];
-    installation.pushChannel = dictionary[@"pushChannel"];
-    installation.tags = dictionary[@"tags"];
-    installation.templates = dictionary[@"templates"];
-    installation.isDirty = NO;
+    installation.installationId = json[@"installationId"];
+    installation.pushChannel = json[@"pushChannel"];
+    installation.tags = json[@"tags"];
+    installation.templates = json[@"templates"];
     
-    NSString *expiration = dictionary[@"expirationTime"];
+    NSString *expiration = json[@"expirationTime"];
     if (expiration) {
         NSDateFormatter *dateFormatter = [NSDateFormatter new];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mmZ"];
+        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
         
         installation.expirationTime = [dateFormatter dateFromString:expiration];
     }
+    
+    installation.isDirty = NO;
 
     return installation;
 }
@@ -102,6 +99,7 @@
     if (expirationTime) {
         NSDateFormatter *dateFormatter = [NSDateFormatter new];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mmZ"];
+        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
         
         [dictionary setObject:[dateFormatter stringFromDate:expirationTime] forKey:@"expirationTime"];
     }
@@ -221,8 +219,8 @@
 
 - (BOOL)isEqualToMSInstallation:(MSInstallation *)installation {
     BOOL isInstallationsIdEqual = [self.installationId isEqualToString:installation.installationId];
-    BOOL isExpirationTimeEqual = ((!self.expirationTime && !installation.expirationTime) || [self.expirationTime isEqualToDate:installation.expirationTime]);
-    BOOL isTagsSetEqual = [self.tags isEqualToSet:installation.tags];
+    BOOL isExpirationTimeEqual = ((!self.expirationTime && !installation.expirationTime) || [[NSCalendar currentCalendar] isDate:self.expirationTime equalToDate:installation.expirationTime toUnitGranularity:NSCalendarUnitDay]);
+    BOOL isTagsSetEqual = ((!self.tags && !installation.tags) || [self.tags isEqualToSet:installation.tags]);
     BOOL isTemplatesDictionaryEqual = ((!self.templates && !installation.templates) || [self.templates isEqualToDictionary:installation.templates]);
     return isInstallationsIdEqual && isExpirationTimeEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
 }

@@ -10,7 +10,7 @@
 - (instancetype)initWithDeviceToken:(NSString *)deviceToken;
 
 + (instancetype)createFromDeviceToken:(NSString *)deviceToken;
-+ (instancetype)createFromJsonString:(NSString *)jsonString;
++ (instancetype)createFromJSON:(NSDictionary *)json;
 
 @property(nonatomic, copy) NSDictionary<NSString *, MSInstallationTemplate *> *templates;
 @property(nonatomic, copy) NSSet<NSString *> *tags;

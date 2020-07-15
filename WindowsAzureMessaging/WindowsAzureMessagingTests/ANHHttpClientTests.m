@@ -4,13 +4,13 @@
 #import "HTTPStubs.h"
 #import "NSURLRequest+HTTPBodyTesting.h"
 
-#import "MSConstants.h"
 #import "ANHHttpCall.h"
 #import "ANHHttpClient+Private.h"
 #import "ANHHttpTestUtil.h"
 #import "ANH_Errors.h"
-#import "MSTestFrameworks.h"
 #import "ANH_Reachability.h"
+#import "MSConstants.h"
+#import "MSTestFrameworks.h"
 
 static NSTimeInterval const kMSTestTimeout = 5.0;
 
@@ -756,13 +756,13 @@ static NSTimeInterval const kMSTestTimeout = 5.0;
     NSArray *intervals = @[ @(UINT_MAX), @(UINT_MAX) ];
     ANHHttpCall *httpCall =
         [[ANHHttpCall alloc] initWithUrl:[[NSURL alloc] initWithString:@""]
-                                 method:@"GET"
-                                headers:nil
-                                   data:nil
-                         retryIntervals:intervals
-                      completionHandler:^(NSData *_Nullable responseBody __unused, NSHTTPURLResponse *_Nullable response __unused,
-                                          NSError *_Nullable error __unused){
-                      }];
+                                  method:@"GET"
+                                 headers:nil
+                                    data:nil
+                          retryIntervals:intervals
+                       completionHandler:^(NSData *_Nullable responseBody __unused, NSHTTPURLResponse *_Nullable response __unused,
+                                           NSError *_Nullable error __unused){
+                       }];
 
     // A non-zero number that should be reset by the end.
     httpCall.retryCount = 1;
