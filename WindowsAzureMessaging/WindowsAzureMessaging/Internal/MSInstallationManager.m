@@ -56,7 +56,7 @@ static NSString *const kAPIVersion = @"2020-06";
 }
 
 - (void)setExpiration:(MSInstallation *)installation {
-    if (!installation.expirationTime) {
+    if (installation.expirationTime != nil) {
         return;
     }
 
@@ -72,9 +72,9 @@ static NSString *const kAPIVersion = @"2020-06";
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler
     withManagementHandler:(InstallationManagementHandler)managementHandler
         completionHandler:(InstallationCompletionHandler)completionHandler {
-    [self setExpiration:installation];
-
     enrichmentHandler();
+    
+    [self setExpiration:installation];
 
     if (managementHandler(completionHandler)) {
         return;
