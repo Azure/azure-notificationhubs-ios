@@ -61,7 +61,7 @@ static NSString *const kAPIVersion = @"2020-06";
     }
 
     NSTimeInterval expirationInSeconds = 60L * 60L * 24L * 90L;
-    installation.expirationTime = [installation.expirationTime dateByAddingTimeInterval:expirationInSeconds];
+    installation.expirationTime = [[NSDate date] dateByAddingTimeInterval:expirationInSeconds];
 }
 
 - (void)setHttpClient:(ANHHttpClient *)httpClient {
