@@ -3,7 +3,6 @@
 //----------------------------------------------------------------
 
 #import "MSTokenProvider.h"
-#import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
 
 @implementation MSTokenProvider {
@@ -107,7 +106,7 @@
     CCHmac(kCCHmacAlgSHA256, cKey, keyLength, cData, strlen(cData), cHMAC);
 
     NSData *hmac = [[NSData alloc] initWithBytes:cHMAC length:CC_SHA256_DIGEST_LENGTH];
-    
+
     return [hmac base64EncodedStringWithOptions:0];
 }
 
@@ -116,13 +115,22 @@
     return [self signString:str withKeyData:cKey keyLength:strlen(cKey)];
 }
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 - (NSString *)urlEncode:(NSString *)urlString {
-    return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)urlString, NULL,
-                                                                        CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8);
+    NSMutableString *encodedString = [NSMutableString string];
+    const char *sourceUTF8 = [urlString cStringUsingEncoding:NSUTF8StringEncoding];
+    unsigned long length = strlen(sourceUTF8);
+    for (unsigned long i = 0; i < length; i++) {
+        const char currentChar = sourceUTF8[i];
+        if (currentChar == '.' || currentChar == '-' || currentChar == '_' || currentChar == '~' ||
+            (currentChar >= 'a' && currentChar <= 'z') || (currentChar >= 'A' && currentChar <= 'Z') ||
+            (currentChar >= '0' && currentChar <= '9')) {
+            [encodedString appendFormat:@"%c", currentChar];
+        } else {
+            [encodedString appendFormat:@"%%%02X", currentChar];
+        }
+    }
+    return encodedString;
 }
-#pragma GCC diagnostic pop
 
 - (NSString *)urlDecode:(NSString *)urlString {
     return [[urlString stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding];
