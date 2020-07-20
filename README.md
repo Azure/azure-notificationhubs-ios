@@ -8,8 +8,8 @@ The Azure Notification Hubs SDK for Apple provides capabilities for registering 
 
 The Azure Notification Hubs can be added to your app via Cocoapods, Carthage, Swift Package Manager, or by manually adding the binaries to your project.  We have a number of sample applications available written in both Swift and Objective-C to help you get started for both iOS with Mac Catalyst support, and a macOS sample, and SwiftUI coming soon.
 
-1. NH Sample App for iOS/Mac Catalyst [Swift](SampleNHAppSwift) [Objective-C](SampleNHAppObjC)
-2. NH Sample App for macOS [Swift](SampleNHAppMacSwift) [Objective-C](SampleNHAppMacObjC)
+1. NH Sample App for iOS/Mac Catalyst [Swift](SampleNHAppSwift) | [Objective-C](SampleNHAppObjC)
+2. NH Sample App for macOS [Swift](SampleNHAppMacSwift) | [Objective-C](SampleNHAppMacObjC)
 3. SwiftUI (Coming Soon)
 
 ### Integration with Cocoapods
