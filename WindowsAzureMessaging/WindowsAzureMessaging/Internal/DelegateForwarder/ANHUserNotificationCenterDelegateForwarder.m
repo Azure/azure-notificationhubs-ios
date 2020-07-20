@@ -99,7 +99,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
             self, _cmd, center, notification, completionHandler);
     }
 
-    // Then, forward to Push.
+    // Then, forward to MSNotificationHub
     [MSNotificationHub didReceiveRemoteNotification:notification.request.content.userInfo];
     if (!originalImp) {
 
@@ -123,7 +123,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
                                                                                                                completionHandler);
     }
 
-    // Then, forward to Push.
+    // Then, forward to MSNotificationHub
     [MSNotificationHub didReceiveRemoteNotification:response.notification.request.content.userInfo];
     if (!originalImp) {
 

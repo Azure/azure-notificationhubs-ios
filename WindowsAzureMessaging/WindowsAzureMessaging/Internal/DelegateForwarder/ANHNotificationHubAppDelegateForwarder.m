@@ -97,7 +97,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
         ((void (*)(id, SEL, ANHApplication *, NSError *))originalImp)(self, _cmd, application, error);
     }
 
-    // Then, forward to Push
+    // Then, forward to MSNotificationHub
     [MSNotificationHub didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
@@ -110,7 +110,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
         ((void (*)(id, SEL, ANHApplication *, NSDictionary *))originalImp)(self, _cmd, application, userInfo);
     }
 
-    // Then, forward to Push
+    // Then, forward to MSNotificationHub
     [MSNotificationHub didReceiveRemoteNotification:userInfo];
 }
 
@@ -128,7 +128,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
                                                                                                              userInfo, completionHandler);
     }
 
-    // Then, forward to Push
+    // Then, forward to MSNotificationHub
     [MSNotificationHub didReceiveRemoteNotification:userInfo];
     
     if (!originalImp) {
