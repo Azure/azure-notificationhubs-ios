@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1150"
+   LastUpgradeVersion = "1160"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C1048F524ABA64A00FA339E"
+               BlueprintIdentifier = "64B18FA22452CEEA00AA38B1"
                BuildableName = "SampleNHAppObjC.app"
                BlueprintName = "SampleNHAppObjC"
                ReferencedContainer = "container:SampleNHAppObjC.xcodeproj">
@@ -44,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C1048F524ABA64A00FA339E"
+            BlueprintIdentifier = "64B18FA22452CEEA00AA38B1"
             BuildableName = "SampleNHAppObjC.app"
             BlueprintName = "SampleNHAppObjC"
             ReferencedContainer = "container:SampleNHAppObjC.xcodeproj">
@@ -61,7 +61,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C1048F524ABA64A00FA339E"
+            BlueprintIdentifier = "64B18FA22452CEEA00AA38B1"
             BuildableName = "SampleNHAppObjC.app"
             BlueprintName = "SampleNHAppObjC"
             ReferencedContainer = "container:SampleNHAppObjC.xcodeproj">

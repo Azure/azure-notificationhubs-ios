@@ -126,6 +126,15 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
     [[MSNotificationHub sharedInstance] registerForRemoteNotifications];
 }
 
++ (void)startWithInstallationManagement:(id<MSInstallationManagementDelegate>)managementDelegate {
+    MSInstallationManager *installationManager = [MSInstallationManager new];
+    [[MSNotificationHub sharedInstance]
+        setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2 installationManager:installationManager]];
+    
+    [[MSNotificationHub sharedInstance] setManagementDelegate:managementDelegate];
+    [[MSNotificationHub sharedInstance] registerForRemoteNotifications];
+}
+
 - (void)setDebounceInstallationManager:(MSDebounceInstallationManager *)debounceInstallationManager {
     _debounceInstallationManager = debounceInstallationManager;
 }
@@ -516,10 +525,6 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 + (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate {
     [[MSNotificationHub sharedInstance] setEnrichmentDelegate:enrichmentDelegate];
-}
-
-+ (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate {
-    [[MSNotificationHub sharedInstance] setManagementDelegate:managementDelegate];
 }
 
 + (void)setLifecycleDelegate:(nullable id<MSInstallationLifecycleDelegate>)lifecycleDelegate {

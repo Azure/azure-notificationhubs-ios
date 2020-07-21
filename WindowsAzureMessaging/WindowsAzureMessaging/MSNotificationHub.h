@@ -30,6 +30,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)startWithConnectionString:(NSString *)connectionString
                           hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
 
+/**
+* Initializes the Notification Hub with the installation management delegate to a custom backend.
+* Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
+*
+* @param managementDelegate The delegate.
+*
+* @see MSInstallationEnrichmentDelegate
+*/
++ (void)startWithInstallationManagement:(id<MSInstallationManagementDelegate>)managementDelegate;
+
 #pragma mark Push Initialization
 
 /**
@@ -207,16 +217,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @see MSInstallationEnrichmentDelegate
  */
 + (void)setEnrichmentDelegate:(nullable id<MSInstallationEnrichmentDelegate>)enrichmentDelegate;
-
-/**
- * Set the management delegate for the installation to save to a custom backend
- * Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
- *
- * @param managementDelegate The delegate.
- *
- * @see MSInstallationEnrichmentDelegate
- */
-+ (void)setManagementDelegate:(nullable id<MSInstallationManagementDelegate>)managementDelegate;
 
 /**
  * Set the lifecycle delegate to be able to intercept whether saving the installation was successful.

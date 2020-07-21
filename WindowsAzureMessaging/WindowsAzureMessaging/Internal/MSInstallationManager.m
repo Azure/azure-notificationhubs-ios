@@ -27,6 +27,14 @@ static NSString *const kAPIVersion = @"2020-06";
     NSDictionary *_connectionDictionary;
 }
 
+- (instancetype)init {
+     if ((self = [super init]) != nil) {
+         
+     }
+    
+    return self;
+}
+
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName {
     if ((self = [super init]) != nil) {
         _connectionDictionary = [MSInstallationManager parseConnectionString:connectionString];

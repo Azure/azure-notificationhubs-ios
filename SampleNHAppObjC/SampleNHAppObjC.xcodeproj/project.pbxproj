@@ -163,7 +163,7 @@
 		64B18F9B2452CEEA00AA38B1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					64B18FA22452CEEA00AA38B1 = {
@@ -245,6 +245,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C98C6C824AEA4CB00140DE6 /* SampleNHApp.xcconfig */;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 			};
 			name = Debug;
 		};

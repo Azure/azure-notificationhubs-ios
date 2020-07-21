@@ -140,7 +140,7 @@
 		4C10493324ABA6E200FA339E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Matthew Podwysocki";
 				TargetAttributes = {
 					4C10493A24ABA6E200FA339E = {
@@ -226,6 +226,7 @@
 		4C10495024ABA6E300FA339E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				DEVELOPMENT_TEAM = S4V3D7CHJR;
 			};
 			name = Debug;
@@ -233,6 +234,7 @@
 		4C10495124ABA6E300FA339E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				DEVELOPMENT_TEAM = S4V3D7CHJR;
 			};
 			name = Release;

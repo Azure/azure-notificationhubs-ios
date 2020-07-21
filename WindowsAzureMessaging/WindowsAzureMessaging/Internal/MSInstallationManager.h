@@ -18,6 +18,7 @@ typedef BOOL (^InstallationManagementHandler)(InstallationCompletionHandler _Non
 
 @interface MSInstallationManager : NSObject
 
+- (instancetype)init;
 - (instancetype)initWithConnectionString:(NSString *)connectionString hubName:(NSString *)hubName;
 - (void)saveInstallation:(MSInstallation *)installation
     withEnrichmentHandler:(InstallationEnrichmentHandler)enrichmentHandler

@@ -152,7 +152,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					64B3DFA5245064F3006B6327 = {
@@ -234,6 +234,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C98C6C624AE9F1F00140DE6 /* SampleNHApp.xcconfig */;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 			};
 			name = Debug;
 		};

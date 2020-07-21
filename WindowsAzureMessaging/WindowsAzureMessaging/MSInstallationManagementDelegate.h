@@ -22,15 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
     willUpsertInstallation:(MSInstallation *)installation
          completionHandler:(void (^)(NSError *_Nullable))completionHandler;
 
-/**
- Method that allows to delete installation from custom backend
- *
- @param installationId The id of installation to delete from custom back end
- */
-- (void)notificationHub:(MSNotificationHub *)notificationHub
-    willDeleteInstallation:(NSString *)installationId
-         completionHandler:(void (^)(NSError *_Nullable))completionHandler;
-
 @end
 
 NS_ASSUME_NONNULL_END

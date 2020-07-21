@@ -8,6 +8,8 @@ The Azure Notification Hubs SDK for Apple provides capabilities for registering 
 
 The Azure Notification Hubs can be added to your app via Cocoapods, Carthage, Swift Package Manager, or by manually adding the binaries to your project.  We have a number of sample applications available written in both Swift and Objective-C to help you get started for both iOS with Mac Catalyst support, and a macOS sample, and SwiftUI coming soon.
 
+This introduces a new API as of version 3.0, and the usage of `SBNotificationHub` with registrations is still supported, but discouraged as we have the new `MSNotificationHub` which uses the Installation API and modern Apple APIs.
+
 1. NH Sample App for iOS/Mac Catalyst [Swift](SampleNHAppSwift) | [Objective-C](SampleNHAppObjC)
 2. NH Sample App for macOS [Swift](SampleNHAppMacSwift) | [Objective-C](SampleNHAppMacObjC)
 3. SwiftUI (Coming Soon)
@@ -148,9 +150,82 @@ Objective-C:
 }
 ```
 
+### Tag Management
+
+One of the ways to target a device or set of devices is through the use of [tags](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-tags-segment-push-message#tags), where you can target a specific tag, or a tag expression.  The Azure Notification Hub SDK for Apple handles this through top level methods that allow you to add, clear, remove and get all tags for the current installation.  In this example, we can add some recommended tags such as the app language preference, and device country code.
+
+Swift:
+```swift
+// Get language and country code for common tag values
+let language = Bundle.main.preferredLocalizations.first!
+let countryCode = NSLocale.current.regionCode!
+
+// Create tags with type_value format
+let languageTag = "language_" + language
+let countryCodeTag = "country_" + countryCode
+
+MSNotificationHub.addTags([languageTag, countryCodeTag])
+```
+
+Objective-C:
+```objc
+// Get language and country code for common tag values
+NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+NSString *countryCode = [[NSLocale currentLocale] countryCode];
+
+// Create tags with type_value format
+NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
+NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
+
+[MSNotificationHub addTags:@[languageTag, countryCodeTag]];
+```
+
+### Template Management
+
+With [Azure Notification Hub Templates](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages), you can enable a client application to specify the exact format of the notifications it wants to receive.  This is useful when you want to create a more personalized notification, with string replacement to fill the values.  The Installation API [allows multiple templates](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-push-notification-registration-management#templates) for each installation which gives you greater power to target your users with rich messages.
+
+For example, we can create a template with a body, some headers, and some tags.
+
+Swift:
+```swift
+// Get language and country code for common tag values
+let language = Bundle.main.preferredLocalizations.first!
+let countryCode = NSLocale.current.regionCode!
+
+// Create tags with type_value format
+let languageTag = "language_" + language
+let countryCodeTag = "country_" + countryCode
+
+let body = "{\"aps\": {\"alert\": \"$(message)\"}}"
+let template = MSInstallationTemplate()
+template.body = body
+template.addTags([languageTag, countryCodeTag])
+
+MSNotificationHub.setTemplate(template, forKey: "template1")
+```
+
+Objective-C:
+```objc
+NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+NSString *countryCode = [[NSLocale currentLocale] countryCode];
+
+// Create tags with type_value format
+NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
+NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
+
+NSString *body = @"{\"aps\": {\"alert\": \"$(message)\"}}";
+
+MSInstallationTemplate *template = [MSInstallationTemplate new];
+template.body = body;
+
+[template addTags:@[languageTag, countryCodeTag]];
+
+[MSNotificationHub setTemplate:template forKey:@"template1"];
+```
+
 ### Intercepting Installation Management
 
-The SDK will handle saving the installation for you, however, we provide hooks where you can intercept both the successful installation or any failure through the `MSInstallationLifecycleDelegate`.  This has two methods, `didSaveInstallation` for successful saves, and `didFailToSaveInstallation` for any failures.  We can implement this to have our own logging for example.  In the cases of failure, you can call the `willSaveInstallation` on the `MSNotificationHub` class to start the save process again.
+The SDK will handle saving the installation for you, however, we provide hooks where you can intercept both the successful installation or any failure through the `MSInstallationLifecycleDelegate`.  This has two methods, `didSaveInstallation` for successful saves, and `didFailToSaveInstallation` for any failures.  We can implement this to have our own logging for example.  
 
 Swift:
 ```swift
@@ -165,8 +240,7 @@ func notificationHub(_ notificationHub: MSNotificationHub!, didSave installation
 
 // Handle failure
 func notificationHub(_ notificationHub: MSNotificationHub!, didFailToSave installation: MSInstallation!, withError error: Error!) {
-    // Call the backend again
-    MSNotificationHub.willSaveInstallation()
+    NSLog("Failed to save installation")
 }
 ```
 
@@ -184,9 +258,7 @@ Objective-C:
 - (void)notificationHub:(MSNotificationHub *)notificationHub
     didFailToSaveInstallation:(MSInstallation *)installation
                     withError:(NSError *)error {
-    // Check error
-    // Try to save again
-    [MSNotificationHub willSaveInstallation];
+    NSLog(@"Failed to save installation with error %@", [error localizedDescription]);
 }
 ```
 
@@ -219,12 +291,12 @@ Objective-C:
 
 ### Saving Installations to a Custom Backend
 
-The Azure Notification Hubs SDK will save the installation to our backend by default. If, however, you wish to skip our backend and store it on your backend, we support that through the `MSInstallationManagementDelegate` protocol. This has a method to save the installation `willUpsertInstallation`, passing in the installation, and then a completion handler is called with either an error if unsuccessful, or nil if successful.
+The Azure Notification Hubs SDK will save the installation to our backend by default. If, however, you wish to skip our backend and store it on your backend, we support that through the `MSInstallationManagementDelegate` protocol. This has a method to save the installation `willUpsertInstallation`, passing in the installation, and then a completion handler is called with either an error if unsuccessful, or nil if successful.  To set the delegate, instead of specifying the connection string and hub name, you specify the installation manager with `startWithInstallationManagement`
 
 Swift:
 ```swift
 // Set the delegate
-MSNotificationHub.setManagementDelegate(self)
+MSNotificationHub.startWithInstallationManagement(self)
 
 func notificationHub(_ notificationHub: MSNotificationHub!, willUpsertInstallation installation: MSInstallation!, withCompletionHandler completionHandler: @escaping (NSError?) -> Void) {
     // Save to your own backend
@@ -236,7 +308,7 @@ func notificationHub(_ notificationHub: MSNotificationHub!, willUpsertInstallati
 Objective-C:
 ```objc
 // Set the delegate
-[MSNotificationHub setManagementDelegate:self];
+[MSNotificationHub startWithInstallationManagement:self];
 
 // Save to your own backend
 - (void)notificationHub:(MSNotificationHub *)notificationHub
@@ -290,14 +362,14 @@ By default, the SDK will swizzle methods to automatically intercept calls to `UI
 
 4. Implement the callback to receive push notifications
 
-    Implement the application:didReceiveRemoteNotification:fetchCompletionHandler callback to forward push notifications to App Center Push.  In the code below, if on macOS, not Mac Catalyst, replace `UIApplication` with `NSApplication`.
+    Implement the application:didReceiveRemoteNotification:fetchCompletionHandler callback to forward push notifications to MSNotificationHub  In the code below, if on macOS, not Mac Catalyst, replace `UIApplication` with `NSApplication`.
 
     Swift:
     ```swift
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
         // Forward to MSNotificationHub
-        MSNotificationHub didReceiveRemoteNotification(userInfo)
+        MSNotificationHub.didReceiveRemoteNotification(userInfo)
 
         // Complete handling the notification
         completionHandler(.noData)
