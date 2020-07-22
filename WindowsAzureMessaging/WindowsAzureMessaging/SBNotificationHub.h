@@ -9,8 +9,6 @@
 
 @interface SBNotificationHub : NSObject
 
-+ (NSString *)version;
-
 - (SBNotificationHub *)initWithConnectionString:(NSString *)connectionString notificationHubPath:(NSString *)notificationHubPath;
 
 // Async operations

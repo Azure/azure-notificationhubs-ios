@@ -10,22 +10,7 @@
 @implementation SBNotificationHubHelper
 
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-static char decodingTable[128];
-static NSString *decodingTableLock = @"decodingTableLock";
 static NSString *const domain = @"WindowsAzureMessaging";
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-+ (NSString *)urlEncode:(NSString *)urlString {
-    return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)urlString, NULL,
-                                                                        CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8);
-}
-#pragma GCC diagnostic pop
-
-+ (NSString *)urlDecode:(NSString *)urlString {
-    return [[urlString stringByReplacingOccurrencesOfString:@"+"
-                                                 withString:@" "] stringByRemovingPercentEncoding];
-}
 
 + (NSString *)createHashWithData:(NSData *)data {
 
@@ -45,11 +30,9 @@ static NSString *const domain = @"WindowsAzureMessaging";
 
     CCHmac(kCCHmacAlgSHA256, cKey, keyLength, cData, strlen(cData), cHMAC);
 
-    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:CC_SHA256_DIGEST_LENGTH];
+    NSData *hmac = [[NSData alloc] initWithBytes:cHMAC length:CC_SHA256_DIGEST_LENGTH];
 
-    NSString *signature = [self toBase64:(unsigned char *)[HMAC bytes] length:[HMAC length]];
-
-    return signature;
+    return [hmac base64EncodedStringWithOptions:0];
 }
 
 + (NSString *)signString:(NSString *)str withKey:(NSString *)key {
@@ -57,54 +40,25 @@ static NSString *const domain = @"WindowsAzureMessaging";
     return [self signString:str withKeyData:cKey keyLength:strlen(cKey)];
 }
 
-+ (NSData *)fromBase64:(NSString *)str {
-
-    if (decodingTable['B'] != 1) {
-        @synchronized(decodingTableLock) {
-            if (decodingTable['B'] != 1) {
-                memset(decodingTable, 0, 128);
-                int length = (sizeof encodingTable);
-                for (int i = 0; i < length; i++) {
-                    decodingTable[encodingTable[i]] = i;
-                }
-            }
++ (NSString *)urlEncode:(NSString *)urlString {
+    NSMutableString *encodedString = [NSMutableString string];
+    const char *sourceUTF8 = [urlString cStringUsingEncoding:NSUTF8StringEncoding];
+    unsigned long length = strlen(sourceUTF8);
+    for (unsigned long i = 0; i < length; i++) {
+        const char currentChar = sourceUTF8[i];
+        if (currentChar == '.' || currentChar == '-' || currentChar == '_' || currentChar == '~' ||
+            (currentChar >= 'a' && currentChar <= 'z') || (currentChar >= 'A' && currentChar <= 'Z') ||
+            (currentChar >= '0' && currentChar <= '9')) {
+            [encodedString appendFormat:@"%c", currentChar];
+        } else {
+            [encodedString appendFormat:@"%%%02X", currentChar];
         }
     }
+    return encodedString;
+}
 
-    NSData *inputData = [str dataUsingEncoding:NSASCIIStringEncoding];
-    const char *input = inputData.bytes;
-    NSInteger inputLength = inputData.length;
-
-    if ((input == NULL) || (inputLength % 4 != 0)) {
-        return nil;
-    }
-
-    while (inputLength > 0 && input[inputLength - 1] == '=') {
-        inputLength--;
-    }
-
-    NSUInteger outputLength = inputLength * 3 / 4;
-    NSMutableData *outputData = [NSMutableData dataWithLength:outputLength];
-    uint8_t *output = outputData.mutableBytes;
-
-    NSUInteger outputPos = 0;
-    for (int i = 0; i < inputLength; i += 4) {
-        char i0 = input[i];
-        char i1 = input[i + 1];
-        char i2 = i + 2 < inputLength ? input[i + 2] : 'A';
-        char i3 = i + 3 < inputLength ? input[i + 3] : 'A';
-
-        char result = (decodingTable[i0] << 2) | (decodingTable[i1] >> 4);
-        output[outputPos++] = result;
-        if (outputPos < outputLength) {
-            output[outputPos++] = ((decodingTable[i1] & 0xf) << 4) | (decodingTable[i2] >> 2);
-        }
-        if (outputPos < outputLength) {
-            output[outputPos++] = ((decodingTable[i2] & 0x3) << 6) | decodingTable[i3];
-        }
-    }
-
-    return outputData;
++ (NSString *)urlDecode:(NSString *)urlString {
+    return [[urlString stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding];
 }
 
 + (NSString *)toBase64:(unsigned char *)data length:(NSInteger)length {
@@ -131,6 +85,10 @@ static NSString *const domain = @"WindowsAzureMessaging";
     }
 
     return dest;
+}
+
++ (NSData *)fromBase64:(NSString *)str {
+    return [[NSData alloc] initWithBase64EncodedString:str options:0];
 }
 
 + (NSString *)convertTagSetToString:(NSSet *)tagSet {
@@ -181,7 +139,7 @@ static NSString *const domain = @"WindowsAzureMessaging";
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
     NSString *previousLeft = @"";
-    for (int i = 0; i < [allField count]; i++) {
+    for (uint i = 0; i < [allField count]; i++) {
         NSString *currentField = (NSString *)[allField objectAtIndex:i];
 
         if ((i + 1) < [allField count]) {
@@ -220,7 +178,8 @@ static NSString *const domain = @"WindowsAzureMessaging";
 
 // add last slash, and change to desinged scheme
 + (NSURL *)modifyEndpoint:(NSURL *)endPoint scheme:(NSString *)scheme {
-    NSString *modifiedEndpoint = [NSString stringWithString:[endPoint absoluteString]];
+    NSString *endpointAbsoluteString = [endPoint absoluteString];
+    NSString *modifiedEndpoint = [NSString stringWithString:endpointAbsoluteString];
 
     if (![modifiedEndpoint hasSuffix:@"/"]) {
         modifiedEndpoint = [NSString stringWithFormat:@"%@/", modifiedEndpoint];

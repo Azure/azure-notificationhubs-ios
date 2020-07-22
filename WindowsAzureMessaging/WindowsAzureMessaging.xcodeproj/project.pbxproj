@@ -21,6 +21,17 @@
 			name = "WindowsAzureMessaging XCFramework";
 			productName = "WindowsAzureMessaging XCFramework";
 		};
+		4C3EEB7424C8B73A0096C133 /* WindowsAzureMessaging tvOS Fat Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4C3EEB7524C8B73A0096C133 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging tvOS Fat Framework" */;
+			buildPhases = (
+				4C3EEBA324C8BACC0096C133 /* Build Universal Framework */,
+			);
+			dependencies = (
+			);
+			name = "WindowsAzureMessaging tvOS Fat Framework";
+			productName = "WindowsAzureMessaging tvOS Fat Framework";
+		};
 		4CA7312B24A15A63006AC99D /* WindowsAzureMessaging iOS Fat Framework */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 4CA7312C24A15A63006AC99D /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging iOS Fat Framework" */;
@@ -69,6 +80,116 @@
 		4C1049B924ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1049B724ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h */; };
 		4C1049BB24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
 		4C1049BC24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
+		4C3EEAFF24C8ABAA0096C133 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319624A1872F006AC99D /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB0024C8ABB40096C133 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7319924A18759006AC99D /* SBLocalStorage.m */; };
+		4C3EEB0124C8ABB80096C133 /* SBNotificationHubHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7314A24A16BC6006AC99D /* SBNotificationHubHelper.h */; };
+		4C3EEB0224C8ABBD0096C133 /* SBNotificationHubHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7314D24A16C3E006AC99D /* SBNotificationHubHelper.m */; };
+		4C3EEB0324C8ABC10096C133 /* SBRegistrationParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731A224A187A5006AC99D /* SBRegistrationParser.h */; };
+		4C3EEB0424C8AC0F0096C133 /* SBRegistrationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7319E24A187A5006AC99D /* SBRegistrationParser.m */; };
+		4C3EEB0524C8AC130096C133 /* SBStaticHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731A524A187A6006AC99D /* SBStaticHandlerResponse.h */; };
+		4C3EEB0624C8AC610096C133 /* SBStaticHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731A324A187A5006AC99D /* SBStaticHandlerResponse.m */; };
+		4C3EEB0724C8AC650096C133 /* SBStoredRegistrationEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319F24A187A5006AC99D /* SBStoredRegistrationEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB0824C8AC680096C133 /* SBStoredRegistrationEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731A024A187A5006AC99D /* SBStoredRegistrationEntry.m */; };
+		4C3EEB0924C8AC7E0096C133 /* SBTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319C24A187A5006AC99D /* SBTokenProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB0A24C8AC830096C133 /* SBTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731A124A187A5006AC99D /* SBTokenProvider.m */; };
+		4C3EEB0B24C8AC860096C133 /* SBURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731A424A187A5006AC99D /* SBURLConnection.h */; };
+		4C3EEB0C24C8AC8B0096C133 /* SBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7319D24A187A5006AC99D /* SBURLConnection.m */; };
+		4C3EEB0D24C8AD2E0096C133 /* ANHHttpUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7317B24A180C0006AC99D /* ANHHttpUtil.h */; };
+		4C3EEB0E24C8AD320096C133 /* ANHHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7317E24A180E5006AC99D /* ANHHttpUtil.m */; };
+		4C3EEB0F24C8AD370096C133 /* ANHHttpCall.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7316B24A17F6B006AC99D /* ANHHttpCall.h */; };
+		4C3EEB1024C8AD3B0096C133 /* ANHHttpCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7316E24A17FC5006AC99D /* ANHHttpCall.m */; };
+		4C3EEB1124C8AD3E0096C133 /* ANHHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7317124A1801C006AC99D /* ANHHttpClient.h */; };
+		4C3EEB1224C8AD420096C133 /* ANHHttpClient+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7316824A17D83006AC99D /* ANHHttpClient+Private.h */; };
+		4C3EEB1324C8AD450096C133 /* ANHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7317424A18041006AC99D /* ANHHttpClient.m */; };
+		4C3EEB1424C8AD480096C133 /* ANHHttpClientDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7317724A18082006AC99D /* ANHHttpClientDelegate.h */; };
+		4C3EEB1524C8AD4B0096C133 /* ANHHttpClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7316524A17C6B006AC99D /* ANHHttpClientProtocol.h */; };
+		4C3EEB1624C8AD500096C133 /* ANHCustomDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C10499924ABE3A600FA339E /* ANHCustomDelegate.h */; };
+		4C3EEB1724C8AD530096C133 /* ANHDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C10499C24ABE40900FA339E /* ANHDelegateForwarder.h */; };
+		4C3EEB1824C8AD560096C133 /* ANHDelegateForwarder+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1049A224ABE48100FA339E /* ANHDelegateForwarder+Private.h */; };
+		4C3EEB1924C8AD5A0096C133 /* ANHDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C10499F24ABE45A00FA339E /* ANHDelegateForwarder.m */; };
+		4C3EEB1A24C8AD5E0096C133 /* ANHNotificationHubAppDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1049B724ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h */; };
+		4C3EEB1B24C8AD610096C133 /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
+		4C3EEB1C24C8AD640096C133 /* ANHUserNotificationCenterDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1049AE24ABE92100FA339E /* ANHUserNotificationCenterDelegateForwarder.h */; };
+		4C3EEB1D24C8AD680096C133 /* ANHUserNotificationCenterDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049B124ABE96E00FA339E /* ANHUserNotificationCenterDelegateForwarder.m */; };
+		4C3EEB1E24C8ADC40096C133 /* ANHApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732F224A3DAC2006AC99D /* ANHApplication.h */; };
+		4C3EEB1F24C8ADC70096C133 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F324A1C2A2006AC99D /* MSDebounceInstallationManager.h */; };
+		4C3EEB2024C8ADCB0096C133 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731F624A1C2CF006AC99D /* MSDebounceInstallationManager.m */; };
+		4C3EEB2124C8ADCF0096C133 /* MSInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731EC24A1BFE2006AC99D /* MSInstallationManager.h */; };
+		4C3EEB2224C8ADD30096C133 /* MSInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731EF24A1C005006AC99D /* MSInstallationManager.m */; };
+		4C3EEB2324C8ADDB0096C133 /* MSInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* MSInstallationManager+Private.h */; };
+		4C3EEB2424C8ADDC0096C133 /* MSInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* MSInstallationManager+Private.h */; };
+		4C3EEB2524C8ADDD0096C133 /* MSInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* MSInstallationManager+Private.h */; };
+		4C3EEB2624C8ADE10096C133 /* MSNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320624A1C4E9006AC99D /* MSNotificationHub+Private.h */; };
+		4C3EEB2724C8ADE50096C133 /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C624A1901D006AC99D /* MSLocalStorage.h */; };
+		4C3EEB2824C8ADE80096C133 /* MSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C924A1902F006AC99D /* MSLocalStorage.m */; };
+		4C3EEB2924C8ADEB0096C133 /* MSTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C024A18A84006AC99D /* MSTokenProvider.h */; };
+		4C3EEB2A24C8ADEE0096C133 /* MSTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C324A18B41006AC99D /* MSTokenProvider.m */; };
+		4C3EEB2B24C8ADF80096C133 /* MSNotificationHubMessage+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DF24A1BA4A006AC99D /* MSNotificationHubMessage+Private.h */; };
+		4C3EEB2C24C8ADFA0096C133 /* MSInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */; };
+		4C3EEB2D24C8ADFD0096C133 /* MSChangeTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D124A1B927006AC99D /* MSChangeTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB2E24C8AE020096C133 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731CE24A190A9006AC99D /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB2F24C8AE130096C133 /* MSInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D424A1B971006AC99D /* MSInstallation.m */; };
+		4C3EEB3024C8AE160096C133 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D724A1B99E006AC99D /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB3124C8AE1C0096C133 /* MSInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D824A1B9C8006AC99D /* MSInstallationTemplate.m */; };
+		4C3EEB3224C8AE200096C133 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DB24A1BA1B006AC99D /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB3324C8AE240096C133 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E224A1BB13006AC99D /* MSNotificationHubMessage.m */; };
+		4C3EEB3424C8AE270096C133 /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* MSTagHelper.h */; };
+		4C3EEB3524C8AE290096C133 /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* MSTagHelper.h */; };
+		4C3EEB3624C8AE2A0096C133 /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* MSTagHelper.h */; };
+		4C3EEB3724C8AE2F0096C133 /* MSTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E624A1BB9C006AC99D /* MSTagHelper.m */; };
+		4C3EEB3824C8AE320096C133 /* MSTaggable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E924A1BBC8006AC99D /* MSTaggable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB3924C8AE420096C133 /* ANH_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318324A1820A006AC99D /* ANH_Reachability.h */; };
+		4C3EEB3A24C8AE450096C133 /* ANH_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7318624A18233006AC99D /* ANH_Reachability.m */; };
+		4C3EEB3B24C8AE4A0096C133 /* ANHDispatcherUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7315B24A17AC8006AC99D /* ANHDispatcherUtil.h */; };
+		4C3EEB3C24C8AE4D0096C133 /* ANHDispatcherUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7315E24A17B4C006AC99D /* ANHDispatcherUtil.m */; };
+		4C3EEB3D24C8AE500096C133 /* ANH_Errors.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7316124A17BA7006AC99D /* ANH_Errors.h */; };
+		4C3EEB3E24C8AE540096C133 /* MSInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB3F24C8AE5A0096C133 /* MSInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318D24A18662006AC99D /* MSInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4024C8AE610096C133 /* MSInstallationManagementDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F924A1C33D006AC99D /* MSInstallationManagementDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4124C8AFDA0096C133 /* SBRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7314324A16B50006AC99D /* SBRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4224C8AFE00096C133 /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7314624A16B9B006AC99D /* SBRegistration.m */; };
+		4C3EEB4324C8AFEA0096C133 /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7315024A16C6D006AC99D /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4424C8AFEF0096C133 /* SBTemplateRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7315324A16C87006AC99D /* SBTemplateRegistration.m */; };
+		4C3EEB4524C8AFF10096C133 /* SBConnectionString.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7315624A177CC006AC99D /* SBConnectionString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4624C8AFF70096C133 /* SBConnectionString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7315724A17A67006AC99D /* SBConnectionString.m */; };
+		4C3EEB4724C8B0060096C133 /* SBNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319024A186A3006AC99D /* SBNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4824C8B00E0096C133 /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7319324A186CC006AC99D /* SBNotificationHub.m */; };
+		4C3EEB4924C8B4F80096C133 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4A24C8B4FD0096C133 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731FD24A1C3C4006AC99D /* MSNotificationHub.m */; };
+		4C3EEB4B24C8B5020096C133 /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320924A1C55E006AC99D /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4C24C8B5080096C133 /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB6724C8B6550096C133 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10498724ABB6C000FA339E /* SystemConfiguration.framework */; };
+		4C3EEB7224C8B6750096C133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA731BA24A1885E006AC99D /* UIKit.framework */; };
+		4C3EEB7324C8B6840096C133 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7313F24A16AB8006AC99D /* UserNotifications.framework */; };
+		4C3EEB7E24C8B8980096C133 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3EEADD24C8AAD70096C133 /* WindowsAzureMessaging.framework */; };
+		4C3EEB8724C8B8A40096C133 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7326724A2CE40006AC99D /* OCMock.framework */; };
+		4C3EEB8824C8B8AD0096C133 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7328024A2CE99006AC99D /* OCHamcrest.framework */; };
+		4C3EEB8924C8B9030096C133 /* ANHHttpTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C01E9F824BD1896003593A2 /* ANHHttpTestUtil.m */; };
+		4C3EEB8A24C8B9110096C133 /* TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C01E9FC24BD1896003593A2 /* TestHelper.m */; };
+		4C3EEB8B24C8B9160096C133 /* ANHHttpClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA732C724A3B311006AC99D /* ANHHttpClientTests.m */; };
+		4C3EEB8C24C8B91A0096C133 /* ANHHttpUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA732C924A3B311006AC99D /* ANHHttpUtilTests.m */; };
+		4C3EEB8D24C8B9CE0096C133 /* MSInstallationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA732CA24A3B311006AC99D /* MSInstallationManagerTests.m */; };
+		4C3EEB8E24C8B9D10096C133 /* MSLocalStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA732CC24A3B311006AC99D /* MSLocalStorageTests.m */; };
+		4C3EEB8F24C8B9D50096C133 /* MSTokenProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA732C624A3B311006AC99D /* MSTokenProviderTests.m */; };
+		4C3EEB9024C8B9D80096C133 /* MSNotificationHubTagsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA732C824A3B311006AC99D /* MSNotificationHubTagsTests.m */; };
+		4C3EEB9124C8B9DD0096C133 /* MSNotificationHubTemplatesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA732CB24A3B311006AC99D /* MSNotificationHubTemplatesTests.m */; };
+		4C3EEB9224C8B9E10096C133 /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA730ED24A14FF2006AC99D /* WindowsAzureMessagingTests.m */; };
+		4C3EEB9324C8B9ED0096C133 /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7329224A2D020006AC99D /* HTTPStubs.m */; };
+		4C3EEB9424C8B9F10096C133 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7329524A2D020006AC99D /* HTTPStubs+NSURLSessionConfiguration.m */; };
+		4C3EEB9524C8B9F60096C133 /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7329724A2D021006AC99D /* HTTPStubsMethodSwizzling.m */; };
+		4C3EEB9624C8B9F90096C133 /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7329124A2D020006AC99D /* HTTPStubsPathHelpers.m */; };
+		4C3EEB9724C8B9FC0096C133 /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7329624A2D021006AC99D /* HTTPStubsResponse.m */; };
+		4C3EEB9824C8BA000096C133 /* HTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7329024A2D020006AC99D /* HTTPStubsResponse+JSON.m */; };
+		4C3EEB9924C8BA030096C133 /* NSURLRequest+HTTPBodyTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7329424A2D020006AC99D /* NSURLRequest+HTTPBodyTesting.m */; };
+		4C3EEB9A24C8BA0C0096C133 /* Compatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732A824A2D043006AC99D /* Compatibility.h */; };
+		4C3EEB9B24C8BA100096C133 /* HTTPStubs.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732AB24A2D043006AC99D /* HTTPStubs.h */; };
+		4C3EEB9C24C8BA130096C133 /* HTTPStubsPathHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732AA24A2D043006AC99D /* HTTPStubsPathHelpers.h */; };
+		4C3EEB9D24C8BA3F0096C133 /* HTTPStubsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732AC24A2D043006AC99D /* HTTPStubsResponse.h */; };
+		4C3EEB9E24C8BA490096C133 /* HTTPStubsResponse+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732A724A2D043006AC99D /* HTTPStubsResponse+JSON.h */; };
+		4C3EEB9F24C8BA4D0096C133 /* NSURLRequest+HTTPBodyTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732A924A2D043006AC99D /* NSURLRequest+HTTPBodyTesting.h */; };
+		4C3EEBA024C8BA5F0096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
+		4C3EEBA124C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
+		4C3EEBA224C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
 		4CA730EE24A14FF2006AC99D /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA730ED24A14FF2006AC99D /* WindowsAzureMessagingTests.m */; };
 		4CA730F024A14FF2006AC99D /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7312324A15A25006AC99D /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -249,6 +370,27 @@
 			remoteGlobalIDString = 4CA7312F24A15A74006AC99D;
 			remoteInfo = "WindowsAzureMessaging macOS Fat Framework";
 		};
+		4C3EEAE724C8AAD80096C133 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C3EEADC24C8AAD70096C133;
+			remoteInfo = "WindowsAzureMessaging tvOS Framework";
+		};
+		4C3EEB7824C8B7760096C133 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA7326B24A2CE99006AC99D /* OCHamcrest.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 24C5BFF51C17781400C2BAFD;
+			remoteInfo = "OCHamcrest-tvOS";
+		};
+		4C3EEB7A24C8B7880096C133 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA7325224A2CE40006AC99D /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 817EB1151BD765130047E85A;
+			remoteInfo = "OCMock tvOS";
+		};
 		4CA730EA24A14FF2006AC99D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
@@ -414,6 +556,11 @@
 		4C1049B124ABE96E00FA339E /* ANHUserNotificationCenterDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHUserNotificationCenterDelegateForwarder.m; sourceTree = "<group>"; };
 		4C1049B724ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHNotificationHubAppDelegateForwarder.h; sourceTree = "<group>"; };
 		4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHNotificationHubAppDelegateForwarder.m; sourceTree = "<group>"; };
+		4C3EEADD24C8AAD70096C133 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3EEAE524C8AAD80096C133 /* WindowsAzureMessaging.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessaging.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3EEBA424C8BDCA0096C133 /* tvOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = tvOS.modulemap; sourceTree = "<group>"; };
+		4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
+		4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS Tests WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
 		4CA730DF24A14FF2006AC99D /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsAzureMessaging.h; sourceTree = "<group>"; };
 		4CA730E324A14FF2006AC99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -528,6 +675,26 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4C3EEADA24C8AAD70096C133 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3EEB6724C8B6550096C133 /* SystemConfiguration.framework in Frameworks */,
+				4C3EEB7224C8B6750096C133 /* UIKit.framework in Frameworks */,
+				4C3EEB7324C8B6840096C133 /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C3EEAE224C8AAD80096C133 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3EEB7E24C8B8980096C133 /* WindowsAzureMessaging.framework in Frameworks */,
+				4C3EEB8724C8B8A40096C133 /* OCMock.framework in Frameworks */,
+				4C3EEB8824C8B8AD0096C133 /* OCHamcrest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CA730DC24A14FF2006AC99D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -603,6 +770,8 @@
 				4CA730E824A14FF2006AC99D /* WindowsAzureMessaging.xctest */,
 				4CA7311F24A15A1F006AC99D /* WindowsAzureMessaging.xctest */,
 				4CA7312A24A15A25006AC99D /* WindowsAzureMessaging.framework */,
+				4C3EEADD24C8AAD70096C133 /* WindowsAzureMessaging.framework */,
+				4C3EEAE524C8AAD80096C133 /* WindowsAzureMessaging.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -665,6 +834,9 @@
 				4CA7310B24A15678006AC99D /* macOS.modulemap */,
 				4CA7310D24A1570D006AC99D /* macOS WindowsAzureMessaging.xcconfig */,
 				4CA7313C24A15F49006AC99D /* macOS Tests WindowsAzureMessaging.xcconfig */,
+				4C3EEBA424C8BDCA0096C133 /* tvOS.modulemap */,
+				4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */,
+				4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */,
 				4CA7310724A155D1006AC99D /* WindowsAzureMessaging.xcconfig */,
 				4CA7310824A155FB006AC99D /* WindowsAzureMessaging Debug.xcconfig */,
 				4CA7310924A15627006AC99D /* WindowsAzureMessaging Release.xcconfig */,
@@ -894,6 +1066,66 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		4C3EEAD824C8AAD70096C133 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3EEB2624C8ADE10096C133 /* MSNotificationHub+Private.h in Headers */,
+				4C3EEB0D24C8AD2E0096C133 /* ANHHttpUtil.h in Headers */,
+				4C3EEB9C24C8BA130096C133 /* HTTPStubsPathHelpers.h in Headers */,
+				4C3EEBA224C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */,
+				4C3EEB9B24C8BA100096C133 /* HTTPStubs.h in Headers */,
+				4C3EEB1724C8AD530096C133 /* ANHDelegateForwarder.h in Headers */,
+				4C3EEB4024C8AE610096C133 /* MSInstallationManagementDelegate.h in Headers */,
+				4C3EEB0B24C8AC860096C133 /* SBURLConnection.h in Headers */,
+				4C3EEB1424C8AD480096C133 /* ANHHttpClientDelegate.h in Headers */,
+				4C3EEB2C24C8ADFA0096C133 /* MSInstallation+Private.h in Headers */,
+				4C3EEB9D24C8BA3F0096C133 /* HTTPStubsResponse.h in Headers */,
+				4C3EEB0724C8AC650096C133 /* SBStoredRegistrationEntry.h in Headers */,
+				4C3EEB4724C8B0060096C133 /* SBNotificationHub.h in Headers */,
+				4C3EEB1124C8AD3E0096C133 /* ANHHttpClient.h in Headers */,
+				4C3EEB3E24C8AE540096C133 /* MSInstallationEnrichmentDelegate.h in Headers */,
+				4C3EEB4924C8B4F80096C133 /* MSNotificationHub.h in Headers */,
+				4C3EEB3824C8AE320096C133 /* MSTaggable.h in Headers */,
+				4C3EEB9F24C8BA4D0096C133 /* NSURLRequest+HTTPBodyTesting.h in Headers */,
+				4C3EEB2524C8ADDD0096C133 /* MSInstallationManager+Private.h in Headers */,
+				4C3EEB2D24C8ADFD0096C133 /* MSChangeTracking.h in Headers */,
+				4C3EEB0124C8ABB80096C133 /* SBNotificationHubHelper.h in Headers */,
+				4C3EEB4124C8AFDA0096C133 /* SBRegistration.h in Headers */,
+				4C3EEB0524C8AC130096C133 /* SBStaticHandlerResponse.h in Headers */,
+				4C3EEB3024C8AE160096C133 /* MSInstallationTemplate.h in Headers */,
+				4C3EEB4B24C8B5020096C133 /* MSNotificationHubDelegate.h in Headers */,
+				4C3EEB2924C8ADEB0096C133 /* MSTokenProvider.h in Headers */,
+				4C3EEB4524C8AFF10096C133 /* SBConnectionString.h in Headers */,
+				4C3EEB3F24C8AE5A0096C133 /* MSInstallationLifecycleDelegate.h in Headers */,
+				4C3EEB3B24C8AE4A0096C133 /* ANHDispatcherUtil.h in Headers */,
+				4C3EEB1824C8AD560096C133 /* ANHDelegateForwarder+Private.h in Headers */,
+				4C3EEB1C24C8AD640096C133 /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
+				4C3EEB9A24C8BA0C0096C133 /* Compatibility.h in Headers */,
+				4C3EEB2124C8ADCF0096C133 /* MSInstallationManager.h in Headers */,
+				4C3EEB0324C8ABC10096C133 /* SBRegistrationParser.h in Headers */,
+				4C3EEB1F24C8ADC70096C133 /* MSDebounceInstallationManager.h in Headers */,
+				4C3EEB4C24C8B5080096C133 /* WindowsAzureMessaging.h in Headers */,
+				4C3EEB1624C8AD500096C133 /* ANHCustomDelegate.h in Headers */,
+				4C3EEB0924C8AC7E0096C133 /* SBTokenProvider.h in Headers */,
+				4C3EEB1524C8AD4B0096C133 /* ANHHttpClientProtocol.h in Headers */,
+				4C3EEB3924C8AE420096C133 /* ANH_Reachability.h in Headers */,
+				4C3EEB1E24C8ADC40096C133 /* ANHApplication.h in Headers */,
+				4C3EEB1224C8AD420096C133 /* ANHHttpClient+Private.h in Headers */,
+				4C3EEB1A24C8AD5E0096C133 /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
+				4C3EEB9E24C8BA490096C133 /* HTTPStubsResponse+JSON.h in Headers */,
+				4C3EEB0F24C8AD370096C133 /* ANHHttpCall.h in Headers */,
+				4C3EEB3D24C8AE500096C133 /* ANH_Errors.h in Headers */,
+				4C3EEB3224C8AE200096C133 /* MSNotificationHubMessage.h in Headers */,
+				4C3EEB2724C8ADE50096C133 /* MSLocalStorage.h in Headers */,
+				4C3EEAFF24C8ABAA0096C133 /* SBLocalStorage.h in Headers */,
+				4C3EEB4324C8AFEA0096C133 /* SBTemplateRegistration.h in Headers */,
+				4C3EEB2E24C8AE020096C133 /* MSInstallation.h in Headers */,
+				4C3EEB2B24C8ADF80096C133 /* MSNotificationHubMessage+Private.h in Headers */,
+				4C3EEB3424C8AE270096C133 /* MSTagHelper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CA730DA24A14FF2006AC99D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -901,6 +1133,7 @@
 				4CA732BE24A2D04F006AC99D /* NSURLRequest+HTTPBodyTesting.h in Headers */,
 				4C1049AF24ABE92100FA339E /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
 				4CA7335024A42C64006AC99D /* MSInstallation+Private.h in Headers */,
+				4C3EEBA024C8BA5F0096C133 /* HTTPStubsMethodSwizzling.h in Headers */,
 				4CA731BE24A1893C006AC99D /* SBConnectionString.h in Headers */,
 				4CA732B924A2D04E006AC99D /* Compatibility.h in Headers */,
 				4CA7317824A18082006AC99D /* ANHHttpClientDelegate.h in Headers */,
@@ -916,6 +1149,7 @@
 				4CA7320A24A1C55E006AC99D /* MSNotificationHubDelegate.h in Headers */,
 				4CA731E024A1BA4A006AC99D /* MSNotificationHubMessage+Private.h in Headers */,
 				4CA7316924A17D83006AC99D /* ANHHttpClient+Private.h in Headers */,
+				4C3EEB2324C8ADDB0096C133 /* MSInstallationManager+Private.h in Headers */,
 				4CA731A624A187A6006AC99D /* SBTokenProvider.h in Headers */,
 				4CA731B224A187A6006AC99D /* SBRegistrationParser.h in Headers */,
 				4CA731EA24A1BBC8006AC99D /* MSTaggable.h in Headers */,
@@ -948,6 +1182,7 @@
 				4CA730F024A14FF2006AC99D /* WindowsAzureMessaging.h in Headers */,
 				4C10499A24ABE3A600FA339E /* ANHCustomDelegate.h in Headers */,
 				4CA732BD24A2D04F006AC99D /* HTTPStubsResponse+JSON.h in Headers */,
+				4C3EEB3624C8AE2A0096C133 /* MSTagHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,6 +1192,7 @@
 			files = (
 				4C10499E24ABE40900FA339E /* ANHDelegateForwarder.h in Headers */,
 				4CA7330924A3E96C006AC99D /* MSInstallationTemplate.h in Headers */,
+				4C3EEB3524C8AE290096C133 /* MSTagHelper.h in Headers */,
 				4CA7330B24A3E984006AC99D /* MSNotificationHub.h in Headers */,
 				4CA731D024A190A9006AC99D /* MSInstallation.h in Headers */,
 				4CA732C124A2D051006AC99D /* HTTPStubsPathHelpers.h in Headers */,
@@ -979,6 +1215,7 @@
 				4CA7316724A17C6B006AC99D /* ANHHttpClientProtocol.h in Headers */,
 				4C1049B024ABE92100FA339E /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
 				4C1049B924ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
+				4C3EEB2424C8ADDC0096C133 /* MSInstallationManager+Private.h in Headers */,
 				4CA731F524A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */,
 				4CA7318C24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */,
 				4CA7318F24A18662006AC99D /* MSInstallationLifecycleDelegate.h in Headers */,
@@ -990,6 +1227,7 @@
 				4CA7315D24A17AC8006AC99D /* ANHDispatcherUtil.h in Headers */,
 				4CA731C824A1901D006AC99D /* MSLocalStorage.h in Headers */,
 				4CA732BF24A2D050006AC99D /* Compatibility.h in Headers */,
+				4C3EEBA124C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */,
 				4CA7312324A15A25006AC99D /* WindowsAzureMessaging.h in Headers */,
 				4CA7320824A1C4E9006AC99D /* MSNotificationHub+Private.h in Headers */,
 				4CA731E124A1BA4B006AC99D /* MSNotificationHubMessage+Private.h in Headers */,
@@ -1000,6 +1238,45 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4C3EEADC24C8AAD70096C133 /* WindowsAzureMessaging tvOS Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C3EEAFC24C8AAD80096C133 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging tvOS Framework" */;
+			buildPhases = (
+				4C3EEAFE24C8AB400096C133 /* Verify No Build Settings */,
+				4C3EEAD824C8AAD70096C133 /* Headers */,
+				4C3EEAD924C8AAD70096C133 /* Sources */,
+				4C3EEADA24C8AAD70096C133 /* Frameworks */,
+				4C3EEADB24C8AAD70096C133 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WindowsAzureMessaging tvOS Framework";
+			productName = "WindowsAzureMessaging tvOS Framework";
+			productReference = 4C3EEADD24C8AAD70096C133 /* WindowsAzureMessaging.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4C3EEAE424C8AAD80096C133 /* WindowsAzureMessaging tvOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C3EEAFD24C8AAD80096C133 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging tvOS Tests" */;
+			buildPhases = (
+				4C3EEAE124C8AAD80096C133 /* Sources */,
+				4C3EEAE224C8AAD80096C133 /* Frameworks */,
+				4C3EEAE324C8AAD80096C133 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C3EEAE824C8AAD80096C133 /* PBXTargetDependency */,
+				4C3EEB7B24C8B7880096C133 /* PBXTargetDependency */,
+				4C3EEB7924C8B7760096C133 /* PBXTargetDependency */,
+			);
+			name = "WindowsAzureMessaging tvOS Tests";
+			productName = "WindowsAzureMessaging tvOS Tests";
+			productReference = 4C3EEAE524C8AAD80096C133 /* WindowsAzureMessaging.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4CA730DE24A14FF2006AC99D /* WindowsAzureMessaging iOS Framework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CA730F324A14FF2006AC99D /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging iOS Framework" */;
@@ -1091,6 +1368,15 @@
 					4C1047B124AAA0C600FA339E = {
 						CreatedOnToolsVersion = 11.5;
 					};
+					4C3EEADC24C8AAD70096C133 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					4C3EEAE424C8AAD80096C133 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					4C3EEB7424C8B73A0096C133 = {
+						CreatedOnToolsVersion = 11.6;
+					};
 					4CA730DE24A14FF2006AC99D = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -1131,6 +1417,9 @@
 				4CA7312124A15A25006AC99D /* WindowsAzureMessaging macOS Framework */,
 				4CA7311424A15A1F006AC99D /* WindowsAzureMessaging macOS Tests */,
 				4CA7312F24A15A74006AC99D /* WindowsAzureMessaging macOS Fat Framework */,
+				4C3EEADC24C8AAD70096C133 /* WindowsAzureMessaging tvOS Framework */,
+				4C3EEAE424C8AAD80096C133 /* WindowsAzureMessaging tvOS Tests */,
+				4C3EEB7424C8B73A0096C133 /* WindowsAzureMessaging tvOS Fat Framework */,
 				4C1047B124AAA0C600FA339E /* WindowsAzureMessaging XCFramework */,
 			);
 		};
@@ -1238,6 +1527,20 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4C3EEADB24C8AAD70096C133 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C3EEAE324C8AAD80096C133 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CA730DD24A14FF2006AC99D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1305,6 +1608,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Scripts/build-xcframework.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C3EEAFE24C8AB400096C133 /* Verify No Build Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Verify No Build Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/VerifyNoBuildSettings.swift\" ${PROJECT_NAME}.xcodeproj/project.pbxproj\n";
+			showEnvVarsInLog = 0;
+		};
+		4C3EEBA324C8BACC0096C133 /* Build Universal Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Universal Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/build-tvos-framework.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4CA7313D24A15FF6006AC99D /* Verify No Build Settings */ = {
@@ -1386,6 +1727,65 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4C3EEAD924C8AAD70096C133 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3EEB0824C8AC680096C133 /* SBStoredRegistrationEntry.m in Sources */,
+				4C3EEB4624C8AFF70096C133 /* SBConnectionString.m in Sources */,
+				4C3EEB3124C8AE1C0096C133 /* MSInstallationTemplate.m in Sources */,
+				4C3EEB0A24C8AC830096C133 /* SBTokenProvider.m in Sources */,
+				4C3EEB4224C8AFE00096C133 /* SBRegistration.m in Sources */,
+				4C3EEB0024C8ABB40096C133 /* SBLocalStorage.m in Sources */,
+				4C3EEB1924C8AD5A0096C133 /* ANHDelegateForwarder.m in Sources */,
+				4C3EEB2224C8ADD30096C133 /* MSInstallationManager.m in Sources */,
+				4C3EEB1B24C8AD610096C133 /* ANHNotificationHubAppDelegateForwarder.m in Sources */,
+				4C3EEB0224C8ABBD0096C133 /* SBNotificationHubHelper.m in Sources */,
+				4C3EEB3A24C8AE450096C133 /* ANH_Reachability.m in Sources */,
+				4C3EEB1D24C8AD680096C133 /* ANHUserNotificationCenterDelegateForwarder.m in Sources */,
+				4C3EEB1024C8AD3B0096C133 /* ANHHttpCall.m in Sources */,
+				4C3EEB0C24C8AC8B0096C133 /* SBURLConnection.m in Sources */,
+				4C3EEB0E24C8AD320096C133 /* ANHHttpUtil.m in Sources */,
+				4C3EEB2824C8ADE80096C133 /* MSLocalStorage.m in Sources */,
+				4C3EEB4A24C8B4FD0096C133 /* MSNotificationHub.m in Sources */,
+				4C3EEB4424C8AFEF0096C133 /* SBTemplateRegistration.m in Sources */,
+				4C3EEB0624C8AC610096C133 /* SBStaticHandlerResponse.m in Sources */,
+				4C3EEB3C24C8AE4D0096C133 /* ANHDispatcherUtil.m in Sources */,
+				4C3EEB4824C8B00E0096C133 /* SBNotificationHub.m in Sources */,
+				4C3EEB2F24C8AE130096C133 /* MSInstallation.m in Sources */,
+				4C3EEB1324C8AD450096C133 /* ANHHttpClient.m in Sources */,
+				4C3EEB3724C8AE2F0096C133 /* MSTagHelper.m in Sources */,
+				4C3EEB3324C8AE240096C133 /* MSNotificationHubMessage.m in Sources */,
+				4C3EEB2A24C8ADEE0096C133 /* MSTokenProvider.m in Sources */,
+				4C3EEB2024C8ADCB0096C133 /* MSDebounceInstallationManager.m in Sources */,
+				4C3EEB0424C8AC0F0096C133 /* SBRegistrationParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C3EEAE124C8AAD80096C133 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3EEB8F24C8B9D50096C133 /* MSTokenProviderTests.m in Sources */,
+				4C3EEB9124C8B9DD0096C133 /* MSNotificationHubTemplatesTests.m in Sources */,
+				4C3EEB8924C8B9030096C133 /* ANHHttpTestUtil.m in Sources */,
+				4C3EEB8E24C8B9D10096C133 /* MSLocalStorageTests.m in Sources */,
+				4C3EEB9524C8B9F60096C133 /* HTTPStubsMethodSwizzling.m in Sources */,
+				4C3EEB9424C8B9F10096C133 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */,
+				4C3EEB9324C8B9ED0096C133 /* HTTPStubs.m in Sources */,
+				4C3EEB8D24C8B9CE0096C133 /* MSInstallationManagerTests.m in Sources */,
+				4C3EEB9824C8BA000096C133 /* HTTPStubsResponse+JSON.m in Sources */,
+				4C3EEB8C24C8B91A0096C133 /* ANHHttpUtilTests.m in Sources */,
+				4C3EEB9924C8BA030096C133 /* NSURLRequest+HTTPBodyTesting.m in Sources */,
+				4C3EEB9724C8B9FC0096C133 /* HTTPStubsResponse.m in Sources */,
+				4C3EEB8A24C8B9110096C133 /* TestHelper.m in Sources */,
+				4C3EEB9624C8B9F90096C133 /* HTTPStubsPathHelpers.m in Sources */,
+				4C3EEB8B24C8B9160096C133 /* ANHHttpClientTests.m in Sources */,
+				4C3EEB9224C8B9E10096C133 /* WindowsAzureMessagingTests.m in Sources */,
+				4C3EEB9024C8B9D80096C133 /* MSNotificationHubTagsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CA730DB24A14FF2006AC99D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1511,6 +1911,21 @@
 			target = 4CA7312F24A15A74006AC99D /* WindowsAzureMessaging macOS Fat Framework */;
 			targetProxy = 4C1047B724AAA0E000FA339E /* PBXContainerItemProxy */;
 		};
+		4C3EEAE824C8AAD80096C133 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C3EEADC24C8AAD70096C133 /* WindowsAzureMessaging tvOS Framework */;
+			targetProxy = 4C3EEAE724C8AAD80096C133 /* PBXContainerItemProxy */;
+		};
+		4C3EEB7924C8B7760096C133 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OCHamcrest-tvOS";
+			targetProxy = 4C3EEB7824C8B7760096C133 /* PBXContainerItemProxy */;
+		};
+		4C3EEB7B24C8B7880096C133 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OCMock tvOS";
+			targetProxy = 4C3EEB7A24C8B7880096C133 /* PBXContainerItemProxy */;
+		};
 		4CA730EB24A14FF2006AC99D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4CA730DE24A14FF2006AC99D /* WindowsAzureMessaging iOS Framework */;
@@ -1557,6 +1972,48 @@
 		};
 		4C1047B424AAA0C600FA339E /* Release */ = {
 			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4C3EEAEE24C8AAD80096C133 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4C3EEAEF24C8AAD80096C133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4C3EEAF024C8AAD80096C133 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4C3EEAF124C8AAD80096C133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4C3EEB7624C8B73A0096C133 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4C3EEB7724C8B73A0096C133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -1667,6 +2124,33 @@
 			buildConfigurations = (
 				4C1047B324AAA0C600FA339E /* Debug */,
 				4C1047B424AAA0C600FA339E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C3EEAFC24C8AAD80096C133 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging tvOS Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C3EEAEE24C8AAD80096C133 /* Debug */,
+				4C3EEAEF24C8AAD80096C133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C3EEAFD24C8AAD80096C133 /* Build configuration list for PBXNativeTarget "WindowsAzureMessaging tvOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C3EEAF024C8AAD80096C133 /* Debug */,
+				4C3EEAF124C8AAD80096C133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C3EEB7524C8B73A0096C133 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging tvOS Fat Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C3EEB7624C8B73A0096C133 /* Debug */,
+				4C3EEB7724C8B73A0096C133 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

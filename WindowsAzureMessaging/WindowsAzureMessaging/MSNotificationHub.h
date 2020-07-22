@@ -31,13 +31,13 @@ NS_ASSUME_NONNULL_BEGIN
                           hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
 
 /**
-* Initializes the Notification Hub with the installation management delegate to a custom backend.
-* Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
-*
-* @param managementDelegate The delegate.
-*
-* @see MSInstallationEnrichmentDelegate
-*/
+ * Initializes the Notification Hub with the installation management delegate to a custom backend.
+ * Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
+ *
+ * @param managementDelegate The delegate.
+ *
+ * @see MSInstallationEnrichmentDelegate
+ */
 + (void)startWithInstallationManagement:(id<MSInstallationManagementDelegate>)managementDelegate;
 
 #pragma mark Push Initialization

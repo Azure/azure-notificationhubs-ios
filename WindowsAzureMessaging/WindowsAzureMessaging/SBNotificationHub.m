@@ -241,8 +241,8 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                          ETag:@""
                                    completion:^(NSHTTPURLResponse *response, __unused NSData *data, NSError *error) {
                                      if (!error) {
-                                         NSURL *locationUrl =
-                                             [[NSURL alloc] initWithString:[[response allHeaderFields] objectForKey:@"Location"]];
+                                         NSString *locationField = [[response allHeaderFields] objectForKey:@"Location"];
+                                         NSURL *locationUrl = [[NSURL alloc] initWithString:locationField];
                                          NSString *registrationId = [self extractRegistrationIdFromLocationUri:locationUrl];
                                          [self->storageManager updateWithRegistrationName:name
                                                                            registrationId:registrationId
@@ -590,7 +590,8 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                         error:&operationError];
 
     if (operationError == nil) {
-        NSURL *locationUrl = [[NSURL alloc] initWithString:[[response allHeaderFields] objectForKey:@"Location"]];
+        NSString *locationField = [[response allHeaderFields] objectForKey:@"Location"];
+        NSURL *locationUrl = [[NSURL alloc] initWithString:locationField];
         return [self extractRegistrationIdFromLocationUri:locationUrl];
     }
 
@@ -945,10 +946,6 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     } else {
         return deviceToken;
     }
-}
-
-+ (NSString *)version {
-    return currentVersion;
 }
 
 - (NSString *)extractRegistrationIdFromLocationUri:(NSURL *)locationUrl {

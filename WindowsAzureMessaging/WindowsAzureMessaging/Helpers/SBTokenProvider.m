@@ -80,7 +80,7 @@ static const int defaultTimeToExpireinMins = 20;
     NSString *token;
 
     if ([self->_sharedAccessKey length] > 0) {
-        token = [self PrepareSharedAccessTokenWithUrl:[request URL]];
+        token = [self prepareSharedAccessTokenWithUrl:[request URL]];
     } else {
         NSMutableURLRequest *stsRequest = [self PrepareSharedSecretTokenWithUrl:[request URL]];
         NSHTTPURLResponse *response = nil;
@@ -115,11 +115,11 @@ static const int defaultTimeToExpireinMins = 20;
     return TRUE;
 }
 
-- (NSString *)PrepareSharedAccessTokenWithUrl:(NSURL *)url {
+- (NSString *)prepareSharedAccessTokenWithUrl:(NSURL *)url {
     // time to live in seconds
     NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
-    int totalSeconds = interval + self->timeToExpireinMins * 60;
-    NSString *expiresOn = [NSString stringWithFormat:@"%d", totalSeconds];
+    double totalSeconds = interval + self->timeToExpireinMins * 60;
+    NSString *expiresOn = [NSString stringWithFormat:@"%.f", totalSeconds];
 
     NSString *audienceUri = [url absoluteString];
     audienceUri = [[audienceUri lowercaseString] stringByReplacingOccurrencesOfString:@"https://" withString:@"http://"];
@@ -181,7 +181,7 @@ static const int defaultTimeToExpireinMins = 20;
 #pragma GCC diagnostic pop
 
 - (void)setSharedAccessTokenWithRequest:(NSMutableURLRequest *)request completion:(void (^)(NSError *))completion {
-    NSString *token = [self PrepareSharedAccessTokenWithUrl:[request URL]];
+    NSString *token = [self prepareSharedAccessTokenWithUrl:[request URL]];
     [request addValue:token forHTTPHeaderField:@"Authorization"];
 
     if (completion) {

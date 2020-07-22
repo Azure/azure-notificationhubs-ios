@@ -130,7 +130,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
     MSInstallationManager *installationManager = [MSInstallationManager new];
     [[MSNotificationHub sharedInstance]
         setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2 installationManager:installationManager]];
-    
+
     [[MSNotificationHub sharedInstance] setManagementDelegate:managementDelegate];
     [[MSNotificationHub sharedInstance] registerForRemoteNotifications];
 }
