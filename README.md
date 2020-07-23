@@ -8,11 +8,10 @@ The Azure Notification Hubs SDK for Apple provides capabilities for registering 
 
 The Azure Notification Hubs can be added to your app via Cocoapods, Carthage, Swift Package Manager, or by manually adding the binaries to your project.  We have a number of sample applications available written in both Swift and Objective-C to help you get started for both iOS with Mac Catalyst support, and a macOS sample, and SwiftUI coming soon.
 
-This introduces a new API as of version 3.0, and the usage of `SBNotificationHub` with registrations is still supported, but discouraged as we have the new `MSNotificationHub` which uses the Installation API and modern Apple APIs.
+**This introduces a new API as of version 3.0, and the usage of `SBNotificationHub` with registrations is still supported, but discouraged as we have the new `MSNotificationHub` which uses the Installation API and modern Apple APIs.**
 
 1. NH Sample App for iOS/Mac Catalyst [Swift](SampleNHAppSwift) | [Objective-C](SampleNHAppObjC)
 2. NH Sample App for macOS [Swift](SampleNHAppMacSwift) | [Objective-C](SampleNHAppMacObjC)
-3. SwiftUI (Coming Soon)
 
 ### Integration with Cocoapods
 
@@ -63,7 +62,7 @@ Unzip the file and you will see a folder called WindowsAzureMessaging-SDK-Apple 
 
 To get started with the SDK, you need to configure your Azure Notification Hub with your Apple credentials.  To integrate the SDK, you will need the name of the hub as well as a connection string from your Access Policies.  Note that you only need the "Listen" permission to intercept push notifications.
 
-YOu can then import the headers for Swift:
+You can then import the headers for Swift:
 
 ```swift
 import WindowsAzureMessaging
@@ -322,7 +321,7 @@ Objective-C:
 
 ### Disabling Automatic Swizzling
 
-By default, the SDK will swizzle methods to automatically intercept calls to `UIApplicationDelegate`/`NSApplicationDelegate` for calls to registering and intercepting push notifications, as well as `UNUserNotificationCenterDelegate` methods.  
+By default, the SDK will swizzle methods to automatically intercept calls to `UIApplicationDelegate`/`NSApplicationDelegate` for calls to registering and intercepting push notifications, as well as `UNUserNotificationCenterDelegate` methods.  Note this is only available for iOS, watchOS, and Mac Catalyst.  This is not supported on macOS and tvOS.
 
 #### Disabling UIApplicationDelegate/NSApplicationDelegate
 

@@ -1,1 +1,1 @@
-# Azure Notification Hubs SDK for iOS and macOS 
+# Azure Notification Hubs SDK for Apple
