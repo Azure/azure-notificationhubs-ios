@@ -12,7 +12,9 @@ PRODUCTS_DIR="$PROJECT_DIR/$PRODUCT_NAME"
 echo $PRODUCTS_DIR
 
 # Check if the frameworks are already built.
-if [ ! -d "$PRODUCTS_DIR/iOS" ] || [ ! -d "$PRODUCTS_DIR/macOS" ] || [ ! -d "$PRODUCTS_DIR/XCFramework" ]; then
+# Check if the frameworks are already built.
+if [ ! -d "$PRODUCTS_DIR/iOS" ] || [ ! -d "$PRODUCTS_DIR/macOS" ] || \
+    [ ! -d "$PRODUCTS_DIR/tvOS" ] || [ ! -d "$PRODUCTS_DIR/XCFramework" ]; then
   echo "Cannot find frameworks to archive, please run build first"
   exit 1
 fi
@@ -75,10 +77,10 @@ function archive() {
 VERSION="$($(dirname "$0")/framework-version.sh)"
 
 # Archive fat frameworks for CocoaPods.
-archive "$PRODUCT_NAME-$VERSION.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS"
+archive "$PRODUCT_NAME-$VERSION.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
 
 # Archive fat frameworks for Carthage.
-archive "$PRODUCT_NAME-$VERSION.carthage.framework.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS"
+archive "$PRODUCT_NAME-$VERSION.carthage.framework.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
 
 # Archive XCFrameworks.
 archive "$PRODUCT_NAME-XCFramework-$VERSION.zip" $(ls -d "$PRODUCT_NAME/XCFramework"/*)
