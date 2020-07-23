@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4CA7311424A15A1F006AC99D"
+               BuildableName = "WindowsAzureMessaging.xctest"
+               BlueprintName = "WindowsAzureMessaging macOS Tests"
+               ReferencedContainer = "container:WindowsAzureMessaging.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
