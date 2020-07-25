@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "AzureNotificationHubs-iOS"
-  s.version             = "3.0.0-preview3"
+  s.version             = "3.0.0"
 
   s.summary             = "Push notifications for consumer and enterprise apps – from any backend to any device platform"
   s.description         = <<-DESC
