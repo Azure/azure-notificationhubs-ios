@@ -22,7 +22,6 @@
 #import "MSNotificationHub.h"
 #import "MSNotificationHubMessage+Private.h"
 #import "MSNotificationHubMessage.h"
-#import "MSTokenProvider.h"
 
 #if TARGET_OS_OSX
 static NSString *const kANHUserNotificationCenterDelegateKey = @"delegate";

@@ -15,6 +15,7 @@
 				4C1047BA24AAA11D00FA339E /* Build XCFramework */,
 			);
 			dependencies = (
+				4C8C05AE24CBB1EF00927E36 /* PBXTargetDependency */,
 				4C1047B624AAA0E000FA339E /* PBXTargetDependency */,
 				4C1047B824AAA0E000FA339E /* PBXTargetDependency */,
 			);
@@ -390,6 +391,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 817EB1151BD765130047E85A;
 			remoteInfo = "OCMock tvOS";
+		};
+		4C8C05AD24CBB1EF00927E36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C3EEB7424C8B73A0096C133;
+			remoteInfo = "WindowsAzureMessaging tvOS Fat Framework";
 		};
 		4CA730EA24A14FF2006AC99D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1925,6 +1933,11 @@
 			isa = PBXTargetDependency;
 			name = "OCMock tvOS";
 			targetProxy = 4C3EEB7A24C8B7880096C133 /* PBXContainerItemProxy */;
+		};
+		4C8C05AE24CBB1EF00927E36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C3EEB7424C8B73A0096C133 /* WindowsAzureMessaging tvOS Fat Framework */;
+			targetProxy = 4C8C05AD24CBB1EF00927E36 /* PBXContainerItemProxy */;
 		};
 		4CA730EB24A14FF2006AC99D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
