@@ -206,7 +206,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSDictionary<NSString *, MSInstallationTemplate *> *)getTemplates;
 
-#pragma mark UserId support
+#pragma mark UserID support
 
 /**
  * Adds a userId to the current installation.
@@ -215,7 +215,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @returns YES if userId was added, else NO.
  */
-+ (BOOL)setUserId:(NSString *)userId;
++ (BOOL)setUserID:(NSString *)userId;
 
 #pragma mark Installation management support
 

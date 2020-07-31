@@ -512,9 +512,9 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
     return [[self getInstallation] templates];
 }
 
-#pragma mark UserId support
+#pragma mark UserID support
 
-+ (BOOL)setUserId:(NSString *)userId {
++ (BOOL)setUserID:(NSString *)userId {
     return [self addTag:[NSString stringWithFormat:@"$UserId:{%@}", userId]];
 }
 
