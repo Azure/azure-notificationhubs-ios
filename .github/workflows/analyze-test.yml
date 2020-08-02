@@ -13,7 +13,7 @@ jobs:
     runs-on: macOS-latest
     env:
       XC_VERSION: ${{ '11.6' }}
-      XC_WORKSPACE: ${{ 'WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj' }}
+      XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Framework' }}
     steps:
     - uses: actions/checkout@v2
