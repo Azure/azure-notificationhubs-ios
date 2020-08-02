@@ -17,6 +17,8 @@ jobs:
       XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Framework' }}
     steps:
     - uses: actions/checkout@v2
+      with: 
+        submodules: true
 
     - name: Select Xcode
       run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
