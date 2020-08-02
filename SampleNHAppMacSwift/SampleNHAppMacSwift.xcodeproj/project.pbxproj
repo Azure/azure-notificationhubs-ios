@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C10495F24ABA75500FA339E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10495E24ABA75500FA339E /* AppDelegate.swift */; };
+		4C10496124ABA75500FA339E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10496024ABA75500FA339E /* ViewController.swift */; };
+		4C10496324ABA75600FA339E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C10496224ABA75600FA339E /* Assets.xcassets */; };
+		4C10496624ABA75600FA339E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C10496424ABA75600FA339E /* Main.storyboard */; };
+		4C10497F24ABA95B00FA339E /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */; };
+		4C1049C124ACE3AB00FA339E /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C1049C024ACE3AB00FA339E /* DevSettings.plist */; };
+		CEB5610924B744EF000B3990 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5610824B744EF000B3990 /* TagsTableViewController.swift */; };
+		CEB5610D24B75789000B3990 /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5610C24B75789000B3990 /* NotificationsTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4C10498124ABA95C00FA339E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4C10495B24ABA75500FA339E /* SampleNHAppMacSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleNHAppMacSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C10495E24ABA75500FA339E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C10496024ABA75500FA339E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4C10496224ABA75600FA339E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C10496524ABA75600FA339E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C10496724ABA75600FA339E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C10496824ABA75600FA339E /* SampleNHAppMacSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleNHAppMacSwift.entitlements; sourceTree = "<group>"; };
+		4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1049C024ACE3AB00FA339E /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
+		CEB5610724B5F37C000B3990 /* SampleNHAppMacSwift.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHAppMacSwift.xcconfig; sourceTree = "<group>"; };
+		CEB5610824B744EF000B3990 /* TagsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
+		CEB5610C24B75789000B3990 /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C10495824ABA75500FA339E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C10497F24ABA95B00FA339E /* WindowsAzureMessaging.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C10495224ABA75500FA339E = {
+			isa = PBXGroup;
+			children = (
+				4C10495D24ABA75500FA339E /* SampleNHAppMacSwift */,
+				4C10495C24ABA75500FA339E /* Products */,
+				4C10497D24ABA95B00FA339E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4C10495C24ABA75500FA339E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C10495B24ABA75500FA339E /* SampleNHAppMacSwift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C10495D24ABA75500FA339E /* SampleNHAppMacSwift */ = {
+			isa = PBXGroup;
+			children = (
+				CEB5610624B5F303000B3990 /* Support */,
+				4C10495E24ABA75500FA339E /* AppDelegate.swift */,
+				4C10496024ABA75500FA339E /* ViewController.swift */,
+				4C10496224ABA75600FA339E /* Assets.xcassets */,
+				4C10496424ABA75600FA339E /* Main.storyboard */,
+				4C10496724ABA75600FA339E /* Info.plist */,
+				4C10496824ABA75600FA339E /* SampleNHAppMacSwift.entitlements */,
+				4C1049C024ACE3AB00FA339E /* DevSettings.plist */,
+				CEB5610824B744EF000B3990 /* TagsTableViewController.swift */,
+				CEB5610C24B75789000B3990 /* NotificationsTableViewController.swift */,
+			);
+			path = SampleNHAppMacSwift;
+			sourceTree = "<group>";
+		};
+		4C10497D24ABA95B00FA339E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C10497E24ABA95B00FA339E /* WindowsAzureMessaging.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEB5610624B5F303000B3990 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				CEB5610724B5F37C000B3990 /* SampleNHAppMacSwift.xcconfig */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C10495A24ABA75500FA339E /* SampleNHAppMacSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C10496B24ABA75600FA339E /* Build configuration list for PBXNativeTarget "SampleNHAppMacSwift" */;
+			buildPhases = (
+				4C10495724ABA75500FA339E /* Sources */,
+				4C10495824ABA75500FA339E /* Frameworks */,
+				4C10495924ABA75500FA339E /* Resources */,
+				4C10498124ABA95C00FA339E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleNHAppMacSwift;
+			productName = SampleNHAppMacSwift;
+			productReference = 4C10495B24ABA75500FA339E /* SampleNHAppMacSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C10495324ABA75500FA339E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Matthew Podwysocki";
+				TargetAttributes = {
+					4C10495A24ABA75500FA339E = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 4C10495624ABA75500FA339E /* Build configuration list for PBXProject "SampleNHAppMacSwift" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C10495224ABA75500FA339E;
+			productRefGroup = 4C10495C24ABA75500FA339E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C10495A24ABA75500FA339E /* SampleNHAppMacSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C10495924ABA75500FA339E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C10496324ABA75600FA339E /* Assets.xcassets in Resources */,
+				4C10496624ABA75600FA339E /* Main.storyboard in Resources */,
+				4C1049C124ACE3AB00FA339E /* DevSettings.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C10495724ABA75500FA339E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C10496124ABA75500FA339E /* ViewController.swift in Sources */,
+				CEB5610924B744EF000B3990 /* TagsTableViewController.swift in Sources */,
+				CEB5610D24B75789000B3990 /* NotificationsTableViewController.swift in Sources */,
+				4C10495F24ABA75500FA339E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4C10496424ABA75600FA339E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C10496524ABA75600FA339E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C10496924ABA75600FA339E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEB5610724B5F37C000B3990 /* SampleNHAppMacSwift.xcconfig */;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4C10496A24ABA75600FA339E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEB5610724B5F37C000B3990 /* SampleNHAppMacSwift.xcconfig */;
+			buildSettings = {
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		4C10496C24ABA75600FA339E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+			};
+			name = Debug;
+		};
+		4C10496D24ABA75600FA339E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C10495624ABA75500FA339E /* Build configuration list for PBXProject "SampleNHAppMacSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C10496924ABA75600FA339E /* Debug */,
+				4C10496A24ABA75600FA339E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C10496B24ABA75600FA339E /* Build configuration list for PBXNativeTarget "SampleNHAppMacSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C10496C24ABA75600FA339E /* Debug */,
+				4C10496D24ABA75600FA339E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C10495324ABA75500FA339E /* Project object */;
+}

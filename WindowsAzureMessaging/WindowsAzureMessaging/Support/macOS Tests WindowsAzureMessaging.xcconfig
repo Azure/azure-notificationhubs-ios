@@ -1,0 +1,3 @@
+#include "../Config/Tests macOS.xcconfig"
+
+OTHER_LDFLAGS=$(inherited) -framework AppKit  -weak_framework UserNotifications
