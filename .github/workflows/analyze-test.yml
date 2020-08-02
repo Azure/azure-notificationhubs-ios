@@ -24,7 +24,67 @@ jobs:
       run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
 
     - name: iOS Analyze
-      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
+      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination platform=iOS Simulator,name=iPhone 11
 
     - name: iOS Test
-      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
+      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination platform=iOS Simulator,name=iPhone 11
+
+  tvos-analyze-test:
+    runs-on: macOS-latest
+    env:
+      XC_VERSION: ${{ '11.6' }}
+      XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
+      XC_SCHEME: ${{ 'WindowsAzureMessaging tvOS Framework' }}
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        submodules: true
+
+    - name: Select Xcode
+      run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
+
+    - name: iOS Analyze
+      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination platform=tvOS Simulator,name=Apple TV 4K
+
+    - name: iOS Test
+      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination platform=tvOS Simulator,name=Apple TV 4K
+
+  macos-analyze-test:
+    runs-on: macOS-latest
+    env:
+      XC_VERSION: ${{ '11.6' }}
+      XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
+      XC_SCHEME: ${{ 'WindowsAzureMessaging macOS Framework' }}
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        submodules: true
+
+    - name: Select Xcode
+      run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
+
+    - name: macOS Analyze
+      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination platform=macOS
+
+    - name: macOS Test
+      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination platform=macOS
+      
+  mac-catalyst-analyze-test:
+    runs-on: macOS-latest
+    env:
+      XC_VERSION: ${{ '11.6' }}
+      XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
+      XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Framework' }}
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        submodules: true
+
+    - name: Select Xcode
+      run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
+
+    - name: macOS Analyze
+      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination platform=macOS
+
+    - name: macOS Test
+      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination platform=macOS     
