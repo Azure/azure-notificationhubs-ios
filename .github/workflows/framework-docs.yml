@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-sdk:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     env:
       XC_VERSION: ${{ '11.6' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
@@ -44,5 +44,5 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: copy-zips
+        name: WindowsAzureMessaging
         path: WindowsAzureMessaging-SDK-Apple/WindowsAzureMessaging-SDK-Apple*.zip

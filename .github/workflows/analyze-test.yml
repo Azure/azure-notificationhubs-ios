@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: analyze-test
 
 on:
@@ -10,7 +8,7 @@ on:
 
 jobs:
   ios-analyze-test:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     env:
       XC_VERSION: ${{ '11.6' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
@@ -30,7 +28,7 @@ jobs:
       run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
 
   tvos-analyze-test:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     env:
       XC_VERSION: ${{ '11.6' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
@@ -50,7 +48,7 @@ jobs:
       run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K'
 
   macos-analyze-test:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     env:
       XC_VERSION: ${{ '11.6' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
@@ -70,7 +68,7 @@ jobs:
       run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=macOS'
       
   mac-catalyst-analyze-test:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     env:
       XC_VERSION: ${{ '11.6' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
