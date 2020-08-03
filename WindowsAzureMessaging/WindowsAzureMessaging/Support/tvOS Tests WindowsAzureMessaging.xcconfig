@@ -1,0 +1,3 @@
+#include "../Config/Tests tvOS.xcconfig"
+
+OTHER_LDFLAGS=$(inherited) -framework UIKit  -weak_framework UserNotifications

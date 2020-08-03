@@ -1,0 +1,11 @@
+framework module WindowsAzureMessaging {
+  umbrella header "WindowsAzureMessaging.h"
+
+  export *
+  module * { export * }
+  
+  link framework "Foundation"
+  link framework "SystemConfiguration"
+  link framework "AppKit"
+  link framework "UserNotifications"
+}
