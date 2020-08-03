@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4CB623C424D899DF001C0309 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CB623C324D899DE001C0309 /* Splash.png */; };
+		64234F4524D802DB00CFA10D /* ObservableInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F4424D802DB00CFA10D /* ObservableInstallation.swift */; };
+		64234F4A24D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */; };
+		6485C78E24D2B1F10026E41F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C78D24D2B1F10026E41F /* AppDelegate.swift */; };
+		6485C79024D2B1F10026E41F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C78F24D2B1F10026E41F /* SceneDelegate.swift */; };
+		6485C79224D2B1F10026E41F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C79124D2B1F10026E41F /* ContentView.swift */; };
+		6485C79424D2B1F20026E41F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6485C79324D2B1F20026E41F /* Assets.xcassets */; };
+		6485C79A24D2B1F20026E41F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6485C79824D2B1F20026E41F /* LaunchScreen.storyboard */; };
+		6485C7A824D2B37A0026E41F /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6485C7A724D2B37A0026E41F /* DevSettings.plist */; };
+		6485C7AA24D2C9050026E41F /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C7A924D2C9050026E41F /* SetupView.swift */; };
+		6485C7B024D2D4770026E41F /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C7AF24D2D4770026E41F /* Row.swift */; };
+		6485C7B224D2D5B50026E41F /* TagsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C7B124D2D5B50026E41F /* TagsList.swift */; };
+		6485C7B424D2F12B0026E41F /* NotificationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C7B324D2F12B0026E41F /* NotificationsList.swift */; };
+		6485C7B824D2F5690026E41F /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C7B724D2F5690026E41F /* NotificationView.swift */; };
+		64F7412424D40C54007DD7C5 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F7412324D40C54007DD7C5 /* WindowsAzureMessaging.framework */; };
+		64F7413424D43DA9007DD7C5 /* ObservableMessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F7413324D43DA9007DD7C5 /* ObservableMessagesList.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4CB623C324D899DE001C0309 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
+		64234F4424D802DB00CFA10D /* ObservableInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableInstallation.swift; sourceTree = "<group>"; };
+		64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHAppSwiftUI.xcconfig; sourceTree = "<group>"; };
+		6485C78A24D2B1F10026E41F /* SampleNHAppSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleNHAppSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6485C78D24D2B1F10026E41F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6485C78F24D2B1F10026E41F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6485C79124D2B1F10026E41F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6485C79324D2B1F20026E41F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6485C79924D2B1F20026E41F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6485C79B24D2B1F20026E41F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6485C7A224D2B2D70026E41F /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6485C7A624D2B30F0026E41F /* SampleNHAppSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleNHAppSwiftUI.entitlements; sourceTree = "<group>"; };
+		6485C7A724D2B37A0026E41F /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
+		6485C7A924D2C9050026E41F /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		6485C7AF24D2D4770026E41F /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		6485C7B124D2D5B50026E41F /* TagsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsList.swift; sourceTree = "<group>"; };
+		6485C7B324D2F12B0026E41F /* NotificationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsList.swift; sourceTree = "<group>"; };
+		6485C7B724D2F5690026E41F /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		6485C7BF24D33FA70026E41F /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64F7412324D40C54007DD7C5 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64F7413324D43DA9007DD7C5 /* ObservableMessagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableMessagesList.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6485C78724D2B1F10026E41F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64F7412424D40C54007DD7C5 /* WindowsAzureMessaging.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64234F4824D80D3F00CFA10D /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		6485C78124D2B1F10026E41F = {
+			isa = PBXGroup;
+			children = (
+				6485C78C24D2B1F10026E41F /* SampleNHAppSwiftUI */,
+				6485C78B24D2B1F10026E41F /* Products */,
+				6485C7A124D2B2D70026E41F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6485C78B24D2B1F10026E41F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6485C78A24D2B1F10026E41F /* SampleNHAppSwiftUI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6485C78C24D2B1F10026E41F /* SampleNHAppSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				64234F4824D80D3F00CFA10D /* Support */,
+				6485C7A624D2B30F0026E41F /* SampleNHAppSwiftUI.entitlements */,
+				6485C78D24D2B1F10026E41F /* AppDelegate.swift */,
+				6485C78F24D2B1F10026E41F /* SceneDelegate.swift */,
+				6485C79124D2B1F10026E41F /* ContentView.swift */,
+				6485C7AF24D2D4770026E41F /* Row.swift */,
+				6485C7B124D2D5B50026E41F /* TagsList.swift */,
+				6485C7B324D2F12B0026E41F /* NotificationsList.swift */,
+				6485C7B724D2F5690026E41F /* NotificationView.swift */,
+				64F7413324D43DA9007DD7C5 /* ObservableMessagesList.swift */,
+				64234F4424D802DB00CFA10D /* ObservableInstallation.swift */,
+				6485C7A924D2C9050026E41F /* SetupView.swift */,
+				6485C79324D2B1F20026E41F /* Assets.xcassets */,
+				6485C79824D2B1F20026E41F /* LaunchScreen.storyboard */,
+				6485C79B24D2B1F20026E41F /* Info.plist */,
+				6485C7A724D2B37A0026E41F /* DevSettings.plist */,
+				4CB623C324D899DE001C0309 /* Splash.png */,
+			);
+			path = SampleNHAppSwiftUI;
+			sourceTree = "<group>";
+		};
+		6485C7A124D2B2D70026E41F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64F7412324D40C54007DD7C5 /* WindowsAzureMessaging.framework */,
+				6485C7BF24D33FA70026E41F /* WindowsAzureMessaging.framework */,
+				6485C7A224D2B2D70026E41F /* WindowsAzureMessaging.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6485C78924D2B1F10026E41F /* SampleNHAppSwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6485C79E24D2B1F20026E41F /* Build configuration list for PBXNativeTarget "SampleNHAppSwiftUI" */;
+			buildPhases = (
+				6485C78624D2B1F10026E41F /* Sources */,
+				6485C78724D2B1F10026E41F /* Frameworks */,
+				6485C78824D2B1F10026E41F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleNHAppSwiftUI;
+			productName = SampleNHAppSwiftUI;
+			productReference = 6485C78A24D2B1F10026E41F /* SampleNHAppSwiftUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6485C78224D2B1F10026E41F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = Microsoft;
+				TargetAttributes = {
+					6485C78924D2B1F10026E41F = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 6485C78524D2B1F10026E41F /* Build configuration list for PBXProject "SampleNHAppSwiftUI" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6485C78124D2B1F10026E41F;
+			productRefGroup = 6485C78B24D2B1F10026E41F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6485C78924D2B1F10026E41F /* SampleNHAppSwiftUI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6485C78824D2B1F10026E41F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6485C79A24D2B1F20026E41F /* LaunchScreen.storyboard in Resources */,
+				6485C79424D2B1F20026E41F /* Assets.xcassets in Resources */,
+				4CB623C424D899DF001C0309 /* Splash.png in Resources */,
+				64234F4A24D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig in Resources */,
+				6485C7A824D2B37A0026E41F /* DevSettings.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6485C78624D2B1F10026E41F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64234F4524D802DB00CFA10D /* ObservableInstallation.swift in Sources */,
+				6485C7B424D2F12B0026E41F /* NotificationsList.swift in Sources */,
+				64F7413424D43DA9007DD7C5 /* ObservableMessagesList.swift in Sources */,
+				6485C78E24D2B1F10026E41F /* AppDelegate.swift in Sources */,
+				6485C7B224D2D5B50026E41F /* TagsList.swift in Sources */,
+				6485C7B824D2F5690026E41F /* NotificationView.swift in Sources */,
+				6485C79024D2B1F10026E41F /* SceneDelegate.swift in Sources */,
+				6485C7AA24D2C9050026E41F /* SetupView.swift in Sources */,
+				6485C79224D2B1F10026E41F /* ContentView.swift in Sources */,
+				6485C7B024D2D4770026E41F /* Row.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6485C79824D2B1F20026E41F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6485C79924D2B1F20026E41F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6485C79C24D2B1F20026E41F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		6485C79D24D2B1F20026E41F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		6485C79F24D2B1F20026E41F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SampleNHAppSwiftUI/SampleNHAppSwiftUI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SampleNHAppSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.SampleNHAppSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6485C7A024D2B1F20026E41F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SampleNHAppSwiftUI/SampleNHAppSwiftUI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SampleNHAppSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.SampleNHAppSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6485C78524D2B1F10026E41F /* Build configuration list for PBXProject "SampleNHAppSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6485C79C24D2B1F20026E41F /* Debug */,
+				6485C79D24D2B1F20026E41F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6485C79E24D2B1F20026E41F /* Build configuration list for PBXNativeTarget "SampleNHAppSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6485C79F24D2B1F20026E41F /* Debug */,
+				6485C7A024D2B1F20026E41F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6485C78224D2B1F10026E41F /* Project object */;
+}

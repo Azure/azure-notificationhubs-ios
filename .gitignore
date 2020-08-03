@@ -5,6 +5,7 @@
 ## Build generated
 build/
 DerivedData/
+WindowsAzureMessaging-SDK-Apple
 
 ## Various settings
 *.pbxuser
@@ -78,12 +79,37 @@ fastlane/test_output
 iOSInjectionProject/
 
 # Project specific
-BVT/RunTests.sh
-BVT/GHUnitIOS.framework
-BVT/WindowsAzureMessaging.framework
-BVT/IosSdkTests/Default.png
-BVT/IosSdkTests/Default-568h@2x.png
-BVT/IosSdkTests/Default@2x.png
+src/WindowsAzureMessaging/BVT/RunTests.sh
+src/WindowsAzureMessaging/BVT/GHUnitIOS.framework
+src/WindowsAzureMessaging/BVT/WindowsAzureMessaging.framework
+src/WindowsAzureMessaging/BVT/IosSdkTests/Default.png
+src/WindowsAzureMessaging/BVT/IosSdkTests/Default-568h@2x.png
+src/WindowsAzureMessaging/BVT/IosSdkTests/Default@2x.png
 
-# Mac OS - specific directory
+# macOS specific below
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
