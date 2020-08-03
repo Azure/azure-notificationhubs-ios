@@ -514,9 +514,17 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 #pragma mark UserID support
 
-+ (BOOL)setUserID:(NSString *)userId {
-    return [self addTag:[NSString stringWithFormat:@"$UserId:{%@}", userId]];
++ (void)setUserID:(NSString *)userId {
+    [sharedInstance setUserID:userId];
 }
+
+- (void)setUserID:(NSString *)userId {
+    MSInstallation *installation = [self getInstallation];
+    installation.userId = userId;
+    [self upsertInstallation:installation];
+}
+
+
 
 #pragma mark Installation management support
 

@@ -215,7 +215,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @returns YES if userId was added, else NO.
  */
-+ (BOOL)setUserID:(NSString *)userId;
++ (void)setUserID:(NSString *)userId;
 
 #pragma mark Installation management support
 

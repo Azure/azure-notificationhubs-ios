@@ -14,6 +14,7 @@
 @synthesize expirationTime;
 @synthesize pushChannel;
 @synthesize tags;
+@synthesize userId;
 @synthesize templates;
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
@@ -21,6 +22,7 @@
     [coder encodeObject:expirationTime forKey:@"expirationTime"];
     [coder encodeObject:pushChannel forKey:@"pushChannel"];
     [coder encodeObject:tags forKey:@"tags"];
+    [coder encodeObject:userId forKey:@"userId"];
     [coder encodeObject:templates forKey:@"templates"];
 }
 
@@ -30,6 +32,7 @@
         expirationTime = [coder decodeObjectForKey:@"expirationTime"];
         pushChannel = [coder decodeObjectForKey:@"pushChannel"];
         tags = [coder decodeObjectForKey:@"tags"];
+        userId = [coder decodeObjectForKey:@"userId"];
         templates = [coder decodeObjectForKey:@"templates"];
         isDirty = NO;
         [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
@@ -70,6 +73,7 @@
     installation.installationId = json[@"installationId"];
     installation.pushChannel = json[@"pushChannel"];
     installation.tags = json[@"tags"];
+    installation.userId = json[@"userId"];
     installation.templates = json[@"templates"];
     
     NSString *expiration = json[@"expirationTime"];
@@ -106,6 +110,10 @@
 
     if (tags && [tags count] > 0) {
         [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:@"tags"];
+    }
+    
+    if (userId && [userId length] > 0) {
+        [dictionary setObject:userId forKey:@"userId"];
     }
 
     if (templates && [templates count] > 0) {
