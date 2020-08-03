@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:SampleNHAppSwiftUI/SampleNHAppSwiftUI.xcodeproj">
-   </FileRef>
    <Group
       location = "group:Config"
       name = "Config">
@@ -41,6 +38,12 @@
          location = "group:Tests iOS.xcconfig">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:SampleNHAppMacSwiftUI/SampleNHAppMacSwiftUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleNHAppSwiftUI/SampleNHAppSwiftUI.xcodeproj">
+   </FileRef>
    <FileRef
       location = "group:SampleNHAppMacSwift/SampleNHAppMacSwift.xcodeproj">
    </FileRef>
