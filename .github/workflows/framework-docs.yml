@@ -23,7 +23,7 @@ jobs:
 
     - name: Update Version
       run: |
-        version="$(Scripts/framework-version.sh)+$(git rev-parse --short $BUILD_SOURCEVERSION)"
+        version="$(Scripts/framework-version.sh)+$(git rev-parse --short $GITHUB_SHA)"
         echo "Change version to $version"
         Scripts/framework-version.sh "$version"
         
