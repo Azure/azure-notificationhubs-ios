@@ -1,0 +1,48 @@
+name: framework-docs
+
+on:
+  push:
+    branches: [ sdk-v3 ]
+  pull_request:
+    branches: [ sdk-v3 ]
+
+jobs:
+  build-sdk:
+    runs-on: macOS-latest
+    env:
+      XC_VERSION: ${{ '11.6' }}
+      XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
+      XC_SCHEME: ${{ 'All Frameworks' }}
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        submodules: true
+
+    - name: Select Xcode
+      run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
+
+    - name: Update Version
+      run: |
+        version="$(Scripts/framework-version.sh)+$(git rev-parse --short $BUILD_SOURCEVERSION)"
+        echo "Change version to $version"
+        Scripts/framework-version.sh "$version"
+        
+    - name: Print Swift Package
+      run: |
+        swift --version
+        swift package describe
+
+    - name: Install Jazzy
+      run: sudo gem install jazzy --no-document
+    
+    - name: Build
+      run: /usr/bin/xcodebuild -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" build CODE_SIGNING_ALLOWED=NO
+
+    - name: Archive
+      run: Scripts/build-archive.sh
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: copy-zips
+        path: WindowsAzureMessaging-SDK-Apple/WindowsAzureMessaging-SDK-Apple*.zip
