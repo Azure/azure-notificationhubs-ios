@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CB623C424D899DF001C0309 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CB623C324D899DE001C0309 /* Splash.png */; };
 		64234F4524D802DB00CFA10D /* ObservableInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F4424D802DB00CFA10D /* ObservableInstallation.swift */; };
 		64234F4A24D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */; };
 		6485C78E24D2B1F10026E41F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C78D24D2B1F10026E41F /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CB623C324D899DE001C0309 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		64234F4424D802DB00CFA10D /* ObservableInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableInstallation.swift; sourceTree = "<group>"; };
 		64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHAppSwiftUI.xcconfig; sourceTree = "<group>"; };
 		6485C78A24D2B1F10026E41F /* SampleNHAppSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleNHAppSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 				6485C79824D2B1F20026E41F /* LaunchScreen.storyboard */,
 				6485C79B24D2B1F20026E41F /* Info.plist */,
 				6485C7A724D2B37A0026E41F /* DevSettings.plist */,
+				4CB623C324D899DE001C0309 /* Splash.png */,
 			);
 			path = SampleNHAppSwiftUI;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			files = (
 				6485C79A24D2B1F20026E41F /* LaunchScreen.storyboard in Resources */,
 				6485C79424D2B1F20026E41F /* Assets.xcassets in Resources */,
+				4CB623C424D899DF001C0309 /* Splash.png in Resources */,
 				64234F4A24D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig in Resources */,
 				6485C7A824D2B37A0026E41F /* DevSettings.plist in Resources */,
 			);
