@@ -26,8 +26,8 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Setup (please complete the following information):**
- - OS: [e.g. iOS]
- - IDE : [e.g. Xcode]
+ - OS: [e.g. iOS 13.x]
+ - IDE : [e.g. Xcode 11.x]
  - Version of the Library used
 
 **Additional context**
