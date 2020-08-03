@@ -45,16 +45,22 @@
       location = "group:SampleNHAppSwiftUI/SampleNHAppSwiftUI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SampleNHAppMacSwift/SampleNHAppMacSwift.xcodeproj">
+      location = "group:SampleNHAppLegacyObjC/SampleNHAppLegacyObjC.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleNHAppLegacySwift/SampleNHAppLegacySwift.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SampleNHAppMacObjC/SampleNHAppMacObjC.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SampleNHAppSwift/SampleNHAppSwift.xcodeproj">
+      location = "group:SampleNHAppMacSwift/SampleNHAppMacSwift.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SampleNHAppObjC/SampleNHAppObjC.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleNHAppSwift/SampleNHAppSwift.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
