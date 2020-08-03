@@ -1,3 +1,6 @@
+![framework-docs](https://github.com/Azure/azure-notificationhubs-ios/workflows/framework-docs/badge.svg)
+![analyze-test](https://github.com/Azure/azure-notificationhubs-ios/workflows/analyze-test/badge.svg)
+
 # Microsoft Azure Notification Hubs SDK for Apple
 
 Microsoft Azure Notification Hubs provide a multiplatform, scaled-out push infrastructure that enables you to send mobile push notifications from any backend (in the cloud or on-premises) to any mobile platform. To learn more, visit our [Developer Center](https://azure.microsoft.com/en-us/documentation/services/notification-hubs).
