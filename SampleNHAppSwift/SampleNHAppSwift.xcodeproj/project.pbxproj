@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1C0EDE24D8884F0019A46B /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1C0EDD24D8884F0019A46B /* Splash.png */; };
 		644974E924ADF16600196CBD /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 644974E824ADF16600196CBD /* DevSettings.plist */; };
 		6487E8CD24BC8F4400036D26 /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E8CC24BC8F4400036D26 /* CopyableLabel.swift */; };
 		6489DE09245994FF0021CF36 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B3DFFB2451A296006B6327 /* WindowsAzureMessaging.framework */; };
@@ -36,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C1C0EDD24D8884F0019A46B /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		4C98C6C624AE9F1F00140DE6 /* SampleNHApp.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHApp.xcconfig; sourceTree = "<group>"; };
 		644974E824ADF16600196CBD /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
 		6487E8CC24BC8F4400036D26 /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				64B3DFB6245064F5006B6327 /* LaunchScreen.storyboard */,
 				64B3DFB9245064F5006B6327 /* Info.plist */,
 				64B3DFFF2451A2EF006B6327 /* SampleNHAppSwift-Bridging-Header.h */,
+				4C1C0EDD24D8884F0019A46B /* Splash.png */,
 			);
 			path = SampleNHAppSwift;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			files = (
 				64B3DFB8245064F5006B6327 /* LaunchScreen.storyboard in Resources */,
 				64B3DFB5245064F5006B6327 /* Assets.xcassets in Resources */,
+				4C1C0EDE24D8884F0019A46B /* Splash.png in Resources */,
 				64B3DFB3245064F3006B6327 /* Main.storyboard in Resources */,
 				644974E924ADF16600196CBD /* DevSettings.plist in Resources */,
 			);
