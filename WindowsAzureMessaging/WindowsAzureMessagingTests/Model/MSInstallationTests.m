@@ -108,4 +108,34 @@
     XCTAssertTrue([installation isEqual:installation2]);
 }
 
+- (void)testInstallationsEqualityWithUserId {
+    // If
+    MSInstallationTemplate *templateA = [MSInstallationTemplate new];
+    [templateA setBody:@"body"];
+    [templateA addTags:@[ @"tag1", @"tag2" ]];
+    [templateA setHeaderValue:@"Sample-Value" forKey:@"Sample-Key"];
+
+    MSInstallationTemplate *templateB = [MSInstallationTemplate new];
+    [templateB setBody:@"body"];
+    [templateB addTags:@[ @"tag1", @"tag2" ]];
+    [templateB setHeaderValue:@"Sample-Value" forKey:@"Sample-Key"];
+
+    NSString *installationId = @"installationID";
+    NSString *key = @"key";
+    MSInstallation *installation = [MSInstallation new];
+    installation.installationId = installationId;
+    [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
+    [installation setTemplate:templateA forKey:key];
+    installation.userId = @"user";
+
+    MSInstallation *installation2 = [MSInstallation new];
+    installation2.installationId = installationId;
+    [installation2 addTags:@[ @"tag1", @"tag2", @"tag3" ]];
+    [installation2 setTemplate:templateB forKey:key];
+    installation2.userId = @"user";
+
+    // Then
+    XCTAssertTrue([installation isEqual:installation2]);
+}
+
 @end

@@ -229,7 +229,7 @@
     BOOL isInstallationsIdEqual = [self.installationId isEqualToString:installation.installationId];
     BOOL isExpirationTimeEqual = ((!self.expirationTime && !installation.expirationTime) || [[NSCalendar currentCalendar] isDate:self.expirationTime equalToDate:installation.expirationTime toUnitGranularity:NSCalendarUnitDay]);
     BOOL isTagsSetEqual = ((!self.tags && !installation.tags) || [self.tags isEqualToSet:installation.tags]);
-    BOOL isUserIdEqual = [self.userId isEqualToString:installation.userId];
+    BOOL isUserIdEqual = ((!self.userId && !installation.userId) || [self.userId isEqualToString:installation.userId]);
     BOOL isTemplatesDictionaryEqual = ((!self.templates && !installation.templates) || [self.templates isEqualToDictionary:installation.templates]);
     return isInstallationsIdEqual && isExpirationTimeEqual && isTagsSetEqual && isUserIdEqual && isTemplatesDictionaryEqual;
 }
