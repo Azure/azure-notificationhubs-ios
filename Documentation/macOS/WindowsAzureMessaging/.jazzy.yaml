@@ -1,0 +1,23 @@
+objc: true
+clean: true
+sdk: macosx
+
+theme: ../../Themes/apple
+
+module: WindowsAzureMessaging
+module_version: 3.0.0
+author: Microsoft Corp
+author_url: http://www.microsoft.com
+
+readme: ../../../README.md
+
+umbrella_header: ../../../WindowsAzureMessaging-SDK-Apple/macOS/WindowsAzureMessaging.framework/Headers/WindowsAzureMessaging.h
+framework_root: ../../../WindowsAzureMessaging-SDK-Apple/macOS/
+
+root_url: https://docs.microsoft.com/en-us/azure/notification-hubs/ios
+github_url: https://github.com/Azure/azure-notificationhubs-ios
+github_file_prefix: "https://github.com/Azure/azure-notificationhubs-ios"
+
+skip_undocumented: false
+
+output: Generated/

@@ -20,6 +20,48 @@
                ReferencedContainer = "container:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4C5C0B9424D9E13600DB2CDD"
+               BuildableName = "WindowsAzureMessaging iOS Documentation"
+               BlueprintName = "WindowsAzureMessaging iOS Documentation"
+               ReferencedContainer = "container:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4C5C0BA324D9E22B00DB2CDD"
+               BuildableName = "WindowsAzureMessaging macOS Documentation"
+               BlueprintName = "WindowsAzureMessaging macOS Documentation"
+               ReferencedContainer = "container:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4C5C0BAA24D9E3A200DB2CDD"
+               BuildableName = "WindowsAzureMessaging tvOS Documentation"
+               BlueprintName = "WindowsAzureMessaging tvOS Documentation"
+               ReferencedContainer = "container:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
