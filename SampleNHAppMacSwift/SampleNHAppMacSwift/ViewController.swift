@@ -18,7 +18,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, MSNotificationHubDe
     var tagsTableViewController: TagsTableViewController!
     var notificationsTableViewController: NotificationsTableViewController!
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { 
         super.viewDidLoad()
         MSNotificationHub.setDelegate(self)
         self.tagsTextField.delegate = self
