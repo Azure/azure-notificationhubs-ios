@@ -20,9 +20,11 @@
     self.tagsTable.delegate = self;
     self.tagsTable.dataSource = self;
     [self.tagsTable reloadData];
+    self.userId.delegate = self;
     
     self.deviceTokenLabel.text = [MSNotificationHub getPushChannel];
     self.installationIdLabel.text = [MSNotificationHub getInstallationId];
+    self.userId.text = [MSNotificationHub getUserId];
     
     self.notificationsTableView = (NotificationsTableViewController*) [[(UINavigationController*)[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
     
@@ -37,10 +39,14 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [MSNotificationHub addTag:textField.text];
-    self.tags = [MSNotificationHub getTags];
-    textField.text = @"";
-    [self.tagsTable reloadData];
+    if(textField.tag == 0) {
+        [MSNotificationHub setUserId:textField.text];
+    } else if (![textField.text isEqual: @""]) {
+        [MSNotificationHub addTag:textField.text];
+        self.tags = [MSNotificationHub getTags];
+        textField.text = @"";
+        [self.tagsTable reloadData];
+    }
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

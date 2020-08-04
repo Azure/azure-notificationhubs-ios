@@ -10,6 +10,7 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     @IBOutlet weak var installationIdLabel: UILabel!
     @IBOutlet weak var addNewTagTextField: UITextField!
     @IBOutlet weak var tagsTable: UITableView!
+    @IBOutlet weak var userId: UITextField!
     
     var tags = MSNotificationHub.getTags()
     var notificationsTableView:NotificationsTableViewController?
@@ -20,9 +21,11 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         tagsTable.delegate = self
         tagsTable.dataSource = self
         tagsTable.reloadData()
+        userId.delegate = self
         
         deviceTokenLabel.text = MSNotificationHub.getPushChannel()
         installationIdLabel.text = MSNotificationHub.getInstallationId()
+        userId.text = MSNotificationHub.getUserId()
         
         notificationsTableView = (self.tabBarController?.viewControllers?[1] as! UINavigationController).viewControllers[0] as? NotificationsTableViewController
         
@@ -36,10 +39,14 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        MSNotificationHub.addTag(textField.text!)
-        tags = MSNotificationHub.getTags()
-        textField.text = ""
-        tagsTable.reloadData()
+        if(textField.tag == 0) {
+            MSNotificationHub.setUserId(textField.text!)
+        } else if (textField.text != "") {
+            MSNotificationHub.addTag(textField.text!)
+            tags = MSNotificationHub.getTags()
+            textField.text = ""
+            tagsTable.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

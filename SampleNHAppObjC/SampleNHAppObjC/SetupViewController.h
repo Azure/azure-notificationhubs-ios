@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *installationIdLabel;
 @property (weak, nonatomic) IBOutlet UITextField *addNewTagTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tagsTable;
+@property (weak, nonatomic) IBOutlet UITextField *userId;
 
 @property (nonatomic, copy) NSArray<NSString *> *tags;
 @property (weak, nonatomic) NotificationsTableViewController *notificationsTableView;
