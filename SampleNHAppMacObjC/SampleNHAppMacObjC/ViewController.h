@@ -14,6 +14,7 @@
 @property (weak) IBOutlet NSTableView *tagsTable;
 @property (weak) IBOutlet NSTextField *tagsTextField;
 @property (weak) IBOutlet NSTableView *notificationsTable;
+@property (weak) IBOutlet NSTextField *userIdTextField;
 
 @end
 
