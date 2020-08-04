@@ -12,7 +12,6 @@ PRODUCTS_DIR="$PROJECT_DIR/$PRODUCT_NAME"
 echo $PRODUCTS_DIR
 
 # Check if the frameworks are already built.
-# Check if the frameworks are already built.
 if [ ! -d "$PRODUCTS_DIR/iOS" ] || [ ! -d "$PRODUCTS_DIR/macOS" ] || \
     [ ! -d "$PRODUCTS_DIR/tvOS" ] || [ ! -d "$PRODUCTS_DIR/XCFramework" ]; then
   echo "Cannot find frameworks to archive, please run build first"
