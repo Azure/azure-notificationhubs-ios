@@ -36,7 +36,7 @@ rm -rf "${PRODUCTS_DIR}/${PROJECT_NAME}.framework"
 mkdir -p "${PRODUCTS_DIR}"
 cp -RHv "${OUTPUT_DEVICE_DIR}/${PROJECT_NAME}.framework" "${PRODUCTS_DIR}"
 
-# Uses the Lipo Tool to combine both binary files (i386/x86_64 + armv7/armv7s/arm64/arm64e) into one universal final product.
+# Uses the Lipo Tool to combine both binary files (i386/x86_64 + armv7/armv7s/arm64) into one universal final product.
 echo "Combine binary files into universal final product"
 lipo -create \
   "${OUTPUT_DEVICE_DIR}/${PROJECT_NAME}.framework/${PROJECT_NAME}" \

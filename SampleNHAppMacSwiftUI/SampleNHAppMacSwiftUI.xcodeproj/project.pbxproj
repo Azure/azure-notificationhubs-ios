@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64234F5A24D827E000CFA10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F5924D827E000CFA10D /* AppDelegate.swift */; };
+		64234F5C24D827E000CFA10D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F5B24D827E000CFA10D /* ContentView.swift */; };
+		64234F5E24D827E200CFA10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64234F5D24D827E200CFA10D /* Assets.xcassets */; };
+		64234F6424D827E200CFA10D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64234F6224D827E200CFA10D /* Main.storyboard */; };
+		64234F7C24D82A3B00CFA10D /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64234F7B24D82A3B00CFA10D /* WindowsAzureMessaging.framework */; };
+		64234F8124D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 64234F8024D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig */; };
+		64234F8324D830E700CFA10D /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64234F8224D830E700CFA10D /* DevSettings.plist */; };
+		64234F8524D8319500CFA10D /* ObservableMessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F8424D8319500CFA10D /* ObservableMessagesList.swift */; };
+		64234F8724D832F500CFA10D /* TagsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F8624D832F500CFA10D /* TagsList.swift */; };
+		64234F8924D8331000CFA10D /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F8824D8331000CFA10D /* Row.swift */; };
+		64234F8B24D8337300CFA10D /* ObservableInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F8A24D8337300CFA10D /* ObservableInstallation.swift */; };
+		64234F8D24D834D200CFA10D /* NotificationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F8C24D834D200CFA10D /* NotificationsList.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		64234F5624D827E000CFA10D /* SampleNHAppMacSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleNHAppMacSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64234F5924D827E000CFA10D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		64234F5B24D827E000CFA10D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		64234F5D24D827E200CFA10D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64234F6324D827E200CFA10D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64234F6524D827E200CFA10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64234F6624D827E200CFA10D /* SampleNHAppMacSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleNHAppMacSwiftUI.entitlements; sourceTree = "<group>"; };
+		64234F7B24D82A3B00CFA10D /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64234F8024D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleNHAppMacSwiftUI.xcconfig; sourceTree = "<group>"; };
+		64234F8224D830E700CFA10D /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
+		64234F8424D8319500CFA10D /* ObservableMessagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableMessagesList.swift; sourceTree = "<group>"; };
+		64234F8624D832F500CFA10D /* TagsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsList.swift; sourceTree = "<group>"; };
+		64234F8824D8331000CFA10D /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		64234F8A24D8337300CFA10D /* ObservableInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableInstallation.swift; sourceTree = "<group>"; };
+		64234F8C24D834D200CFA10D /* NotificationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsList.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64234F5324D827E000CFA10D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64234F7C24D82A3B00CFA10D /* WindowsAzureMessaging.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64234F4D24D827DF00CFA10D = {
+			isa = PBXGroup;
+			children = (
+				64234F5824D827E000CFA10D /* SampleNHAppMacSwiftUI */,
+				64234F5724D827E000CFA10D /* Products */,
+				64234F7A24D82A3B00CFA10D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		64234F5724D827E000CFA10D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64234F5624D827E000CFA10D /* SampleNHAppMacSwiftUI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64234F5824D827E000CFA10D /* SampleNHAppMacSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				64234F7F24D82B2D00CFA10D /* Support */,
+				64234F6624D827E200CFA10D /* SampleNHAppMacSwiftUI.entitlements */,
+				64234F5924D827E000CFA10D /* AppDelegate.swift */,
+				64234F5B24D827E000CFA10D /* ContentView.swift */,
+				64234F8624D832F500CFA10D /* TagsList.swift */,
+				64234F8824D8331000CFA10D /* Row.swift */,
+				64234F8424D8319500CFA10D /* ObservableMessagesList.swift */,
+				64234F8C24D834D200CFA10D /* NotificationsList.swift */,
+				64234F8A24D8337300CFA10D /* ObservableInstallation.swift */,
+				64234F5D24D827E200CFA10D /* Assets.xcassets */,
+				64234F6224D827E200CFA10D /* Main.storyboard */,
+				64234F6524D827E200CFA10D /* Info.plist */,
+				64234F8224D830E700CFA10D /* DevSettings.plist */,
+			);
+			path = SampleNHAppMacSwiftUI;
+			sourceTree = "<group>";
+		};
+		64234F7A24D82A3B00CFA10D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64234F7B24D82A3B00CFA10D /* WindowsAzureMessaging.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64234F7F24D82B2D00CFA10D /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				64234F8024D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64234F5524D827E000CFA10D /* SampleNHAppMacSwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64234F6924D827E200CFA10D /* Build configuration list for PBXNativeTarget "SampleNHAppMacSwiftUI" */;
+			buildPhases = (
+				64234F5224D827E000CFA10D /* Sources */,
+				64234F5324D827E000CFA10D /* Frameworks */,
+				64234F5424D827E000CFA10D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleNHAppMacSwiftUI;
+			productName = SampleNHAppMacSwiftUI;
+			productReference = 64234F5624D827E000CFA10D /* SampleNHAppMacSwiftUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64234F4E24D827DF00CFA10D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = Microsoft;
+				TargetAttributes = {
+					64234F5524D827E000CFA10D = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 64234F5124D827DF00CFA10D /* Build configuration list for PBXProject "SampleNHAppMacSwiftUI" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64234F4D24D827DF00CFA10D;
+			productRefGroup = 64234F5724D827E000CFA10D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64234F5524D827E000CFA10D /* SampleNHAppMacSwiftUI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64234F5424D827E000CFA10D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64234F8124D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig in Resources */,
+				64234F6424D827E200CFA10D /* Main.storyboard in Resources */,
+				64234F5E24D827E200CFA10D /* Assets.xcassets in Resources */,
+				64234F8324D830E700CFA10D /* DevSettings.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64234F5224D827E000CFA10D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64234F8724D832F500CFA10D /* TagsList.swift in Sources */,
+				64234F5C24D827E000CFA10D /* ContentView.swift in Sources */,
+				64234F8B24D8337300CFA10D /* ObservableInstallation.swift in Sources */,
+				64234F8524D8319500CFA10D /* ObservableMessagesList.swift in Sources */,
+				64234F8924D8331000CFA10D /* Row.swift in Sources */,
+				64234F5A24D827E000CFA10D /* AppDelegate.swift in Sources */,
+				64234F8D24D834D200CFA10D /* NotificationsList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		64234F6224D827E200CFA10D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64234F6324D827E200CFA10D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64234F6724D827E200CFA10D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64234F8024D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig */;
+			buildSettings = {
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		64234F6824D827E200CFA10D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64234F8024D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		64234F6A24D827E200CFA10D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SampleNHAppMacSwiftUI/SampleNHAppMacSwiftUI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SampleNHAppMacSwiftUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.SampleNHAppMacSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		64234F6B24D827E200CFA10D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SampleNHAppMacSwiftUI/SampleNHAppMacSwiftUI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SampleNHAppMacSwiftUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.SampleNHAppMacSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64234F5124D827DF00CFA10D /* Build configuration list for PBXProject "SampleNHAppMacSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64234F6724D827E200CFA10D /* Debug */,
+				64234F6824D827E200CFA10D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64234F6924D827E200CFA10D /* Build configuration list for PBXNativeTarget "SampleNHAppMacSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64234F6A24D827E200CFA10D /* Debug */,
+				64234F6B24D827E200CFA10D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 64234F4E24D827DF00CFA10D /* Project object */;
+}

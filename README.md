@@ -10,8 +10,10 @@ The Azure Notification Hubs can be added to your app via Cocoapods, Carthage, Sw
 
 **This introduces a new API as of version 3.0, and the usage of `SBNotificationHub` with registrations is still supported, but discouraged as we have the new `MSNotificationHub` which uses the Installation API and modern Apple APIs.**
 
-1. NH Sample App for iOS/Mac Catalyst [Swift](SampleNHAppSwift) | [Objective-C](SampleNHAppObjC)
-2. NH Sample App for macOS [Swift](SampleNHAppMacSwift) | [Objective-C](SampleNHAppMacObjC)
+1. NH Sample App for iOS/Mac Catalyst ([Swift](SampleNHAppSwift) | [Objective-C](SampleNHAppObjC))
+2. NH Sample App for macOS ([Swift](SampleNHAppMacSwift) | [Objective-C](SampleNHAppMacObjC))
+3. NH Sample App for SwiftUI ([iOS](SampleNHAppSwiftUI) | [macOS](SampleNHAppMacSwiftUI))
+4. NH Sample Legacy App using Legacy APIs ([Swift](SampleNHAppLegacySwift) | [Objective-C](SampleNHAppLegacyObjC))
 
 ### Integration with Cocoapods
 
