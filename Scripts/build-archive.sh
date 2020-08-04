@@ -27,7 +27,9 @@ function verify_bitcode() {
 }
 for framework in \
     $PRODUCTS_DIR/iOS/*.framework \
-    $PRODUCTS_DIR/XCFramework/*.xcframework/ios-arm*/*.framework; do
+    $PRODUCTS_DIR/tvOS/*.framework \
+    $PRODUCTS_DIR/XCFramework/*.xcframework/ios-arm*/*.framework \
+    $PRODUCTS_DIR/XCFramework/*.xcframework/tvos-arm*/*.framework; do
   verify_bitcode "$framework" || invalid_bitcode+=(${framework#"$PRODUCTS_DIR"/})
 done
 if [ ${#invalid_bitcode[@]} -ne 0 ]; then
