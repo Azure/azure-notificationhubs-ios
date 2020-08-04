@@ -8,8 +8,9 @@ import WindowsAzureMessaging
 
 struct SetupView: View {
     @State var tag: String = "";
-    @State var tags: [String] = MSNotificationHub.getTags();
+    @State var tags: [String] = MSNotificationHub.getTags()
     @ObservedObject var installation: ObservableInstallation
+    @State var userId: String = MSNotificationHub.getUserId()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,13 +30,26 @@ struct SetupView: View {
                 .foregroundColor(Color.gray)
                 .padding([.leading, .bottom, .trailing])
             
+            Text("User ID:")
+                .font(.headline)
+                .padding(.leading)
+            TextField("Set User ID", text: $userId, onEditingChanged: {focus in
+                if(!focus) {
+                    MSNotificationHub.setUserId(self.userId)
+                }
+            })
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding([.leading, .bottom, .trailing])
+            
             Text("Tags:")
                 .font(.headline)
                 .padding(.leading)
             TextField("Add new tag", text: $tag, onCommit: {
-                MSNotificationHub.addTag(self.tag)
-                self.tags.append(self.tag)
-                self.tag = ""
+                if(self.tag != "") {
+                    MSNotificationHub.addTag(self.tag)
+                    self.tags.append(self.tag)
+                    self.tag = ""
+                }
             })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding([.leading, .bottom, .trailing])

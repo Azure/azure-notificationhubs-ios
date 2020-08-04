@@ -212,10 +212,15 @@ NS_ASSUME_NONNULL_BEGIN
  * Adds a userId to the current installation.
  *
  * @param userId The userId to add
- *
- * @returns YES if userId was added, else NO.
  */
-+ (void)setUserID:(NSString *)userId;
++ (void)setUserId:(NSString *)userId;
+
+/**
+ * Get the current User Id
+ *
+ * @returns the current User Id
+ */
++ (NSString *)getUserId;
 
 #pragma mark Installation management support
 

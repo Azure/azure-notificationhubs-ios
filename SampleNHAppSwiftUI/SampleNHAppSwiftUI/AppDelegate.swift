@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Adds some basic tags such as language and country
     func addTags() {
         // Get language and country code for common tag values
-        let language = Bundle.main.preferredLocalizations.first!
-        let countryCode = NSLocale.current.regionCode!
+        let language = Bundle.main.preferredLocalizations.first ?? "<indefined>"
+        let countryCode = NSLocale.current.regionCode ?? "<indefined>"
 
         // Create tags with type_value format
         let languageTag = "language_" + language
