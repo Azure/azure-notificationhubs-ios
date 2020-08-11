@@ -87,12 +87,6 @@
 }
 
 - (NSData *)toJsonData {
-    NSMutableDictionary *resultTemplates = [NSMutableDictionary new];
-    for (NSString *key in [templates allKeys]) {
-        MSInstallationTemplate *template = [templates objectForKey:key];
-        [resultTemplates setObject:[template toDictionary] forKey:key];
-    }
-
     NSMutableDictionary *dictionary = [NSMutableDictionary
         dictionaryWithDictionary:@{@"installationId" : self.installationId, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
     
@@ -109,7 +103,12 @@
     }
 
     if (templates && [templates count] > 0) {
-        [dictionary setObject:templates forKey:@"templates"];
+        NSMutableDictionary *resultTemplates = [NSMutableDictionary new];
+        for (NSString *key in [templates allKeys]) {
+            MSInstallationTemplate *template = [templates objectForKey:key];
+            [resultTemplates setObject:[template toDictionary] forKey:key];
+        }
+        [dictionary setObject:resultTemplates forKey:@"templates"];
     }
 
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
