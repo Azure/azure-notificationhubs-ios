@@ -128,7 +128,7 @@
     installation1.pushChannel = pushChannel;
     [installation1 addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     [installation1 setTemplate:templateA forKey:key];
-    installation.userId = @"user";
+    installation1.userId = @"user";
 
     MSInstallation *installation2 = [MSInstallation new];
     installation2.installationId = installationId;
