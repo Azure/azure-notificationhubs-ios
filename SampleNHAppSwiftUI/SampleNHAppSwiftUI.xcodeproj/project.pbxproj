@@ -224,6 +224,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 			};
 			name = Debug;
 		};

@@ -117,7 +117,12 @@
     }
 
     if (templates && [templates count] > 0) {
-        [dictionary setObject:templates forKey:@"templates"];
+        NSMutableDictionary *resultTemplates = [NSMutableDictionary new];
+        for (NSString *key in [templates allKeys]) {
+            MSInstallationTemplate *template = [templates objectForKey:key];
+            [resultTemplates setObject:[template toDictionary] forKey:key];
+        }
+        [dictionary setObject:resultTemplates forKey:@"templates"];
     }
 
     return [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];

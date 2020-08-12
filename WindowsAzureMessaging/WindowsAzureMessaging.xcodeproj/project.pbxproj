@@ -33,6 +33,42 @@
 			name = "WindowsAzureMessaging tvOS Fat Framework";
 			productName = "WindowsAzureMessaging tvOS Fat Framework";
 		};
+		4C5C0B9424D9E13600DB2CDD /* WindowsAzureMessaging iOS Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4C5C0B9F24D9E13600DB2CDD /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging iOS Documentation" */;
+			buildPhases = (
+				4C5C0BA224D9E15200DB2CDD /* Build Documentation */,
+			);
+			dependencies = (
+				4C5C0BA124D9E14700DB2CDD /* PBXTargetDependency */,
+			);
+			name = "WindowsAzureMessaging iOS Documentation";
+			productName = "WindowsAzureMessaging iOS Documentation";
+		};
+		4C5C0BA324D9E22B00DB2CDD /* WindowsAzureMessaging macOS Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4C5C0BA424D9E22B00DB2CDD /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging macOS Documentation" */;
+			buildPhases = (
+				4C5C0BA924D9E27A00DB2CDD /* Build Documentation */,
+			);
+			dependencies = (
+				4C5C0BA824D9E25A00DB2CDD /* PBXTargetDependency */,
+			);
+			name = "WindowsAzureMessaging macOS Documentation";
+			productName = "WindowsAzureMessaging macOS Documentation";
+		};
+		4C5C0BAA24D9E3A200DB2CDD /* WindowsAzureMessaging tvOS Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4C5C0BAB24D9E3A200DB2CDD /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging tvOS Documentation" */;
+			buildPhases = (
+				4C5C0BB024D9E3BE00DB2CDD /* Build Documentation */,
+			);
+			dependencies = (
+				4C5C0BAF24D9E3B800DB2CDD /* PBXTargetDependency */,
+			);
+			name = "WindowsAzureMessaging tvOS Documentation";
+			productName = "WindowsAzureMessaging tvOS Documentation";
+		};
 		4CA7312B24A15A63006AC99D /* WindowsAzureMessaging iOS Fat Framework */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 4CA7312C24A15A63006AC99D /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging iOS Fat Framework" */;
@@ -391,6 +427,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 817EB1151BD765130047E85A;
 			remoteInfo = "OCMock tvOS";
+		};
+		4C5C0BA024D9E14700DB2CDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CA7312B24A15A63006AC99D;
+			remoteInfo = "WindowsAzureMessaging iOS Fat Framework";
+		};
+		4C5C0BA724D9E25A00DB2CDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CA7312F24A15A74006AC99D;
+			remoteInfo = "WindowsAzureMessaging macOS Fat Framework";
+		};
+		4C5C0BAE24D9E3B800DB2CDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C3EEB7424C8B73A0096C133;
+			remoteInfo = "WindowsAzureMessaging tvOS Fat Framework";
 		};
 		4C8C05AD24CBB1EF00927E36 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1385,6 +1442,15 @@
 					4C3EEB7424C8B73A0096C133 = {
 						CreatedOnToolsVersion = 11.6;
 					};
+					4C5C0B9424D9E13600DB2CDD = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					4C5C0BA324D9E22B00DB2CDD = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					4C5C0BAA24D9E3A200DB2CDD = {
+						CreatedOnToolsVersion = 11.6;
+					};
 					4CA730DE24A14FF2006AC99D = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -1422,12 +1488,15 @@
 				4CA730DE24A14FF2006AC99D /* WindowsAzureMessaging iOS Framework */,
 				4CA730E724A14FF2006AC99D /* WindowsAzureMessaging iOS Tests */,
 				4CA7312B24A15A63006AC99D /* WindowsAzureMessaging iOS Fat Framework */,
+				4C5C0B9424D9E13600DB2CDD /* WindowsAzureMessaging iOS Documentation */,
 				4CA7312124A15A25006AC99D /* WindowsAzureMessaging macOS Framework */,
 				4CA7311424A15A1F006AC99D /* WindowsAzureMessaging macOS Tests */,
 				4CA7312F24A15A74006AC99D /* WindowsAzureMessaging macOS Fat Framework */,
+				4C5C0BA324D9E22B00DB2CDD /* WindowsAzureMessaging macOS Documentation */,
 				4C3EEADC24C8AAD70096C133 /* WindowsAzureMessaging tvOS Framework */,
 				4C3EEAE424C8AAD80096C133 /* WindowsAzureMessaging tvOS Tests */,
 				4C3EEB7424C8B73A0096C133 /* WindowsAzureMessaging tvOS Fat Framework */,
+				4C5C0BAA24D9E3A200DB2CDD /* WindowsAzureMessaging tvOS Documentation */,
 				4C1047B124AAA0C600FA339E /* WindowsAzureMessaging XCFramework */,
 			);
 		};
@@ -1654,6 +1723,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Scripts/build-tvos-framework.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C5C0BA224D9E15200DB2CDD /* Build Documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Documentation";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/build-docs.sh\" iOS\n";
+			showEnvVarsInLog = 0;
+		};
+		4C5C0BA924D9E27A00DB2CDD /* Build Documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Documentation";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/build-docs.sh\" macOS\n";
+			showEnvVarsInLog = 0;
+		};
+		4C5C0BB024D9E3BE00DB2CDD /* Build Documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Documentation";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/build-docs.sh\" tvOS\n";
 			showEnvVarsInLog = 0;
 		};
 		4CA7313D24A15FF6006AC99D /* Verify No Build Settings */ = {
@@ -1934,6 +2060,21 @@
 			name = "OCMock tvOS";
 			targetProxy = 4C3EEB7A24C8B7880096C133 /* PBXContainerItemProxy */;
 		};
+		4C5C0BA124D9E14700DB2CDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CA7312B24A15A63006AC99D /* WindowsAzureMessaging iOS Fat Framework */;
+			targetProxy = 4C5C0BA024D9E14700DB2CDD /* PBXContainerItemProxy */;
+		};
+		4C5C0BA824D9E25A00DB2CDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CA7312F24A15A74006AC99D /* WindowsAzureMessaging macOS Fat Framework */;
+			targetProxy = 4C5C0BA724D9E25A00DB2CDD /* PBXContainerItemProxy */;
+		};
+		4C5C0BAF24D9E3B800DB2CDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C3EEB7424C8B73A0096C133 /* WindowsAzureMessaging tvOS Fat Framework */;
+			targetProxy = 4C5C0BAE24D9E3B800DB2CDD /* PBXContainerItemProxy */;
+		};
 		4C8C05AE24CBB1EF00927E36 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4C3EEB7424C8B73A0096C133 /* WindowsAzureMessaging tvOS Fat Framework */;
@@ -2027,6 +2168,42 @@
 		4C3EEB7724C8B73A0096C133 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4C5C0B9524D9E13600DB2CDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4C5C0B9624D9E13600DB2CDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4C5C0BA524D9E22B00DB2CDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4C5C0BA624D9E22B00DB2CDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4C5C0BAC24D9E3A200DB2CDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4C5C0BAD24D9E3A200DB2CDD /* Release */ = {
+			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Release;
@@ -2164,6 +2341,33 @@
 			buildConfigurations = (
 				4C3EEB7624C8B73A0096C133 /* Debug */,
 				4C3EEB7724C8B73A0096C133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C5C0B9F24D9E13600DB2CDD /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging iOS Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C5C0B9524D9E13600DB2CDD /* Debug */,
+				4C5C0B9624D9E13600DB2CDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C5C0BA424D9E22B00DB2CDD /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging macOS Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C5C0BA524D9E22B00DB2CDD /* Debug */,
+				4C5C0BA624D9E22B00DB2CDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C5C0BAB24D9E3A200DB2CDD /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging tvOS Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C5C0BAC24D9E3A200DB2CDD /* Debug */,
+				4C5C0BAD24D9E3A200DB2CDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -2,9 +2,9 @@ name: analyze-test
 
 on:
   push:
-    branches: [ sdk-v3 ]
+    branches: [ master ]
   pull_request:
-    branches: [ sdk-v3 ]
+    branches: [ master ]
 
 jobs:
   ios-analyze-test:

@@ -108,7 +108,7 @@
     XCTAssertTrue([installation isEqual:installation2]);
 }
 
-- (void)testInstallationsEqualityWithUserId {
+- (void)testToJson {
     // If
     MSInstallationTemplate *templateA = [MSInstallationTemplate new];
     [templateA setBody:@"body"];
@@ -119,23 +119,36 @@
     [templateB setBody:@"body"];
     [templateB addTags:@[ @"tag1", @"tag2" ]];
     [templateB setHeaderValue:@"Sample-Value" forKey:@"Sample-Key"];
-
+    
     NSString *installationId = @"installationID";
     NSString *key = @"key";
-    MSInstallation *installation = [MSInstallation new];
-    installation.installationId = installationId;
-    [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
-    [installation setTemplate:templateA forKey:key];
+    NSString *pushChannel = @"740f4707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bb78ad";
+    MSInstallation *installation1 = [MSInstallation new];
+    installation1.installationId = installationId;
+    installation1.pushChannel = pushChannel;
+    [installation1 addTags:@[ @"tag1", @"tag2", @"tag3" ]];
+    [installation1 setTemplate:templateA forKey:key];
     installation.userId = @"user";
 
     MSInstallation *installation2 = [MSInstallation new];
     installation2.installationId = installationId;
+    installation2.pushChannel = pushChannel;
     [installation2 addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     [installation2 setTemplate:templateB forKey:key];
     installation2.userId = @"user";
-
+    
+    // When
+    NSData *installationData1 = [installation1 toJsonData];
+    NSData *installationData2 = [installation2 toJsonData];
+    
     // Then
-    XCTAssertTrue([installation isEqual:installation2]);
+    NSError *error1;
+    NSError *error2;
+    NSDictionary *jsonData1 = [NSJSONSerialization JSONObjectWithData:installationData1 options:0 error:&error1];
+    NSDictionary *jsonData2 = [NSJSONSerialization JSONObjectWithData:installationData2 options:0 error:&error2];
+    XCTAssertNil(error1);
+    XCTAssertNil(error2);
+    XCTAssertTrue([jsonData1 isEqualToDictionary:jsonData2]);
 }
 
 @end

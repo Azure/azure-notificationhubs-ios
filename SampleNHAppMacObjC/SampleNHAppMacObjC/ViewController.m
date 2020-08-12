@@ -50,7 +50,7 @@
         if (control == self.tagsTextField) {
             [self updateTag];
         }
-        
+
         if (control == self.userIdTextField) {
             [self updateUserId];
         }

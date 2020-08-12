@@ -12,7 +12,6 @@ PRODUCTS_DIR="$PROJECT_DIR/$PRODUCT_NAME"
 echo $PRODUCTS_DIR
 
 # Check if the frameworks are already built.
-# Check if the frameworks are already built.
 if [ ! -d "$PRODUCTS_DIR/iOS" ] || [ ! -d "$PRODUCTS_DIR/macOS" ] || \
     [ ! -d "$PRODUCTS_DIR/tvOS" ] || [ ! -d "$PRODUCTS_DIR/XCFramework" ]; then
   echo "Cannot find frameworks to archive, please run build first"
@@ -27,7 +26,9 @@ function verify_bitcode() {
 }
 for framework in \
     $PRODUCTS_DIR/iOS/*.framework \
-    $PRODUCTS_DIR/XCFramework/*.xcframework/ios-arm*/*.framework; do
+    $PRODUCTS_DIR/tvOS/*.framework \
+    $PRODUCTS_DIR/XCFramework/*.xcframework/ios-arm*/*.framework \
+    $PRODUCTS_DIR/XCFramework/*.xcframework/tvos-arm*/*.framework; do
   verify_bitcode "$framework" || invalid_bitcode+=(${framework#"$PRODUCTS_DIR"/})
 done
 if [ ${#invalid_bitcode[@]} -ne 0 ]; then
