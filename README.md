@@ -227,6 +227,24 @@ template.body = body;
 [MSNotificationHub setTemplate:template forKey:@"template1"];
 ```
 
+### Push to User Management
+
+The SDK supports the ability to associate a user with an installation.  This allows you to be able to target all devices associated with a particular User ID.  The user's identity set through the SDK can be whatever the developer wants it to be: the user's name, email address, phone number, or some other unique identifier.  This is supported through the `MSNotificationHub` and the `setUserId` method.
+
+Swift:
+```swift
+let userId = "iosUser123"
+MSNotificationHub.setUserId(userId);
+```
+
+Objective-C:
+```objc
+NSString *userId = @"iosUser123";
+[MSNotificationHub setUserId:userId];
+```
+
+To target a particular user on the backend, you can specify a tag such as `$UserId:{VALUE}` where VALUE is the user name you have specified, just as you can target an installation using the `$InstallationId:{VALUE}` tag.
+
 ### Intercepting Installation Management
 
 The SDK will handle saving the installation for you, however, we provide hooks where you can intercept both the successful installation or any failure through the `MSInstallationLifecycleDelegate`.  This has two methods, `didSaveInstallation` for successful saves, and `didFailToSaveInstallation` for any failures.  We can implement this to have our own logging for example.  
