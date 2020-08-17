@@ -91,12 +91,6 @@
 }
 
 - (NSData *)toJsonData {
-    NSMutableDictionary *resultTemplates = [NSMutableDictionary new];
-    for (NSString *key in [templates allKeys]) {
-        MSInstallationTemplate *template = [templates objectForKey:key];
-        [resultTemplates setObject:[template toDictionary] forKey:key];
-    }
-
     NSMutableDictionary *dictionary = [NSMutableDictionary
         dictionaryWithDictionary:@{@"installationId" : self.installationId, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
     
