@@ -512,6 +512,27 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
     return [[self getInstallation] templates];
 }
 
+#pragma mark UserID support
+
++ (void)setUserId:(NSString *)userId {
+    [sharedInstance setUserId:userId];
+}
+
+- (void)setUserId:(NSString *)userId {
+    MSInstallation *installation = [self getInstallation];
+    installation.userId = userId;
+    [self upsertInstallation:installation];
+}
+
++ (NSString *)getUserId {
+    return [sharedInstance getUserId];
+}
+
+- (NSString *)getUserId {
+    MSInstallation *installation = [self getInstallation];
+    return installation.userId;
+}
+
 #pragma mark Installation management support
 
 + (void)willSaveInstallation {

@@ -14,6 +14,7 @@
 @synthesize expirationTime;
 @synthesize pushChannel;
 @synthesize tags;
+@synthesize userId;
 @synthesize templates;
 
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
@@ -21,6 +22,7 @@
     [coder encodeObject:expirationTime forKey:@"expirationTime"];
     [coder encodeObject:pushChannel forKey:@"pushChannel"];
     [coder encodeObject:tags forKey:@"tags"];
+    [coder encodeObject:userId forKey:@"userId"];
     [coder encodeObject:templates forKey:@"templates"];
 }
 
@@ -30,6 +32,7 @@
         expirationTime = [coder decodeObjectForKey:@"expirationTime"];
         pushChannel = [coder decodeObjectForKey:@"pushChannel"];
         tags = [coder decodeObjectForKey:@"tags"];
+        userId = [coder decodeObjectForKey:@"userId"];
         templates = [coder decodeObjectForKey:@"templates"];
         isDirty = NO;
         [self addObserver:self forKeyPath:@"isDirty" options:0 context:NULL];
@@ -70,6 +73,7 @@
     installation.installationId = json[@"installationId"];
     installation.pushChannel = json[@"pushChannel"];
     installation.tags = json[@"tags"];
+    installation.userId = json[@"userId"];
     installation.templates = json[@"templates"];
     
     NSString *expiration = json[@"expirationTime"];
@@ -87,6 +91,12 @@
 }
 
 - (NSData *)toJsonData {
+    NSMutableDictionary *resultTemplates = [NSMutableDictionary new];
+    for (NSString *key in [templates allKeys]) {
+        MSInstallationTemplate *template = [templates objectForKey:key];
+        [resultTemplates setObject:[template toDictionary] forKey:key];
+    }
+
     NSMutableDictionary *dictionary = [NSMutableDictionary
         dictionaryWithDictionary:@{@"installationId" : self.installationId, @"platform" : @"apns", @"pushChannel" : self.pushChannel}];
     
@@ -100,6 +110,10 @@
 
     if (tags && [tags count] > 0) {
         [dictionary setObject:[NSArray arrayWithArray:[self.tags allObjects]] forKey:@"tags"];
+    }
+    
+    if (userId && [userId length] > 0) {
+        [dictionary setObject:userId forKey:@"userId"];
     }
 
     if (templates && [templates count] > 0) {
@@ -220,8 +234,9 @@
     BOOL isInstallationsIdEqual = [self.installationId isEqualToString:installation.installationId];
     BOOL isExpirationTimeEqual = ((!self.expirationTime && !installation.expirationTime) || [[NSCalendar currentCalendar] isDate:self.expirationTime equalToDate:installation.expirationTime toUnitGranularity:NSCalendarUnitDay]);
     BOOL isTagsSetEqual = ((!self.tags && !installation.tags) || [self.tags isEqualToSet:installation.tags]);
+    BOOL isUserIdEqual = ((!self.userId && !installation.userId) || [self.userId isEqualToString:installation.userId]);
     BOOL isTemplatesDictionaryEqual = ((!self.templates && !installation.templates) || [self.templates isEqualToDictionary:installation.templates]);
-    return isInstallationsIdEqual && isExpirationTimeEqual && isTagsSetEqual && isTemplatesDictionaryEqual;
+    return isInstallationsIdEqual && isExpirationTimeEqual && isTagsSetEqual && isUserIdEqual && isTemplatesDictionaryEqual;
 }
 
 - (BOOL)isEqual:(id)object {

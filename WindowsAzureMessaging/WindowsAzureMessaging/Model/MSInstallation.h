@@ -24,6 +24,11 @@
 @property(nonatomic, copy) NSString *pushChannel;
 
 /**
+ * The userID
+ */
+@property(nonatomic, copy) NSString *userId;
+
+/**
  * The expiration for the installation
  */
 @property(nonatomic, copy) NSDate *expirationTime;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4CB623C424D899DF001C0309 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CB623C324D899DE001C0309 /* Splash.png */; };
 		64234F4524D802DB00CFA10D /* ObservableInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F4424D802DB00CFA10D /* ObservableInstallation.swift */; };
+		64234F4A24D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 64234F4924D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig */; };
 		6485C78E24D2B1F10026E41F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C78D24D2B1F10026E41F /* AppDelegate.swift */; };
 		6485C79024D2B1F10026E41F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C78F24D2B1F10026E41F /* SceneDelegate.swift */; };
 		6485C79224D2B1F10026E41F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6485C79124D2B1F10026E41F /* ContentView.swift */; };
@@ -180,6 +181,7 @@
 				6485C79A24D2B1F20026E41F /* LaunchScreen.storyboard in Resources */,
 				6485C79424D2B1F20026E41F /* Assets.xcassets in Resources */,
 				4CB623C424D899DF001C0309 /* Splash.png in Resources */,
+				64234F4A24D80D5E00CFA10D /* SampleNHAppSwiftUI.xcconfig in Resources */,
 				6485C7A824D2B37A0026E41F /* DevSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

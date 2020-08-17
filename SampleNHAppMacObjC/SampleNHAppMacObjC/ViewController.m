@@ -15,9 +15,11 @@
     self.tagsTable.delegate = self;
     self.tagsTable.dataSource = self;
     self.tagsTextField.delegate = self;
+    self.userIdTextField.delegate = self;
     
     self.notificationsTableViewController = [[NotificationsTableViewController alloc] initWithTableView: self.notificationsTable];
 
+    self.userIdTextField.placeholderString = [MSNotificationHub getUserId];
     _tags = [MSNotificationHub getTags];
     
     [_deviceTokenTextField  setStringValue:[MSNotificationHub getPushChannel]];
@@ -45,19 +47,37 @@
 
 - (BOOL)control:(NSControl *)control textView:(NSTextField *)fieldEditor doCommandBySelector:(SEL)commandSelector {
     if (commandSelector == @selector(insertNewline:)) {
-        NSString *tag = self.tagsTextField.stringValue;
-        if ([tag isEqual:@""]) {
-            [MSNotificationHub addTag:tag];
-            self.tagsTextField.stringValue = @"";
+        if (control == self.tagsTextField) {
+            [self updateTag];
         }
-        
-        _tags = [MSNotificationHub getTags];
-        [self.tagsTable reloadData];
+
+        if (control == self.userIdTextField) {
+            [self updateUserId];
+        }
         
         return YES;
     }
     
     return NO;
+}
+
+- (void) updateTag {
+    NSString *tag = self.tagsTextField.stringValue;
+    if (![tag isEqual:@""]) {
+        [MSNotificationHub addTag:tag];
+        self.tagsTextField.stringValue = @"";
+    }
+    
+    _tags = [MSNotificationHub getTags];
+    [self.tagsTable reloadData];
+}
+
+- (void) updateUserId {
+    if (![self.userIdTextField.stringValue isEqual:@""]) {
+        [MSNotificationHub setUserId:self.userIdTextField.stringValue];
+        self.userIdTextField.stringValue = @"";
+        self.userIdTextField.placeholderString = [MSNotificationHub getUserId];
+    }
 }
 
 - (void) deleteSelectedItems: (NSTableView *)tableView {

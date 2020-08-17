@@ -13,17 +13,21 @@ class ViewController: NSViewController, NSTextFieldDelegate, MSNotificationHubDe
     @IBOutlet weak var tagsTextField: NSTextField!
     @IBOutlet weak var tagsTable: NSTableView!
     @IBOutlet weak var notificationsTable: NSTableView!
+    @IBOutlet weak var userIdTextField: NSTextField!
     
     var tagsTableViewController: TagsTableViewController!
     var notificationsTableViewController: NotificationsTableViewController!
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { 
         super.viewDidLoad()
         MSNotificationHub.setDelegate(self)
         self.tagsTextField.delegate = self
+        self.userIdTextField.delegate = self
         
         deviceTokenTextField.stringValue = MSNotificationHub.getPushChannel()
         installationIdTextField.stringValue = MSNotificationHub.getInstallationId()
+        
+        self.userIdTextField.placeholderString = MSNotificationHub.getUserId()
         
         self.tagsTableViewController = TagsTableViewController(data: MSNotificationHub.getTags())
         self.tagsTable.delegate = self.tagsTableViewController
@@ -45,20 +49,38 @@ class ViewController: NSViewController, NSTextFieldDelegate, MSNotificationHubDe
     
     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         if (commandSelector == #selector(NSResponder.insertNewline(_:))) {
-            let tag = self.tagsTextField.stringValue;
-            
-            if (tag != "") {
-                MSNotificationHub.addTag(tag)
-                self.tagsTextField.stringValue = ""
+            if (control == self.tagsTextField) {
+                updateTags()
             }
             
-            self.tagsTableViewController.addTags(newTags: MSNotificationHub.getTags())
-            self.tagsTable.reloadData()
+            if (control == self.userIdTextField) {
+                updateUserId()
+            }
             
             return true
         }
 
         return false
+    }
+    
+    func updateTags() {
+        let tag = self.tagsTextField.stringValue;
+        
+        if (tag != "") {
+            MSNotificationHub.addTag(tag)
+            self.tagsTextField.stringValue = ""
+        }
+        
+        self.tagsTableViewController.addTags(newTags: MSNotificationHub.getTags())
+        self.tagsTable.reloadData()
+    }
+    
+    func updateUserId() {
+        if (self.userIdTextField.stringValue != "") {
+            MSNotificationHub.setUserId(self.userIdTextField.stringValue)
+            self.userIdTextField.stringValue = "";
+            self.userIdTextField.placeholderString = MSNotificationHub.getUserId()
+        }
     }
     
     override func keyDown(with event: NSEvent) {
