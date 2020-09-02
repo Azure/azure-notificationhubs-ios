@@ -112,7 +112,7 @@ static NSString *const kAPIVersion = @"2020-06";
     NSString *userAgent = [NSString stringWithFormat:kUserAgentFormat, kAPIVersion, sdkVersion, [self getOsName], [self getOsVersion]];
 
     NSDictionary *headers =
-        @{@"Content-Type" : @"application/json", @"x-ms-version" : @"2015-01", @"Authorization" : sasToken, @"User-Agent" : userAgent};
+        @{@"Content-Type" : @"application/json", @"x-ms-version" : kAPIVersion, @"Authorization" : sasToken, @"User-Agent" : userAgent};
 
     NSData *payload = [installation toJsonData];
 
