@@ -37,11 +37,11 @@ Below are the steps on how to integrate the Azure Notification Huds SDK in your 
 github "Azure/azure-notificationhubs-ios"
 ```
 
-You can also specify a specific version of the Azure Notification Hubs SDK such as 3.0.0.
+You can also specify a specific version of the Azure Notification Hubs SDK such as 3.1.1s.
 
 ```ruby
-# Get version in the format of X.X.X such as 3.0.0
-github "Azure/azure-notificationhubs-ios" ~> 3.0.0
+# Get version in the format of X.X.X such as 3.1.1
+github "Azure/azure-notificationhubs-ios" ~> 3.1.1
 ```
 
 Once you have this, run `carthage update`.  This will fetch the SDK and put it into the `Carthage/Checkouts` folder.  Open Xcode and drag the `WindowsAzureMessaging.framework` from the `Carthage/Builds/iOS` for iOS or `Carthage/Builds/macOS` for macOS.  Ensure the app target is checked during the import.
@@ -84,6 +84,7 @@ Then we can initialize the SDK with our hub name and connection string.  This wi
 Using Swift, we can use the `start` method, which then starts the installation and device registration process for push notifications.
 
 Swift:
+
 ```swift
 let connectionString = "<connection-string>"
 let hubName = "<hub-name>"
@@ -94,6 +95,7 @@ MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
 With Objective-C, it is largely the same with calling the `startWithConnectionString` method:
 
 Objective-C:
+
 ```objc
 NSString *connectionString = @"<connection-string>";
 NSString *hubName = @"<hub-name>";
@@ -232,12 +234,14 @@ template.body = body;
 The SDK supports the ability to associate a user with an installation.  This allows you to be able to target all devices associated with a particular User ID.  The user's identity set through the SDK can be whatever the developer wants it to be: the user's name, email address, phone number, or some other unique identifier.  This is supported through the `MSNotificationHub` and the `setUserId` method.
 
 Swift:
+
 ```swift
 let userId = "iosUser123"
 MSNotificationHub.setUserId(userId);
 ```
 
 Objective-C:
+
 ```objc
 NSString *userId = @"iosUser123";
 [MSNotificationHub setUserId:userId];
@@ -250,6 +254,7 @@ To target a particular user on the backend, you can specify a tag such as `$User
 The SDK will handle saving the installation for you, however, we provide hooks where you can intercept both the successful installation or any failure through the `MSInstallationLifecycleDelegate`.  This has two methods, `didSaveInstallation` for successful saves, and `didFailToSaveInstallation` for any failures.  We can implement this to have our own logging for example.  
 
 Swift:
+
 ```swift
 // Set the delegate
 MSNotificationHub.setLifecycleDelegate(self)
@@ -267,6 +272,7 @@ func notificationHub(_ notificationHub: MSNotificationHub!, didFailToSave instal
 ```
 
 Objective-C:
+
 ```objc
 // Set the delegate
 [MSNotificationHub setLifecycleDelegate:self];
@@ -289,6 +295,7 @@ Objective-C:
 The SDK will update the installation on the device any time you change its properties such as adding a tag or adding an installation template. Before the installation is sent to the backend, you can intercept this installation to modify anything before it goes to the backend, for example, if you wish to add or modify tags. This is implemented in the `MSInstallationEnrichmentDelegate` protocol with a single method of `willEnrichInstallation`.
 
 Swift:
+
 ```swift
 // Set the delegate
 MSNotificationHub.setEnrichmentDelegate(self)
@@ -300,6 +307,7 @@ func notificationHub(_ notificationHub: MSNotificationHub!, willEnrichInstallati
 ```
 
 Objective-C:
+
 ```objc
 // Set the delegate
 [MSNotificationHub setEnrichmentDelegate:self];
@@ -316,6 +324,7 @@ Objective-C:
 The Azure Notification Hubs SDK will save the installation to our backend by default. If, however, you wish to skip our backend and store it on your backend, we support that through the `MSInstallationManagementDelegate` protocol. This has a method to save the installation `willUpsertInstallation`, passing in the installation, and then a completion handler is called with either an error if unsuccessful, or nil if successful.  To set the delegate, instead of specifying the connection string and hub name, you specify the installation manager with `startWithInstallationManagement`
 
 Swift:
+
 ```swift
 // Set the delegate
 MSNotificationHub.startWithInstallationManagement(self)
@@ -328,6 +337,7 @@ func notificationHub(_ notificationHub: MSNotificationHub!, willUpsertInstallati
 ```
 
 Objective-C:
+
 ```objc
 // Set the delegate
 [MSNotificationHub startWithInstallationManagement:self];
@@ -355,6 +365,7 @@ By default, the SDK will swizzle methods to automatically intercept calls to `UI
     Implement the application:didRegisterForRemoteNotificationsWithDeviceToken: callback and the application:didFailToRegisterForRemoteNotificationsWithError: callback in your AppDelegate to register for Push notifications.  In the code below, if on macOS, not Mac Catalyst, replace `UIApplication` with `NSApplication`.
 
     Swift:
+
     ```swift
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
@@ -370,6 +381,7 @@ By default, the SDK will swizzle methods to automatically intercept calls to `UI
     ```
 
     Objective-C:
+
     ```objc
     - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         // Pass the device token to MSNotificationHub
@@ -387,6 +399,7 @@ By default, the SDK will swizzle methods to automatically intercept calls to `UI
     Implement the application:didReceiveRemoteNotification:fetchCompletionHandler callback to forward push notifications to MSNotificationHub  In the code below, if on macOS, not Mac Catalyst, replace `UIApplication` with `NSApplication`.
 
     Swift:
+
     ```swift
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
@@ -399,6 +412,7 @@ By default, the SDK will swizzle methods to automatically intercept calls to `UI
     ```
 
     Objective-C:
+
     ```objc
     - (void)application:(UIApplication *)application
         didReceiveRemoteNotification:(NSDictionary *)userInfo
@@ -419,6 +433,7 @@ By default, the SDK will swizzle methods to automatically intercept calls to `UI
 3. Implement UNUserNotificationCenterDelegate callbacks and pass the notification's payload to `MSNotificationHub`.
 
     Swift:
+
     ```swift
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -446,6 +461,7 @@ By default, the SDK will swizzle methods to automatically intercept calls to `UI
     ```
 
     Objective-C:
+
     ```objc
     - (void)userNotificationCenter:(UNUserNotificationCenter *)center
           willPresentNotification:(UNNotification *)notification
