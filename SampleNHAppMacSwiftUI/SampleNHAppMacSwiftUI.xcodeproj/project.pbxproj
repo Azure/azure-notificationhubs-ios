@@ -12,7 +12,6 @@
 		64234F5E24D827E200CFA10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64234F5D24D827E200CFA10D /* Assets.xcassets */; };
 		64234F6424D827E200CFA10D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64234F6224D827E200CFA10D /* Main.storyboard */; };
 		64234F7C24D82A3B00CFA10D /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64234F7B24D82A3B00CFA10D /* WindowsAzureMessaging.framework */; };
-		64234F8124D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 64234F8024D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig */; };
 		64234F8324D830E700CFA10D /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64234F8224D830E700CFA10D /* DevSettings.plist */; };
 		64234F8524D8319500CFA10D /* ObservableMessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F8424D8319500CFA10D /* ObservableMessagesList.swift */; };
 		64234F8724D832F500CFA10D /* TagsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64234F8624D832F500CFA10D /* TagsList.swift */; };
@@ -131,7 +130,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					64234F5524D827E000CFA10D = {
@@ -162,7 +161,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64234F8124D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig in Resources */,
 				64234F6424D827E200CFA10D /* Main.storyboard in Resources */,
 				64234F5E24D827E200CFA10D /* Assets.xcassets in Resources */,
 				64234F8324D830E700CFA10D /* DevSettings.plist in Resources */,
@@ -213,6 +211,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64234F8024D82B6500CFA10D /* SampleNHAppMacSwiftUI.xcconfig */;
 			buildSettings = {
+				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
@@ -221,6 +220,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SampleNHAppMacSwiftUI/SampleNHAppMacSwiftUI.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -244,6 +244,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SampleNHAppMacSwiftUI/SampleNHAppMacSwiftUI.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "";

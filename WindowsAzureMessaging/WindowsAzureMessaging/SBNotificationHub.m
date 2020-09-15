@@ -385,12 +385,44 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
-
-    SBThreadParameter *parameter = [[SBThreadParameter alloc] init];
-    parameter.deviceToken = deviceToken;
-    parameter.completion = completion;
-    parameter.isMainThread = [[NSThread currentThread] isMainThread];
-    [self performSelectorInBackground:@selector(deleteAllRegistrationThread:) withObject:parameter];
+    
+    [self retrieveAllRegistrationsWithDeviceToken:deviceToken completion:^(NSArray *registrations, NSError *error) {
+        
+        if (error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(error);
+            });
+            return;
+        }
+        
+        if (registrations.count > 0) {
+            dispatch_group_t group = dispatch_group_create();
+            __block NSError *innerError = nil;
+            
+            for (SBRegistration *reg in registrations) {
+                NSString *name = [SBNotificationHubHelper nameOfRegistration:reg];
+                dispatch_group_enter(group);
+                [self deleteRegistrationWithName:name completion:^(NSError *err) {
+                    innerError = err;
+                    dispatch_group_leave(group);
+                }];
+            }
+            
+            dispatch_group_notify(group, dispatch_get_main_queue(),^{
+                if (!innerError) {
+                    [self->storageManager deleteAllRegistrations];
+                }
+                
+                completion(innerError);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self->storageManager deleteAllRegistrations];
+                completion(error);
+            });
+        }
+        
+    }];
 }
 
 - (void)deleteAllRegistrationThread:(SBThreadParameter *)parameter {
