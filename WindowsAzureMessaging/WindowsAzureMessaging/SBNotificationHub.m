@@ -391,11 +391,12 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     [self retrieveAllRegistrationsWithDeviceToken:deviceToken completion:^(NSArray *registrations, NSError *error) {
         
         if (error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (completion) {
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
                     completion(error);
-                }
-            });
+                });
+            }
+
             return;
         }
         
@@ -405,9 +406,15 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
             
             for (SBRegistration *reg in registrations) {
                 NSString *name = [SBNotificationHubHelper nameOfRegistration:reg];
+                if (innerError) {
+                    break;
+                }
                 dispatch_group_enter(group);
                 [self deleteRegistrationWithName:name completion:^(NSError *err) {
-                    innerError = err;
+                    if (!innerError && err) {
+                        innerError = err;
+                    }
+                    
                     dispatch_group_leave(group);
                 }];
             }
@@ -425,7 +432,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self->storageManager deleteAllRegistrations];
                 if (completion) {
-                    completion(error);
+                    completion(nil);
                 }
             });
         }
