@@ -378,7 +378,9 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 - (void)unregisterAllWithDeviceToken:(NSData *)deviceTokenData completion:(void (^)(NSError *))completion {
     if (deviceTokenData == nil) {
         if (completion) {
-            completion([SBNotificationHubHelper errorForNullDeviceToken]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([SBNotificationHubHelper errorForNullDeviceToken]);
+            });
         }
 
         return;
@@ -390,7 +392,9 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
         
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                completion(error);
+                if (completion) {
+                    completion(error);
+                }
             });
             return;
         }
@@ -413,15 +417,18 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                     [self->storageManager deleteAllRegistrations];
                 }
                 
-                completion(innerError);
+                if (completion) {
+                    completion(innerError);
+                }
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self->storageManager deleteAllRegistrations];
-                completion(error);
+                if (completion) {
+                    completion(error);
+                }
             });
         }
-        
     }];
 }
 
