@@ -12,22 +12,6 @@
 #import "SBURLConnection.h"
 #import <UIKit/UIKit.h>
 
-typedef void (^SBCompletion)(NSError *);
-
-@interface SBThreadParameter : NSObject
-
-@property(copy, nonatomic) NSArray *parameters;
-@property(copy, nonatomic) NSString *deviceToken;
-@property(copy, nonatomic) SBCompletion completion;
-@property(nonatomic) BOOL isMainThread;
-
-@end
-
-@implementation SBThreadParameter
-@synthesize parameters, completion, isMainThread, deviceToken;
-
-@end
-
 @implementation SBNotificationHub {
   @private
     NSString *_path;
@@ -155,7 +139,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
 
     NSError *error;
-    if ([self verifyTemplateName:name error:&error] == FALSE) {
+    if ([self verifyTemplateName:name error:&error] == NO) {
         if (completion) {
             completion(error);
         }
@@ -337,7 +321,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 
 - (void)unregisterTemplateWithName:(NSString *)name completion:(void (^)(NSError *))completion {
     NSError *error;
-    if ([self verifyTemplateName:name error:&error] == FALSE) {
+    if ([self verifyTemplateName:name error:&error] == NO) {
         if (completion) {
             completion(error);
         }
@@ -439,43 +423,13 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     }];
 }
 
-- (void)deleteAllRegistrationThread:(SBThreadParameter *)parameter {
-    NSError *error;
-    NSArray *registrations = [self retrieveAllRegistrationsWithDeviceToken:parameter.deviceToken error:&error];
-    if (registrations.count != 0) {
-        for (SBRegistration *reg in registrations) {
-            NSString *name = [SBNotificationHubHelper nameOfRegistration:reg];
-            [self deleteRegistrationWithName:name error:&error];
-            if (error) {
-                break;
-            }
-        }
-    }
-
-    if (!error) {
-        // Remove any registrations that are only in the client and not on server
-        [storageManager deleteAllRegistrations];
-    }
-
-    if (parameter.completion) {
-        if (parameter.isMainThread) {
-            // callback on main thread
-            dispatch_async(dispatch_get_main_queue(), ^{
-              parameter.completion(error);
-            });
-        } else {
-            parameter.completion(error);
-        }
-    }
-}
-
 - (BOOL)registerNativeWithDeviceToken:(NSData *)deviceTokenData tags:(NSSet *)tags error:(NSError *__autoreleasing *)error {
     if (deviceTokenData == nil) {
         if (error) {
             *error = [SBNotificationHubHelper errorForNullDeviceToken];
         }
 
-        return FALSE;
+        return NO;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
@@ -494,7 +448,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                 *error = retrieveError;
             }
 
-            return FALSE;
+            return NO;
         }
 
         [storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
@@ -530,13 +484,13 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
             *error = [SBNotificationHubHelper errorForNullDeviceToken];
         }
 
-        return FALSE;
+        return NO;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
 
-    if ([self verifyTemplateName:templateName error:error] == FALSE) {
-        return FALSE;
+    if ([self verifyTemplateName:templateName error:error] == NO) {
+        return NO;
     }
 
     NSString *payload = [SBTemplateRegistration payloadWithDeviceToken:deviceToken
@@ -557,7 +511,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                 *error = retrieveError;
             }
 
-            return FALSE;
+            return NO;
         }
 
         [storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
@@ -757,8 +711,8 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (BOOL)unregisterTemplateWithName:(NSString *)name error:(NSError *__autoreleasing *)error {
-    if ([self verifyTemplateName:name error:error] == FALSE) {
-        return FALSE;
+    if ([self verifyTemplateName:name error:error] == NO) {
+        return NO;
     }
 
     return [self deleteRegistrationWithName:name error:error];
@@ -802,7 +756,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
             *error = [SBNotificationHubHelper errorForNullDeviceToken];
         }
 
-        return FALSE;
+        return NO;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
@@ -815,7 +769,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
             *error = operationError;
         }
 
-        return FALSE;
+        return NO;
     }
 
     for (SBRegistration *reg in registrations) {
@@ -826,14 +780,14 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                 *error = operationError;
             }
 
-            return FALSE;
+            return NO;
         }
     }
 
     // Remove any registrations that are only in the client and not on server
     [storageManager deleteAllRegistrations];
 
-    return TRUE;
+    return YES;
 }
 
 - (BOOL)verifyTemplateName:(NSString *)name error:(NSError *__autoreleasing *)error {
@@ -842,7 +796,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
             *error = [SBNotificationHubHelper errorForReservedTemplateName];
         }
 
-        return FALSE;
+        return NO;
     }
 
     NSRange range = [name rangeOfString:@":"];
@@ -852,7 +806,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
         }
     }
 
-    return TRUE;
+    return YES;
 }
 
 - (void)registrationOperationWithRequestUri:(NSURL *)requestUri
@@ -860,7 +814,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                  httpMethod:(NSString *)httpMethod
                                        ETag:(NSString *)etag
                                  completion:(void (^)(NSHTTPURLResponse *response, NSData *data, NSError *error))completion {
-    NSMutableURLRequest *theRequest = [self PrepareUrlRequest:requestUri httpMethod:httpMethod ETag:etag payload:payload];
+    NSMutableURLRequest *theRequest = [self prepareUrlRequest:requestUri httpMethod:httpMethod ETag:etag payload:payload];
 
     [tokenProvider setTokenWithRequest:theRequest
                             completion:^(NSError *error) {
@@ -883,11 +837,11 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                    response:(NSHTTPURLResponse *__autoreleasing *)response
                                responseData:(NSData *__autoreleasing *)responseData
                                       error:(NSError *__autoreleasing *)error {
-    NSMutableURLRequest *theRequest = [self PrepareUrlRequest:requestUri httpMethod:httpMethod ETag:etag payload:payload];
+    NSMutableURLRequest *theRequest = [self prepareUrlRequest:requestUri httpMethod:httpMethod ETag:etag payload:payload];
 
     [tokenProvider setTokenWithRequest:theRequest error:error];
     if (*error != nil) {
-        return FALSE;
+        return NO;
     }
 
     // send synchronously
@@ -899,7 +853,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
         NSLog(@"Headers:%@", [theRequest allHTTPHeaderFields]);
         NSLog(@"Error Response:%@", [[NSString alloc] initWithData:(*responseData) encoding:NSUTF8StringEncoding]);
 
-        return FALSE;
+        return NO;
     } else {
         NSInteger statusCode = [(*response) statusCode];
         if (statusCode != 200 && statusCode != 201) {
@@ -918,11 +872,11 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                 (*error) = [SBNotificationHubHelper errorWithMsg:msg code:statusCode];
             }
 
-            return FALSE;
+            return NO;
         }
     }
 
-    return TRUE;
+    return YES;
 }
 
 - (NSURL *)composeRetrieveAllRegistrationsUriWithDeviceToken:(NSString *)deviceToken {
@@ -950,7 +904,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     return [[NSURL alloc] initWithString:fullPath];
 }
 
-- (NSMutableURLRequest *)PrepareUrlRequest:(NSURL *)uri
+- (NSMutableURLRequest *)prepareUrlRequest:(NSURL *)uri
                                 httpMethod:(NSString *)httpMethod
                                       ETag:(NSString *)etag
                                    payload:(NSString *)payload {
