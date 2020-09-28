@@ -5,6 +5,8 @@
 #import "SetupViewController.h"
 #import "NotificationsTableViewController.h"
 
+static NSString *const kNHMessageReceived = @"MessageReceived";
+
 @interface SetupViewController ()
 
 @end
@@ -28,8 +30,11 @@
     
     self.notificationsTableView = (NotificationsTableViewController*) [[(UINavigationController*)[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
     
-    [MSNotificationHub setDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceivePushNotification:) name:kNHMessageReceived object:nil];
+}
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNHMessageReceived object:nil];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -72,13 +77,14 @@
     }
 }
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)notification {
-    NSLog(@"Received notification: %@: %@", notification.title, notification.body);
-    [self.notificationsTableView addNotification:notification];
+- (void)didReceivePushNotification:(NSNotification *)notification {
+    MSNotificationHubMessage *message = [notification.userInfo objectForKey:@"message"];
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:notification.title
-                                                                             message:notification.body
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    [self.notificationsTableView addNotification:message];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:message.title
+                         message:message.body
+                  preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
     
@@ -86,6 +92,5 @@
         [alertController dismissViewControllerAnimated:YES completion: nil];
     });
 }
-
 
 @end
