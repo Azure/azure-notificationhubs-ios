@@ -6,7 +6,7 @@ import Cocoa
 import WindowsAzureMessaging
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate, NSUserNotificationCenterDelegate {
 
     var connectionString: String?
     var hubName: String?
@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate {
                 connectionString = configValues["CONNECTION_STRING"] as? String
                 hubName = configValues["HUB_NAME"] as? String
                 
+                NSUserNotificationCenter.default.delegate = self
                 MSNotificationHub.setDelegate(self)
                 MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
                 
@@ -33,6 +34,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate {
     
         let userInfo = ["message": message!]
         NotificationCenter.default.post(name: NSNotification.Name("MessageReceived"), object: nil, userInfo: userInfo)
+    }
+    
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        NSLog("Did activate notification");
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

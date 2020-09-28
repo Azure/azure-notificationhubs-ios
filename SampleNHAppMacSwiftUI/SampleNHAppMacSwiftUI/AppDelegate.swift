@@ -7,7 +7,7 @@ import SwiftUI
 import WindowsAzureMessaging
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate, MSInstallationLifecycleDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate, MSInstallationLifecycleDelegate, NSUserNotificationCenterDelegate {
 
     var window: NSWindow!
     
@@ -27,6 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSNotificationHubDelegate, M
                 
                 if (!(connectionString ?? "").isEmpty && !(hubName ?? "").isEmpty)
                 {
+                    NSUserNotificationCenter.default.delegate = self
                     MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
                     
                     addTags()

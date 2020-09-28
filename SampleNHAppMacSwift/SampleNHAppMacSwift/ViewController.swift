@@ -39,7 +39,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         self.tagsTable.reloadData()
         self.notificationsTable.reloadData()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePushNotification), name: Notification.Name("MessageReceived"), object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePushNotification), name: Notification.Name("MessageReceived"), object: nil)
     }
     
     deinit {
@@ -110,7 +110,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     }
     
     @objc func didReceivePushNotification(notification: Notification) {
-        let message = notification.userInfo!["message"] as! MSNotificationHubMessage;
+        let message = notification.userInfo!["message"] as! MSNotificationHubMessage
         NSLog("Received notification: %@; %@", message.title ?? "<nil>", message.body)
         self.notificationsTableViewController.addNotification(message)
         self.notificationsTable.reloadData()
