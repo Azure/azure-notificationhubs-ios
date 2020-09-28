@@ -2,9 +2,8 @@
 // Licensed under the MIT License.
 
 #import <Foundation/Foundation.h>
-#if !TARGET_OS_OSX
+#import <Availability.h>
 #import <UserNotifications/UserNotifications.h>
-#endif
 
 #import "ANHUserNotificationCenterDelegateForwarder.h"
 #import "MSNotificationHub.h"
@@ -20,16 +19,12 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
     [[ANHUserNotificationCenterDelegateForwarder sharedInstance]
         setEnabledFromPlistForKey:kANHUserNotificationCenterDelegateForwarderEnabledKey];
 
-    // TODO test the forwarder on macOS.
-    // Register selectors to swizzle (iOS 10+).
-#if !TARGET_OS_OSX
-    if (@available(iOS 10.0, tvOS 10.0, watchOS 3.0, *)) {
+    if (@available(iOS 10.0, tvOS 10.0, watchOS 3.0, macOS 10.14, macCatalyst 13.0, *)) {
         [[ANHUserNotificationCenterDelegateForwarder sharedInstance]
             addDelegateSelectorToSwizzle:@selector(userNotificationCenter:willPresentNotification:withCompletionHandler:)];
         [[ANHUserNotificationCenterDelegateForwarder sharedInstance]
             addDelegateSelectorToSwizzle:@selector(userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:)];
     }
-#endif
 }
 
 + (void)doNothingButForceLoadTheClass {
@@ -49,11 +44,9 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
 }
 
 - (Class)originalClassForSetDelegate {
-#if !TARGET_OS_OSX
-    if (@available(iOS 10.0, tvOS 10.0, watchOS 3.0, *)) {
+    if (@available(iOS 10.0, tvOS 10.0, watchOS 3.0, macOS 10.14, macCatalyst 13.0, *)) {
         return [UNUserNotificationCenter class];
     }
-#endif
     return nil;
 }
 
@@ -63,9 +56,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
 
 #pragma mark - Custom Application
 
-#if !TARGET_OS_OSX
-
-- (void)custom_setDelegate:(id<UNUserNotificationCenterDelegate>)delegate API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0)) {
+- (void)custom_setDelegate:(id<UNUserNotificationCenterDelegate>)delegate API_AVAILABLE(ios(10.0), watchos(3.0), macos(10.14), macCatalyst(13.0)) {
 
     // Swizzle only once.
     static dispatch_once_t delegateSwizzleOnceToken;
@@ -86,7 +77,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
 - (void)custom_userNotificationCenter:(UNUserNotificationCenter *)center
               willPresentNotification:(UNNotification *)notification
                 withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
-    API_AVAILABLE(ios(10.0), watchos(3.0)) API_UNAVAILABLE(tvos) {
+    API_AVAILABLE(ios(10.0), watchos(3.0), macos(10.14), macCatalyst(13.0)) API_UNAVAILABLE(tvos) {
     IMP originalImp = NULL;
 
     /*
@@ -110,7 +101,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
 
 - (void)custom_userNotificationCenter:(UNUserNotificationCenter *)center
        didReceiveNotificationResponse:(UNNotificationResponse *)response
-                withCompletionHandler:(void (^)(void))completionHandler API_AVAILABLE(ios(10.0), watchos(3.0)) API_UNAVAILABLE(tvos) {
+                withCompletionHandler:(void (^)(void))completionHandler API_AVAILABLE(ios(10.0), tvos(10.0), watchos(3.0), macos(10.14), macCatalyst(13.0)) {
     IMP originalImp = NULL;
 
     /*
@@ -131,7 +122,5 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
         completionHandler();
     }
 }
-
-#endif
 
 @end

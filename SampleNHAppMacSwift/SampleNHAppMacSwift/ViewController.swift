@@ -6,7 +6,7 @@ import Cocoa
 import WindowsAzureMessaging
 import Carbon.HIToolbox
 
-class ViewController: NSViewController, NSTextFieldDelegate, MSNotificationHubDelegate {
+class ViewController: NSViewController, NSTextFieldDelegate {
 
     @IBOutlet weak var deviceTokenTextField: NSTextField!
     @IBOutlet weak var installationIdTextField: NSTextField!
@@ -20,7 +20,6 @@ class ViewController: NSViewController, NSTextFieldDelegate, MSNotificationHubDe
     
     override func viewDidLoad() { 
         super.viewDidLoad()
-        MSNotificationHub.setDelegate(self)
         self.tagsTextField.delegate = self
         self.userIdTextField.delegate = self
         
@@ -39,6 +38,12 @@ class ViewController: NSViewController, NSTextFieldDelegate, MSNotificationHubDe
         
         self.tagsTable.reloadData()
         self.notificationsTable.reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePushNotification), name: Notification.Name("MessageReceived"), object: nil);
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("MessageReceived"), object: nil)
     }
 
     override var representedObject: Any? {
@@ -104,9 +109,10 @@ class ViewController: NSViewController, NSTextFieldDelegate, MSNotificationHubDe
         }
     }
     
-    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
-        NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.body)
-        self.notificationsTableViewController.addNotification(notification)
+    @objc func didReceivePushNotification(notification: Notification) {
+        let message = notification.userInfo!["message"] as! MSNotificationHubMessage;
+        NSLog("Received notification: %@; %@", message.title ?? "<nil>", message.body)
+        self.notificationsTableViewController.addNotification(message)
         self.notificationsTable.reloadData()
     }
 }
