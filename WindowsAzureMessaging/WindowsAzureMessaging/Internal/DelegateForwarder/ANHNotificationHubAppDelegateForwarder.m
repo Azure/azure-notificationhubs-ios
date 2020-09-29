@@ -23,7 +23,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     [[ANHNotificationHubAppDelegateForwarder sharedInstance]
         addDelegateSelectorToSwizzle:@selector(application:didFailToRegisterForRemoteNotificationsWithError:)];
     [[ANHNotificationHubAppDelegateForwarder sharedInstance] addDelegateSelectorToSwizzle:@selector(application:
-                                                                                             didReceiveRemoteNotification:)];
+                                                                                              didReceiveRemoteNotification:)];
 #if !TARGET_OS_OSX
     [[ANHNotificationHubAppDelegateForwarder sharedInstance]
         addDelegateSelectorToSwizzle:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
@@ -125,12 +125,12 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     [[ANHNotificationHubAppDelegateForwarder sharedInstance].originalImplementations[NSStringFromSelector(_cmd)] getValue:&originalImp];
     if (originalImp) {
         ((void (*)(id, SEL, ANHApplication *, NSDictionary *, void (^)(UIBackgroundFetchResult)))originalImp)(self, _cmd, application,
-                                                                                                             userInfo, completionHandler);
+                                                                                                              userInfo, completionHandler);
     }
 
     // Then, forward to MSNotificationHub
     [MSNotificationHub didReceiveRemoteNotification:userInfo];
-    
+
     if (!originalImp) {
 
         // No original implementation, we have to call the completion handler ourselves with the default behavior.

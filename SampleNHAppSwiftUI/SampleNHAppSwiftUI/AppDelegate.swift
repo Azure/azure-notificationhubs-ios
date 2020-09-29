@@ -3,13 +3,16 @@
 //----------------------------------------------------------------
 
 import UIKit
+import UserNotifications
 import WindowsAzureMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MSNotificationHubDelegate, UNUserNotificationCenterDelegate {
 
-    var connectionString: String?
-    var hubName: String?
+    private var connectionString: String?
+    private var hubName: String?
+    private var notificationPresentationCompletionHandler: Any?
+    private var notificationResponseCompletionHandler: Any?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -20,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if (!(connectionString ?? "").isEmpty && !(hubName ?? "").isEmpty)
                 {
+                    UNUserNotificationCenter.current().delegate = self;
+                    MSNotificationHub.setDelegate(self)
                     MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
                     
                     addTags()
@@ -37,15 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Adds some basic tags such as language and country
     func addTags() {
         // Get language and country code for common tag values
-        let language = Bundle.main.preferredLocalizations.first ?? "<indefined>"
-        let countryCode = NSLocale.current.regionCode ?? "<indefined>"
+        let language = Bundle.main.preferredLocalizations.first ?? "<undefined>"
+        let countryCode = NSLocale.current.regionCode ?? "<undefined>"
 
         // Create tags with type_value format
         let languageTag = "language_" + language
         let countryCodeTag = "country_" + countryCode
 
         MSNotificationHub.addTags([languageTag, countryCodeTag])
-        MSNotificationHub.addTag("com.example.SampleNHAppSwiftUI:1.0.0");
     }
 
     // MARK: UISceneSession Lifecycle
@@ -61,5 +65,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        self.notificationPresentationCompletionHandler = completionHandler;
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        self.notificationResponseCompletionHandler = completionHandler;
+    }
+    
+    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification message: MSNotificationHubMessage!) {
+        
+        let userInfo = ["message": message!]
+        NotificationCenter.default.post(name: NSNotification.Name("MessageReceived"), object: nil, userInfo: userInfo)
+        
+        if (UIApplication.shared.applicationState == .background) {
+            NSLog("Notification received in the background")
+        }
+        
+        if (notificationResponseCompletionHandler != nil) {
+            NSLog("Tapped Notification")
+        } else {
+            NSLog("Notification received in the foreground")
+        }
+        
+        // Call notification completion handlers.
+        if (notificationResponseCompletionHandler != nil) {
+            (notificationResponseCompletionHandler as! () -> Void)()
+            notificationResponseCompletionHandler = nil
+        }
+        if (notificationPresentationCompletionHandler != nil) {
+            (notificationPresentationCompletionHandler as! (UNNotificationPresentationOptions) -> Void)([])
+            notificationPresentationCompletionHandler = nil
+        }
+    }
+
 
 }

@@ -4,7 +4,7 @@
 
 import UIKit
 
-class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, MSNotificationHubDelegate {
+class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var deviceTokenLabel: UILabel!
     @IBOutlet weak var installationIdLabel: UILabel!
@@ -29,7 +29,11 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         
         notificationsTableView = (self.tabBarController?.viewControllers?[1] as! UINavigationController).viewControllers[0] as? NotificationsTableViewController
         
-        MSNotificationHub.setDelegate(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePushNotification), name: Notification.Name("MessageReceived"), object: nil);
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("MessageReceived"), object: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -74,11 +78,12 @@ class SetupViewController: UIViewController, UITextFieldDelegate, UITableViewDat
       }
     }
     
-    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
-        NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.body)
-        notificationsTableView?.addNotification(notification);
+    @objc func didReceivePushNotification(notification: Notification) {
+        let message = notification.userInfo!["message"] as! MSNotificationHubMessage;
+        NSLog("Received notification: %@; %@", message.title ?? "<nil>", message.body)
+        notificationsTableView?.addNotification(message);
         
-        let alertController = UIAlertController(title: notification.title, message: notification.body, preferredStyle: .alert)
+        let alertController = UIAlertController(title: message.title, message: message.body, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alertController, animated: true, completion: nil)
         

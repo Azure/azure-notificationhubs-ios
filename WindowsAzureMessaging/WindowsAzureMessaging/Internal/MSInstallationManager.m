@@ -28,10 +28,9 @@ static NSString *const kAPIVersion = @"2020-06";
 }
 
 - (instancetype)init {
-     if ((self = [super init]) != nil) {
-         
-     }
-    
+    if ((self = [super init]) != nil) {
+    }
+
     return self;
 }
 
@@ -81,7 +80,7 @@ static NSString *const kAPIVersion = @"2020-06";
     withManagementHandler:(InstallationManagementHandler)managementHandler
         completionHandler:(InstallationCompletionHandler)completionHandler {
     enrichmentHandler();
-    
+
     [self setExpiration:installation];
 
     if (managementHandler(completionHandler)) {

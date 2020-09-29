@@ -6,12 +6,13 @@
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 #import "NotificationDetails.h"
 
+static NSString *const kNHMessageReceived = @"MessageReceived";
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [MSNotificationHub setDelegate:self];
     self.tagsTable.delegate = self;
     self.tagsTable.dataSource = self;
     self.tagsTextField.delegate = self;
@@ -27,6 +28,12 @@
     
     [self.tagsTable reloadData];
     [self.notificationsTable reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceivePushNotification:) name:kNHMessageReceived object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNHMessageReceived object:nil];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -110,19 +117,9 @@
     [super setRepresentedObject:representedObject];
 }
 
-- (void)application:(NSApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  NSLog(@"Did register for remote notifications with device token.");
-}
-
-- (void)application:(NSApplication *)application didFailToRegisterForRemoteNotificationsWithError:(nonnull NSError *)error {
-  NSLog(@"Did fail to register for remote notifications with error %@.", [error localizedDescription]);
-}
-
-- (void)application:(NSApplication *)application didReceiveRemoteNotification:(NSDictionary<NSString *, id> *)userInfo {
-  NSLog(@"Did receive remote notification");
-}
-
-- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message {
+- (void)didReceivePushNotification:(NSNotification *)notification {
+    MSNotificationHubMessage *message = [notification.userInfo objectForKey:@"message"];
+    
     NSLog(@"Message title: %@", message.title);
     NSLog(@"Message body: %@", message.body);
     

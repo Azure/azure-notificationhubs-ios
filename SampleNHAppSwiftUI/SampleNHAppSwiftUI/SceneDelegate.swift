@@ -17,9 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MSNotificationHubDelega
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
         // Create the SwiftUI view that provides the window contents.
-        MSNotificationHub.setDelegate(self)
         MSNotificationHub.setLifecycleDelegate(self)
         
         let contentView = ContentView(notifications: notifications, installation: installation)
@@ -31,6 +29,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MSNotificationHubDelega
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePushNotification), name: Notification.Name("MessageReceived"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("MessageReceived"), object: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -61,13 +65,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MSNotificationHubDelega
         // to restore the scene back to its current state.
     }
     
-    func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotification notification: MSNotificationHubMessage!) {
+    @objc func didReceivePushNotification(notification: Notification) {
+        let message = notification.userInfo!["message"] as! MSNotificationHubMessage
         
-        NSLog("Received notification: %@; %@", notification.title ?? "<nil>", notification.body)
+        NSLog("Received notification: %@; %@", message.title ?? "<nil>", message.body)
         
-        self.notifications.items.append(notification)
+        self.notifications.items.append(message)
         
-        let alertController = UIAlertController(title: notification.title, message: notification.body, preferredStyle: .alert)
+        let alertController = UIAlertController(title: message.title, message: message.body, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
         
@@ -85,3 +90,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MSNotificationHubDelega
         }
     }
 }
+

@@ -5,7 +5,7 @@
 #import <Cocoa/Cocoa.h>
 #import "NotificationsTableViewController.h"
 
-@interface ViewController : NSViewController<NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource, NSApplicationDelegate, MSNotificationHubDelegate>
+@interface ViewController : NSViewController<NSTextFieldDelegate, NSTableViewDelegate, NSTableViewDataSource>
 @property (nonatomic, strong) NotificationsTableViewController *notificationsTableViewController;
 @property (nonatomic, copy) NSArray<NSString *> *tags;
 
