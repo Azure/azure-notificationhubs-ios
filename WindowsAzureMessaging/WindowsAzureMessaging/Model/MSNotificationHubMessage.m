@@ -4,12 +4,7 @@
 
 #import "MSNotificationHubMessage.h"
 
-@implementation MSNotificationHubMessage {
-  @private
-    NSString *_title;
-    NSString *_body;
-    NSDictionary *_userInfo;
-}
+@implementation MSNotificationHubMessage
 
 - (instancetype)initWithUserInfo:(NSDictionary *)userInfo {
     if ((self = [super init]) != nil) {
