@@ -8,6 +8,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class MSInstallation;
+@class MSDebounceInstallationManager;
 
 @protocol ANHCustomApplicationDelegate;
 
@@ -16,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 #else
 @interface MSNotificationHub ()
 #endif
+
+@property (strong, nonatomic) MSDebounceInstallationManager *debounceInstallationManager;
 
 /**
  * Method converts NSData to NSString.

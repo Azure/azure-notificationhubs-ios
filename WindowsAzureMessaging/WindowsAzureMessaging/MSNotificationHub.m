@@ -34,10 +34,7 @@ static dispatch_once_t onceToken;
 static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDelegateContext;
 #endif
 
-@implementation MSNotificationHub {
-  @private
-    MSDebounceInstallationManager *_debounceInstallationManager;
-}
+@implementation MSNotificationHub
 
 - (instancetype)init {
     if ((self = [super init])) {

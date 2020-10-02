@@ -5,16 +5,18 @@
 #import "MSTokenProvider.h"
 #import <CommonCrypto/CommonHMAC.h>
 
-@implementation MSTokenProvider {
+@interface MSTokenProvider()
 
-  @private
-    NSString *_sharedAccessKey;
-    NSString *_sharedAccessKeyName;
-    NSString *_sharedSecret;
-    NSString *_sharedSecretIssurer;
-    NSURL *_stsHostName;
-    NSURL *_serviceEndPoint;
-}
+@property (nonatomic, copy) NSString *sharedAccessKey;
+@property (nonatomic, copy) NSString *sharedAccessKeyName;
+@property (nonatomic, copy) NSString *sharedSecret;
+@property (nonatomic, copy) NSString *sharedSecretIssurer;
+@property (nonatomic, strong) NSURL *stsHostName;
+@property (nonatomic, strong) NSURL *serviceEndPoint;
+
+@end
+
+@implementation MSTokenProvider
 
 @synthesize timeToExpireinMins;
 

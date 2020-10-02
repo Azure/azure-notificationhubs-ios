@@ -1427,7 +1427,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MS;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Matthew Podwysocki";
 				TargetAttributes = {
 					4C1047B124AAA0C600FA339E = {
