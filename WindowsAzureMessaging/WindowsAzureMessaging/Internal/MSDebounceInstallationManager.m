@@ -7,7 +7,7 @@
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
 
-@interface MSDebounceInstallationManager()
+@interface MSDebounceInstallationManager ()
 
 @property(nonatomic) double interval;
 @property(nonatomic, strong) NSTimer *debounceTimer;
