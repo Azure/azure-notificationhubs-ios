@@ -7,15 +7,18 @@
 #import "MSInstallationManager.h"
 #import "MSLocalStorage.h"
 
-@implementation MSDebounceInstallationManager {
-  @private
-    double _interval;
-    NSTimer *_debounceTimer;
-    MSInstallationManager *_installationManager;
-    InstallationEnrichmentHandler _enrichmentHandler;
-    InstallationManagementHandler _managementHandler;
-    InstallationCompletionHandler _completionHandler;
-}
+@interface MSDebounceInstallationManager ()
+
+@property(nonatomic) double interval;
+@property(nonatomic, strong) NSTimer *debounceTimer;
+@property(nonatomic, strong) MSInstallationManager *installationManager;
+@property(nonatomic) InstallationEnrichmentHandler enrichmentHandler;
+@property(nonatomic) InstallationManagementHandler managementHandler;
+@property(nonatomic) InstallationCompletionHandler completionHandler;
+
+@end
+
+@implementation MSDebounceInstallationManager
 
 - (instancetype)initWithInterval:(double)interval installationManager:(MSInstallationManager *)installationManager {
     if ((self = [super init]) != nil) {

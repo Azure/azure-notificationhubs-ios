@@ -8,10 +8,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class ANHHttpClient;
+@class MSTokenProvider;
 
 @interface MSInstallationManager ()
 
-@property(nonatomic) ANHHttpClient *httpClient;
+@property(nonatomic, strong) ANHHttpClient *httpClient;
+@property(nonatomic, copy) NSString *connectionString;
+@property(nonatomic, copy) NSString *hubName;
+@property(nonatomic, strong) MSTokenProvider *tokenProvider;
+@property(nonatomic, strong) NSDictionary *connectionDictionary;
 
 @end
 
