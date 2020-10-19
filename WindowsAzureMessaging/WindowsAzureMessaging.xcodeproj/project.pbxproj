@@ -227,6 +227,12 @@
 		4C3EEBA024C8BA5F0096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
 		4C3EEBA124C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
 		4C3EEBA224C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
+		4C877F65252B6AC10056667C /* SBURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C877F64252B6AC10056667C /* SBURLSession.h */; };
+		4C877F66252B6AC10056667C /* SBURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C877F64252B6AC10056667C /* SBURLSession.h */; };
+		4C877F7E252B6C690056667C /* SBURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C877F7D252B6C690056667C /* SBURLSession.m */; };
+		4C877F7F252B6C690056667C /* SBURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C877F7D252B6C690056667C /* SBURLSession.m */; };
+		4C877FAB252B6FD50056667C /* SBURLSession+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C877FAA252B6FD50056667C /* SBURLSession+Private.h */; };
+		4C877FAC252B6FD50056667C /* SBURLSession+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C877FAA252B6FD50056667C /* SBURLSession+Private.h */; };
 		4CA730EE24A14FF2006AC99D /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA730ED24A14FF2006AC99D /* WindowsAzureMessagingTests.m */; };
 		4CA730F024A14FF2006AC99D /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7312324A15A25006AC99D /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -626,6 +632,9 @@
 		4C3EEBA424C8BDCA0096C133 /* tvOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = tvOS.modulemap; sourceTree = "<group>"; };
 		4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
 		4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS Tests WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
+		4C877F64252B6AC10056667C /* SBURLSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBURLSession.h; sourceTree = "<group>"; };
+		4C877F7D252B6C690056667C /* SBURLSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBURLSession.m; sourceTree = "<group>"; };
+		4C877FAA252B6FD50056667C /* SBURLSession+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SBURLSession+Private.h"; sourceTree = "<group>"; };
 		4CA730DF24A14FF2006AC99D /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsAzureMessaging.h; sourceTree = "<group>"; };
 		4CA730E324A14FF2006AC99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -939,6 +948,9 @@
 				4CA731A124A187A5006AC99D /* SBTokenProvider.m */,
 				4CA731A424A187A5006AC99D /* SBURLConnection.h */,
 				4CA7319D24A187A5006AC99D /* SBURLConnection.m */,
+				4C877F64252B6AC10056667C /* SBURLSession.h */,
+				4C877FAA252B6FD50056667C /* SBURLSession+Private.h */,
+				4C877F7D252B6C690056667C /* SBURLSession.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1159,11 +1171,13 @@
 				4C3EEB4124C8AFDA0096C133 /* SBRegistration.h in Headers */,
 				4C3EEB0524C8AC130096C133 /* SBStaticHandlerResponse.h in Headers */,
 				4C3EEB3024C8AE160096C133 /* MSInstallationTemplate.h in Headers */,
+				4C877F66252B6AC10056667C /* SBURLSession.h in Headers */,
 				4C3EEB4B24C8B5020096C133 /* MSNotificationHubDelegate.h in Headers */,
 				4C3EEB2924C8ADEB0096C133 /* MSTokenProvider.h in Headers */,
 				4C3EEB4524C8AFF10096C133 /* SBConnectionString.h in Headers */,
 				4C3EEB3F24C8AE5A0096C133 /* MSInstallationLifecycleDelegate.h in Headers */,
 				4C3EEB3B24C8AE4A0096C133 /* ANHDispatcherUtil.h in Headers */,
+				4C877FAC252B6FD50056667C /* SBURLSession+Private.h in Headers */,
 				4C3EEB1824C8AD560096C133 /* ANHDelegateForwarder+Private.h in Headers */,
 				4C3EEB1C24C8AD640096C133 /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
 				4C3EEB9A24C8BA0C0096C133 /* Compatibility.h in Headers */,
@@ -1219,11 +1233,13 @@
 				4CA731B224A187A6006AC99D /* SBRegistrationParser.h in Headers */,
 				4CA731EA24A1BBC8006AC99D /* MSTaggable.h in Headers */,
 				4CA7319124A186A3006AC99D /* SBNotificationHub.h in Headers */,
+				4C877F65252B6AC10056667C /* SBURLSession.h in Headers */,
 				4CA731FA24A1C33D006AC99D /* MSInstallationManagementDelegate.h in Headers */,
 				4CA731B624A187A6006AC99D /* SBURLConnection.h in Headers */,
 				4C1049A324ABE48100FA339E /* ANHDelegateForwarder+Private.h in Headers */,
 				4CA7317C24A180C0006AC99D /* ANHHttpUtil.h in Headers */,
 				4CA731C124A18A8B006AC99D /* MSTokenProvider.h in Headers */,
+				4C877FAB252B6FD50056667C /* SBURLSession+Private.h in Headers */,
 				4CA732BC24A2D04F006AC99D /* HTTPStubsResponse.h in Headers */,
 				4CA731D224A1B927006AC99D /* MSChangeTracking.h in Headers */,
 				4CA7316624A17C6B006AC99D /* ANHHttpClientProtocol.h in Headers */,
@@ -1889,6 +1905,7 @@
 				4C3EEB2F24C8AE130096C133 /* MSInstallation.m in Sources */,
 				4C3EEB1324C8AD450096C133 /* ANHHttpClient.m in Sources */,
 				4C3EEB3724C8AE2F0096C133 /* MSTagHelper.m in Sources */,
+				4C877F7F252B6C690056667C /* SBURLSession.m in Sources */,
 				4C3EEB3324C8AE240096C133 /* MSNotificationHubMessage.m in Sources */,
 				4C3EEB2A24C8ADEE0096C133 /* MSTokenProvider.m in Sources */,
 				4C3EEB2024C8ADCB0096C133 /* MSDebounceInstallationManager.m in Sources */,
@@ -1948,6 +1965,7 @@
 				4CA7315824A17A67006AC99D /* SBConnectionString.m in Sources */,
 				4CA731E324A1BB13006AC99D /* MSNotificationHubMessage.m in Sources */,
 				4CA731C424A18B41006AC99D /* MSTokenProvider.m in Sources */,
+				4C877F7E252B6C690056667C /* SBURLSession.m in Sources */,
 				4CA731F724A1C2CF006AC99D /* MSDebounceInstallationManager.m in Sources */,
 				4CA731D924A1B9C8006AC99D /* MSInstallationTemplate.m in Sources */,
 				4CA731B424A187A6006AC99D /* SBStaticHandlerResponse.m in Sources */,
