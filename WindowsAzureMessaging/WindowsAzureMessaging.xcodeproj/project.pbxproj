@@ -117,6 +117,12 @@
 		4C1049B924ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1049B724ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h */; };
 		4C1049BB24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
 		4C1049BC24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
+		4C13E51C253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; };
+		4C13E51D253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; };
+		4C13E51E253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; };
+		4C13E535253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };
+		4C13E536253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };
+		4C13E537253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };
 		4C3EEAFF24C8ABAA0096C133 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319624A1872F006AC99D /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C3EEB0024C8ABB40096C133 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7319924A18759006AC99D /* SBLocalStorage.m */; };
 		4C3EEB0124C8ABB80096C133 /* SBNotificationHubHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7314A24A16BC6006AC99D /* SBNotificationHubHelper.h */; };
@@ -621,6 +627,8 @@
 		4C1049B124ABE96E00FA339E /* ANHUserNotificationCenterDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHUserNotificationCenterDelegateForwarder.m; sourceTree = "<group>"; };
 		4C1049B724ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHNotificationHubAppDelegateForwarder.h; sourceTree = "<group>"; };
 		4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHNotificationHubAppDelegateForwarder.m; sourceTree = "<group>"; };
+		4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubOptions.h; sourceTree = "<group>"; };
+		4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubOptions.m; sourceTree = "<group>"; };
 		4C3EEADD24C8AAD70096C133 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3EEAE524C8AAD80096C133 /* WindowsAzureMessaging.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessaging.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3EEBA424C8BDCA0096C133 /* tvOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = tvOS.modulemap; sourceTree = "<group>"; };
@@ -864,6 +872,8 @@
 				4CA7319324A186CC006AC99D /* SBNotificationHub.m */,
 				4CA731FC24A1C372006AC99D /* MSNotificationHub.h */,
 				4CA731FD24A1C3C4006AC99D /* MSNotificationHub.m */,
+				4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */,
+				4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */,
 				4CA7320924A1C55E006AC99D /* MSNotificationHubDelegate.h */,
 				4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */,
 			);
@@ -1179,6 +1189,7 @@
 				4C3EEB1224C8AD420096C133 /* ANHHttpClient+Private.h in Headers */,
 				4C3EEB1A24C8AD5E0096C133 /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
 				4C3EEB9E24C8BA490096C133 /* HTTPStubsResponse+JSON.h in Headers */,
+				4C13E51E253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */,
 				4C3EEB0F24C8AD370096C133 /* ANHHttpCall.h in Headers */,
 				4C3EEB3D24C8AE500096C133 /* ANH_Errors.h in Headers */,
 				4C3EEB3224C8AE200096C133 /* MSNotificationHubMessage.h in Headers */,
@@ -1239,6 +1250,7 @@
 				4C1049B824ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
 				4CA7314424A16B50006AC99D /* SBRegistration.h in Headers */,
 				4CA7318424A1820A006AC99D /* ANH_Reachability.h in Headers */,
+				4C13E51C253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */,
 				4CA7315124A16C6D006AC99D /* SBTemplateRegistration.h in Headers */,
 				4CA7315C24A17AC8006AC99D /* ANHDispatcherUtil.h in Headers */,
 				4CA732BB24A2D04F006AC99D /* HTTPStubsPathHelpers.h in Headers */,
@@ -1280,6 +1292,7 @@
 				4CA7316724A17C6B006AC99D /* ANHHttpClientProtocol.h in Headers */,
 				4C1049B024ABE92100FA339E /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
 				4C1049B924ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
+				4C13E51D253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */,
 				4C3EEB2424C8ADDC0096C133 /* MSInstallationManager+Private.h in Headers */,
 				4CA731F524A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */,
 				4CA7318C24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */,
@@ -1888,6 +1901,7 @@
 				4C3EEB4824C8B00E0096C133 /* SBNotificationHub.m in Sources */,
 				4C3EEB2F24C8AE130096C133 /* MSInstallation.m in Sources */,
 				4C3EEB1324C8AD450096C133 /* ANHHttpClient.m in Sources */,
+				4C13E537253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */,
 				4C3EEB3724C8AE2F0096C133 /* MSTagHelper.m in Sources */,
 				4C3EEB3324C8AE240096C133 /* MSNotificationHubMessage.m in Sources */,
 				4C3EEB2A24C8ADEE0096C133 /* MSTokenProvider.m in Sources */,
@@ -1947,6 +1961,7 @@
 				4CA7317F24A180E5006AC99D /* ANHHttpUtil.m in Sources */,
 				4CA7315824A17A67006AC99D /* SBConnectionString.m in Sources */,
 				4CA731E324A1BB13006AC99D /* MSNotificationHubMessage.m in Sources */,
+				4C13E535253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */,
 				4CA731C424A18B41006AC99D /* MSTokenProvider.m in Sources */,
 				4CA731F724A1C2CF006AC99D /* MSDebounceInstallationManager.m in Sources */,
 				4CA731D924A1B9C8006AC99D /* MSInstallationTemplate.m in Sources */,
@@ -2027,6 +2042,7 @@
 				4CA731F824A1C2CF006AC99D /* MSDebounceInstallationManager.m in Sources */,
 				4CA731E424A1BB13006AC99D /* MSNotificationHubMessage.m in Sources */,
 				4CA7317024A17FC5006AC99D /* ANHHttpCall.m in Sources */,
+				4C13E536253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */,
 				4CA731DA24A1B9C8006AC99D /* MSInstallationTemplate.m in Sources */,
 				4CA731CB24A1902F006AC99D /* MSLocalStorage.m in Sources */,
 			);

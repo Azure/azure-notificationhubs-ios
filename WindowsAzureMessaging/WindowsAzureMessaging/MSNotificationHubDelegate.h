@@ -18,6 +18,8 @@
  * @param notificationHub The instance of MSNotificationHub
  * @param message The push notification details.
  */
-- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message;
+- (void)notificationHub:(MSNotificationHub *_Nonnull)notificationHub didReceivePushNotification:(MSNotificationHubMessage *_Nonnull)message;
+
+- (void)notificationHub:(MSNotificationHub *_Nonnull)notificationHub didRequestAuthorization:(BOOL)granted error:(NSError *_Nullable)error;
 
 @end

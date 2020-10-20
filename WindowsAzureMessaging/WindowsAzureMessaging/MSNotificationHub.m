@@ -20,6 +20,7 @@
 #import "MSLocalStorage.h"
 #import "MSNotificationHub+Private.h"
 #import "MSNotificationHub.h"
+#import "MSNotificationHubOptions.h"
 #import "MSNotificationHubMessage+Private.h"
 #import "MSNotificationHubMessage.h"
 
@@ -113,26 +114,35 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 }
 
 + (void)startWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName {
+    MSNotificationHubOptions *options = [MSNotificationHubOptions new];
+    [MSNotificationHub startWithConnectionString:connectionString hubName:notificationHubName options:options];
+}
+
++ (void)startWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName options:(MSNotificationHubOptions *)options {
     MSInstallationManager *installationManager = [[MSInstallationManager alloc] initWithConnectionString:connectionString
-                                                                                                 hubName:notificationHubName];
+                         hubName:notificationHubName];
 
     [[MSNotificationHub sharedInstance]
         setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2 installationManager:installationManager]];
+    [[MSNotificationHub sharedInstance] setOptions:options];
 
     [[MSNotificationHub sharedInstance] registerForRemoteNotifications];
 }
 
 + (void)startWithInstallationManagement:(id<MSInstallationManagementDelegate>)managementDelegate {
+    MSNotificationHubOptions *options = [MSNotificationHubOptions new];
+    [MSNotificationHub startWithInstallationManagement:managementDelegate options:options];
+
+}
+
++ (void)startWithInstallationManagement:(id<MSInstallationManagementDelegate>)managementDelegate options:( MSNotificationHubOptions *)options {
     MSInstallationManager *installationManager = [MSInstallationManager new];
     [[MSNotificationHub sharedInstance]
         setDebounceInstallationManager:[[MSDebounceInstallationManager alloc] initWithInterval:2 installationManager:installationManager]];
 
     [[MSNotificationHub sharedInstance] setManagementDelegate:managementDelegate];
+    [[MSNotificationHub sharedInstance] setOptions:options];
     [[MSNotificationHub sharedInstance] registerForRemoteNotifications];
-}
-
-- (void)setDebounceInstallationManager:(MSDebounceInstallationManager *)debounceInstallationManager {
-    _debounceInstallationManager = debounceInstallationManager;
 }
 
 - (void)registerForRemoteNotifications {
@@ -141,21 +151,26 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 #elif TARGET_OS_IOS
     if (@available(iOS 10.0, maccatalyst 13.0, tvOS 10.0, *)) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        UNAuthorizationOptions authOptions =
-            (UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge);
+        UNAuthorizationOptions authOptions = _options.authorizationOptions;
         [center requestAuthorizationWithOptions:authOptions
                               completionHandler:^(BOOL granted, NSError *_Nullable error) {
-                                if (granted) {
-                                    NSLog(@"Push notifications authorization was granted.");
-                                } else {
-                                    NSLog(@"Push notifications authorization was denied.");
-                                }
-                                if (error) {
-                                    NSLog(@"Push notifications authorization request has "
-                                          @"been finished with error: %@",
-                                          error.localizedDescription);
-                                }
-                              }];
+            
+            id<MSNotificationHubDelegate> delegate = self.delegate;
+            if ([delegate respondsToSelector:@selector(notificationHub:didRequestAuthorization:error:)]) {
+                [delegate notificationHub:self didRequestAuthorization:granted error:error];
+            } else {
+                if (granted) {
+                    NSLog(@"Push notifications authorization was granted.");
+                } else {
+                    NSLog(@"Push notifications authorization was denied.");
+                }
+                if (error) {
+                    NSLog(@"Push notifications authorization request has "
+                          @"been finished with error: %@",
+                          error.localizedDescription);
+                }
+            }
+        }];
     } else {
         UIUserNotificationType allNotificationTypes =
             (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
