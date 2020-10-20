@@ -20,6 +20,13 @@
  */
 - (void)notificationHub:(MSNotificationHub *_Nonnull)notificationHub didReceivePushNotification:(MSNotificationHubMessage *_Nonnull)message;
 
+/**
+ * Callback method that will be called when the system calls [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:completionHandler:]
+ *
+ * @param notificationHub The instance of MSNotificationHub
+ * @param granted Whether the authorization was granted
+ * @param error Whther there was an error in requesting authorization.
+ */
 - (void)notificationHub:(MSNotificationHub *_Nonnull)notificationHub didRequestAuthorization:(BOOL)granted error:(NSError *_Nullable)error;
 
 @end
