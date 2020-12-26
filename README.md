@@ -1,5 +1,5 @@
-![framework-docs](https://github.com/Azure/azure-notificationhubs-ios/workflows/framework-docs/badge.svg)
-![analyze-test](https://github.com/Azure/azure-notificationhubs-ios/workflows/analyze-test/badge.svg)
+[![framework-docs](https://github.com/Azure/azure-notificationhubs-ios/workflows/framework-docs/badge.svg)](https://github.com/Azure/azure-notificationhubs-ios/actions?query=workflow%3Aframework-docs)
+[![analyze-test](https://github.com/Azure/azure-notificationhubs-ios/workflows/analyze-test/badge.svg)](https://github.com/Azure/azure-notificationhubs-ios/actions?query=workflow%3Aanalyze-test)
 
 # Microsoft Azure Notification Hubs SDK for Apple
 
