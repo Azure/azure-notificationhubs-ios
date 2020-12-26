@@ -10,7 +10,7 @@ jobs:
   build-sdk:
     runs-on: macos-latest
     env:
-      XC_VERSION: ${{ '11.6' }}
+      XC_VERSION: ${{ '12.3' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'All Frameworks' }}
     steps:

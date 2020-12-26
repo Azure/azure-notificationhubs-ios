@@ -10,7 +10,7 @@ jobs:
   ios-analyze-test:
     runs-on: macos-latest
     env:
-      XC_VERSION: ${{ '11.6' }}
+      XC_VERSION: ${{ '12.3' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Framework' }}
     steps:
@@ -30,7 +30,7 @@ jobs:
   tvos-analyze-test:
     runs-on: macos-latest
     env:
-      XC_VERSION: ${{ '11.6' }}
+      XC_VERSION: ${{ '12.3' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging tvOS Framework' }}
     steps:
@@ -50,7 +50,7 @@ jobs:
   macos-analyze-test:
     runs-on: macos-latest
     env:
-      XC_VERSION: ${{ '11.6' }}
+      XC_VERSION: ${{ '12.3' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging macOS Framework' }}
     steps:
@@ -70,7 +70,7 @@ jobs:
   mac-catalyst-analyze-test:
     runs-on: macos-latest
     env:
-      XC_VERSION: ${{ '11.6' }}
+      XC_VERSION: ${{ '12.3' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Framework' }}
     steps:
