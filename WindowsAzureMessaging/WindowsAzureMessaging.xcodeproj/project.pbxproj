@@ -1806,11 +1806,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessaging.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/WindowsAzureMessaging.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/../Scripts/build-framework.sh\" \"$PROJECT_NAME iOS Framework\" \"iphoneos\"\n";
+			shellScript = "\"$SRCROOT/../Scripts/build-framework.sh\" \"$PROJECT_NAME iOS Framework\" \"iphonesimulator\"\n";
 		};
 		4C649EAD259B8CB700D2BB7C /* Combine iOS Universal Framework */ = {
 			isa = PBXShellScriptBuildPhase;
