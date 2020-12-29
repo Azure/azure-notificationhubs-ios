@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C1047B124AAA0C600FA339E"
-               BuildableName = "WindowsAzureMessaging XCFramework"
-               BlueprintName = "WindowsAzureMessaging XCFramework"
+               BlueprintIdentifier = "4C649E98259A971E00D2BB7C"
+               BuildableName = "WindowsAzureMessaging"
+               BlueprintName = "WindowsAzureMessaging"
                ReferencedContainer = "container:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -92,9 +92,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C1047B124AAA0C600FA339E"
-            BuildableName = "WindowsAzureMessaging XCFramework"
-            BlueprintName = "WindowsAzureMessaging XCFramework"
+            BlueprintIdentifier = "4C5C0B9424D9E13600DB2CDD"
+            BuildableName = "WindowsAzureMessaging iOS Documentation"
+            BlueprintName = "WindowsAzureMessaging iOS Documentation"
             ReferencedContainer = "container:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
