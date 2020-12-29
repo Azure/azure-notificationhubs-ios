@@ -32,7 +32,7 @@
 			dependencies = (
 			);
 			name = "WindowsAzureMessaging tvOS Universal";
-			productName = "WindowsAzureMessaging tvOS Fat Framework";
+			productName = "WindowsAzureMessaging tvOS Universal";
 		};
 		4C5C0B9424D9E13600DB2CDD /* WindowsAzureMessaging iOS Documentation */ = {
 			isa = PBXAggregateTarget;
@@ -92,7 +92,7 @@
 			dependencies = (
 			);
 			name = "WindowsAzureMessaging iOS Universal";
-			productName = "WindowsAzureMessaging iOS Fat Framework";
+			productName = "WindowsAzureMessaging iOS Universal";
 		};
 /* End PBXAggregateTarget section */
 
@@ -391,7 +391,7 @@
 			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4CA7312B24A15A63006AC99D;
-			remoteInfo = "WindowsAzureMessaging iOS Fat Framework";
+			remoteInfo = "WindowsAzureMessaging iOS Universal";
 		};
 		4C3EEAE724C8AAD80096C133 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -419,14 +419,14 @@
 			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4CA7312B24A15A63006AC99D;
-			remoteInfo = "WindowsAzureMessaging iOS Fat Framework";
+			remoteInfo = "WindowsAzureMessaging iOS Universal";
 		};
 		4C5C0BAE24D9E3B800DB2CDD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4C3EEB7424C8B73A0096C133;
-			remoteInfo = "WindowsAzureMessaging tvOS Fat Framework";
+			remoteInfo = "WindowsAzureMessaging tvOS Universal";
 		};
 		4C649EA9259A973200D2BB7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -440,7 +440,7 @@
 			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4C3EEB7424C8B73A0096C133;
-			remoteInfo = "WindowsAzureMessaging tvOS Fat Framework";
+			remoteInfo = "WindowsAzureMessaging tvOS Universal";
 		};
 		4CA730EA24A14FF2006AC99D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
