@@ -2340,6 +2340,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS WindowsAzureMessaging.xcconfig */;
 			buildSettings = {
+				INSTALL_PATH = "";
 			};
 			name = Debug;
 		};
@@ -2347,6 +2348,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS WindowsAzureMessaging.xcconfig */;
 			buildSettings = {
+				INSTALL_PATH = "";
 			};
 			name = Release;
 		};
