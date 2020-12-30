@@ -11,12 +11,13 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 4C1047B224AAA0C600FA339E /* Build configuration list for PBXAggregateTarget "WindowsAzureMessaging XCFramework" */;
 			buildPhases = (
-				4C1047B924AAA0F200FA339E /* Build Mac Catalyst */,
+				4C1047B924AAA0F200FA339E /* Build Mac Catalyst Framework */,
 				4C1047BA24AAA11D00FA339E /* Combine XCFramework */,
 			);
 			dependencies = (
-				4C8C05AE24CBB1EF00927E36 /* PBXTargetDependency */,
 				4C1047B624AAA0E000FA339E /* PBXTargetDependency */,
+				4C6733E5259CF4910041F83D /* PBXTargetDependency */,
+				4C8C05AE24CBB1EF00927E36 /* PBXTargetDependency */,
 			);
 			name = "WindowsAzureMessaging XCFramework";
 			productName = "WindowsAzureMessaging XCFramework";
@@ -434,6 +435,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4C1047B124AAA0C600FA339E;
 			remoteInfo = "WindowsAzureMessaging XCFramework";
+		};
+		4C6733E4259CF4910041F83D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA730D624A14FF2006AC99D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CA7312124A15A25006AC99D;
+			remoteInfo = "WindowsAzureMessaging macOS Framework";
 		};
 		4C8C05AD24CBB1EF00927E36 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1622,7 +1630,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C1047B924AAA0F200FA339E /* Build Mac Catalyst */ = {
+		4C1047B924AAA0F200FA339E /* Build Mac Catalyst Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1631,14 +1639,15 @@
 			);
 			inputPaths = (
 			);
-			name = "Build Mac Catalyst";
+			name = "Build Mac Catalyst Framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$BUILD_DIR/$CONFIGURATION-maccatalyst/WindowsAzureMessaging.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Scripts/build-maccatalyst-framework.sh\"\n";
+			shellScript = "\"$SRCROOT/../Scripts/build-framework.sh\" \"$PROJECT_NAME iOS Framework\" \"maccatalyst\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4C1047BA24AAA11D00FA339E /* Combine XCFramework */ = {
@@ -2125,6 +2134,11 @@
 			isa = PBXTargetDependency;
 			target = 4C1047B124AAA0C600FA339E /* WindowsAzureMessaging XCFramework */;
 			targetProxy = 4C649EA9259A973200D2BB7C /* PBXContainerItemProxy */;
+		};
+		4C6733E5259CF4910041F83D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CA7312124A15A25006AC99D /* WindowsAzureMessaging macOS Framework */;
+			targetProxy = 4C6733E4259CF4910041F83D /* PBXContainerItemProxy */;
 		};
 		4C8C05AE24CBB1EF00927E36 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
