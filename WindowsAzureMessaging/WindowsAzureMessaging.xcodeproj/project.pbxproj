@@ -28,7 +28,7 @@
 			buildPhases = (
 				4C3EEBA324C8BACC0096C133 /* Build tvOS Device Framework */,
 				4C649E96259A960300D2BB7C /* Build tvOS Simulator Framework */,
-				4C649EDF259BA22000D2BB7C /* Combine tvOS Universal Framework */,
+				4C673416259E7D840041F83D /* Combine tvOS Universal Framework */,
 			);
 			dependencies = (
 			);
@@ -88,7 +88,7 @@
 			buildPhases = (
 				4CA7321224A1CED6006AC99D /* Build iOS Device Framework */,
 				4C649EAC259B8C6C00D2BB7C /* Build iOS Simulator Framework */,
-				4C649FAF259BE64100D2BB7C /* Combine iOS Universal Framework */,
+				4C67347225A36AAF0041F83D /* Combine iOS Universal Framework */,
 			);
 			dependencies = (
 			);
@@ -1822,7 +1822,7 @@
 			shellScript = "\"$SRCROOT/../Scripts/build-framework.sh\" \"$PROJECT_NAME iOS Framework\" \"iphonesimulator\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4C649EDF259BA22000D2BB7C /* Combine tvOS Universal Framework */ = {
+		4C673416259E7D840041F83D /* Combine tvOS Universal Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1837,13 +1837,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$BUILT_PRODUCTS_DIR/WindowsAzureMessaging.framework,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "DEVICE_FRAMEWORK=\"$BUILD_DIR/$CONFIGURATION-appletvos/$PRODUCT_NAME.framework\"\nSIMULATOR_FRAMEWORK=\"$BUILD_DIR/$CONFIGURATION-appletvsimulator/$PRODUCT_NAME.framework\"\n\"$SRCROOT/../Scripts/combine-frameworks.sh\" \"$DEVICE_FRAMEWORK\" \"$SIMULATOR_FRAMEWORK\" \"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.framework\"\n";
 		};
-		4C649FAF259BE64100D2BB7C /* Combine iOS Universal Framework */ = {
+		4C67347225A36AAF0041F83D /* Combine iOS Universal Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1851,19 +1850,17 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessaging.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessagingframework",
 				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/WindowsAzureMessaging.framework",
 			);
 			name = "Combine iOS Universal Framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$BUILT_PRODUCTS_DIR/WindowsAzureMessaging.framework,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "DEVICE_FRAMEWORK=\"$BUILD_DIR/$CONFIGURATION-iphoneos/$PRODUCT_NAME.framework\"\nSIMULATOR_FRAMEWORK=\"$BUILD_DIR/$CONFIGURATION-iphonesimulator/$PRODUCT_NAME.framework\"\n\"$SRCROOT/../Scripts/combine-frameworks.sh\" \"$DEVICE_FRAMEWORK\" \"$SIMULATOR_FRAMEWORK\" \"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.framework\"\n";
-			showEnvVarsInLog = 0;
 		};
 		4CA7313D24A15FF6006AC99D /* Verify No Build Settings */ = {
 			isa = PBXShellScriptBuildPhase;
