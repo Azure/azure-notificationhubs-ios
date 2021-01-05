@@ -1658,7 +1658,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				$BUILD_DIR/$CONFIGURATION/$PRODUCT_NAME.framework,
+				$BUILD_DIR/$CONFIGURATION/WindowsAzureMessaging.framework,
 				"$BUILD_DIR/$CONFIGURATION-maccatalyst/WindowsAzureMessaging.framework",
 				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessaging.framework",
 				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/WindowsAzureMessaging.framework",
