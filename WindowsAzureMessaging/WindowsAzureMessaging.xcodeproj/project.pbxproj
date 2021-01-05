@@ -611,8 +611,11 @@
 		4C3EEADD24C8AAD70096C133 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3EEAE524C8AAD80096C133 /* WindowsAzureMessaging.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessaging.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3EEBA424C8BDCA0096C133 /* tvOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = tvOS.modulemap; sourceTree = "<group>"; };
-		4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
-		4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS Tests WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
+		4C3EEBA524C8BE1C0096C133 /* tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = tvOS.xcconfig; sourceTree = "<group>"; };
+		4C3EEBA624C8C0B60096C133 /* tvOS Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS Tests.xcconfig"; sourceTree = "<group>"; };
+		4C67369325A51EB70041F83D /* XCFramework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = XCFramework.xcconfig; path = ../../../Config/XCFramework.xcconfig; sourceTree = "<group>"; };
+		4C67369625A5211A0041F83D /* tvOS Universal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "tvOS Universal.xcconfig"; path = "../../../Config/tvOS Universal.xcconfig"; sourceTree = "<group>"; };
+		4C67369725A5211A0041F83D /* iOS Universal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "iOS Universal.xcconfig"; path = "../../../Config/iOS Universal.xcconfig"; sourceTree = "<group>"; };
 		4CA730DF24A14FF2006AC99D /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsAzureMessaging.h; sourceTree = "<group>"; };
 		4CA730E324A14FF2006AC99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -624,12 +627,12 @@
 		4CA7310924A15627006AC99D /* WindowsAzureMessaging Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "WindowsAzureMessaging Release.xcconfig"; sourceTree = "<group>"; };
 		4CA7310A24A1565C006AC99D /* iOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = iOS.modulemap; sourceTree = "<group>"; };
 		4CA7310B24A15678006AC99D /* macOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = macOS.modulemap; sourceTree = "<group>"; };
-		4CA7310C24A156C7006AC99D /* iOS WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
-		4CA7310D24A1570D006AC99D /* macOS WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "macOS WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
+		4CA7310C24A156C7006AC99D /* iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = iOS.xcconfig; sourceTree = "<group>"; };
+		4CA7310D24A1570D006AC99D /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
 		4CA7311F24A15A1F006AC99D /* WindowsAzureMessaging.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessaging.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA7312A24A15A25006AC99D /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CA7313B24A15ECF006AC99D /* iOS Tests WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS Tests WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
-		4CA7313C24A15F49006AC99D /* macOS Tests WindowsAzureMessaging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "macOS Tests WindowsAzureMessaging.xcconfig"; sourceTree = "<group>"; };
+		4CA7313B24A15ECF006AC99D /* iOS Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS Tests.xcconfig"; sourceTree = "<group>"; };
+		4CA7313C24A15F49006AC99D /* macOS Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "macOS Tests.xcconfig"; sourceTree = "<group>"; };
 		4CA7313F24A16AB8006AC99D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
 		4CA7314324A16B50006AC99D /* SBRegistration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBRegistration.h; sourceTree = "<group>"; };
 		4CA7314624A16B9B006AC99D /* SBRegistration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBRegistration.m; sourceTree = "<group>"; };
@@ -872,17 +875,20 @@
 			children = (
 				4CA730E324A14FF2006AC99D /* Info.plist */,
 				4CA7310A24A1565C006AC99D /* iOS.modulemap */,
-				4CA7310C24A156C7006AC99D /* iOS WindowsAzureMessaging.xcconfig */,
-				4CA7313B24A15ECF006AC99D /* iOS Tests WindowsAzureMessaging.xcconfig */,
+				4CA7310C24A156C7006AC99D /* iOS.xcconfig */,
+				4CA7313B24A15ECF006AC99D /* iOS Tests.xcconfig */,
+				4C67369725A5211A0041F83D /* iOS Universal.xcconfig */,
 				4CA7310B24A15678006AC99D /* macOS.modulemap */,
-				4CA7310D24A1570D006AC99D /* macOS WindowsAzureMessaging.xcconfig */,
-				4CA7313C24A15F49006AC99D /* macOS Tests WindowsAzureMessaging.xcconfig */,
+				4CA7310D24A1570D006AC99D /* macOS.xcconfig */,
+				4CA7313C24A15F49006AC99D /* macOS Tests.xcconfig */,
 				4C3EEBA424C8BDCA0096C133 /* tvOS.modulemap */,
-				4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */,
-				4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */,
+				4C3EEBA524C8BE1C0096C133 /* tvOS.xcconfig */,
+				4C3EEBA624C8C0B60096C133 /* tvOS Tests.xcconfig */,
+				4C67369625A5211A0041F83D /* tvOS Universal.xcconfig */,
 				4CA7310724A155D1006AC99D /* WindowsAzureMessaging.xcconfig */,
 				4CA7310824A155FB006AC99D /* WindowsAzureMessaging Debug.xcconfig */,
 				4CA7310924A15627006AC99D /* WindowsAzureMessaging Release.xcconfig */,
+				4C67369325A51EB70041F83D /* XCFramework.xcconfig */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -2188,90 +2194,98 @@
 /* Begin XCBuildConfiguration section */
 		4C1047B324AAA0C600FA339E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C67369325A51EB70041F83D /* XCFramework.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4C1047B424AAA0C600FA339E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C67369325A51EB70041F83D /* XCFramework.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4C3EEAEE24C8AAD80096C133 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4C3EEAEF24C8AAD80096C133 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4C3EEAF024C8AAD80096C133 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4C3EEBA624C8C0B60096C133 /* tvOS Tests.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4C3EEAF124C8AAD80096C133 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C3EEBA624C8C0B60096C133 /* tvOS Tests WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4C3EEBA624C8C0B60096C133 /* tvOS Tests.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4C3EEB7624C8B73A0096C133 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4C67369625A5211A0041F83D /* tvOS Universal.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4C3EEB7724C8B73A0096C133 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4C67369625A5211A0041F83D /* tvOS Universal.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4C5C0B9524D9E13600DB2CDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4C5C0B9624D9E13600DB2CDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4C5C0BA524D9E22B00DB2CDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CA7310D24A1570D006AC99D /* macOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4C5C0BA624D9E22B00DB2CDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CA7310D24A1570D006AC99D /* macOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4C5C0BAC24D9E3A200DB2CDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4C5C0BAD24D9E3A200DB2CDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3EEBA524C8BE1C0096C133 /* tvOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -2304,70 +2318,70 @@
 		};
 		4CA730F424A14FF2006AC99D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4CA730F524A14FF2006AC99D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4CA730F724A14FF2006AC99D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7313B24A15ECF006AC99D /* iOS Tests WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4CA7313B24A15ECF006AC99D /* iOS Tests.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4CA730F824A14FF2006AC99D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7313B24A15ECF006AC99D /* iOS Tests WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4CA7313B24A15ECF006AC99D /* iOS Tests.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4CA7311D24A15A1F006AC99D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7313C24A15F49006AC99D /* macOS Tests WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4CA7313C24A15F49006AC99D /* macOS Tests.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4CA7311E24A15A1F006AC99D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7313C24A15F49006AC99D /* macOS Tests WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4CA7313C24A15F49006AC99D /* macOS Tests.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4CA7312824A15A25006AC99D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7310D24A1570D006AC99D /* macOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4CA7310D24A1570D006AC99D /* macOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4CA7312924A15A25006AC99D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7310D24A1570D006AC99D /* macOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4CA7310D24A1570D006AC99D /* macOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		4CA7312D24A15A63006AC99D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4C67369725A5211A0041F83D /* iOS Universal.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		4CA7312E24A15A63006AC99D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CA7310C24A156C7006AC99D /* iOS WindowsAzureMessaging.xcconfig */;
+			baseConfigurationReference = 4C67369725A5211A0041F83D /* iOS Universal.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
