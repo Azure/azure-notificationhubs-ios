@@ -1466,19 +1466,19 @@
 			);
 			projectRoot = "";
 			targets = (
+				4C649E98259A971E00D2BB7C /* WindowsAzureMessaging */,
+				4C1047B124AAA0C600FA339E /* WindowsAzureMessaging XCFramework */,
 				4CA730DE24A14FF2006AC99D /* WindowsAzureMessaging iOS Framework */,
+				4C5C0B9424D9E13600DB2CDD /* WindowsAzureMessaging iOS Documentation */,
 				4CA730E724A14FF2006AC99D /* WindowsAzureMessaging iOS Tests */,
 				4CA7312B24A15A63006AC99D /* WindowsAzureMessaging iOS Universal */,
-				4C5C0B9424D9E13600DB2CDD /* WindowsAzureMessaging iOS Documentation */,
 				4CA7312124A15A25006AC99D /* WindowsAzureMessaging macOS Framework */,
 				4CA7311424A15A1F006AC99D /* WindowsAzureMessaging macOS Tests */,
 				4C5C0BA324D9E22B00DB2CDD /* WindowsAzureMessaging macOS Documentation */,
 				4C3EEADC24C8AAD70096C133 /* WindowsAzureMessaging tvOS Framework */,
+				4C5C0BAA24D9E3A200DB2CDD /* WindowsAzureMessaging tvOS Documentation */,
 				4C3EEAE424C8AAD80096C133 /* WindowsAzureMessaging tvOS Tests */,
 				4C3EEB7424C8B73A0096C133 /* WindowsAzureMessaging tvOS Universal */,
-				4C5C0BAA24D9E3A200DB2CDD /* WindowsAzureMessaging tvOS Documentation */,
-				4C1047B124AAA0C600FA339E /* WindowsAzureMessaging XCFramework */,
-				4C649E98259A971E00D2BB7C /* WindowsAzureMessaging */,
 			);
 		};
 /* End PBXProject section */
@@ -1658,6 +1658,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				$BUILD_DIR/$CONFIGURATION/$PRODUCT_NAME.framework,
+				"$BUILD_DIR/$CONFIGURATION-maccatalyst/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphoneos/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-appletvos/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-appletvsimulator/$PRODUCT_NAME.framework",
 			);
 			name = "Combine XCFramework";
 			outputFileListPaths = (
@@ -1666,7 +1672,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Scripts/build-xcframework.sh\"\n";
+			shellScript = "\"$SRCROOT/../Scripts/combine-xcframework.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4C3EEAFE24C8AB400096C133 /* Verify No Build Settings */ = {
@@ -1783,6 +1789,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/../Scripts/build-framework.sh\" \"$PROJECT_NAME tvOS Framework\" \"appletvsimulator\"\n";
+			showEnvVarsInLog = 0;
 		};
 		4C649EAB259A973F00D2BB7C /* Copy Products */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1837,10 +1844,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.framework,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "DEVICE_FRAMEWORK=\"$BUILD_DIR/$CONFIGURATION-appletvos/$PRODUCT_NAME.framework\"\nSIMULATOR_FRAMEWORK=\"$BUILD_DIR/$CONFIGURATION-appletvsimulator/$PRODUCT_NAME.framework\"\n\"$SRCROOT/../Scripts/combine-frameworks.sh\" \"$DEVICE_FRAMEWORK\" \"$SIMULATOR_FRAMEWORK\" \"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.framework\"\n";
+			showEnvVarsInLog = 0;
 		};
 		4C67347225A36AAF0041F83D /* Combine iOS Universal Framework */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1857,6 +1866,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$BUILT_PRODUCTS_DIR/WindowsAzure.framework,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
