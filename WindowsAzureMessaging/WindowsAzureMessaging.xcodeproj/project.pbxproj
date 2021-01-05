@@ -1475,16 +1475,16 @@
 				4C649E98259A971E00D2BB7C /* WindowsAzureMessaging */,
 				4C1047B124AAA0C600FA339E /* WindowsAzureMessaging XCFramework */,
 				4CA730DE24A14FF2006AC99D /* WindowsAzureMessaging iOS Framework */,
-				4C5C0B9424D9E13600DB2CDD /* WindowsAzureMessaging iOS Documentation */,
 				4CA730E724A14FF2006AC99D /* WindowsAzureMessaging iOS Tests */,
 				4CA7312B24A15A63006AC99D /* WindowsAzureMessaging iOS Universal */,
+				4C5C0B9424D9E13600DB2CDD /* WindowsAzureMessaging iOS Documentation */,
 				4CA7312124A15A25006AC99D /* WindowsAzureMessaging macOS Framework */,
 				4CA7311424A15A1F006AC99D /* WindowsAzureMessaging macOS Tests */,
 				4C5C0BA324D9E22B00DB2CDD /* WindowsAzureMessaging macOS Documentation */,
 				4C3EEADC24C8AAD70096C133 /* WindowsAzureMessaging tvOS Framework */,
-				4C5C0BAA24D9E3A200DB2CDD /* WindowsAzureMessaging tvOS Documentation */,
 				4C3EEAE424C8AAD80096C133 /* WindowsAzureMessaging tvOS Tests */,
 				4C3EEB7424C8B73A0096C133 /* WindowsAzureMessaging tvOS Universal */,
+				4C5C0BAA24D9E3A200DB2CDD /* WindowsAzureMessaging tvOS Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -1736,7 +1736,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Scripts/build-docs.sh\" iOS\n";
+			shellScript = "\"${SRCROOT}/../Scripts/generate-documentation.sh\" iOS\n";
 			showEnvVarsInLog = 0;
 		};
 		4C5C0BA924D9E27A00DB2CDD /* Build Documentation */ = {
@@ -1755,7 +1755,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Scripts/build-docs.sh\" macOS\n";
+			shellScript = "\"${SRCROOT}/../Scripts/generate-documentation.sh\" macOS\n";
 			showEnvVarsInLog = 0;
 		};
 		4C5C0BB024D9E3BE00DB2CDD /* Build Documentation */ = {
@@ -1774,7 +1774,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Scripts/build-docs.sh\" tvOS\n";
+			shellScript = "\"${SRCROOT}/../Scripts/generate-documentation.sh\" tvOS\n";
 			showEnvVarsInLog = 0;
 		};
 		4C649E96259A960300D2BB7C /* Build tvOS Simulator Framework */ = {
