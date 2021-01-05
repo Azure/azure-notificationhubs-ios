@@ -1659,11 +1659,11 @@
 			);
 			inputPaths = (
 				$BUILD_DIR/$CONFIGURATION/$PRODUCT_NAME.framework,
-				"$BUILD_DIR/$CONFIGURATION-maccatalyst/$PRODUCT_NAME.framework",
-				"$BUILD_DIR/$CONFIGURATION-iphoneos/$PRODUCT_NAME.framework",
-				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/$PRODUCT_NAME.framework",
-				"$BUILD_DIR/$CONFIGURATION-appletvos/$PRODUCT_NAME.framework",
-				"$BUILD_DIR/$CONFIGURATION-appletvsimulator/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-maccatalyst/WindowsAzureMessaging.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessaging.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/WindowsAzureMessaging.framework",
+				"$BUILD_DIR/$CONFIGURATION-appletvos/WindowsAzureMessaging.framework",
+				"$BUILD_DIR/$CONFIGURATION-appletvsimulator/WindowsAzureMessaging.framework",
 			);
 			name = "Combine XCFramework";
 			outputFileListPaths = (
@@ -1808,6 +1808,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/../Scripts/copy-products.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		4C649EAC259B8C6C00D2BB7C /* Build iOS Simulator Framework */ = {
 			isa = PBXShellScriptBuildPhase;
