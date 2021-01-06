@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
 
 # Generates the documentation for the project.
-# Usage: build-docs.sh <os-name>
+# Usage: generate-documentation.sh <os-name>
 # Note: it must be run from Xcode.
 
 OS_NAME=$1
