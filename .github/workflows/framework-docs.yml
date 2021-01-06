@@ -37,10 +37,10 @@ jobs:
       run: sudo gem install jazzy --no-document
     
     - name: Build
-      run: /usr/bin/xcodebuild -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" build CODE_SIGNING_ALLOWED=NO
+      run: /usr/bin/xcodebuild -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" build CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=NO
 
     - name: Build Documentation
-      run: /usr/bin/xcodebuild -workspace "$XC_WORKSPACE" -scheme "$XC_DOC_SCHEME" build CODE_SIGNING_ALLOWED=NO
+      run: /usr/bin/xcodebuild -workspace "$XC_WORKSPACE" -scheme "$XC_DOC_SCHEME" build CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=NO
 
     - name: Archive
       run: Scripts/create-archive.sh
