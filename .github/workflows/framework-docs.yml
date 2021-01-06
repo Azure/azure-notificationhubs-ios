@@ -39,7 +39,7 @@ jobs:
       run: /usr/bin/xcodebuild -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" build CODE_SIGNING_ALLOWED=NO
 
     - name: Archive
-      run: Scripts/build-archive.sh
+      run: Scripts/create-archive.sh
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
