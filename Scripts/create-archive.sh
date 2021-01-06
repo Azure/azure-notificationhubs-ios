@@ -35,7 +35,7 @@ verify_framework_prefixes() {
   [ -z "$classes" ]
 }
 for framework in $PRODUCTS_DIR/**/*.framework; do
-  invalid_prefix_classes+=($(verify_framework_prefixes "$framework" "MSAC" "MSPL")) || invalid_prefix_framework+=(${framework#"$PRODUCTS_DIR"/})
+  invalid_prefix_classes+=($(verify_framework_prefixes "$framework" "ANH" "MS" "SB")) || invalid_prefix_framework+=(${framework#"$PRODUCTS_DIR"/})
 done
 if [ ${#invalid_prefix_framework[@]} -ne 0 ]; then
   echo "There are frameworks that contain classes without required prefix: ${invalid_prefix_framework[@]}"
