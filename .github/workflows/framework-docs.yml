@@ -13,6 +13,7 @@ jobs:
       XC_VERSION: ${{ '12.3' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'All Frameworks' }}
+      XC_DOC_SCHEME: ${{ 'All Documentation' }}
     steps:
     - uses: actions/checkout@v2
       with: 
@@ -37,6 +38,9 @@ jobs:
     
     - name: Build
       run: /usr/bin/xcodebuild -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" build CODE_SIGNING_ALLOWED=NO
+
+    - name: Build Documentation
+      run: /usr/bin/xcodebuild -workspace "$XC_WORKSPACE" -scheme "$XC_DOC_SCHEME" build CODE_SIGNING_ALLOWED=NO
 
     - name: Archive
       run: Scripts/create-archive.sh
