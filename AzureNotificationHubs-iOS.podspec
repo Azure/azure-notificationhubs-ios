@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.osx.deployment_target = "10.9"
   s.tvos.deployment_target = "11.0"
-  s.source              = { :http => "https://github.com/Azure/azure-notificationhubs-ios/releases/download/#{s.version}/WindowsAzureMessaging-SDK-Apple-#{s.version}.zip" }
+  s.source              = { :http => "https://github.com/Azure/azure-notificationhubs-ios/releases/download/#{s.version}/WindowsAzureMessaging-SDK-Apple-XCFramework-#{s.version}.zip" }
   s.preserve_path       = "WindowsAzureMessaging-SDK-Apple/README.md"
 
   s.frameworks          = "Foundation", "SystemConfiguration"
