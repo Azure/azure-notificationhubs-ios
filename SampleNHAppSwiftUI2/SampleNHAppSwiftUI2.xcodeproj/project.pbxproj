@@ -49,6 +49,7 @@
 		798DC23925B2D22000075E92 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		798DC23B25B2D35100075E92 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		798DC23D25B2D5CE00075E92 /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
+		798DC24025B2D6C200075E92 /* SampleNHAppSwiftUI2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleNHAppSwiftUI2.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 		798DC21825B2CB0A00075E92 /* SampleNHAppSwiftUI2 */ = {
 			isa = PBXGroup;
 			children = (
+				798DC24025B2D6C200075E92 /* SampleNHAppSwiftUI2.entitlements */,
 				798DC23425B2D0E000075E92 /* Views */,
 				798DC23125B2CC9100075E92 /* ViewModels */,
 				798DC21925B2CB0A00075E92 /* SampleNHAppSwiftUI2App.swift */,
@@ -335,6 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SampleNHAppSwiftUI2/SampleNHAppSwiftUI2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SampleNHAppSwiftUI2/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -357,6 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SampleNHAppSwiftUI2/SampleNHAppSwiftUI2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SampleNHAppSwiftUI2/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
