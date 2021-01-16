@@ -13,6 +13,12 @@
 		798DC22125B2CB0B00075E92 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798DC22025B2CB0B00075E92 /* Preview Assets.xcassets */; };
 		798DC22E25B2CBB900075E92 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798DC22D25B2CBB900075E92 /* WindowsAzureMessaging.framework */; };
 		798DC22F25B2CBB900075E92 /* WindowsAzureMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 798DC22D25B2CBB900075E92 /* WindowsAzureMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		798DC23325B2CCA100075E92 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798DC23225B2CCA100075E92 /* NotificationViewModel.swift */; };
+		798DC23625B2D0EF00075E92 /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798DC23525B2D0EF00075E92 /* TagList.swift */; };
+		798DC23825B2D10600075E92 /* NotificationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798DC23725B2D10600075E92 /* NotificationsList.swift */; };
+		798DC23A25B2D22000075E92 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798DC23925B2D22000075E92 /* Row.swift */; };
+		798DC23C25B2D35100075E92 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798DC23B25B2D35100075E92 /* SetupView.swift */; };
+		798DC23E25B2D5CE00075E92 /* DevSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 798DC23D25B2D5CE00075E92 /* DevSettings.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +43,12 @@
 		798DC22025B2CB0B00075E92 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		798DC22225B2CB0B00075E92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		798DC22D25B2CBB900075E92 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		798DC23225B2CCA100075E92 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		798DC23525B2D0EF00075E92 /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
+		798DC23725B2D10600075E92 /* NotificationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsList.swift; sourceTree = "<group>"; };
+		798DC23925B2D22000075E92 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		798DC23B25B2D35100075E92 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		798DC23D25B2D5CE00075E92 /* DevSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DevSettings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,11 +83,14 @@
 		798DC21825B2CB0A00075E92 /* SampleNHAppSwiftUI2 */ = {
 			isa = PBXGroup;
 			children = (
+				798DC23425B2D0E000075E92 /* Views */,
+				798DC23125B2CC9100075E92 /* ViewModels */,
 				798DC21925B2CB0A00075E92 /* SampleNHAppSwiftUI2App.swift */,
 				798DC21B25B2CB0A00075E92 /* ContentView.swift */,
 				798DC21D25B2CB0B00075E92 /* Assets.xcassets */,
 				798DC22225B2CB0B00075E92 /* Info.plist */,
 				798DC21F25B2CB0B00075E92 /* Preview Content */,
+				798DC23D25B2D5CE00075E92 /* DevSettings.plist */,
 			);
 			path = SampleNHAppSwiftUI2;
 			sourceTree = "<group>";
@@ -94,6 +109,25 @@
 				798DC22D25B2CBB900075E92 /* WindowsAzureMessaging.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		798DC23125B2CC9100075E92 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				798DC23225B2CCA100075E92 /* NotificationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		798DC23425B2D0E000075E92 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				798DC23525B2D0EF00075E92 /* TagList.swift */,
+				798DC23725B2D10600075E92 /* NotificationsList.swift */,
+				798DC23925B2D22000075E92 /* Row.swift */,
+				798DC23B25B2D35100075E92 /* SetupView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +190,7 @@
 			files = (
 				798DC22125B2CB0B00075E92 /* Preview Assets.xcassets in Resources */,
 				798DC21E25B2CB0B00075E92 /* Assets.xcassets in Resources */,
+				798DC23E25B2D5CE00075E92 /* DevSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,8 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798DC23825B2D10600075E92 /* NotificationsList.swift in Sources */,
+				798DC23625B2D0EF00075E92 /* TagList.swift in Sources */,
 				798DC21C25B2CB0A00075E92 /* ContentView.swift in Sources */,
+				798DC23C25B2D35100075E92 /* SetupView.swift in Sources */,
 				798DC21A25B2CB0A00075E92 /* SampleNHAppSwiftUI2App.swift in Sources */,
+				798DC23A25B2D22000075E92 /* Row.swift in Sources */,
+				798DC23325B2CCA100075E92 /* NotificationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
