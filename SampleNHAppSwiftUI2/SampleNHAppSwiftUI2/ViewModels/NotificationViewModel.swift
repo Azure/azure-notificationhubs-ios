@@ -24,13 +24,23 @@ class NotificationViewModel: NSObject, ObservableObject, MSNotificationHubDelega
 
     override init() {
         super.init()
-        let hubName = getPlistInfo(resourceName: "DevSettings", key: "HUB_NAME")
-        let connectionString = getPlistInfo(resourceName: "DevSettings", key: "CONNECTION_STRING")
 
-        MSNotificationHub.setLifecycleDelegate(self)
-        UNUserNotificationCenter.current().delegate = self;
-        MSNotificationHub.setDelegate(self)
-        MSNotificationHub.start(connectionString: connectionString, hubName: hubName)
+        if let path = Bundle.main.path(forResource: "DevSettings", ofType: "plist") {
+            if let configValues = NSDictionary(contentsOfFile: path) {
+                let connectionString = configValues["CONNECTION_STRING"] as? String
+                let hubName = configValues["HUB_NAME"] as? String
+
+                if (!(connectionString ?? "").isEmpty && !(hubName ?? "").isEmpty)
+                {
+                    MSNotificationHub.setLifecycleDelegate(self)
+                    UNUserNotificationCenter.current().delegate = self;
+                    MSNotificationHub.setDelegate(self)
+                    MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!)
+
+                    addTags()
+                }
+            }
+        }
     }
 
     func getPlistInfo(resourceName: String, key: String) -> String {
@@ -38,6 +48,18 @@ class NotificationViewModel: NSObject, ObservableObject, MSNotificationHubDelega
             return ""
         }
         return value
+    }
+
+    func addTags() {
+        // Get language and country code for common tag values
+        let language = Bundle.main.preferredLocalizations.first ?? "<undefined>"
+        let countryCode = NSLocale.current.regionCode ?? "<undefined>"
+
+        // Create tags with type_value format
+        let languageTag = "language_" + language
+        let countryCodeTag = "country_" + countryCode
+
+        MSNotificationHub.addTags([languageTag, countryCodeTag])
     }
 
     @available(iOS 10.0, *)
