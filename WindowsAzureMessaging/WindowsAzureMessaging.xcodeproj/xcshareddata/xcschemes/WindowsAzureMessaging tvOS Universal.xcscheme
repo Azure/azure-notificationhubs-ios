@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1200"
+   LastUpgradeVersion = "1230"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "YES"
-      buildImplicitDependencies = "NO">
+      parallelizeBuildables = "NO"
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C649E98259A971E00D2BB7C"
-               BuildableName = "WindowsAzureMessaging"
-               BlueprintName = "WindowsAzureMessaging"
-               ReferencedContainer = "container:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
+               BlueprintIdentifier = "4C3EEB7424C8B73A0096C133"
+               BuildableName = "WindowsAzureMessaging tvOS Universal"
+               BlueprintName = "WindowsAzureMessaging tvOS Universal"
+               ReferencedContainer = "container:WindowsAzureMessaging.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,10 +50,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C649E98259A971E00D2BB7C"
-            BuildableName = "WindowsAzureMessaging"
-            BlueprintName = "WindowsAzureMessaging"
-            ReferencedContainer = "container:WindowsAzureMessaging/WindowsAzureMessaging.xcodeproj">
+            BlueprintIdentifier = "4C3EEB7424C8B73A0096C133"
+            BuildableName = "WindowsAzureMessaging tvOS Universal"
+            BlueprintName = "WindowsAzureMessaging tvOS Universal"
+            ReferencedContainer = "container:WindowsAzureMessaging.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

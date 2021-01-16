@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "AzureNotificationHubs-iOS"
-  s.version             = "3.1.1"
+  s.version             = "3.1.2"
 
   s.summary             = "Push notifications for consumer and enterprise apps – from any backend to any device platform"
   s.description         = <<-DESC
@@ -15,16 +15,18 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.osx.deployment_target = "10.9"
   s.tvos.deployment_target = "11.0"
-  s.source              = { :http => "https://github.com/Azure/azure-notificationhubs-ios/releases/download/#{s.version}/WindowsAzureMessaging-SDK-Apple-#{s.version}.zip" }
+  s.source              = { :http => "https://github.com/Azure/azure-notificationhubs-ios/releases/download/#{s.version}/WindowsAzureMessaging-SDK-Apple-XCFramework-#{s.version}.zip" }
   s.preserve_path       = "WindowsAzureMessaging-SDK-Apple/README.md"
 
   s.frameworks          = "Foundation", "SystemConfiguration"
   s.ios.frameworks      = "UIKit"
-  s.ios.weak_frameworks = "UserNotifications" 
+  s.tvos.frameworks     = "UIKit"
   s.osx.frameworks      = "AppKit"
+  s.ios.weak_frameworks = "UserNotifications" 
+  s.tvos.weak_frameworks = "UserNotifications" 
   s.osx.weak_frameworks = "UserNotifications" 
-  s.ios.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/iOS/WindowsAzureMessaging.framework"
-  s.osx.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/macOS/WindowsAzureMessaging.framework"
-  s.tvos.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/tvOS/WindowsAzureMessaging.framework"
+  s.ios.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/WindowsAzureMessaging.xcframework"
+  s.tvos.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/WindowsAzureMessaging.xcframework"
+  s.osx.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/WindowsAzureMessaging.xcframework"
 
 end

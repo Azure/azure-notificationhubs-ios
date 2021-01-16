@@ -29,12 +29,15 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
     return [MSLocalStorage upsertInstallation:installation forKey:kLastInstallationKey];
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 + (MSInstallation *)upsertInstallation:(MSInstallation *)installation forKey:(NSString *)key {
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:installation];
     [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:key];
 
     return installation;
 }
+#pragma GCC diagnostic pop
 
 + (MSInstallation *)loadInstallation {
     return [MSLocalStorage loadInstallationForKey:kInstallationKey];
@@ -44,11 +47,14 @@ static NSString *const kEnabledKey = @"MSNH_NotificationHubEnabled";
     return [MSLocalStorage loadInstallationForKey:kLastInstallationKey];
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 + (MSInstallation *)loadInstallationForKey:(NSString *)key {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:key];
 
     return [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
 }
+#pragma GCC diagnostic pop
 
 @end

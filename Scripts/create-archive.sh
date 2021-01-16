@@ -4,12 +4,14 @@
 # Licensed under the MIT License.
 
 # Creates zip archives from frameworks.
-# Usage: build-archive.sh
+# Usage: create-archive.sh
 
 PROJECT_DIR="$(dirname "$0")/.."
 PRODUCT_NAME="WindowsAzureMessaging-SDK-Apple"
 PRODUCTS_DIR="$PROJECT_DIR/$PRODUCT_NAME"
-echo $PRODUCTS_DIR
+
+# Enable extended globbing.
+shopt -s extglob nullglob
 
 # Check if the frameworks are already built.
 if [ ! -d "$PRODUCTS_DIR/iOS" ] || [ ! -d "$PRODUCTS_DIR/macOS" ] || \
@@ -18,21 +20,46 @@ if [ ! -d "$PRODUCTS_DIR/iOS" ] || [ ! -d "$PRODUCTS_DIR/macOS" ] || \
   exit 1
 fi
 
+# Verify prefix for framework classes.
+framework_classes() {
+  nm -gjoUC "$1" | awk '{print $2}' | grep "_OBJC_CLASS_" | cut -d_ -f5-
+}
+verify_framework_prefixes() {
+  local name=${1##*/}
+  name=${name%.*}
+  local classes=$(framework_classes "$1/$name")
+  for prefix in ${@:2}; do
+    classes=$(echo "$classes" | grep -v $prefix)
+  done
+  echo "$classes"
+  [ -z "$classes" ]
+}
+for framework in $PRODUCTS_DIR/**/*.framework; do
+  invalid_prefix_classes+=($(verify_framework_prefixes "$framework" "ANH" "MS" "SB")) || invalid_prefix_framework+=(${framework#"$PRODUCTS_DIR"/})
+done
+if [ ${#invalid_prefix_framework[@]} -ne 0 ]; then
+  echo "There are frameworks that contain classes without required prefix: ${invalid_prefix_framework[@]}"
+  echo "Please fix the prefix for the following classes:"
+  printf '%s\n' "${invalid_prefix_classes[@]}" | sort | uniq
+  # TODO uncomment before release.
+  # exit 1
+fi
+
 # Verify bitcode.
 function verify_bitcode() {
-  name=${1##*/}
+  local name=${1##*/}
   name=${name%.*}
   otool -l "$1/$name" | grep __LLVM > /dev/null
 }
 for framework in \
     $PRODUCTS_DIR/iOS/*.framework \
     $PRODUCTS_DIR/tvOS/*.framework \
-    $PRODUCTS_DIR/XCFramework/*.xcframework/ios-arm*/*.framework \
-    $PRODUCTS_DIR/XCFramework/*.xcframework/tvos-arm*/*.framework; do
+    $PRODUCTS_DIR/XCFramework/*.xcframework/ios-!(*-*)/*.framework \
+    $PRODUCTS_DIR/XCFramework/*.xcframework/tvos-!(*-*)/*.framework; do
   verify_bitcode "$framework" || invalid_bitcode+=(${framework#"$PRODUCTS_DIR"/})
 done
 if [ ${#invalid_bitcode[@]} -ne 0 ]; then
-  echo "There are iOS binaries without valid bitcode: ${invalid_bitcode[@]}"
+  echo "There are iOS/tvOS binaries without valid bitcode: ${invalid_bitcode[@]}"
   exit 1
 fi
 for framework in \
@@ -45,6 +72,33 @@ if [ ${#invalid_bitcode[@]} -ne 0 ]; then
   echo "There are macOS binaries with bitcode (it should not be there): ${invalid_bitcode[@]}"
   exit 1
 fi
+
+# Verify architectures.
+function verify_framework_architectures() {
+  local name=${1##*/}
+  name=${name%.*}
+  local archs=($(lipo -archs "$1/$name"))
+  archs=($(printf '%s\n' "${archs[@]}" | sort))
+  required=($(printf '%s\n' "${@:2}" | sort))
+  if [[ "${archs[@]}" != "${required[@]}" ]]; then
+    echo "${1#$PRODUCTS_DIR/} doesn't contain required architectures. It has '${archs[@]}' but '${required[@]}' are required."
+    return 1
+  fi
+}
+function verify_architectures() {
+  for framework in $PRODUCTS_DIR/$1; do
+    verify_framework_architectures "$framework" ${@:2} || return $?
+  done
+}
+verify_architectures "iOS/*.framework" armv7 armv7s arm64 arm64e i386 x86_64 || exit $?
+verify_architectures "macOS/*.framework" arm64 x86_64 || exit $?
+verify_architectures "tvOS/*.framework" arm64 x86_64 || exit $?
+verify_architectures "XCFramework/*.xcframework/ios-!(*-*)/*.framework" armv7 armv7s arm64 arm64e || exit $?
+verify_architectures "XCFramework/*.xcframework/ios-*-maccatalyst/*.framework" arm64 x86_64 || exit $?
+verify_architectures "XCFramework/*.xcframework/ios-*-simulator/*.framework" arm64 i386 x86_64 || exit $?
+verify_architectures "XCFramework/*.xcframework/macos-*/*.framework" arm64 x86_64 || exit $?
+verify_architectures "XCFramework/*.xcframework/tvos-!(*-*)/*.framework" arm64 || exit $?
+verify_architectures "XCFramework/*.xcframework/tvos-*-simulator/*.framework" arm64 x86_64 || exit $?
 
 # Creates zip archive.
 # Usage: archive <result-name> <list-of-content>
@@ -59,7 +113,7 @@ function archive() {
   cp "$PROJECT_DIR/LICENSE" "$temp_dir/$PRODUCT_NAME"
   cp "$PROJECT_DIR/README.md" "$temp_dir/$PRODUCT_NAME"
   cp "$PROJECT_DIR/CHANGELOG.md" "$temp_dir/$PRODUCT_NAME"
-  cp -R "${@:2}" "$temp_dir/$PRODUCT_NAME"
+  (cd "$PROJECT_DIR" && cp -R "${@:2}" "$temp_dir/$PRODUCT_NAME")
 
   # Remmove old archive if exists.
   if [ -f "$PRODUCTS_DIR/$1" ]; then
@@ -77,14 +131,14 @@ function archive() {
 # Get current version.
 VERSION="$($(dirname "$0")/framework-version.sh)"
 
-# Archive fat frameworks for CocoaPods.
-archive "$PRODUCT_NAME-$VERSION.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
-
 # Archive fat frameworks for Carthage.
 archive "$PRODUCT_NAME-$VERSION.carthage.framework.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
 
+# Archive fat frameworks for CocoaPods.
+archive "$PRODUCT_NAME-$VERSION.zip" "$PRODUCT_NAME/iOS" "$PRODUCT_NAME/macOS" "$PRODUCT_NAME/tvOS"
+
 # Archive XCFrameworks.
-archive "$PRODUCT_NAME-XCFramework-$VERSION.zip" $(ls -d "$PRODUCT_NAME/XCFramework"/*)
+archive "$PRODUCT_NAME-XCFramework-$VERSION.zip" $(cd "$PROJECT_DIR" && ls -d "$PRODUCT_NAME/XCFramework"/*)
 
 # Verify result archives.
 function verify_symlinks() {

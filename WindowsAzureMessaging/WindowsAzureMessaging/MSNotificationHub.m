@@ -172,12 +172,15 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
             }
         }];
     } else {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         UIUserNotificationType allNotificationTypes =
             (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     }
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+#pragma GCC diagnostic pop
 #endif
 }
 

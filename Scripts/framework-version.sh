@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
 
 # Gets or sets framework version.
 # Usage: framework-version.sh               - to get the current version
