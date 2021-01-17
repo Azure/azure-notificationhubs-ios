@@ -1,9 +1,6 @@
-//
-//  TagList.swift
-//  SampleNHAppSwiftUI2
-//
-//  Created by Hyounwoo Sung on 2021/01/16.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 import SwiftUI
 
