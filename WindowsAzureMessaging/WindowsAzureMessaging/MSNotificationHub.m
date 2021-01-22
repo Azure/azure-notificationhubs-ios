@@ -147,7 +147,7 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 - (void)registerForRemoteNotifications {
 #if TARGET_OS_OSX
-    [NSApp registerForRemoteNotificationTypes:(NSRemoteNotificationTypeSound | NSRemoteNotificationTypeBadge)];
+    [NSApp registerForRemoteNotificationTypes:(NSRemoteNotificationTypeSound | NSRemoteNotificationTypeBadge | NSRemoteNotificationTypeAlert)];
 #elif TARGET_OS_IOS
     if (@available(iOS 10.0, maccatalyst 13.0, tvOS 10.0, *)) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];

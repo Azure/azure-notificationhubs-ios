@@ -4,6 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * A protocol for managing tags, adding, deleting and retrieving
+ */
 @protocol MSTaggable
 
 /**

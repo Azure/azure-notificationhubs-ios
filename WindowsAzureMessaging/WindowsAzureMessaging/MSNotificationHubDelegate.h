@@ -7,6 +7,9 @@
 @class MSNotificationHub;
 @class MSNotificationHubMessage;
 
+/**
+ * Protocol for receiving messages from a Notification Hub
+ */
 @protocol MSNotificationHubDelegate <NSObject>
 
 @optional

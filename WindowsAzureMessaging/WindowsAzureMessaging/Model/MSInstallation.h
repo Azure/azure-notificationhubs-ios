@@ -6,6 +6,9 @@
 #import "MSTaggable.h"
 #import <Foundation/Foundation.h>
 
+/**
+ * This class represents an installation.
+ */
 @class MSInstallationTemplate;
 
 /**
