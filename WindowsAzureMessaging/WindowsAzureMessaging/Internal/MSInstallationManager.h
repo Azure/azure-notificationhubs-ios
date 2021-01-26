@@ -9,7 +9,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class MSInstallation;
 @class MSInstallationTemplate;
 @class MSTokenProvider;
-@class MSHttpClient;
 
 typedef void (^InstallationCompletionHandler)(NSError *_Nullable);
 

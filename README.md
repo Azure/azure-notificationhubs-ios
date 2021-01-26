@@ -37,11 +37,11 @@ Below are the steps on how to integrate the Azure Notification Huds SDK in your 
 github "Azure/azure-notificationhubs-ios"
 ```
 
-You can also specify a specific version of the Azure Notification Hubs SDK such as 3.1.1s.
+You can also specify a specific version of the Azure Notification Hubs SDK such as 3.1.3.
 
 ```ruby
-# Get version in the format of X.X.X such as 3.1.1
-github "Azure/azure-notificationhubs-ios" ~> 3.1.1
+# Get version in the format of X.X.X such as 3.1.3
+github "Azure/azure-notificationhubs-ios" ~> 3.1.3
 ```
 
 Once you have this, run `carthage update`.  This will fetch the SDK and put it into the `Carthage/Checkouts` folder.  Open Xcode and drag the `WindowsAzureMessaging.framework` from the `Carthage/Builds/iOS` for iOS or `Carthage/Builds/macOS` for macOS.  Ensure the app target is checked during the import.
@@ -103,11 +103,34 @@ NSString *hubName = @"<hub-name>";
 [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
 ```
 
+By default, the SDK will initialize with the `UNAuthorizationOptions` for alert, badge and sound, however, if you wish to change that, you can use the `startWithConnectionString:hubName:options` method specifying which options you wish to use.
+
+Swift:
+
+```swift
+// Create with alert, badge and sound
+let hubOptions = MSNotificationHubOptions(withOptions: [.alert, .badge, .sound])
+
+// Start SDK
+MSNotificationHub.start(connectionString: connectionString!, hubName: hubName!, options: hubOptions!)
+```
+
+Objective-C:
+
+```objc
+// Create with alert, badge and sound
+MSNotificationHubOptions *hubOptions = [[MSNotificationHubOptions alloc] initWithAuthorizationOptions:(UNAuthorizationOptions)(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)];
+
+// Start SDK
+[MSNotificationHub startWithConnectionString:connectionString hubName:hubName options:hubOptions];
+```
+
 ### Intercepting Push Notifications
 
 You can set up a delegate to be notified whenever a push notification is received in foreground or a background push notification has been tapped by the user.  To get started with intercepting push notifications, implement the `MSNotificationHubDelegate`, and use the `MSNotificationHub.setDelegate` method to set the delegate implementation.  
 
 Swift:
+
 ```swift
 class SetupViewController: MSNotificationHubDelegate // And other imports
 
@@ -132,6 +155,7 @@ func notificationHub(_ notificationHub: MSNotificationHub!, didReceivePushNotifi
 ```
 
 Objective-C:
+
 ```objc
 @interface SetupViewController <MSNotificationHubDelegate /* Other protocols */>
 
@@ -161,6 +185,7 @@ Objective-C:
 One of the ways to target a device or set of devices is through the use of [tags](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-tags-segment-push-message#tags), where you can target a specific tag, or a tag expression.  The Azure Notification Hub SDK for Apple handles this through top level methods that allow you to add, clear, remove and get all tags for the current installation.  In this example, we can add some recommended tags such as the app language preference, and device country code.
 
 Swift:
+
 ```swift
 // Get language and country code for common tag values
 let language = Bundle.main.preferredLocalizations.first!
@@ -174,6 +199,7 @@ MSNotificationHub.addTags([languageTag, countryCodeTag])
 ```
 
 Objective-C:
+
 ```objc
 // Get language and country code for common tag values
 NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
@@ -193,6 +219,7 @@ With [Azure Notification Hub Templates](https://docs.microsoft.com/en-us/azure/n
 For example, we can create a template with a body, some headers, and some tags.
 
 Swift:
+
 ```swift
 // Get language and country code for common tag values
 let language = Bundle.main.preferredLocalizations.first!
@@ -211,6 +238,7 @@ MSNotificationHub.setTemplate(template, forKey: "template1")
 ```
 
 Objective-C:
+
 ```objc
 NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
 NSString *countryCode = [[NSLocale currentLocale] countryCode];

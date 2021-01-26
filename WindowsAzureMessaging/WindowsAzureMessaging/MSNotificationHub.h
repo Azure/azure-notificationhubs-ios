@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class MSInstallation;
 @class MSDebounceInstallationManager;
 @class MSInstallationTemplate;
+@class MSNotificationHubOptions;
 
 /**
  * The Azure Notification Hubs service
@@ -31,6 +32,16 @@ NS_ASSUME_NONNULL_BEGIN
                           hubName:(NSString *)notificationHubName NS_SWIFT_NAME(start(connectionString:hubName:));
 
 /**
+ * Initializes the Notification Hub with the connection string from the Access
+ * Policy, and Hub Name.
+ *
+ * @param connectionString The access policy connection string.
+ * @param notificationHubName The Azure Notification Hub name
+ * @param options The Azure Notification Hubs options such as Authorization Options.
+ */
++ (void)startWithConnectionString:(NSString *)connectionString hubName:(NSString *)notificationHubName options:(MSNotificationHubOptions *)options NS_SWIFT_NAME(start(connectionString:hubName:options:));
+
+/**
  * Initializes the Notification Hub with the installation management delegate to a custom backend.
  * Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
  *
@@ -39,6 +50,17 @@ NS_ASSUME_NONNULL_BEGIN
  * @see MSInstallationEnrichmentDelegate
  */
 + (void)startWithInstallationManagement:(id<MSInstallationManagementDelegate>)managementDelegate;
+
+/**
+ * Initializes the Notification Hub with the installation management delegate to a custom backend and options
+ * Defines the class that implements the optional protocol `MSInstallationEnrichmentDelegate`.
+ *
+ * @param managementDelegate The delegate.
+ * @param options The Azure Notification Hubs options such as Authorization Options.
+ *
+ * @see MSInstallationEnrichmentDelegate
+ */
++ (void)startWithInstallationManagement:(id<MSInstallationManagementDelegate>)managementDelegate options:(MSNotificationHubOptions *)options;
 
 #pragma mark Push Initialization
 

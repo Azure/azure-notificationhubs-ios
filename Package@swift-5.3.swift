@@ -1,11 +1,12 @@
-// swift-tools-version:5.0
-
+// swift-tools-version:5.3
 // Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
 import PackageDescription
 
 let package = Package(
     name: "WindowsAzureMessaging",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v9),
         .macOS(.v10_10),

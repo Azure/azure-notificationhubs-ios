@@ -6,6 +6,9 @@
 #import "MSTaggable.h"
 #import <Foundation/Foundation.h>
 
+/**
+ * Represents an installation template.
+ */
 @interface MSInstallationTemplate : NSObject <MSTaggable, MSChangeTracking>
 
 /**
