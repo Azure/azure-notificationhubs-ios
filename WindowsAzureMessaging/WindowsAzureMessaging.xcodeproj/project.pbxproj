@@ -118,9 +118,9 @@
 		4C1049B924ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1049B724ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h */; };
 		4C1049BB24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
 		4C1049BC24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
-		4C13E51C253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; };
-		4C13E51D253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; };
-		4C13E51E253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; };
+		4C13E51C253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C13E51D253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C13E51E253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C13E535253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };
 		4C13E536253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };
 		4C13E537253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };

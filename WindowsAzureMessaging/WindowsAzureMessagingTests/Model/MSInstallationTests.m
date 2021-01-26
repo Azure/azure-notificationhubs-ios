@@ -80,6 +80,28 @@
     XCTAssertTrue([installation.tags count] == 0, @"Installation tags count actually is %lul", [installation.tags count]);
 }
 
+- (void)testInstallationInequality {
+    // If
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    NSDate *expirationDate = [dateFormatter dateFromString:@"2021-01-01T00:00:00"];
+    NSString *installationId = @"installationID";
+    NSString *pushChannel = @"740f4707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bb78ad";
+    
+    MSInstallation *installation = [MSInstallation new];
+    installation.installationId = installationId;
+    installation.pushChannel = pushChannel;
+    
+    MSInstallation *installation2 = [MSInstallation new];
+    installation2.installationId = @"ABC";
+    installation2.pushChannel = pushChannel;
+    installation2.expirationTime = expirationDate;
+    
+    // Then
+    XCTAssertFalse([installation isEqual:installation2]);
+}
+
 - (void)testInstallationsEquality {
     // If
     MSInstallationTemplate *templateA = [MSInstallationTemplate new];
@@ -94,13 +116,23 @@
 
     NSString *installationId = @"installationID";
     NSString *key = @"key";
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    NSDate *expirationDate = [dateFormatter dateFromString:@"2021-01-01T00:00:00"];
+    NSString *pushChannel = @"740f4707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bb78ad";
+    
     MSInstallation *installation = [MSInstallation new];
     installation.installationId = installationId;
+    installation.expirationTime = expirationDate;
+    installation.pushChannel = pushChannel;
     [installation addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     [installation setTemplate:templateA forKey:key];
 
     MSInstallation *installation2 = [MSInstallation new];
     installation2.installationId = installationId;
+    installation2.expirationTime = expirationDate;
+    installation2.pushChannel = pushChannel;
     [installation2 addTags:@[ @"tag1", @"tag2", @"tag3" ]];
     [installation2 setTemplate:templateB forKey:key];
 
