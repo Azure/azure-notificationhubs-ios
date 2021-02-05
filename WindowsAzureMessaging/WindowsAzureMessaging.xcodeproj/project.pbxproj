@@ -1423,9 +1423,9 @@
 		4CA730D624A14FF2006AC99D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = MS;
+				CLASSPREFIX = ANH;
 				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = "Matthew Podwysocki";
+				ORGANIZATIONNAME = "Microsoft Corporation";
 				TargetAttributes = {
 					4C1047B124AAA0C600FA339E = {
 						CreatedOnToolsVersion = 11.5;
@@ -1879,14 +1879,14 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessagingframework",
+				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessaging.framework",
 				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/WindowsAzureMessaging.framework",
 			);
 			name = "Combine iOS Universal Framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$BUILT_PRODUCTS_DIR/WindowsAzure.framework,
+				$BUILT_PRODUCTS_DIR/WindowsAzureMessaging.framework,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
