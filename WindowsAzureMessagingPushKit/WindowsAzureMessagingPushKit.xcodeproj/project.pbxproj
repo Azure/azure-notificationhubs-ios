@@ -1,0 +1,921 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		4CD16CA525CDF1970047C7D4 /* WindowsAzureMessagingPushKit iOS Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4CD16CA625CDF1970047C7D4 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessagingPushKit iOS Universal" */;
+			buildPhases = (
+				4CD16CC025CDF1B60047C7D4 /* Build iOS Device Framework */,
+				4CD16CC125CDF2310047C7D4 /* Build iOS Simulator Framework */,
+				4CD16CC225CDF2760047C7D4 /* Combine iOS Universal Framework */,
+			);
+			dependencies = (
+			);
+			name = "WindowsAzureMessagingPushKit iOS Universal";
+			productName = "WindowsAzureMessagingPushKit iOS Universal";
+		};
+		4CD16CE725CDF5A20047C7D4 /* WindowsAzureMessagingPushKit iOS Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4CD16CEA25CDF5A20047C7D4 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessagingPushKit iOS Documentation" */;
+			buildPhases = (
+				4CD16CF925CDF5C20047C7D4 /* Build Documentation */,
+			);
+			dependencies = (
+				4CD16CF825CDF5B40047C7D4 /* PBXTargetDependency */,
+			);
+			name = "WindowsAzureMessagingPushKit iOS Documentation";
+			productName = "WindowsAzureMessagingPushKit iOS Documentation";
+		};
+		4CD16CFA25CDF6200047C7D4 /* WindowsAzureMessagingPushKit XCFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4CD16CFB25CDF6200047C7D4 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessagingPushKit XCFramework" */;
+			buildPhases = (
+				4CD16D1725CDF66B0047C7D4 /* Build Mac Catalyst Framework */,
+				4CD16D1825CDF7F50047C7D4 /* Combine XCFramework */,
+			);
+			dependencies = (
+				4CD16D1425CDF6590047C7D4 /* PBXTargetDependency */,
+				4CD16D1625CDF6590047C7D4 /* PBXTargetDependency */,
+			);
+			name = "WindowsAzureMessagingPushKit XCFramework";
+			productName = "WindowsAzureMessagingPushKit XCFramework";
+		};
+		4CD16D1925CDF9D30047C7D4 /* WindowsAzureMessagingPushKit */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4CD16D1A25CDF9D30047C7D4 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessagingPushKit" */;
+			buildPhases = (
+				4CD16D3C25CDFA260047C7D4 /* Copy Products */,
+			);
+			dependencies = (
+				4CD16D3B25CDF9F90047C7D4 /* PBXTargetDependency */,
+			);
+			name = WindowsAzureMessagingPushKit;
+			productName = WindowsAzureMessagingPushKit;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		4CD16BCB25CCD3930047C7D4 /* WindowsAzureMessagingPushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD16BC125CCD3930047C7D4 /* WindowsAzureMessagingPushKit.framework */; };
+		4CD16BD025CCD3930047C7D4 /* WindowsAzureMessagingPushKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD16BCF25CCD3930047C7D4 /* WindowsAzureMessagingPushKitTests.m */; };
+		4CD16BE025CCD4700047C7D4 /* ANHPushKitHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD16BDF25CCD4700047C7D4 /* ANHPushKitHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CD16BE425CCD5600047C7D4 /* ANHPushKitHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD16BE325CCD5600047C7D4 /* ANHPushKitHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CD16BE825CCD70E0047C7D4 /* ANHPushKitHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD16BE725CCD70E0047C7D4 /* ANHPushKitHubOptions.m */; };
+		4CD16BEC25CCDA640047C7D4 /* ANHPushKitHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD16BEB25CCDA4E0047C7D4 /* ANHPushKitHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CD16BFD25CCDCB10047C7D4 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD16BFC25CCDCB10047C7D4 /* PushKit.framework */; };
+		4CD16C4B25CDA2E70047C7D4 /* WindowsAzureMessagingPushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD16C4225CDA2E60047C7D4 /* WindowsAzureMessagingPushKit.framework */; };
+		4CD16C6525CDA31C0047C7D4 /* ANHPushKitHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD16BE325CCD5600047C7D4 /* ANHPushKitHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CD16C6E25CDA3220047C7D4 /* ANHPushKitHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD16BDF25CCD4700047C7D4 /* ANHPushKitHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CD16C7E25CDA3810047C7D4 /* WindowsAzureMessagingPushKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD16C4425CDA2E60047C7D4 /* WindowsAzureMessagingPushKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CD16C7F25CDA3820047C7D4 /* WindowsAzureMessagingPushKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD16C4425CDA2E60047C7D4 /* WindowsAzureMessagingPushKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CD16BCC25CCD3930047C7D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CD16BB825CCD3920047C7D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CD16BC025CCD3930047C7D4;
+			remoteInfo = WindowsAzureMessagingPushKit;
+		};
+		4CD16C4C25CDA2E70047C7D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CD16BB825CCD3920047C7D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CD16C4125CDA2E60047C7D4;
+			remoteInfo = WindowsAzureMessagingPushKit;
+		};
+		4CD16CF725CDF5B40047C7D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CD16BB825CCD3920047C7D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CD16CA525CDF1970047C7D4;
+			remoteInfo = "WindowsAzureMessagingPushKit iOS Universal";
+		};
+		4CD16D1325CDF6590047C7D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CD16BB825CCD3920047C7D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CD16CA525CDF1970047C7D4;
+			remoteInfo = "WindowsAzureMessagingPushKit iOS Universal";
+		};
+		4CD16D1525CDF6590047C7D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CD16BB825CCD3920047C7D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CD16C4125CDA2E60047C7D4;
+			remoteInfo = "WindowsAzureMessagingPushKit macOS Framework";
+		};
+		4CD16D3A25CDF9F90047C7D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CD16BB825CCD3920047C7D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CD16CFA25CDF6200047C7D4;
+			remoteInfo = "WindowsAzureMessagingPushKit XCFramework";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4CD16BC125CCD3930047C7D4 /* WindowsAzureMessagingPushKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessagingPushKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD16BCA25CCD3930047C7D4 /* WindowsAzureMessagingPushKit iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "WindowsAzureMessagingPushKit iOS Tests.xctest"; path = WindowsAzureMessagingPushKit.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD16BCF25CCD3930047C7D4 /* WindowsAzureMessagingPushKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowsAzureMessagingPushKitTests.m; sourceTree = "<group>"; };
+		4CD16BD125CCD3930047C7D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD16BDF25CCD4700047C7D4 /* ANHPushKitHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHPushKitHub.h; sourceTree = "<group>"; };
+		4CD16BE325CCD5600047C7D4 /* ANHPushKitHubOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHPushKitHubOptions.h; sourceTree = "<group>"; };
+		4CD16BE725CCD70E0047C7D4 /* ANHPushKitHubOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHPushKitHubOptions.m; sourceTree = "<group>"; };
+		4CD16BEB25CCDA4E0047C7D4 /* ANHPushKitHubDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHPushKitHubDelegate.h; sourceTree = "<group>"; };
+		4CD16BF525CCDBB70047C7D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD16BFC25CCDCB10047C7D4 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/PushKit.framework; sourceTree = DEVELOPER_DIR; };
+		4CD16C0425CCDE0D0047C7D4 /* WindowsAzureMessagingPushKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WindowsAzureMessagingPushKit.xcconfig; sourceTree = "<group>"; };
+		4CD16C0525CCDE560047C7D4 /* WindowsAzureMessagingPushKit Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "WindowsAzureMessagingPushKit Debug.xcconfig"; sourceTree = "<group>"; };
+		4CD16C0625CCDE8E0047C7D4 /* WindowsAzureMessagingPushKit Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "WindowsAzureMessagingPushKit Release.xcconfig"; sourceTree = "<group>"; };
+		4CD16C0B25CCDF190047C7D4 /* iOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = iOS.modulemap; sourceTree = "<group>"; };
+		4CD16C0C25CCDFAB0047C7D4 /* macOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = macOS.modulemap; sourceTree = "<group>"; };
+		4CD16C0D25CCDFDB0047C7D4 /* XCFramework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = XCFramework.xcconfig; sourceTree = "<group>"; };
+		4CD16C0E25CCE0280047C7D4 /* iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = iOS.xcconfig; sourceTree = "<group>"; };
+		4CD16C0F25CCE0600047C7D4 /* iOS Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS Tests.xcconfig"; sourceTree = "<group>"; };
+		4CD16C1025CCE0970047C7D4 /* iOS Universal.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS Universal.xcconfig"; sourceTree = "<group>"; };
+		4CD16C1125CCE0E00047C7D4 /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
+		4CD16C1225CCE2790047C7D4 /* macOS Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "macOS Tests.xcconfig"; sourceTree = "<group>"; };
+		4CD16C4225CDA2E60047C7D4 /* WindowsAzureMessagingPushKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessagingPushKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD16C4425CDA2E60047C7D4 /* WindowsAzureMessagingPushKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsAzureMessagingPushKit.h; sourceTree = "<group>"; };
+		4CD16C4A25CDA2E70047C7D4 /* WindowsAzureMessagingPushKit.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessagingPushKit.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CD16BBE25CCD3930047C7D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD16BFD25CCDCB10047C7D4 /* PushKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16BC725CCD3930047C7D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD16BCB25CCD3930047C7D4 /* WindowsAzureMessagingPushKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16C3F25CDA2E60047C7D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16C4725CDA2E70047C7D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD16C4B25CDA2E70047C7D4 /* WindowsAzureMessagingPushKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4CD16BB725CCD3920047C7D4 = {
+			isa = PBXGroup;
+			children = (
+				4CD16BC325CCD3930047C7D4 /* WindowsAzureMessagingPushKit */,
+				4CD16BCE25CCD3930047C7D4 /* WindowsAzureMessagingPushKitTests */,
+				4CD16BC225CCD3930047C7D4 /* Products */,
+				4CD16BFB25CCDCB10047C7D4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4CD16BC225CCD3930047C7D4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CD16BC125CCD3930047C7D4 /* WindowsAzureMessagingPushKit.framework */,
+				4CD16BCA25CCD3930047C7D4 /* WindowsAzureMessagingPushKit iOS Tests.xctest */,
+				4CD16C4225CDA2E60047C7D4 /* WindowsAzureMessagingPushKit.framework */,
+				4CD16C4A25CDA2E70047C7D4 /* WindowsAzureMessagingPushKit.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CD16BC325CCD3930047C7D4 /* WindowsAzureMessagingPushKit */ = {
+			isa = PBXGroup;
+			children = (
+				4CD16BFF25CCDDA60047C7D4 /* Support */,
+				4CD16BDF25CCD4700047C7D4 /* ANHPushKitHub.h */,
+				4CD16BEB25CCDA4E0047C7D4 /* ANHPushKitHubDelegate.h */,
+				4CD16BE325CCD5600047C7D4 /* ANHPushKitHubOptions.h */,
+				4CD16BE725CCD70E0047C7D4 /* ANHPushKitHubOptions.m */,
+				4CD16C4425CDA2E60047C7D4 /* WindowsAzureMessagingPushKit.h */,
+			);
+			path = WindowsAzureMessagingPushKit;
+			sourceTree = "<group>";
+		};
+		4CD16BCE25CCD3930047C7D4 /* WindowsAzureMessagingPushKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				4CD16BCF25CCD3930047C7D4 /* WindowsAzureMessagingPushKitTests.m */,
+				4CD16BD125CCD3930047C7D4 /* Info.plist */,
+			);
+			path = WindowsAzureMessagingPushKitTests;
+			sourceTree = "<group>";
+		};
+		4CD16BFB25CCDCB10047C7D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CD16BFC25CCDCB10047C7D4 /* PushKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CD16BFF25CCDDA60047C7D4 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4CD16BF525CCDBB70047C7D4 /* Info.plist */,
+				4CD16C0B25CCDF190047C7D4 /* iOS.modulemap */,
+				4CD16C0E25CCE0280047C7D4 /* iOS.xcconfig */,
+				4CD16C0F25CCE0600047C7D4 /* iOS Tests.xcconfig */,
+				4CD16C1025CCE0970047C7D4 /* iOS Universal.xcconfig */,
+				4CD16C0C25CCDFAB0047C7D4 /* macOS.modulemap */,
+				4CD16C1125CCE0E00047C7D4 /* macOS.xcconfig */,
+				4CD16C1225CCE2790047C7D4 /* macOS Tests.xcconfig */,
+				4CD16C0425CCDE0D0047C7D4 /* WindowsAzureMessagingPushKit.xcconfig */,
+				4CD16C0525CCDE560047C7D4 /* WindowsAzureMessagingPushKit Debug.xcconfig */,
+				4CD16C0625CCDE8E0047C7D4 /* WindowsAzureMessagingPushKit Release.xcconfig */,
+				4CD16C0D25CCDFDB0047C7D4 /* XCFramework.xcconfig */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4CD16BBC25CCD3930047C7D4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD16C7E25CDA3810047C7D4 /* WindowsAzureMessagingPushKit.h in Headers */,
+				4CD16BE425CCD5600047C7D4 /* ANHPushKitHubOptions.h in Headers */,
+				4CD16BEC25CCDA640047C7D4 /* ANHPushKitHubDelegate.h in Headers */,
+				4CD16BE025CCD4700047C7D4 /* ANHPushKitHub.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16C3D25CDA2E60047C7D4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD16C7F25CDA3820047C7D4 /* WindowsAzureMessagingPushKit.h in Headers */,
+				4CD16C6525CDA31C0047C7D4 /* ANHPushKitHubOptions.h in Headers */,
+				4CD16C6E25CDA3220047C7D4 /* ANHPushKitHub.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4CD16BC025CCD3930047C7D4 /* WindowsAzureMessagingPushKit iOS Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD16BD525CCD3930047C7D4 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingPushKit iOS Framework" */;
+			buildPhases = (
+				4CD16C1B25CCE4C40047C7D4 /* Verify No Build Settings */,
+				4CD16BBC25CCD3930047C7D4 /* Headers */,
+				4CD16BBD25CCD3930047C7D4 /* Sources */,
+				4CD16BBE25CCD3930047C7D4 /* Frameworks */,
+				4CD16BBF25CCD3930047C7D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WindowsAzureMessagingPushKit iOS Framework";
+			productName = WindowsAzureMessagingPushKit;
+			productReference = 4CD16BC125CCD3930047C7D4 /* WindowsAzureMessagingPushKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4CD16BC925CCD3930047C7D4 /* WindowsAzureMessagingPushKit iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD16BD825CCD3930047C7D4 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingPushKit iOS Tests" */;
+			buildPhases = (
+				4CD16BC625CCD3930047C7D4 /* Sources */,
+				4CD16BC725CCD3930047C7D4 /* Frameworks */,
+				4CD16BC825CCD3930047C7D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CD16BCD25CCD3930047C7D4 /* PBXTargetDependency */,
+			);
+			name = "WindowsAzureMessagingPushKit iOS Tests";
+			productName = WindowsAzureMessagingPushKitTests;
+			productReference = 4CD16BCA25CCD3930047C7D4 /* WindowsAzureMessagingPushKit iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4CD16C4125CDA2E60047C7D4 /* WindowsAzureMessagingPushKit macOS Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD16C5325CDA2E70047C7D4 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingPushKit macOS Framework" */;
+			buildPhases = (
+				4CD16C9425CDA4110047C7D4 /* Verify No Build Settings */,
+				4CD16C3D25CDA2E60047C7D4 /* Headers */,
+				4CD16C3E25CDA2E60047C7D4 /* Sources */,
+				4CD16C3F25CDA2E60047C7D4 /* Frameworks */,
+				4CD16C4025CDA2E60047C7D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WindowsAzureMessagingPushKit macOS Framework";
+			productName = WindowsAzureMessagingPushKit;
+			productReference = 4CD16C4225CDA2E60047C7D4 /* WindowsAzureMessagingPushKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4CD16C4925CDA2E70047C7D4 /* WindowsAzureMessagingPushKit macOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD16C5625CDA2E70047C7D4 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingPushKit macOS Tests" */;
+			buildPhases = (
+				4CD16C4625CDA2E70047C7D4 /* Sources */,
+				4CD16C4725CDA2E70047C7D4 /* Frameworks */,
+				4CD16C4825CDA2E70047C7D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CD16C4D25CDA2E70047C7D4 /* PBXTargetDependency */,
+			);
+			name = "WindowsAzureMessagingPushKit macOS Tests";
+			productName = WindowsAzureMessagingPushKitTests;
+			productReference = 4CD16C4A25CDA2E70047C7D4 /* WindowsAzureMessagingPushKit.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CD16BB825CCD3920047C7D4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ANH;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					4CD16BC025CCD3930047C7D4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4CD16BC925CCD3930047C7D4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4CD16C4125CDA2E60047C7D4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4CD16C4925CDA2E70047C7D4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4CD16CA525CDF1970047C7D4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4CD16CE725CDF5A20047C7D4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4CD16CFA25CDF6200047C7D4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4CD16D1925CDF9D30047C7D4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 4CD16BBB25CCD3920047C7D4 /* Build configuration list for PBXProject "WindowsAzureMessagingPushKit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4CD16BB725CCD3920047C7D4;
+			productRefGroup = 4CD16BC225CCD3930047C7D4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CD16D1925CDF9D30047C7D4 /* WindowsAzureMessagingPushKit */,
+				4CD16CFA25CDF6200047C7D4 /* WindowsAzureMessagingPushKit XCFramework */,
+				4CD16BC025CCD3930047C7D4 /* WindowsAzureMessagingPushKit iOS Framework */,
+				4CD16BC925CCD3930047C7D4 /* WindowsAzureMessagingPushKit iOS Tests */,
+				4CD16CE725CDF5A20047C7D4 /* WindowsAzureMessagingPushKit iOS Documentation */,
+				4CD16CA525CDF1970047C7D4 /* WindowsAzureMessagingPushKit iOS Universal */,
+				4CD16C4125CDA2E60047C7D4 /* WindowsAzureMessagingPushKit macOS Framework */,
+				4CD16C4925CDA2E70047C7D4 /* WindowsAzureMessagingPushKit macOS Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CD16BBF25CCD3930047C7D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16BC825CCD3930047C7D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16C4025CDA2E60047C7D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16C4825CDA2E70047C7D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CD16C1B25CCE4C40047C7D4 /* Verify No Build Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Verify No Build Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/VerifyNoBuildSettings.swift\" ${PROJECT_NAME}.xcodeproj/project.pbxproj\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD16C9425CDA4110047C7D4 /* Verify No Build Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Verify No Build Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/VerifyNoBuildSettings.swift\" ${PROJECT_NAME}.xcodeproj/project.pbxproj\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD16CC025CDF1B60047C7D4 /* Build iOS Device Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build iOS Device Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessagingPushKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/../Scripts/build-framework.sh\" \"$PROJECT_NAME iOS Framework\" \"iphoneos\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD16CC125CDF2310047C7D4 /* Build iOS Simulator Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build iOS Simulator Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/WindowsAzureMessagingPushKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/../Scripts/build-framework.sh\" \"$PROJECT_NAME iOS Framework\" \"iphonesimulator\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD16CC225CDF2760047C7D4 /* Combine iOS Universal Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Combine iOS Universal Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.framework,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "DEVICE_FRAMEWORK=\"$BUILD_DIR/$CONFIGURATION-iphoneos/$PRODUCT_NAME.framework\"\nSIMULATOR_FRAMEWORK=\"$BUILD_DIR/$CONFIGURATION-iphonesimulator/$PRODUCT_NAME.framework\"\n\"$SRCROOT/../Scripts/combine-frameworks.sh\" \"$DEVICE_FRAMEWORK\" \"$SIMULATOR_FRAMEWORK\" \"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.framework\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD16CF925CDF5C20047C7D4 /* Build Documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Documentation";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Scripts/generate-documentation.sh\" iOS\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD16D1725CDF66B0047C7D4 /* Build Mac Catalyst Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Mac Catalyst Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$BUILD_DIR/$CONFIGURATION-maccatalyst/$PRODUCT_NAME.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/../Scripts/build-framework.sh\" \"$PROJECT_NAME iOS Framework\" \"maccatalyst\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD16D1825CDF7F50047C7D4 /* Combine XCFramework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				$BUILD_DIR/$CONFIGURATION/$PRODUCT_NAME.framework,
+				"$BUILD_DIR/$CONFIGURATION-maccatalyst/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphoneos/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/$PRODUCT_NAME.framework",
+			);
+			name = "Combine XCFramework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/../Scripts/combine-xcframework.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD16D3C25CDFA260047C7D4 /* Copy Products */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Products";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/../Scripts/copy-products.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CD16BBD25CCD3930047C7D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD16BE825CCD70E0047C7D4 /* ANHPushKitHubOptions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16BC625CCD3930047C7D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD16BD025CCD3930047C7D4 /* WindowsAzureMessagingPushKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16C3E25CDA2E60047C7D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD16C4625CDA2E70047C7D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CD16BCD25CCD3930047C7D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CD16BC025CCD3930047C7D4 /* WindowsAzureMessagingPushKit iOS Framework */;
+			targetProxy = 4CD16BCC25CCD3930047C7D4 /* PBXContainerItemProxy */;
+		};
+		4CD16C4D25CDA2E70047C7D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CD16C4125CDA2E60047C7D4 /* WindowsAzureMessagingPushKit macOS Framework */;
+			targetProxy = 4CD16C4C25CDA2E70047C7D4 /* PBXContainerItemProxy */;
+		};
+		4CD16CF825CDF5B40047C7D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CD16CA525CDF1970047C7D4 /* WindowsAzureMessagingPushKit iOS Universal */;
+			targetProxy = 4CD16CF725CDF5B40047C7D4 /* PBXContainerItemProxy */;
+		};
+		4CD16D1425CDF6590047C7D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CD16CA525CDF1970047C7D4 /* WindowsAzureMessagingPushKit iOS Universal */;
+			targetProxy = 4CD16D1325CDF6590047C7D4 /* PBXContainerItemProxy */;
+		};
+		4CD16D1625CDF6590047C7D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CD16C4125CDA2E60047C7D4 /* WindowsAzureMessagingPushKit macOS Framework */;
+			targetProxy = 4CD16D1525CDF6590047C7D4 /* PBXContainerItemProxy */;
+		};
+		4CD16D3B25CDF9F90047C7D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CD16CFA25CDF6200047C7D4 /* WindowsAzureMessagingPushKit XCFramework */;
+			targetProxy = 4CD16D3A25CDF9F90047C7D4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4CD16BD325CCD3930047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C0525CCDE560047C7D4 /* WindowsAzureMessagingPushKit Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4CD16BD425CCD3930047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C0625CCDE8E0047C7D4 /* WindowsAzureMessagingPushKit Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4CD16BD625CCD3930047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C0E25CCE0280047C7D4 /* iOS.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4CD16BD725CCD3930047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C0E25CCE0280047C7D4 /* iOS.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4CD16BD925CCD3930047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C0F25CCE0600047C7D4 /* iOS Tests.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4CD16BDA25CCD3930047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C0F25CCE0600047C7D4 /* iOS Tests.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4CD16C5425CDA2E70047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C1125CCE0E00047C7D4 /* macOS.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4CD16C5525CDA2E70047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C1125CCE0E00047C7D4 /* macOS.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4CD16C5725CDA2E70047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C1225CCE2790047C7D4 /* macOS Tests.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4CD16C5825CDA2E70047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C1225CCE2790047C7D4 /* macOS Tests.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4CD16CA725CDF1970047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C1025CCE0970047C7D4 /* iOS Universal.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4CD16CA825CDF1970047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD16C1025CCE0970047C7D4 /* iOS Universal.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		4CD16CE825CDF5A20047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4CD16CE925CDF5A20047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4CD16CFC25CDF6200047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4CD16CFD25CDF6200047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4CD16D1B25CDF9D30047C7D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4CD16D1C25CDF9D30047C7D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S4V3D7CHJR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CD16BBB25CCD3920047C7D4 /* Build configuration list for PBXProject "WindowsAzureMessagingPushKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16BD325CCD3930047C7D4 /* Debug */,
+				4CD16BD425CCD3930047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD16BD525CCD3930047C7D4 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingPushKit iOS Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16BD625CCD3930047C7D4 /* Debug */,
+				4CD16BD725CCD3930047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD16BD825CCD3930047C7D4 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingPushKit iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16BD925CCD3930047C7D4 /* Debug */,
+				4CD16BDA25CCD3930047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD16C5325CDA2E70047C7D4 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingPushKit macOS Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16C5425CDA2E70047C7D4 /* Debug */,
+				4CD16C5525CDA2E70047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD16C5625CDA2E70047C7D4 /* Build configuration list for PBXNativeTarget "WindowsAzureMessagingPushKit macOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16C5725CDA2E70047C7D4 /* Debug */,
+				4CD16C5825CDA2E70047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD16CA625CDF1970047C7D4 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessagingPushKit iOS Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16CA725CDF1970047C7D4 /* Debug */,
+				4CD16CA825CDF1970047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD16CEA25CDF5A20047C7D4 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessagingPushKit iOS Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16CE825CDF5A20047C7D4 /* Debug */,
+				4CD16CE925CDF5A20047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD16CFB25CDF6200047C7D4 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessagingPushKit XCFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16CFC25CDF6200047C7D4 /* Debug */,
+				4CD16CFD25CDF6200047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD16D1A25CDF9D30047C7D4 /* Build configuration list for PBXAggregateTarget "WindowsAzureMessagingPushKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD16D1B25CDF9D30047C7D4 /* Debug */,
+				4CD16D1C25CDF9D30047C7D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CD16BB825CCD3920047C7D4 /* Project object */;
+}

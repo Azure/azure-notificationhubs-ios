@@ -5,7 +5,7 @@
 #import <UserNotifications/UserNotifications.h>
 
 #import "ANHUserNotificationCenterDelegateForwarder.h"
-#import "MSNotificationHub.h"
+#import "ANHNotificationHub.h"
 
 static dispatch_once_t swizzlingOnceToken;
 
@@ -91,7 +91,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didReceiveRemoteNotification:notification.request.content.userInfo];
+    [ANHNotificationHub didReceiveRemoteNotification:notification.request.content.userInfo];
     if (!originalImp) {
 
         // No original implementation, we have to call the completion handler ourselves with the default behavior.
@@ -116,7 +116,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didReceiveRemoteNotification:response.notification.request.content.userInfo];
+    [ANHNotificationHub didReceiveRemoteNotification:response.notification.request.content.userInfo];
     if (!originalImp) {
 
         // No original implementation, we have to call the completion handler ourselves.

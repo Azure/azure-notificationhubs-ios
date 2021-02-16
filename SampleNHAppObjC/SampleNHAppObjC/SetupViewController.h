@@ -7,7 +7,7 @@
 #import "TagTableViewCell.h"
 #import "NotificationsTableViewController.h"
 
-@interface SetupViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, MSNotificationHubDelegate>
+@interface SetupViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *deviceTokenLabel;
 @property (weak, nonatomic) IBOutlet UILabel *installationIdLabel;
 @property (weak, nonatomic) IBOutlet UITextField *addNewTagTextField;

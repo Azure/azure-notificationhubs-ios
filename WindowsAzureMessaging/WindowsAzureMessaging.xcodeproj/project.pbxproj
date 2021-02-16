@@ -118,12 +118,12 @@
 		4C1049B924ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1049B724ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h */; };
 		4C1049BB24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
 		4C1049BC24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */; };
-		4C13E51C253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C13E51D253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C13E51E253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C13E535253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };
-		4C13E536253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };
-		4C13E537253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */; };
+		4C13E51C253E4B9A0068A1B7 /* ANHNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* ANHNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C13E51D253E4B9A0068A1B7 /* ANHNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* ANHNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C13E51E253E4B9A0068A1B7 /* ANHNotificationHubOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13E51B253E4B9A0068A1B7 /* ANHNotificationHubOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C13E535253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* ANHNotificationHubOptions.m */; };
+		4C13E536253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* ANHNotificationHubOptions.m */; };
+		4C13E537253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13E534253E4C340068A1B7 /* ANHNotificationHubOptions.m */; };
 		4C3EEAFF24C8ABAA0096C133 /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319624A1872F006AC99D /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C3EEB0024C8ABB40096C133 /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7319924A18759006AC99D /* SBLocalStorage.m */; };
 		4C3EEB0124C8ABB80096C133 /* SBNotificationHubHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7314A24A16BC6006AC99D /* SBNotificationHubHelper.h */; };
@@ -156,40 +156,39 @@
 		4C3EEB1C24C8AD640096C133 /* ANHUserNotificationCenterDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1049AE24ABE92100FA339E /* ANHUserNotificationCenterDelegateForwarder.h */; };
 		4C3EEB1D24C8AD680096C133 /* ANHUserNotificationCenterDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1049B124ABE96E00FA339E /* ANHUserNotificationCenterDelegateForwarder.m */; };
 		4C3EEB1E24C8ADC40096C133 /* ANHApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732F224A3DAC2006AC99D /* ANHApplication.h */; };
-		4C3EEB1F24C8ADC70096C133 /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F324A1C2A2006AC99D /* MSDebounceInstallationManager.h */; };
-		4C3EEB2024C8ADCB0096C133 /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731F624A1C2CF006AC99D /* MSDebounceInstallationManager.m */; };
-		4C3EEB2124C8ADCF0096C133 /* MSInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731EC24A1BFE2006AC99D /* MSInstallationManager.h */; };
-		4C3EEB2224C8ADD30096C133 /* MSInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731EF24A1C005006AC99D /* MSInstallationManager.m */; };
-		4C3EEB2324C8ADDB0096C133 /* MSInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* MSInstallationManager+Private.h */; };
-		4C3EEB2424C8ADDC0096C133 /* MSInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* MSInstallationManager+Private.h */; };
-		4C3EEB2524C8ADDD0096C133 /* MSInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* MSInstallationManager+Private.h */; };
-		4C3EEB2624C8ADE10096C133 /* MSNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320624A1C4E9006AC99D /* MSNotificationHub+Private.h */; };
-		4C3EEB2724C8ADE50096C133 /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C624A1901D006AC99D /* MSLocalStorage.h */; };
-		4C3EEB2824C8ADE80096C133 /* MSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C924A1902F006AC99D /* MSLocalStorage.m */; };
-		4C3EEB2924C8ADEB0096C133 /* MSTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C024A18A84006AC99D /* MSTokenProvider.h */; };
-		4C3EEB2A24C8ADEE0096C133 /* MSTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C324A18B41006AC99D /* MSTokenProvider.m */; };
-		4C3EEB2B24C8ADF80096C133 /* MSNotificationHubMessage+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DF24A1BA4A006AC99D /* MSNotificationHubMessage+Private.h */; };
-		4C3EEB2C24C8ADFA0096C133 /* MSInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */; };
-		4C3EEB2D24C8ADFD0096C133 /* MSChangeTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D124A1B927006AC99D /* MSChangeTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C3EEB2E24C8AE020096C133 /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731CE24A190A9006AC99D /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C3EEB2F24C8AE130096C133 /* MSInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D424A1B971006AC99D /* MSInstallation.m */; };
-		4C3EEB3024C8AE160096C133 /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D724A1B99E006AC99D /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C3EEB3124C8AE1C0096C133 /* MSInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D824A1B9C8006AC99D /* MSInstallationTemplate.m */; };
-		4C3EEB3224C8AE200096C133 /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DB24A1BA1B006AC99D /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C3EEB3324C8AE240096C133 /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E224A1BB13006AC99D /* MSNotificationHubMessage.m */; };
-		4C3EEB3424C8AE270096C133 /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* MSTagHelper.h */; };
-		4C3EEB3524C8AE290096C133 /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* MSTagHelper.h */; };
-		4C3EEB3624C8AE2A0096C133 /* MSTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* MSTagHelper.h */; };
-		4C3EEB3724C8AE2F0096C133 /* MSTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E624A1BB9C006AC99D /* MSTagHelper.m */; };
-		4C3EEB3824C8AE320096C133 /* MSTaggable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E924A1BBC8006AC99D /* MSTaggable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB1F24C8ADC70096C133 /* ANHDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F324A1C2A2006AC99D /* ANHDebounceInstallationManager.h */; };
+		4C3EEB2024C8ADCB0096C133 /* ANHDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731F624A1C2CF006AC99D /* ANHDebounceInstallationManager.m */; };
+		4C3EEB2124C8ADCF0096C133 /* ANHInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731EC24A1BFE2006AC99D /* ANHInstallationManager.h */; };
+		4C3EEB2224C8ADD30096C133 /* ANHInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731EF24A1C005006AC99D /* ANHInstallationManager.m */; };
+		4C3EEB2324C8ADDB0096C133 /* ANHInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* ANHInstallationManager+Private.h */; };
+		4C3EEB2424C8ADDC0096C133 /* ANHInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* ANHInstallationManager+Private.h */; };
+		4C3EEB2524C8ADDD0096C133 /* ANHInstallationManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F224A1C05B006AC99D /* ANHInstallationManager+Private.h */; };
+		4C3EEB2624C8ADE10096C133 /* ANHNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320624A1C4E9006AC99D /* ANHNotificationHub+Private.h */; };
+		4C3EEB2724C8ADE50096C133 /* ANHLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C624A1901D006AC99D /* ANHLocalStorage.h */; };
+		4C3EEB2824C8ADE80096C133 /* ANHLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C924A1902F006AC99D /* ANHLocalStorage.m */; };
+		4C3EEB2924C8ADEB0096C133 /* ANHTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C024A18A84006AC99D /* ANHTokenProvider.h */; };
+		4C3EEB2A24C8ADEE0096C133 /* ANHTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C324A18B41006AC99D /* ANHTokenProvider.m */; };
+		4C3EEB2B24C8ADF80096C133 /* ANHNotificationHubMessage+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DF24A1BA4A006AC99D /* ANHNotificationHubMessage+Private.h */; };
+		4C3EEB2C24C8ADFA0096C133 /* ANHInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* ANHInstallation+Private.h */; };
+		4C3EEB2E24C8AE020096C133 /* ANHInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731CE24A190A9006AC99D /* ANHInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB2F24C8AE130096C133 /* ANHInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D424A1B971006AC99D /* ANHInstallation.m */; };
+		4C3EEB3024C8AE160096C133 /* ANHInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D724A1B99E006AC99D /* ANHInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB3124C8AE1C0096C133 /* ANHInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D824A1B9C8006AC99D /* ANHInstallationTemplate.m */; };
+		4C3EEB3224C8AE200096C133 /* ANHNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DB24A1BA1B006AC99D /* ANHNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB3324C8AE240096C133 /* ANHNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E224A1BB13006AC99D /* ANHNotificationHubMessage.m */; };
+		4C3EEB3424C8AE270096C133 /* ANHTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* ANHTagHelper.h */; };
+		4C3EEB3524C8AE290096C133 /* ANHTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* ANHTagHelper.h */; };
+		4C3EEB3624C8AE2A0096C133 /* ANHTagHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E524A1BB78006AC99D /* ANHTagHelper.h */; };
+		4C3EEB3724C8AE2F0096C133 /* ANHTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E624A1BB9C006AC99D /* ANHTagHelper.m */; };
+		4C3EEB3824C8AE320096C133 /* ANHTaggable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E924A1BBC8006AC99D /* ANHTaggable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C3EEB3924C8AE420096C133 /* ANH_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318324A1820A006AC99D /* ANH_Reachability.h */; };
 		4C3EEB3A24C8AE450096C133 /* ANH_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7318624A18233006AC99D /* ANH_Reachability.m */; };
 		4C3EEB3B24C8AE4A0096C133 /* ANHDispatcherUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7315B24A17AC8006AC99D /* ANHDispatcherUtil.h */; };
 		4C3EEB3C24C8AE4D0096C133 /* ANHDispatcherUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7315E24A17B4C006AC99D /* ANHDispatcherUtil.m */; };
 		4C3EEB3D24C8AE500096C133 /* ANH_Errors.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7316124A17BA7006AC99D /* ANH_Errors.h */; };
-		4C3EEB3E24C8AE540096C133 /* MSInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C3EEB3F24C8AE5A0096C133 /* MSInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318D24A18662006AC99D /* MSInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C3EEB4024C8AE610096C133 /* MSInstallationManagementDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F924A1C33D006AC99D /* MSInstallationManagementDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB3E24C8AE540096C133 /* ANHInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB3F24C8AE5A0096C133 /* ANHInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318D24A18662006AC99D /* ANHInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4024C8AE610096C133 /* ANHInstallationManagementDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F924A1C33D006AC99D /* ANHInstallationManagementDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C3EEB4124C8AFDA0096C133 /* SBRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7314324A16B50006AC99D /* SBRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C3EEB4224C8AFE00096C133 /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7314624A16B9B006AC99D /* SBRegistration.m */; };
 		4C3EEB4324C8AFEA0096C133 /* SBTemplateRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7315024A16C6D006AC99D /* SBTemplateRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -198,9 +197,9 @@
 		4C3EEB4624C8AFF70096C133 /* SBConnectionString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7315724A17A67006AC99D /* SBConnectionString.m */; };
 		4C3EEB4724C8B0060096C133 /* SBNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319024A186A3006AC99D /* SBNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C3EEB4824C8B00E0096C133 /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7319324A186CC006AC99D /* SBNotificationHub.m */; };
-		4C3EEB4924C8B4F80096C133 /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C3EEB4A24C8B4FD0096C133 /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731FD24A1C3C4006AC99D /* MSNotificationHub.m */; };
-		4C3EEB4B24C8B5020096C133 /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320924A1C55E006AC99D /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4924C8B4F80096C133 /* ANHNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* ANHNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3EEB4A24C8B4FD0096C133 /* ANHNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731FD24A1C3C4006AC99D /* ANHNotificationHub.m */; };
+		4C3EEB4B24C8B5020096C133 /* ANHNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320924A1C55E006AC99D /* ANHNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C3EEB4C24C8B5080096C133 /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C3EEB7E24C8B8980096C133 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3EEADD24C8AAD70096C133 /* WindowsAzureMessaging.framework */; };
 		4C3EEB8724C8B8A40096C133 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7326724A2CE40006AC99D /* OCMock.framework */; };
@@ -269,10 +268,10 @@
 		4CA7318524A1820A006AC99D /* ANH_Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318324A1820A006AC99D /* ANH_Reachability.h */; };
 		4CA7318724A18233006AC99D /* ANH_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7318624A18233006AC99D /* ANH_Reachability.m */; };
 		4CA7318824A18233006AC99D /* ANH_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7318624A18233006AC99D /* ANH_Reachability.m */; };
-		4CA7318B24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7318C24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7318E24A18662006AC99D /* MSInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318D24A18662006AC99D /* MSInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7318F24A18662006AC99D /* MSInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318D24A18662006AC99D /* MSInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7318B24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7318C24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318A24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7318E24A18662006AC99D /* ANHInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318D24A18662006AC99D /* ANHInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7318F24A18662006AC99D /* ANHInstallationLifecycleDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7318D24A18662006AC99D /* ANHInstallationLifecycleDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7319124A186A3006AC99D /* SBNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319024A186A3006AC99D /* SBNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7319424A186CC006AC99D /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7319324A186CC006AC99D /* SBNotificationHub.m */; };
 		4CA7319724A1872F006AC99D /* SBLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7319624A1872F006AC99D /* SBLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -288,48 +287,46 @@
 		4CA731B624A187A6006AC99D /* SBURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731A424A187A5006AC99D /* SBURLConnection.h */; };
 		4CA731B824A187A6006AC99D /* SBStaticHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731A524A187A6006AC99D /* SBStaticHandlerResponse.h */; };
 		4CA731BE24A1893C006AC99D /* SBConnectionString.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7315624A177CC006AC99D /* SBConnectionString.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731C124A18A8B006AC99D /* MSTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C024A18A84006AC99D /* MSTokenProvider.h */; };
-		4CA731C224A18A8C006AC99D /* MSTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C024A18A84006AC99D /* MSTokenProvider.h */; };
-		4CA731C424A18B41006AC99D /* MSTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C324A18B41006AC99D /* MSTokenProvider.m */; };
-		4CA731C524A18B41006AC99D /* MSTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C324A18B41006AC99D /* MSTokenProvider.m */; };
-		4CA731C724A1901D006AC99D /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C624A1901D006AC99D /* MSLocalStorage.h */; };
-		4CA731C824A1901D006AC99D /* MSLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C624A1901D006AC99D /* MSLocalStorage.h */; };
-		4CA731CA24A1902F006AC99D /* MSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C924A1902F006AC99D /* MSLocalStorage.m */; };
-		4CA731CB24A1902F006AC99D /* MSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C924A1902F006AC99D /* MSLocalStorage.m */; };
-		4CA731CF24A190A9006AC99D /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731CE24A190A9006AC99D /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731D024A190A9006AC99D /* MSInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731CE24A190A9006AC99D /* MSInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731D224A1B927006AC99D /* MSChangeTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D124A1B927006AC99D /* MSChangeTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731D324A1B927006AC99D /* MSChangeTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D124A1B927006AC99D /* MSChangeTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731D524A1B971006AC99D /* MSInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D424A1B971006AC99D /* MSInstallation.m */; };
-		4CA731D624A1B971006AC99D /* MSInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D424A1B971006AC99D /* MSInstallation.m */; };
-		4CA731D924A1B9C8006AC99D /* MSInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D824A1B9C8006AC99D /* MSInstallationTemplate.m */; };
-		4CA731DA24A1B9C8006AC99D /* MSInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D824A1B9C8006AC99D /* MSInstallationTemplate.m */; };
-		4CA731DC24A1BA1B006AC99D /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DB24A1BA1B006AC99D /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731DD24A1BA1B006AC99D /* MSNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DB24A1BA1B006AC99D /* MSNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731E024A1BA4A006AC99D /* MSNotificationHubMessage+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DF24A1BA4A006AC99D /* MSNotificationHubMessage+Private.h */; };
-		4CA731E124A1BA4B006AC99D /* MSNotificationHubMessage+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DF24A1BA4A006AC99D /* MSNotificationHubMessage+Private.h */; };
-		4CA731E324A1BB13006AC99D /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E224A1BB13006AC99D /* MSNotificationHubMessage.m */; };
-		4CA731E424A1BB13006AC99D /* MSNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E224A1BB13006AC99D /* MSNotificationHubMessage.m */; };
-		4CA731E724A1BB9C006AC99D /* MSTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E624A1BB9C006AC99D /* MSTagHelper.m */; };
-		4CA731E824A1BB9C006AC99D /* MSTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E624A1BB9C006AC99D /* MSTagHelper.m */; };
-		4CA731EA24A1BBC8006AC99D /* MSTaggable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E924A1BBC8006AC99D /* MSTaggable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731EB24A1BBC8006AC99D /* MSTaggable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E924A1BBC8006AC99D /* MSTaggable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731ED24A1BFE2006AC99D /* MSInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731EC24A1BFE2006AC99D /* MSInstallationManager.h */; };
-		4CA731EE24A1BFE2006AC99D /* MSInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731EC24A1BFE2006AC99D /* MSInstallationManager.h */; };
-		4CA731F024A1C005006AC99D /* MSInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731EF24A1C005006AC99D /* MSInstallationManager.m */; };
-		4CA731F124A1C005006AC99D /* MSInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731EF24A1C005006AC99D /* MSInstallationManager.m */; };
-		4CA731F424A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F324A1C2A2006AC99D /* MSDebounceInstallationManager.h */; };
-		4CA731F524A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F324A1C2A2006AC99D /* MSDebounceInstallationManager.h */; };
-		4CA731F724A1C2CF006AC99D /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731F624A1C2CF006AC99D /* MSDebounceInstallationManager.m */; };
-		4CA731F824A1C2CF006AC99D /* MSDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731F624A1C2CF006AC99D /* MSDebounceInstallationManager.m */; };
-		4CA731FA24A1C33D006AC99D /* MSInstallationManagementDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F924A1C33D006AC99D /* MSInstallationManagementDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731FB24A1C33D006AC99D /* MSInstallationManagementDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F924A1C33D006AC99D /* MSInstallationManagementDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA731FE24A1C3C4006AC99D /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731FD24A1C3C4006AC99D /* MSNotificationHub.m */; };
-		4CA731FF24A1C3C4006AC99D /* MSNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731FD24A1C3C4006AC99D /* MSNotificationHub.m */; };
-		4CA7320724A1C4E9006AC99D /* MSNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320624A1C4E9006AC99D /* MSNotificationHub+Private.h */; };
-		4CA7320824A1C4E9006AC99D /* MSNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320624A1C4E9006AC99D /* MSNotificationHub+Private.h */; };
-		4CA7320A24A1C55E006AC99D /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320924A1C55E006AC99D /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7320B24A1C55E006AC99D /* MSNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320924A1C55E006AC99D /* MSNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731C124A18A8B006AC99D /* ANHTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C024A18A84006AC99D /* ANHTokenProvider.h */; };
+		4CA731C224A18A8C006AC99D /* ANHTokenProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C024A18A84006AC99D /* ANHTokenProvider.h */; };
+		4CA731C424A18B41006AC99D /* ANHTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C324A18B41006AC99D /* ANHTokenProvider.m */; };
+		4CA731C524A18B41006AC99D /* ANHTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C324A18B41006AC99D /* ANHTokenProvider.m */; };
+		4CA731C724A1901D006AC99D /* ANHLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C624A1901D006AC99D /* ANHLocalStorage.h */; };
+		4CA731C824A1901D006AC99D /* ANHLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731C624A1901D006AC99D /* ANHLocalStorage.h */; };
+		4CA731CA24A1902F006AC99D /* ANHLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C924A1902F006AC99D /* ANHLocalStorage.m */; };
+		4CA731CB24A1902F006AC99D /* ANHLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731C924A1902F006AC99D /* ANHLocalStorage.m */; };
+		4CA731CF24A190A9006AC99D /* ANHInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731CE24A190A9006AC99D /* ANHInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731D024A190A9006AC99D /* ANHInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731CE24A190A9006AC99D /* ANHInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731D524A1B971006AC99D /* ANHInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D424A1B971006AC99D /* ANHInstallation.m */; };
+		4CA731D624A1B971006AC99D /* ANHInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D424A1B971006AC99D /* ANHInstallation.m */; };
+		4CA731D924A1B9C8006AC99D /* ANHInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D824A1B9C8006AC99D /* ANHInstallationTemplate.m */; };
+		4CA731DA24A1B9C8006AC99D /* ANHInstallationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731D824A1B9C8006AC99D /* ANHInstallationTemplate.m */; };
+		4CA731DC24A1BA1B006AC99D /* ANHNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DB24A1BA1B006AC99D /* ANHNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731DD24A1BA1B006AC99D /* ANHNotificationHubMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DB24A1BA1B006AC99D /* ANHNotificationHubMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731E024A1BA4A006AC99D /* ANHNotificationHubMessage+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DF24A1BA4A006AC99D /* ANHNotificationHubMessage+Private.h */; };
+		4CA731E124A1BA4B006AC99D /* ANHNotificationHubMessage+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731DF24A1BA4A006AC99D /* ANHNotificationHubMessage+Private.h */; };
+		4CA731E324A1BB13006AC99D /* ANHNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E224A1BB13006AC99D /* ANHNotificationHubMessage.m */; };
+		4CA731E424A1BB13006AC99D /* ANHNotificationHubMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E224A1BB13006AC99D /* ANHNotificationHubMessage.m */; };
+		4CA731E724A1BB9C006AC99D /* ANHTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E624A1BB9C006AC99D /* ANHTagHelper.m */; };
+		4CA731E824A1BB9C006AC99D /* ANHTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731E624A1BB9C006AC99D /* ANHTagHelper.m */; };
+		4CA731EA24A1BBC8006AC99D /* ANHTaggable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E924A1BBC8006AC99D /* ANHTaggable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731EB24A1BBC8006AC99D /* ANHTaggable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731E924A1BBC8006AC99D /* ANHTaggable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731ED24A1BFE2006AC99D /* ANHInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731EC24A1BFE2006AC99D /* ANHInstallationManager.h */; };
+		4CA731EE24A1BFE2006AC99D /* ANHInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731EC24A1BFE2006AC99D /* ANHInstallationManager.h */; };
+		4CA731F024A1C005006AC99D /* ANHInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731EF24A1C005006AC99D /* ANHInstallationManager.m */; };
+		4CA731F124A1C005006AC99D /* ANHInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731EF24A1C005006AC99D /* ANHInstallationManager.m */; };
+		4CA731F424A1C2A2006AC99D /* ANHDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F324A1C2A2006AC99D /* ANHDebounceInstallationManager.h */; };
+		4CA731F524A1C2A2006AC99D /* ANHDebounceInstallationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F324A1C2A2006AC99D /* ANHDebounceInstallationManager.h */; };
+		4CA731F724A1C2CF006AC99D /* ANHDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731F624A1C2CF006AC99D /* ANHDebounceInstallationManager.m */; };
+		4CA731F824A1C2CF006AC99D /* ANHDebounceInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731F624A1C2CF006AC99D /* ANHDebounceInstallationManager.m */; };
+		4CA731FA24A1C33D006AC99D /* ANHInstallationManagementDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F924A1C33D006AC99D /* ANHInstallationManagementDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731FB24A1C33D006AC99D /* ANHInstallationManagementDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731F924A1C33D006AC99D /* ANHInstallationManagementDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA731FE24A1C3C4006AC99D /* ANHNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731FD24A1C3C4006AC99D /* ANHNotificationHub.m */; };
+		4CA731FF24A1C3C4006AC99D /* ANHNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA731FD24A1C3C4006AC99D /* ANHNotificationHub.m */; };
+		4CA7320724A1C4E9006AC99D /* ANHNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320624A1C4E9006AC99D /* ANHNotificationHub+Private.h */; };
+		4CA7320824A1C4E9006AC99D /* ANHNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320624A1C4E9006AC99D /* ANHNotificationHub+Private.h */; };
+		4CA7320A24A1C55E006AC99D /* ANHNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320924A1C55E006AC99D /* ANHNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7320B24A1C55E006AC99D /* ANHNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7320924A1C55E006AC99D /* ANHNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7321E24A24A7F006AC99D /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7312A24A15A25006AC99D /* WindowsAzureMessaging.framework */; };
 		4CA7326A24A2CE59006AC99D /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7326524A2CE40006AC99D /* OCMock.framework */; };
 		4CA7328324A2CEA5006AC99D /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7327E24A2CE99006AC99D /* OCHamcrest.framework */; };
@@ -384,12 +381,12 @@
 		4CA732E524A3B38F006AC99D /* MSInstallationTemplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA732DF24A3B38F006AC99D /* MSInstallationTemplateTests.m */; };
 		4CA732F324A3DAC2006AC99D /* ANHApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732F224A3DAC2006AC99D /* ANHApplication.h */; };
 		4CA732F424A3DAC2006AC99D /* ANHApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA732F224A3DAC2006AC99D /* ANHApplication.h */; };
-		4CA7330824A3E96A006AC99D /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D724A1B99E006AC99D /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7330924A3E96C006AC99D /* MSInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D724A1B99E006AC99D /* MSInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7330A24A3E983006AC99D /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7330B24A3E984006AC99D /* MSNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* MSNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA7335024A42C64006AC99D /* MSInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */; };
-		4CA7335124A42C64006AC99D /* MSInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */; };
+		4CA7330824A3E96A006AC99D /* ANHInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D724A1B99E006AC99D /* ANHInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7330924A3E96C006AC99D /* ANHInstallationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731D724A1B99E006AC99D /* ANHInstallationTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7330A24A3E983006AC99D /* ANHNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* ANHNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7330B24A3E984006AC99D /* ANHNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA731FC24A1C372006AC99D /* ANHNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA7335024A42C64006AC99D /* ANHInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* ANHInstallation+Private.h */; };
+		4CA7335124A42C64006AC99D /* ANHInstallation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7334F24A42C64006AC99D /* ANHInstallation+Private.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -614,8 +611,8 @@
 		4C1049B124ABE96E00FA339E /* ANHUserNotificationCenterDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHUserNotificationCenterDelegateForwarder.m; sourceTree = "<group>"; };
 		4C1049B724ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHNotificationHubAppDelegateForwarder.h; sourceTree = "<group>"; };
 		4C1049BA24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHNotificationHubAppDelegateForwarder.m; sourceTree = "<group>"; };
-		4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubOptions.h; sourceTree = "<group>"; };
-		4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubOptions.m; sourceTree = "<group>"; };
+		4C13E51B253E4B9A0068A1B7 /* ANHNotificationHubOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHNotificationHubOptions.h; sourceTree = "<group>"; };
+		4C13E534253E4C340068A1B7 /* ANHNotificationHubOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHNotificationHubOptions.m; sourceTree = "<group>"; };
 		4C3EEADD24C8AAD70096C133 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3EEAE524C8AAD80096C133 /* WindowsAzureMessaging.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowsAzureMessaging.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3EEBA424C8BDCA0096C133 /* tvOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = tvOS.modulemap; sourceTree = "<group>"; };
@@ -664,8 +661,8 @@
 		4CA7317E24A180E5006AC99D /* ANHHttpUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHHttpUtil.m; sourceTree = "<group>"; };
 		4CA7318324A1820A006AC99D /* ANH_Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANH_Reachability.h; sourceTree = "<group>"; };
 		4CA7318624A18233006AC99D /* ANH_Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANH_Reachability.m; sourceTree = "<group>"; };
-		4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationEnrichmentDelegate.h; sourceTree = "<group>"; };
-		4CA7318D24A18662006AC99D /* MSInstallationLifecycleDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationLifecycleDelegate.h; sourceTree = "<group>"; };
+		4CA7318A24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHInstallationEnrichmentDelegate.h; sourceTree = "<group>"; };
+		4CA7318D24A18662006AC99D /* ANHInstallationLifecycleDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHInstallationLifecycleDelegate.h; sourceTree = "<group>"; };
 		4CA7319024A186A3006AC99D /* SBNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBNotificationHub.h; sourceTree = "<group>"; };
 		4CA7319324A186CC006AC99D /* SBNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBNotificationHub.m; sourceTree = "<group>"; };
 		4CA7319624A1872F006AC99D /* SBLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
@@ -682,31 +679,30 @@
 		4CA731A524A187A6006AC99D /* SBStaticHandlerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStaticHandlerResponse.h; sourceTree = "<group>"; };
 		4CA731BA24A1885E006AC99D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4CA731BC24A18869006AC99D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
-		4CA731C024A18A84006AC99D /* MSTokenProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSTokenProvider.h; sourceTree = "<group>"; };
-		4CA731C324A18B41006AC99D /* MSTokenProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSTokenProvider.m; sourceTree = "<group>"; };
-		4CA731C624A1901D006AC99D /* MSLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSLocalStorage.h; sourceTree = "<group>"; };
-		4CA731C924A1902F006AC99D /* MSLocalStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSLocalStorage.m; sourceTree = "<group>"; };
-		4CA731CE24A190A9006AC99D /* MSInstallation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallation.h; sourceTree = "<group>"; };
-		4CA731D124A1B927006AC99D /* MSChangeTracking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSChangeTracking.h; sourceTree = "<group>"; };
-		4CA731D424A1B971006AC99D /* MSInstallation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallation.m; sourceTree = "<group>"; };
-		4CA731D724A1B99E006AC99D /* MSInstallationTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationTemplate.h; sourceTree = "<group>"; };
-		4CA731D824A1B9C8006AC99D /* MSInstallationTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallationTemplate.m; sourceTree = "<group>"; };
-		4CA731DB24A1BA1B006AC99D /* MSNotificationHubMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubMessage.h; sourceTree = "<group>"; };
-		4CA731DF24A1BA4A006AC99D /* MSNotificationHubMessage+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSNotificationHubMessage+Private.h"; sourceTree = "<group>"; };
-		4CA731E224A1BB13006AC99D /* MSNotificationHubMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubMessage.m; sourceTree = "<group>"; };
-		4CA731E524A1BB78006AC99D /* MSTagHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSTagHelper.h; sourceTree = "<group>"; };
-		4CA731E624A1BB9C006AC99D /* MSTagHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSTagHelper.m; sourceTree = "<group>"; };
-		4CA731E924A1BBC8006AC99D /* MSTaggable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSTaggable.h; sourceTree = "<group>"; };
-		4CA731EC24A1BFE2006AC99D /* MSInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationManager.h; sourceTree = "<group>"; };
-		4CA731EF24A1C005006AC99D /* MSInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSInstallationManager.m; sourceTree = "<group>"; };
-		4CA731F224A1C05B006AC99D /* MSInstallationManager+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSInstallationManager+Private.h"; sourceTree = "<group>"; };
-		4CA731F324A1C2A2006AC99D /* MSDebounceInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSDebounceInstallationManager.h; sourceTree = "<group>"; };
-		4CA731F624A1C2CF006AC99D /* MSDebounceInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSDebounceInstallationManager.m; sourceTree = "<group>"; };
-		4CA731F924A1C33D006AC99D /* MSInstallationManagementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstallationManagementDelegate.h; sourceTree = "<group>"; };
-		4CA731FC24A1C372006AC99D /* MSNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHub.h; sourceTree = "<group>"; };
-		4CA731FD24A1C3C4006AC99D /* MSNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHub.m; sourceTree = "<group>"; };
-		4CA7320624A1C4E9006AC99D /* MSNotificationHub+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSNotificationHub+Private.h"; sourceTree = "<group>"; };
-		4CA7320924A1C55E006AC99D /* MSNotificationHubDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNotificationHubDelegate.h; sourceTree = "<group>"; };
+		4CA731C024A18A84006AC99D /* ANHTokenProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHTokenProvider.h; sourceTree = "<group>"; };
+		4CA731C324A18B41006AC99D /* ANHTokenProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHTokenProvider.m; sourceTree = "<group>"; };
+		4CA731C624A1901D006AC99D /* ANHLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHLocalStorage.h; sourceTree = "<group>"; };
+		4CA731C924A1902F006AC99D /* ANHLocalStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHLocalStorage.m; sourceTree = "<group>"; };
+		4CA731CE24A190A9006AC99D /* ANHInstallation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHInstallation.h; sourceTree = "<group>"; };
+		4CA731D424A1B971006AC99D /* ANHInstallation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHInstallation.m; sourceTree = "<group>"; };
+		4CA731D724A1B99E006AC99D /* ANHInstallationTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHInstallationTemplate.h; sourceTree = "<group>"; };
+		4CA731D824A1B9C8006AC99D /* ANHInstallationTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHInstallationTemplate.m; sourceTree = "<group>"; };
+		4CA731DB24A1BA1B006AC99D /* ANHNotificationHubMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHNotificationHubMessage.h; sourceTree = "<group>"; };
+		4CA731DF24A1BA4A006AC99D /* ANHNotificationHubMessage+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANHNotificationHubMessage+Private.h"; sourceTree = "<group>"; };
+		4CA731E224A1BB13006AC99D /* ANHNotificationHubMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHNotificationHubMessage.m; sourceTree = "<group>"; };
+		4CA731E524A1BB78006AC99D /* ANHTagHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHTagHelper.h; sourceTree = "<group>"; };
+		4CA731E624A1BB9C006AC99D /* ANHTagHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHTagHelper.m; sourceTree = "<group>"; };
+		4CA731E924A1BBC8006AC99D /* ANHTaggable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHTaggable.h; sourceTree = "<group>"; };
+		4CA731EC24A1BFE2006AC99D /* ANHInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHInstallationManager.h; sourceTree = "<group>"; };
+		4CA731EF24A1C005006AC99D /* ANHInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHInstallationManager.m; sourceTree = "<group>"; };
+		4CA731F224A1C05B006AC99D /* ANHInstallationManager+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANHInstallationManager+Private.h"; sourceTree = "<group>"; };
+		4CA731F324A1C2A2006AC99D /* ANHDebounceInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHDebounceInstallationManager.h; sourceTree = "<group>"; };
+		4CA731F624A1C2CF006AC99D /* ANHDebounceInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHDebounceInstallationManager.m; sourceTree = "<group>"; };
+		4CA731F924A1C33D006AC99D /* ANHInstallationManagementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHInstallationManagementDelegate.h; sourceTree = "<group>"; };
+		4CA731FC24A1C372006AC99D /* ANHNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHNotificationHub.h; sourceTree = "<group>"; };
+		4CA731FD24A1C3C4006AC99D /* ANHNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHNotificationHub.m; sourceTree = "<group>"; };
+		4CA7320624A1C4E9006AC99D /* ANHNotificationHub+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANHNotificationHub+Private.h"; sourceTree = "<group>"; };
+		4CA7320924A1C55E006AC99D /* ANHNotificationHubDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHNotificationHubDelegate.h; sourceTree = "<group>"; };
 		4CA7325224A2CE40006AC99D /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = ../Vendor/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		4CA7326B24A2CE99006AC99D /* OCHamcrest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCHamcrest.xcodeproj; path = ../Vendor/OCHamcrest/Source/OCHamcrest.xcodeproj; sourceTree = "<group>"; };
 		4CA7329024A2D020006AC99D /* HTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HTTPStubsResponse+JSON.m"; path = "../../Vendor/OHHTTPStubs/Sources/OHHTTPStubs/HTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
@@ -734,7 +730,7 @@
 		4CA732DE24A3B38F006AC99D /* MSNotificationHubMessageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNotificationHubMessageTests.m; sourceTree = "<group>"; };
 		4CA732DF24A3B38F006AC99D /* MSInstallationTemplateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSInstallationTemplateTests.m; sourceTree = "<group>"; };
 		4CA732F224A3DAC2006AC99D /* ANHApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHApplication.h; sourceTree = "<group>"; };
-		4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSInstallation+Private.h"; sourceTree = "<group>"; };
+		4CA7334F24A42C64006AC99D /* ANHInstallation+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANHInstallation+Private.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -840,9 +836,14 @@
 				4CA7310624A154AA006AC99D /* Support */,
 				4CA7318124A18144006AC99D /* Vendor */,
 				4CA7315A24A17AAD006AC99D /* Util */,
-				4CA7318A24A18613006AC99D /* MSInstallationEnrichmentDelegate.h */,
-				4CA7318D24A18662006AC99D /* MSInstallationLifecycleDelegate.h */,
-				4CA731F924A1C33D006AC99D /* MSInstallationManagementDelegate.h */,
+				4CA731FC24A1C372006AC99D /* ANHNotificationHub.h */,
+				4CA731FD24A1C3C4006AC99D /* ANHNotificationHub.m */,
+				4CA7320924A1C55E006AC99D /* ANHNotificationHubDelegate.h */,
+				4C13E51B253E4B9A0068A1B7 /* ANHNotificationHubOptions.h */,
+				4C13E534253E4C340068A1B7 /* ANHNotificationHubOptions.m */,
+				4CA7318D24A18662006AC99D /* ANHInstallationLifecycleDelegate.h */,
+				4CA7318A24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h */,
+				4CA731F924A1C33D006AC99D /* ANHInstallationManagementDelegate.h */,
 				4CA7314324A16B50006AC99D /* SBRegistration.h */,
 				4CA7314624A16B9B006AC99D /* SBRegistration.m */,
 				4CA7315024A16C6D006AC99D /* SBTemplateRegistration.h */,
@@ -851,11 +852,6 @@
 				4CA7315724A17A67006AC99D /* SBConnectionString.m */,
 				4CA7319024A186A3006AC99D /* SBNotificationHub.h */,
 				4CA7319324A186CC006AC99D /* SBNotificationHub.m */,
-				4CA731FC24A1C372006AC99D /* MSNotificationHub.h */,
-				4CA731FD24A1C3C4006AC99D /* MSNotificationHub.m */,
-				4C13E51B253E4B9A0068A1B7 /* MSNotificationHubOptions.h */,
-				4C13E534253E4C340068A1B7 /* MSNotificationHubOptions.m */,
-				4CA7320924A1C55E006AC99D /* MSNotificationHubDelegate.h */,
 				4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */,
 			);
 			path = WindowsAzureMessaging;
@@ -993,16 +989,16 @@
 			children = (
 				4C10498F24ABD6B600FA339E /* DelegateForwarder */,
 				4CA732F224A3DAC2006AC99D /* ANHApplication.h */,
-				4CA731F324A1C2A2006AC99D /* MSDebounceInstallationManager.h */,
-				4CA731F624A1C2CF006AC99D /* MSDebounceInstallationManager.m */,
-				4CA731EC24A1BFE2006AC99D /* MSInstallationManager.h */,
-				4CA731EF24A1C005006AC99D /* MSInstallationManager.m */,
-				4CA731F224A1C05B006AC99D /* MSInstallationManager+Private.h */,
-				4CA7320624A1C4E9006AC99D /* MSNotificationHub+Private.h */,
-				4CA731C624A1901D006AC99D /* MSLocalStorage.h */,
-				4CA731C924A1902F006AC99D /* MSLocalStorage.m */,
-				4CA731C024A18A84006AC99D /* MSTokenProvider.h */,
-				4CA731C324A18B41006AC99D /* MSTokenProvider.m */,
+				4CA731F324A1C2A2006AC99D /* ANHDebounceInstallationManager.h */,
+				4CA731F624A1C2CF006AC99D /* ANHDebounceInstallationManager.m */,
+				4CA731EC24A1BFE2006AC99D /* ANHInstallationManager.h */,
+				4CA731EF24A1C005006AC99D /* ANHInstallationManager.m */,
+				4CA731F224A1C05B006AC99D /* ANHInstallationManager+Private.h */,
+				4CA7320624A1C4E9006AC99D /* ANHNotificationHub+Private.h */,
+				4CA731C624A1901D006AC99D /* ANHLocalStorage.h */,
+				4CA731C924A1902F006AC99D /* ANHLocalStorage.m */,
+				4CA731C024A18A84006AC99D /* ANHTokenProvider.h */,
+				4CA731C324A18B41006AC99D /* ANHTokenProvider.m */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -1011,16 +1007,15 @@
 			isa = PBXGroup;
 			children = (
 				4CA731DE24A1BA2F006AC99D /* Internal */,
-				4CA731D124A1B927006AC99D /* MSChangeTracking.h */,
-				4CA731CE24A190A9006AC99D /* MSInstallation.h */,
-				4CA731D424A1B971006AC99D /* MSInstallation.m */,
-				4CA731D724A1B99E006AC99D /* MSInstallationTemplate.h */,
-				4CA731D824A1B9C8006AC99D /* MSInstallationTemplate.m */,
-				4CA731DB24A1BA1B006AC99D /* MSNotificationHubMessage.h */,
-				4CA731E224A1BB13006AC99D /* MSNotificationHubMessage.m */,
-				4CA731E524A1BB78006AC99D /* MSTagHelper.h */,
-				4CA731E624A1BB9C006AC99D /* MSTagHelper.m */,
-				4CA731E924A1BBC8006AC99D /* MSTaggable.h */,
+				4CA731CE24A190A9006AC99D /* ANHInstallation.h */,
+				4CA731D424A1B971006AC99D /* ANHInstallation.m */,
+				4CA731D724A1B99E006AC99D /* ANHInstallationTemplate.h */,
+				4CA731D824A1B9C8006AC99D /* ANHInstallationTemplate.m */,
+				4CA731DB24A1BA1B006AC99D /* ANHNotificationHubMessage.h */,
+				4CA731E224A1BB13006AC99D /* ANHNotificationHubMessage.m */,
+				4CA731E524A1BB78006AC99D /* ANHTagHelper.h */,
+				4CA731E624A1BB9C006AC99D /* ANHTagHelper.m */,
+				4CA731E924A1BBC8006AC99D /* ANHTaggable.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1028,8 +1023,8 @@
 		4CA731DE24A1BA2F006AC99D /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				4CA731DF24A1BA4A006AC99D /* MSNotificationHubMessage+Private.h */,
-				4CA7334F24A42C64006AC99D /* MSInstallation+Private.h */,
+				4CA731DF24A1BA4A006AC99D /* ANHNotificationHubMessage+Private.h */,
+				4CA7334F24A42C64006AC99D /* ANHInstallation+Private.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -1129,41 +1124,40 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C3EEB2624C8ADE10096C133 /* MSNotificationHub+Private.h in Headers */,
+				4C3EEB2624C8ADE10096C133 /* ANHNotificationHub+Private.h in Headers */,
 				4C3EEB0D24C8AD2E0096C133 /* ANHHttpUtil.h in Headers */,
 				4C3EEB9C24C8BA130096C133 /* HTTPStubsPathHelpers.h in Headers */,
 				4C3EEBA224C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */,
 				4C3EEB9B24C8BA100096C133 /* HTTPStubs.h in Headers */,
 				4C3EEB1724C8AD530096C133 /* ANHDelegateForwarder.h in Headers */,
-				4C3EEB4024C8AE610096C133 /* MSInstallationManagementDelegate.h in Headers */,
+				4C3EEB4024C8AE610096C133 /* ANHInstallationManagementDelegate.h in Headers */,
 				4C3EEB0B24C8AC860096C133 /* SBURLConnection.h in Headers */,
 				4C3EEB1424C8AD480096C133 /* ANHHttpClientDelegate.h in Headers */,
-				4C3EEB2C24C8ADFA0096C133 /* MSInstallation+Private.h in Headers */,
+				4C3EEB2C24C8ADFA0096C133 /* ANHInstallation+Private.h in Headers */,
 				4C3EEB9D24C8BA3F0096C133 /* HTTPStubsResponse.h in Headers */,
 				4C3EEB0724C8AC650096C133 /* SBStoredRegistrationEntry.h in Headers */,
 				4C3EEB4724C8B0060096C133 /* SBNotificationHub.h in Headers */,
 				4C3EEB1124C8AD3E0096C133 /* ANHHttpClient.h in Headers */,
-				4C3EEB3E24C8AE540096C133 /* MSInstallationEnrichmentDelegate.h in Headers */,
-				4C3EEB4924C8B4F80096C133 /* MSNotificationHub.h in Headers */,
-				4C3EEB3824C8AE320096C133 /* MSTaggable.h in Headers */,
+				4C3EEB3E24C8AE540096C133 /* ANHInstallationEnrichmentDelegate.h in Headers */,
+				4C3EEB4924C8B4F80096C133 /* ANHNotificationHub.h in Headers */,
+				4C3EEB3824C8AE320096C133 /* ANHTaggable.h in Headers */,
 				4C3EEB9F24C8BA4D0096C133 /* NSURLRequest+HTTPBodyTesting.h in Headers */,
-				4C3EEB2524C8ADDD0096C133 /* MSInstallationManager+Private.h in Headers */,
-				4C3EEB2D24C8ADFD0096C133 /* MSChangeTracking.h in Headers */,
+				4C3EEB2524C8ADDD0096C133 /* ANHInstallationManager+Private.h in Headers */,
 				4C3EEB0124C8ABB80096C133 /* SBNotificationHubHelper.h in Headers */,
 				4C3EEB4124C8AFDA0096C133 /* SBRegistration.h in Headers */,
 				4C3EEB0524C8AC130096C133 /* SBStaticHandlerResponse.h in Headers */,
-				4C3EEB3024C8AE160096C133 /* MSInstallationTemplate.h in Headers */,
-				4C3EEB4B24C8B5020096C133 /* MSNotificationHubDelegate.h in Headers */,
-				4C3EEB2924C8ADEB0096C133 /* MSTokenProvider.h in Headers */,
+				4C3EEB3024C8AE160096C133 /* ANHInstallationTemplate.h in Headers */,
+				4C3EEB4B24C8B5020096C133 /* ANHNotificationHubDelegate.h in Headers */,
+				4C3EEB2924C8ADEB0096C133 /* ANHTokenProvider.h in Headers */,
 				4C3EEB4524C8AFF10096C133 /* SBConnectionString.h in Headers */,
-				4C3EEB3F24C8AE5A0096C133 /* MSInstallationLifecycleDelegate.h in Headers */,
+				4C3EEB3F24C8AE5A0096C133 /* ANHInstallationLifecycleDelegate.h in Headers */,
 				4C3EEB3B24C8AE4A0096C133 /* ANHDispatcherUtil.h in Headers */,
 				4C3EEB1824C8AD560096C133 /* ANHDelegateForwarder+Private.h in Headers */,
 				4C3EEB1C24C8AD640096C133 /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
 				4C3EEB9A24C8BA0C0096C133 /* Compatibility.h in Headers */,
-				4C3EEB2124C8ADCF0096C133 /* MSInstallationManager.h in Headers */,
+				4C3EEB2124C8ADCF0096C133 /* ANHInstallationManager.h in Headers */,
 				4C3EEB0324C8ABC10096C133 /* SBRegistrationParser.h in Headers */,
-				4C3EEB1F24C8ADC70096C133 /* MSDebounceInstallationManager.h in Headers */,
+				4C3EEB1F24C8ADC70096C133 /* ANHDebounceInstallationManager.h in Headers */,
 				4C3EEB4C24C8B5080096C133 /* WindowsAzureMessaging.h in Headers */,
 				4C3EEB1624C8AD500096C133 /* ANHCustomDelegate.h in Headers */,
 				4C3EEB0924C8AC7E0096C133 /* SBTokenProvider.h in Headers */,
@@ -1173,16 +1167,16 @@
 				4C3EEB1224C8AD420096C133 /* ANHHttpClient+Private.h in Headers */,
 				4C3EEB1A24C8AD5E0096C133 /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
 				4C3EEB9E24C8BA490096C133 /* HTTPStubsResponse+JSON.h in Headers */,
-				4C13E51E253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */,
+				4C13E51E253E4B9A0068A1B7 /* ANHNotificationHubOptions.h in Headers */,
 				4C3EEB0F24C8AD370096C133 /* ANHHttpCall.h in Headers */,
 				4C3EEB3D24C8AE500096C133 /* ANH_Errors.h in Headers */,
-				4C3EEB3224C8AE200096C133 /* MSNotificationHubMessage.h in Headers */,
-				4C3EEB2724C8ADE50096C133 /* MSLocalStorage.h in Headers */,
+				4C3EEB3224C8AE200096C133 /* ANHNotificationHubMessage.h in Headers */,
+				4C3EEB2724C8ADE50096C133 /* ANHLocalStorage.h in Headers */,
 				4C3EEAFF24C8ABAA0096C133 /* SBLocalStorage.h in Headers */,
 				4C3EEB4324C8AFEA0096C133 /* SBTemplateRegistration.h in Headers */,
-				4C3EEB2E24C8AE020096C133 /* MSInstallation.h in Headers */,
-				4C3EEB2B24C8ADF80096C133 /* MSNotificationHubMessage+Private.h in Headers */,
-				4C3EEB3424C8AE270096C133 /* MSTagHelper.h in Headers */,
+				4C3EEB2E24C8AE020096C133 /* ANHInstallation.h in Headers */,
+				4C3EEB2B24C8ADF80096C133 /* ANHNotificationHubMessage+Private.h in Headers */,
+				4C3EEB3424C8AE270096C133 /* ANHTagHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1192,41 +1186,40 @@
 			files = (
 				4CA732BE24A2D04F006AC99D /* NSURLRequest+HTTPBodyTesting.h in Headers */,
 				4C1049AF24ABE92100FA339E /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
-				4CA7335024A42C64006AC99D /* MSInstallation+Private.h in Headers */,
+				4CA7335024A42C64006AC99D /* ANHInstallation+Private.h in Headers */,
 				4C3EEBA024C8BA5F0096C133 /* HTTPStubsMethodSwizzling.h in Headers */,
 				4CA731BE24A1893C006AC99D /* SBConnectionString.h in Headers */,
 				4CA732B924A2D04E006AC99D /* Compatibility.h in Headers */,
 				4CA7317824A18082006AC99D /* ANHHttpClientDelegate.h in Headers */,
-				4CA7320724A1C4E9006AC99D /* MSNotificationHub+Private.h in Headers */,
-				4CA731ED24A1BFE2006AC99D /* MSInstallationManager.h in Headers */,
-				4CA731CF24A190A9006AC99D /* MSInstallation.h in Headers */,
-				4CA731C724A1901D006AC99D /* MSLocalStorage.h in Headers */,
+				4CA7320724A1C4E9006AC99D /* ANHNotificationHub+Private.h in Headers */,
+				4CA731ED24A1BFE2006AC99D /* ANHInstallationManager.h in Headers */,
+				4CA731CF24A190A9006AC99D /* ANHInstallation.h in Headers */,
+				4CA731C724A1901D006AC99D /* ANHLocalStorage.h in Headers */,
 				4CA731B824A187A6006AC99D /* SBStaticHandlerResponse.h in Headers */,
 				4CA7316224A17BA7006AC99D /* ANH_Errors.h in Headers */,
 				4C10499D24ABE40900FA339E /* ANHDelegateForwarder.h in Headers */,
-				4CA731F424A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */,
+				4CA731F424A1C2A2006AC99D /* ANHDebounceInstallationManager.h in Headers */,
 				4CA7317224A1801C006AC99D /* ANHHttpClient.h in Headers */,
-				4CA7320A24A1C55E006AC99D /* MSNotificationHubDelegate.h in Headers */,
-				4CA731E024A1BA4A006AC99D /* MSNotificationHubMessage+Private.h in Headers */,
+				4CA7320A24A1C55E006AC99D /* ANHNotificationHubDelegate.h in Headers */,
+				4CA731E024A1BA4A006AC99D /* ANHNotificationHubMessage+Private.h in Headers */,
 				4CA7316924A17D83006AC99D /* ANHHttpClient+Private.h in Headers */,
-				4C3EEB2324C8ADDB0096C133 /* MSInstallationManager+Private.h in Headers */,
+				4C3EEB2324C8ADDB0096C133 /* ANHInstallationManager+Private.h in Headers */,
 				4CA731A624A187A6006AC99D /* SBTokenProvider.h in Headers */,
 				4CA731B224A187A6006AC99D /* SBRegistrationParser.h in Headers */,
-				4CA731EA24A1BBC8006AC99D /* MSTaggable.h in Headers */,
+				4CA731EA24A1BBC8006AC99D /* ANHTaggable.h in Headers */,
 				4CA7319124A186A3006AC99D /* SBNotificationHub.h in Headers */,
-				4CA731FA24A1C33D006AC99D /* MSInstallationManagementDelegate.h in Headers */,
+				4CA731FA24A1C33D006AC99D /* ANHInstallationManagementDelegate.h in Headers */,
 				4CA731B624A187A6006AC99D /* SBURLConnection.h in Headers */,
 				4C1049A324ABE48100FA339E /* ANHDelegateForwarder+Private.h in Headers */,
 				4CA7317C24A180C0006AC99D /* ANHHttpUtil.h in Headers */,
-				4CA731C124A18A8B006AC99D /* MSTokenProvider.h in Headers */,
+				4CA731C124A18A8B006AC99D /* ANHTokenProvider.h in Headers */,
 				4CA732BC24A2D04F006AC99D /* HTTPStubsResponse.h in Headers */,
-				4CA731D224A1B927006AC99D /* MSChangeTracking.h in Headers */,
 				4CA7316624A17C6B006AC99D /* ANHHttpClientProtocol.h in Headers */,
-				4CA7318B24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */,
+				4CA7318B24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h in Headers */,
 				4CA7314B24A16BC6006AC99D /* SBNotificationHubHelper.h in Headers */,
-				4CA7318E24A18662006AC99D /* MSInstallationLifecycleDelegate.h in Headers */,
-				4CA731DC24A1BA1B006AC99D /* MSNotificationHubMessage.h in Headers */,
-				4CA7330A24A3E983006AC99D /* MSNotificationHub.h in Headers */,
+				4CA7318E24A18662006AC99D /* ANHInstallationLifecycleDelegate.h in Headers */,
+				4CA731DC24A1BA1B006AC99D /* ANHNotificationHubMessage.h in Headers */,
+				4CA7330A24A3E983006AC99D /* ANHNotificationHub.h in Headers */,
 				4CA732BA24A2D04F006AC99D /* HTTPStubs.h in Headers */,
 				4CA731AC24A187A6006AC99D /* SBStoredRegistrationEntry.h in Headers */,
 				4CA732F324A3DAC2006AC99D /* ANHApplication.h in Headers */,
@@ -1234,16 +1227,16 @@
 				4C1049B824ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
 				4CA7314424A16B50006AC99D /* SBRegistration.h in Headers */,
 				4CA7318424A1820A006AC99D /* ANH_Reachability.h in Headers */,
-				4C13E51C253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */,
+				4C13E51C253E4B9A0068A1B7 /* ANHNotificationHubOptions.h in Headers */,
 				4CA7315124A16C6D006AC99D /* SBTemplateRegistration.h in Headers */,
 				4CA7315C24A17AC8006AC99D /* ANHDispatcherUtil.h in Headers */,
 				4CA732BB24A2D04F006AC99D /* HTTPStubsPathHelpers.h in Headers */,
 				4CA7319724A1872F006AC99D /* SBLocalStorage.h in Headers */,
-				4CA7330824A3E96A006AC99D /* MSInstallationTemplate.h in Headers */,
+				4CA7330824A3E96A006AC99D /* ANHInstallationTemplate.h in Headers */,
 				4CA730F024A14FF2006AC99D /* WindowsAzureMessaging.h in Headers */,
 				4C10499A24ABE3A600FA339E /* ANHCustomDelegate.h in Headers */,
 				4CA732BD24A2D04F006AC99D /* HTTPStubsResponse+JSON.h in Headers */,
-				4C3EEB3624C8AE2A0096C133 /* MSTagHelper.h in Headers */,
+				4C3EEB3624C8AE2A0096C133 /* ANHTagHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1252,48 +1245,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C10499E24ABE40900FA339E /* ANHDelegateForwarder.h in Headers */,
-				4CA7330924A3E96C006AC99D /* MSInstallationTemplate.h in Headers */,
-				4C3EEB3524C8AE290096C133 /* MSTagHelper.h in Headers */,
-				4CA7330B24A3E984006AC99D /* MSNotificationHub.h in Headers */,
-				4CA731D024A190A9006AC99D /* MSInstallation.h in Headers */,
+				4CA7330924A3E96C006AC99D /* ANHInstallationTemplate.h in Headers */,
+				4C3EEB3524C8AE290096C133 /* ANHTagHelper.h in Headers */,
+				4CA7330B24A3E984006AC99D /* ANHNotificationHub.h in Headers */,
+				4CA731D024A190A9006AC99D /* ANHInstallation.h in Headers */,
 				4CA732C124A2D051006AC99D /* HTTPStubsPathHelpers.h in Headers */,
-				4CA731D324A1B927006AC99D /* MSChangeTracking.h in Headers */,
 				4CA7317924A18082006AC99D /* ANHHttpClientDelegate.h in Headers */,
-				4CA731EB24A1BBC8006AC99D /* MSTaggable.h in Headers */,
-				4CA731FB24A1C33D006AC99D /* MSInstallationManagementDelegate.h in Headers */,
+				4CA731EB24A1BBC8006AC99D /* ANHTaggable.h in Headers */,
+				4CA731FB24A1C33D006AC99D /* ANHInstallationManagementDelegate.h in Headers */,
 				4CA7316324A17BA7006AC99D /* ANH_Errors.h in Headers */,
-				4CA731DD24A1BA1B006AC99D /* MSNotificationHubMessage.h in Headers */,
+				4CA731DD24A1BA1B006AC99D /* ANHNotificationHubMessage.h in Headers */,
 				4C10499B24ABE3A600FA339E /* ANHCustomDelegate.h in Headers */,
 				4CA732C424A2D051006AC99D /* NSURLRequest+HTTPBodyTesting.h in Headers */,
 				4CA7317324A1801C006AC99D /* ANHHttpClient.h in Headers */,
 				4CA732C224A2D051006AC99D /* HTTPStubsResponse.h in Headers */,
 				4CA7316A24A17D83006AC99D /* ANHHttpClient+Private.h in Headers */,
-				4CA7335124A42C64006AC99D /* MSInstallation+Private.h in Headers */,
+				4CA7335124A42C64006AC99D /* ANHInstallation+Private.h in Headers */,
 				4CA732C324A2D051006AC99D /* HTTPStubsResponse+JSON.h in Headers */,
 				4CA7317D24A180C0006AC99D /* ANHHttpUtil.h in Headers */,
 				4CA732C024A2D051006AC99D /* HTTPStubs.h in Headers */,
-				4CA731C224A18A8C006AC99D /* MSTokenProvider.h in Headers */,
+				4CA731C224A18A8C006AC99D /* ANHTokenProvider.h in Headers */,
 				4CA7316724A17C6B006AC99D /* ANHHttpClientProtocol.h in Headers */,
 				4C1049B024ABE92100FA339E /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
 				4C1049B924ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
-				4C13E51D253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */,
-				4C3EEB2424C8ADDC0096C133 /* MSInstallationManager+Private.h in Headers */,
-				4CA731F524A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */,
-				4CA7318C24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */,
-				4CA7318F24A18662006AC99D /* MSInstallationLifecycleDelegate.h in Headers */,
+				4C13E51D253E4B9A0068A1B7 /* ANHNotificationHubOptions.h in Headers */,
+				4C3EEB2424C8ADDC0096C133 /* ANHInstallationManager+Private.h in Headers */,
+				4CA731F524A1C2A2006AC99D /* ANHDebounceInstallationManager.h in Headers */,
+				4CA7318C24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h in Headers */,
+				4CA7318F24A18662006AC99D /* ANHInstallationLifecycleDelegate.h in Headers */,
 				4CA7316D24A17F6B006AC99D /* ANHHttpCall.h in Headers */,
 				4C1049A424ABE48100FA339E /* ANHDelegateForwarder+Private.h in Headers */,
-				4CA731EE24A1BFE2006AC99D /* MSInstallationManager.h in Headers */,
+				4CA731EE24A1BFE2006AC99D /* ANHInstallationManager.h in Headers */,
 				4CA732F424A3DAC2006AC99D /* ANHApplication.h in Headers */,
 				4CA7318524A1820A006AC99D /* ANH_Reachability.h in Headers */,
 				4CA7315D24A17AC8006AC99D /* ANHDispatcherUtil.h in Headers */,
-				4CA731C824A1901D006AC99D /* MSLocalStorage.h in Headers */,
+				4CA731C824A1901D006AC99D /* ANHLocalStorage.h in Headers */,
 				4CA732BF24A2D050006AC99D /* Compatibility.h in Headers */,
 				4C3EEBA124C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */,
 				4CA7312324A15A25006AC99D /* WindowsAzureMessaging.h in Headers */,
-				4CA7320824A1C4E9006AC99D /* MSNotificationHub+Private.h in Headers */,
-				4CA731E124A1BA4B006AC99D /* MSNotificationHubMessage+Private.h in Headers */,
-				4CA7320B24A1C55E006AC99D /* MSNotificationHubDelegate.h in Headers */,
+				4CA7320824A1C4E9006AC99D /* ANHNotificationHub+Private.h in Headers */,
+				4CA731E124A1BA4B006AC99D /* ANHNotificationHubMessage+Private.h in Headers */,
+				4CA7320B24A1C55E006AC99D /* ANHNotificationHubDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1423,9 +1415,9 @@
 		4CA730D624A14FF2006AC99D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = MS;
+				CLASSPREFIX = ANH;
 				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = "Matthew Podwysocki";
+				ORGANIZATIONNAME = "Microsoft Corporation";
 				TargetAttributes = {
 					4C1047B124AAA0C600FA339E = {
 						CreatedOnToolsVersion = 11.5;
@@ -1677,12 +1669,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				$BUILD_DIR/$CONFIGURATION/WindowsAzureMessaging.framework,
-				"$BUILD_DIR/$CONFIGURATION-maccatalyst/WindowsAzureMessaging.framework",
-				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessaging.framework",
-				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/WindowsAzureMessaging.framework",
-				"$BUILD_DIR/$CONFIGURATION-appletvos/WindowsAzureMessaging.framework",
-				"$BUILD_DIR/$CONFIGURATION-appletvsimulator/WindowsAzureMessaging.framework",
+				$BUILD_DIR/$CONFIGURATION/$PRODUCT_NAME.framework,
+				"$BUILD_DIR/$CONFIGURATION-maccatalyst/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphoneos/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-appletvos/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-appletvsimulator/$PRODUCT_NAME.framework",
 			);
 			name = "Combine XCFramework";
 			outputFileListPaths = (
@@ -1879,14 +1871,14 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$BUILD_DIR/$CONFIGURATION-iphoneos/WindowsAzureMessagingframework",
-				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/WindowsAzureMessaging.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphoneos/$PRODUCT_NAME.framework",
+				"$BUILD_DIR/$CONFIGURATION-iphonesimulator/$PRODUCT_NAME.framework",
 			);
 			name = "Combine iOS Universal Framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$BUILT_PRODUCTS_DIR/WindowsAzure.framework,
+				$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.framework,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1959,12 +1951,12 @@
 			files = (
 				4C3EEB0824C8AC680096C133 /* SBStoredRegistrationEntry.m in Sources */,
 				4C3EEB4624C8AFF70096C133 /* SBConnectionString.m in Sources */,
-				4C3EEB3124C8AE1C0096C133 /* MSInstallationTemplate.m in Sources */,
+				4C3EEB3124C8AE1C0096C133 /* ANHInstallationTemplate.m in Sources */,
 				4C3EEB0A24C8AC830096C133 /* SBTokenProvider.m in Sources */,
 				4C3EEB4224C8AFE00096C133 /* SBRegistration.m in Sources */,
 				4C3EEB0024C8ABB40096C133 /* SBLocalStorage.m in Sources */,
 				4C3EEB1924C8AD5A0096C133 /* ANHDelegateForwarder.m in Sources */,
-				4C3EEB2224C8ADD30096C133 /* MSInstallationManager.m in Sources */,
+				4C3EEB2224C8ADD30096C133 /* ANHInstallationManager.m in Sources */,
 				4C3EEB1B24C8AD610096C133 /* ANHNotificationHubAppDelegateForwarder.m in Sources */,
 				4C3EEB0224C8ABBD0096C133 /* SBNotificationHubHelper.m in Sources */,
 				4C3EEB3A24C8AE450096C133 /* ANH_Reachability.m in Sources */,
@@ -1972,19 +1964,19 @@
 				4C3EEB1024C8AD3B0096C133 /* ANHHttpCall.m in Sources */,
 				4C3EEB0C24C8AC8B0096C133 /* SBURLConnection.m in Sources */,
 				4C3EEB0E24C8AD320096C133 /* ANHHttpUtil.m in Sources */,
-				4C3EEB2824C8ADE80096C133 /* MSLocalStorage.m in Sources */,
-				4C3EEB4A24C8B4FD0096C133 /* MSNotificationHub.m in Sources */,
+				4C3EEB2824C8ADE80096C133 /* ANHLocalStorage.m in Sources */,
+				4C3EEB4A24C8B4FD0096C133 /* ANHNotificationHub.m in Sources */,
 				4C3EEB4424C8AFEF0096C133 /* SBTemplateRegistration.m in Sources */,
 				4C3EEB0624C8AC610096C133 /* SBStaticHandlerResponse.m in Sources */,
 				4C3EEB3C24C8AE4D0096C133 /* ANHDispatcherUtil.m in Sources */,
 				4C3EEB4824C8B00E0096C133 /* SBNotificationHub.m in Sources */,
-				4C3EEB2F24C8AE130096C133 /* MSInstallation.m in Sources */,
+				4C3EEB2F24C8AE130096C133 /* ANHInstallation.m in Sources */,
 				4C3EEB1324C8AD450096C133 /* ANHHttpClient.m in Sources */,
-				4C13E537253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */,
-				4C3EEB3724C8AE2F0096C133 /* MSTagHelper.m in Sources */,
-				4C3EEB3324C8AE240096C133 /* MSNotificationHubMessage.m in Sources */,
-				4C3EEB2A24C8ADEE0096C133 /* MSTokenProvider.m in Sources */,
-				4C3EEB2024C8ADCB0096C133 /* MSDebounceInstallationManager.m in Sources */,
+				4C13E537253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */,
+				4C3EEB3724C8AE2F0096C133 /* ANHTagHelper.m in Sources */,
+				4C3EEB3324C8AE240096C133 /* ANHNotificationHubMessage.m in Sources */,
+				4C3EEB2A24C8ADEE0096C133 /* ANHTokenProvider.m in Sources */,
+				4C3EEB2024C8ADCB0096C133 /* ANHDebounceInstallationManager.m in Sources */,
 				4C3EEB0424C8AC0F0096C133 /* SBRegistrationParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2022,28 +2014,28 @@
 				4CA7315424A16C87006AC99D /* SBTemplateRegistration.m in Sources */,
 				4CA7318724A18233006AC99D /* ANH_Reachability.m in Sources */,
 				4CA731B024A187A6006AC99D /* SBTokenProvider.m in Sources */,
-				4CA731D524A1B971006AC99D /* MSInstallation.m in Sources */,
-				4CA731CA24A1902F006AC99D /* MSLocalStorage.m in Sources */,
+				4CA731D524A1B971006AC99D /* ANHInstallation.m in Sources */,
+				4CA731CA24A1902F006AC99D /* ANHLocalStorage.m in Sources */,
 				4CA731A824A187A6006AC99D /* SBURLConnection.m in Sources */,
 				4CA731AE24A187A6006AC99D /* SBStoredRegistrationEntry.m in Sources */,
 				4C1049A024ABE45A00FA339E /* ANHDelegateForwarder.m in Sources */,
-				4CA731F024A1C005006AC99D /* MSInstallationManager.m in Sources */,
+				4CA731F024A1C005006AC99D /* ANHInstallationManager.m in Sources */,
 				4CA7317524A18041006AC99D /* ANHHttpClient.m in Sources */,
 				4C1049BB24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */,
 				4CA7319424A186CC006AC99D /* SBNotificationHub.m in Sources */,
 				4CA7319A24A18759006AC99D /* SBLocalStorage.m in Sources */,
-				4CA731E724A1BB9C006AC99D /* MSTagHelper.m in Sources */,
+				4CA731E724A1BB9C006AC99D /* ANHTagHelper.m in Sources */,
 				4CA7315F24A17B4C006AC99D /* ANHDispatcherUtil.m in Sources */,
 				4CA731AA24A187A6006AC99D /* SBRegistrationParser.m in Sources */,
-				4CA731FE24A1C3C4006AC99D /* MSNotificationHub.m in Sources */,
+				4CA731FE24A1C3C4006AC99D /* ANHNotificationHub.m in Sources */,
 				4C1049B224ABE96E00FA339E /* ANHUserNotificationCenterDelegateForwarder.m in Sources */,
 				4CA7317F24A180E5006AC99D /* ANHHttpUtil.m in Sources */,
 				4CA7315824A17A67006AC99D /* SBConnectionString.m in Sources */,
-				4CA731E324A1BB13006AC99D /* MSNotificationHubMessage.m in Sources */,
-				4C13E535253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */,
-				4CA731C424A18B41006AC99D /* MSTokenProvider.m in Sources */,
-				4CA731F724A1C2CF006AC99D /* MSDebounceInstallationManager.m in Sources */,
-				4CA731D924A1B9C8006AC99D /* MSInstallationTemplate.m in Sources */,
+				4CA731E324A1BB13006AC99D /* ANHNotificationHubMessage.m in Sources */,
+				4C13E535253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */,
+				4CA731C424A18B41006AC99D /* ANHTokenProvider.m in Sources */,
+				4CA731F724A1C2CF006AC99D /* ANHDebounceInstallationManager.m in Sources */,
+				4CA731D924A1B9C8006AC99D /* ANHInstallationTemplate.m in Sources */,
 				4CA731B424A187A6006AC99D /* SBStaticHandlerResponse.m in Sources */,
 				4CA7316F24A17FC5006AC99D /* ANHHttpCall.m in Sources */,
 			);
@@ -2107,23 +2099,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA7318824A18233006AC99D /* ANH_Reachability.m in Sources */,
-				4CA731E824A1BB9C006AC99D /* MSTagHelper.m in Sources */,
-				4CA731FF24A1C3C4006AC99D /* MSNotificationHub.m in Sources */,
+				4CA731E824A1BB9C006AC99D /* ANHTagHelper.m in Sources */,
+				4CA731FF24A1C3C4006AC99D /* ANHNotificationHub.m in Sources */,
 				4C1049B324ABE96E00FA339E /* ANHUserNotificationCenterDelegateForwarder.m in Sources */,
 				4C1049BC24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */,
 				4CA7317624A18041006AC99D /* ANHHttpClient.m in Sources */,
 				4CA7316024A17B4C006AC99D /* ANHDispatcherUtil.m in Sources */,
 				4CA7318024A180E5006AC99D /* ANHHttpUtil.m in Sources */,
 				4C1049A124ABE45A00FA339E /* ANHDelegateForwarder.m in Sources */,
-				4CA731C524A18B41006AC99D /* MSTokenProvider.m in Sources */,
-				4CA731D624A1B971006AC99D /* MSInstallation.m in Sources */,
-				4CA731F124A1C005006AC99D /* MSInstallationManager.m in Sources */,
-				4CA731F824A1C2CF006AC99D /* MSDebounceInstallationManager.m in Sources */,
-				4CA731E424A1BB13006AC99D /* MSNotificationHubMessage.m in Sources */,
+				4CA731C524A18B41006AC99D /* ANHTokenProvider.m in Sources */,
+				4CA731D624A1B971006AC99D /* ANHInstallation.m in Sources */,
+				4CA731F124A1C005006AC99D /* ANHInstallationManager.m in Sources */,
+				4CA731F824A1C2CF006AC99D /* ANHDebounceInstallationManager.m in Sources */,
+				4CA731E424A1BB13006AC99D /* ANHNotificationHubMessage.m in Sources */,
 				4CA7317024A17FC5006AC99D /* ANHHttpCall.m in Sources */,
-				4C13E536253E4C340068A1B7 /* MSNotificationHubOptions.m in Sources */,
-				4CA731DA24A1B9C8006AC99D /* MSInstallationTemplate.m in Sources */,
-				4CA731CB24A1902F006AC99D /* MSLocalStorage.m in Sources */,
+				4C13E536253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */,
+				4CA731DA24A1B9C8006AC99D /* ANHInstallationTemplate.m in Sources */,
+				4CA731CB24A1902F006AC99D /* ANHLocalStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

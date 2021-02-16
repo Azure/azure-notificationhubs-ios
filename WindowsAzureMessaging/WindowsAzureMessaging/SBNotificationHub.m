@@ -28,13 +28,16 @@ typedef void (^SBCompletion)(NSError *);
 
 @end
 
-@implementation SBNotificationHub {
-  @private
-    NSString *_path;
-    NSURL *_serviceEndPoint;
-    SBTokenProvider *tokenProvider;
-    SBLocalStorage *storageManager;
-}
+@interface SBNotificationHub ()
+@property (nonatomic, copy) NSString *path;
+@property (nonatomic, copy) NSURL *serviceEndPoint;
+@property (nonatomic, strong) SBTokenProvider *tokenProvider;
+@property (nonatomic, strong) SBLocalStorage *storageManager;
+@end
+
+@implementation SBNotificationHub
+
+@synthesize path, serviceEndPoint, tokenProvider, storageManager;
 
 static NSString *const currentVersion = @"v0.1.6";
 static NSString *const _APIVersion = @"2013-04";
@@ -52,24 +55,24 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 
         NSString *endPoint = [connnectionDictionary objectForKey:@"endpoint"];
         if (endPoint) {
-            self->_serviceEndPoint = [[NSURL alloc] initWithString:endPoint];
+            serviceEndPoint = [[NSURL alloc] initWithString:endPoint];
         }
 
-        if (self->_serviceEndPoint == nil || [self->_serviceEndPoint host] == nil) {
+        if (!serviceEndPoint || ![serviceEndPoint host]) {
             NSLog(@"%@", @"Endpoint is missing or not in URL format in connectionString.");
             return nil;
         }
 
-        self->_path = notificationHubPath;
+        path = notificationHubPath;
         tokenProvider = [[SBTokenProvider alloc] initWithConnectionDictinary:connnectionDictionary];
 
-        if (tokenProvider == nil) {
+        if (!tokenProvider) {
             return nil;
         }
 
         storageManager = [[SBLocalStorage alloc] initWithNotificationHubPath:notificationHubPath];
 
-        if (storageManager == nil) {
+        if (!storageManager) {
             return nil;
         }
     }
@@ -880,8 +883,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (NSURL *)composeRetrieveAllRegistrationsUriWithDeviceToken:(NSString *)deviceToken {
-    NSString *fullPath = [NSString stringWithFormat:@"%@%@/Registrations/?$filter=deviceToken+eq+'%@'&api-version=%@",
-                                                    [self->_serviceEndPoint absoluteString], self -> _path, deviceToken, _APIVersion];
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@/Registrations/?$filter=deviceToken+eq+'%@'&api-version=%@", [serviceEndPoint absoluteString], path, deviceToken, _APIVersion];
 
     return [[NSURL alloc] initWithString:fullPath];
 }
@@ -891,15 +893,14 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
         registrationId = @"";
     }
 
-    NSString *fullPath = [NSString stringWithFormat:@"%@%@/Registrations/%@?api-version=%@", [self->_serviceEndPoint absoluteString],
-                                                    self -> _path, registrationId, _APIVersion];
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@/Registrations/%@?api-version=%@", [serviceEndPoint absoluteString], path, registrationId, _APIVersion];
 
     return [[NSURL alloc] initWithString:fullPath];
 }
 
 - (NSURL *)composeCreateRegistrationIdUri {
     NSString *fullPath = [NSString
-        stringWithFormat:@"%@%@/registrationids/?api-version=%@", [self->_serviceEndPoint absoluteString], self -> _path, _APIVersion];
+        stringWithFormat:@"%@%@/registrationids/?api-version=%@", [serviceEndPoint absoluteString], path, _APIVersion];
 
     return [[NSURL alloc] initWithString:fullPath];
 }

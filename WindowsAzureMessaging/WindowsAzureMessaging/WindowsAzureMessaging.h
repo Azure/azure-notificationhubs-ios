@@ -11,12 +11,12 @@
 #endif
 
 // New API
-#import "MSInstallation.h"
-#import "MSInstallationEnrichmentDelegate.h"
-#import "MSInstallationLifecycleDelegate.h"
-#import "MSInstallationManagementDelegate.h"
-#import "MSInstallationTemplate.h"
-#import "MSNotificationHubOptions.h"
-#import "MSNotificationHub.h"
-#import "MSNotificationHubDelegate.h"
-#import "MSNotificationHubMessage.h"
+#import "ANHInstallation.h"
+#import "ANHInstallationEnrichmentDelegate.h"
+#import "ANHInstallationLifecycleDelegate.h"
+#import "ANHInstallationManagementDelegate.h"
+#import "ANHInstallationTemplate.h"
+#import "ANHNotificationHubOptions.h"
+#import "ANHNotificationHub.h"
+#import "ANHNotificationHubDelegate.h"
+#import "ANHNotificationHubMessage.h"

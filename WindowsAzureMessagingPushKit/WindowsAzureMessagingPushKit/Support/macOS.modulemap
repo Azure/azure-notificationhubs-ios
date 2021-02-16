@@ -1,0 +1,12 @@
+
+framework module WindowsAzureMessagingPushKit {
+  umbrella header "WindowsAzureMessagingPushKit.h"
+
+  export *
+  module * { export * }
+  
+  link framework "Foundation"
+  link framework "SystemConfiguration"
+  link framework "AppKit"
+  link framework "PushKit"
+}

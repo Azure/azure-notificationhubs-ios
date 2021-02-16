@@ -5,7 +5,7 @@
 
 #import "ANHApplication.h"
 #import "ANHNotificationHubAppDelegateForwarder.h"
-#import "MSNotificationHub.h"
+#import "ANHNotificationHub.h"
 
 static dispatch_once_t swizzlingOnceToken;
 
@@ -85,7 +85,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to Push
-    [MSNotificationHub didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    [ANHNotificationHub didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 - (void)custom_application:(ANHApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -98,7 +98,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didFailToRegisterForRemoteNotificationsWithError:error];
+    [ANHNotificationHub didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
 - (void)custom_application:(ANHApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -111,7 +111,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didReceiveRemoteNotification:userInfo];
+    [ANHNotificationHub didReceiveRemoteNotification:userInfo];
 }
 
 #if !TARGET_OS_OSX
@@ -129,7 +129,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didReceiveRemoteNotification:userInfo];
+    [ANHNotificationHub didReceiveRemoteNotification:userInfo];
 
     if (!originalImp) {
 
