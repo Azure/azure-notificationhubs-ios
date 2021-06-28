@@ -5,11 +5,14 @@
 #import "AppDelegate.h"
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 #import <UserNotifications/UserNotifications.h>
+#import "CustomInstallationManager.h"
 
-@interface AppDelegate () <MSNotificationHubDelegate, UNUserNotificationCenterDelegate>
+@interface AppDelegate () <MSNotificationHubDelegate, UNUserNotificationCenterDelegate, MSInstallationManagementDelegate>
 
 @property(nonatomic) API_AVAILABLE(ios(10.0)) void (^notificationPresentationCompletionHandler)(UNNotificationPresentationOptions options);
 @property(nonatomic) void (^notificationResponseCompletionHandler)(void);
+
+@property(nonatomic) CustomInstallationManager *installationManager;
 
 @end
 
@@ -17,6 +20,7 @@
 
 @synthesize notificationPresentationCompletionHandler;
 @synthesize notificationResponseCompletionHandler;
+@synthesize installationManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -29,10 +33,10 @@
     if([connectionString length] != 0 && [hubName length] != 0) {
         [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
         
-        [MSNotificationHub setDelegate:self];
-        [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
+        installationManager = [[CustomInstallationManager alloc] initWithConnectionString:connectionString hubName:hubName];
         
-        [self addTags];
+        [MSNotificationHub setDelegate:self];
+        [MSNotificationHub startWithInstallationManagement:self];
         
         return YES;
     }
@@ -113,6 +117,27 @@
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+}
+
+#pragma mark - MSInstallationManagementDelegate
+
+- (void)notificationHub:(MSNotificationHub *)notificationHub
+    willUpsertInstallation:(MSInstallation *)installation
+      completionHandler:(void (^)(NSError *_Nullable))completionHandler {
+    
+    // TODO: Verify this Installation ID versus desired ID
+    [installationManager getInstallation:installation.installationId completionHandler:^(MSInstallation *serverInstallation, NSError *getError) {
+        
+        if (getError) {
+            completionHandler(getError);
+            return;
+        }
+        
+        // TODO: Copy over from server installation to local installation
+        
+        [self->installationManager saveInstallation:installation completionHandler:completionHandler];
+        
+    }];
 }
 
 @end

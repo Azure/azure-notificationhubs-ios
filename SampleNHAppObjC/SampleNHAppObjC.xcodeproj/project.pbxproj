@@ -21,6 +21,8 @@
 		64B18FC92452DA6500AA38B1 /* TagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FC82452DA6500AA38B1 /* TagTableViewCell.m */; };
 		64B18FCF2452E48200AA38B1 /* NotificationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FCE2452E48200AA38B1 /* NotificationDetailsViewController.m */; };
 		64B18FD22452E58C00AA38B1 /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B18FD12452E58C00AA38B1 /* NotificationTableViewCell.m */; };
+		93D416C5268A6B7900F7520F /* CustomTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D416C4268A6B7900F7520F /* CustomTokenProvider.m */; };
+		93D416C8268A6BE300F7520F /* CustomInstallationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D416C7268A6BE300F7520F /* CustomInstallationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +64,10 @@
 		64B18FCE2452E48200AA38B1 /* NotificationDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationDetailsViewController.m; sourceTree = "<group>"; };
 		64B18FD02452E58C00AA38B1 /* NotificationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
 		64B18FD12452E58C00AA38B1 /* NotificationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
+		93D416C1268A6B2E00F7520F /* CustomTokenProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTokenProvider.h; sourceTree = "<group>"; };
+		93D416C4268A6B7900F7520F /* CustomTokenProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTokenProvider.m; sourceTree = "<group>"; };
+		93D416C6268A6BAF00F7520F /* CustomInstallationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomInstallationManager.h; sourceTree = "<group>"; };
+		93D416C7268A6BE300F7520F /* CustomInstallationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomInstallationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,10 @@
 				64B18FBA2452CEEB00AA38B1 /* Info.plist */,
 				4C1C0EDB24D8883C0019A46B /* Splash.png */,
 				64B18FBB2452CEEB00AA38B1 /* main.m */,
+				93D416C1268A6B2E00F7520F /* CustomTokenProvider.h */,
+				93D416C4268A6B7900F7520F /* CustomTokenProvider.m */,
+				93D416C6268A6BAF00F7520F /* CustomInstallationManager.h */,
+				93D416C7268A6BE300F7520F /* CustomInstallationManager.m */,
 			);
 			path = SampleNHAppObjC;
 			sourceTree = "<group>";
@@ -213,6 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B18FD22452E58C00AA38B1 /* NotificationTableViewCell.m in Sources */,
+				93D416C5268A6B7900F7520F /* CustomTokenProvider.m in Sources */,
+				93D416C8268A6BE300F7520F /* CustomInstallationManager.m in Sources */,
 				64B18FBC2452CEEB00AA38B1 /* main.m in Sources */,
 				64B18FB12452CEEA00AA38B1 /* NotificationsTableViewController.m in Sources */,
 				64B18FC92452DA6500AA38B1 /* TagTableViewCell.m in Sources */,
