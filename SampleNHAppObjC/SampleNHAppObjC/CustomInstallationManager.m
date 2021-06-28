@@ -67,10 +67,16 @@ static NSString *const kAPIVersion = @"2020-06";
 
             NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
 
-            if (statusCode != 200) {
+            if (statusCode != 200 && statusCode != 404) {
                 NSString *responseMessage = [NSString stringWithFormat:@"Error saving to backend: %@", [NSString stringWithFormat:@"%ld", statusCode]];
                 completionHandler(nil, [NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error" : responseMessage}]);
             } else {
+                
+                if (statusCode == 404) {
+                    completionHandler([MSInstallation new], nil);
+                    return;
+                }
+                       
                 NSError *jsonError;
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                 
@@ -149,6 +155,63 @@ static NSString *const kAPIVersion = @"2020-06";
 
     [dataTask resume];
 }
+
+- (void)patchInstallation:(NSArray *)patchOperations forInstallationId:(NSString *)installationId completionHandler:(InstallationCompletionHandler)completionHandler {
+    if (!_tokenProvider) {
+        NSString *msg = @"Invalid connection string";
+        completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error" : msg}]);
+        return;
+    }
+    
+    NSString *endpoint = [_connectionDictionary objectForKey:@"endpoint"];
+    NSString *url =
+        [NSString stringWithFormat:@"%@%@/installations/%@?api-version=%@", endpoint, _hubName, installationId, kAPIVersion];
+
+    NSString *sasToken = [_tokenProvider generateSharedAccessTokenWithUrl:url];
+    NSURL *requestUrl = [NSURL URLWithString:url];
+    
+    NSError *error;
+    
+    NSData *requestBody = [NSJSONSerialization dataWithJSONObject:patchOperations options:0 error:&error];
+    if (error) {
+        completionHandler(error);
+        return;
+    }
+    
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestUrl];
+    [request setHTTPMethod:@"PATCH"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:kAPIVersion forHTTPHeaderField:@"x-ms-version"];
+    [request setValue:@"Authorization" forHTTPHeaderField:sasToken];
+    [request setHTTPBody:requestBody];
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *err) {
+
+        if (err) {
+            completionHandler(err);
+            return;
+        }
+        
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+
+            NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+
+            if (statusCode != 200) {
+                NSString *responseMessage = [NSString stringWithFormat:@"Error saving to backend: %@", [NSString stringWithFormat:@"%ld", statusCode]];
+                completionHandler([NSError errorWithDomain:@"WindowsAzureMessaging" code:-1 userInfo:@{@"Error" : responseMessage}]);
+            } else {
+                completionHandler(nil);
+            }
+        }
+    }];
+
+    [dataTask resume];
+}
+
+#pragma mark - Helpers
 
 + (MSInstallation *)createInstallationFromJSON:(NSDictionary *)json {
     MSInstallation *installation = [MSInstallation new];

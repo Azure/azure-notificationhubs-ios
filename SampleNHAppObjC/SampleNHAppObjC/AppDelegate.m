@@ -134,8 +134,13 @@
         }
         
         // TODO: Copy over from server installation to local installation
+        // [self->installationManager saveInstallation:installation completionHandler:completionHandler];
         
-        [self->installationManager saveInstallation:installation completionHandler:completionHandler];
+        // Or:
+        
+        // TODO: Patch the operations you wish to
+        // NSArray *arr = ...
+        // [self->installationManager patchInstallation:arr forInstallationId:installation.installationId completionHandler:completionHandler];
         
     }];
 }

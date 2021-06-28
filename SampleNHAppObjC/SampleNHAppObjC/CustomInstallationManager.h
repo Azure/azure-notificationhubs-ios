@@ -14,6 +14,8 @@ typedef void (^InstallationGetCompletionHandler)(MSInstallation *_Nullable, NSEr
 
 - (void)saveInstallation:(MSInstallation *)installation completionHandler:(InstallationCompletionHandler)completionHandler;
 
+- (void)patchInstallation:(NSArray *)patchOperations forInstallationId:(NSString *)installationId completionHandler:(InstallationCompletionHandler)completionHandler;
+
 @end
 
 NS_ASSUME_NONNULL_END
