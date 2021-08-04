@@ -2,6 +2,7 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#import "ANHAsync.h"
 #import "ANHHttpCall.h"
 
 @implementation ANHHttpCall
@@ -11,7 +12,7 @@
                     headers:(NSDictionary<NSString *, NSString *> *)headers
                        data:(NSData *)data
              retryIntervals:(NSArray *)retryIntervals
-          completionHandler:(ANHHttpRequestCompletionHandler)completionHandler {
+          completionHandler:(ANHHttpRequestCompletionHandler)completionHandler ANH_SWIFT_DISABLE_ASYNC {
     if ((self = [super init])) {
         _url = url;
         _method = method;
