@@ -116,6 +116,9 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
 
 #if !TARGET_OS_OSX
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wcompletion-handler"
+
 - (void)custom_application:(UIApplication *)application
     didReceiveRemoteNotification:(NSDictionary *)userInfo
           fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
@@ -137,6 +140,8 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
         completionHandler(UIBackgroundFetchResultNoData);
     }
 }
+
+#pragma GCC diagnostic pop
 
 #endif
 

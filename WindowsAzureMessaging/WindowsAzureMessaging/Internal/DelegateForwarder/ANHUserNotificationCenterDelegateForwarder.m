@@ -74,6 +74,9 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
 
 #pragma mark - Custom UNUserNotificationCenterDelegate
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wcompletion-handler"
+
 - (void)custom_userNotificationCenter:(UNUserNotificationCenter *)center
               willPresentNotification:(UNNotification *)notification
                 withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
@@ -99,6 +102,11 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
     }
 }
 
+#pragma GCC diagnostic pop
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wcompletion-handler"
+
 - (void)custom_userNotificationCenter:(UNUserNotificationCenter *)center
        didReceiveNotificationResponse:(UNNotificationResponse *)response
                 withCompletionHandler:(void (^)(void))completionHandler
@@ -123,5 +131,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
         completionHandler();
     }
 }
+
+#pragma GCC diagnostic pop
 
 @end

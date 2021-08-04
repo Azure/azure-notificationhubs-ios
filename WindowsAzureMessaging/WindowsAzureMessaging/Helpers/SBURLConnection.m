@@ -16,6 +16,7 @@ static StaticHandleBlock _staticHandler;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #pragma GCC diagnostic ignored "-Wnullable-to-nonnull-conversion"
+#pragma GCC diagnostic ignored "-Wcompletion-handler"
 - (void)sendRequest:(NSURLRequest *)request completion:(void (^)(NSHTTPURLResponse *, NSData *, NSError *))completion
 {
     if (self) {

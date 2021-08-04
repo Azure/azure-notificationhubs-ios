@@ -6,6 +6,9 @@
 
 @implementation ANHHttpCall
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wcompletion-handler"
+
 - (instancetype)initWithUrl:(NSURL *)url
                      method:(NSString *)method
                     headers:(NSDictionary<NSString *, NSString *> *)headers
@@ -24,6 +27,8 @@
     }
     return self;
 }
+
+#pragma GCC diagnostic pop
 
 - (BOOL)hasReachedMaxRetries {
     @synchronized(self) {
