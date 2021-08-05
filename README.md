@@ -37,11 +37,11 @@ Below are the steps on how to integrate the Azure Notification Huds SDK in your 
 github "Azure/azure-notificationhubs-ios"
 ```
 
-You can also specify a specific version of the Azure Notification Hubs SDK such as 3.1.3.
+You can also specify a specific version of the Azure Notification Hubs SDK such as 3.1.4.
 
 ```ruby
-# Get version in the format of X.X.X such as 3.1.3
-github "Azure/azure-notificationhubs-ios" ~> 3.1.3
+# Get version in the format of X.X.X such as 3.1.4
+github "Azure/azure-notificationhubs-ios" ~> 3.1.4
 ```
 
 Once you have this, run `carthage update`.  This will fetch the SDK and put it into the `Carthage/Checkouts` folder.  Open Xcode and drag the `WindowsAzureMessaging.framework` from the `Carthage/Builds/iOS` for iOS or `Carthage/Builds/macOS` for macOS.  Ensure the app target is checked during the import.
