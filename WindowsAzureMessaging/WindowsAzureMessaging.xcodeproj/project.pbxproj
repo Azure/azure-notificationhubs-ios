@@ -231,6 +231,12 @@
 		4C3EEBA024C8BA5F0096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
 		4C3EEBA124C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
 		4C3EEBA224C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA7329324A2D020006AC99D /* HTTPStubsMethodSwizzling.h */; };
+		4C8C7D4926BC732500A39A9B /* ANHApplicationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */; };
+		4C8C7D4A26BC732500A39A9B /* ANHApplicationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */; };
+		4C8C7D4B26BC732500A39A9B /* ANHApplicationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */; };
+		4C8C7D4D26BC740C00A39A9B /* ANHApplicationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C7D4C26BC740C00A39A9B /* ANHApplicationProvider.m */; };
+		4C8C7D4E26BC740C00A39A9B /* ANHApplicationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C7D4C26BC740C00A39A9B /* ANHApplicationProvider.m */; };
+		4C8C7D4F26BC740C00A39A9B /* ANHApplicationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C7D4C26BC740C00A39A9B /* ANHApplicationProvider.m */; };
 		4CA730EE24A14FF2006AC99D /* WindowsAzureMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA730ED24A14FF2006AC99D /* WindowsAzureMessagingTests.m */; };
 		4CA730F024A14FF2006AC99D /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA7312324A15A25006AC99D /* WindowsAzureMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -627,6 +633,8 @@
 		4C67369325A51EB70041F83D /* XCFramework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = XCFramework.xcconfig; path = ../../../Config/XCFramework.xcconfig; sourceTree = "<group>"; };
 		4C67369625A5211A0041F83D /* tvOS Universal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "tvOS Universal.xcconfig"; path = "../../../Config/tvOS Universal.xcconfig"; sourceTree = "<group>"; };
 		4C67369725A5211A0041F83D /* iOS Universal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "iOS Universal.xcconfig"; path = "../../../Config/iOS Universal.xcconfig"; sourceTree = "<group>"; };
+		4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHApplicationProvider.h; sourceTree = "<group>"; };
+		4C8C7D4C26BC740C00A39A9B /* ANHApplicationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHApplicationProvider.m; sourceTree = "<group>"; };
 		4CA730DF24A14FF2006AC99D /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsAzureMessaging.h; sourceTree = "<group>"; };
 		4CA730E324A14FF2006AC99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -997,6 +1005,8 @@
 			children = (
 				4C10498F24ABD6B600FA339E /* DelegateForwarder */,
 				4CA732F224A3DAC2006AC99D /* ANHApplication.h */,
+				4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */,
+				4C8C7D4C26BC740C00A39A9B /* ANHApplicationProvider.m */,
 				4CF272FF26BB50FD0018E048 /* ANHAsync.h */,
 				4CA731F324A1C2A2006AC99D /* MSDebounceInstallationManager.h */,
 				4CA731F624A1C2CF006AC99D /* MSDebounceInstallationManager.m */,
@@ -1138,6 +1148,7 @@
 				4C3EEB0D24C8AD2E0096C133 /* ANHHttpUtil.h in Headers */,
 				4C3EEB9C24C8BA130096C133 /* HTTPStubsPathHelpers.h in Headers */,
 				4C3EEBA224C8BA600096C133 /* HTTPStubsMethodSwizzling.h in Headers */,
+				4C8C7D4B26BC732500A39A9B /* ANHApplicationProvider.h in Headers */,
 				4C3EEB9B24C8BA100096C133 /* HTTPStubs.h in Headers */,
 				4C3EEB1724C8AD530096C133 /* ANHDelegateForwarder.h in Headers */,
 				4C3EEB4024C8AE610096C133 /* MSInstallationManagementDelegate.h in Headers */,
@@ -1200,6 +1211,7 @@
 				4C1049AF24ABE92100FA339E /* ANHUserNotificationCenterDelegateForwarder.h in Headers */,
 				4CA7335024A42C64006AC99D /* MSInstallation+Private.h in Headers */,
 				4C3EEBA024C8BA5F0096C133 /* HTTPStubsMethodSwizzling.h in Headers */,
+				4C8C7D4926BC732500A39A9B /* ANHApplicationProvider.h in Headers */,
 				4CA731BE24A1893C006AC99D /* SBConnectionString.h in Headers */,
 				4CA732B924A2D04E006AC99D /* Compatibility.h in Headers */,
 				4CA7317824A18082006AC99D /* ANHHttpClientDelegate.h in Headers */,
@@ -1285,6 +1297,7 @@
 				4C1049B924ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
 				4C13E51D253E4B9A0068A1B7 /* MSNotificationHubOptions.h in Headers */,
 				4C3EEB2424C8ADDC0096C133 /* MSInstallationManager+Private.h in Headers */,
+				4C8C7D4A26BC732500A39A9B /* ANHApplicationProvider.h in Headers */,
 				4CA731F524A1C2A2006AC99D /* MSDebounceInstallationManager.h in Headers */,
 				4CA7318C24A18613006AC99D /* MSInstallationEnrichmentDelegate.h in Headers */,
 				4CA7318F24A18662006AC99D /* MSInstallationLifecycleDelegate.h in Headers */,
@@ -1972,6 +1985,7 @@
 				4C3EEB4224C8AFE00096C133 /* SBRegistration.m in Sources */,
 				4C3EEB0024C8ABB40096C133 /* SBLocalStorage.m in Sources */,
 				4C3EEB1924C8AD5A0096C133 /* ANHDelegateForwarder.m in Sources */,
+				4C8C7D4F26BC740C00A39A9B /* ANHApplicationProvider.m in Sources */,
 				4C3EEB2224C8ADD30096C133 /* MSInstallationManager.m in Sources */,
 				4C3EEB1B24C8AD610096C133 /* ANHNotificationHubAppDelegateForwarder.m in Sources */,
 				4C3EEB0224C8ABBD0096C133 /* SBNotificationHubHelper.m in Sources */,
@@ -2032,6 +2046,7 @@
 				4CA731B024A187A6006AC99D /* SBTokenProvider.m in Sources */,
 				4CA731D524A1B971006AC99D /* MSInstallation.m in Sources */,
 				4CA731CA24A1902F006AC99D /* MSLocalStorage.m in Sources */,
+				4C8C7D4D26BC740C00A39A9B /* ANHApplicationProvider.m in Sources */,
 				4CA731A824A187A6006AC99D /* SBURLConnection.m in Sources */,
 				4CA731AE24A187A6006AC99D /* SBStoredRegistrationEntry.m in Sources */,
 				4C1049A024ABE45A00FA339E /* ANHDelegateForwarder.m in Sources */,
@@ -2121,6 +2136,7 @@
 				4C1049BC24ABF85800FA339E /* ANHNotificationHubAppDelegateForwarder.m in Sources */,
 				4CA7317624A18041006AC99D /* ANHHttpClient.m in Sources */,
 				4CA7316024A17B4C006AC99D /* ANHDispatcherUtil.m in Sources */,
+				4C8C7D4E26BC740C00A39A9B /* ANHApplicationProvider.m in Sources */,
 				4CA7318024A180E5006AC99D /* ANHHttpUtil.m in Sources */,
 				4C1049A124ABE45A00FA339E /* ANHDelegateForwarder.m in Sources */,
 				4CA731C524A18B41006AC99D /* MSTokenProvider.m in Sources */,

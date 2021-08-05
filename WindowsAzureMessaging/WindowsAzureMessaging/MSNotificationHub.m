@@ -12,6 +12,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+#import "ANHApplicationProvider.h"
 #import "ANHNotificationHubAppDelegateForwarder.h"
 #import "ANHUserNotificationCenterDelegateForwarder.h"
 #import "MSDebounceInstallationManager.h"
@@ -177,10 +178,11 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
         UIUserNotificationType allNotificationTypes =
             (UIUserNotificationType)(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    }
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[ANHApplicationProvider sharedApplication] registerUserNotificationSettings:settings];
 #pragma GCC diagnostic pop
+    }
+    
+    [[ANHApplicationProvider sharedApplication] registerForRemoteNotifications];
 #endif
 }
 
