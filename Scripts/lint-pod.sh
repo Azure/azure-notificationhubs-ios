@@ -3,7 +3,10 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 
 # Run lint to validate podspec
-pod spec lint ../AzureNotificationHubs-iOS.podspec --verbose
+PROJECT_DIR="$(dirname "$0")/.."
+PODSPEC_FILE="$PROJECT_DIR/AzureNotificationHubs-iOS.podspec"
+
+pod spec lint $PODSPEC_FILE --verbose
 retval=$?
 
 if [ $retval -eq 0 ]; then

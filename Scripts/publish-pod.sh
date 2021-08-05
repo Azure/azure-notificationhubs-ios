@@ -3,7 +3,10 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 
 # Push podspec to CocoaPods
-pod trunk push ../AzureNotificationHubs-iOS.podspec
+PROJECT_DIR="$(dirname "$0")/.."
+PODSPEC_FILE="$PROJECT_DIR/AzureNotificationHubs-iOS.podspec"
+
+pod trunk push $PODSPEC_FILE
 retval=$?
 
 if [ $retval -eq 0 ]; then
