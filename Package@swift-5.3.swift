@@ -25,7 +25,7 @@ let package = Package(
             path: "WindowsAzureMessaging/WindowsAzureMessaging",
             exclude: ["Support"],
             cSettings: [
-                .define("NH_C_VERSION", to:"\"3.1.3\""),
+                .define("NH_C_VERSION", to:"\"3.1.4\""),
                 .define("NH_C_BUILD", to:"\"1\""),
                 .headerSearchPath("**"),
             ],
