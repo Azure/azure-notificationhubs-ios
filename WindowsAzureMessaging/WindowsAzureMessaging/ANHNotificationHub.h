@@ -27,11 +27,6 @@ NS_SWIFT_NAME(NotificationHub)
 @interface ANHNotificationHub : ANHService
 
 /**
- * Gets the shared instance of the Notification Hub.
- */
-@property (class, atomic, readonly) ANHNotificationHub *sharedInstance;
-
-/**
  * Initializes the Notification Hub with the connection string from the Access
  * Policy, and Hub Name.
  *

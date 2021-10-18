@@ -8,7 +8,7 @@
 #import <CallKit/CallKit.h>
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-@interface AppDelegate () <ANHVoIPNotificationHubDelegate, CXProviderDelegate>
+@interface AppDelegate () <ANHPushKitNotificationHubDelegate, CXProviderDelegate>
 
 @property (nonatomic, strong) PKPushRegistry *pushRegistry;
 @property (nonatomic, strong) CXProvider *callProvider;
@@ -36,8 +36,8 @@
     
     NSError *anhError;
     ANHNotificationHub.logLevel = ANHLogLevelDebug;
-    [ANHVoIPNotificationHub sharedInstance].delegate = self;
-    if (![[ANHVoIPNotificationHub sharedInstance] startWithConnectionString:connectionString hubName:hubName  error:&anhError]) {
+    [ANHPushKitNotificationHub sharedInstance].delegate = self;
+    if (![[ANHPushKitNotificationHub sharedInstance] startWithConnectionString:connectionString hubName:hubName  error:&anhError]) {
         NSLog(@"Error starting the ANH client: %@", anhError.localizedDescription);
         
         exit(-1);
@@ -58,10 +58,10 @@
     NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
     NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
 
-    [[ANHVoIPNotificationHub sharedInstance] addTags:@[languageTag, countryCodeTag]];
+    [[ANHPushKitNotificationHub sharedInstance] addTags:@[languageTag, countryCodeTag]];
 }
 
-- (void)notificationHub:(ANHVoIPNotificationHub *)notificationHub didReceiveIncomingPushWithPayload:(NSDictionary *)payload withCompletionHandler:(void (^)(void))completionHandler {
+- (void)notificationHub:(ANHPushKitNotificationHub *)notificationHub didReceiveIncomingPushWithPayload:(NSDictionary *)payload withCompletionHandler:(void (^)(void))completionHandler {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kAppMessageReceived object:nil userInfo:payload];
     

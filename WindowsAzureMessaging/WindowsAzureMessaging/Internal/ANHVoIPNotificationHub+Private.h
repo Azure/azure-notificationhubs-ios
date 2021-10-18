@@ -2,9 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
-#import "ANHVoIPNotificationHub.h"
+#import "ANHPushKitNotificationHub.h"
 #import "ANHService+Private.h"
 
-@interface ANHVoIPNotificationHub ()
+@interface ANHPushKitNotificationHub ()
 
 @end

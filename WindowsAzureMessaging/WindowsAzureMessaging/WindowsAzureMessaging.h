@@ -18,5 +18,5 @@
 #import "ANHNotificationHub.h"
 #import "ANHNotificationHubDelegate.h"
 #import "ANHNotificationHubMessage.h"
-#import "ANHVoIPNotificationHub.h"
-#import "ANHVoIPNotificationHubDelegate.h"
+#import "ANHPushKitNotificationHub.h"
+#import "ANHPushKitNotificationHubDelegate.h"

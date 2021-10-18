@@ -18,6 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ANHService : NSObject
 
+/**
+ * Returns the singleton instance of App Center.
+ *
+ * @return The singleton instance.
+ */
++ (instancetype)sharedInstance;
+
 #pragma mark - Installation Support
 
 /**

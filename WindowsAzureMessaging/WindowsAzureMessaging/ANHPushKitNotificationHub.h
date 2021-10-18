@@ -7,20 +7,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ANHService.h"
-#import "ANHVoIPNotificationHubDelegate.h"
+#import "ANHPushKitNotificationHubDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class ANHInstallation;
 @class ANHInstallationTemplate;
 
-NS_SWIFT_NAME(VoIPNotificationHub)
-@interface ANHVoIPNotificationHub : ANHService
-
-/**
- * Gets the shared instance of the VoIP Notification Hub.
- */
-@property (class, atomic, readonly) ANHVoIPNotificationHub *sharedInstance;
+NS_SWIFT_NAME(PushKitNotificationHub)
+@interface ANHPushKitNotificationHub : ANHService
 
 #pragma mark - Initialization
 
@@ -35,7 +30,7 @@ NS_SWIFT_NAME(VoIPNotificationHub)
 /**
  * The delegate for getting messages from the server.
  */
-@property(nonatomic, weak) id<ANHVoIPNotificationHubDelegate> _Nullable delegate;
+@property(nonatomic, weak) id<ANHPushKitNotificationHubDelegate> _Nullable delegate;
 
 - (void)didUpdatePushCredentials:(NSData *)pushCredentials;
 

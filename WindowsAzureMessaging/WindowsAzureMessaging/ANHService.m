@@ -14,6 +14,10 @@
 
 #pragma mark - Installation methods
 
++ (instancetype)sharedInstance {
+    return nil;
+}
+
 @synthesize pushChannel = _pushChannel;
 
 - (NSString *)installationId {

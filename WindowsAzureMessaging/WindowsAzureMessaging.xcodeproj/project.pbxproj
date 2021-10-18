@@ -242,15 +242,15 @@
 		4C7378962719D16C00E8AE3A /* ANHDebounceClient+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378952719D16C00E8AE3A /* ANHDebounceClient+Private.h */; };
 		4C7378972719D16C00E8AE3A /* ANHDebounceClient+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378952719D16C00E8AE3A /* ANHDebounceClient+Private.h */; };
 		4C7378982719D16C00E8AE3A /* ANHDebounceClient+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378952719D16C00E8AE3A /* ANHDebounceClient+Private.h */; };
-		4C73789E271A12DA00E8AE3A /* ANHVoIPNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C73789D271A12DA00E8AE3A /* ANHVoIPNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C73789F271A12DA00E8AE3A /* ANHVoIPNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C73789D271A12DA00E8AE3A /* ANHVoIPNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C7378A0271A12DA00E8AE3A /* ANHVoIPNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C73789D271A12DA00E8AE3A /* ANHVoIPNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C73789E271A12DA00E8AE3A /* ANHPushKitNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C73789D271A12DA00E8AE3A /* ANHPushKitNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C73789F271A12DA00E8AE3A /* ANHPushKitNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C73789D271A12DA00E8AE3A /* ANHPushKitNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C7378A0271A12DA00E8AE3A /* ANHPushKitNotificationHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C73789D271A12DA00E8AE3A /* ANHPushKitNotificationHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C7378A2271A171F00E8AE3A /* ANHVoIPNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378A1271A171F00E8AE3A /* ANHVoIPNotificationHub+Private.h */; };
 		4C7378A3271A171F00E8AE3A /* ANHVoIPNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378A1271A171F00E8AE3A /* ANHVoIPNotificationHub+Private.h */; };
 		4C7378A4271A171F00E8AE3A /* ANHVoIPNotificationHub+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378A1271A171F00E8AE3A /* ANHVoIPNotificationHub+Private.h */; };
-		4C7378A6271A18CC00E8AE3A /* ANHVoIPNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7378A5271A18CC00E8AE3A /* ANHVoIPNotificationHub.m */; };
-		4C7378A7271A18CC00E8AE3A /* ANHVoIPNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7378A5271A18CC00E8AE3A /* ANHVoIPNotificationHub.m */; };
-		4C7378A8271A18CC00E8AE3A /* ANHVoIPNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7378A5271A18CC00E8AE3A /* ANHVoIPNotificationHub.m */; };
+		4C7378A6271A18CC00E8AE3A /* ANHPushKitNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7378A5271A18CC00E8AE3A /* ANHPushKitNotificationHub.m */; };
+		4C7378A7271A18CC00E8AE3A /* ANHPushKitNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7378A5271A18CC00E8AE3A /* ANHPushKitNotificationHub.m */; };
+		4C7378A8271A18CC00E8AE3A /* ANHPushKitNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7378A5271A18CC00E8AE3A /* ANHPushKitNotificationHub.m */; };
 		4C7378AA271A212300E8AE3A /* ANHService.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378A9271A212300E8AE3A /* ANHService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C7378AB271A212300E8AE3A /* ANHService.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378A9271A212300E8AE3A /* ANHService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C7378AC271A212300E8AE3A /* ANHService.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378A9271A212300E8AE3A /* ANHService.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -268,9 +268,9 @@
 		4C7378C0271A683000E8AE3A /* ANHPushRegistryDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7378BD271A682F00E8AE3A /* ANHPushRegistryDelegateForwarder.m */; };
 		4C7378C2271A6A7100E8AE3A /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7378C1271A6A7100E8AE3A /* PushKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		4C7378C3271A6A8900E8AE3A /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7378C1271A6A7100E8AE3A /* PushKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		4C7378C5271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378C4271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C7378C6271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378C4271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C7378C7271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378C4271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C7378C5271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378C4271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C7378C6271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378C4271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C7378C7271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7378C4271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C8C7D4926BC732500A39A9B /* ANHApplicationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */; };
 		4C8C7D4A26BC732500A39A9B /* ANHApplicationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */; };
 		4C8C7D4B26BC732500A39A9B /* ANHApplicationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */; };
@@ -653,16 +653,16 @@
 		4C73788D2719CB1800E8AE3A /* ANHDebounceClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHDebounceClient.h; sourceTree = "<group>"; };
 		4C7378912719CEC500E8AE3A /* ANHDebounceClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHDebounceClient.m; sourceTree = "<group>"; };
 		4C7378952719D16C00E8AE3A /* ANHDebounceClient+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANHDebounceClient+Private.h"; sourceTree = "<group>"; };
-		4C73789D271A12DA00E8AE3A /* ANHVoIPNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHVoIPNotificationHub.h; sourceTree = "<group>"; };
+		4C73789D271A12DA00E8AE3A /* ANHPushKitNotificationHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHPushKitNotificationHub.h; sourceTree = "<group>"; };
 		4C7378A1271A171F00E8AE3A /* ANHVoIPNotificationHub+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANHVoIPNotificationHub+Private.h"; sourceTree = "<group>"; };
-		4C7378A5271A18CC00E8AE3A /* ANHVoIPNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHVoIPNotificationHub.m; sourceTree = "<group>"; };
+		4C7378A5271A18CC00E8AE3A /* ANHPushKitNotificationHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHPushKitNotificationHub.m; sourceTree = "<group>"; };
 		4C7378A9271A212300E8AE3A /* ANHService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHService.h; sourceTree = "<group>"; };
 		4C7378AD271A244600E8AE3A /* ANHService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHService.m; sourceTree = "<group>"; };
 		4C7378B1271A247900E8AE3A /* ANHService+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANHService+Private.h"; sourceTree = "<group>"; };
 		4C7378B5271A66E200E8AE3A /* ANHPushRegistryDelegateForwarder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHPushRegistryDelegateForwarder.h; sourceTree = "<group>"; };
 		4C7378BD271A682F00E8AE3A /* ANHPushRegistryDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHPushRegistryDelegateForwarder.m; sourceTree = "<group>"; };
 		4C7378C1271A6A7100E8AE3A /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/PushKit.framework; sourceTree = DEVELOPER_DIR; };
-		4C7378C4271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHVoIPNotificationHubDelegate.h; sourceTree = "<group>"; };
+		4C7378C4271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHPushKitNotificationHubDelegate.h; sourceTree = "<group>"; };
 		4C8C7D4826BC732500A39A9B /* ANHApplicationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHApplicationProvider.h; sourceTree = "<group>"; };
 		4C8C7D4C26BC740C00A39A9B /* ANHApplicationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHApplicationProvider.m; sourceTree = "<group>"; };
 		4CA730DF24A14FF2006AC99D /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowsAzureMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -877,9 +877,9 @@
 				4CA7320924A1C55E006AC99D /* ANHNotificationHubDelegate.h */,
 				4CA731C024A18A84006AC99D /* ANHTokenProvider.h */,
 				4CA731C324A18B41006AC99D /* ANHTokenProvider.m */,
-				4C73789D271A12DA00E8AE3A /* ANHVoIPNotificationHub.h */,
-				4C7378A5271A18CC00E8AE3A /* ANHVoIPNotificationHub.m */,
-				4C7378C4271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h */,
+				4C73789D271A12DA00E8AE3A /* ANHPushKitNotificationHub.h */,
+				4C7378A5271A18CC00E8AE3A /* ANHPushKitNotificationHub.m */,
+				4C7378C4271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h */,
 				4CA730E224A14FF2006AC99D /* WindowsAzureMessaging.h */,
 			);
 			path = WindowsAzureMessaging;
@@ -1175,13 +1175,13 @@
 				4C3EEB1524C8AD4B0096C133 /* ANHHttpClientProtocol.h in Headers */,
 				4C3EEB3924C8AE420096C133 /* ANH_Reachability.h in Headers */,
 				4C3EEB1E24C8ADC40096C133 /* ANHApplication.h in Headers */,
-				4C7378A0271A12DA00E8AE3A /* ANHVoIPNotificationHub.h in Headers */,
+				4C7378A0271A12DA00E8AE3A /* ANHPushKitNotificationHub.h in Headers */,
 				4C3EEB1224C8AD420096C133 /* ANHHttpClient+Private.h in Headers */,
 				4C3EEB1A24C8AD5E0096C133 /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
 				4C3EEB9E24C8BA490096C133 /* HTTPStubsResponse+JSON.h in Headers */,
 				4C13E51E253E4B9A0068A1B7 /* ANHNotificationHubOptions.h in Headers */,
 				4C7378AC271A212300E8AE3A /* ANHService.h in Headers */,
-				4C7378C7271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h in Headers */,
+				4C7378C7271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h in Headers */,
 				4C3EEB0F24C8AD370096C133 /* ANHHttpCall.h in Headers */,
 				4C7378702717537200E8AE3A /* ANHLogger+Private.h in Headers */,
 				4C3EEB3D24C8AE500096C133 /* ANH_Errors.h in Headers */,
@@ -1238,13 +1238,13 @@
 				4CA7330A24A3E983006AC99D /* ANHNotificationHub.h in Headers */,
 				4CA732BA24A2D04F006AC99D /* HTTPStubs.h in Headers */,
 				4CA732F324A3DAC2006AC99D /* ANHApplication.h in Headers */,
-				4C73789E271A12DA00E8AE3A /* ANHVoIPNotificationHub.h in Headers */,
+				4C73789E271A12DA00E8AE3A /* ANHPushKitNotificationHub.h in Headers */,
 				4CA7316C24A17F6B006AC99D /* ANHHttpCall.h in Headers */,
 				4C1049B824ABF83500FA339E /* ANHNotificationHubAppDelegateForwarder.h in Headers */,
 				4CA7318424A1820A006AC99D /* ANH_Reachability.h in Headers */,
 				4C13E51C253E4B9A0068A1B7 /* ANHNotificationHubOptions.h in Headers */,
 				4C7378AA271A212300E8AE3A /* ANHService.h in Headers */,
-				4C7378C5271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h in Headers */,
+				4C7378C5271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h in Headers */,
 				4CA7315C24A17AC8006AC99D /* ANHDispatcherUtil.h in Headers */,
 				4C73786E2717537200E8AE3A /* ANHLogger+Private.h in Headers */,
 				4CA732BB24A2D04F006AC99D /* HTTPStubsPathHelpers.h in Headers */,
@@ -1301,13 +1301,13 @@
 				4CA7318C24A18613006AC99D /* ANHInstallationEnrichmentDelegate.h in Headers */,
 				4CA7318F24A18662006AC99D /* ANHInstallationLifecycleDelegate.h in Headers */,
 				4CA7316D24A17F6B006AC99D /* ANHHttpCall.h in Headers */,
-				4C73789F271A12DA00E8AE3A /* ANHVoIPNotificationHub.h in Headers */,
+				4C73789F271A12DA00E8AE3A /* ANHPushKitNotificationHub.h in Headers */,
 				4C1049A424ABE48100FA339E /* ANHDelegateForwarder+Private.h in Headers */,
 				4CA732F424A3DAC2006AC99D /* ANHApplication.h in Headers */,
 				4CA7318524A1820A006AC99D /* ANH_Reachability.h in Headers */,
 				4CA7315D24A17AC8006AC99D /* ANHDispatcherUtil.h in Headers */,
 				4C7378AB271A212300E8AE3A /* ANHService.h in Headers */,
-				4C7378C6271B42CC00E8AE3A /* ANHVoIPNotificationHubDelegate.h in Headers */,
+				4C7378C6271B42CC00E8AE3A /* ANHPushKitNotificationHubDelegate.h in Headers */,
 				4CA731C824A1901D006AC99D /* ANHLocalStorage.h in Headers */,
 				4CF2730126BB50FD0018E048 /* ANHAsync.h in Headers */,
 				4C73786F2717537200E8AE3A /* ANHLogger+Private.h in Headers */,
@@ -1996,7 +1996,7 @@
 				4C7378942719CEC500E8AE3A /* ANHDebounceClient.m in Sources */,
 				4C3EEB2F24C8AE130096C133 /* ANHInstallation.m in Sources */,
 				4C3EEB1324C8AD450096C133 /* ANHHttpClient.m in Sources */,
-				4C7378A8271A18CC00E8AE3A /* ANHVoIPNotificationHub.m in Sources */,
+				4C7378A8271A18CC00E8AE3A /* ANHPushKitNotificationHub.m in Sources */,
 				4C13E537253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */,
 				4C7378B0271A244600E8AE3A /* ANHService.m in Sources */,
 				4C3EEB3724C8AE2F0096C133 /* ANHTagHelper.m in Sources */,
@@ -2051,7 +2051,7 @@
 				4C7378922719CEC500E8AE3A /* ANHDebounceClient.m in Sources */,
 				4CA7317F24A180E5006AC99D /* ANHHttpUtil.m in Sources */,
 				4CA731E324A1BB13006AC99D /* ANHNotificationHubMessage.m in Sources */,
-				4C7378A6271A18CC00E8AE3A /* ANHVoIPNotificationHub.m in Sources */,
+				4C7378A6271A18CC00E8AE3A /* ANHPushKitNotificationHub.m in Sources */,
 				4C13E535253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */,
 				4C7378AE271A244600E8AE3A /* ANHService.m in Sources */,
 				4CA731C424A18B41006AC99D /* ANHTokenProvider.m in Sources */,
@@ -2135,7 +2135,7 @@
 				4C7378932719CEC500E8AE3A /* ANHDebounceClient.m in Sources */,
 				4CA731D624A1B971006AC99D /* ANHInstallation.m in Sources */,
 				4CA731E424A1BB13006AC99D /* ANHNotificationHubMessage.m in Sources */,
-				4C7378A7271A18CC00E8AE3A /* ANHVoIPNotificationHub.m in Sources */,
+				4C7378A7271A18CC00E8AE3A /* ANHPushKitNotificationHub.m in Sources */,
 				4CA7317024A17FC5006AC99D /* ANHHttpCall.m in Sources */,
 				4C7378AF271A244600E8AE3A /* ANHService.m in Sources */,
 				4C13E536253E4C340068A1B7 /* ANHNotificationHubOptions.m in Sources */,

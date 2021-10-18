@@ -18,10 +18,10 @@ static void * const SetupViewControllerKVOContext = (void*)&SetupViewControllerK
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[ANHVoIPNotificationHub sharedInstance] addObserver:self forKeyPath:@"pushChannel" options:NSKeyValueObservingOptionNew context:SetupViewControllerKVOContext];
+    [[ANHPushKitNotificationHub sharedInstance] addObserver:self forKeyPath:@"pushChannel" options:NSKeyValueObservingOptionNew context:SetupViewControllerKVOContext];
     
     // Do any additional setup after loading the view.
-    self.tags = [ANHVoIPNotificationHub sharedInstance].tags;
+    self.tags = [ANHPushKitNotificationHub sharedInstance].tags;
     
     self.addNewTagTextField.delegate = self;
     self.tagsTable.delegate = self;
@@ -29,9 +29,9 @@ static void * const SetupViewControllerKVOContext = (void*)&SetupViewControllerK
     [self.tagsTable reloadData];
     self.userId.delegate = self;
     
-    self.deviceTokenLabel.text = [ANHVoIPNotificationHub sharedInstance].pushChannel;
-    self.installationIdLabel.text = [ANHVoIPNotificationHub sharedInstance].installationId;
-    self.userId.text = [ANHVoIPNotificationHub sharedInstance].userId;
+    self.deviceTokenLabel.text = [ANHPushKitNotificationHub sharedInstance].pushChannel;
+    self.installationIdLabel.text = [ANHPushKitNotificationHub sharedInstance].installationId;
+    self.userId.text = [ANHPushKitNotificationHub sharedInstance].userId;
     
     self.notificationsTableView = (NotificationsTableViewController*) [[(UINavigationController*)[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
     
@@ -41,7 +41,7 @@ static void * const SetupViewControllerKVOContext = (void*)&SetupViewControllerK
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAppMessageReceived object:nil];
     
-    [[ANHVoIPNotificationHub sharedInstance] removeObserver:self forKeyPath:@"pushChannel" context:SetupViewControllerKVOContext];
+    [[ANHPushKitNotificationHub sharedInstance] removeObserver:self forKeyPath:@"pushChannel" context:SetupViewControllerKVOContext];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -57,7 +57,7 @@ static void * const SetupViewControllerKVOContext = (void*)&SetupViewControllerK
     }
     
     if ([keyPath isEqual: @"pushChannel"]) {
-        self.deviceTokenLabel.text = [ANHVoIPNotificationHub sharedInstance].pushChannel;
+        self.deviceTokenLabel.text = [ANHPushKitNotificationHub sharedInstance].pushChannel;
     }
 }
 
@@ -69,9 +69,9 @@ static void * const SetupViewControllerKVOContext = (void*)&SetupViewControllerK
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if(textField.tag == 0) {
-        [ANHVoIPNotificationHub sharedInstance].userId = textField.text;
+        [ANHPushKitNotificationHub sharedInstance].userId = textField.text;
     } else if (![textField.text isEqual: @""]) {
-        [[ANHVoIPNotificationHub sharedInstance] addTag:textField.text];
+        [[ANHPushKitNotificationHub sharedInstance] addTag:textField.text];
         self.tags = [ANHNotificationHub sharedInstance].tags;
         textField.text = @"";
         [self.tagsTable reloadData];
@@ -94,8 +94,8 @@ static void * const SetupViewControllerKVOContext = (void*)&SetupViewControllerK
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[ANHVoIPNotificationHub sharedInstance] removeTag:self.tags[indexPath.row]];
-        self.tags = [ANHVoIPNotificationHub sharedInstance].tags;
+        [[ANHPushKitNotificationHub sharedInstance] removeTag:self.tags[indexPath.row]];
+        self.tags = [ANHPushKitNotificationHub sharedInstance].tags;
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.tagsTable reloadData];
     }

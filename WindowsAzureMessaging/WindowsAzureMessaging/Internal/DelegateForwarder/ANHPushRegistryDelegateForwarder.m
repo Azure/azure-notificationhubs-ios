@@ -4,7 +4,7 @@
 
 #include "ANHPushRegistryDelegateForwarder.h"
 #include "ANHAsync.h"
-#include "ANHVoIPNotificationHub.h"
+#include "ANHPushKitNotificationHub.h"
 #import <PushKit/PushKit.h>
 
 @implementation ANHPushRegistryDelegateForwarder
@@ -80,7 +80,7 @@ static ANHPushRegistryDelegateForwarder *sharedInstance = nil;
         ((void (*)(id, SEL, PKPushRegistry *, PKPushPayload *, PKPushType))originalImp)(self, _cmd, registry, payload, type);
     }
     
-    [[ANHVoIPNotificationHub sharedInstance] didReceiveIncomingPushWithPayload:payload.dictionaryPayload withCompletionHandler:^{
+    [[ANHPushKitNotificationHub sharedInstance] didReceiveIncomingPushWithPayload:payload.dictionaryPayload withCompletionHandler:^{
         
     }];
 }
@@ -97,7 +97,7 @@ withCompletionHandler:(void (^)(void))completion API_AVAILABLE(macos(10.15), mac
         ((void (*)(id, SEL, PKPushRegistry *, PKPushPayload *, PKPushType, void (^)(void)))originalImp)(self, _cmd, registry, payload, type, completion);
     }
     
-    [[ANHVoIPNotificationHub sharedInstance] didReceiveIncomingPushWithPayload:payload.dictionaryPayload withCompletionHandler:completion];
+    [[ANHPushKitNotificationHub sharedInstance] didReceiveIncomingPushWithPayload:payload.dictionaryPayload withCompletionHandler:completion];
     
     if (!originalImp) {
         completion();
@@ -113,7 +113,7 @@ withCompletionHandler:(void (^)(void))completion API_AVAILABLE(macos(10.15), mac
         ((void (*)(id, SEL, PKPushRegistry *, PKPushCredentials *, PKPushType))originalImp)(self, _cmd, registry, pushCredentials, type);
     }
     
-    [[ANHVoIPNotificationHub sharedInstance] didUpdatePushCredentials:pushCredentials.token];
+    [[ANHPushKitNotificationHub sharedInstance] didUpdatePushCredentials:pushCredentials.token];
 }
 
 - (void)custom_pushRegistry:(PKPushRegistry *)registry
@@ -126,7 +126,7 @@ didInvalidatePushTokenForType:(PKPushType)type {
         ((void (*)(id, SEL, PKPushRegistry *, PKPushType))originalImp)(self, _cmd, registry, type);
     }
     
-    [[ANHVoIPNotificationHub sharedInstance] didInvalidatePushToken];
+    [[ANHPushKitNotificationHub sharedInstance] didInvalidatePushToken];
 }
 
 @end

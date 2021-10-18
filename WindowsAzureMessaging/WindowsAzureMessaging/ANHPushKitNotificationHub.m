@@ -16,12 +16,12 @@
 
 static NSString * const kANHDummyDeviceToken = @"00fc13adff785122b4ad28809a3420982341241421348097878e577c991de8f0";
 
-@implementation ANHVoIPNotificationHub
+@implementation ANHPushKitNotificationHub
 
 #pragma mark - Singleton
 
 // Singleton
-static ANHVoIPNotificationHub *sharedInstance = nil;
+static ANHPushKitNotificationHub *sharedInstance = nil;
 static dispatch_once_t onceToken;
 
 + (instancetype)sharedInstance {
@@ -103,7 +103,7 @@ static dispatch_once_t onceToken;
 - (void)didReceiveIncomingPushWithPayload:(NSDictionary *)payload
                     withCompletionHandler:(void (^)(void))completion ANH_SWIFT_DISABLE_ASYNC {
     dispatch_async(dispatch_get_main_queue(), ^{
-        id<ANHVoIPNotificationHubDelegate> delegate = self.delegate;
+        id<ANHPushKitNotificationHubDelegate> delegate = self.delegate;
         if ([delegate respondsToSelector:@selector(notificationHub:didReceiveIncomingPushWithPayload:withCompletionHandler:)]) {
             [delegate notificationHub:self didReceiveIncomingPushWithPayload:payload withCompletionHandler:completion];
         }
