@@ -1,9 +1,6 @@
-//
-//  AppConstants.h
-//  SampleNHVoIPAppObjC
-//
-//  Created by Matthew Podwysocki on 10/17/21.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #ifndef APP_CONSTANTS_h
 #define APP_CONSTANTS_h

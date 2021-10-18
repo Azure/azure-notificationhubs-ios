@@ -1,9 +1,6 @@
-//
-//  AppDelegate.m
-//  SampleNHVoIPAppObjC
-//
-//  Created by Matthew Podwysocki on 10/16/21.
-//
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import "AppDelegate.h"
 #import "AppConstants.h"
