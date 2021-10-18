@@ -6,7 +6,6 @@
 #define ANH_VOIP_NOTIFICATION_HUB_H
 
 #import <Foundation/Foundation.h>
-#import <PushKit/PushKit.h>
 #import "ANHService.h"
 #import "ANHVoIPNotificationHubDelegate.h"
 
@@ -29,15 +28,7 @@ NS_SWIFT_NAME(VoIPNotificationHub)
                           hubName:(NSString *)notificationHubName
                             error:(NSError *__autoreleasing  _Nullable *)error;
 
-- (BOOL)startWithConnectionString:(NSString *)connectionString
-                          hubName:(NSString *)notificationHubName
-                     pushRegistry:(PKPushRegistry *)pushRegistry
-                            error:(NSError *__autoreleasing  _Nullable *)error;
-
 - (void)startWithInstallationManagement:(id<ANHInstallationManagementDelegate>)managementDelegate;
-
-- (void)startWithInstallationManagement:(id<ANHInstallationManagementDelegate>)managementDelegate
-                           pushRegistry:(PKPushRegistry *)registry;
 
 #pragma mark - PKPushRegistryDelegate
 

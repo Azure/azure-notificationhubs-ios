@@ -42,7 +42,7 @@ static ANHPushRegistryDelegateForwarder *sharedInstance = nil;
 
 - (Class)originalClassForSetDelegate {
     if (@available(iOS 8.0, tvOS 13.0, watchOS 6.0, macOS 10.15, macCatalyst 13.0, *)) {
-        return [PKPushRegistry class];
+        return [[[PKPushRegistry alloc] initWithQueue:nil] class];
     }
     return nil;
 }
@@ -80,11 +80,9 @@ static ANHPushRegistryDelegateForwarder *sharedInstance = nil;
         ((void (*)(id, SEL, PKPushRegistry *, PKPushPayload *, PKPushType))originalImp)(self, _cmd, registry, payload, type);
     }
     
-    if (type == PKPushTypeVoIP) {
-        [[ANHVoIPNotificationHub sharedInstance] didReceiveIncomingPushWithPayload:payload.dictionaryPayload withCompletionHandler:^{
-            
-        }];
-    }
+    [[ANHVoIPNotificationHub sharedInstance] didReceiveIncomingPushWithPayload:payload.dictionaryPayload withCompletionHandler:^{
+        
+    }];
 }
 
 - (void)custom_pushRegistry:(PKPushRegistry *)registry
@@ -106,14 +104,13 @@ withCompletionHandler:(void (^)(void))completion API_AVAILABLE(macos(10.15), mac
     }
 }
 
-- (void)custom_pushRegistry:(PKPushRegistry *)registry
-    didUpdatePushCredentials:(PKPushCredentials *)pushCredentials {
+- (void)custom_pushRegistry:(PKPushRegistry *)registry didUpdatePushCredentials:(PKPushCredentials *)pushCredentials forType:(PKPushType)type {
     
     IMP originalImp = NULL;
     [[ANHPushRegistryDelegateForwarder sharedInstance].originalImplementations[NSStringFromSelector(_cmd)] getValue:&originalImp];
     
     if (originalImp) {
-        ((void (*)(id, SEL, PKPushRegistry *, PKPushCredentials *))originalImp)(self, _cmd, registry, pushCredentials);
+        ((void (*)(id, SEL, PKPushRegistry *, PKPushCredentials *, PKPushType))originalImp)(self, _cmd, registry, pushCredentials, type);
     }
     
     [[ANHVoIPNotificationHub sharedInstance] didUpdatePushCredentials:pushCredentials.token];

@@ -43,7 +43,7 @@ static dispatch_once_t onceToken;
 
 - (instancetype)init {
     if ((self = [super init])) {
-        // TODO: swizzle PKPushRegistry?
+        [ANHPushRegistryDelegateForwarder doNothingButForceLoadTheClass];
         self.debounceClient = [[ANHDebounceClient alloc] initWithInterval: 2];
     }
     
@@ -52,14 +52,6 @@ static dispatch_once_t onceToken;
 
 - (BOOL)startWithConnectionString:(NSString *)connectionString
                           hubName:(NSString *)hubName
-                            error:(NSError * __autoreleasing *)error {
-    PKPushRegistry *registry = [[PKPushRegistry alloc] initWithQueue:nil];
-    return [self startWithConnectionString:connectionString hubName:hubName pushRegistry:registry error:error];
-}
-
-- (BOOL)startWithConnectionString:(NSString *)connectionString
-                          hubName:(NSString *)hubName
-                     pushRegistry:(PKPushRegistry *)registry
                             error:(NSError * __autoreleasing *)error {
     ANHConnection *connection = [[ANHConnection alloc] initWithConnectionString:connectionString];
     if (!connection) {
@@ -77,24 +69,12 @@ static dispatch_once_t onceToken;
     
     self.connectionString = connection;
     self.installationClient = [[ANHInstallationClient alloc] initWithConnectionString:connection hubName:hubName];
-    self.pushRegistry = registry;
-    self.pushRegistry.delegate = self;
-    self.pushRegistry.desiredPushTypes = [NSSet setWithObject:PKPushTypeVoIP];
     
     return YES;
 }
 
 - (void)startWithInstallationManagement:(id<ANHInstallationManagementDelegate>)managementDelegate {
-    PKPushRegistry *registry = [[PKPushRegistry alloc] initWithQueue:nil];
-    [self startWithInstallationManagement:managementDelegate pushRegistry:registry];
-}
-
-- (void)startWithInstallationManagement:(id<ANHInstallationManagementDelegate>)managementDelegate
-                           pushRegistry:(PKPushRegistry *)registry {
     self.managementDelegate = managementDelegate;
-    self.pushRegistry = registry;
-    self.pushRegistry.delegate = self;
-    self.pushRegistry.desiredPushTypes = [NSSet setWithObject:PKPushTypeVoIP];
 }
 
 #pragma mark - PKPushRegistryDelegate
@@ -142,6 +122,7 @@ static dispatch_once_t onceToken;
 
 #pragma mark - PKPushRegistryDelegate
 
+/*
 - (void)pushRegistry:(PKPushRegistry *)registry
 didUpdatePushCredentials:(PKPushCredentials *)pushCredentials
              forType:(PKPushType)type {
@@ -159,5 +140,6 @@ didReceiveIncomingPushWithPayload:(PKPushPayload *)payload
 withCompletionHandler:(void (^)(void))completion {
     [self didReceiveIncomingPushWithPayload:payload.dictionaryPayload withCompletionHandler:completion];
 }
+ */
 
 @end

@@ -13,6 +13,7 @@
 
 @interface AppDelegate () <ANHVoIPNotificationHubDelegate, CXProviderDelegate>
 
+@property (nonatomic, strong) PKPushRegistry *pushRegistry;
 @property (nonatomic, strong) CXProvider *callProvider;
 @property (nonatomic, strong) CXCallController *callController;
 @property (nonatomic, strong) NSUUID *currentCall;
@@ -23,6 +24,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.pushRegistry = [[PKPushRegistry alloc] initWithQueue:nil];
+    self.pushRegistry.desiredPushTypes = [NSSet setWithObject:PKPushTypeVoIP];
+    self.pushRegistry.delegate = (id)self;
     
     [self configureCallKit];
     
@@ -35,7 +40,7 @@
     NSError *anhError;
     ANHNotificationHub.logLevel = ANHLogLevelDebug;
     [ANHVoIPNotificationHub sharedInstance].delegate = self;
-    if (![[ANHVoIPNotificationHub sharedInstance] startWithConnectionString:connectionString hubName:hubName error:&anhError]) {
+    if (![[ANHVoIPNotificationHub sharedInstance] startWithConnectionString:connectionString hubName:hubName  error:&anhError]) {
         NSLog(@"Error starting the ANH client: %@", anhError.localizedDescription);
         
         exit(-1);
