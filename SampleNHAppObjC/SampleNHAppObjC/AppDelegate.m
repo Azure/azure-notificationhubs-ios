@@ -6,7 +6,7 @@
 #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 #import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate () <MSNotificationHubDelegate, UNUserNotificationCenterDelegate>
+@interface AppDelegate () <ANHNotificationHubDelegate, UNUserNotificationCenterDelegate>
 
 @property(nonatomic) API_AVAILABLE(ios(10.0)) void (^notificationPresentationCompletionHandler)(UNNotificationPresentationOptions options);
 @property(nonatomic) void (^notificationResponseCompletionHandler)(void);
@@ -26,20 +26,20 @@
     NSString *connectionString = [configValues objectForKey:@"CONNECTION_STRING"];
     NSString *hubName = [configValues objectForKey:@"HUB_NAME"];
     
-    if([connectionString length] != 0 && [hubName length] != 0) {
-        [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
+    [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
+    
+    NSError *anhError;
+    ANHNotificationHub.logLevel = ANHLogLevelDebug;
+    [ANHNotificationHub sharedInstance].delegate = self;
+    if (![[ANHNotificationHub sharedInstance] startWithConnectionString:connectionString hubName:hubName error:&anhError]) {
+        NSLog(@"Error starting the ANH client: %@", anhError.localizedDescription);
         
-        [MSNotificationHub setDelegate:self];
-        [MSNotificationHub startWithConnectionString:connectionString hubName:hubName];
-        
-        [self addTags];
-        
-        return YES;
+        exit(-1);
     }
     
-    NSLog(@"Please setup CONNECTION_STRING and HUB_NAME in DevSettings.plist and restart application");
+    [self addTags];
     
-    exit(-1);
+    return YES;
 }
 
 // Adds some basic tags such as language and country
@@ -52,12 +52,12 @@
     NSString *languageTag = [NSString stringWithFormat:@"language_%@", language];
     NSString *countryCodeTag = [NSString stringWithFormat:@"country_%@", countryCode];
 
-    [MSNotificationHub addTags:@[languageTag, countryCodeTag]];
+    [[ANHNotificationHub sharedInstance] addTags:@[languageTag, countryCodeTag]];
 }
 
 #pragma mark - MSNotificationHubDelegate
 
-- (void)notificationHub:(MSNotificationHub *)notificationHub didReceivePushNotification:(MSNotificationHubMessage *)message {
+- (void)notificationHub:(ANHNotificationHub *)notificationHub didReceivePushNotification:(ANHNotificationHubMessage *)message {
     
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:message forKey:@"message"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"MessageReceived" object:nil userInfo:userInfo];

@@ -7,6 +7,8 @@
 #import "ANHCustomDelegate.h"
 #import "ANHDelegateForwarder+Private.h"
 #import "ANHDelegateForwarder.h"
+#import "ANHLogger.h"
+#import "ANH_Errors.h"
 
 static NSString *const kANHCustomSelectorPrefix = @"custom_";
 static NSString *const kANHReturnedValueSelectorPart = @"returnedValue:";
@@ -84,7 +86,7 @@ static NSMutableArray<dispatch_block_t> *traceBuffer = nil;
             static dispatch_once_t onceToken = 0;
             dispatch_once(&onceToken, ^{
               [traceBuffer addObject:^{
-                NSLog(@"Start buffering traces.");
+                  ANHLogDebug(kANHLogDomain, @"Start buffering traces.");
               }];
             });
             [traceBuffer addObject:block];
@@ -102,7 +104,7 @@ static NSMutableArray<dispatch_block_t> *traceBuffer = nil;
             }
             [traceBuffer removeAllObjects];
             traceBuffer = nil;
-            NSLog(@"Stop buffering traces, flushed.");
+            ANHLogDebug(kANHLogDomain, @"Stop buffering traces, flushed.");
         }
     }
 }
@@ -196,14 +198,14 @@ static NSMutableArray<dispatch_block_t> *traceBuffer = nil;
               NSString *message =
                   [NSString stringWithFormat:@"Cannot swizzle selector '%@' of class '%@'.", originalSelectorStr, originalClass];
               if (warningMsg) {
-                  NSLog(@"%@ %@", message, warningMsg);
+                  ANHLogWarning(kANHLogDomain, @"%@ %@", message, warningMsg);
               } else {
                   NSLog(@"%@ %@", message, remediationMsg);
               }
             }];
         } else {
             [self addTraceBlock:^{
-              NSLog(@"Selector '%@' of class '%@' is swizzled.", originalSelectorStr, originalClass);
+              ANHLogInfo(kANHLogDomain, @"Selector '%@' of class '%@' is swizzled.", originalSelectorStr, originalClass);
             }];
         }
     }

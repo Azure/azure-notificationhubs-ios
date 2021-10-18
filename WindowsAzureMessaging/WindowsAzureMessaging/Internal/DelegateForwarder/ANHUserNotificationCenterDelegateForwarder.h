@@ -2,6 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#ifndef ANH_USERNOTIFICATIONCENTER_DELEGATE_FORWARDER_h
+#define ANH_USERNOTIFICATIONCENTER_DELEGATE_FORWARDER_h
+
 #import "ANHDelegateForwarder.h"
 #import <Foundation/Foundation.h>
 
@@ -24,3 +27,5 @@ static NSString *const kANHUserNotificationCenterDelegateForwarderEnabledKey = @
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

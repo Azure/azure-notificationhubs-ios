@@ -55,7 +55,7 @@
     }
 }
 
--(void) addNotification:(MSNotificationHubMessage *) notification {
+-(void) addNotification:(ANHNotificationHubMessage *) notification {
     [self.notifications addObject:notification];
     [self.tableView reloadData];
 }

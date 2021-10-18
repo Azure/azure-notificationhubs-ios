@@ -4,19 +4,19 @@
 
 #import <Foundation/Foundation.h>
 
-// Legacy API
-#if !TARGET_OS_OSX
-#import "SBConnectionString.h"
-#import "SBNotificationHub.h"
-#endif
-
-// New API
-#import "MSInstallation.h"
-#import "MSInstallationEnrichmentDelegate.h"
-#import "MSInstallationLifecycleDelegate.h"
-#import "MSInstallationManagementDelegate.h"
-#import "MSInstallationTemplate.h"
-#import "MSNotificationHubOptions.h"
-#import "MSNotificationHub.h"
-#import "MSNotificationHubDelegate.h"
-#import "MSNotificationHubMessage.h"
+#import "ANHConnection.h"
+#import "ANHConstants.h"
+#import "ANHInstallation.h"
+#import "ANHInstallationClient.h"
+#import "ANHInstallationEnrichmentDelegate.h"
+#import "ANHInstallationLifecycleDelegate.h"
+#import "ANHInstallationManagementDelegate.h"
+#import "ANHInstallationTemplate.h"
+#import "ANHLocalStorage.h"
+#import "ANHLogger.h"
+#import "ANHNotificationHubOptions.h"
+#import "ANHNotificationHub.h"
+#import "ANHNotificationHubDelegate.h"
+#import "ANHNotificationHubMessage.h"
+#import "ANHVoIPNotificationHub.h"
+#import "ANHVoIPNotificationHubDelegate.h"

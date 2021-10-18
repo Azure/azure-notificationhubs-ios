@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
 
-@property (weak, nonatomic) MSNotificationHubMessage *notification;
+@property (weak, nonatomic) ANHNotificationHubMessage *notification;
 
 @end
 

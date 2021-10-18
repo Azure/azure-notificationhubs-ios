@@ -2,6 +2,8 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#import "ANHConstants.h"
+#import "ANHLogger.h"
 #import "ANHHttpClient.h"
 #import "ANHHttpCall.h"
 #import "ANHHttpClientDelegate.h"
@@ -130,7 +132,7 @@ static NSString *const kANHRetryHeaderKey = @"retry-after";
 
         // If the call was removed, do not invoke the completion handler as that will have been done already by set enabled.
         if (![self.pendingCalls containsObject:httpCall]) {
-            NSLog(@"HTTP call was canceled; do not process further."); // debug
+            ANHLogDebug(kANHErrorDomain, @"HTTP call was canceled; do not process further."); // debug
             return;
         }
 
@@ -143,10 +145,10 @@ static NSString *const kANHRetryHeaderKey = @"retry-after";
                 // Reset the retry count, will retry once the (secure) connection is established again.
                 [httpCall resetRetry];
                 NSString *logMessage = internetIsDown ? @"Internet connection is down." : @"Could not establish secure connection.";
-                NSLog(@"HTTP call failed with error: %@", logMessage); // info
+                ANHLogInfo(kANHErrorDomain, @"HTTP call failed with error: %@", logMessage); // info
                 return;
             } else {
-                NSLog(@"HTTP request error with code: %td, domain: %@, description: %@", error.code, error.domain,
+                ANHLogError(kANHErrorDomain, @"HTTP request error with code: %td, domain: %@, description: %@", error.code, error.domain,
                       error.localizedDescription); // error
             }
         }
@@ -196,10 +198,10 @@ static NSString *const kANHRetryHeaderKey = @"retry-after";
 
 - (void)networkStateChanged:(__unused NSNotificationCenter *)notification {
     if ([self.reachability currentReachabilityStatus] == NotReachable) {
-        NSLog(@"Internet connection is down."); // info
+        ANHLogInfo(kANHErrorDomain, @"Internet connection is down."); // info
         [self pause];
     } else {
-        NSLog(@"Internet connection is up."); // info
+        ANHLogInfo(kANHErrorDomain, @"Internet connection is up."); // info
         [self resume];
     }
 }
@@ -209,7 +211,7 @@ static NSString *const kANHRetryHeaderKey = @"retry-after";
         if (self.paused) {
             return;
         }
-        NSLog(@"Pause HTTP client."); // info
+        ANHLogInfo(kANHErrorDomain, @"Pause HTTP client."); // info
         self.paused = YES;
 
         // Reset retry for all calls.
@@ -224,7 +226,7 @@ static NSString *const kANHRetryHeaderKey = @"retry-after";
 
         // Resume only while enabled.
         if (self.paused && self.enabled) {
-            NSLog(@"Resume HTTP client."); // info
+            ANHLogInfo(kANHErrorDomain, @"Resume HTTP client."); // info
             self.paused = NO;
 
             // Resume calls.

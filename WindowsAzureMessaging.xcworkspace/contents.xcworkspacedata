@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SampleNHAppSwiftUI2/SampleNHAppSwiftUI2.xcodeproj">
+      location = "group:SampleNHVoIPAppObjC/SampleNHVoIPAppObjC.xcodeproj">
    </FileRef>
    <Group
       location = "group:Config"
@@ -56,6 +56,9 @@
          location = "group:XCFramework.xcconfig">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:SampleNHAppSwiftUI2/SampleNHAppSwiftUI2.xcodeproj">
+   </FileRef>
    <FileRef
       location = "group:SampleNHAppMacSwiftUI/SampleNHAppMacSwiftUI.xcodeproj">
    </FileRef>

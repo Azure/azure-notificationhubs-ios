@@ -15,10 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 static NSString *const kANHErrorDomain = ANH_NOTIFICATION_HUB_BASE_DOMAIN @"ErrorDomain";
 
+static NSString *const kANHLogDomain = @"com.microsoft.WindowsAzureMessaging";
+
 #pragma mark - General
 
 // Error codes.
-NS_ENUM(NSInteger){ANHCanceledErrorCode = 1, ANHDisabledErrorCode = 2};
+NS_ENUM(NSInteger){ANHCanceledErrorCode = 1, ANHDisabledErrorCode = 2, ANHConnectionErrorCode = 3};
 
 // Error descriptions.
 static NSString const *kANHCanceledErrorDesc = @"The operation was canceled.";

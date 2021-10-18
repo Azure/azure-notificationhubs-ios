@@ -2,6 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#ifndef ANH_APPLICATION_PROVIDER_h
+#define ANH_APPLICATION_PROVIDER_h
+
 #import <Foundation/Foundation.h>
 
 #if TARGET_OS_OSX
@@ -35,3 +38,5 @@
 #endif
 
 @end
+
+#endif

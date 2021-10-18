@@ -2,6 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#ifndef ANH_APPLICATION_h
+#define ANH_APPLICATION_h
+
 #import <Foundation/Foundation.h>
 
 #if TARGET_OS_OSX
@@ -23,6 +26,8 @@
 
 #ifndef ANHApplication
 #define ANHApplication UIApplication
+#endif
+
 #endif
 
 #endif

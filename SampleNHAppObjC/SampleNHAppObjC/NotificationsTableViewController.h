@@ -8,8 +8,8 @@
 #import "NotificationDetailsViewController.h"
 
 @interface NotificationsTableViewController : UITableViewController
-@property (nonatomic) NSMutableArray<MSNotificationHubMessage *> *notifications;
+@property (nonatomic) NSMutableArray<ANHNotificationHubMessage *> *notifications;
 
--(void) addNotification:(MSNotificationHubMessage *) notification;
+-(void) addNotification:(ANHNotificationHubMessage *) notification;
 @end
 

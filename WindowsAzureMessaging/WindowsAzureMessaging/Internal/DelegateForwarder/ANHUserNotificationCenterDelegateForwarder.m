@@ -1,12 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
 #import <UserNotifications/UserNotifications.h>
 
 #import "ANHAsync.h"
 #import "ANHUserNotificationCenterDelegateForwarder.h"
-#import "MSNotificationHub.h"
+#import "ANHNotificationHub.h"
 
 static dispatch_once_t swizzlingOnceToken;
 
@@ -34,7 +35,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
 + (instancetype)sharedInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-      sharedInstance = [self new];
+        sharedInstance = [self new];
     });
     return sharedInstance;
 }
@@ -92,7 +93,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didReceiveRemoteNotification:notification.request.content.userInfo];
+    [[ANHNotificationHub sharedInstance] didReceiveRemoteNotification:notification.request.content.userInfo];
     if (!originalImp) {
 
         // No original implementation, we have to call the completion handler ourselves with the default behavior.
@@ -117,7 +118,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didReceiveRemoteNotification:response.notification.request.content.userInfo];
+    [[ANHNotificationHub sharedInstance] didReceiveRemoteNotification:response.notification.request.content.userInfo];
     if (!originalImp) {
 
         // No original implementation, we have to call the completion handler ourselves.

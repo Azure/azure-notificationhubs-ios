@@ -2,6 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#ifndef ANH_NOTIFICATION_HUB_APPDELEGATE_FORWARDER_h
+#define ANH_NOTIFICATION_HUB_APPDELEGATE_FORWARDER_h
+
 #import "ANHDelegateForwarder.h"
 #import <Foundation/Foundation.h>
 
@@ -19,3 +22,5 @@ static NSString *const kANHAppDelegateForwarderEnabledKey = @"NHAppDelegateForwa
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

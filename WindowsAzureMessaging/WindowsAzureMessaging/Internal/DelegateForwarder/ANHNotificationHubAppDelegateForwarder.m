@@ -1,12 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+//----------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
 
 #import "ANHAsync.h"
 #import "ANHApplication.h"
 #import "ANHNotificationHubAppDelegateForwarder.h"
-#import "MSNotificationHub.h"
+#import "ANHNotificationHub.h"
 
 static dispatch_once_t swizzlingOnceToken;
 
@@ -86,7 +87,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to Push
-    [MSNotificationHub didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    [[ANHNotificationHub sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 - (void)custom_application:(ANHApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -99,7 +100,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didFailToRegisterForRemoteNotificationsWithError:error];
+    [[ANHNotificationHub sharedInstance]  didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
 - (void)custom_application:(ANHApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -112,7 +113,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didReceiveRemoteNotification:userInfo];
+    [[ANHNotificationHub sharedInstance] didReceiveRemoteNotification:userInfo];
 }
 
 #if !TARGET_OS_OSX
@@ -130,7 +131,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
     }
 
     // Then, forward to MSNotificationHub
-    [MSNotificationHub didReceiveRemoteNotification:userInfo];
+    [[ANHNotificationHub sharedInstance] didReceiveRemoteNotification:userInfo];
 
     if (!originalImp) {
 

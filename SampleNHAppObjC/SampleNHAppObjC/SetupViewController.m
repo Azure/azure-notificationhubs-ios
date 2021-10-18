@@ -6,6 +6,7 @@
 #import "NotificationsTableViewController.h"
 
 static NSString *const kNHMessageReceived = @"MessageReceived";
+static void * const SetupViewControllerKVOContext = (void*)&SetupViewControllerKVOContext;
 
 @interface SetupViewController ()
 
@@ -15,8 +16,11 @@ static NSString *const kNHMessageReceived = @"MessageReceived";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[ANHNotificationHub sharedInstance] addObserver:self forKeyPath:@"pushChannel" options:NSKeyValueObservingOptionNew context:SetupViewControllerKVOContext];
+    
     // Do any additional setup after loading the view.
-    self.tags = [MSNotificationHub getTags];
+    self.tags = [ANHNotificationHub sharedInstance].tags;
     
     self.addNewTagTextField.delegate = self;
     self.tagsTable.delegate = self;
@@ -24,9 +28,9 @@ static NSString *const kNHMessageReceived = @"MessageReceived";
     [self.tagsTable reloadData];
     self.userId.delegate = self;
     
-    self.deviceTokenLabel.text = [MSNotificationHub getPushChannel];
-    self.installationIdLabel.text = [MSNotificationHub getInstallationId];
-    self.userId.text = [MSNotificationHub getUserId];
+    self.deviceTokenLabel.text = [ANHNotificationHub sharedInstance].pushChannel;
+    self.installationIdLabel.text = [ANHNotificationHub sharedInstance].installationId;
+    self.userId.text = [ANHNotificationHub sharedInstance].userId;
     
     self.notificationsTableView = (NotificationsTableViewController*) [[(UINavigationController*)[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
     
@@ -35,6 +39,25 @@ static NSString *const kNHMessageReceived = @"MessageReceived";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kNHMessageReceived object:nil];
+    
+    [[ANHNotificationHub sharedInstance] removeObserver:self forKeyPath:@"pushChannel" context:SetupViewControllerKVOContext];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                  ofObject:(id)object
+                    change:(NSDictionary *)change
+                   context:(void *)context {
+    if (context != SetupViewControllerKVOContext) {
+        [super observeValueForKeyPath:keyPath
+                             ofObject:object
+                               change:change
+                              context:context]; return;
+        
+    }
+    
+    if ([keyPath isEqual: @"pushChannel"]) {
+        self.deviceTokenLabel.text = [ANHNotificationHub sharedInstance].pushChannel;
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -45,10 +68,10 @@ static NSString *const kNHMessageReceived = @"MessageReceived";
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if(textField.tag == 0) {
-        [MSNotificationHub setUserId:textField.text];
+        [ANHNotificationHub sharedInstance].userId = textField.text;
     } else if (![textField.text isEqual: @""]) {
-        [MSNotificationHub addTag:textField.text];
-        self.tags = [MSNotificationHub getTags];
+        [[ANHNotificationHub sharedInstance] addTag:textField.text];
+        self.tags = [ANHNotificationHub sharedInstance].tags;
         textField.text = @"";
         [self.tagsTable reloadData];
     }
@@ -70,15 +93,15 @@ static NSString *const kNHMessageReceived = @"MessageReceived";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [MSNotificationHub removeTag:self.tags[indexPath.row]];
-        self.tags = [MSNotificationHub getTags];
+        [[ANHNotificationHub sharedInstance] removeTag:self.tags[indexPath.row]];
+        self.tags = [ANHNotificationHub sharedInstance].tags;
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.tagsTable reloadData];
     }
 }
 
 - (void)didReceivePushNotification:(NSNotification *)notification {
-    MSNotificationHubMessage *message = [notification.userInfo objectForKey:@"message"];
+    ANHNotificationHubMessage *message = [notification.userInfo objectForKey:@"message"];
     
     [self.notificationsTableView addNotification:message];
     

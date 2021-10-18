@@ -2,6 +2,9 @@
 //  Copyright (c) Microsoft Corporation. All rights reserved.
 //----------------------------------------------------------------
 
+#ifndef ANH_CUSTOM_FORWARDER_h
+#define ANH_CUSTOM_FORWARDER_h
+
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -101,3 +104,5 @@ typedef NS_OPTIONS(NSUInteger, ANHCompletionExecutor) {
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif
