@@ -15,7 +15,6 @@ let package = Package(
     products: [
         .library(
             name: "WindowsAzureMessaging",
-            type: .static,
             targets: ["WindowsAzureMessaging"]),
     ],
     dependencies: [],
