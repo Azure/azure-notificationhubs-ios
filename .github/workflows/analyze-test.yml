@@ -42,10 +42,10 @@ jobs:
       run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
 
     - name: iOS Analyze
-      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K'
+      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation)'
 
     - name: iOS Test
-      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K'
+      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation)'
 
   macos-analyze-test:
     runs-on: macos-12
