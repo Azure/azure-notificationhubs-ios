@@ -236,7 +236,6 @@ static const int defaultTimeToExpireinMins = 20;
 }
 
 + (NSString *)ExtractToken:(NSData *)data {
-    NSString *expireInSeconds;
     NSString *token;
     NSString *rawStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSArray *fields = [rawStr componentsSeparatedByString:@"&"];
@@ -253,8 +252,6 @@ static const int defaultTimeToExpireinMins = 20;
         NSString *value = [SBNotificationHubHelper urlDecode:[subItems objectAtIndex:1]];
         if ([key isEqualToString:@"wrap_access_token"]) {
             token = [NSString stringWithFormat:@"WRAP access_token=\"%@\"", value];
-        } else {
-            expireInSeconds = value;
         }
     }
 
