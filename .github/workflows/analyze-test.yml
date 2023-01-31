@@ -8,9 +8,9 @@ on:
 
 jobs:
   ios-analyze-test:
-    runs-on: macos-latest
+    runs-on: macos-12
     env:
-      XC_VERSION: ${{ '12.3' }}
+      XC_VERSION: ${{ '13.4.1' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Framework' }}
     steps:
@@ -28,9 +28,9 @@ jobs:
       run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
 
   tvos-analyze-test:
-    runs-on: macos-latest
+    runs-on: macos-12
     env:
-      XC_VERSION: ${{ '12.3' }}
+      XC_VERSION: ${{ '13.4.1' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging tvOS Framework' }}
     steps:
@@ -42,15 +42,15 @@ jobs:
       run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
 
     - name: iOS Analyze
-      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K'
+      run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation)'
 
     - name: iOS Test
-      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K'
+      run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation)'
 
   macos-analyze-test:
-    runs-on: macos-latest
+    runs-on: macos-12
     env:
-      XC_VERSION: ${{ '12.3' }}
+      XC_VERSION: ${{ '13.4.1' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging macOS Framework' }}
     steps:
@@ -68,9 +68,9 @@ jobs:
       run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=macOS'
       
   mac-catalyst-analyze-test:
-    runs-on: macos-latest
+    runs-on: macos-12
     env:
-      XC_VERSION: ${{ '12.3' }}
+      XC_VERSION: ${{ '13.4.1' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Framework' }}
     steps:
