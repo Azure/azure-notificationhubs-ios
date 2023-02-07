@@ -44,14 +44,14 @@
 /**
 * Sets the template for the installation template for the given key.
 *
-* @param template The `MSInstallationTemplate` object containing the installation template data.
+* @param installationTemplate The `MSInstallationTemplate` object containing the installation template data.
 * @param key The key for the template.
 *
 * @returns YES if the template was added, else NO.
 *
 * @see MSInstallationTemplate
 */
-- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key;
+- (BOOL)setTemplate:(MSInstallationTemplate *)installationTemplate forKey:(NSString *)key;
 
 /**
 * Removes the installation template for the given key.

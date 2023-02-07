@@ -479,8 +479,8 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
 
 #pragma mark Templates
 
-+ (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
-    return [sharedInstance setTemplate:template forKey:key];
++ (BOOL)setTemplate:(MSInstallationTemplate *)installationTemplate forKey:(NSString *)key {
+    return [sharedInstance setTemplate:installationTemplate forKey:key];
 }
 
 + (BOOL)removeTemplateForKey:(NSString *)key {
@@ -495,10 +495,10 @@ static void *UserNotificationCenterDelegateContext = &UserNotificationCenterDele
     return [sharedInstance getTemplates];
 }
 
-- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)key {
+- (BOOL)setTemplate:(MSInstallationTemplate *)installationTemplate forKey:(NSString *)key {
     MSInstallation *installation = [self getInstallation];
 
-    if ([installation setTemplate:template forKey:key]) {
+    if ([installation setTemplate:installationTemplate forKey:key]) {
         [self upsertInstallation:installation];
         return YES;
     }
