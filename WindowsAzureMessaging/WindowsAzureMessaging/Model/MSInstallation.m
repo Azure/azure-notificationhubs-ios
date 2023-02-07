@@ -192,10 +192,10 @@
 
 #pragma mark Templates
 
-- (BOOL)setTemplate:(MSInstallationTemplate *)template forKey:(NSString *)templateKey {
+- (BOOL)setTemplate:(MSInstallationTemplate *)installationTemplate forKey:(NSString *)templateKey {
     NSMutableDictionary<NSString *, MSInstallationTemplate *> *tmpTemplates = [NSMutableDictionary dictionaryWithDictionary:self.templates];
 
-    [tmpTemplates setObject:template forKey:templateKey];
+    [tmpTemplates setObject:installationTemplate forKey:templateKey];
     self.templates = tmpTemplates;
     self.isDirty = YES;
     return YES;

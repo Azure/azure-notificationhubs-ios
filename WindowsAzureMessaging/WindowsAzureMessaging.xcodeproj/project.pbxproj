@@ -98,6 +98,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2A7CB3572991F041005DB675 /* CompileObjCppTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB3562991F041005DB675 /* CompileObjCppTests.mm */; };
+		2A7CB3582991F041005DB675 /* CompileObjCppTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB3562991F041005DB675 /* CompileObjCppTests.mm */; };
+		2A7CB3592991F041005DB675 /* CompileObjCppTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB3562991F041005DB675 /* CompileObjCppTests.mm */; };
 		4C01E9FD24BD1896003593A2 /* ANHHttpTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C01E9F824BD1896003593A2 /* ANHHttpTestUtil.m */; };
 		4C01E9FE24BD1896003593A2 /* ANHHttpTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C01E9F824BD1896003593A2 /* ANHHttpTestUtil.m */; };
 		4C01E9FF24BD1896003593A2 /* TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C01E9FC24BD1896003593A2 /* TestHelper.m */; };
@@ -608,6 +611,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A7CB3562991F041005DB675 /* CompileObjCppTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CompileObjCppTests.mm; sourceTree = "<group>"; };
 		4C01E9F724BD1896003593A2 /* TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
 		4C01E9F824BD1896003593A2 /* ANHHttpTestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHHttpTestUtil.m; sourceTree = "<group>"; };
 		4C01E9F924BD1896003593A2 /* MSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSConstants.h; sourceTree = "<group>"; };
@@ -888,6 +892,7 @@
 				4CA730ED24A14FF2006AC99D /* WindowsAzureMessagingTests.m */,
 				4CA730EF24A14FF2006AC99D /* Info.plist */,
 				4CA7322124A2CCA9006AC99D /* Frameworks */,
+				2A7CB3562991F041005DB675 /* CompileObjCppTests.mm */,
 			);
 			path = WindowsAzureMessagingTests;
 			sourceTree = "<group>";
@@ -2020,6 +2025,7 @@
 				4C3EEB8924C8B9030096C133 /* ANHHttpTestUtil.m in Sources */,
 				4C3EEB8E24C8B9D10096C133 /* MSLocalStorageTests.m in Sources */,
 				4C3EEB9524C8B9F60096C133 /* HTTPStubsMethodSwizzling.m in Sources */,
+				2A7CB3592991F041005DB675 /* CompileObjCppTests.mm in Sources */,
 				4C3EEB9424C8B9F10096C133 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */,
 				4C3EEB9324C8B9ED0096C133 /* HTTPStubs.m in Sources */,
 				4C3EEB8D24C8B9CE0096C133 /* MSInstallationManagerTests.m in Sources */,
@@ -2087,6 +2093,7 @@
 				4CA7329A24A2D021006AC99D /* HTTPStubsPathHelpers.m in Sources */,
 				4CA732D324A3B312006AC99D /* ANHHttpUtilTests.m in Sources */,
 				4CA732D924A3B312006AC99D /* MSLocalStorageTests.m in Sources */,
+				2A7CB3572991F041005DB675 /* CompileObjCppTests.mm in Sources */,
 				4CA732D524A3B312006AC99D /* MSInstallationManagerTests.m in Sources */,
 				4CA7329E24A2D021006AC99D /* NSURLRequest+HTTPBodyTesting.m in Sources */,
 				4CA732CF24A3B311006AC99D /* ANHHttpClientTests.m in Sources */,
@@ -2104,6 +2111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA732D824A3B312006AC99D /* MSNotificationHubTemplatesTests.m in Sources */,
+				2A7CB3582991F041005DB675 /* CompileObjCppTests.mm in Sources */,
 				4C01E9FE24BD1896003593A2 /* ANHHttpTestUtil.m in Sources */,
 				4CA732E524A3B38F006AC99D /* MSInstallationTemplateTests.m in Sources */,
 				4CA732A524A2D021006AC99D /* HTTPStubsMethodSwizzling.m in Sources */,

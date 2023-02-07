@@ -154,11 +154,11 @@
     return [self isEqualToMSInstallationTemplate:(MSInstallationTemplate *)object];
 }
 
-- (BOOL)isEqualToMSInstallationTemplate:(MSInstallationTemplate *)template {
+- (BOOL)isEqualToMSInstallationTemplate:(MSInstallationTemplate *)installationTemplate {
     // We have to check for nil values
-    BOOL isBodyEqual = body == template.body || [body isEqualToString:template.body];
-    BOOL isTagsSetEqual = [tags isEqualToSet:template.tags];
-    BOOL isHeadersDictionaryEqual = [headers isEqualToDictionary:template.headers];
+    BOOL isBodyEqual = body == installationTemplate.body || [body isEqualToString:installationTemplate.body];
+    BOOL isTagsSetEqual = [tags isEqualToSet:installationTemplate.tags];
+    BOOL isHeadersDictionaryEqual = [headers isEqualToDictionary:installationTemplate.headers];
     return isBodyEqual && isTagsSetEqual && isHeadersDictionaryEqual;
 }
 
