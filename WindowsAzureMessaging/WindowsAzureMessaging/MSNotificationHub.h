@@ -22,6 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MSNotificationHub : NSObject
 
 /**
+ * Method to reset the singleton when running unit tests only. So calling sharedInstance returns a fresh instance.
+ */
++ (void)resetSharedInstance;
+
+/**
  * Initializes the Notification Hub with the connection string from the Access
  * Policy, and Hub Name.
  *
