@@ -15,7 +15,7 @@ static ANHUserNotificationCenterDelegateForwarder *sharedInstance = nil;
 
 @implementation ANHUserNotificationCenterDelegateForwarder
 
-+ (void)load {
++ (void)initialize {
     [[ANHUserNotificationCenterDelegateForwarder sharedInstance]
         setEnabledFromPlistForKey:kANHUserNotificationCenterDelegateForwarderEnabledKey];
 

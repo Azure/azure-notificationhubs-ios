@@ -15,7 +15,7 @@ static ANHNotificationHubAppDelegateForwarder *sharedInstance = nil;
 
 @implementation ANHNotificationHubAppDelegateForwarder
 
-+ (void)load {
++ (void)initialize {
     [[ANHNotificationHubAppDelegateForwarder sharedInstance] setEnabledFromPlistForKey:kANHAppDelegateForwarderEnabledKey];
 
     // Register selectors to swizzle for Push.
