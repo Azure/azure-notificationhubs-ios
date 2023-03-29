@@ -5,7 +5,7 @@
 
 Microsoft Azure Notification Hubs provide a multiplatform, scaled-out push infrastructure that enables you to send mobile push notifications from any backend (in the cloud or on-premises) to any mobile platform. To learn more, visit our [Developer Center](https://azure.microsoft.com/en-us/documentation/services/notification-hubs).
 
-The Azure Notification Hubs SDK for Apple provides capabilities for registering your device and receive push notifications on macOS and iOS including platforms including tvOS, watchOS and Mac Catalyst.
+The Azure Notification Hubs SDK for Apple provides capabilities for registering your device and receive push notifications on macOS and iOS including platforms like tvOS, watchOS and Mac Catalyst.
 
 ## Getting Started
 
