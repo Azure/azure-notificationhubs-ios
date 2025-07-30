@@ -43,33 +43,39 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 - (SBNotificationHub *)initWithConnectionString:(NSString *)connectionString notificationHubPath:(NSString *)notificationHubPath {
     self = [super init];
 
-    if (!connectionString || !notificationHubPath) {
+    if (!connectionString || !notificationHubPath || connectionString.length == 0 || notificationHubPath.length == 0) {
+        NSLog(@"Invalid connection string or notification hub path");
         return nil;
     }
 
     if (self) {
-        NSDictionary *connnectionDictionary = [SBNotificationHubHelper parseConnectionString:connectionString];
+        NSDictionary *connectionDictionary = [SBNotificationHubHelper parseConnectionString:connectionString];
+        if (!connectionDictionary) {
+            NSLog(@"Failed to parse connection string");
+            return nil;
+        }
 
-        NSString *endPoint = [connnectionDictionary objectForKey:@"endpoint"];
-        if (endPoint) {
+        NSString *endPoint = [connectionDictionary objectForKey:@"endpoint"];
+        if (endPoint && endPoint.length > 0) {
             self->_serviceEndPoint = [[NSURL alloc] initWithString:endPoint];
         }
 
         if (self->_serviceEndPoint == nil || [self->_serviceEndPoint host] == nil) {
-            NSLog(@"%@", @"Endpoint is missing or not in URL format in connectionString.");
+            NSLog(@"Endpoint is missing or not in URL format in connectionString");
             return nil;
         }
 
-        self->_path = notificationHubPath;
-        tokenProvider = [[SBTokenProvider alloc] initWithConnectionDictinary:connnectionDictionary];
+        self->_path = [notificationHubPath copy];
+        tokenProvider = [[SBTokenProvider alloc] initWithConnectionDictinary:connectionDictionary];
 
         if (tokenProvider == nil) {
+            NSLog(@"Failed to initialize token provider");
             return nil;
         }
 
         storageManager = [[SBLocalStorage alloc] initWithNotificationHubPath:notificationHubPath];
-
         if (storageManager == nil) {
+            NSLog(@"Failed to initialize storage manager");
             return nil;
         }
     }
@@ -78,8 +84,13 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (NSString *)convertDeviceToken:(NSData *)deviceTokenData {
+    if (!deviceTokenData) {
+        NSLog(@"Device token data is nil");
+        return nil;
+    }
+
     const char *data = [deviceTokenData bytes];
-    NSMutableString *newDeviceToken = [NSMutableString string];
+    NSMutableString *newDeviceToken = [NSMutableString stringWithCapacity:[deviceTokenData length] * 2];
 
     for (NSUInteger i = 0; i < [deviceTokenData length]; i++) {
         [newDeviceToken appendFormat:@"%02.2hhX", data[i]];
@@ -89,34 +100,63 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (void)registerNativeWithDeviceToken:(NSData *)deviceTokenData tags:(NSSet *)tags completion:(void (^)(NSError *error))completion {
-    if (deviceTokenData == nil) {
+    if (!deviceTokenData) {
         if (completion) {
             completion([SBNotificationHubHelper errorForNullDeviceToken]);
         }
-
         return;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
+    if (!deviceToken) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to convert device token" code:-1002]);
+        }
+        return;
+    }
+
     NSString *name = [SBRegistration Name];
+    if (!name) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to get registration name" code:-1003]);
+        }
+        return;
+    }
+
     NSString *payload = [SBRegistration payloadWithDeviceToken:deviceToken tags:tags];
+    if (!payload) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to create payload" code:-1004]);
+        }
+        return;
+    }
 
     if (storageManager.isRefreshNeeded) {
         NSString *refreshDeviceToken = [self getRefreshDeviceTokenWithNewDeviceToken:deviceToken];
-        [self retrieveAllRegistrationsWithDeviceToken:refreshDeviceToken
-                                           completion:^(__unused NSArray *regs, NSError *error) {
-                                             if (error == nil) {
-                                                 [self->storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
-                                                 [self createOrUpdateWith:name
-                                                                  payload:payload
-                                                              deviceToken:deviceToken
-                                                               completion:completion];
-                                             } else {
-                                                 if (completion) {
-                                                     completion(error);
-                                                 }
-                                             }
-                                           }];
+        if (!refreshDeviceToken) {
+            if (completion) {
+                completion([SBNotificationHubHelper errorWithMsg:@"Failed to get refresh device token" code:-1005]);
+            }
+            return;
+        }
+
+        [self retrieveAllRegistrationsWithDeviceToken:refreshDeviceToken completion:^(NSArray *regs, NSError *error) {
+            if (error) {
+                if (completion) {
+                    completion(error);
+                }
+                return;
+            }
+
+            if (self->storageManager) {
+                [self->storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
+                [self createOrUpdateWith:name payload:payload deviceToken:deviceToken completion:completion];
+            } else {
+                if (completion) {
+                    completion([SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006]);
+                }
+            }
+        }];
     } else {
         [self createOrUpdateWith:name payload:payload deviceToken:deviceToken completion:completion];
     }
@@ -144,48 +184,75 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                        priorityTemplate:(NSString *)priorityTemplate
                                    tags:(NSSet *)tags
                              completion:(void (^)(NSError *error))completion {
-    if (deviceTokenData == nil) {
+    if (!deviceTokenData) {
         if (completion) {
             completion([SBNotificationHubHelper errorForNullDeviceToken]);
         }
+        return;
+    }
 
+    if (!name || name.length == 0) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Template name is nil or empty" code:-1007]);
+        }
         return;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
+    if (!deviceToken) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to convert device token" code:-1002]);
+        }
+        return;
+    }
 
     NSError *error;
     if ([self verifyTemplateName:name error:&error] == FALSE) {
         if (completion) {
             completion(error);
         }
-
         return;
     }
 
     NSString *payload = [SBTemplateRegistration payloadWithDeviceToken:deviceToken
-                                                          bodyTemplate:bodyTemplate
-                                                        expiryTemplate:expiryTemplate
-                                                      priorityTemplate:priorityTemplate
-                                                                  tags:tags
-                                                          templateName:name];
+                                                         bodyTemplate:bodyTemplate
+                                                       expiryTemplate:expiryTemplate
+                                                     priorityTemplate:priorityTemplate
+                                                                 tags:tags
+                                                         templateName:name];
+    if (!payload) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to create template payload" code:-1008]);
+        }
+        return;
+    }
 
     if (storageManager.isRefreshNeeded) {
         NSString *refreshDeviceToken = [self getRefreshDeviceTokenWithNewDeviceToken:deviceToken];
-        [self retrieveAllRegistrationsWithDeviceToken:refreshDeviceToken
-                                           completion:^(__unused NSArray *regs, NSError *err) {
-                                             if (err == nil) {
-                                                 [self->storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
-                                                 [self createOrUpdateWith:name
-                                                                  payload:payload
-                                                              deviceToken:deviceToken
-                                                               completion:completion];
-                                             } else {
-                                                 if (completion) {
-                                                     completion(err);
-                                                 }
-                                             }
-                                           }];
+        if (!refreshDeviceToken) {
+            if (completion) {
+                completion([SBNotificationHubHelper errorWithMsg:@"Failed to get refresh device token" code:-1005]);
+            }
+            return;
+        }
+
+        [self retrieveAllRegistrationsWithDeviceToken:refreshDeviceToken completion:^(NSArray *regs, NSError *err) {
+            if (err) {
+                if (completion) {
+                    completion(err);
+                }
+                return;
+            }
+
+            if (self->storageManager) {
+                [self->storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
+                [self createOrUpdateWith:name payload:payload deviceToken:deviceToken completion:completion];
+            } else {
+                if (completion) {
+                    completion([SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006]);
+                }
+            }
+        }];
     } else {
         [self createOrUpdateWith:name payload:payload deviceToken:deviceToken completion:completion];
     }
@@ -195,37 +262,52 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                    payload:(NSString *)payload
                deviceToken:(NSString *)deviceToken
                 completion:(void (^)(NSError *))completion {
+    if (!name || !payload || !deviceToken) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Invalid parameters for createOrUpdate" code:-1009]);
+        }
+        return;
+    }
+
     StoredRegistrationEntry *cached = [storageManager getStoredRegistrationEntryWithRegistrationName:name];
-    if (cached == nil) {
+    if (!cached) {
         [self createRegistrationIdAndUpsert:name
                                     payload:payload
                                 deviceToken:deviceToken
                                  completion:^(NSError *error) {
-                                   if (error != nil && [error code] == 410) {
-
-                                       [self createRegistrationIdAndUpsert:name
-                                                                   payload:payload
-                                                               deviceToken:deviceToken
-                                                                completion:completion];
-                                   } else {
-                                       if (completion) {
-                                           completion(error);
-                                       }
-                                   }
+                                     if (error && [error code] == 410) {
+                                         [self createRegistrationIdAndUpsert:name
+                                                                     payload:payload
+                                                                 deviceToken:deviceToken
+                                                                  completion:completion];
+                                     } else {
+                                         if (completion) {
+                                             completion(error);
+                                         }
+                                     }
                                  }];
     } else {
+        if (!cached.RegistrationId) {
+            if (completion) {
+                completion([SBNotificationHubHelper errorWithMsg:@"Cached registration ID is nil" code:-1010]);
+            }
+            return;
+        }
+
         [self upsertRegistrationWithName:name
                           registrationId:cached.RegistrationId
                                  payload:payload
                               completion:^(NSError *error) {
-                                if (error != nil && [error code] == 410) {
-
-                                    [self createRegistrationIdAndUpsert:name payload:payload deviceToken:deviceToken completion:completion];
-                                } else {
-                                    if (completion) {
-                                        completion(error);
-                                    }
-                                }
+                                  if (error && [error code] == 410) {
+                                      [self createRegistrationIdAndUpsert:name
+                                                                  payload:payload
+                                                              deviceToken:deviceToken
+                                                               completion:completion];
+                                  } else {
+                                      if (completion) {
+                                          completion(error);
+                                      }
+                                  }
                               }];
     }
 }
@@ -234,29 +316,78 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                               payload:(NSString *)payload
                           deviceToken:(NSString *)deviceToken
                            completion:(void (^)(NSError *))completion {
+    if (!name || !payload || !deviceToken) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Invalid parameters for createRegistrationIdAndUpsert" code:-1011]);
+        }
+        return;
+    }
+
     NSURL *requestUri = [self composeCreateRegistrationIdUri];
+    if (!requestUri) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012]);
+        }
+        return;
+    }
+
     [self registrationOperationWithRequestUri:requestUri
                                       payload:@""
                                    httpMethod:@"POST"
                                          ETag:@""
-                                   completion:^(NSHTTPURLResponse *response, __unused NSData *data, NSError *error) {
-                                     if (!error) {
-                                         NSString *locationField = [[response allHeaderFields] objectForKey:@"Location"];
-                                         NSURL *locationUrl = [[NSURL alloc] initWithString:locationField];
-                                         NSString *registrationId = [self extractRegistrationIdFromLocationUri:locationUrl];
-                                         [self->storageManager updateWithRegistrationName:name
-                                                                           registrationId:registrationId
-                                                                                     eTag:@"*"
-                                                                              deviceToken:deviceToken];
-                                         [self upsertRegistrationWithName:name
-                                                           registrationId:registrationId
-                                                                  payload:payload
-                                                               completion:completion];
-                                     } else {
-                                         if (completion) {
-                                             completion(error);
-                                         }
-                                     }
+                                   completion:^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
+                                       if (error) {
+                                           if (completion) {
+                                               completion(error);
+                                           }
+                                           return;
+                                       }
+
+                                       if (!response) {
+                                           if (completion) {
+                                               completion([SBNotificationHubHelper errorWithMsg:@"No response received" code:-1013]);
+                                           }
+                                           return;
+                                       }
+
+                                       NSString *locationField = [[response allHeaderFields] objectForKey:@"Location"];
+                                       if (!locationField) {
+                                           if (completion) {
+                                               completion([SBNotificationHubHelper errorWithMsg:@"No location field in response" code:-1014]);
+                                           }
+                                           return;
+                                       }
+
+                                       NSURL *locationUrl = [[NSURL alloc] initWithString:locationField];
+                                       if (!locationUrl) {
+                                           if (completion) {
+                                               completion([SBNotificationHubHelper errorWithMsg:@"Invalid location URL" code:-1015]);
+                                           }
+                                           return;
+                                       }
+
+                                       NSString *registrationId = [self extractRegistrationIdFromLocationUri:locationUrl];
+                                       if (!registrationId) {
+                                           if (completion) {
+                                               completion([SBNotificationHubHelper errorWithMsg:@"Failed to extract registration ID" code:-1016]);
+                                           }
+                                           return;
+                                       }
+
+                                       if (self->storageManager) {
+                                           [self->storageManager updateWithRegistrationName:name
+                                                                             registrationId:registrationId
+                                                                                       eTag:@"*"
+                                                                                deviceToken:deviceToken];
+                                           [self upsertRegistrationWithName:name
+                                                             registrationId:registrationId
+                                                                    payload:payload
+                                                                 completion:completion];
+                                       } else {
+                                           if (completion) {
+                                               completion([SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006]);
+                                           }
+                                       }
                                    }];
 }
 
@@ -264,70 +395,133 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                     registrationId:(NSString *)registrationId
                            payload:(NSString *)payload
                         completion:(void (^)(NSError *))completion {
+    if (!name || !registrationId || !payload) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Invalid parameters for upsertRegistration" code:-1017]);
+        }
+        return;
+    }
+
     NSURL *requestUri = [self composeRegistrationUriWithRegistrationId:registrationId];
+    if (!requestUri) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012]);
+        }
+        return;
+    }
+
     [self registrationOperationWithRequestUri:requestUri
                                       payload:payload
                                    httpMethod:@"PUT"
                                          ETag:@""
-                                   completion:^(__unused NSHTTPURLResponse *response1, NSData *data, NSError *error) {
-                                     if (!error) {
-                                         [self parseResultAndUpdateWithName:name data:data error:&error];
-                                     }
+                                   completion:^(NSHTTPURLResponse *response1, NSData *data, NSError *error) {
+                                       if (!error) {
+                                           [self parseResultAndUpdateWithName:name data:data error:&error];
+                                       }
 
-                                     if (completion) {
-                                         completion(error);
-                                     }
+                                       if (completion) {
+                                           completion(error);
+                                       }
                                    }];
 }
 
 - (void)parseResultAndUpdateWithName:(NSString *)name data:(NSData *)data error:(NSError *__autoreleasing *)error {
+    if (!name || !data) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Invalid parameters for parseResultAndUpdate" code:-1018];
+        }
+        return;
+    }
+
     NSError *parseError;
     NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&parseError];
     if (!parseError) {
-        [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations objectAtIndex:0]];
-    } else if (error) {
-        (*error) = parseError;
+        if (registrations.count > 0) {
+            id registration = [registrations objectAtIndex:0];
+            if ([registration isKindOfClass:[SBRegistration class]]) {
+                if (storageManager) {
+                    [storageManager updateWithRegistrationName:name registration:(SBRegistration *)registration];
+                } else {
+                    parseError = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
+                }
+            } else {
+                parseError = [SBNotificationHubHelper errorWithMsg:@"Invalid registration object at index 0" code:-1000];
+            }
+        } else {
+            parseError = [SBNotificationHubHelper errorWithMsg:@"No registrations found in response" code:-1001];
+        }
+    }
+
+    if (parseError && error) {
+        *error = parseError;
     }
 }
 
 - (void)retrieveAllRegistrationsWithDeviceToken:(NSString *)deviceToken completion:(void (^)(NSArray *, NSError *))completion {
+    if (!deviceToken) {
+        if (completion) {
+            completion(nil, [SBNotificationHubHelper errorWithMsg:@"Device token is nil" code:-1019]);
+        }
+        return;
+    }
+
     NSURL *requestUri = [self composeRetrieveAllRegistrationsUriWithDeviceToken:deviceToken];
+    if (!requestUri) {
+        if (completion) {
+            completion(nil, [SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012]);
+        }
+        return;
+    }
+
     [self registrationOperationWithRequestUri:requestUri
                                       payload:@""
                                    httpMethod:@"GET"
                                          ETag:@""
-                                   completion:^(__unused NSHTTPURLResponse *response, NSData *data, NSError *error) {
-                                     if (error) {
-                                         if ([error code] == 404) {
-                                             if (completion) {
-                                                 completion(nil, nil);
-                                             }
-                                             return;
-                                         } else {
-                                             if (completion) {
-                                                 completion(nil, error);
-                                             }
-                                             return;
-                                         }
-                                     }
+                                   completion:^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
+                                       if (error) {
+                                           if ([error code] == 404) {
+                                               if (completion) {
+                                                   completion(nil, nil);
+                                               }
+                                               return;
+                                           } else {
+                                               if (completion) {
+                                                   completion(nil, error);
+                                               }
+                                               return;
+                                           }
+                                       }
 
-                                     NSError *parseError;
-                                     NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&parseError];
-                                     if (parseError) {
-                                         if (completion) {
-                                             completion(nil, parseError);
-                                         }
+                                       if (!data) {
+                                           if (completion) {
+                                               completion(nil, [SBNotificationHubHelper errorWithMsg:@"No data in response" code:-1020]);
+                                           }
+                                           return;
+                                       }
 
-                                         return;
-                                     }
+                                       NSError *parseError;
+                                       NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&parseError];
+                                       if (parseError) {
+                                           if (completion) {
+                                               completion(nil, parseError);
+                                           }
+                                           return;
+                                       }
 
-                                     for (SBRegistration *retrieved in registrations) {
-                                         [self->storageManager updateWithRegistration:retrieved];
-                                     }
-
-                                     if (completion) {
-                                         completion(registrations, nil);
-                                     }
+                                       if (self->storageManager) {
+                                           for (SBRegistration *retrieved in registrations) {
+                                               if ([retrieved isKindOfClass:[SBRegistration class]]) {
+                                                   [self->storageManager updateWithRegistration:retrieved];
+                                               }
+                                           }
+                                           if (completion) {
+                                               completion(registrations, nil);
+                                           }
+                                       } else {
+                                           if (completion) {
+                                               completion(nil, [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006]);
+                                           }
+                                       }
                                    }];
 }
 
@@ -336,12 +530,18 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (void)unregisterTemplateWithName:(NSString *)name completion:(void (^)(NSError *))completion {
+    if (!name) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Template name is nil" code:-1007]);
+        }
+        return;
+    }
+
     NSError *error;
     if ([self verifyTemplateName:name error:&error] == FALSE) {
         if (completion) {
             completion(error);
         }
-
         return;
     }
 
@@ -349,44 +549,80 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (void)deleteRegistrationWithName:(NSString *)templateName completion:(void (^)(NSError *))completion {
-    StoredRegistrationEntry *cached = [storageManager getStoredRegistrationEntryWithRegistrationName:templateName];
-    if (cached == nil) {
+    if (!templateName) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Template name is nil" code:-1007]);
+        }
+        return;
+    }
+
+    StoredRegistrationEntry *cached = storageManager ? [storageManager getStoredRegistrationEntryWithRegistrationName:templateName] : nil;
+    if (!cached) {
         if (completion) {
             completion(nil);
         }
+        return;
+    }
 
+    if (!cached.RegistrationId) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Cached registration ID is nil" code:-1010]);
+        }
         return;
     }
 
     NSURL *requestUri = [self composeRegistrationUriWithRegistrationId:cached.RegistrationId];
+    if (!requestUri) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012]);
+        }
+        return;
+    }
+
     [self registrationOperationWithRequestUri:requestUri
                                       payload:@""
                                    httpMethod:@"DELETE"
                                          ETag:@"*"
-                                   completion:^(__unused NSHTTPURLResponse *response, __unused NSData *data, NSError *error) {
-                                     if (error == nil || [error code] == 404) {
-                                         [self->storageManager deleteWithRegistrationName:templateName];
-                                         error = nil;
-                                     }
+                                   completion:^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
+                                       if (error == nil || [error code] == 404) {
+                                           if (self->storageManager) {
+                                               [self->storageManager deleteWithRegistrationName:templateName];
+                                               error = nil;
+                                           } else {
+                                               error = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
+                                           }
+                                       }
 
-                                     if (completion) {
-                                         completion(error);
-                                     }
+                                       if (completion) {
+                                           completion(error);
+                                       }
                                    }];
 }
 
 - (void)unregisterAllWithDeviceToken:(NSData *)deviceTokenData completion:(void (^)(NSError *))completion {
-    if (deviceTokenData == nil) {
+    if (!deviceTokenData) {
         if (completion) {
             completion([SBNotificationHubHelper errorForNullDeviceToken]);
         }
-
         return;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
+    if (!deviceToken) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to convert device token" code:-1002]);
+        }
+        return;
+    }
 
     SBThreadParameter *parameter = [[SBThreadParameter alloc] init];
+    if (!parameter) {
+        if (completion) {
+            completion([SBNotificationHubHelper errorWithMsg:@"Failed to create thread parameter" code:-1021]);
+        }
+        return;
+    }
+
     parameter.deviceToken = deviceToken;
     parameter.completion = completion;
     parameter.isMainThread = [[NSThread currentThread] isMainThread];
@@ -394,28 +630,44 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (void)deleteAllRegistrationThread:(SBThreadParameter *)parameter {
+    if (!parameter || !parameter.deviceToken) {
+        if (parameter.completion) {
+            if (parameter.isMainThread) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    parameter.completion([SBNotificationHubHelper errorWithMsg:@"Invalid thread parameter" code:-1022]);
+                });
+            } else {
+                parameter.completion([SBNotificationHubHelper errorWithMsg:@"Invalid thread parameter" code:-1022]);
+            }
+        }
+        return;
+    }
+
     NSError *error;
     NSArray *registrations = [self retrieveAllRegistrationsWithDeviceToken:parameter.deviceToken error:&error];
-    if (registrations.count != 0) {
-        for (SBRegistration *reg in registrations) {
+    if (registrations && registrations.count > 0) {
+        for (id reg in registrations) {
+            if (![reg isKindOfClass:[SBRegistration class]]) {
+                continue;
+            }
             NSString *name = [SBNotificationHubHelper nameOfRegistration:reg];
-            [self deleteRegistrationWithName:name error:&error];
-            if (error) {
-                break;
+            if (name) {
+                [self deleteRegistrationWithName:name error:&error];
+                if (error) {
+                    break;
+                }
             }
         }
     }
 
-    if (!error) {
-        // Remove any registrations that are only in the client and not on server
+    if (!error && storageManager) {
         [storageManager deleteAllRegistrations];
     }
 
     if (parameter.completion) {
         if (parameter.isMainThread) {
-            // callback on main thread
             dispatch_async(dispatch_get_main_queue(), ^{
-              parameter.completion(error);
+                parameter.completion(error);
             });
         } else {
             parameter.completion(error);
@@ -424,34 +676,63 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (BOOL)registerNativeWithDeviceToken:(NSData *)deviceTokenData tags:(NSSet *)tags error:(NSError *__autoreleasing *)error {
-    if (deviceTokenData == nil) {
+    if (!deviceTokenData) {
         if (error) {
             *error = [SBNotificationHubHelper errorForNullDeviceToken];
         }
-
         return FALSE;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
+    if (!deviceToken) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to convert device token" code:-1002];
+        }
+        return FALSE;
+    }
 
     NSString *name = [SBRegistration Name];
+    if (!name) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to get registration name" code:-1003];
+        }
+        return FALSE;
+    }
+
     NSString *payload = [SBRegistration payloadWithDeviceToken:deviceToken tags:tags];
+    if (!payload) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to create payload" code:-1004];
+        }
+        return FALSE;
+    }
 
     if (storageManager.isRefreshNeeded) {
         NSString *refreshDeviceToken = [self getRefreshDeviceTokenWithNewDeviceToken:deviceToken];
+        if (!refreshDeviceToken) {
+            if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Failed to get refresh device token" code:-1005];
+            }
+            return FALSE;
+        }
 
         NSError *retrieveError;
         [self retrieveAllRegistrationsWithDeviceToken:refreshDeviceToken error:&retrieveError];
-
         if (retrieveError) {
             if (error) {
                 *error = retrieveError;
             }
-
             return FALSE;
         }
 
-        [storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
+        if (storageManager) {
+            [storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
+        } else {
+            if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
+            }
+            return FALSE;
+        }
     }
 
     return [self createorUpdateWith:name payload:payload deviceToken:deviceToken error:error];
@@ -479,42 +760,71 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                        priorityTemplate:(NSString *)priorityTemplate
                                    tags:(NSSet *)tags
                                   error:(NSError *__autoreleasing *)error {
-    if (deviceTokenData == nil) {
+    if (!deviceTokenData) {
         if (error) {
             *error = [SBNotificationHubHelper errorForNullDeviceToken];
         }
+        return FALSE;
+    }
 
+    if (!templateName) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Template name is nil" code:-1007];
+        }
         return FALSE;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
+    if (!deviceToken) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to convert device token" code:-1002];
+        }
+        return FALSE;
+    }
 
     if ([self verifyTemplateName:templateName error:error] == FALSE) {
         return FALSE;
     }
 
     NSString *payload = [SBTemplateRegistration payloadWithDeviceToken:deviceToken
-                                                          bodyTemplate:bodyTemplate
-                                                        expiryTemplate:expiryTemplate
-                                                      priorityTemplate:priorityTemplate
-                                                                  tags:tags
-                                                          templateName:templateName];
+                                                         bodyTemplate:bodyTemplate
+                                                       expiryTemplate:expiryTemplate
+                                                     priorityTemplate:priorityTemplate
+                                                                 tags:tags
+                                                         templateName:templateName];
+    if (!payload) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to create template payload" code:-1008];
+        }
+        return FALSE;
+    }
 
     if (storageManager.isRefreshNeeded) {
         NSString *refreshDeviceToken = [self getRefreshDeviceTokenWithNewDeviceToken:deviceToken];
+        if (!refreshDeviceToken) {
+            if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Failed to get refresh device token" code:-1005];
+            }
+            return FALSE;
+        }
 
         NSError *retrieveError;
         [self retrieveAllRegistrationsWithDeviceToken:refreshDeviceToken error:&retrieveError];
-
         if (retrieveError) {
             if (error) {
                 *error = retrieveError;
             }
-
             return FALSE;
         }
 
-        [storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
+        if (storageManager) {
+            [storageManager refreshFinishedWithDeviceToken:refreshDeviceToken];
+        } else {
+            if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
+            }
+            return FALSE;
+        }
     }
 
     return [self createorUpdateWith:templateName payload:payload deviceToken:deviceToken error:error];
@@ -524,53 +834,84 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                    payload:(NSString *)payload
                deviceToken:(NSString *)deviceToken
                      error:(NSError *__autoreleasing *)error {
-    StoredRegistrationEntry *cached = [storageManager getStoredRegistrationEntryWithRegistrationName:name];
+    if (!name || !payload || !deviceToken) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Invalid parameters for createorUpdateWith" code:-1009];
+        }
+        return FALSE;
+    }
+
+    StoredRegistrationEntry *cached = storageManager ? [storageManager getStoredRegistrationEntryWithRegistrationName:name] : nil;
     NSString *registrationId;
-    if (cached == nil) {
+    if (!cached) {
         NSError *createRegistrationError;
         registrationId = [self createRegistrationId:&createRegistrationError];
         if (createRegistrationError) {
             if (error) {
                 *error = createRegistrationError;
             }
-
-            return false;
+            return FALSE;
         }
 
-        [storageManager updateWithRegistrationName:name registrationId:registrationId eTag:@"*" deviceToken:deviceToken];
+        if (!registrationId) {
+            if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Failed to create registration ID" code:-1016];
+            }
+            return FALSE;
+        }
+
+        if (storageManager) {
+            [storageManager updateWithRegistrationName:name registrationId:registrationId eTag:@"*" deviceToken:deviceToken];
+        } else {
+            if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
+            }
+            return FALSE;
+        }
     } else {
         registrationId = cached.RegistrationId;
+        if (!registrationId) {
+            if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Cached registration ID is nil" code:-1010];
+            }
+            return FALSE;
+        }
     }
 
     NSError *upsertRegistrationError;
     BOOL result = [self upsertRegistrationWithName:name registrationId:registrationId payload:payload error:&upsertRegistrationError];
-    if (upsertRegistrationError != nil && [upsertRegistrationError code] == 410) {
-        // if we get 410 from service, we will recreate registration id and will try
-        // to do upsert
+    if (upsertRegistrationError && [upsertRegistrationError code] == 410) {
         NSError *retrieveRegistrationError;
         registrationId = [self createRegistrationId:&retrieveRegistrationError];
         if (retrieveRegistrationError) {
             if (error) {
                 *error = retrieveRegistrationError;
             }
-
-            return false;
+            return FALSE;
         }
 
-        [storageManager updateWithRegistrationName:name registrationId:registrationId eTag:@"*" deviceToken:deviceToken];
-        NSError *operationError;
-        result = [self upsertRegistrationWithName:name registrationId:registrationId payload:payload error:&operationError];
-        if (operationError) {
+        if (!registrationId) {
             if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Failed to create registration ID" code:-1016];
+            }
+            return FALSE;
+        }
+
+        if (storageManager) {
+            [storageManager updateWithRegistrationName:name registrationId:registrationId eTag:@"*" deviceToken:deviceToken];
+            NSError *operationError;
+            result = [self upsertRegistrationWithName:name registrationId:registrationId payload:payload error:&operationError];
+            if (operationError && error) {
                 *error = operationError;
             }
+        } else {
+            if (error) {
+                *error = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
+            }
+            return FALSE;
         }
-
-        return result;
-    }
-
-    if (error) {
-        (*error) = upsertRegistrationError;
+    } else if (upsertRegistrationError && error) {
+        *error = upsertRegistrationError;
     }
 
     return result;
@@ -578,6 +919,13 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 
 - (NSString *)createRegistrationId:(NSError *__autoreleasing *)error {
     NSURL *requestUri = [self composeCreateRegistrationIdUri];
+    if (!requestUri) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012];
+        }
+        return nil;
+    }
+
     NSHTTPURLResponse *response = nil;
     NSData *data;
     NSError *operationError;
@@ -589,21 +937,62 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                  responseData:&data
                                         error:&operationError];
 
-    if (operationError == nil) {
-        NSString *locationField = [[response allHeaderFields] objectForKey:@"Location"];
-        NSURL *locationUrl = [[NSURL alloc] initWithString:locationField];
-        return [self extractRegistrationIdFromLocationUri:locationUrl];
+    if (operationError) {
+        if (error) {
+            *error = operationError;
+        }
+        return nil;
     }
 
-    if (error) {
-        *error = operationError;
+    if (!response) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"No response received" code:-1013];
+        }
+        return nil;
     }
 
-    return nil;
+    NSString *locationField = [[response allHeaderFields] objectForKey:@"Location"];
+    if (!locationField) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"No location field in response" code:-1014];
+        }
+        return nil;
+    }
+
+    NSURL *locationUrl = [[NSURL alloc] initWithString:locationField];
+    if (!locationUrl) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Invalid location URL" code:-1015];
+        }
+        return nil;
+    }
+
+    NSString *registrationId = [self extractRegistrationIdFromLocationUri:locationUrl];
+    if (!registrationId) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to extract registration ID" code:-1016];
+        }
+        return nil;
+    }
+
+    return registrationId;
 }
 
 - (BOOL)createRegistrationWithName:(NSString *)name payload:(NSString *)payload error:(NSError *__autoreleasing *)error {
+    if (!name || !payload) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Invalid parameters for createRegistration" code:-1023];
+        }
+        return FALSE;
+    }
+
     NSURL *requestUri = [self composeRegistrationUriWithRegistrationId:@""];
+    if (!requestUri) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012];
+        }
+        return FALSE;
+    }
 
     NSHTTPURLResponse *response = nil;
     NSData *data;
@@ -616,14 +1005,25 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                                responseData:&data
                                                       error:&operationError];
 
-    if (operationError == nil) {
-        NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&operationError];
-        if (operationError == nil) {
-            [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations objectAtIndex:0]];
+    if (operationError == nil && data) {
+        NSError *parseError;
+        NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&parseError];
+        if (!parseError && registrations.count > 0) {
+            id registration = [registrations objectAtIndex:0];
+            if ([registration isKindOfClass:[SBRegistration class]] && storageManager) {
+                [storageManager updateWithRegistrationName:name registration:(SBRegistration *)registration];
+            } else {
+                parseError = [SBNotificationHubHelper errorWithMsg:@"Invalid registration object or storage manager nil" code:-1024];
+            }
+        } else {
+            parseError = [SBNotificationHubHelper errorWithMsg:@"No registrations found or parse error" code:-1001];
+        }
+        if (parseError && error) {
+            *error = parseError;
         }
     }
 
-    if (error) {
+    if (operationError && error) {
         *error = operationError;
     }
 
@@ -634,7 +1034,20 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                     registrationId:(NSString *)registrationId
                            payload:(NSString *)payload
                              error:(NSError *__autoreleasing *)error {
+    if (!name || !registrationId || !payload) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Invalid parameters for upsertRegistration" code:-1017];
+        }
+        return FALSE;
+    }
+
     NSURL *requestUri = [self composeRegistrationUriWithRegistrationId:registrationId];
+    if (!requestUri) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012];
+        }
+        return FALSE;
+    }
 
     NSHTTPURLResponse *response = nil;
     NSData *data;
@@ -647,24 +1060,46 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                                responseData:&data
                                                       error:&operationError];
 
-    if (operationError == nil) {
-        NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&operationError];
-        if (operationError == nil) {
-            [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations objectAtIndex:0]];
+    if (operationError == nil && data) {
+        NSError *parseError;
+        NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&parseError];
+        if (!parseError && registrations.count > 0) {
+            id registration = [registrations objectAtIndex:0];
+            if ([registration isKindOfClass:[SBRegistration class]] && storageManager) {
+                [storageManager updateWithRegistrationName:name registration:(SBRegistration *)registration];
+            } else {
+                parseError = [SBNotificationHubHelper errorWithMsg:@"Invalid registration object or storage manager nil" code:-1024];
+            }
+        } else {
+            parseError = [SBNotificationHubHelper errorWithMsg:@"No registrations found or parse error" code:-1001];
+        }
+        if (parseError && error) {
+            *error = parseError;
         }
     }
 
-    if (error) {
+    if (operationError && error) {
         *error = operationError;
     }
 
     return result;
 }
 
-// This function will retrieve all registrations and update local storage with
-// them.
 - (NSArray *)retrieveAllRegistrationsWithDeviceToken:(NSString *)deviceToken error:(NSError *__autoreleasing *)error {
+    if (!deviceToken) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Device token is nil" code:-1019];
+        }
+        return nil;
+    }
+
     NSURL *requestUri = [self composeRetrieveAllRegistrationsUriWithDeviceToken:deviceToken];
+    if (!requestUri) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012];
+        }
+        return nil;
+    }
 
     NSHTTPURLResponse *response = nil;
     NSData *data;
@@ -679,14 +1114,18 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 
     if (operationError) {
         if ([operationError code] == 404) {
-            // no registrations
             return nil;
         }
-
         if (error) {
-            (*error) = operationError;
+            *error = operationError;
         }
+        return nil;
+    }
 
+    if (!data) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"No data in response" code:-1020];
+        }
         return nil;
     }
 
@@ -694,23 +1133,47 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&parseError];
     if (parseError) {
         if (error) {
-            (*error) = parseError;
+            *error = parseError;
+        }
+        return nil;
+    }
+
+    if (storageManager) {
+        [storageManager deleteAllRegistrations];
+        for (id retrieved in registrations) {
+            if ([retrieved isKindOfClass:[SBRegistration class]]) {
+                [storageManager updateWithRegistration:retrieved];
+            }
         }
     } else {
-        [storageManager deleteAllRegistrations];
-        for (SBRegistration *retrieved in registrations) {
-            [storageManager updateWithRegistration:retrieved];
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
         }
+        return nil;
     }
 
     return registrations;
 }
 
 - (BOOL)unregisterNativeWithError:(NSError *__autoreleasing *)error {
-    return [self deleteRegistrationWithName:[SBRegistration Name] error:error];
+    NSString *name = [SBRegistration Name];
+    if (!name) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to get registration name" code:-1003];
+        }
+        return FALSE;
+    }
+    return [self deleteRegistrationWithName:name error:error];
 }
 
 - (BOOL)unregisterTemplateWithName:(NSString *)name error:(NSError *__autoreleasing *)error {
+    if (!name) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Template name is nil" code:-1007];
+        }
+        return FALSE;
+    }
+
     if ([self verifyTemplateName:name error:error] == FALSE) {
         return FALSE;
     }
@@ -719,14 +1182,34 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (BOOL)deleteRegistrationWithName:(NSString *)name error:(NSError *__autoreleasing *)error {
-    StoredRegistrationEntry *cached = [storageManager getStoredRegistrationEntryWithRegistrationName:name];
-    if (cached == nil) {
-        return true;
+    if (!name) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Template name is nil" code:-1007];
+        }
+        return FALSE;
+    }
+
+    StoredRegistrationEntry *cached = storageManager ? [storageManager getStoredRegistrationEntryWithRegistrationName:name] : nil;
+    if (!cached) {
+        return TRUE;
+    }
+
+    if (!cached.RegistrationId) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Cached registration ID is nil" code:-1010];
+        }
+        return FALSE;
     }
 
     NSURL *requestUri = [self composeRegistrationUriWithRegistrationId:cached.RegistrationId];
+    if (!requestUri) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to compose request URI" code:-1012];
+        }
+        return FALSE;
+    }
 
-    NSURLResponse *response = nil;
+    NSHTTPURLResponse *response = nil;
     NSData *data;
     NSError *operationError;
     BOOL result = [self registrationOperationWithRequestUri:requestUri
@@ -738,12 +1221,15 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                                       error:&operationError];
 
     if (operationError == nil || [operationError code] == 404) {
-        // don't return error for not-found
-        [storageManager deleteWithRegistrationName:name];
-        error = nil;
+        if (storageManager) {
+            [storageManager deleteWithRegistrationName:name];
+            operationError = nil;
+        } else {
+            operationError = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
+        }
     }
 
-    if (error != nil) {
+    if (operationError && error) {
         *error = operationError;
     }
 
@@ -751,51 +1237,70 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
 }
 
 - (BOOL)unregisterAllWithDeviceToken:(NSData *)deviceTokenData error:(NSError *__autoreleasing *)error {
-    if (deviceTokenData == nil) {
+    if (!deviceTokenData) {
         if (error) {
             *error = [SBNotificationHubHelper errorForNullDeviceToken];
         }
-
         return FALSE;
     }
 
     NSString *deviceToken = [self convertDeviceToken:deviceTokenData];
+    if (!deviceToken) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to convert device token" code:-1002];
+        }
+        return FALSE;
+    }
 
     NSError *operationError;
     NSArray *registrations = [self retrieveAllRegistrationsWithDeviceToken:deviceToken error:&operationError];
-
     if (operationError) {
         if (error) {
             *error = operationError;
         }
-
         return FALSE;
     }
 
-    for (SBRegistration *reg in registrations) {
+    for (id reg in registrations) {
+        if (![reg isKindOfClass:[SBRegistration class]]) {
+            continue;
+        }
         NSString *name = [SBNotificationHubHelper nameOfRegistration:reg];
-        [self deleteRegistrationWithName:name error:&operationError];
-        if (operationError) {
-            if (error) {
-                *error = operationError;
+        if (name) {
+            [self deleteRegistrationWithName:name error:&operationError];
+            if (operationError) {
+                if (error) {
+                    *error = operationError;
+                }
+                return FALSE;
             }
-
-            return FALSE;
         }
     }
 
-    // Remove any registrations that are only in the client and not on server
-    [storageManager deleteAllRegistrations];
+    if (storageManager) {
+        [storageManager deleteAllRegistrations];
+    } else {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Storage manager is nil" code:-1006];
+        }
+        return FALSE;
+    }
 
     return TRUE;
 }
 
 - (BOOL)verifyTemplateName:(NSString *)name error:(NSError *__autoreleasing *)error {
+    if (!name) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Template name is nil" code:-1007];
+        }
+        return FALSE;
+    }
+
     if ([name isEqualToString:[SBRegistration Name]]) {
         if (error) {
             *error = [SBNotificationHubHelper errorForReservedTemplateName];
         }
-
         return FALSE;
     }
 
@@ -804,6 +1309,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
         if (error) {
             *error = [SBNotificationHubHelper errorForInvalidTemplateName];
         }
+        return FALSE;
     }
 
     return TRUE;
@@ -814,20 +1320,46 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                  httpMethod:(NSString *)httpMethod
                                        ETag:(NSString *)etag
                                  completion:(void (^)(NSHTTPURLResponse *response, NSData *data, NSError *error))completion {
+    if (!requestUri || !httpMethod) {
+        if (completion) {
+            completion(nil, nil, [SBNotificationHubHelper errorWithMsg:@"Invalid request parameters" code:-1025]);
+        }
+        return;
+    }
+
     NSMutableURLRequest *theRequest = [self PrepareUrlRequest:requestUri httpMethod:httpMethod ETag:etag payload:payload];
+    if (!theRequest) {
+        if (completion) {
+            completion(nil, nil, [SBNotificationHubHelper errorWithMsg:@"Failed to prepare URL request" code:-1026]);
+        }
+        return;
+    }
 
-    [tokenProvider setTokenWithRequest:theRequest
-                            completion:^(NSError *error) {
-                              if (error) {
-                                  if (completion) {
-                                      completion(nil, nil, error);
-                                  }
+    if (!tokenProvider) {
+        if (completion) {
+            completion(nil, nil, [SBNotificationHubHelper errorWithMsg:@"Token provider is nil" code:-1027]);
+        }
+        return;
+    }
 
-                                  return;
-                              }
+    [tokenProvider setTokenWithRequest:theRequest completion:^(NSError *error) {
+        if (error) {
+            if (completion) {
+                completion(nil, nil, error);
+            }
+            return;
+        }
 
-                              [[[SBURLConnection alloc] init] sendRequest:theRequest completion:completion];
-                            }];
+        SBURLConnection *connection = [[SBURLConnection alloc] init];
+        if (!connection) {
+            if (completion) {
+                completion(nil, nil, [SBNotificationHubHelper errorWithMsg:@"Failed to create connection" code:-1028]);
+            }
+            return;
+        }
+
+        [connection sendRequest:theRequest completion:completion];
+    }];
 }
 
 - (BOOL)registrationOperationWithRequestUri:(NSURL *)requestUri
@@ -837,70 +1369,107 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                    response:(NSHTTPURLResponse *__autoreleasing *)response
                                responseData:(NSData *__autoreleasing *)responseData
                                       error:(NSError *__autoreleasing *)error {
-    NSMutableURLRequest *theRequest = [self PrepareUrlRequest:requestUri httpMethod:httpMethod ETag:etag payload:payload];
-
-    [tokenProvider setTokenWithRequest:theRequest error:error];
-    if (*error != nil) {
+    if (!requestUri || !httpMethod) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Invalid request parameters" code:-1025];
+        }
         return FALSE;
     }
 
-    // send synchronously
-    (*responseData) = [[[SBURLConnection alloc] init] sendSynchronousRequest:theRequest returningResponse:response error:error];
-
-    if (*error != nil) {
-        NSLog(@"Fail to perform registration operation.");
-        NSLog(@"%@", [theRequest description]);
-        NSLog(@"Headers:%@", [theRequest allHTTPHeaderFields]);
-        NSLog(@"Error Response:%@", [[NSString alloc] initWithData:(*responseData) encoding:NSUTF8StringEncoding]);
-
-        return FALSE;
-    } else {
-        NSInteger statusCode = [(*response) statusCode];
-        if (statusCode != 200 && statusCode != 201) {
-            NSString *responseString = [[NSString alloc] initWithData:(*responseData) encoding:NSUTF8StringEncoding];
-
-            if (statusCode != 404) {
-                NSLog(@"Fail to perform registration operation.");
-                NSLog(@"%@", [theRequest description]);
-                NSLog(@"Headers:%@", [theRequest allHTTPHeaderFields]);
-                NSLog(@"Error Response:%@", responseString);
-            }
-
-            if (error) {
-                NSString *msg = [NSString stringWithFormat:@"Fail to perform registration operation. Response:%@", responseString];
-
-                (*error) = [SBNotificationHubHelper errorWithMsg:msg code:statusCode];
-            }
-
-            return FALSE;
+    NSMutableURLRequest *theRequest = [self PrepareUrlRequest:requestUri httpMethod:httpMethod ETag:etag payload:payload];
+    if (!theRequest) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to prepare URL request" code:-1026];
         }
+        return FALSE;
+    }
+
+    if (!tokenProvider) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Token provider is nil" code:-1027];
+        }
+        return FALSE;
+    }
+
+    [tokenProvider setTokenWithRequest:theRequest error:error];
+    if (*error) {
+        return FALSE;
+    }
+
+    SBURLConnection *connection = [[SBURLConnection alloc] init];
+    if (!connection) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"Failed to create connection" code:-1028];
+        }
+        return FALSE;
+    }
+
+    *responseData = [connection sendSynchronousRequest:theRequest returningResponse:response error:error];
+    if (*error) {
+        NSLog(@"Fail to perform registration operation: %@", [*error localizedDescription]);
+        NSLog(@"Request: %@", [theRequest description]);
+        NSLog(@"Headers: %@", [theRequest allHTTPHeaderFields]);
+        if (*responseData) {
+            NSLog(@"Error Response: %@", [[NSString alloc] initWithData:*responseData encoding:NSUTF8StringEncoding]);
+        }
+        return FALSE;
+    }
+
+    if (!*response) {
+        if (error) {
+            *error = [SBNotificationHubHelper errorWithMsg:@"No response received" code:-1013];
+        }
+        return FALSE;
+    }
+
+    NSInteger statusCode = [*response statusCode];
+    if (statusCode != 200 && statusCode != 201) {
+        NSString *responseString = *responseData ? [[NSString alloc] initWithData:*responseData encoding:NSUTF8StringEncoding] : @"";
+        if (statusCode != 404) {
+            NSLog(@"Fail to perform registration operation with status code: %ld", (long)statusCode);
+            NSLog(@"Request: %@", [theRequest description]);
+            NSLog(@"Headers: %@", [theRequest allHTTPHeaderFields]);
+            NSLog(@"Error Response: %@", responseString);
+        }
+
+        if (error) {
+            NSString *msg = [NSString stringWithFormat:@"Fail to perform registration operation. Response: %@", responseString];
+            *error = [SBNotificationHubHelper errorWithMsg:msg code:statusCode];
+        }
+        return FALSE;
     }
 
     return TRUE;
 }
 
 - (NSURL *)composeRetrieveAllRegistrationsUriWithDeviceToken:(NSString *)deviceToken {
-    NSString *fullPath = [NSString stringWithFormat:@"%@%@/Registrations/?$filter=deviceToken+eq+'%@'&api-version=%@",
-                                                    [self->_serviceEndPoint absoluteString], self -> _path, deviceToken, _APIVersion];
+    if (!deviceToken || !_serviceEndPoint || !_path) {
+        return nil;
+    }
 
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@/Registrations/?$filter=deviceToken+eq+'%@'&api-version=%@",
+                          [_serviceEndPoint absoluteString], _path, deviceToken, _APIVersion];
     return [[NSURL alloc] initWithString:fullPath];
 }
 
 - (NSURL *)composeRegistrationUriWithRegistrationId:(NSString *)registrationId {
-    if (registrationId == nil) {
-        registrationId = @"";
+    if (!_serviceEndPoint || !_path) {
+        return nil;
     }
 
-    NSString *fullPath = [NSString stringWithFormat:@"%@%@/Registrations/%@?api-version=%@", [self->_serviceEndPoint absoluteString],
-                                                    self -> _path, registrationId, _APIVersion];
-
+    NSString *safeRegistrationId = registrationId ?: @"";
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@/Registrations/%@?api-version=%@",
+                          [_serviceEndPoint absoluteString], _path, safeRegistrationId, _APIVersion];
     return [[NSURL alloc] initWithString:fullPath];
 }
 
 - (NSURL *)composeCreateRegistrationIdUri {
-    NSString *fullPath = [NSString
-        stringWithFormat:@"%@%@/registrationids/?api-version=%@", [self->_serviceEndPoint absoluteString], self -> _path, _APIVersion];
+    if (!_serviceEndPoint || !_path) {
+        return nil;
+    }
 
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@/registrationids/?api-version=%@",
+                          [_serviceEndPoint absoluteString], _path, _APIVersion];
     return [[NSURL alloc] initWithString:fullPath];
 }
 
@@ -908,54 +1477,64 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
                                 httpMethod:(NSString *)httpMethod
                                       ETag:(NSString *)etag
                                    payload:(NSString *)payload {
-    NSMutableURLRequest *theRequest;
-    theRequest = [NSMutableURLRequest requestWithURL:uri cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60.0];
+    if (!uri || !httpMethod) {
+        return nil;
+    }
+
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:uri cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60.0];
     [theRequest setHTTPMethod:httpMethod];
 
-    if ([payload hasPrefix:@"{"]) {
+    if (payload && [payload hasPrefix:@"{"]) {
         [theRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     } else {
         [theRequest setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
     }
 
-    if (etag != nil && [etag length] > 0) {
-        if (![etag isEqualToString:@"*"]) {
-            etag = [NSString stringWithFormat:@"\"%@\"", etag];
-        }
-
-        [theRequest addValue:etag forHTTPHeaderField:@"If-Match"];
+    if (etag && etag.length > 0) {
+        NSString *formattedEtag = [etag isEqualToString:@"*"] ? etag : [NSString stringWithFormat:@"\"%@\"", etag];
+        [theRequest addValue:formattedEtag forHTTPHeaderField:@"If-Match"];
     }
 
-    if ([payload length] > 0) {
-        NSString *requestBody = [NSString stringWithFormat:@"%@", payload];
-        [theRequest setHTTPBody:[requestBody dataUsingEncoding:NSUTF8StringEncoding]];
+    if (payload && payload.length > 0) {
+        [theRequest setHTTPBody:[payload dataUsingEncoding:NSUTF8StringEncoding]];
     }
 
-    NSString *userAgent = [NSString
-        stringWithFormat:_UserAgentTemplate, _APIVersion, [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]];
+    NSString *userAgent = [NSString stringWithFormat:_UserAgentTemplate,
+                          _APIVersion,
+                          [[UIDevice currentDevice] systemName] ?: @"iOS",
+                          [[UIDevice currentDevice] systemVersion] ?: @"unknown"];
     [theRequest addValue:userAgent forHTTPHeaderField:@"User-Agent"];
 
     return theRequest;
 }
 
-// if there is deviceToken from localstorage, we should use it.
 - (NSString *)getRefreshDeviceTokenWithNewDeviceToken:(NSString *)newDeviceToken {
-    NSString *deviceToken = [storageManager deviceToken];
-    if (deviceToken == nil || [deviceToken length] == 0) {
-        return newDeviceToken;
-    } else {
-        return deviceToken;
+    if (!newDeviceToken) {
+        return nil;
     }
+
+    NSString *deviceToken = storageManager ? [storageManager deviceToken] : nil;
+    return (deviceToken && deviceToken.length > 0) ? deviceToken : newDeviceToken;
 }
 
 - (NSString *)extractRegistrationIdFromLocationUri:(NSURL *)locationUrl {
+    if (!locationUrl || !locationUrl.path) {
+        return nil;
+    }
+
     NSMutableCharacterSet *trimCharacterSet = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
     [trimCharacterSet addCharactersInString:@"/"];
-    NSString *regisrationIdPath = [locationUrl.path stringByTrimmingCharactersInSet:trimCharacterSet];
-    NSRange lastIndex = [regisrationIdPath rangeOfString:@"/" options:NSBackwardsSearch];
-    NSString *registrationId = [regisrationIdPath substringFromIndex:lastIndex.location + 1];
+    NSString *registrationIdPath = [locationUrl.path stringByTrimmingCharactersInSet:trimCharacterSet];
+    if (!registrationIdPath) {
+        return nil;
+    }
 
-    return registrationId;
+    NSRange lastIndex = [registrationIdPath rangeOfString:@"/" options:NSBackwardsSearch];
+    if (lastIndex.location == NSNotFound || lastIndex.location + 1 >= registrationIdPath.length) {
+        return nil;
+    }
+
+    return [registrationIdPath substringFromIndex:lastIndex.location + 1];
 }
 
 @end
