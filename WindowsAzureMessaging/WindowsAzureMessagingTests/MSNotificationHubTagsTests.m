@@ -15,7 +15,7 @@
 @implementation MSNotificationHubTagsTests
 
 static NSString *connectionString = @"Endpoint=sb://test-namespace.servicebus.windows.net/"
-                                    @";SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=HqKHjkhjg674hjGHdskJ795GJFJ=";
+                                    @";SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=MOCK1234567890abcdefghijklmnopqrstuvwxyzABCDEF=";
 static NSString *hubName = @"nubName";
 
 - (void)setUp {
